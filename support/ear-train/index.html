@@ -92,7 +92,7 @@
 <div class="container">
   <div class="card">
     <h2 data-i18n="features">Key Features</h2>
-    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span>Note, interval, chord training</span></div><div class="feature"><div class="feature-dot"></div><span>Multiple difficulty levels</span></div><div class="feature"><div class="feature-dot"></div><span>Progress tracking</span></div><div class="feature"><div class="feature-dot"></div><span>Daily streak system</span></div></div>
+    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span data-feat="0">Note, interval, chord training</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="1">Multiple difficulty levels</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="2">Progress tracking</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="3">Daily streak system</span></div></div>
   </div>
 
   <div class="card">
@@ -169,6 +169,10 @@ applyLang(detectLang());
 const APP_T={en:"Music Ear Training",ja:"音楽耳トレーニング",zh:"音乐听力训练",zh_TW:"音樂聽力訓練",ko:"음악 청음 훈련",es:"Entrenamiento Musical del Oído",pt:"Treinamento Musical de Ouvido",fr:"Entraînement Musical",de:"Musikalisches Gehörtraining",it:"Allenamento Musicale",ru:"Музыкальный Слух Тренажёр",ar:"تدريب الأذن الموسيقية",th:"ฝึกหูดนตรี",id:"Pelatihan Telinga Musik",tr:"Müzikal İşitme Eğitimi",nl:"Muzikale Gehoortraining",vi:"Luyện Tai Nghe Âm Nhạc",};
 const _oA=applyLang;applyLang=function(l){_oA(l);const t=APP_T[l]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;};
 (function(){const l=localStorage.getItem('sk_lang');const lang=l||detectLang();const t=APP_T[lang]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;})();
+
+const FEAT_T={en:{0:"Note, interval, chord training",1:"Multiple difficulty levels",2:"Progress tracking",3:"Daily streak system"},ja:{0:"音程・和音トレーニング",1:"複数の難易度",2:"進捗追跡",3:"デイリーストリーク"}};
+const __oF=applyLang;applyLang=function(l){__oF(l);const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});};
+(function(){const l=localStorage.getItem('sk_lang')||detectLang();const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});})();
 </script>
 </body>
 </html>

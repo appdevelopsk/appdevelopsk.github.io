@@ -92,7 +92,7 @@
 <div class="container">
   <div class="card">
     <h2 data-i18n="features">Key Features</h2>
-    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span>Camera-based word learning</span></div><div class="feature"><div class="feature-dot"></div><span>17 languages supported</span></div><div class="feature"><div class="feature-dot"></div><span>Vocabulary flashcards</span></div><div class="feature"><div class="feature-dot"></div><span>Daily learning goals</span></div></div>
+    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span data-feat="0">Camera-based word learning</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="1">17 languages supported</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="2">Vocabulary flashcards</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="3">Daily learning goals</span></div></div>
   </div>
 
   <div class="card">
@@ -169,6 +169,10 @@ applyLang(detectLang());
 const APP_T={en:"Snap. Learn. Speak.",ja:"写真で単語を学ぼう",zh:"拍照学单词",zh_TW:"拍照學單詞",ko:"사진으로 단어 학습",es:"Aprende con tus fotos",pt:"Aprenda com suas fotos",fr:"Apprenez avec vos photos",de:"Lerne mit deinen Fotos",it:"Impara con le tue foto",ru:"Учись по фотографиям",ar:"تعلم من صورك",th:"เรียนรู้จากภาพถ่าย",id:"Belajar dari fotomu",tr:"Fotoğraflarla öğren",nl:"Leer van je foto\'s",vi:"Học từ ảnh hàng ngày",};
 const _oA=applyLang;applyLang=function(l){_oA(l);const t=APP_T[l]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;};
 (function(){const l=localStorage.getItem('sk_lang');const lang=l||detectLang();const t=APP_T[lang]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;})();
+
+const FEAT_T={en:{0:"Camera-based word learning",1:"17 languages supported",2:"Vocabulary flashcards",3:"Daily learning goals"},ja:{0:"カメラで単語学習",1:"17言語対応",2:"単語フラッシュカード",3:"毎日の学習目標"}};
+const __oF=applyLang;applyLang=function(l){__oF(l);const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});};
+(function(){const l=localStorage.getItem('sk_lang')||detectLang();const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});})();
 </script>
 </body>
 </html>

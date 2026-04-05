@@ -92,7 +92,7 @@
 <div class="container">
   <div class="card">
     <h2 data-i18n="features">Key Features</h2>
-    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span>Nearby discovery</span></div><div class="feature"><div class="feature-dot"></div><span>Activity matching</span></div><div class="feature"><div class="feature-dot"></div><span>Real-time chat</span></div><div class="feature"><div class="feature-dot"></div><span>Safety features</span></div></div>
+    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span data-feat="0">Nearby discovery</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="1">Activity matching</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="2">Real-time chat</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="3">Safety features</span></div></div>
   </div>
 
   <div class="card">
@@ -169,6 +169,10 @@ applyLang(detectLang());
 const APP_T={en:"Real-Time Matching App",ja:"リアルタイムマッチング",zh:"实时配对应用",zh_TW:"即時配對應用程式",ko:"실시간 매칭 앱",es:"App de Matchmaking",pt:"App de Combinação",fr:"App Rencontres Temps Réel",de:"Echtzeit-Matching-App",it:"App di Matching in Tempo Reale",ru:"Знакомства реального времени",ar:"تطبيق مطابقة فوري",th:"แอปจับคู่เรียลไทม์",id:"Aplikasi Pencocokan Real-Time",tr:"Eşleşme Uygulaması",nl:"Realtime Matching App",vi:"Kết Đôi Thời Gian Thực",};
 const _oA=applyLang;applyLang=function(l){_oA(l);const t=APP_T[l]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;};
 (function(){const l=localStorage.getItem('sk_lang');const lang=l||detectLang();const t=APP_T[lang]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;})();
+
+const FEAT_T={en:{0:"Nearby discovery",1:"Activity matching",2:"Real-time chat",3:"Safety features"},ja:{0:"近くの発見",1:"アクティビティマッチ",2:"リアルタイムチャット",3:"安全機能"}};
+const __oF=applyLang;applyLang=function(l){__oF(l);const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});};
+(function(){const l=localStorage.getItem('sk_lang')||detectLang();const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});})();
 </script>
 </body>
 </html>

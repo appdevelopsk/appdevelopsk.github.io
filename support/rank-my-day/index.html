@@ -92,7 +92,7 @@
 <div class="container">
   <div class="card">
     <h2 data-i18n="features">Key Features</h2>
-    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span>Daily day ratings</span></div><div class="feature"><div class="feature-dot"></div><span>Category scoring</span></div><div class="feature"><div class="feature-dot"></div><span>Trend visualization</span></div><div class="feature"><div class="feature-dot"></div><span>Journal entries</span></div></div>
+    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span data-feat="0">Daily day ratings</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="1">Category scoring</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="2">Trend visualization</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="3">Journal entries</span></div></div>
   </div>
 
   <div class="card">
@@ -169,6 +169,10 @@ applyLang(detectLang());
 const APP_T={en:"Daily Rating & Mood Tracker",ja:"毎日の評価 & 気分トラッカー",zh:"每日评分 & 心情追踪",zh_TW:"每日評分 & 心情追蹤",ko:"매일 평가 & 기분 트래커",es:"Califica tu Día y Ánimo",pt:"Avaliação Diária & Humor",fr:"Note du Jour & Suivi Humeur",de:"Tagesbewertung & Stimmung",it:"Voto Giornaliero & Umore",ru:"Оценка Дня & Настроение",ar:"تقييم يومي ومتابعة المزاج",th:"ให้คะแนนวัน & ติดตามอารมณ์",id:"Nilai Hari & Pelacak Suasana",tr:"Günlük Puanlama & Ruh Hali",nl:"Dagelijkse Score & Stemming",vi:"Chấm Điểm Ngày & Tâm Trạng",};
 const _oA=applyLang;applyLang=function(l){_oA(l);const t=APP_T[l]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;};
 (function(){const l=localStorage.getItem('sk_lang');const lang=l||detectLang();const t=APP_T[lang]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;})();
+
+const FEAT_T={en:{0:"Daily day ratings",1:"Category scoring",2:"Trend visualization",3:"Journal entries"},ja:{0:"毎日の評価",1:"カテゴリスコア",2:"トレンド可視化",3:"日記エントリー"}};
+const __oF=applyLang;applyLang=function(l){__oF(l);const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});};
+(function(){const l=localStorage.getItem('sk_lang')||detectLang();const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});})();
 </script>
 </body>
 </html>

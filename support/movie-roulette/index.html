@@ -92,7 +92,7 @@
 <div class="container">
   <div class="card">
     <h2 data-i18n="features">Key Features</h2>
-    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span>Genre and mood filters</span></div><div class="feature"><div class="feature-dot"></div><span>Streaming service filters</span></div><div class="feature"><div class="feature-dot"></div><span>Watchlist management</span></div><div class="feature"><div class="feature-dot"></div><span>Group decision mode</span></div></div>
+    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span data-feat="0">Genre and mood filters</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="1">Streaming service filters</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="2">Watchlist management</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="3">Group decision mode</span></div></div>
   </div>
 
   <div class="card">
@@ -169,6 +169,10 @@ applyLang(detectLang());
 const APP_T={en:"Spin to decide what to watch",ja:"今夜観る作品をルーレットで",zh:"用轮盘决定今晚看什么",zh_TW:"用輪盤決定今晚看什麼",ko:"룰렛으로 오늘 볼 영화 결정",es:"Gira y decide qué ver hoy",pt:"Gire e decida o que ver",fr:"Tournez & choisissez un film",de:"Drehen & Film entscheiden",it:"Gira e decidi cosa guardare",ru:"Крути и выбирай кино",ar:"دوّر وقرر ما ستشاهده الليلة",th:"หมุนรูเล็ตเพื่อเลือกหนัง",id:"Putar & tentukan tontonanmu",tr:"Karar ver, ne izleyeceksin",nl:"Draai & beslis wat je kijkt",vi:"Quay & quyết định xem gì",};
 const _oA=applyLang;applyLang=function(l){_oA(l);const t=APP_T[l]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;};
 (function(){const l=localStorage.getItem('sk_lang');const lang=l||detectLang();const t=APP_T[lang]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;})();
+
+const FEAT_T={en:{0:"Genre and mood filters",1:"Streaming service filters",2:"Watchlist management",3:"Group decision mode"},ja:{0:"ジャンル・気分フィルター",1:"配信サービスフィルター",2:"ウォッチリスト管理",3:"グループ決定モード"}};
+const __oF=applyLang;applyLang=function(l){__oF(l);const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});};
+(function(){const l=localStorage.getItem('sk_lang')||detectLang();const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});})();
 </script>
 </body>
 </html>

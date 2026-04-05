@@ -92,7 +92,7 @@
 <div class="container">
   <div class="card">
     <h2 data-i18n="features">Key Features</h2>
-    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span>Weather-based outfits</span></div><div class="feature"><div class="feature-dot"></div><span>Occasion matching</span></div><div class="feature"><div class="feature-dot"></div><span>Wardrobe management</span></div><div class="feature"><div class="feature-dot"></div><span>Style recommendations</span></div></div>
+    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span data-feat="0">Weather-based outfits</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="1">Occasion matching</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="2">Wardrobe management</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="3">Style recommendations</span></div></div>
   </div>
 
   <div class="card">
@@ -169,6 +169,10 @@ applyLang(detectLang());
 const APP_T={en:"AI Outfit Planner",ja:"天気と予定でコーデを提案",zh:"根据天气和场合推荐穿搭",zh_TW:"根據天氣和場合推薦穿搭",ko:"날씨와 일정에 맞는 코디 제안",es:"Outfits según clima y ocasión",pt:"Looks para o clima e ocasião",fr:"Tenues météo & occasion",de:"Outfits nach Wetter und Anlass",it:"Outfit per meteo e occasione",ru:"Образы по погоде и поводу",ar:"أزياء حسب الطقس والمناسبة",th:"ชุดตามสภาพอากาศและโอกาส",id:"Outfit sesuai cuaca dan momen",tr:"Hava ve etkinliğe göre kıyafet",nl:"Outfits op weer & gelegenheid",vi:"Trang phục theo thời tiết",};
 const _oA=applyLang;applyLang=function(l){_oA(l);const t=APP_T[l]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;};
 (function(){const l=localStorage.getItem('sk_lang');const lang=l||detectLang();const t=APP_T[lang]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;})();
+
+const FEAT_T={en:{0:"Weather-based outfits",1:"Occasion matching",2:"Wardrobe management",3:"Style recommendations"},ja:{0:"天気に合った服装",1:"シーンマッチング",2:"ワードローブ管理",3:"スタイル提案"}};
+const __oF=applyLang;applyLang=function(l){__oF(l);const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});};
+(function(){const l=localStorage.getItem('sk_lang')||detectLang();const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});})();
 </script>
 </body>
 </html>

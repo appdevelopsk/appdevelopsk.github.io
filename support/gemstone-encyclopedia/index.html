@@ -92,7 +92,7 @@
 <div class="container">
   <div class="card">
     <h2 data-i18n="features">Key Features</h2>
-    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span>200+ gemstone profiles</span></div><div class="feature"><div class="feature-dot"></div><span>Color-based identification</span></div><div class="feature"><div class="feature-dot"></div><span>Mohs hardness scale</span></div><div class="feature"><div class="feature-dot"></div><span>Mining location maps</span></div></div>
+    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span data-feat="0">200+ gemstone profiles</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="1">Color-based identification</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="2">Mohs hardness scale</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="3">Mining location maps</span></div></div>
   </div>
 
   <div class="card">
@@ -169,6 +169,10 @@ applyLang(detectLang());
 const APP_T={en:"Gemstone Encyclopedia & Guide",ja:"宝石図鑑 & ガイド",zh:"宝石百科与指南",zh_TW:"寶石百科與指南",ko:"보석 백과사전 & 가이드",es:"Enciclopedia de Gemas y Guía",pt:"Enciclopédia de Gemas e Guia",fr:"Encyclopédie des Gemmes",de:"Edelstein-Enzyklopädie",it:"Enciclopedia delle Gemme",ru:"Энциклопедия самоцветов",ar:"موسوعة الأحجار الكريمة والدليل",th:"สารานุกรมอัญมณีและคู่มือ",id:"Ensiklopedia Batu Permata",tr:"Değerli Taş Ansiklopedisi",nl:"Edelstenen Encyclopedie",vi:"Bách khoa Đá quý & Hướng dẫn",};
 const _oA=applyLang;applyLang=function(l){_oA(l);const t=APP_T[l]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;};
 (function(){const l=localStorage.getItem('sk_lang');const lang=l||detectLang();const t=APP_T[lang]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;})();
+
+const FEAT_T={en:{0:"200+ gemstone profiles",1:"Color-based identification",2:"Mohs hardness scale",3:"Mining location maps"},ja:{0:"200種以上の宝石",1:"色による識別",2:"モース硬度",3:"採掘地マップ"}};
+const __oF=applyLang;applyLang=function(l){__oF(l);const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});};
+(function(){const l=localStorage.getItem('sk_lang')||detectLang();const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});})();
 </script>
 </body>
 </html>

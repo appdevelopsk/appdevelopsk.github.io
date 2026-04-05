@@ -92,7 +92,7 @@
 <div class="container">
   <div class="card">
     <h2 data-i18n="features">Key Features</h2>
-    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span>Real-time location sharing</span></div><div class="feature"><div class="feature-dot"></div><span>Privacy controls</span></div><div class="feature"><div class="feature-dot"></div><span>Battery optimized</span></div><div class="feature"><div class="feature-dot"></div><span>Group location sharing</span></div></div>
+    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span data-feat="0">Real-time location sharing</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="1">Privacy controls</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="2">Battery optimized</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="3">Group location sharing</span></div></div>
   </div>
 
   <div class="card">
@@ -169,6 +169,10 @@ applyLang(detectLang());
 const APP_T={en:"Connect at the right distance",ja:"大切な人と、ちょうどいい距離でつながる",zh:"根据关系类型分享不同精度的位置",zh_TW:"與重要的人保持恰當的距離",ko:"소중한 사람과 딱 맞는 거리로 연결",es:"Conecta a la distancia ideal",pt:"Conecte-se na distância certa",fr:"Connectez à la bonne distance",de:"Mit richtiger Distanz",it:"Connetti alla distanza giusta",ru:"Связь на правильном расстоянии",ar:"تواصل بالمسافة المناسبة",th:"เชื่อมต่อในระยะที่เหมาะสม",id:"Terhubung di jarak yang tepat",tr:"Doğru mesafede bağlan",nl:"Verbonden op de juiste afstand",vi:"Kết nối ở khoảng cách phù hợp",};
 const _oA=applyLang;applyLang=function(l){_oA(l);const t=APP_T[l]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;};
 (function(){const l=localStorage.getItem('sk_lang');const lang=l||detectLang();const t=APP_T[lang]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;})();
+
+const FEAT_T={en:{0:"Real-time location sharing",1:"Privacy controls",2:"Battery optimized",3:"Group location sharing"},ja:{0:"リアルタイム位置共有",1:"プライバシー管理",2:"バッテリー最適化",3:"グループ位置共有"}};
+const __oF=applyLang;applyLang=function(l){__oF(l);const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});};
+(function(){const l=localStorage.getItem('sk_lang')||detectLang();const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});})();
 </script>
 </body>
 </html>

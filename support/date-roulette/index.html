@@ -92,7 +92,7 @@
 <div class="container">
   <div class="card">
     <h2 data-i18n="features">Key Features</h2>
-    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span>Hundreds of date ideas</span></div><div class="feature"><div class="feature-dot"></div><span>Filter by budget and mood</span></div><div class="feature"><div class="feature-dot"></div><span>Indoor and outdoor options</span></div><div class="feature"><div class="feature-dot"></div><span>Save favorites</span></div></div>
+    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span data-feat="0">Hundreds of date ideas</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="1">Filter by budget and mood</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="2">Indoor and outdoor options</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="3">Save favorites</span></div></div>
   </div>
 
   <div class="card">
@@ -169,6 +169,10 @@ applyLang(detectLang());
 const APP_T={en:"Spin for your perfect date",ja:"最高のデートを決めよう",zh:"转出你的完美约会",zh_TW:"轉出你的完美約會",ko:"완벽한 데이트를 돌려라",es:"Gira para tu cita perfecta",pt:"Gire para o encontro perfeito",fr:"Tournez pour votre rendez-vous",de:"Drehen für das perfekte Date",it:"Gira per il tuo appuntamento",ru:"Крути для идеального свидания",ar:"أدر لموعدك المثالي",th:"หมุนเพื่อหาเดตในฝัน",id:"Putar untuk kencan sempurna",tr:"Mükemmel buluşma için döndür",nl:"Draai voor perfecte afspraak",vi:"Quay để tìm hẹn hò hoàn hảo",};
 const _oA=applyLang;applyLang=function(l){_oA(l);const t=APP_T[l]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;};
 (function(){const l=localStorage.getItem('sk_lang');const lang=l||detectLang();const t=APP_T[lang]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;})();
+
+const FEAT_T={en:{0:"Hundreds of date ideas",1:"Filter by budget and mood",2:"Indoor and outdoor options",3:"Save favorites"},ja:{0:"豊富なデートアイデア",1:"予算・気分でフィルター",2:"室内・屋外オプション",3:"お気に入り保存"}};
+const __oF=applyLang;applyLang=function(l){__oF(l);const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});};
+(function(){const l=localStorage.getItem('sk_lang')||detectLang();const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});})();
 </script>
 </body>
 </html>

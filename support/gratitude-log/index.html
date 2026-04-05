@@ -92,7 +92,7 @@
 <div class="container">
   <div class="card">
     <h2 data-i18n="features">Key Features</h2>
-    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span>Quick daily entries</span></div><div class="feature"><div class="feature-dot"></div><span>Photo attachments</span></div><div class="feature"><div class="feature-dot"></div><span>Mood tracking</span></div><div class="feature"><div class="feature-dot"></div><span>Weekly summaries</span></div></div>
+    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span data-feat="0">Quick daily entries</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="1">Photo attachments</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="2">Mood tracking</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="3">Weekly summaries</span></div></div>
   </div>
 
   <div class="card">
@@ -169,6 +169,10 @@ applyLang(detectLang());
 const APP_T={en:"Daily Gratitude Journal & Log",ja:"Daily Gratitude Journal & Log",zh:"Daily Gratitude Journal & Log",zh_TW:"Daily Gratitude Journal & Log",ko:"Daily Gratitude Journal & Log",es:"Daily Gratitude Journal & Log",pt:"Daily Gratitude Journal & Log",fr:"Daily Gratitude Journal & Log",de:"Daily Gratitude Journal & Log",it:"Daily Gratitude Journal & Log",ru:"Daily Gratitude Journal & Log",ar:"Daily Gratitude Journal & Log",th:"Daily Gratitude Journal & Log",id:"Daily Gratitude Journal & Log",tr:"Daily Gratitude Journal & Log",nl:"Daily Gratitude Journal & Log",vi:"Daily Gratitude Journal & Log",};
 const _oA=applyLang;applyLang=function(l){_oA(l);const t=APP_T[l]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;};
 (function(){const l=localStorage.getItem('sk_lang');const lang=l||detectLang();const t=APP_T[lang]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;})();
+
+const FEAT_T={en:{0:"Quick daily entries",1:"Photo attachments",2:"Mood tracking",3:"Weekly summaries"},ja:{0:"素早い日次入力",1:"写真添付",2:"気分追跡",3:"週次サマリー"}};
+const __oF=applyLang;applyLang=function(l){__oF(l);const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});};
+(function(){const l=localStorage.getItem('sk_lang')||detectLang();const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});})();
 </script>
 </body>
 </html>

@@ -92,7 +92,7 @@
 <div class="container">
   <div class="card">
     <h2 data-i18n="features">Key Features</h2>
-    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span>50+ ambient sounds</span></div><div class="feature"><div class="feature-dot"></div><span>Mix multiple sounds</span></div><div class="feature"><div class="feature-dot"></div><span>Sleep timer</span></div><div class="feature"><div class="feature-dot"></div><span>Offline playback</span></div></div>
+    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span data-feat="0">50+ ambient sounds</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="1">Mix multiple sounds</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="2">Sleep timer</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="3">Offline playback</span></div></div>
   </div>
 
   <div class="card">
@@ -169,6 +169,10 @@ applyLang(detectLang());
 const APP_T={en:"Sleep Sounds & Relaxation",ja:"睡眠サウンド＆ホワイトノイズ",zh:"助眠白噪音与自然音效",zh_TW:"助眠白噪音與自然音效",ko:"수면 사운드 & 백색소음",es:"Sonidos para Dormir y Relajar",pt:"Sons para Dormir e Relaxar",fr:"Sons de Sommeil & Bruit Blanc",de:"Schlafklänge & Weißes Rauschen",it:"Suoni per Dormire e Rilassarsi",ru:"Звуки для сна и белый шум",ar:"أصوات نوم وضوضاء بيضاء",th:"เสียงช่วยนอนหลับและไวท์นอยส์",id:"Suara Tidur & White Noise",tr:"Uyku Sesleri ve Beyaz Gurultu",nl:"Slaapgeluiden & Witte Ruis",vi:"Am Thanh Giac Ngu & Tieng On",};
 const _oA=applyLang;applyLang=function(l){_oA(l);const t=APP_T[l]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;};
 (function(){const l=localStorage.getItem('sk_lang');const lang=l||detectLang();const t=APP_T[lang]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;})();
+
+const FEAT_T={en:{0:"50+ ambient sounds",1:"Mix multiple sounds",2:"Sleep timer",3:"Offline playback"},ja:{0:"50種以上のサウンド",1:"サウンドミックス",2:"スリープタイマー",3:"オフライン再生"}};
+const __oF=applyLang;applyLang=function(l){__oF(l);const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});};
+(function(){const l=localStorage.getItem('sk_lang')||detectLang();const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});})();
 </script>
 </body>
 </html>

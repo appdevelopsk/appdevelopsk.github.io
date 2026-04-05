@@ -92,7 +92,7 @@
 <div class="container">
   <div class="card">
     <h2 data-i18n="features">Key Features</h2>
-    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span>Bird species database</span></div><div class="feature"><div class="feature-dot"></div><span>Photo identification</span></div><div class="feature"><div class="feature-dot"></div><span>Migration maps</span></div><div class="feature"><div class="feature-dot"></div><span>Bird call sounds</span></div></div>
+    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span data-feat="0">Bird species database</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="1">Photo identification</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="2">Migration maps</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="3">Bird call sounds</span></div></div>
   </div>
 
   <div class="card">
@@ -169,6 +169,10 @@ applyLang(detectLang());
 const APP_T={en:"Bird Guide & Song Identifier",ja:"野鳥図鑑 & 鳴き声ガイド",zh:"鸟类百科与鸣声识别",zh_TW:"鳥類百科與鳴聲辨識",ko:"조류 도감 & 새소리 가이드",es:"Guía de Aves y Cantos",pt:"Guia de Aves e Cantos",fr:"Guide Oiseaux & Chants",de:"Vogelführer & Gesangserkennung",it:"Guida Uccelli & Canti",ru:"Птицы: гид и определитель",ar:"موسوعة الطيور وأصواتها",th:"สารานุกรมนกและเสียงร้อง",id:"Ensiklopedia Burung & Suara",tr:"Kuş Rehberi & Ses Tanıma",nl:"Vogelgids & Zangherkenning",vi:"Bách khoa chim & Nhận diện",};
 const _oA=applyLang;applyLang=function(l){_oA(l);const t=APP_T[l]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;};
 (function(){const l=localStorage.getItem('sk_lang');const lang=l||detectLang();const t=APP_T[lang]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;})();
+
+const FEAT_T={en:{0:"Bird species database",1:"Photo identification",2:"Migration maps",3:"Bird call sounds"},ja:{0:"鳥類データベース",1:"写真で識別",2:"渡り鳥マップ",3:"鳥の鳴き声"}};
+const __oF=applyLang;applyLang=function(l){__oF(l);const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});};
+(function(){const l=localStorage.getItem('sk_lang')||detectLang();const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});})();
 </script>
 </body>
 </html>

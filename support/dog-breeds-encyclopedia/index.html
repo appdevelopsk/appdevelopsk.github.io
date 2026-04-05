@@ -92,7 +92,7 @@
 <div class="container">
   <div class="card">
     <h2 data-i18n="features">Key Features</h2>
-    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span>300+ dog breeds</span></div><div class="feature"><div class="feature-dot"></div><span>Care guides</span></div><div class="feature"><div class="feature-dot"></div><span>Breed comparison tool</span></div><div class="feature"><div class="feature-dot"></div><span>Photo galleries</span></div></div>
+    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span data-feat="0">300+ dog breeds</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="1">Care guides</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="2">Breed comparison tool</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="3">Photo galleries</span></div></div>
   </div>
 
   <div class="card">
@@ -169,6 +169,10 @@ applyLang(detectLang());
 const APP_T={en:"Dog Breeds Guide & Compare",ja:"犬種図鑑 & 比較ガイド",zh:"犬种百科与比较指南",zh_TW:"犬種百科與比較指南",ko:"견종 도감 & 비교 가이드",es:"Guía de Razas de Perros",pt:"Guia de Raças de Cães",fr:"Guide des Races de Chiens",de:"Hunderassen-Lexikon & Quiz",it:"Guida Razze Canine & Confronto",ru:"Породы собак: гид и сравнение",ar:"موسوعة سلالات الكلاب",th:"สารานุกรมสายพันธุ์สุนัข",id:"Ensiklopedia Ras Anjing",tr:"Köpek Irkları Ansiklopedisi",nl:"Hondenrassen Gids & Vergelijk",vi:"Bách khoa giống chó & So sánh",};
 const _oA=applyLang;applyLang=function(l){_oA(l);const t=APP_T[l]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;};
 (function(){const l=localStorage.getItem('sk_lang');const lang=l||detectLang();const t=APP_T[lang]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;})();
+
+const FEAT_T={en:{0:"300+ dog breeds",1:"Care guides",2:"Breed comparison tool",3:"Photo galleries"},ja:{0:"300以上の犬種",1:"ケアガイド",2:"犬種比較ツール",3:"フォトギャラリー"}};
+const __oF=applyLang;applyLang=function(l){__oF(l);const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});};
+(function(){const l=localStorage.getItem('sk_lang')||detectLang();const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});})();
 </script>
 </body>
 </html>

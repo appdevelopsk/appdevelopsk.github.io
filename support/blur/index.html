@@ -92,7 +92,7 @@
 <div class="container">
   <div class="card">
     <h2 data-i18n="features">Key Features</h2>
-    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span>Multiple difficulty levels</span></div><div class="feature"><div class="feature-dot"></div><span>Various categories</span></div><div class="feature"><div class="feature-dot"></div><span>Timed challenges</span></div><div class="feature"><div class="feature-dot"></div><span>Multiplayer mode</span></div></div>
+    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span data-feat="0">Multiple difficulty levels</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="1">Various categories</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="2">Timed challenges</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="3">Multiplayer mode</span></div></div>
   </div>
 
   <div class="card">
@@ -169,6 +169,10 @@ applyLang(detectLang());
 const APP_T={en:"Unblur & Guess the Photo",ja:"ぼかし画像を見破れ！",zh:"模糊图片猜猜看",zh_TW:"模糊圖片猜猜看",ko:"블러 이미지 맞추기 게임",es:"Desenfoca y adivina la imagen",pt:"Desvaneça e adivinhe a imagem",fr:"Défloute et devine l\'image",de:"Entschärfe & rate das Bild",it:"Sfoca e indovina l\'immagine",ru:"Размой и угадай изображение",ar:"ازل الضبابية وخمّن الصورة",th:"เบลอแล้วทายรูปภาพ",id:"Buram & tebak gambarnya",tr:"Bulanıklaştır ve resmi tahmin",nl:"Onscherp & raad de afbeelding",vi:"Xóa mờ và đoán hình ảnh",};
 const _oA=applyLang;applyLang=function(l){_oA(l);const t=APP_T[l]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;};
 (function(){const l=localStorage.getItem('sk_lang');const lang=l||detectLang();const t=APP_T[lang]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;})();
+
+const FEAT_T={en:{0:"Multiple difficulty levels",1:"Various categories",2:"Timed challenges",3:"Multiplayer mode"},ja:{0:"複数の難易度",1:"多彩なカテゴリ",2:"タイムチャレンジ",3:"マルチプレイヤー"}};
+const __oF=applyLang;applyLang=function(l){__oF(l);const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});};
+(function(){const l=localStorage.getItem('sk_lang')||detectLang();const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});})();
 </script>
 </body>
 </html>

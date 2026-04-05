@@ -92,7 +92,7 @@
 <div class="container">
   <div class="card">
     <h2 data-i18n="features">Key Features</h2>
-    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span>100+ dinosaur profiles</span></div><div class="feature"><div class="feature-dot"></div><span>Era-based browsing</span></div><div class="feature"><div class="feature-dot"></div><span>Size comparisons</span></div><div class="feature"><div class="feature-dot"></div><span>Fossil discovery maps</span></div></div>
+    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span data-feat="0">100+ dinosaur profiles</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="1">Era-based browsing</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="2">Size comparisons</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="3">Fossil discovery maps</span></div></div>
   </div>
 
   <div class="card">
@@ -169,6 +169,10 @@ applyLang(detectLang());
 const APP_T={en:"Dinosaur Encyclopedia & Quiz",ja:"恐竜図鑑 & クイズ",zh:"恐龙百科与问答",zh_TW:"恐龍百科與問答",ko:"공룡 백과사전 & 퀴즈",es:"Enciclopedia de Dinosaurios",pt:"Enciclopédia de Dinossauros",fr:"Encyclopédie des Dinosaures",de:"Dinosaurier-Enzyklopädie",it:"Enciclopedia dei Dinosauri",ru:"Энциклопедия динозавров",ar:"موسوعة الديناصورات والاختبار",th:"สารานุกรมไดโนเสาร์และแบบทดสอบ",id:"Ensiklopedia Dinosaurus & Kuis",tr:"Dinozor Ansiklopedisi ve Quiz",nl:"Dinosaurus Encyclopedie",vi:"Bách khoa Khủng long & Quiz",};
 const _oA=applyLang;applyLang=function(l){_oA(l);const t=APP_T[l]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;};
 (function(){const l=localStorage.getItem('sk_lang');const lang=l||detectLang();const t=APP_T[lang]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;})();
+
+const FEAT_T={en:{0:"100+ dinosaur profiles",1:"Era-based browsing",2:"Size comparisons",3:"Fossil discovery maps"},ja:{0:"100種以上の恐竜",1:"時代別閲覧",2:"サイズ比較",3:"化石発見マップ"}};
+const __oF=applyLang;applyLang=function(l){__oF(l);const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});};
+(function(){const l=localStorage.getItem('sk_lang')||detectLang();const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});})();
 </script>
 </body>
 </html>

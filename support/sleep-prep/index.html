@@ -92,7 +92,7 @@
 <div class="container">
   <div class="card">
     <h2 data-i18n="features">Key Features</h2>
-    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span>Bedtime routines</span></div><div class="feature"><div class="feature-dot"></div><span>Relaxation exercises</span></div><div class="feature"><div class="feature-dot"></div><span>Sleep tips</span></div><div class="feature"><div class="feature-dot"></div><span>Wind-down reminders</span></div></div>
+    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span data-feat="0">Bedtime routines</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="1">Relaxation exercises</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="2">Sleep tips</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="3">Wind-down reminders</span></div></div>
   </div>
 
   <div class="card">
@@ -169,6 +169,10 @@ applyLang(detectLang());
 const APP_T={en:"Better Sleep Bedtime Routine",ja:"Better Sleep Bedtime Routine",zh:"Better Sleep Bedtime Routine",zh_TW:"Better Sleep Bedtime Routine",ko:"Better Sleep Bedtime Routine",es:"Better Sleep Bedtime Routine",pt:"Better Sleep Bedtime Routine",fr:"Better Sleep Bedtime Routine",de:"Better Sleep Bedtime Routine",it:"Better Sleep Bedtime Routine",ru:"Better Sleep Bedtime Routine",ar:"Better Sleep Bedtime Routine",th:"Better Sleep Bedtime Routine",id:"Better Sleep Bedtime Routine",tr:"Better Sleep Bedtime Routine",nl:"Better Sleep Bedtime Routine",vi:"Better Sleep Bedtime Routine",};
 const _oA=applyLang;applyLang=function(l){_oA(l);const t=APP_T[l]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;};
 (function(){const l=localStorage.getItem('sk_lang');const lang=l||detectLang();const t=APP_T[lang]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;})();
+
+const FEAT_T={en:{0:"Bedtime routines",1:"Relaxation exercises",2:"Sleep tips",3:"Wind-down reminders"},ja:{0:"就寝ルーティン",1:"リラクゼーション",2:"睡眠のコツ",3:"入眠準備リマインダー"}};
+const __oF=applyLang;applyLang=function(l){__oF(l);const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});};
+(function(){const l=localStorage.getItem('sk_lang')||detectLang();const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});})();
 </script>
 </body>
 </html>

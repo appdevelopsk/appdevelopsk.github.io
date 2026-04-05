@@ -92,7 +92,7 @@
 <div class="container">
   <div class="card">
     <h2 data-i18n="features">Key Features</h2>
-    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span>Restaurant and cuisine categories</span></div><div class="feature"><div class="feature-dot"></div><span>Location-based suggestions</span></div><div class="feature"><div class="feature-dot"></div><span>Custom food lists</span></div><div class="feature"><div class="feature-dot"></div><span>Group decision mode</span></div></div>
+    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span data-feat="0">Restaurant and cuisine categories</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="1">Location-based suggestions</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="2">Custom food lists</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="3">Group decision mode</span></div></div>
   </div>
 
   <div class="card">
@@ -169,6 +169,10 @@ applyLang(detectLang());
 const APP_T={en:"Decide Lunch Fast & Fun",ja:"今日のごはんを楽しく即決",zh:"快速决定今天吃什么",zh_TW:"快速決定今天吃什麼",ko:"오늘 뭐 먹을지 즐겁게 결정",es:"Decide dónde comer al instante",pt:"Decida onde comer rapidinho",fr:"Décide où manger rapidement",de:"Schnell entscheiden wo du isst",it:"Decidi dove mangiare subito",ru:"Быстро решай, где поесть",ar:"قرر أين تأكل بسرعة",th:"ตัดสินใจว่าจะกินอะไรได้ทันที",id:"Putuskan makan apa sekarang",tr:"Nerede yemek yiyeceğini seç",nl:"Beslis snel waar je gaat eten",vi:"Quyết định ăn gì ngay lập tức",};
 const _oA=applyLang;applyLang=function(l){_oA(l);const t=APP_T[l]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;};
 (function(){const l=localStorage.getItem('sk_lang');const lang=l||detectLang();const t=APP_T[lang]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;})();
+
+const FEAT_T={en:{0:"Restaurant and cuisine categories",1:"Location-based suggestions",2:"Custom food lists",3:"Group decision mode"},ja:{0:"レストラン・料理カテゴリ",1:"位置情報の提案",2:"カスタム料理リスト",3:"グループ決定モード"}};
+const __oF=applyLang;applyLang=function(l){__oF(l);const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});};
+(function(){const l=localStorage.getItem('sk_lang')||detectLang();const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});})();
 </script>
 </body>
 </html>

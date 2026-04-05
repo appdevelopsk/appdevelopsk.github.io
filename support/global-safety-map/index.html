@@ -92,7 +92,7 @@
 <div class="container">
   <div class="card">
     <h2 data-i18n="features">Key Features</h2>
-    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span>Real-time safety data</span></div><div class="feature"><div class="feature-dot"></div><span>Country risk ratings</span></div><div class="feature"><div class="feature-dot"></div><span>Travel advisory alerts</span></div><div class="feature"><div class="feature-dot"></div><span>Offline maps</span></div></div>
+    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span data-feat="0">Real-time safety data</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="1">Country risk ratings</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="2">Travel advisory alerts</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="3">Offline maps</span></div></div>
   </div>
 
   <div class="card">
@@ -169,6 +169,10 @@ applyLang(detectLang());
 const APP_T={en:"Stay Safe Anywhere Worldwide",ja:"世界中どこでも安全に",zh:"随时随地保持安全",zh_TW:"隨時隨地保持安全",ko:"어디서나 안전하게",es:"Seguro en cualquier lugar",pt:"Seguro em qualquer lugar",fr:"En sécurité partout",de:"Überall sicher unterwegs",it:"Al sicuro ovunque",ru:"Безопасно везде",ar:"آمن في أي مكان",th:"ปลอดภัยทุกที่",id:"Aman di mana saja",tr:"Her yerde güvende",nl:"Veilig overal",vi:"An toàn ở mọi nơi",};
 const _oA=applyLang;applyLang=function(l){_oA(l);const t=APP_T[l]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;};
 (function(){const l=localStorage.getItem('sk_lang');const lang=l||detectLang();const t=APP_T[lang]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;})();
+
+const FEAT_T={en:{0:"Real-time safety data",1:"Country risk ratings",2:"Travel advisory alerts",3:"Offline maps"},ja:{0:"リアルタイム安全データ",1:"国別リスク評価",2:"旅行注意報",3:"オフラインマップ"}};
+const __oF=applyLang;applyLang=function(l){__oF(l);const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});};
+(function(){const l=localStorage.getItem('sk_lang')||detectLang();const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});})();
 </script>
 </body>
 </html>

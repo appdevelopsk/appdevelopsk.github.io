@@ -92,7 +92,7 @@
 <div class="container">
   <div class="card">
     <h2 data-i18n="features">Key Features</h2>
-    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span>Multiple languages</span></div><div class="feature"><div class="feature-dot"></div><span>Daily vocabulary</span></div><div class="feature"><div class="feature-dot"></div><span>Speaking practice</span></div><div class="feature"><div class="feature-dot"></div><span>Progress tracking</span></div></div>
+    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span data-feat="0">Multiple languages</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="1">Daily vocabulary</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="2">Speaking practice</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="3">Progress tracking</span></div></div>
   </div>
 
   <div class="card">
@@ -169,6 +169,10 @@ applyLang(detectLang());
 const APP_T={en:"Learn Words in 5 Min a Day",ja:"Learn Words in 5 Min a Day",zh:"Learn Words in 5 Min a Day",zh_TW:"Learn Words in 5 Min a Day",ko:"Learn Words in 5 Min a Day",es:"Learn Words in 5 Min a Day",pt:"Learn Words in 5 Min a Day",fr:"Learn Words in 5 Min a Day",de:"Learn Words in 5 Min a Day",it:"Learn Words in 5 Min a Day",ru:"Learn Words in 5 Min a Day",ar:"Learn Words in 5 Min a Day",th:"Learn Words in 5 Min a Day",id:"Learn Words in 5 Min a Day",tr:"Learn Words in 5 Min a Day",nl:"Learn Words in 5 Min a Day",vi:"Learn Words in 5 Min a Day",};
 const _oA=applyLang;applyLang=function(l){_oA(l);const t=APP_T[l]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;};
 (function(){const l=localStorage.getItem('sk_lang');const lang=l||detectLang();const t=APP_T[lang]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;})();
+
+const FEAT_T={en:{0:"Multiple languages",1:"Daily vocabulary",2:"Speaking practice",3:"Progress tracking"},ja:{0:"複数の言語",1:"デイリー単語",2:"スピーキング練習",3:"進捗追跡"}};
+const __oF=applyLang;applyLang=function(l){__oF(l);const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});};
+(function(){const l=localStorage.getItem('sk_lang')||detectLang();const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});})();
 </script>
 </body>
 </html>

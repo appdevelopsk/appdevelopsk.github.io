@@ -92,7 +92,7 @@
 <div class="container">
   <div class="card">
     <h2 data-i18n="features">Key Features</h2>
-    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span>Real feel temperature</span></div><div class="feature"><div class="feature-dot"></div><span>Hourly and daily forecasts</span></div><div class="feature"><div class="feature-dot"></div><span>Weather alerts</span></div><div class="feature"><div class="feature-dot"></div><span>Clothing recommendations</span></div></div>
+    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span data-feat="0">Real feel temperature</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="1">Hourly and daily forecasts</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="2">Weather alerts</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="3">Clothing recommendations</span></div></div>
   </div>
 
   <div class="card">
@@ -169,6 +169,10 @@ applyLang(detectLang());
 const APP_T={en:"Feel the Real Temperature",ja:"体感温度の違いを感じよう",zh:"感受真实温度差异",zh_TW:"感受真實溫度差異",ko:"실제 체감온도를 확인하세요",es:"Siente la diferencia real",pt:"Sinta a real diferença",fr:"Ressentez la vraie température",de:"Erleben Sie den Unterschied",it:"Senti la vera temperatura",ru:"Почувствуй разницу температур",ar:"اشعر بفارق درجة الحرارة",th:"รู้สึกความต่างของอุณหภูมิ",id:"Rasakan perbedaan suhu",tr:"Sıcaklık farkını hissedin",nl:"Voel het temperatuurverschil",vi:"Cảm nhận sự khác biệt nhiệt độ",};
 const _oA=applyLang;applyLang=function(l){_oA(l);const t=APP_T[l]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;};
 (function(){const l=localStorage.getItem('sk_lang');const lang=l||detectLang();const t=APP_T[lang]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;})();
+
+const FEAT_T={en:{0:"Real feel temperature",1:"Hourly and daily forecasts",2:"Weather alerts",3:"Clothing recommendations"},ja:{0:"体感温度",1:"時間・日次予報",2:"天気アラート",3:"服装提案"}};
+const __oF=applyLang;applyLang=function(l){__oF(l);const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});};
+(function(){const l=localStorage.getItem('sk_lang')||detectLang();const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});})();
 </script>
 </body>
 </html>

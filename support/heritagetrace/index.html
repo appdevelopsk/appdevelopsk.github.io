@@ -92,7 +92,7 @@
 <div class="container">
   <div class="card">
     <h2 data-i18n="features">Key Features</h2>
-    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span>1000+ heritage sites</span></div><div class="feature"><div class="feature-dot"></div><span>Virtual tours</span></div><div class="feature"><div class="feature-dot"></div><span>Historical context</span></div><div class="feature"><div class="feature-dot"></div><span>Travel planning</span></div></div>
+    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span data-feat="0">1000+ heritage sites</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="1">Virtual tours</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="2">Historical context</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="3">Travel planning</span></div></div>
   </div>
 
   <div class="card">
@@ -166,6 +166,10 @@ const dd=document.getElementById('langDropdown');Object.entries(LANGS).forEach((
 document.getElementById('langBtn').addEventListener('click',e=>{e.stopPropagation();document.getElementById('langSelector').classList.toggle('open')});
 document.addEventListener('click',()=>document.getElementById('langSelector').classList.remove('open'));
 applyLang(detectLang());
+
+const FEAT_T={en:{0:"1000+ heritage sites",1:"Virtual tours",2:"Historical context",3:"Travel planning"},ja:{0:"1000以上の遺産",1:"バーチャルツアー",2:"歴史的背景",3:"旅行プラン"}};
+const __oF=applyLang;applyLang=function(l){__oF(l);const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});};
+(function(){const l=localStorage.getItem('sk_lang')||detectLang();const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});})();
 </script>
 </body>
 </html>

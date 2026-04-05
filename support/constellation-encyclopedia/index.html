@@ -92,7 +92,7 @@
 <div class="container">
   <div class="card">
     <h2 data-i18n="features">Key Features</h2>
-    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span>88 constellation profiles</span></div><div class="feature"><div class="feature-dot"></div><span>Interactive star maps</span></div><div class="feature"><div class="feature-dot"></div><span>Mythology and history</span></div><div class="feature"><div class="feature-dot"></div><span>Seasonal viewing guides</span></div></div>
+    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span data-feat="0">88 constellation profiles</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="1">Interactive star maps</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="2">Mythology and history</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="3">Seasonal viewing guides</span></div></div>
   </div>
 
   <div class="card">
@@ -169,6 +169,10 @@ applyLang(detectLang());
 const APP_T={en:"Constellation Encyclopedia",ja:"星座図鑑 - 100の天体ガイド",zh:"星座百科全书",zh_TW:"星座百科全書",ko:"별자리 백과사전",es:"Enciclopedia de Constelaciones",pt:"Enciclopédia de Constelações",fr:"Encyclopédie Constellations",de:"Sternbild-Lexikon",it:"Enciclopedia Costellazioni",ru:"Энциклопедия созвездий",ar:"موسوعة الأبراج والنجوم",th:"สารานุกรมกลุ่มดาว",id:"Ensiklopedia Rasi Bintang",tr:"Takımyıldız Ansiklopedisi",nl:"Sterrenbeeld Encyclopedie",vi:"Bách khoa Chòm sao",};
 const _oA=applyLang;applyLang=function(l){_oA(l);const t=APP_T[l]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;};
 (function(){const l=localStorage.getItem('sk_lang');const lang=l||detectLang();const t=APP_T[lang]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;})();
+
+const FEAT_T={en:{0:"88 constellation profiles",1:"Interactive star maps",2:"Mythology and history",3:"Seasonal viewing guides"},ja:{0:"88星座プロフィール",1:"インタラクティブ星図",2:"神話と歴史",3:"季節別観測ガイド"}};
+const __oF=applyLang;applyLang=function(l){__oF(l);const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});};
+(function(){const l=localStorage.getItem('sk_lang')||detectLang();const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});})();
 </script>
 </body>
 </html>

@@ -92,7 +92,7 @@
 <div class="container">
   <div class="card">
     <h2 data-i18n="features">Key Features</h2>
-    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span>PDF merge and split</span></div><div class="feature"><div class="feature-dot"></div><span>Annotations and markup</span></div><div class="feature"><div class="feature-dot"></div><span>File compression</span></div><div class="feature"><div class="feature-dot"></div><span>Cloud storage integration</span></div></div>
+    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span data-feat="0">PDF merge and split</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="1">Annotations and markup</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="2">File compression</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="3">Cloud storage integration</span></div></div>
   </div>
 
   <div class="card">
@@ -169,6 +169,10 @@ applyLang(detectLang());
 const APP_T={en:"File Manager & Organizer",ja:"PDF・OCR・ZIP対応",zh:"PDF、OCR、ZIP等功能",zh_TW:"PDF、OCR、ZIP等功能",ko:"PDF, OCR, ZIP 지원",es:"PDF, OCR, ZIP y más",pt:"PDF, OCR, ZIP e mais",fr:"PDF, OCR, ZIP et plus",de:"PDF, OCR, ZIP und mehr",it:"PDF, OCR, ZIP e altro",ru:"PDF, OCR, ZIP и многое другое",ar:"PDF وOCR وZIP والمزيد",th:"PDF, OCR, ZIP และอื่นๆ",id:"PDF, OCR, ZIP dan Lainnya",tr:"PDF, OCR, ZIP ve Daha Fazlası",nl:"PDF, OCR, ZIP en meer",vi:"PDF, OCR, ZIP và Nhiều Hơn Nữa",};
 const _oA=applyLang;applyLang=function(l){_oA(l);const t=APP_T[l]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;};
 (function(){const l=localStorage.getItem('sk_lang');const lang=l||detectLang();const t=APP_T[lang]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;})();
+
+const FEAT_T={en:{0:"PDF merge and split",1:"Annotations and markup",2:"File compression",3:"Cloud storage integration"},ja:{0:"PDF結合・分割",1:"注釈とマークアップ",2:"ファイル圧縮",3:"クラウド連携"}};
+const __oF=applyLang;applyLang=function(l){__oF(l);const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});};
+(function(){const l=localStorage.getItem('sk_lang')||detectLang();const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});})();
 </script>
 </body>
 </html>

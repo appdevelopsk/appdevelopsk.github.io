@@ -92,7 +92,7 @@
 <div class="container">
   <div class="card">
     <h2 data-i18n="features">Key Features</h2>
-    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span>Goal setting and tracking</span></div><div class="feature"><div class="feature-dot"></div><span>Habit visualizer</span></div><div class="feature"><div class="feature-dot"></div><span>Life timeline</span></div><div class="feature"><div class="feature-dot"></div><span>Progress charts</span></div></div>
+    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span data-feat="0">Goal setting and tracking</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="1">Habit visualizer</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="2">Life timeline</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="3">Progress charts</span></div></div>
   </div>
 
   <div class="card">
@@ -169,6 +169,10 @@ applyLang(detectLang());
 const APP_T={en:"Goals & Life Progress Board",ja:"人生を可視化しよう",zh:"可视化你的人生旅程",zh_TW:"視覺化你的人生旅程",ko:"당신의 인생 여정을 시각화하세요",es:"Visualiza tu trayectoria vital",pt:"Visualize sua jornada de vida",fr:"Visualisez votre parcours vie",de:"Visualisiere deine Lebensreise",it:"Visualizza percorso di vita",ru:"Визуализируй жизненный путь",ar:"تصوّر رحلتك في الحياة",th:"แสดงภาพเส้นทางชีวิตของคุณ",id:"Visualisasi perjalanan hidupmu",tr:"Hayat yolculuğunu görselleştir",nl:"Visualiseer je levensreis",vi:"Hình dung hành trình đời bạn",};
 const _oA=applyLang;applyLang=function(l){_oA(l);const t=APP_T[l]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;};
 (function(){const l=localStorage.getItem('sk_lang');const lang=l||detectLang();const t=APP_T[lang]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;})();
+
+const FEAT_T={en:{0:"Goal setting and tracking",1:"Habit visualizer",2:"Life timeline",3:"Progress charts"},ja:{0:"目標設定と追跡",1:"習慣ビジュアライザー",2:"ライフタイムライン",3:"進捗チャート"}};
+const __oF=applyLang;applyLang=function(l){__oF(l);const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});};
+(function(){const l=localStorage.getItem('sk_lang')||detectLang();const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});})();
 </script>
 </body>
 </html>

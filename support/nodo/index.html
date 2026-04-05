@@ -92,7 +92,7 @@
 <div class="container">
   <div class="card">
     <h2 data-i18n="features">Key Features</h2>
-    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span>Hundreds of puzzles</span></div><div class="feature"><div class="feature-dot"></div><span>Increasing difficulty</span></div><div class="feature"><div class="feature-dot"></div><span>Hint system</span></div><div class="feature"><div class="feature-dot"></div><span>Daily puzzle challenges</span></div></div>
+    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span data-feat="0">Hundreds of puzzles</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="1">Increasing difficulty</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="2">Hint system</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="3">Daily puzzle challenges</span></div></div>
   </div>
 
   <div class="card">
@@ -169,6 +169,10 @@ applyLang(detectLang());
 const APP_T={en:"Daily Node Network Puzzle",ja:"毎日のノードネットワークパズル",zh:"每日节点网络谜题",zh_TW:"每日節點網路謎題",ko:"매일 새로운 노드 네트워크 퍼즐",es:"Juego diario de red de nodos",pt:"Jogo diário de rede de nós",fr:"Puzzle quotidien de nœuds",de:"Tägliches Knotennetzwerk-Spiel",it:"Puzzle nodi quotidiano",ru:"Ежедневная игра-сеть узлов",ar:"لعبة شبكة العقد اليومية",th:"เกมตาข่ายโหนดรายวัน",id:"Game jaringan node harian",tr:"Günlük düğüm ağı bulmacası",nl:"Dagelijks knooppuntnetwerkspel",vi:"Trò chơi mạng nút hàng ngày",};
 const _oA=applyLang;applyLang=function(l){_oA(l);const t=APP_T[l]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;};
 (function(){const l=localStorage.getItem('sk_lang');const lang=l||detectLang();const t=APP_T[lang]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;})();
+
+const FEAT_T={en:{0:"Hundreds of puzzles",1:"Increasing difficulty",2:"Hint system",3:"Daily puzzle challenges"},ja:{0:"数百のパズル",1:"段階的な難易度",2:"ヒントシステム",3:"毎日のパズルチャレンジ"}};
+const __oF=applyLang;applyLang=function(l){__oF(l);const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});};
+(function(){const l=localStorage.getItem('sk_lang')||detectLang();const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});})();
 </script>
 </body>
 </html>

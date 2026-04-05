@@ -92,7 +92,7 @@
 <div class="container">
   <div class="card">
     <h2 data-i18n="features">Key Features</h2>
-    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span>Daily workout challenges</span></div><div class="feature"><div class="feature-dot"></div><span>Video exercise guides</span></div><div class="feature"><div class="feature-dot"></div><span>Progress tracking</span></div><div class="feature"><div class="feature-dot"></div><span>Achievement badges</span></div></div>
+    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span data-feat="0">Daily workout challenges</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="1">Video exercise guides</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="2">Progress tracking</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="3">Achievement badges</span></div></div>
   </div>
 
   <div class="card">
@@ -169,6 +169,10 @@ applyLang(detectLang());
 const APP_T={en:"Daily Workout & Fitness Streak",ja:"Daily Workout & Fitness Streak",zh:"Daily Workout & Fitness Streak",zh_TW:"Daily Workout & Fitness Streak",ko:"Daily Workout & Fitness Streak",es:"Daily Workout & Fitness Streak",pt:"Daily Workout & Fitness Streak",fr:"Daily Workout & Fitness Streak",de:"Daily Workout & Fitness Streak",it:"Daily Workout & Fitness Streak",ru:"Daily Workout & Fitness Streak",ar:"Daily Workout & Fitness Streak",th:"Daily Workout & Fitness Streak",id:"Daily Workout & Fitness Streak",tr:"Daily Workout & Fitness Streak",nl:"Daily Workout & Fitness Streak",vi:"Daily Workout & Fitness Streak",};
 const _oA=applyLang;applyLang=function(l){_oA(l);const t=APP_T[l]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;};
 (function(){const l=localStorage.getItem('sk_lang');const lang=l||detectLang();const t=APP_T[lang]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;})();
+
+const FEAT_T={en:{0:"Daily workout challenges",1:"Video exercise guides",2:"Progress tracking",3:"Achievement badges"},ja:{0:"デイリーワークアウト",1:"動画エクササイズ",2:"進捗追跡",3:"実績バッジ"}};
+const __oF=applyLang;applyLang=function(l){__oF(l);const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});};
+(function(){const l=localStorage.getItem('sk_lang')||detectLang();const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});})();
 </script>
 </body>
 </html>

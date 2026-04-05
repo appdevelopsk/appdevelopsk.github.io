@@ -92,7 +92,7 @@
 <div class="container">
   <div class="card">
     <h2 data-i18n="features">Key Features</h2>
-    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span>AI-powered suggestions</span></div><div class="feature"><div class="feature-dot"></div><span>Category filters</span></div><div class="feature"><div class="feature-dot"></div><span>Bucket list tracker</span></div><div class="feature"><div class="feature-dot"></div><span>Share discoveries</span></div></div>
+    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span data-feat="0">AI-powered suggestions</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="1">Category filters</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="2">Bucket list tracker</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="3">Share discoveries</span></div></div>
   </div>
 
   <div class="card">
@@ -169,6 +169,10 @@ applyLang(detectLang());
 const APP_T={en:"Daily Micro-Challenges & XP",ja:"ランダムデイリーチャレンジ",zh:"随机日常生活挑战",zh_TW:"隨機日常生活挑戰",ko:"무작위 일상 생활 도전",es:"Desafíos diarios aleatorios",pt:"Desafios diários aleatórios",fr:"Défis quotidiens aléatoires",de:"Zufällige Alltags-Challenges",it:"Sfide di vita quotidiana",ru:"Случайные ежедневные вызовы",ar:"تحديات يومية عشوائية",th:"ความท้าทายชีวิตประจำวันแบบสุ่ม",id:"Tantangan hidup harian acak",tr:"Rastgele günlük yaşam meydan",nl:"Willekeurige dagelijkse taken",vi:"Thử thách cuộc sống hàng ngày",};
 const _oA=applyLang;applyLang=function(l){_oA(l);const t=APP_T[l]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;};
 (function(){const l=localStorage.getItem('sk_lang');const lang=l||detectLang();const t=APP_T[lang]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;})();
+
+const FEAT_T={en:{0:"AI-powered suggestions",1:"Category filters",2:"Bucket list tracker",3:"Share discoveries"},ja:{0:"AI提案",1:"カテゴリフィルター",2:"バケットリスト",3:"発見を共有"}};
+const __oF=applyLang;applyLang=function(l){__oF(l);const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});};
+(function(){const l=localStorage.getItem('sk_lang')||detectLang();const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});})();
 </script>
 </body>
 </html>

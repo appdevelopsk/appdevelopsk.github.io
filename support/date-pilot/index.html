@@ -92,7 +92,7 @@
 <div class="container">
   <div class="card">
     <h2 data-i18n="features">Key Features</h2>
-    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span>AI conversation suggestions</span></div><div class="feature"><div class="feature-dot"></div><span>Date planning ideas</span></div><div class="feature"><div class="feature-dot"></div><span>Profile optimization tips</span></div><div class="feature"><div class="feature-dot"></div><span>Real-time chat coaching</span></div></div>
+    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span data-feat="0">AI conversation suggestions</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="1">Date planning ideas</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="2">Profile optimization tips</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="3">Real-time chat coaching</span></div></div>
   </div>
 
   <div class="card">
@@ -169,6 +169,10 @@ applyLang(detectLang());
 const APP_T={en:"AI Dating Coach & Advice",ja:"AI恋愛コーチ & アドバイザー",zh:"AI Dating Coach & Advice",zh_TW:"AI Dating Coach & Advice",ko:"AI Dating Coach & Advice",es:"Coach de citas con IA",pt:"Coach de Namoro com IA",fr:"AI Dating Coach & Advice",de:"AI Dating Coach & Advice",it:"Coach per Appuntamenti con IA",ru:"ИИ-коуч по свиданиям",ar:"مدرب مواعدة بالذكاء الاصطناعي",th:"โค้ชหาคู่ด้วย AI",id:"Pelatih Kencan dengan AI",tr:"Yapay Zeka Flört Koçu",nl:"AI Datingcoach & Adviseur",vi:"Huấn luyện viên hẹn hò AI",};
 const _oA=applyLang;applyLang=function(l){_oA(l);const t=APP_T[l]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;};
 (function(){const l=localStorage.getItem('sk_lang');const lang=l||detectLang();const t=APP_T[lang]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;})();
+
+const FEAT_T={en:{0:"AI conversation suggestions",1:"Date planning ideas",2:"Profile optimization tips",3:"Real-time chat coaching"},ja:{0:"AI会話提案",1:"デートプラン提案",2:"プロフ最適化のコツ",3:"リアルタイムチャットコーチ"}};
+const __oF=applyLang;applyLang=function(l){__oF(l);const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});};
+(function(){const l=localStorage.getItem('sk_lang')||detectLang();const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});})();
 </script>
 </body>
 </html>

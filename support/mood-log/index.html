@@ -92,7 +92,7 @@
 <div class="container">
   <div class="card">
     <h2 data-i18n="features">Key Features</h2>
-    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span>Quick mood check-ins</span></div><div class="feature"><div class="feature-dot"></div><span>Mood history charts</span></div><div class="feature"><div class="feature-dot"></div><span>Trigger tracking</span></div><div class="feature"><div class="feature-dot"></div><span>Weekly mood reports</span></div></div>
+    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span data-feat="0">Quick mood check-ins</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="1">Mood history charts</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="2">Trigger tracking</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="3">Weekly mood reports</span></div></div>
   </div>
 
   <div class="card">
@@ -169,6 +169,10 @@ applyLang(detectLang());
 const APP_T={en:"Daily Mood & Mental Health Log",ja:"Daily Mood & Mental Health Log",zh:"Daily Mood & Mental Health Log",zh_TW:"Daily Mood & Mental Health Log",ko:"Daily Mood & Mental Health Log",es:"Daily Mood & Mental Health Log",pt:"Daily Mood & Mental Health Log",fr:"Daily Mood & Mental Health Log",de:"Daily Mood & Mental Health Log",it:"Daily Mood & Mental Health Log",ru:"Daily Mood & Mental Health Log",ar:"Daily Mood & Mental Health Log",th:"Daily Mood & Mental Health Log",id:"Daily Mood & Mental Health Log",tr:"Daily Mood & Mental Health Log",nl:"Daily Mood & Mental Health Log",vi:"Daily Mood & Mental Health Log",};
 const _oA=applyLang;applyLang=function(l){_oA(l);const t=APP_T[l]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;};
 (function(){const l=localStorage.getItem('sk_lang');const lang=l||detectLang();const t=APP_T[lang]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;})();
+
+const FEAT_T={en:{0:"Quick mood check-ins",1:"Mood history charts",2:"Trigger tracking",3:"Weekly mood reports"},ja:{0:"素早い気分チェック",1:"気分履歴チャート",2:"トリガー追跡",3:"週次気分レポート"}};
+const __oF=applyLang;applyLang=function(l){__oF(l);const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});};
+(function(){const l=localStorage.getItem('sk_lang')||detectLang();const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});})();
 </script>
 </body>
 </html>

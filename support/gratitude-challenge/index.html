@@ -92,7 +92,7 @@
 <div class="container">
   <div class="card">
     <h2 data-i18n="features">Key Features</h2>
-    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span>Daily gratitude prompts</span></div><div class="feature"><div class="feature-dot"></div><span>Streak tracking</span></div><div class="feature"><div class="feature-dot"></div><span>Photo journaling</span></div><div class="feature"><div class="feature-dot"></div><span>Monthly reflections</span></div></div>
+    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span data-feat="0">Daily gratitude prompts</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="1">Streak tracking</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="2">Photo journaling</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="3">Monthly reflections</span></div></div>
   </div>
 
   <div class="card">
@@ -169,6 +169,10 @@ applyLang(detectLang());
 const APP_T={en:"30-Day Gratitude Journey",ja:"30-Day Gratitude Journey",zh:"30-Day Gratitude Journey",zh_TW:"30-Day Gratitude Journey",ko:"30-Day Gratitude Journey",es:"30-Day Gratitude Journey",pt:"30-Day Gratitude Journey",fr:"30-Day Gratitude Journey",de:"30-Day Gratitude Journey",it:"30-Day Gratitude Journey",ru:"30-Day Gratitude Journey",ar:"30-Day Gratitude Journey",th:"30-Day Gratitude Journey",id:"30-Day Gratitude Journey",tr:"30-Day Gratitude Journey",nl:"30-Day Gratitude Journey",vi:"30-Day Gratitude Journey",};
 const _oA=applyLang;applyLang=function(l){_oA(l);const t=APP_T[l]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;};
 (function(){const l=localStorage.getItem('sk_lang');const lang=l||detectLang();const t=APP_T[lang]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;})();
+
+const FEAT_T={en:{0:"Daily gratitude prompts",1:"Streak tracking",2:"Photo journaling",3:"Monthly reflections"},ja:{0:"毎日の感謝プロンプト",1:"ストリーク追跡",2:"フォトジャーナル",3:"月次振り返り"}};
+const __oF=applyLang;applyLang=function(l){__oF(l);const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});};
+(function(){const l=localStorage.getItem('sk_lang')||detectLang();const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});})();
 </script>
 </body>
 </html>

@@ -92,7 +92,7 @@
 <div class="container">
   <div class="card">
     <h2 data-i18n="features">Key Features</h2>
-    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span>AI news summaries</span></div><div class="feature"><div class="feature-dot"></div><span>Multiple news categories</span></div><div class="feature"><div class="feature-dot"></div><span>17 language support</span></div><div class="feature"><div class="feature-dot"></div><span>Personalized feed</span></div></div>
+    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span data-feat="0">AI news summaries</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="1">Multiple news categories</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="2">17 language support</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="3">Personalized feed</span></div></div>
   </div>
 
   <div class="card">
@@ -169,6 +169,10 @@ applyLang(detectLang());
 const APP_T={en:"World News, Simplified by AI",ja:"世界のニュースをAIで要約",zh:"AI智能摘要全球新闻",zh_TW:"AI智能摘要全球新聞",ko:"AI로 요약하는 세계 뉴스",es:"Noticias mundiales con IA",pt:"Notícias mundiais por IA",fr:"Actualités mondiales par IA",de:"KI-News für Weltreisende",it:"Notizie mondiali con IA",ru:"Мировые новости от ИИ",ar:"أخبار عالمية ملخصة بالذكاء",th:"ข่าวโลกสรุปโดย AI",id:"Berita dunia diringkas AI",tr:"Dünya haberleri YZ ile özet",nl:"Wereldnieuws door AI",vi:"Tin tức thế giới tóm tắt AI",};
 const _oA=applyLang;applyLang=function(l){_oA(l);const t=APP_T[l]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;};
 (function(){const l=localStorage.getItem('sk_lang');const lang=l||detectLang();const t=APP_T[lang]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;})();
+
+const FEAT_T={en:{0:"AI news summaries",1:"Multiple news categories",2:"17 language support",3:"Personalized feed"},ja:{0:"AIニュース要約",1:"複数のニュースカテゴリ",2:"17言語対応",3:"パーソナライズ"}};
+const __oF=applyLang;applyLang=function(l){__oF(l);const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});};
+(function(){const l=localStorage.getItem('sk_lang')||detectLang();const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});})();
 </script>
 </body>
 </html>

@@ -92,7 +92,7 @@
 <div class="container">
   <div class="card">
     <h2 data-i18n="features">Key Features</h2>
-    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span>Letters to future self</span></div><div class="feature"><div class="feature-dot"></div><span>AI-powered predictions</span></div><div class="feature"><div class="feature-dot"></div><span>Time capsule feature</span></div><div class="feature"><div class="feature-dot"></div><span>Milestone reminders</span></div></div>
+    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span data-feat="0">Letters to future self</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="1">AI-powered predictions</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="2">Time capsule feature</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="3">Milestone reminders</span></div></div>
   </div>
 
   <div class="card">
@@ -169,6 +169,10 @@ applyLang(detectLang());
 const APP_T={en:"Letters to Your Future Self",ja:"AIであなたの未来を発見",zh:"用AI发现你的未来",zh_TW:"用AI發現你的未來",ko:"AI로 당신의 미래를 발견하세요",es:"Descubre tu futuro con IA",pt:"Descubra seu futuro com IA",fr:"Votre avenir avec l\'IA",de:"Entdecke deine Zukunft mit KI",it:"Scopri il tuo futuro con l\'IA",ru:"Узнайте своё будущее с ИИ",ar:"مستقبلك مع الذكاء الاصطناعي",th:"ค้นพบอนาคตของคุณด้วย AI",id:"Temukan masa depanmu dengan AI",tr:"AI ile geleceğini keşfet",nl:"Ontdek je toekomst met AI",vi:"Khám phá tương lai với AI",};
 const _oA=applyLang;applyLang=function(l){_oA(l);const t=APP_T[l]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;};
 (function(){const l=localStorage.getItem('sk_lang');const lang=l||detectLang();const t=APP_T[lang]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;})();
+
+const FEAT_T={en:{0:"Letters to future self",1:"AI-powered predictions",2:"Time capsule feature",3:"Milestone reminders"},ja:{0:"未来の自分への手紙",1:"AI予測",2:"タイムカプセル",3:"マイルストーン通知"}};
+const __oF=applyLang;applyLang=function(l){__oF(l);const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});};
+(function(){const l=localStorage.getItem('sk_lang')||detectLang();const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});})();
 </script>
 </body>
 </html>

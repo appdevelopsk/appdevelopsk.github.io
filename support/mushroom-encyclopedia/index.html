@@ -92,7 +92,7 @@
 <div class="container">
   <div class="card">
     <h2 data-i18n="features">Key Features</h2>
-    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span>Mushroom identification</span></div><div class="feature"><div class="feature-dot"></div><span>Edibility information</span></div><div class="feature"><div class="feature-dot"></div><span>Forest ecosystem guides</span></div><div class="feature"><div class="feature-dot"></div><span>Seasonal foraging tips</span></div></div>
+    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span data-feat="0">Mushroom identification</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="1">Edibility information</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="2">Forest ecosystem guides</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="3">Seasonal foraging tips</span></div></div>
   </div>
 
   <div class="card">
@@ -169,6 +169,10 @@ applyLang(detectLang());
 const APP_T={en:"Mushroom Encyclopedia & Guide",ja:"きのこ図鑑・食用毒キノコガイド",zh:"蘑菇百科·食用毒性指南",zh_TW:"蘑菇百科·食用毒性指南",ko:"버섯 도감·식용 독버섯 가이드",es:"Enciclopedia de Setas y Guía",pt:"Enciclopédia de Cogumelos",fr:"Encyclopédie des Champignons",de:"Pilz-Enzyklopädie & Ratgeber",it:"Enciclopedia dei Funghi",ru:"Энциклопедия грибов и гид",ar:"موسوعة الفطر ودليل السمية",th:"สารานุกรมเห็ด·คู่มือพิษ",id:"Ensiklopedia Jamur & Panduan",tr:"Mantar Ansiklopedisi ve Rehber",nl:"Paddenstoelen Encyclopedie",vi:"Bách khoa Nấm·Hướng dẫn độc",};
 const _oA=applyLang;applyLang=function(l){_oA(l);const t=APP_T[l]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;};
 (function(){const l=localStorage.getItem('sk_lang');const lang=l||detectLang();const t=APP_T[lang]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;})();
+
+const FEAT_T={en:{0:"Mushroom identification",1:"Edibility information",2:"Forest ecosystem guides",3:"Seasonal foraging tips"},ja:{0:"きのこ識別",1:"食用情報",2:"森林生態系ガイド",3:"季節の採取ヒント"}};
+const __oF=applyLang;applyLang=function(l){__oF(l);const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});};
+(function(){const l=localStorage.getItem('sk_lang')||detectLang();const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});})();
 </script>
 </body>
 </html>

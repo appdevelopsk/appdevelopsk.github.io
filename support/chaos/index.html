@@ -92,7 +92,7 @@
 <div class="container">
   <div class="card">
     <h2 data-i18n="features">Key Features</h2>
-    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span>New missions every day</span></div><div class="feature"><div class="feature-dot"></div><span>Difficulty levels</span></div><div class="feature"><div class="feature-dot"></div><span>Achievement system</span></div><div class="feature"><div class="feature-dot"></div><span>Share your completions</span></div></div>
+    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span data-feat="0">New missions every day</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="1">Difficulty levels</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="2">Achievement system</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="3">Share your completions</span></div></div>
   </div>
 
   <div class="card">
@@ -169,6 +169,10 @@ applyLang(detectLang());
 const APP_T={en:"Random Dares & Challenges",ja:"コミュニティからの毎日のミッション",zh:"每日社区挑战",zh_TW:"每日社群挑戰任務",ko:"매일 커뮤니티 미션",es:"Desafíos diarios de comunidad",pt:"Desafios diários da comunidade",fr:"Défis communautaires du jour",de:"Tägliche Community-Challenges",it:"Sfide quotidiane community",ru:"Ежедневные задания сообщества",ar:"تحديات يومية من المجتمع",th:"ภารกิจชุมชนประจำวัน",id:"Tantangan komunitas harian",tr:"Günlük topluluk görevleri",nl:"Dagelijkse gemeenschapstaken",vi:"Thử thách cộng đồng hàng ngày",};
 const _oA=applyLang;applyLang=function(l){_oA(l);const t=APP_T[l]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;};
 (function(){const l=localStorage.getItem('sk_lang');const lang=l||detectLang();const t=APP_T[lang]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;})();
+
+const FEAT_T={en:{0:"New missions every day",1:"Difficulty levels",2:"Achievement system",3:"Share your completions"},ja:{0:"毎日新しいミッション",1:"難易度レベル",2:"実績システム",3:"達成をシェア"}};
+const __oF=applyLang;applyLang=function(l){__oF(l);const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});};
+(function(){const l=localStorage.getItem('sk_lang')||detectLang();const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});})();
 </script>
 </body>
 </html>

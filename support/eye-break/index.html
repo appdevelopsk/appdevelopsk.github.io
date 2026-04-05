@@ -92,7 +92,7 @@
 <div class="container">
   <div class="card">
     <h2 data-i18n="features">Key Features</h2>
-    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span>20-20-20 rule reminders</span></div><div class="feature"><div class="feature-dot"></div><span>Customizable intervals</span></div><div class="feature"><div class="feature-dot"></div><span>Eye exercise guides</span></div><div class="feature"><div class="feature-dot"></div><span>Usage statistics</span></div></div>
+    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span data-feat="0">20-20-20 rule reminders</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="1">Customizable intervals</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="2">Eye exercise guides</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="3">Usage statistics</span></div></div>
   </div>
 
   <div class="card">
@@ -169,6 +169,10 @@ applyLang(detectLang());
 const APP_T={en:"Vision Care & Break Timer",ja:"目の休憩タイマー＆画面時間管理",zh:"护眼休息与计时器",zh_TW:"護眼休息與計時器",ko:"눈 휴식 & 화면 타이머",es:"Descanso visual y temporizador",pt:"Descanso visual e temporizador",fr:"Repos oculaire & minuterie",de:"Augenpause & Bildschirmtimer",it:"Riposo oculare & timer schermo",ru:"Отдых для глаз и таймер",ar:"راحة العيون ومؤقت الشاشة",th:"พักสายตาและตั้งเวลาหน้าจอ",id:"Istirahat Mata & Timer Layar",tr:"Göz Dinlendirme & Zamanlayıcı",nl:"Oogrust & schermtimer",vi:"Nghỉ ngơi mắt & hẹn giờ",};
 const _oA=applyLang;applyLang=function(l){_oA(l);const t=APP_T[l]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;};
 (function(){const l=localStorage.getItem('sk_lang');const lang=l||detectLang();const t=APP_T[lang]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;})();
+
+const FEAT_T={en:{0:"20-20-20 rule reminders",1:"Customizable intervals",2:"Eye exercise guides",3:"Usage statistics"},ja:{0:"20-20-20ルール",1:"カスタム間隔",2:"目の体操ガイド",3:"使用統計"}};
+const __oF=applyLang;applyLang=function(l){__oF(l);const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});};
+(function(){const l=localStorage.getItem('sk_lang')||detectLang();const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});})();
 </script>
 </body>
 </html>

@@ -92,7 +92,7 @@
 <div class="container">
   <div class="card">
     <h2 data-i18n="features">Key Features</h2>
-    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span>Compatibility scoring</span></div><div class="feature"><div class="feature-dot"></div><span>Personality analysis</span></div><div class="feature"><div class="feature-dot"></div><span>Share results</span></div><div class="feature"><div class="feature-dot"></div><span>Multiple quiz types</span></div></div>
+    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span data-feat="0">Compatibility scoring</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="1">Personality analysis</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="2">Share results</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="3">Multiple quiz types</span></div></div>
   </div>
 
   <div class="card">
@@ -169,6 +169,10 @@ applyLang(detectLang());
 const APP_T={en:"Compatibility Score & Match",ja:"友達との相性をチェック",zh:"找到你的匹配度",zh_TW:"找到你的配對結果",ko:"나의 궁합 점수 확인하기",es:"Encuentra tu compatibilidad",pt:"Encontre sua combinação ideal",fr:"Trouvez votre compatibilité",de:"Finde deine Kompatibilität",it:"Trova la tua compatibilità",ru:"Найди своё совпадение",ar:"اكتشف مدى توافقك مع الآخرين",th:"ค้นหาคะแนนความเข้ากันของคุณ",id:"Temukan kecocokan sempurnamu",tr:"Uyumluluk eşleşmeni bul",nl:"Vind jouw perfecte match",vi:"Tìm điểm tương thích của bạn",};
 const _oA=applyLang;applyLang=function(l){_oA(l);const t=APP_T[l]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;};
 (function(){const l=localStorage.getItem('sk_lang');const lang=l||detectLang();const t=APP_T[lang]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;})();
+
+const FEAT_T={en:{0:"Compatibility scoring",1:"Personality analysis",2:"Share results",3:"Multiple quiz types"},ja:{0:"相性スコア",1:"性格分析",2:"結果をシェア",3:"複数クイズタイプ"}};
+const __oF=applyLang;applyLang=function(l){__oF(l);const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});};
+(function(){const l=localStorage.getItem('sk_lang')||detectLang();const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});})();
 </script>
 </body>
 </html>

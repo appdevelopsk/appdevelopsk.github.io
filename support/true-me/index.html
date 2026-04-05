@@ -92,7 +92,7 @@
 <div class="container">
   <div class="card">
     <h2 data-i18n="features">Key Features</h2>
-    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span>True mirror view</span></div><div class="feature"><div class="feature-dot"></div><span>Side-by-side comparison</span></div><div class="feature"><div class="feature-dot"></div><span>Photo capture</span></div><div class="feature"><div class="feature-dot"></div><span>Share with friends</span></div></div>
+    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span data-feat="0">True mirror view</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="1">Side-by-side comparison</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="2">Photo capture</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="3">Share with friends</span></div></div>
   </div>
 
   <div class="card">
@@ -169,6 +169,10 @@ applyLang(detectLang());
 const APP_T={en:"True Personality Discovery",ja:"他人から見えるあなたの顔",zh:"别人眼中的你的脸",zh_TW:"別人眼中的你的臉",ko:"남들이 보는 내 진짜 얼굴",es:"Cómo te ven los demás",pt:"Como os outros te veem",fr:"Comment les autres vous voient",de:"So sehen andere dich",it:"Come ti vedono gli altri",ru:"Каким вас видят другие",ar:"كيف يراك الآخرون",th:"ใบหน้าที่คนอื่นมองเห็น",id:"Seperti yang orang lain lihat",tr:"Başkaları seni nasıl görüyor",nl:"Hoe anderen jou zien",vi:"Cách người khác nhìn bạn",};
 const _oA=applyLang;applyLang=function(l){_oA(l);const t=APP_T[l]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;};
 (function(){const l=localStorage.getItem('sk_lang');const lang=l||detectLang();const t=APP_T[lang]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;})();
+
+const FEAT_T={en:{0:"True mirror view",1:"Side-by-side comparison",2:"Photo capture",3:"Share with friends"},ja:{0:"本当の鏡像",1:"並べて比較",2:"写真撮影",3:"友達とシェア"}};
+const __oF=applyLang;applyLang=function(l){__oF(l);const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});};
+(function(){const l=localStorage.getItem('sk_lang')||detectLang();const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});})();
 </script>
 </body>
 </html>

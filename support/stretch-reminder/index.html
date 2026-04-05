@@ -92,7 +92,7 @@
 <div class="container">
   <div class="card">
     <h2 data-i18n="features">Key Features</h2>
-    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span>Customizable intervals</span></div><div class="feature"><div class="feature-dot"></div><span>Guided stretch routines</span></div><div class="feature"><div class="feature-dot"></div><span>Desk and full-body modes</span></div><div class="feature"><div class="feature-dot"></div><span>Streak tracking</span></div></div>
+    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span data-feat="0">Customizable intervals</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="1">Guided stretch routines</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="2">Desk and full-body modes</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="3">Streak tracking</span></div></div>
   </div>
 
   <div class="card">
@@ -169,6 +169,10 @@ applyLang(detectLang());
 const APP_T={en:"Desk Stretch & Break Reminder",ja:"Desk Stretch & Break Reminder",zh:"Desk Stretch & Break Reminder",zh_TW:"Desk Stretch & Break Reminder",ko:"Desk Stretch & Break Reminder",es:"Desk Stretch & Break Reminder",pt:"Desk Stretch & Break Reminder",fr:"Desk Stretch & Break Reminder",de:"Desk Stretch & Break Reminder",it:"Desk Stretch & Break Reminder",ru:"Desk Stretch & Break Reminder",ar:"Desk Stretch & Break Reminder",th:"Desk Stretch & Break Reminder",id:"Desk Stretch & Break Reminder",tr:"Desk Stretch & Break Reminder",nl:"Desk Stretch & Break Reminder",vi:"Desk Stretch & Break Reminder",};
 const _oA=applyLang;applyLang=function(l){_oA(l);const t=APP_T[l]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;};
 (function(){const l=localStorage.getItem('sk_lang');const lang=l||detectLang();const t=APP_T[lang]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;})();
+
+const FEAT_T={en:{0:"Customizable intervals",1:"Guided stretch routines",2:"Desk and full-body modes",3:"Streak tracking"},ja:{0:"カスタム間隔",1:"ガイド付きストレッチ",2:"デスク・全身モード",3:"ストリーク追跡"}};
+const __oF=applyLang;applyLang=function(l){__oF(l);const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});};
+(function(){const l=localStorage.getItem('sk_lang')||detectLang();const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});})();
 </script>
 </body>
 </html>

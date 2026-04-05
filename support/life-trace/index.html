@@ -92,7 +92,7 @@
 <div class="container">
   <div class="card">
     <h2 data-i18n="features">Key Features</h2>
-    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span>AI-assisted journaling</span></div><div class="feature"><div class="feature-dot"></div><span>Auto-categorization</span></div><div class="feature"><div class="feature-dot"></div><span>Photo memories</span></div><div class="feature"><div class="feature-dot"></div><span>Life insights and trends</span></div></div>
+    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span data-feat="0">AI-assisted journaling</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="1">Auto-categorization</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="2">Photo memories</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="3">Life insights and trends</span></div></div>
   </div>
 
   <div class="card">
@@ -169,6 +169,10 @@ applyLang(detectLang());
 const APP_T={en:"Life Timeline & AI Diary",ja:"あなたのAI日記アプリ",zh:"你的AI每日生活日记",zh_TW:"你的AI每日生活日記",ko:"나의 AI 일상 다이어리",es:"Tu diario diario con IA",pt:"Seu diário diário com IA",fr:"Votre journal quotidien IA",de:"Dein KI-Tagebuch für jeden Tag",it:"Il tuo diario IA quotidiano",ru:"Ваш ИИ-дневник каждого дня",ar:"يومياتك اليومية مع الذكاء",th:"ไดอารี่ AI รายวันของคุณ",id:"Diari Harian AI Kamu",tr:"Günlük YZ Günlüğünüz",nl:"Jouw dagelijks AI-dagboek",vi:"Nhật ký AI hàng ngày của bạn",};
 const _oA=applyLang;applyLang=function(l){_oA(l);const t=APP_T[l]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;};
 (function(){const l=localStorage.getItem('sk_lang');const lang=l||detectLang();const t=APP_T[lang]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;})();
+
+const FEAT_T={en:{0:"AI-assisted journaling",1:"Auto-categorization",2:"Photo memories",3:"Life insights and trends"},ja:{0:"AIジャーナリング",1:"自動分類",2:"写真メモリー",3:"ライフインサイト"}};
+const __oF=applyLang;applyLang=function(l){__oF(l);const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});};
+(function(){const l=localStorage.getItem('sk_lang')||detectLang();const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});})();
 </script>
 </body>
 </html>

@@ -92,7 +92,7 @@
 <div class="container">
   <div class="card">
     <h2 data-i18n="features">Key Features</h2>
-    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span>Drag-and-drop tier lists</span></div><div class="feature"><div class="feature-dot"></div><span>Community templates</span></div><div class="feature"><div class="feature-dot"></div><span>Share your rankings</span></div><div class="feature"><div class="feature-dot"></div><span>Category browsing</span></div></div>
+    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span data-feat="0">Drag-and-drop tier lists</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="1">Community templates</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="2">Share your rankings</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="3">Category browsing</span></div></div>
   </div>
 
   <div class="card">
@@ -169,6 +169,10 @@ applyLang(detectLang());
 const APP_T={en:"Build & Share Tier Lists",ja:"友達を変なテーマでTier化",zh:"为朋友排名，超好笑",zh_TW:"為朋友排名，超好笑",ko:"웃긴 테마로 친구 랭킹 매기기",es:"Rankea amigos temas divertidos",pt:"Ranqueie amigos temas divert.",fr:"Classez amis sur thèmes fun",de:"Bewerte Freunde lustig ranken",it:"Classifica amici per tema",ru:"Ранжируй друзей по темам",ar:"رتّب أصدقاءك في موضوعات مضحكة",th:"จัดอันดับเพื่อนในธีมสุดฮา",id:"Ranking teman dengan tema seru",tr:"Arkadaşları eğlenceli rankla",nl:"Rangschik vrienden grappig",vi:"Xếp hạng bạn bè chủ đề vui",};
 const _oA=applyLang;applyLang=function(l){_oA(l);const t=APP_T[l]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;};
 (function(){const l=localStorage.getItem('sk_lang');const lang=l||detectLang();const t=APP_T[lang]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;})();
+
+const FEAT_T={en:{0:"Drag-and-drop tier lists",1:"Community templates",2:"Share your rankings",3:"Category browsing"},ja:{0:"ドラッグ＆ドロップティアリスト",1:"コミュニティテンプレート",2:"ランキングを共有",3:"カテゴリ閲覧"}};
+const __oF=applyLang;applyLang=function(l){__oF(l);const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});};
+(function(){const l=localStorage.getItem('sk_lang')||detectLang();const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});})();
 </script>
 </body>
 </html>

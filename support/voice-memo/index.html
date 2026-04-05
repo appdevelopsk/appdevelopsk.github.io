@@ -92,7 +92,7 @@
 <div class="container">
   <div class="card">
     <h2 data-i18n="features">Key Features</h2>
-    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span>Voice-to-text transcription</span></div><div class="feature"><div class="feature-dot"></div><span>AI summaries</span></div><div class="feature"><div class="feature-dot"></div><span>Tag organization</span></div><div class="feature"><div class="feature-dot"></div><span>Search across entries</span></div></div>
+    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span data-feat="0">Voice-to-text transcription</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="1">AI summaries</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="2">Tag organization</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="3">Search across entries</span></div></div>
   </div>
 
   <div class="card">
@@ -169,6 +169,10 @@ applyLang(detectLang());
 const APP_T={en:"Speak, AI Listens & Records",ja:"話すだけ、AIが記録",zh:"说出想法，AI记录",zh_TW:"說出想法，AI記錄",ko:"말하면 AI가 기록",es:"Habla, la IA escucha",pt:"Fale, a IA ouve",fr:"Parlez, l\'IA écoute",de:"Sprich, KI hört & notiert",it:"Parla, l\'IA ascolta",ru:"Говорите, ИИ запишет",ar:"تحدث، الذكاء الاصطناعي يسجل",th:"พูด AI รับฟังบันทึก",id:"Bicara, AI mendengarkan",tr:"Söyle, AI dinlesin",nl:"Spreek, AI luistert",vi:"Nói, AI lắng nghe",};
 const _oA=applyLang;applyLang=function(l){_oA(l);const t=APP_T[l]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;};
 (function(){const l=localStorage.getItem('sk_lang');const lang=l||detectLang();const t=APP_T[lang]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;})();
+
+const FEAT_T={en:{0:"Voice-to-text transcription",1:"AI summaries",2:"Tag organization",3:"Search across entries"},ja:{0:"音声テキスト変換",1:"AI要約",2:"タグ整理",3:"エントリー横断検索"}};
+const __oF=applyLang;applyLang=function(l){__oF(l);const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});};
+(function(){const l=localStorage.getItem('sk_lang')||detectLang();const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});})();
 </script>
 </body>
 </html>

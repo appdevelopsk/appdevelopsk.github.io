@@ -92,7 +92,7 @@
 <div class="container">
   <div class="card">
     <h2 data-i18n="features">Key Features</h2>
-    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span>Real-time typing races</span></div><div class="feature"><div class="feature-dot"></div><span>WPM tracking</span></div><div class="feature"><div class="feature-dot"></div><span>Global leaderboards</span></div><div class="feature"><div class="feature-dot"></div><span>Practice mode</span></div></div>
+    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span data-feat="0">Real-time typing races</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="1">WPM tracking</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="2">Global leaderboards</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="3">Practice mode</span></div></div>
   </div>
 
   <div class="card">
@@ -166,6 +166,10 @@ const dd=document.getElementById('langDropdown');Object.entries(LANGS).forEach((
 document.getElementById('langBtn').addEventListener('click',e=>{e.stopPropagation();document.getElementById('langSelector').classList.toggle('open')});
 document.addEventListener('click',()=>document.getElementById('langSelector').classList.remove('open'));
 applyLang(detectLang());
+
+const FEAT_T={en:{0:"Real-time typing races",1:"WPM tracking",2:"Global leaderboards",3:"Practice mode"},ja:{0:"リアルタイムタイピング",1:"WPM追跡",2:"グローバルランキング",3:"練習モード"}};
+const __oF=applyLang;applyLang=function(l){__oF(l);const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});};
+(function(){const l=localStorage.getItem('sk_lang')||detectLang();const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});})();
 </script>
 </body>
 </html>

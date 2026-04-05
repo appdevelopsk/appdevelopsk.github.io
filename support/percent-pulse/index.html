@@ -92,7 +92,7 @@
 <div class="container">
   <div class="card">
     <h2 data-i18n="features">Key Features</h2>
-    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span>Trending polls</span></div><div class="feature"><div class="feature-dot"></div><span>Create custom polls</span></div><div class="feature"><div class="feature-dot"></div><span>Real-time results</span></div><div class="feature"><div class="feature-dot"></div><span>Category browsing</span></div></div>
+    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span data-feat="0">Trending polls</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="1">Create custom polls</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="2">Real-time results</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="3">Category browsing</span></div></div>
   </div>
 
   <div class="card">
@@ -169,6 +169,10 @@ applyLang(detectLang());
 const APP_T={en:"Real-Time Global Stats Game",ja:"みんなの答えを予測するゲーム",zh:"猜猜大众怎么想",zh_TW:"猜猜大眾怎麼想",ko:"대중이 어떻게 생각하는지 맞춰보세요",es:"Adivina qué piensa la gente",pt:"Adivinhe o que a multidão",fr:"Devinez ce que pense la foule",de:"Errate, was die Masse denkt",it:"Indovina cosa pensa la folla",ru:"Угадайте мнение толпы",ar:"خمّن ما تفكر فيه الجماهير",th:"ทายว่าฝูงชนคิดอะไร",id:"Tebak Pendapat Orang Banyak",tr:"Kalabalığın ne düşündüğünü",nl:"Raad wat de menigte denkt",vi:"Đoán xem đám đông nghĩ gì",};
 const _oA=applyLang;applyLang=function(l){_oA(l);const t=APP_T[l]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;};
 (function(){const l=localStorage.getItem('sk_lang');const lang=l||detectLang();const t=APP_T[lang]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;})();
+
+const FEAT_T={en:{0:"Trending polls",1:"Create custom polls",2:"Real-time results",3:"Category browsing"},ja:{0:"トレンド投票",1:"カスタム投票作成",2:"リアルタイム結果",3:"カテゴリ閲覧"}};
+const __oF=applyLang;applyLang=function(l){__oF(l);const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});};
+(function(){const l=localStorage.getItem('sk_lang')||detectLang();const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});})();
 </script>
 </body>
 </html>

@@ -92,7 +92,7 @@
 <div class="container">
   <div class="card">
     <h2 data-i18n="features">Key Features</h2>
-    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span>Quick expense decisions</span></div><div class="feature"><div class="feature-dot"></div><span>Savings tracking</span></div><div class="feature"><div class="feature-dot"></div><span>Spending patterns</span></div><div class="feature"><div class="feature-dot"></div><span>Budget goals</span></div></div>
+    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span data-feat="0">Quick expense decisions</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="1">Savings tracking</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="2">Spending patterns</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="3">Budget goals</span></div></div>
   </div>
 
   <div class="card">
@@ -169,6 +169,10 @@ applyLang(detectLang());
 const APP_T={en:"Spin for your next money move",ja:"今日のお金の使い方を決めよう",zh:"Spin for your next money move",zh_TW:"Spin for your next money move",ko:"Spin for your next money move",es:"Spin for your next money move",pt:"Spin for your next money move",fr:"Spin for your next money move",de:"Spin for your next money move",it:"Spin for your next money move",ru:"Spin for your next money move",ar:"Spin for your next money move",th:"Spin for your next money move",id:"Spin for your next money move",tr:"Spin for your next money move",nl:"Spin for your next money move",vi:"Spin for your next money move",};
 const _oA=applyLang;applyLang=function(l){_oA(l);const t=APP_T[l]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;};
 (function(){const l=localStorage.getItem('sk_lang');const lang=l||detectLang();const t=APP_T[lang]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;})();
+
+const FEAT_T={en:{0:"Quick expense decisions",1:"Savings tracking",2:"Spending patterns",3:"Budget goals"},ja:{0:"素早い支出判断",1:"貯蓄追跡",2:"支出パターン",3:"予算目標"}};
+const __oF=applyLang;applyLang=function(l){__oF(l);const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});};
+(function(){const l=localStorage.getItem('sk_lang')||detectLang();const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});})();
 </script>
 </body>
 </html>

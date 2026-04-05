@@ -92,7 +92,7 @@
 <div class="container">
   <div class="card">
     <h2 data-i18n="features">Key Features</h2>
-    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span>Hundreds of meal ideas</span></div><div class="feature"><div class="feature-dot"></div><span>Filter by ingredients</span></div><div class="feature"><div class="feature-dot"></div><span>Cooking time estimates</span></div><div class="feature"><div class="feature-dot"></div><span>Save favorites</span></div></div>
+    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span data-feat="0">Hundreds of meal ideas</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="1">Filter by ingredients</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="2">Cooking time estimates</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="3">Save favorites</span></div></div>
   </div>
 
   <div class="card">
@@ -169,6 +169,10 @@ applyLang(detectLang());
 const APP_T={en:"Spin to pick tonight\'s dinner",ja:"今夜のメニューをルーレットで",zh:"用轮盘决定今晚吃什么",zh_TW:"用輪盤決定今晚吃什麼",ko:"룰렛으로 오늘 저녁 메뉴 결정",es:"Gira y decide la cena de hoy",pt:"Gire e decida o jantar de hoje",fr:"Tournez et décidez le dîner",de:"Drehen & Abendessen wählen",it:"Gira e decidi la cena",ru:"Крути и решай ужин",ar:"دوّر وقرر وجبة العشاء",th:"หมุนรูเล็ตเพื่อเมนูอาหารเย็น",id:"Putar & tentukan menu malam",tr:"Çevir & akşam yemeği seç",nl:"Draai & beslis het avondeten",vi:"Quay & quyết định bữa tối",};
 const _oA=applyLang;applyLang=function(l){_oA(l);const t=APP_T[l]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;};
 (function(){const l=localStorage.getItem('sk_lang');const lang=l||detectLang();const t=APP_T[lang]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;})();
+
+const FEAT_T={en:{0:"Hundreds of meal ideas",1:"Filter by ingredients",2:"Cooking time estimates",3:"Save favorites"},ja:{0:"豊富な料理アイデア",1:"食材でフィルター",2:"調理時間の目安",3:"お気に入り保存"}};
+const __oF=applyLang;applyLang=function(l){__oF(l);const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});};
+(function(){const l=localStorage.getItem('sk_lang')||detectLang();const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});})();
 </script>
 </body>
 </html>

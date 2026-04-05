@@ -92,7 +92,7 @@
 <div class="container">
   <div class="card">
     <h2 data-i18n="features">Key Features</h2>
-    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span>Create your own sets</span></div><div class="feature"><div class="feature-dot"></div><span>Play with friends</span></div><div class="feature"><div class="feature-dot"></div><span>AI-generated options</span></div><div class="feature"><div class="feature-dot"></div><span>Score tracking</span></div></div>
+    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span data-feat="0">Create your own sets</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="1">Play with friends</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="2">AI-generated options</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="3">Score tracking</span></div></div>
   </div>
 
   <div class="card">
@@ -169,6 +169,10 @@ applyLang(detectLang());
 const APP_T={en:"Two Truths & One Lie Game",ja:"投稿・推測・友達を騙そう",zh:"找出谎言，愚弄朋友",zh_TW:"找出謊言，愚弄朋友",ko:"거짓말 찾기, 친구 속이기",es:"Adivina mentiras, engaña",pt:"Descubra mentiras, engane",fr:"Repère mensonges, piège amis",de:"Lügen finden, Freunde täuschen",it:"Scopri bugie, inganna amici",ru:"Найди ложь, обмани друзей",ar:"اكشف الكذبة، خدع أصدقاءك",th:"จับโกหก หลอกเพื่อน",id:"Temukan bohong, tipu teman",tr:"Yalanı bul, arkadaşı kandır",nl:"Spot leugens, bedrieg vrienden",vi:"Phát hiện nói dối, lừa bạn bè",};
 const _oA=applyLang;applyLang=function(l){_oA(l);const t=APP_T[l]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;};
 (function(){const l=localStorage.getItem('sk_lang');const lang=l||detectLang();const t=APP_T[lang]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;})();
+
+const FEAT_T={en:{0:"Create your own sets",1:"Play with friends",2:"AI-generated options",3:"Score tracking"},ja:{0:"独自セット作成",1:"友達と遊ぶ",2:"AIオプション",3:"スコア追跡"}};
+const __oF=applyLang;applyLang=function(l){__oF(l);const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});};
+(function(){const l=localStorage.getItem('sk_lang')||detectLang();const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});})();
 </script>
 </body>
 </html>

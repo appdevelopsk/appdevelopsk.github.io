@@ -92,7 +92,7 @@
 <div class="container">
   <div class="card">
     <h2 data-i18n="features">Key Features</h2>
-    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span>Interest-based matching</span></div><div class="feature"><div class="feature-dot"></div><span>Icebreaker questions</span></div><div class="feature"><div class="feature-dot"></div><span>Video profiles</span></div><div class="feature"><div class="feature-dot"></div><span>Safe dating features</span></div></div>
+    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span data-feat="0">Interest-based matching</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="1">Icebreaker questions</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="2">Video profiles</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="3">Safe dating features</span></div></div>
   </div>
 
   <div class="card">
@@ -169,6 +169,10 @@ applyLang(detectLang());
 const APP_T={en:"Warm Connections & Love",ja:"ムード・価値観でマッチ",zh:"按心情和价值观匹配",zh_TW:"按心情和價值觀配對",ko:"무드와 가치관으로 매칭",es:"Conecta por Ánimo y Valores",pt:"Combine por Humor e Valores",fr:"Match par Humeur et Valeurs",de:"Match nach Stimmung & Werten",it:"Match per Umore e Valori",ru:"Совпадение по настроению",ar:"تطابق بالمزاج والقيم",th:"จับคู่ตามอารมณ์และค่านิยม",id:"Cocok Berdasarkan Suasana Hati",tr:"Ruh Hali ve Değerlerle Eşleş",nl:"Match op Stemming en Waarden",vi:"Kết nối theo Tâm trạng",};
 const _oA=applyLang;applyLang=function(l){_oA(l);const t=APP_T[l]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;};
 (function(){const l=localStorage.getItem('sk_lang');const lang=l||detectLang();const t=APP_T[lang]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;})();
+
+const FEAT_T={en:{0:"Interest-based matching",1:"Icebreaker questions",2:"Video profiles",3:"Safe dating features"},ja:{0:"趣味マッチング",1:"アイスブレイク",2:"動画プロフィール",3:"安全デート機能"}};
+const __oF=applyLang;applyLang=function(l){__oF(l);const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});};
+(function(){const l=localStorage.getItem('sk_lang')||detectLang();const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});})();
 </script>
 </body>
 </html>

@@ -92,7 +92,7 @@
 <div class="container">
   <div class="card">
     <h2 data-i18n="features">Key Features</h2>
-    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span>Nearby workspaces</span></div><div class="feature"><div class="feature-dot"></div><span>WiFi speed ratings</span></div><div class="feature"><div class="feature-dot"></div><span>Noise level info</span></div><div class="feature"><div class="feature-dot"></div><span>Power outlet availability</span></div></div>
+    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span data-feat="0">Nearby workspaces</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="1">WiFi speed ratings</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="2">Noise level info</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="3">Power outlet availability</span></div></div>
   </div>
 
   <div class="card">
@@ -169,6 +169,10 @@ applyLang(detectLang());
 const APP_T={en:"Find Work-Friendly Spots",ja:"作業スポットをリアルタイム共有",zh:"发现适合办公的地点",zh_TW:"發現適合辦公的地點",ko:"작업하기 좋은 장소 찾기",es:"Halla tu lugar de trabajo hoy",pt:"Encontre locais para trabalhar",fr:"Trouvez où travailler",de:"Arbeitsorte für Nomaden finden",it:"Trova posti dove lavorare",ru:"Места для удалённой работы",ar:"أماكن العمل للرُحَّل الرقميين",th:"หาที่ทำงานสำหรับนักเดินทาง",id:"Temukan Tempat Kerja Terbaik",tr:"Çalışmak için yer bul",nl:"Vind werkplekken voor nomaden",vi:"Tìm nơi làm việc lý tưởng",};
 const _oA=applyLang;applyLang=function(l){_oA(l);const t=APP_T[l]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;};
 (function(){const l=localStorage.getItem('sk_lang');const lang=l||detectLang();const t=APP_T[lang]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;})();
+
+const FEAT_T={en:{0:"Nearby workspaces",1:"WiFi speed ratings",2:"Noise level info",3:"Power outlet availability"},ja:{0:"近くのワークスペース",1:"WiFi速度評価",2:"騒音レベル情報",3:"電源コンセント有無"}};
+const __oF=applyLang;applyLang=function(l){__oF(l);const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});};
+(function(){const l=localStorage.getItem('sk_lang')||detectLang();const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});})();
 </script>
 </body>
 </html>

@@ -92,7 +92,7 @@
 <div class="container">
   <div class="card">
     <h2 data-i18n="features">Key Features</h2>
-    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span>Multiple naming categories</span></div><div class="feature"><div class="feature-dot"></div><span>AI-powered suggestions</span></div><div class="feature"><div class="feature-dot"></div><span>Name meanings</span></div><div class="feature"><div class="feature-dot"></div><span>Save and share favorites</span></div></div>
+    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span data-feat="0">Multiple naming categories</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="1">AI-powered suggestions</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="2">Name meanings</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="3">Save and share favorites</span></div></div>
   </div>
 
   <div class="card">
@@ -169,6 +169,10 @@ applyLang(detectLang());
 const APP_T={en:"AI Baby & Character Name Ideas",ja:"AI名前ジェネレーター",zh:"AI起名生成器",zh_TW:"AI命名產生器",ko:"AI 이름 생성기",es:"Generador de Nombres con IA",pt:"Gerador de Nomes com IA",fr:"Générateur de Prénoms IA",de:"KI-Namensgenerator",it:"Generatore di Nomi con IA",ru:"ИИ-генератор имён",ar:"مولّد أسماء بالذكاء الاصطناعي",th:"เครื่องสร้างชื่อด้วย AI",id:"Generator Nama dengan AI",tr:"Yapay Zeka İsim Üretici",nl:"AI-naamgenerator",vi:"Tạo tên bằng AI",};
 const _oA=applyLang;applyLang=function(l){_oA(l);const t=APP_T[l]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;};
 (function(){const l=localStorage.getItem('sk_lang');const lang=l||detectLang();const t=APP_T[lang]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;})();
+
+const FEAT_T={en:{0:"Multiple naming categories",1:"AI-powered suggestions",2:"Name meanings",3:"Save and share favorites"},ja:{0:"複数のネーミングカテゴリ",1:"AI提案",2:"名前の意味",3:"お気に入り保存＆共有"}};
+const __oF=applyLang;applyLang=function(l){__oF(l);const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});};
+(function(){const l=localStorage.getItem('sk_lang')||detectLang();const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});})();
 </script>
 </body>
 </html>

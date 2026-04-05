@@ -92,7 +92,7 @@
 <div class="container">
   <div class="card">
     <h2 data-i18n="features">Key Features</h2>
-    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span>Thousands of plant species</span></div><div class="feature"><div class="feature-dot"></div><span>Care instructions</span></div><div class="feature"><div class="feature-dot"></div><span>Photo identification</span></div><div class="feature"><div class="feature-dot"></div><span>Seasonal planting guides</span></div></div>
+    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span data-feat="0">Thousands of plant species</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="1">Care instructions</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="2">Photo identification</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="3">Seasonal planting guides</span></div></div>
   </div>
 
   <div class="card">
@@ -169,6 +169,10 @@ applyLang(detectLang());
 const APP_T={en:"Plant Encyclopedia & Guide",ja:"植物図鑑 & ガイド",zh:"植物百科与指南",zh_TW:"植物百科與指南",ko:"식물 백과사전 & 가이드",es:"Enciclopedia de Plantas y Guía",pt:"Enciclopédia de Plantas e Guia",fr:"Encyclopédie des Plantes",de:"Pflanzen-Enzyklopädie",it:"Enciclopedia delle Piante",ru:"Энциклопедия растений",ar:"موسوعة النباتات والدليل",th:"สารานุกรมพืชและคู่มือ",id:"Ensiklopedia Tanaman & Panduan",tr:"Bitki Ansiklopedisi ve Rehber",nl:"Planten Encyclopedie & Gids",vi:"Bách khoa Thực vật & Hướng dẫn",};
 const _oA=applyLang;applyLang=function(l){_oA(l);const t=APP_T[l]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;};
 (function(){const l=localStorage.getItem('sk_lang');const lang=l||detectLang();const t=APP_T[lang]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;})();
+
+const FEAT_T={en:{0:"Thousands of plant species",1:"Care instructions",2:"Photo identification",3:"Seasonal planting guides"},ja:{0:"数千種の植物",1:"ケア方法",2:"写真で識別",3:"季節の植栽ガイド"}};
+const __oF=applyLang;applyLang=function(l){__oF(l);const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});};
+(function(){const l=localStorage.getItem('sk_lang')||detectLang();const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});})();
 </script>
 </body>
 </html>

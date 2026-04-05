@@ -92,7 +92,7 @@
 <div class="container">
   <div class="card">
     <h2 data-i18n="features">Key Features</h2>
-    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span>Instant photo sharing</span></div><div class="feature"><div class="feature-dot"></div><span>Time-limited posts</span></div><div class="feature"><div class="feature-dot"></div><span>Friend reactions</span></div><div class="feature"><div class="feature-dot"></div><span>Daily prompts</span></div></div>
+    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span data-feat="0">Instant photo sharing</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="1">Time-limited posts</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="2">Friend reactions</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="3">Daily prompts</span></div></div>
   </div>
 
   <div class="card">
@@ -169,6 +169,10 @@ applyLang(detectLang());
 const APP_T={en:"Snap Now & Share Instantly",ja:"毎日フォトチャレンジ",zh:"每日摄影挑战",zh_TW:"每日攝影挑戰",ko:"매일 사진 챌린지",es:"Desafío Fotográfico Diario",pt:"Desafio Fotográfico Diário",fr:"Défi Photo Quotidien",de:"Tägliche Foto-Challenge",it:"Sfida Fotografica Quotidiana",ru:"Ежедневный фотовызов",ar:"تحدي التصوير اليومي",th:"ความท้าทายถ่ายภาพรายวัน",id:"Tantangan Foto Harian",tr:"Günlük Fotoğraf Mücadelesi",nl:"Daily Photography Challenge",vi:"Thách Thức Ảnh Hàng Ngày",};
 const _oA=applyLang;applyLang=function(l){_oA(l);const t=APP_T[l]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;};
 (function(){const l=localStorage.getItem('sk_lang');const lang=l||detectLang();const t=APP_T[lang]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;})();
+
+const FEAT_T={en:{0:"Instant photo sharing",1:"Time-limited posts",2:"Friend reactions",3:"Daily prompts"},ja:{0:"写真を即共有",1:"時間限定投稿",2:"友達リアクション",3:"毎日のお題"}};
+const __oF=applyLang;applyLang=function(l){__oF(l);const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});};
+(function(){const l=localStorage.getItem('sk_lang')||detectLang();const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});})();
 </script>
 </body>
 </html>

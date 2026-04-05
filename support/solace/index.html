@@ -92,7 +92,7 @@
 <div class="container">
   <div class="card">
     <h2 data-i18n="features">Key Features</h2>
-    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span>Guided journaling</span></div><div class="feature"><div class="feature-dot"></div><span>Breathing exercises</span></div><div class="feature"><div class="feature-dot"></div><span>Mood reflection</span></div><div class="feature"><div class="feature-dot"></div><span>Daily affirmations</span></div></div>
+    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span data-feat="0">Guided journaling</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="1">Breathing exercises</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="2">Mood reflection</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="3">Daily affirmations</span></div></div>
   </div>
 
   <div class="card">
@@ -169,6 +169,10 @@ applyLang(detectLang());
 const APP_T={en:"AI Mental Wellness Support",ja:"AIメンタルウェルネスコンパニオン",zh:"AI心理健康陪伴",zh_TW:"AI心理健康陪伴",ko:"AI 멘탈 웰니스 동반자",es:"Compañero de bienestar mental",pt:"Companheiro de bem-estar IA",fr:"Compagnon bien-être mental IA",de:"KI-Begleiter für mentales Wohl",it:"Compagno benessere mentale IA",ru:"ИИ для ментального здоровья",ar:"رفيق صحة نفسية بالذكاء",th:"เพื่อนสุขภาพจิต AI",id:"Teman kesehatan mental AI",tr:"Yapay zeka ruh sağlığı dostu",nl:"AI-begeleider mentaal welzijn",vi:"Bạn đồng hành sức khỏe tâm",};
 const _oA=applyLang;applyLang=function(l){_oA(l);const t=APP_T[l]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;};
 (function(){const l=localStorage.getItem('sk_lang');const lang=l||detectLang();const t=APP_T[lang]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;})();
+
+const FEAT_T={en:{0:"Guided journaling",1:"Breathing exercises",2:"Mood reflection",3:"Daily affirmations"},ja:{0:"ガイド付き日記",1:"呼吸エクササイズ",2:"気分の振り返り",3:"毎日のアファメーション"}};
+const __oF=applyLang;applyLang=function(l){__oF(l);const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});};
+(function(){const l=localStorage.getItem('sk_lang')||detectLang();const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});})();
 </script>
 </body>
 </html>

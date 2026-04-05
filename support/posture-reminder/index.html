@@ -92,7 +92,7 @@
 <div class="container">
   <div class="card">
     <h2 data-i18n="features">Key Features</h2>
-    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span>Customizable reminders</span></div><div class="feature"><div class="feature-dot"></div><span>Posture exercises</span></div><div class="feature"><div class="feature-dot"></div><span>Progress tracking</span></div><div class="feature"><div class="feature-dot"></div><span>Desk and standing modes</span></div></div>
+    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span data-feat="0">Customizable reminders</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="1">Posture exercises</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="2">Progress tracking</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="3">Desk and standing modes</span></div></div>
   </div>
 
   <div class="card">
@@ -169,6 +169,10 @@ applyLang(detectLang());
 const APP_T={en:"Fix Posture & Beat Back Pain",ja:"Fix Posture & Beat Back Pain",zh:"Fix Posture & Beat Back Pain",zh_TW:"Fix Posture & Beat Back Pain",ko:"Fix Posture & Beat Back Pain",es:"Fix Posture & Beat Back Pain",pt:"Fix Posture & Beat Back Pain",fr:"Fix Posture & Beat Back Pain",de:"Fix Posture & Beat Back Pain",it:"Fix Posture & Beat Back Pain",ru:"Fix Posture & Beat Back Pain",ar:"Fix Posture & Beat Back Pain",th:"Fix Posture & Beat Back Pain",id:"Fix Posture & Beat Back Pain",tr:"Fix Posture & Beat Back Pain",nl:"Fix Posture & Beat Back Pain",vi:"Fix Posture & Beat Back Pain",};
 const _oA=applyLang;applyLang=function(l){_oA(l);const t=APP_T[l]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;};
 (function(){const l=localStorage.getItem('sk_lang');const lang=l||detectLang();const t=APP_T[lang]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;})();
+
+const FEAT_T={en:{0:"Customizable reminders",1:"Posture exercises",2:"Progress tracking",3:"Desk and standing modes"},ja:{0:"カスタムリマインダー",1:"姿勢エクササイズ",2:"進捗追跡",3:"デスク・スタンディング"}};
+const __oF=applyLang;applyLang=function(l){__oF(l);const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});};
+(function(){const l=localStorage.getItem('sk_lang')||detectLang();const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});})();
 </script>
 </body>
 </html>

@@ -92,7 +92,7 @@
 <div class="container">
   <div class="card">
     <h2 data-i18n="features">Key Features</h2>
-    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span>Trending debates</span></div><div class="feature"><div class="feature-dot"></div><span>Vote and discuss</span></div><div class="feature"><div class="feature-dot"></div><span>Create your own topics</span></div><div class="feature"><div class="feature-dot"></div><span>Real-time polling</span></div></div>
+    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span data-feat="0">Trending debates</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="1">Vote and discuss</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="2">Create your own topics</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="3">Real-time polling</span></div></div>
   </div>
 
   <div class="card">
@@ -169,6 +169,10 @@ applyLang(detectLang());
 const APP_T={en:"Daily Dilemma & Vote Battle",ja:"毎日のジレンマ＆投票",zh:"每日两难抉择与投票",zh_TW:"每日兩難抉擇與投票",ko:"매일 딜레마 & 투표",es:"Dilema diario y votación",pt:"Dilema diário e votação",fr:"Dilemme quotidien & vote",de:"Tägliches Dilemma & Abstimmung",it:"Dilemma quotidiano e voto",ru:"Ежедневная дилемма голосуй",ar:"معضلة يومية وتصويت",th:"ปัญหาสองแง่ประจำวัน",id:"Dilema harian & voting",tr:"Günlük ikilem ve oylama",nl:"Dagelijks dilemma & stemmen",vi:"Thế lưỡng nan và bỏ phiếu",};
 const _oA=applyLang;applyLang=function(l){_oA(l);const t=APP_T[l]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;};
 (function(){const l=localStorage.getItem('sk_lang');const lang=l||detectLang();const t=APP_T[lang]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;})();
+
+const FEAT_T={en:{0:"Trending debates",1:"Vote and discuss",2:"Create your own topics",3:"Real-time polling"},ja:{0:"トレンドディベート",1:"投票と議論",2:"独自トピック作成",3:"リアルタイム投票"}};
+const __oF=applyLang;applyLang=function(l){__oF(l);const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});};
+(function(){const l=localStorage.getItem('sk_lang')||detectLang();const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});})();
 </script>
 </body>
 </html>

@@ -92,7 +92,7 @@
 <div class="container">
   <div class="card">
     <h2 data-i18n="features">Key Features</h2>
-    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span>Activity suggestions</span></div><div class="feature"><div class="feature-dot"></div><span>Indoor and outdoor</span></div><div class="feature"><div class="feature-dot"></div><span>Budget-friendly options</span></div><div class="feature"><div class="feature-dot"></div><span>Location-based ideas</span></div></div>
+    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span data-feat="0">Activity suggestions</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="1">Indoor and outdoor</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="2">Budget-friendly options</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="3">Location-based ideas</span></div></div>
   </div>
 
   <div class="card">
@@ -169,6 +169,10 @@ applyLang(detectLang());
 const APP_T={en:"Spin & plan your weekend",ja:"週末プランをルーレットで決める",zh:"用轮盘决定周末计划",zh_TW:"用輪盤決定週末計劃",ko:"룰렛으로 주말 계획 결정",es:"Gira y decide tu fin de semana",pt:"Gire e decida o fim de semana",fr:"Tournez & décidez le weekend",de:"Drehen & Wochenendplan wählen",it:"Gira e decidi il tuo weekend",ru:"Крути и планируй выходные",ar:"دوّر وقرر خطتك لنهاية الأسبوع",th:"หมุนรูเล็ตเพื่อวางแผนวันหยุด",id:"Putar & tentukan akhir pekan",tr:"Çevir & hafta sonu planını seç",nl:"Draai & beslis je weekendplan",vi:"Quay & quyết định cuối tuần",};
 const _oA=applyLang;applyLang=function(l){_oA(l);const t=APP_T[l]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;};
 (function(){const l=localStorage.getItem('sk_lang');const lang=l||detectLang();const t=APP_T[lang]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;})();
+
+const FEAT_T={en:{0:"Activity suggestions",1:"Indoor and outdoor",2:"Budget-friendly options",3:"Location-based ideas"},ja:{0:"アクティビティ提案",1:"室内＆屋外",2:"予算に優しい選択肢",3:"位置情報アイデア"}};
+const __oF=applyLang;applyLang=function(l){__oF(l);const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});};
+(function(){const l=localStorage.getItem('sk_lang')||detectLang();const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});})();
 </script>
 </body>
 </html>

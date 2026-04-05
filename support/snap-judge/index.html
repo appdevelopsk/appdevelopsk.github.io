@@ -92,7 +92,7 @@
 <div class="container">
   <div class="card">
     <h2 data-i18n="features">Key Features</h2>
-    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span>Ultra-fast image quizzes</span></div><div class="feature"><div class="feature-dot"></div><span>Reaction time tracking</span></div><div class="feature"><div class="feature-dot"></div><span>Multiple categories</span></div><div class="feature"><div class="feature-dot"></div><span>Global leaderboards</span></div></div>
+    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span data-feat="0">Ultra-fast image quizzes</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="1">Reaction time tracking</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="2">Multiple categories</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="3">Global leaderboards</span></div></div>
   </div>
 
   <div class="card">
@@ -169,6 +169,10 @@ applyLang(detectLang());
 const APP_T={en:"Judge Anything in 0.5 Sec",ja:"0.5秒の直感判定ゲーム",zh:"0.5秒内相信你的直觉",zh_TW:"0.5秒內相信你的直覺",ko:"0.5초 만에 직감을 믿어라",es:"Confía en tu instinto en 0.5s",pt:"Confie no seu instinto em 0,5s",fr:"Fiez-vous à l\'instinct en 0,5s",de:"0,5s Instinkt-Quiz",it:"Fidati del tuo istinto in 0,5s",ru:"Доверяй инстинкту за 0,5с",ar:"ثق بحدسك في نصف ثانية",th:"เชื่อสัญชาตญาณ 0.5 วิ",id:"Percayai Instinkmu 0,5 Detik",tr:"0,5s\'de İçgüdüne Güven",nl:"Vertrouw je instinct in 0,5s",vi:"Tin bản năng trong 0,5 giây",};
 const _oA=applyLang;applyLang=function(l){_oA(l);const t=APP_T[l]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;};
 (function(){const l=localStorage.getItem('sk_lang');const lang=l||detectLang();const t=APP_T[lang]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;})();
+
+const FEAT_T={en:{0:"Ultra-fast image quizzes",1:"Reaction time tracking",2:"Multiple categories",3:"Global leaderboards"},ja:{0:"超高速画像クイズ",1:"反応速度追跡",2:"複数カテゴリ",3:"グローバルランキング"}};
+const __oF=applyLang;applyLang=function(l){__oF(l);const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});};
+(function(){const l=localStorage.getItem('sk_lang')||detectLang();const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});})();
 </script>
 </body>
 </html>

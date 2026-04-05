@@ -92,7 +92,7 @@
 <div class="container">
   <div class="card">
     <h2 data-i18n="features">Key Features</h2>
-    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span>Real-time wait updates</span></div><div class="feature"><div class="feature-dot"></div><span>Crowd-sourced data</span></div><div class="feature"><div class="feature-dot"></div><span>Location-based search</span></div><div class="feature"><div class="feature-dot"></div><span>Wait time alerts</span></div></div>
+    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span data-feat="0">Real-time wait updates</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="1">Crowd-sourced data</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="2">Location-based search</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="3">Wait time alerts</span></div></div>
   </div>
 
   <div class="card">
@@ -169,6 +169,10 @@ applyLang(detectLang());
 const APP_T={en:"Wait Time - See wait times",ja:"待ち時間 - リアルタイム確認",zh:"等待时间 - 实时查看",zh_TW:"等待時間 - 即時查看",ko:"대기 시간 - 실시간 확인",es:"Tiempo de Espera - En Vivo",pt:"Tempo de Espera - Ao Vivo",fr:"Temps d\'Attente - En Direct",de:"Wartezeit - Live",it:"Tempo di Attesa - Live",ru:"Время Ожидания - Онлайн",ar:"وقت الانتظار - مباشر",th:"เวลารอ - สด",id:"Waktu Tunggu - Live",tr:"Bekleme Süresi - Canlı",nl:"Wachttijd - Live",vi:"Thời Gian Chờ - Trực Tiếp",};
 const _oA=applyLang;applyLang=function(l){_oA(l);const t=APP_T[l]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;};
 (function(){const l=localStorage.getItem('sk_lang');const lang=l||detectLang();const t=APP_T[lang]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;})();
+
+const FEAT_T={en:{0:"Real-time wait updates",1:"Crowd-sourced data",2:"Location-based search",3:"Wait time alerts"},ja:{0:"リアルタイム待ち時間",1:"クラウドソースデータ",2:"位置情報検索",3:"待ち時間アラート"}};
+const __oF=applyLang;applyLang=function(l){__oF(l);const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});};
+(function(){const l=localStorage.getItem('sk_lang')||detectLang();const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});})();
 </script>
 </body>
 </html>

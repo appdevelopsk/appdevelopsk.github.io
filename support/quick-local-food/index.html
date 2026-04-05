@@ -92,7 +92,7 @@
 <div class="container">
   <div class="card">
     <h2 data-i18n="features">Key Features</h2>
-    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span>Nearby restaurant discovery</span></div><div class="feature"><div class="feature-dot"></div><span>User reviews</span></div><div class="feature"><div class="feature-dot"></div><span>Menu browsing</span></div><div class="feature"><div class="feature-dot"></div><span>Quick order links</span></div></div>
+    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span data-feat="0">Nearby restaurant discovery</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="1">User reviews</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="2">Menu browsing</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="3">Quick order links</span></div></div>
   </div>
 
   <div class="card">
@@ -169,6 +169,10 @@ applyLang(detectLang());
 const APP_T={en:"Real food, real ratings",ja:"Real food, real ratings",zh:"Real food, real ratings",zh_TW:"Real food, real ratings",ko:"Real food, real ratings",es:"Real food, real ratings",pt:"Real food, real ratings",fr:"Real food, real ratings",de:"Real food, real ratings",it:"Real food, real ratings",ru:"Real food, real ratings",ar:"Real food, real ratings",th:"Real food, real ratings",id:"Real food, real ratings",tr:"Real food, real ratings",nl:"Real food, real ratings",vi:"Real food, real ratings",};
 const _oA=applyLang;applyLang=function(l){_oA(l);const t=APP_T[l]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;};
 (function(){const l=localStorage.getItem('sk_lang');const lang=l||detectLang();const t=APP_T[lang]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;})();
+
+const FEAT_T={en:{0:"Nearby restaurant discovery",1:"User reviews",2:"Menu browsing",3:"Quick order links"},ja:{0:"近くのレストラン",1:"ユーザーレビュー",2:"メニュー閲覧",3:"クイックオーダー"}};
+const __oF=applyLang;applyLang=function(l){__oF(l);const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});};
+(function(){const l=localStorage.getItem('sk_lang')||detectLang();const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});})();
 </script>
 </body>
 </html>

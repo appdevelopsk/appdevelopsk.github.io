@@ -92,7 +92,7 @@
 <div class="container">
   <div class="card">
     <h2 data-i18n="features">Key Features</h2>
-    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span>Real-time station map</span></div><div class="feature"><div class="feature-dot"></div><span>Filter by connector type</span></div><div class="feature"><div class="feature-dot"></div><span>Navigation integration</span></div><div class="feature"><div class="feature-dot"></div><span>Save favorite stations</span></div></div>
+    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span data-feat="0">Real-time station map</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="1">Filter by connector type</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="2">Navigation integration</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="3">Save favorite stations</span></div></div>
   </div>
 
   <div class="card">
@@ -169,6 +169,10 @@ applyLang(detectLang());
 const APP_T={en:"Battery & Charging Map",ja:"充電スタンドの混雑・速度をリアルタイム確認",zh:"实时充电站信息",zh_TW:"即時充電站資訊",ko:"실시간 충전소 정보",es:"Info de carga en tiempo real",pt:"Carregamento em tempo real",fr:"Info de recharge en temps réel",de:"Echtzeit-Ladestationsinfo",it:"Info ricarica in tempo reale",ru:"Информация в реальном времени",ar:"معلومات الشحن الآن",th:"ข้อมูลสถานีชาร์จเรียลไทม์",id:"Info pengisian daya real-time",tr:"Gerçek zamanlı şarj bilgisi",nl:"Realtime laadstationinfo",vi:"Thông tin sạc thời gian thực",};
 const _oA=applyLang;applyLang=function(l){_oA(l);const t=APP_T[l]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;};
 (function(){const l=localStorage.getItem('sk_lang');const lang=l||detectLang();const t=APP_T[lang]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;})();
+
+const FEAT_T={en:{0:"Real-time station map",1:"Filter by connector type",2:"Navigation integration",3:"Save favorite stations"},ja:{0:"リアルタイム充電マップ",1:"コネクタ種類で絞り込み",2:"ナビゲーション連携",3:"お気に入り保存"}};
+const __oF=applyLang;applyLang=function(l){__oF(l);const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});};
+(function(){const l=localStorage.getItem('sk_lang')||detectLang();const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});})();
 </script>
 </body>
 </html>

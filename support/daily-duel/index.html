@@ -92,7 +92,7 @@
 <div class="container">
   <div class="card">
     <h2 data-i18n="features">Key Features</h2>
-    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span>Daily puzzles</span></div><div class="feature"><div class="feature-dot"></div><span>Global rankings</span></div><div class="feature"><div class="feature-dot"></div><span>Multiple game modes</span></div><div class="feature"><div class="feature-dot"></div><span>Streak rewards</span></div></div>
+    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span data-feat="0">Daily puzzles</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="1">Global rankings</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="2">Multiple game modes</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="3">Streak rewards</span></div></div>
   </div>
 
   <div class="card">
@@ -169,6 +169,10 @@ applyLang(detectLang());
 const APP_T={en:"Daily 1v1 Quiz Battle",ja:"毎日1回、世界と対決",zh:"每日一战，挑战全球",zh_TW:"每日一挑戰。",ko:"매일 하나의 도전, 전 세계와 대결",es:"Un desafío. Cada día.",pt:"Um desafio. Todo dia.",fr:"Un défi. Chaque jour.",de:"Eine Challenge. Jeden Tag.",it:"Una sfida. Ogni giorno.",ru:"Один вызов. Каждый день.",ar:"تحدٍّ واحد. كل يوم.",th:"ความท้าทายหนึ่งเดียว ทุกวัน",id:"Satu Tantangan. Setiap Hari.",tr:"Bir Meydan Okuma. Her Gün.",nl:"Één uitdaging. Elke dag.",vi:"Một thử thách. Mỗi ngày.",};
 const _oA=applyLang;applyLang=function(l){_oA(l);const t=APP_T[l]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;};
 (function(){const l=localStorage.getItem('sk_lang');const lang=l||detectLang();const t=APP_T[lang]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;})();
+
+const FEAT_T={en:{0:"Daily puzzles",1:"Global rankings",2:"Multiple game modes",3:"Streak rewards"},ja:{0:"デイリーパズル",1:"グローバルランキング",2:"複数のゲームモード",3:"連続ボーナス"}};
+const __oF=applyLang;applyLang=function(l){__oF(l);const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});};
+(function(){const l=localStorage.getItem('sk_lang')||detectLang();const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});})();
 </script>
 </body>
 </html>

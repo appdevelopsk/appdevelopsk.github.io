@@ -92,7 +92,7 @@
 <div class="container">
   <div class="card">
     <h2 data-i18n="features">Key Features</h2>
-    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span>Hundreds of questions</span></div><div class="feature"><div class="feature-dot"></div><span>Difficulty levels</span></div><div class="feature"><div class="feature-dot"></div><span>Custom questions</span></div><div class="feature"><div class="feature-dot"></div><span>Party mode</span></div></div>
+    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span data-feat="0">Hundreds of questions</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="1">Difficulty levels</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="2">Custom questions</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="3">Party mode</span></div></div>
   </div>
 
   <div class="card">
@@ -169,6 +169,10 @@ applyLang(detectLang());
 const APP_T={en:"Party Game for Friends & Dates",ja:"Party Game for Friends & Dates",zh:"Party Game for Friends & Dates",zh_TW:"Party Game for Friends & Dates",ko:"Party Game for Friends & Dates",es:"Party Game for Friends & Dates",pt:"Party Game for Friends & Dates",fr:"Party Game for Friends & Dates",de:"Party Game for Friends & Dates",it:"Party Game for Friends & Dates",ru:"Party Game for Friends & Dates",ar:"Party Game for Friends & Dates",th:"Party Game for Friends & Dates",id:"Party Game for Friends & Dates",tr:"Party Game for Friends & Dates",nl:"Party Game for Friends & Dates",vi:"Party Game for Friends & Dates",};
 const _oA=applyLang;applyLang=function(l){_oA(l);const t=APP_T[l]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;};
 (function(){const l=localStorage.getItem('sk_lang');const lang=l||detectLang();const t=APP_T[lang]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;})();
+
+const FEAT_T={en:{0:"Hundreds of questions",1:"Difficulty levels",2:"Custom questions",3:"Party mode"},ja:{0:"数百の質問",1:"難易度レベル",2:"カスタム質問",3:"パーティーモード"}};
+const __oF=applyLang;applyLang=function(l){__oF(l);const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});};
+(function(){const l=localStorage.getItem('sk_lang')||detectLang();const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});})();
 </script>
 </body>
 </html>

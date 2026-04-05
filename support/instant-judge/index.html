@@ -92,7 +92,7 @@
 <div class="container">
   <div class="card">
     <h2 data-i18n="features">Key Features</h2>
-    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span>Lightning-fast voting</span></div><div class="feature"><div class="feature-dot"></div><span>Trending polls</span></div><div class="feature"><div class="feature-dot"></div><span>Create your own polls</span></div><div class="feature"><div class="feature-dot"></div><span>Real-time results</span></div></div>
+    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span data-feat="0">Lightning-fast voting</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="1">Trending polls</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="2">Create your own polls</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="3">Real-time results</span></div></div>
   </div>
 
   <div class="card">
@@ -169,6 +169,10 @@ applyLang(detectLang());
 const APP_T={en:"Instant Votes & Opinions",ja:"コミュニティが24時間で判定",zh:"社区24小时裁决",zh_TW:"社群24小時裁決",ko:"커뮤니티 24시간 판결",es:"Veredicto comunitario en 24h",pt:"Veredicto da comunidade em 24h",fr:"Verdict communautaire en 24h",de:"Community-Urteil in 24 Stunden",it:"Verdetto community in 24 ore",ru:"Вердикт сообщества за 24 часа",ar:"حكم المجتمع خلال 24 ساعة",th:"คำตัดสินชุมชนใน 24 ชั่วโมง",id:"Vonis komunitas dalam 24 jam",tr:"Topluluk kararı 24 saatte",nl:"Community-oordeel in 24 uur",vi:"Phán quyết cộng đồng trong 24h",};
 const _oA=applyLang;applyLang=function(l){_oA(l);const t=APP_T[l]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;};
 (function(){const l=localStorage.getItem('sk_lang');const lang=l||detectLang();const t=APP_T[lang]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;})();
+
+const FEAT_T={en:{0:"Lightning-fast voting",1:"Trending polls",2:"Create your own polls",3:"Real-time results"},ja:{0:"超高速投票",1:"トレンド投票",2:"投票を作成",3:"リアルタイム結果"}};
+const __oF=applyLang;applyLang=function(l){__oF(l);const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});};
+(function(){const l=localStorage.getItem('sk_lang')||detectLang();const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});})();
 </script>
 </body>
 </html>

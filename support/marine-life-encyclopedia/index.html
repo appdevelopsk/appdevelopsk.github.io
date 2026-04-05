@@ -92,7 +92,7 @@
 <div class="container">
   <div class="card">
     <h2 data-i18n="features">Key Features</h2>
-    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span>500+ marine species</span></div><div class="feature"><div class="feature-dot"></div><span>Ocean zone exploration</span></div><div class="feature"><div class="feature-dot"></div><span>Conservation status</span></div><div class="feature"><div class="feature-dot"></div><span>Deep sea discoveries</span></div></div>
+    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span data-feat="0">500+ marine species</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="1">Ocean zone exploration</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="2">Conservation status</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="3">Deep sea discoveries</span></div></div>
   </div>
 
   <div class="card">
@@ -169,6 +169,10 @@ applyLang(detectLang());
 const APP_T={en:"Marine Life Encyclopedia",ja:"海洋生物図鑑 - 100種の生き物",zh:"海洋生物百科全书",zh_TW:"海洋生物百科全書",ko:"해양 생물 백과사전",es:"Enciclopedia de Vida Marina",pt:"Enciclopédia da Vida Marinha",fr:"Encyclopédie Marine",de:"Meereslebewesen-Lexikon",it:"Enciclopedia della Vita Marina",ru:"Энциклопедия морской жизни",ar:"موسوعة الحياة البحرية",th:"สารานุกรมสิ่งมีชีวิตทะเล",id:"Ensiklopedia Kehidupan Laut",tr:"Deniz Yaşamı Ansiklopedisi",nl:"Encyclopedie van Zeeleven",vi:"Bách khoa Sinh vật Biển",};
 const _oA=applyLang;applyLang=function(l){_oA(l);const t=APP_T[l]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;};
 (function(){const l=localStorage.getItem('sk_lang');const lang=l||detectLang();const t=APP_T[lang]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;})();
+
+const FEAT_T={en:{0:"500+ marine species",1:"Ocean zone exploration",2:"Conservation status",3:"Deep sea discoveries"},ja:{0:"500種以上の海洋生物",1:"海域探索",2:"保全状況",3:"深海の発見"}};
+const __oF=applyLang;applyLang=function(l){__oF(l);const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});};
+(function(){const l=localStorage.getItem('sk_lang')||detectLang();const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});})();
 </script>
 </body>
 </html>

@@ -92,7 +92,7 @@
 <div class="container">
   <div class="card">
     <h2 data-i18n="features">Key Features</h2>
-    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span>Subject roulette</span></div><div class="feature"><div class="feature-dot"></div><span>Custom subject lists</span></div><div class="feature"><div class="feature-dot"></div><span>Study timer</span></div><div class="feature"><div class="feature-dot"></div><span>Progress tracking</span></div></div>
+    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span data-feat="0">Subject roulette</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="1">Custom subject lists</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="2">Study timer</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="3">Progress tracking</span></div></div>
   </div>
 
   <div class="card">
@@ -169,6 +169,10 @@ applyLang(detectLang());
 const APP_T={en:"AI Study Planner & Timer",ja:"AI学習プランナー＆タイマー",zh:"AI学习规划与计时器",zh_TW:"AI學習規劃與計時器",ko:"AI 학습 플래너 & 타이머",es:"Planificador de Estudio con IA",pt:"Planejador de Estudo com IA",fr:"Planificateur d\'Études IA",de:"KI-Lernplaner & Timer",it:"Pianificatore di Studio IA",ru:"ИИ планировщик и таймер",ar:"مخطط دراسة ذكي ومؤقت",th:"แพลนเนอร์เรียน AI และจับเวลา",id:"Perencana Belajar AI & Timer",tr:"AI Ders Planlayıcı & Timer",nl:"AI Studieplanner & Timer",vi:"Lập Kế Hoạch Học Tập AI",};
 const _oA=applyLang;applyLang=function(l){_oA(l);const t=APP_T[l]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;};
 (function(){const l=localStorage.getItem('sk_lang');const lang=l||detectLang();const t=APP_T[lang]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;})();
+
+const FEAT_T={en:{0:"Subject roulette",1:"Custom subject lists",2:"Study timer",3:"Progress tracking"},ja:{0:"科目ルーレット",1:"カスタム科目リスト",2:"学習タイマー",3:"進捗追跡"}};
+const __oF=applyLang;applyLang=function(l){__oF(l);const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});};
+(function(){const l=localStorage.getItem('sk_lang')||detectLang();const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});})();
 </script>
 </body>
 </html>

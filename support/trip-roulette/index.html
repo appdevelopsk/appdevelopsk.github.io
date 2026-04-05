@@ -92,7 +92,7 @@
 <div class="container">
   <div class="card">
     <h2 data-i18n="features">Key Features</h2>
-    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span>Random destination picker</span></div><div class="feature"><div class="feature-dot"></div><span>Budget filters</span></div><div class="feature"><div class="feature-dot"></div><span>Season recommendations</span></div><div class="feature"><div class="feature-dot"></div><span>Travel tips</span></div></div>
+    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span data-feat="0">Random destination picker</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="1">Budget filters</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="2">Season recommendations</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="3">Travel tips</span></div></div>
   </div>
 
   <div class="card">
@@ -169,6 +169,10 @@ applyLang(detectLang());
 const APP_T={en:"Spin & discover today\'s outing",ja:"今日のおでかけをルーレットで",zh:"用轮盘决定今天的出行",zh_TW:"用輪盤決定今天的出行",ko:"오늘의 나들이를 룰렛으로",es:"Gira y descubre tu salida",pt:"Gire e descubra seu passeio",fr:"Tournez & découvrez la sortie",de:"Drehen & Ausflug entdecken",it:"Gira e scopri la tua gita",ru:"Крути и открывай",ar:"دوّر واكتشف رحلتك اليوم",th:"หมุนรูเล็ตเพื่อค้นพบที่เที่ยว",id:"Putar & temukan destinasimu",tr:"Çevir ve günün gezisini keşfet",nl:"Draai & ontdek jouw uitstapje",vi:"Quay & khám phá chuyến đi",};
 const _oA=applyLang;applyLang=function(l){_oA(l);const t=APP_T[l]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;};
 (function(){const l=localStorage.getItem('sk_lang');const lang=l||detectLang();const t=APP_T[lang]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;})();
+
+const FEAT_T={en:{0:"Random destination picker",1:"Budget filters",2:"Season recommendations",3:"Travel tips"},ja:{0:"ランダム行先選択",1:"予算フィルター",2:"季節おすすめ",3:"旅行のコツ"}};
+const __oF=applyLang;applyLang=function(l){__oF(l);const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});};
+(function(){const l=localStorage.getItem('sk_lang')||detectLang();const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});})();
 </script>
 </body>
 </html>

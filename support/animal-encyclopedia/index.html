@@ -92,7 +92,7 @@
 <div class="container">
   <div class="card">
     <h2 data-i18n="features">Key Features</h2>
-    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span>Hundreds of animal species</span></div><div class="feature"><div class="feature-dot"></div><span>Beautiful illustrations</span></div><div class="feature"><div class="feature-dot"></div><span>Search and filter</span></div><div class="feature"><div class="feature-dot"></div><span>Offline access</span></div></div>
+    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span data-feat="0">Hundreds of animal species</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="1">Beautiful illustrations</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="2">Search and filter</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="3">Offline access</span></div></div>
   </div>
 
   <div class="card">
@@ -169,6 +169,10 @@ applyLang(detectLang());
 const APP_T={en:"Animal Encyclopedia & Quiz",ja:"動物図鑑 & クイズ",zh:"动物百科全书与测验",zh_TW:"動物百科全書與測驗",ko:"동물 백과사전 & 퀴즈",es:"Enciclopedia Animal y Quiz",pt:"Enciclopédia Animal e Quiz",fr:"Encyclopédie Animale & Quiz",de:"Tierlexikon & Quiz",it:"Enciclopedia Animale e Quiz",ru:"Энциклопедия и викторина",ar:"موسوعة الحيوانات واختبار",th:"สารานุกรมสัตว์และแบบทดสอบ",id:"Ensiklopedia Hewan & Kuis",tr:"Hayvan Ansiklopedisi ve Quiz",nl:"Dierenencyclopedie & Quiz",vi:"Bách Khoa Động Vật & Câu Đố",};
 const _oA=applyLang;applyLang=function(l){_oA(l);const t=APP_T[l]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;};
 (function(){const l=localStorage.getItem('sk_lang');const lang=l||detectLang();const t=APP_T[lang]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;})();
+
+const FEAT_T={en:{0:"Hundreds of animal species",1:"Beautiful illustrations",2:"Search and filter",3:"Offline access"},ja:{0:"数百種の動物",1:"美しいイラスト",2:"検索とフィルター",3:"オフラインアクセス"}};
+const __oF=applyLang;applyLang=function(l){__oF(l);const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});};
+(function(){const l=localStorage.getItem('sk_lang')||detectLang();const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});})();
 </script>
 </body>
 </html>

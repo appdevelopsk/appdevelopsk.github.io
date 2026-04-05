@@ -92,7 +92,7 @@
 <div class="container">
   <div class="card">
     <h2 data-i18n="features">Key Features</h2>
-    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span>Hundreds of insect species</span></div><div class="feature"><div class="feature-dot"></div><span>Photo identification</span></div><div class="feature"><div class="feature-dot"></div><span>Habitat information</span></div><div class="feature"><div class="feature-dot"></div><span>Fun insect facts</span></div></div>
+    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span data-feat="0">Hundreds of insect species</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="1">Photo identification</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="2">Habitat information</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="3">Fun insect facts</span></div></div>
   </div>
 
   <div class="card">
@@ -169,6 +169,10 @@ applyLang(detectLang());
 const APP_T={en:"Insect Encyclopedia & Quiz",ja:"昆虫図鑑 & クイズ",zh:"昆虫百科与问答",zh_TW:"昆蟲百科與問答",ko:"곤충 백과사전 & 퀴즈",es:"Enciclopedia de Insectos",pt:"Enciclopédia de Insetos",fr:"Encyclopédie des Insectes",de:"Insekten-Enzyklopädie",it:"Enciclopedia degli Insetti",ru:"Энциклопедия насекомых",ar:"موسوعة الحشرات والاختبار",th:"สารานุกรมแมลงและแบบทดสอบ",id:"Ensiklopedia Serangga & Kuis",tr:"Böcek Ansiklopedisi ve Quiz",nl:"Insecten Encyclopedie",vi:"Bách khoa Côn trùng & Quiz",};
 const _oA=applyLang;applyLang=function(l){_oA(l);const t=APP_T[l]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;};
 (function(){const l=localStorage.getItem('sk_lang');const lang=l||detectLang();const t=APP_T[lang]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;})();
+
+const FEAT_T={en:{0:"Hundreds of insect species",1:"Photo identification",2:"Habitat information",3:"Fun insect facts"},ja:{0:"数百種の昆虫",1:"写真で識別",2:"生息地情報",3:"昆虫の豆知識"}};
+const __oF=applyLang;applyLang=function(l){__oF(l);const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});};
+(function(){const l=localStorage.getItem('sk_lang')||detectLang();const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});})();
 </script>
 </body>
 </html>

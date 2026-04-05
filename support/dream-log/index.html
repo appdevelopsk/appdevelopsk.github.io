@@ -92,7 +92,7 @@
 <div class="container">
   <div class="card">
     <h2 data-i18n="features">Key Features</h2>
-    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span>Dream journal with tags</span></div><div class="feature"><div class="feature-dot"></div><span>World dream map</span></div><div class="feature"><div class="feature-dot"></div><span>Dream pattern analysis</span></div><div class="feature"><div class="feature-dot"></div><span>Dream sharing community</span></div></div>
+    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span data-feat="0">Dream journal with tags</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="1">World dream map</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="2">Dream pattern analysis</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="3">Dream sharing community</span></div></div>
   </div>
 
   <div class="card">
@@ -169,6 +169,10 @@ applyLang(detectLang());
 const APP_T={en:"Sleep Journal & Rest Tracker",ja:"睡眠日記＆レスト改善トラッカー",zh:"睡眠日记与休息追踪",zh_TW:"睡眠日記與休息追蹤",ko:"수면 저널 & 휴식 트래커",es:"Diario de Sueño & Descanso",pt:"Diário de Sono & Descanso",fr:"Journal de Sommeil & Repos",de:"Schlaftagebuch & Erholung",it:"Diario del Sonno & Riposo",ru:"Дневник сна и трекер отдыха",ar:"مجلة النوم ومتتبع الراحة",th:"บันทึกการนอน & ติดตามการพัก",id:"Jurnal Tidur & Istirahat",tr:"Uyku Günlüğü & Dinlenme",nl:"Slaapdagboek & Rust Tracker",vi:"Nhật Ký Ngủ & Nghỉ Ngơi",};
 const _oA=applyLang;applyLang=function(l){_oA(l);const t=APP_T[l]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;};
 (function(){const l=localStorage.getItem('sk_lang');const lang=l||detectLang();const t=APP_T[lang]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;})();
+
+const FEAT_T={en:{0:"Dream journal with tags",1:"World dream map",2:"Dream pattern analysis",3:"Dream sharing community"},ja:{0:"タグ付き夢日記",1:"世界の夢マップ",2:"夢パターン分析",3:"夢共有コミュニティ"}};
+const __oF=applyLang;applyLang=function(l){__oF(l);const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});};
+(function(){const l=localStorage.getItem('sk_lang')||detectLang();const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});})();
 </script>
 </body>
 </html>

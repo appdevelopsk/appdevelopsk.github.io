@@ -92,7 +92,7 @@
 <div class="container">
   <div class="card">
     <h2 data-i18n="features">Key Features</h2>
-    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span>Quick meeting notes</span></div><div class="feature"><div class="feature-dot"></div><span>Action item tracking</span></div><div class="feature"><div class="feature-dot"></div><span>Meeting history</span></div><div class="feature"><div class="feature-dot"></div><span>Export and share</span></div></div>
+    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span data-feat="0">Quick meeting notes</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="1">Action item tracking</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="2">Meeting history</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="3">Export and share</span></div></div>
   </div>
 
   <div class="card">
@@ -169,6 +169,10 @@ applyLang(detectLang());
 const APP_T={en:"Meeting Reflection Journal",ja:"会議後の感情整理アプリ",zh:"会议情绪反思日记",zh_TW:"會議情緒反思日記",ko:"회의 감정 반성 일지",es:"Diario de reflexión laboral",pt:"Diário de reflexão de reuniões",fr:"Journal réunions & émotions",de:"Meeting-Reflexions-Tagebuch",it:"Diario di riflessione riunioni",ru:"Дневник рефлексии встреч",ar:"مجلة تأمل في اجتماعاتك",th:"ไดอารี่สะท้อนความคิดหลังประชุม",id:"Jurnal refleksi rapat harian",tr:"Toplantı yansıma günlüğü",nl:"Vergadering reflectie dagboek",vi:"Nhật ký suy ngẫm sau cuộc họp",};
 const _oA=applyLang;applyLang=function(l){_oA(l);const t=APP_T[l]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;};
 (function(){const l=localStorage.getItem('sk_lang');const lang=l||detectLang();const t=APP_T[lang]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;})();
+
+const FEAT_T={en:{0:"Quick meeting notes",1:"Action item tracking",2:"Meeting history",3:"Export and share"},ja:{0:"素早い会議メモ",1:"アクション項目追跡",2:"会議履歴",3:"エクスポートと共有"}};
+const __oF=applyLang;applyLang=function(l){__oF(l);const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});};
+(function(){const l=localStorage.getItem('sk_lang')||detectLang();const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});})();
 </script>
 </body>
 </html>

@@ -92,7 +92,7 @@
 <div class="container">
   <div class="card">
     <h2 data-i18n="features">Key Features</h2>
-    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span>Warranty scanning</span></div><div class="feature"><div class="feature-dot"></div><span>Expiry reminders</span></div><div class="feature"><div class="feature-dot"></div><span>Receipt photo storage</span></div><div class="feature"><div class="feature-dot"></div><span>Category organization</span></div></div>
+    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span data-feat="0">Warranty scanning</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="1">Expiry reminders</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="2">Receipt photo storage</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="3">Category organization</span></div></div>
   </div>
 
   <div class="card">
@@ -169,6 +169,10 @@ applyLang(detectLang());
 const APP_T={en:"Track Product Warranties",ja:"製品の保証期限を管理",zh:"追踪产品保修期限",zh_TW:"追蹤產品保固期限",ko:"제품 보증기간 관리",es:"Gestiona Tus Garantías",pt:"Gerencie Garantias de Produtos",fr:"Suivez vos Garanties Produits",de:"Produktgarantien verwalten",it:"Gestisci le Garanzie Prodotti",ru:"Управление гарантиями",ar:"تتبع ضمانات المنتجات",th:"ติดตามการรับประกันสินค้า",id:"Kelola Garansi Produk Anda",tr:"Ürün Garantilerini Takip Edin",nl:"Beheer Productgaranties",vi:"Quản lý bảo hành sản phẩm",};
 const _oA=applyLang;applyLang=function(l){_oA(l);const t=APP_T[l]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;};
 (function(){const l=localStorage.getItem('sk_lang');const lang=l||detectLang();const t=APP_T[lang]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;})();
+
+const FEAT_T={en:{0:"Warranty scanning",1:"Expiry reminders",2:"Receipt photo storage",3:"Category organization"},ja:{0:"保証書スキャン",1:"期限リマインダー",2:"レシート写真保存",3:"カテゴリ整理"}};
+const __oF=applyLang;applyLang=function(l){__oF(l);const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});};
+(function(){const l=localStorage.getItem('sk_lang')||detectLang();const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});})();
 </script>
 </body>
 </html>

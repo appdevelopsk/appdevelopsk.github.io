@@ -92,7 +92,7 @@
 <div class="container">
   <div class="card">
     <h2 data-i18n="features">Key Features</h2>
-    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span>AI-generated roasts</span></div><div class="feature"><div class="feature-dot"></div><span>Friend roast mode</span></div><div class="feature"><div class="feature-dot"></div><span>Roast rating system</span></div><div class="feature"><div class="feature-dot"></div><span>Share on social media</span></div></div>
+    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span data-feat="0">AI-generated roasts</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="1">Friend roast mode</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="2">Roast rating system</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="3">Share on social media</span></div></div>
   </div>
 
   <div class="card">
@@ -169,6 +169,10 @@ applyLang(detectLang());
 const APP_T={en:"Post Photos, Get Roasted",ja:"写真を投稿、世界からツッコミ",zh:"发照片，接受全球吐槽",zh_TW:"發照片，接受全球吐槽",ko:"사진 올리고, 전 세계에서 디스받자",es:"Sube fotos, recibe críticas",pt:"Poste fotos, receba zoeiras",fr:"Poste & fais-toi roaster",de:"Fotos posten, geroastet werden",it:"Posta foto, fatti roastare",ru:"Выкладывай фото, получай роаст",ar:"انشر صورك واحصل على تعليقات",th:"โพสต์รูป รับคอมเมนต์แซว",id:"Upload foto, di-roasting dunia",tr:"Fotoğraf paylaş, eleştiri al",nl:"Post foto\'s, word geroast",vi:"Đăng ảnh, nhận bình luận roast",};
 const _oA=applyLang;applyLang=function(l){_oA(l);const t=APP_T[l]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;};
 (function(){const l=localStorage.getItem('sk_lang');const lang=l||detectLang();const t=APP_T[lang]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;})();
+
+const FEAT_T={en:{0:"AI-generated roasts",1:"Friend roast mode",2:"Roast rating system",3:"Share on social media"},ja:{0:"AIロースト",1:"友達ローストモード",2:"ロースト評価",3:"SNSでシェア"}};
+const __oF=applyLang;applyLang=function(l){__oF(l);const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});};
+(function(){const l=localStorage.getItem('sk_lang')||detectLang();const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});})();
 </script>
 </body>
 </html>

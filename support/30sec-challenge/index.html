@@ -92,7 +92,7 @@
 <div class="container">
   <div class="card">
     <h2 data-i18n="features">Key Features</h2>
-    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span>Multiple quiz categories</span></div><div class="feature"><div class="feature-dot"></div><span>Global leaderboards</span></div><div class="feature"><div class="feature-dot"></div><span>Daily challenges</span></div><div class="feature"><div class="feature-dot"></div><span>Score tracking and stats</span></div></div>
+    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span data-feat="0">Multiple quiz categories</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="1">Global leaderboards</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="2">Daily challenges</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="3">Score tracking and stats</span></div></div>
   </div>
 
   <div class="card">
@@ -169,6 +169,10 @@ applyLang(detectLang());
 const APP_T={en:"Record. Compete. Go Viral.",ja:"毎日の動画チャレンジ＆投票",zh:"每日短视频挑战与投票",zh_TW:"每日短影音挑戰與投票",ko:"매일 영상 챌린지 & 투표",es:"Reto diario de video y votos",pt:"Desafio diário de vídeo e voto",fr:"Défi vidéo quotidien & votes",de:"Tägliche Video-Challenge &Vote",it:"Sfida video quotidiana e voti",ru:"Ежедневный видеочеллендж",ar:"تحدي الفيديو اليومي والتصويت",th:"ชาเลนจ์วิดีโอรายวันและโหวต",id:"Tantangan video harian voting",tr:"Günlük video meydan okuması",nl:"Dagelijkse video uitdaging",vi:"Thử thách video hàng ngày",};
 const _oA=applyLang;applyLang=function(l){_oA(l);const t=APP_T[l]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;};
 (function(){const l=localStorage.getItem('sk_lang');const lang=l||detectLang();const t=APP_T[lang]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;})();
+
+const FEAT_T={en:{0:"Multiple quiz categories",1:"Global leaderboards",2:"Daily challenges",3:"Score tracking and stats"},ja:{0:"多彩なクイズカテゴリ",1:"グローバルランキング",2:"デイリーチャレンジ",3:"スコア追跡と統計"}};
+const __oF=applyLang;applyLang=function(l){__oF(l);const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});};
+(function(){const l=localStorage.getItem('sk_lang')||detectLang();const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});})();
 </script>
 </body>
 </html>

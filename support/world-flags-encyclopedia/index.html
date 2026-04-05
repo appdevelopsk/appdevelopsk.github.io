@@ -92,7 +92,7 @@
 <div class="container">
   <div class="card">
     <h2 data-i18n="features">Key Features</h2>
-    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span>All world flags</span></div><div class="feature"><div class="feature-dot"></div><span>Country profiles</span></div><div class="feature"><div class="feature-dot"></div><span>Flag quiz games</span></div><div class="feature"><div class="feature-dot"></div><span>Historical flag changes</span></div></div>
+    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span data-feat="0">All world flags</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="1">Country profiles</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="2">Flag quiz games</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="3">Historical flag changes</span></div></div>
   </div>
 
   <div class="card">
@@ -169,6 +169,10 @@ applyLang(detectLang());
 const APP_T={en:"World Flags Encyclopedia",ja:"世界の国旗図鑑",zh:"世界国旗百科",zh_TW:"世界國旗百科",ko:"세계 국기 백과사전",es:"Enciclopedia de Banderas",pt:"Enciclopédia de Bandeiras",fr:"Encyclopédie des Drapeaux",de:"Flaggen-Enzyklopädie",it:"Enciclopedia delle Bandiere",ru:"Энциклопедия флагов мира",ar:"موسوعة أعلام العالم",th:"สารานุกรมธงชาติโลก",id:"Ensiklopedia Bendera Dunia",tr:"Dünya Bayrakları Ansiklopedisi",nl:"Wereld Vlaggen Encyclopedie",vi:"Bách khoa Quốc kỳ Thế giới",};
 const _oA=applyLang;applyLang=function(l){_oA(l);const t=APP_T[l]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;};
 (function(){const l=localStorage.getItem('sk_lang');const lang=l||detectLang();const t=APP_T[lang]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;})();
+
+const FEAT_T={en:{0:"All world flags",1:"Country profiles",2:"Flag quiz games",3:"Historical flag changes"},ja:{0:"全世界の国旗",1:"国プロフィール",2:"国旗クイズ",3:"国旗の歴史"}};
+const __oF=applyLang;applyLang=function(l){__oF(l);const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});};
+(function(){const l=localStorage.getItem('sk_lang')||detectLang();const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});})();
 </script>
 </body>
 </html>

@@ -92,7 +92,7 @@
 <div class="container">
   <div class="card">
     <h2 data-i18n="features">Key Features</h2>
-    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span>Quick win entries</span></div><div class="feature"><div class="feature-dot"></div><span>Streak tracking</span></div><div class="feature"><div class="feature-dot"></div><span>Weekly summaries</span></div><div class="feature"><div class="feature-dot"></div><span>Reflection prompts</span></div></div>
+    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span data-feat="0">Quick win entries</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="1">Streak tracking</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="2">Weekly summaries</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="3">Reflection prompts</span></div></div>
   </div>
 
   <div class="card">
@@ -169,6 +169,10 @@ applyLang(detectLang());
 const APP_T={en:"Log Wins & Build Momentum",ja:"Log Wins & Build Momentum",zh:"Log Wins & Build Momentum",zh_TW:"Log Wins & Build Momentum",ko:"Log Wins & Build Momentum",es:"Log Wins & Build Momentum",pt:"Log Wins & Build Momentum",fr:"Log Wins & Build Momentum",de:"Log Wins & Build Momentum",it:"Log Wins & Build Momentum",ru:"Log Wins & Build Momentum",ar:"Log Wins & Build Momentum",th:"Log Wins & Build Momentum",id:"Log Wins & Build Momentum",tr:"Log Wins & Build Momentum",nl:"Log Wins & Build Momentum",vi:"Log Wins & Build Momentum",};
 const _oA=applyLang;applyLang=function(l){_oA(l);const t=APP_T[l]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;};
 (function(){const l=localStorage.getItem('sk_lang');const lang=l||detectLang();const t=APP_T[lang]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;})();
+
+const FEAT_T={en:{0:"Quick win entries",1:"Streak tracking",2:"Weekly summaries",3:"Reflection prompts"},ja:{0:"クイック記録",1:"ストリーク追跡",2:"週次サマリー",3:"振り返りプロンプト"}};
+const __oF=applyLang;applyLang=function(l){__oF(l);const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});};
+(function(){const l=localStorage.getItem('sk_lang')||detectLang();const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});})();
 </script>
 </body>
 </html>

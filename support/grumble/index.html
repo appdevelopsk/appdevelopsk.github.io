@@ -92,7 +92,7 @@
 <div class="container">
   <div class="card">
     <h2 data-i18n="features">Key Features</h2>
-    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span>Anonymous venting</span></div><div class="feature"><div class="feature-dot"></div><span>Community support</span></div><div class="feature"><div class="feature-dot"></div><span>Mood tracking</span></div><div class="feature"><div class="feature-dot"></div><span>Daily stress release</span></div></div>
+    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span data-feat="0">Anonymous venting</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="1">Community support</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="2">Mood tracking</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="3">Daily stress release</span></div></div>
   </div>
 
   <div class="card">
@@ -169,6 +169,10 @@ applyLang(detectLang());
 const APP_T={en:"Post & React to Complaints",ja:"グチを投稿してスッキリしよう",zh:"发泄、共鸣、感受理解",zh_TW:"發洩、共鳴、感受理解",ko:"익명으로 투덜거리고 공감받자",es:"Publica quejas y reacciona",pt:"Poste reclamações e reaja",fr:"Publiez vos plaintes anon.",de:"Beschwerden anonym teilen",it:"Posta lamentele e reagisci",ru:"Публикуй жалобы и реагируй",ar:"انشر شكاواك وتفاعل مع الآخرين",th:"โพสต์บ่นและรีแอ็กต์กับคนอื่น",id:"Posting keluhan dan bereaksi",tr:"Şikayet paylaş ve tepki ver",nl:"Post klachten en reageer",vi:"Đăng phàn nàn và phản ứng",};
 const _oA=applyLang;applyLang=function(l){_oA(l);const t=APP_T[l]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;};
 (function(){const l=localStorage.getItem('sk_lang');const lang=l||detectLang();const t=APP_T[lang]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;})();
+
+const FEAT_T={en:{0:"Anonymous venting",1:"Community support",2:"Mood tracking",3:"Daily stress release"},ja:{0:"匿名で発散",1:"コミュニティ",2:"気分追跡",3:"ストレス発散"}};
+const __oF=applyLang;applyLang=function(l){__oF(l);const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});};
+(function(){const l=localStorage.getItem('sk_lang')||detectLang();const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});})();
 </script>
 </body>
 </html>

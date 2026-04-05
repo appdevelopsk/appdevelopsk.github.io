@@ -92,7 +92,7 @@
 <div class="container">
   <div class="card">
     <h2 data-i18n="features">Key Features</h2>
-    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span>Anime/manga database</span></div><div class="feature"><div class="feature-dot"></div><span>Community discussions</span></div><div class="feature"><div class="feature-dot"></div><span>Watch/read lists</span></div><div class="feature"><div class="feature-dot"></div><span>Recommendations</span></div></div>
+    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span data-feat="0">Anime/manga database</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="1">Community discussions</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="2">Watch/read lists</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="3">Recommendations</span></div></div>
   </div>
 
   <div class="card">
@@ -169,6 +169,10 @@ applyLang(detectLang());
 const APP_T={en:"Your Virtual Buddy & Friend",ja:"究極の2択クイズ",zh:"终极二选一问答",zh_TW:"終極二選一問答",ko:"최강 2지선다 퀴즈",es:"Quiz definitivo de 2 opciones",pt:"Quiz definitivo de 2 escolhas",fr:"Quiz ultime à 2 choix",de:"Das ultimative 2-Wahl-Quiz",it:"Quiz definitivo a 2 scelte",ru:"Квиз на два варианта",ar:"اختبار الخيارين المطلق",th:"ควิซ 2 ตัวเลือกสุดมันส์",id:"Kuis 2 pilihan terbaik",tr:"En iyi 2 seçenekli quiz",nl:"Ultieme 2-keuze quiz",vi:"Câu đố 2 lựa chọn tối thượng",};
 const _oA=applyLang;applyLang=function(l){_oA(l);const t=APP_T[l]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;};
 (function(){const l=localStorage.getItem('sk_lang');const lang=l||detectLang();const t=APP_T[lang]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;})();
+
+const FEAT_T={en:{0:"Anime/manga database",1:"Community discussions",2:"Watch/read lists",3:"Recommendations"},ja:{0:"アニメ・漫画データベース",1:"コミュニティ",2:"視聴・読書リスト",3:"おすすめ"}};
+const __oF=applyLang;applyLang=function(l){__oF(l);const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});};
+(function(){const l=localStorage.getItem('sk_lang')||detectLang();const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});})();
 </script>
 </body>
 </html>

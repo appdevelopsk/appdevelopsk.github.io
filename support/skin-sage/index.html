@@ -92,7 +92,7 @@
 <div class="container">
   <div class="card">
     <h2 data-i18n="features">Key Features</h2>
-    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span>AI skin analysis</span></div><div class="feature"><div class="feature-dot"></div><span>Personalized routines</span></div><div class="feature"><div class="feature-dot"></div><span>Product recommendations</span></div><div class="feature"><div class="feature-dot"></div><span>Progress photos</span></div></div>
+    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span data-feat="0">AI skin analysis</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="1">Personalized routines</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="2">Product recommendations</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="3">Progress photos</span></div></div>
   </div>
 
   <div class="card">
@@ -169,6 +169,10 @@ applyLang(detectLang());
 const APP_T={en:"AI Skin Analysis & Routine",ja:"AI肌分析・パーソナルルーティン",zh:"AI肌肤分析与护肤程序",zh_TW:"AI肌膚分析與保養程序",ko:"AI 피부 분석 & 루틴",es:"Análisis de Piel IA & Rutina",pt:"Análise de Pele IA & Rotina",fr:"Analyse de Peau IA & Routine",de:"KI-Hautanalyse & Pfegeroutine",it:"Analisi Pelle IA & Routine",ru:"ИИ-анализ кожи и уход",ar:"تحليل البشرة بالذكاء الاصطناعي",th:"วิเคราะห์ผิวด้วย AI & รูทีน",id:"Analisis Kulit AI & Rutinitas",tr:"AI Cilt Analizi & Rutin",nl:"AI Huidanalyse & Verzorging",vi:"Phân tích da AI & Quy trình",};
 const _oA=applyLang;applyLang=function(l){_oA(l);const t=APP_T[l]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;};
 (function(){const l=localStorage.getItem('sk_lang');const lang=l||detectLang();const t=APP_T[lang]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;})();
+
+const FEAT_T={en:{0:"AI skin analysis",1:"Personalized routines",2:"Product recommendations",3:"Progress photos"},ja:{0:"AIスキン分析",1:"パーソナライズルーティン",2:"商品推薦",3:"経過写真"}};
+const __oF=applyLang;applyLang=function(l){__oF(l);const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});};
+(function(){const l=localStorage.getItem('sk_lang')||detectLang();const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});})();
 </script>
 </body>
 </html>

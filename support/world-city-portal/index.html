@@ -92,7 +92,7 @@
 <div class="container">
   <div class="card">
     <h2 data-i18n="features">Key Features</h2>
-    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span>City profiles</span></div><div class="feature"><div class="feature-dot"></div><span>Local recommendations</span></div><div class="feature"><div class="feature-dot"></div><span>Safety information</span></div><div class="feature"><div class="feature-dot"></div><span>Cost of living data</span></div></div>
+    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span data-feat="0">City profiles</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="1">Local recommendations</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="2">Safety information</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="3">Cost of living data</span></div></div>
   </div>
 
   <div class="card">
@@ -169,6 +169,10 @@ applyLang(detectLang());
 const APP_T={en:"Explore Cities Worldwide",ja:"世界の都市情報をまとめて確認",zh:"探索全球城市信息",zh_TW:"探索全球城市資訊",ko:"전 세계 도시 정보 탐색",es:"Explora ciudades del mundo",pt:"Explore cidades do mundo todo",fr:"Explorez les villes du monde",de:"Städte weltweit entdecken",it:"Esplora città nel mondo",ru:"Исследуйте города мира",ar:"استكشف مدن العالم",th:"สำรวจเมืองทั่วโลก",id:"Jelajahi Kota di Seluruh Dunia",tr:"Dünya Şehirlerini Keşfet",nl:"Verken steden wereldwijd",vi:"Khám phá thành phố thế giới",};
 const _oA=applyLang;applyLang=function(l){_oA(l);const t=APP_T[l]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;};
 (function(){const l=localStorage.getItem('sk_lang');const lang=l||detectLang();const t=APP_T[lang]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;})();
+
+const FEAT_T={en:{0:"City profiles",1:"Local recommendations",2:"Safety information",3:"Cost of living data"},ja:{0:"都市プロフィール",1:"ローカルおすすめ",2:"安全情報",3:"生活費データ"}};
+const __oF=applyLang;applyLang=function(l){__oF(l);const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});};
+(function(){const l=localStorage.getItem('sk_lang')||detectLang();const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});})();
 </script>
 </body>
 </html>

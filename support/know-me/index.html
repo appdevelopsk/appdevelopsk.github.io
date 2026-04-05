@@ -92,7 +92,7 @@
 <div class="container">
   <div class="card">
     <h2 data-i18n="features">Key Features</h2>
-    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span>Custom quiz creator</span></div><div class="feature"><div class="feature-dot"></div><span>Share with friends</span></div><div class="feature"><div class="feature-dot"></div><span>Score comparisons</span></div><div class="feature"><div class="feature-dot"></div><span>Fun question templates</span></div></div>
+    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span data-feat="0">Custom quiz creator</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="1">Share with friends</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="2">Score comparisons</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="3">Fun question templates</span></div></div>
   </div>
 
   <div class="card">
@@ -169,6 +169,10 @@ applyLang(detectLang());
 const APP_T={en:"Friends Quiz & Personality",ja:"クイズ作成＆友達テスト",zh:"创建测验，考验朋友",zh_TW:"建立測驗，考驗朋友",ko:"퀴즈 만들고 친구 테스트하기",es:"Crea quizzes y reta amigos",pt:"Crie quizzes e teste amigos",fr:"Quiz & défier vos amis",de:"Quizze & Freunde herausfordern",it:"Crea quiz, sfida gli amici",ru:"Создай викторину для друзей",ar:"أنشئ اختبارات واختبر أصدقاءك",th:"สร้างควิซและทดสอบเพื่อน",id:"Buat kuis & uji temanmu",tr:"Test yap ve arkadaşı sına",nl:"Maak quizzen en test vrienden",vi:"Tạo câu đố & thử thách bạn bè",};
 const _oA=applyLang;applyLang=function(l){_oA(l);const t=APP_T[l]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;};
 (function(){const l=localStorage.getItem('sk_lang');const lang=l||detectLang();const t=APP_T[lang]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;})();
+
+const FEAT_T={en:{0:"Custom quiz creator",1:"Share with friends",2:"Score comparisons",3:"Fun question templates"},ja:{0:"カスタムクイズ作成",1:"友達とシェア",2:"スコア比較",3:"楽しい質問テンプレート"}};
+const __oF=applyLang;applyLang=function(l){__oF(l);const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});};
+(function(){const l=localStorage.getItem('sk_lang')||detectLang();const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});})();
 </script>
 </body>
 </html>

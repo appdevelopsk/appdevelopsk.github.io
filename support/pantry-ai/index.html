@@ -92,7 +92,7 @@
 <div class="container">
   <div class="card">
     <h2 data-i18n="features">Key Features</h2>
-    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span>Ingredient-based recipes</span></div><div class="feature"><div class="feature-dot"></div><span>AI recipe generation</span></div><div class="feature"><div class="feature-dot"></div><span>Dietary preferences</span></div><div class="feature"><div class="feature-dot"></div><span>Save favorite recipes</span></div></div>
+    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span data-feat="0">Ingredient-based recipes</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="1">AI recipe generation</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="2">Dietary preferences</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="3">Save favorite recipes</span></div></div>
   </div>
 
   <div class="card">
@@ -169,6 +169,10 @@ applyLang(detectLang());
 const APP_T={en:"AI Pantry & Recipe Manager",ja:"AIレシピ提案＆食材管理",zh:"AI智能食谱与食材管理",zh_TW:"AI智慧食譜與食材管理",ko:"AI 식단 플래너 & 식품 관리",es:"Planificador de Comidas con IA",pt:"Planejador de Refeições com IA",fr:"Planificateur de repas IA",de:"KI-Mahlzeitenplaner & Vorrat",it:"Pianificatore Pasti IA",ru:"ИИ-планировщик питания",ar:"مخطط وجبات بالذكاء الاصطناعي",th:"วางแผนอาหารด้วย AI",id:"Perencana Makan AI & Dapur",tr:"AI Yemek Planlayıcı & Kiler",nl:"AI Maaltijdplanner & Voorraad",vi:"Lập kế hoạch bữa ăn bằng AI",};
 const _oA=applyLang;applyLang=function(l){_oA(l);const t=APP_T[l]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;};
 (function(){const l=localStorage.getItem('sk_lang');const lang=l||detectLang();const t=APP_T[lang]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;})();
+
+const FEAT_T={en:{0:"Ingredient-based recipes",1:"AI recipe generation",2:"Dietary preferences",3:"Save favorite recipes"},ja:{0:"食材ベースレシピ",1:"AIレシピ生成",2:"食事の好み",3:"お気に入りレシピ保存"}};
+const __oF=applyLang;applyLang=function(l){__oF(l);const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});};
+(function(){const l=localStorage.getItem('sk_lang')||detectLang();const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});})();
 </script>
 </body>
 </html>

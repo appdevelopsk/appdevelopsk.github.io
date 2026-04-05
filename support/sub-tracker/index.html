@@ -92,7 +92,7 @@
 <div class="container">
   <div class="card">
     <h2 data-i18n="features">Key Features</h2>
-    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span>Subscription dashboard</span></div><div class="feature"><div class="feature-dot"></div><span>Renewal reminders</span></div><div class="feature"><div class="feature-dot"></div><span>Monthly cost overview</span></div><div class="feature"><div class="feature-dot"></div><span>Cancel tracking</span></div></div>
+    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span data-feat="0">Subscription dashboard</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="1">Renewal reminders</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="2">Monthly cost overview</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="3">Cancel tracking</span></div></div>
   </div>
 
   <div class="card">
@@ -169,6 +169,10 @@ applyLang(detectLang());
 const APP_T={en:"Track & Manage All Your Subs",ja:"サブスクの支出を簡単に把握",zh:"轻松追踪和管理所有订阅",zh_TW:"輕鬆追蹤和管理所有訂閱",ko:"모든 구독을 쉽게 추적하고 관리",es:"Rastrea tus suscripciones",pt:"Rastreie suas assinaturas",fr:"Gérez tous vos abonnements",de:"Abos verfolgen und verwalten",it:"Gestisci i tuoi abbonamenti",ru:"Отслеживайте все ваши подписки",ar:"تتبع وإدارة جميع اشتراكاتك",th:"ติดตามและจัดการการสมัครสมาชิก",id:"Lacak & kelola semua langganan",tr:"Aboneliklerini takip ve yönet",nl:"Volg en beheer je abonnementen",vi:"Theo dõi & quản lý đăng ký",};
 const _oA=applyLang;applyLang=function(l){_oA(l);const t=APP_T[l]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;};
 (function(){const l=localStorage.getItem('sk_lang');const lang=l||detectLang();const t=APP_T[lang]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;})();
+
+const FEAT_T={en:{0:"Subscription dashboard",1:"Renewal reminders",2:"Monthly cost overview",3:"Cancel tracking"},ja:{0:"サブスク管理画面",1:"更新リマインダー",2:"月額コスト概要",3:"解約追跡"}};
+const __oF=applyLang;applyLang=function(l){__oF(l);const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});};
+(function(){const l=localStorage.getItem('sk_lang')||detectLang();const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});})();
 </script>
 </body>
 </html>

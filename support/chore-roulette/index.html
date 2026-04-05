@@ -92,7 +92,7 @@
 <div class="container">
   <div class="card">
     <h2 data-i18n="features">Key Features</h2>
-    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span>Customizable chore list</span></div><div class="feature"><div class="feature-dot"></div><span>Fair random assignment</span></div><div class="feature"><div class="feature-dot"></div><span>Family member profiles</span></div><div class="feature"><div class="feature-dot"></div><span>Chore history tracking</span></div></div>
+    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span data-feat="0">Customizable chore list</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="1">Fair random assignment</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="2">Family member profiles</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="3">Chore history tracking</span></div></div>
   </div>
 
   <div class="card">
@@ -169,6 +169,10 @@ applyLang(detectLang());
 const APP_T={en:"Spin & assign household chores",ja:"Spin & assign household chores",zh:"Spin & assign household chores",zh_TW:"Spin & assign household chores",ko:"Spin & assign household chores",es:"Spin & assign household chores",pt:"Spin & assign household chores",fr:"Spin & assign household chores",de:"Spin & assign household chores",it:"Spin & assign household chores",ru:"Spin & assign household chores",ar:"Spin & assign household chores",th:"Spin & assign household chores",id:"Spin & assign household chores",tr:"Spin & assign household chores",nl:"Spin & assign household chores",vi:"Spin & assign household chores",};
 const _oA=applyLang;applyLang=function(l){_oA(l);const t=APP_T[l]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;};
 (function(){const l=localStorage.getItem('sk_lang');const lang=l||detectLang();const t=APP_T[lang]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;})();
+
+const FEAT_T={en:{0:"Customizable chore list",1:"Fair random assignment",2:"Family member profiles",3:"Chore history tracking"},ja:{0:"カスタム家事リスト",1:"公平なランダム割り当て",2:"家族プロフィール",3:"家事履歴追跡"}};
+const __oF=applyLang;applyLang=function(l){__oF(l);const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});};
+(function(){const l=localStorage.getItem('sk_lang')||detectLang();const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});})();
 </script>
 </body>
 </html>

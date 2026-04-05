@@ -92,7 +92,7 @@
 <div class="container">
   <div class="card">
     <h2 data-i18n="features">Key Features</h2>
-    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span>Thousands of photo locations</span></div><div class="feature"><div class="feature-dot"></div><span>Multiple difficulty modes</span></div><div class="feature"><div class="feature-dot"></div><span>Score tracking</span></div><div class="feature"><div class="feature-dot"></div><span>Learn geography facts</span></div></div>
+    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span data-feat="0">Thousands of photo locations</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="1">Multiple difficulty modes</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="2">Score tracking</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="3">Learn geography facts</span></div></div>
   </div>
 
   <div class="card">
@@ -169,6 +169,10 @@ applyLang(detectLang());
 const APP_T={en:"Guess Where in the World",ja:"世界のどこか当ててみよう",zh:"猜猜这是世界哪里",zh_TW:"猜猜這是世界哪裡",ko:"세계 어디일까요?",es:"Adivina dónde en el mundo",pt:"Adivinhe onde no mundo",fr:"Devinez où dans le monde",de:"Rate wo auf der Welt",it:"Indovina dove nel mondo",ru:"Угадай где в мире",ar:"خمن أين في العالم",th:"ทายว่าอยู่ที่ไหนในโลก",id:"Tebak di mana di dunia",tr:"Dünyanın neresinde tahmin et",nl:"Raad waar ter wereld",vi:"Đoán nơi nào trên thế giới",};
 const _oA=applyLang;applyLang=function(l){_oA(l);const t=APP_T[l]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;};
 (function(){const l=localStorage.getItem('sk_lang');const lang=l||detectLang();const t=APP_T[lang]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;})();
+
+const FEAT_T={en:{0:"Thousands of photo locations",1:"Multiple difficulty modes",2:"Score tracking",3:"Learn geography facts"},ja:{0:"数千の写真ロケーション",1:"複数の難易度",2:"スコア追跡",3:"地理を学ぶ"}};
+const __oF=applyLang;applyLang=function(l){__oF(l);const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});};
+(function(){const l=localStorage.getItem('sk_lang')||detectLang();const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});})();
 </script>
 </body>
 </html>
