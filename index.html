@@ -198,6 +198,7 @@
       width: 56px; height: 56px; border-radius: 14px; flex-shrink: 0;
       display: flex; align-items: center; justify-content: center; font-size: 1.5rem;
     }
+    .app-icon { width: 56px; height: 56px; border-radius: 14px; flex-shrink: 0; object-fit: cover; }
     .app-info h4 { font-size: 0.95rem; font-weight: 600; margin-bottom: 4px; }
     .app-info p { color: var(--text-secondary); font-size: 0.8rem; line-height: 1.5; }
     .app-tag {
@@ -349,100 +350,100 @@
     <p data-i18n="featured_desc">A selection of our most popular apps across categories</p>
   </div>
   <div class="apps-grid">
-    <a class="app-card" href="support/30sec-challenge/">
-      <div class="app-icon-placeholder" style="background: linear-gradient(135deg, #ff6b6b, #ee5a24);">&#x23F1;</div>
-      <div class="app-info">
-        <h4>30sec Challenge</h4>
-        <p data-i18n="app_30sec">Fast-paced trivia game. Answer as many questions as you can in 30 seconds.</p>
-        <span class="app-tag" style="background: rgba(255,107,107,0.15); color: #ff6b6b;" data-i18n="tag_game">Game</span>
-      </div>
-    </a>
     <a class="app-card" href="support/snaplingo/">
-      <div class="app-icon-placeholder" style="background: linear-gradient(135deg, #6c7bff, #a855f7);">&#x1F4F8;</div>
+      <img class="app-icon" src="icons/snaplingo.png" alt="SnapLingo" loading="lazy">
       <div class="app-info">
         <h4>SnapLingo</h4>
-        <p data-i18n="app_snaplingo">Point your camera at anything and learn vocabulary in multiple languages with AI.</p>
-        <span class="app-tag" style="background: rgba(108,123,255,0.15); color: #6c7bff;" data-i18n="tag_ai_edu">AI / Education</span>
-      </div>
-    </a>
-    <a class="app-card" href="support/life-trace/">
-      <div class="app-icon-placeholder" style="background: linear-gradient(135deg, #00b894, #00cec9);">&#x1F4DD;</div>
-      <div class="app-info">
-        <h4>LifeTrace</h4>
-        <p data-i18n="app_lifetrace">AI-powered life recorder. Capture and reflect on your daily moments automatically.</p>
-        <span class="app-tag" style="background: rgba(0,184,148,0.15); color: #00b894;" data-i18n="tag_ai_util">AI / Utility</span>
+        <p>Point your camera at anything — and learn the word in any language, instantly.</p>
+        <span class="app-tag" style="background: rgba(108,123,255,0.15); color: #6c7bff;">AI / Education</span>
       </div>
     </a>
     <a class="app-card" href="support/brain-burst/">
-      <div class="app-icon-placeholder" style="background: linear-gradient(135deg, #fdcb6e, #e17055);">&#x1F9E0;</div>
+      <img class="app-icon" src="icons/brain-burst.png" alt="Brain Burst!" loading="lazy">
       <div class="app-info">
         <h4>Brain Burst!</h4>
-        <p data-i18n="app_brainburst">Train your brain with quick cognitive challenges across multiple categories.</p>
-        <span class="app-tag" style="background: rgba(253,203,110,0.15); color: #fdcb6e;" data-i18n="tag_game">Game</span>
+        <p>Challenge your brain — and real players worldwide — in a daily AI trivia battle.</p>
+        <span class="app-tag" style="background: rgba(253,203,110,0.15); color: #fdcb6e;">Game</span>
       </div>
     </a>
-    <a class="app-card" href="support/keyclash/">
-      <div class="app-icon-placeholder" style="background: linear-gradient(135deg, #74b9ff, #0984e3);">&#x2328;</div>
+    <a class="app-card" href="support/life-trace/">
+      <img class="app-icon" src="icons/life-trace.png" alt="LifeTrace" loading="lazy">
       <div class="app-info">
-        <h4>KeyClash</h4>
-        <p data-i18n="app_keyclash">Competitive typing battle. Race against the clock and other players.</p>
-        <span class="app-tag" style="background: rgba(116,185,255,0.15); color: #74b9ff;" data-i18n="tag_game">Game</span>
+        <h4>LifeTrace</h4>
+        <p>Your life story, recorded with AI.</p>
+        <span class="app-tag" style="background: rgba(0,184,148,0.15); color: #00b894;">AI / Utility</span>
+      </div>
+    </a>
+    <a class="app-card" href="support/30sec-challenge/">
+      <img class="app-icon" src="icons/30sec-challenge.png" alt="30sec Challenge" loading="lazy">
+      <div class="app-info">
+        <h4>30sec Challenge</h4>
+        <p>Take the challenge. Beat the clock. Go viral.</p>
+        <span class="app-tag" style="background: rgba(255,107,107,0.15); color: #ff6b6b;">Game</span>
       </div>
     </a>
     <a class="app-card" href="support/geo-sense/">
-      <div class="app-icon-placeholder" style="background: linear-gradient(135deg, #55efc4, #00b894);">&#x1F5FA;</div>
+      <img class="app-icon" src="icons/geo-sense.png" alt="GeoSense" loading="lazy">
       <div class="app-info">
         <h4>GeoSense</h4>
-        <p data-i18n="app_geosense">Photo location quiz. Guess where in the world each photo was taken.</p>
-        <span class="app-tag" style="background: rgba(85,239,196,0.15); color: #55efc4;" data-i18n="tag_quiz">Quiz</span>
-      </div>
-    </a>
-    <a class="app-card" href="support/chaos/">
-      <div class="app-icon-placeholder" style="background: linear-gradient(135deg, #fd79a8, #e84393);">&#x1F525;</div>
-      <div class="app-info">
-        <h4>Chaos: Daily Missions</h4>
-        <p data-i18n="app_chaos">Random daily challenges that push you out of your comfort zone.</p>
-        <span class="app-tag" style="background: rgba(253,121,168,0.15); color: #fd79a8;" data-i18n="tag_lifestyle">Lifestyle</span>
-      </div>
-    </a>
-    <a class="app-card" href="support/debate-me/">
-      <div class="app-icon-placeholder" style="background: linear-gradient(135deg, #a29bfe, #6c5ce7);">&#x1F399;</div>
-      <div class="app-info">
-        <h4>Debate Me</h4>
-        <p data-i18n="app_debateme">Practice debate skills with AI. Sharpen your arguments on any topic.</p>
-        <span class="app-tag" style="background: rgba(162,155,254,0.15); color: #a29bfe;" data-i18n="tag_ai_edu">AI / Education</span>
+        <p>Can you guess where this photo was taken?</p>
+        <span class="app-tag" style="background: rgba(85,239,196,0.15); color: #55efc4;">Quiz</span>
       </div>
     </a>
     <a class="app-card" href="support/nodo/">
-      <div class="app-icon-placeholder" style="background: linear-gradient(135deg, #ffeaa7, #fdcb6e);">&#x1F9E9;</div>
+      <img class="app-icon" src="icons/nodo.png" alt="Nodo Puzzle" loading="lazy">
       <div class="app-info">
         <h4>Nodo Puzzle</h4>
-        <p data-i18n="app_nodo">Elegant node-connecting puzzle game. Simple rules, deep strategy.</p>
-        <span class="app-tag" style="background: rgba(255,234,167,0.15); color: #fdcb6e;" data-i18n="tag_puzzle">Puzzle</span>
+        <p>A daily puzzle that's easy to learn, hard to master, and deeply satisfying.</p>
+        <span class="app-tag" style="background: rgba(255,234,167,0.15); color: #fdcb6e;">Puzzle</span>
+      </div>
+    </a>
+    <a class="app-card" href="support/chaos/">
+      <img class="app-icon" src="icons/chaos.png" alt="Chaos" loading="lazy">
+      <div class="app-info">
+        <h4>Chaos: Daily Missions</h4>
+        <p>Break your routine. Do one unexpected thing today.</p>
+        <span class="app-tag" style="background: rgba(253,121,168,0.15); color: #fd79a8;">Lifestyle</span>
+      </div>
+    </a>
+    <a class="app-card" href="support/debate-me/">
+      <img class="app-icon" src="icons/debate-me.png" alt="Debate Me" loading="lazy">
+      <div class="app-info">
+        <h4>Debate Me</h4>
+        <p>Sharpen your arguments — and win any debate — with AI coaching.</p>
+        <span class="app-tag" style="background: rgba(162,155,254,0.15); color: #a29bfe;">AI / Education</span>
+      </div>
+    </a>
+    <a class="app-card" href="support/keyclash/">
+      <img class="app-icon" src="icons/key-clash.png" alt="KeyClash" loading="lazy">
+      <div class="app-info">
+        <h4>KeyClash</h4>
+        <p>Type faster than anyone — prove it in real-time.</p>
+        <span class="app-tag" style="background: rgba(116,185,255,0.15); color: #74b9ff;">Game</span>
       </div>
     </a>
     <a class="app-card" href="support/real-feel-weather/">
-      <div class="app-icon-placeholder" style="background: linear-gradient(135deg, #81ecec, #00cec9);">&#x1F326;</div>
+      <img class="app-icon" src="icons/real-feel-weather.png" alt="RealFeel Weather" loading="lazy">
       <div class="app-info">
         <h4>RealFeel Weather</h4>
-        <p data-i18n="app_realfeel">Weather app focused on how it actually feels outside, not just the numbers.</p>
-        <span class="app-tag" style="background: rgba(129,236,236,0.15); color: #81ecec;" data-i18n="tag_weather">Weather</span>
+        <p>Not just the air temperature — the temperature you'll actually feel outside.</p>
+        <span class="app-tag" style="background: rgba(129,236,236,0.15); color: #81ecec;">Weather</span>
       </div>
     </a>
-    <a class="app-card" href="support/dream-log/">
-      <div class="app-icon-placeholder" style="background: linear-gradient(135deg, #dfe6e9, #b2bec3);">&#x1F30C;</div>
+    <a class="app-card" href="support/voice-memo/">
+      <img class="app-icon" src="icons/voice-memo.png" alt="Speakly" loading="lazy">
       <div class="app-info">
-        <h4>DreamLog</h4>
-        <p data-i18n="app_dreamlog">Record your dreams and explore a world map of dream locations and themes.</p>
-        <span class="app-tag" style="background: rgba(178,190,195,0.15); color: #b2bec3;" data-i18n="tag_lifestyle">Lifestyle</span>
+        <h4>Speakly</h4>
+        <p>Speakly turns your voice into a personal diary — no typing needed.</p>
+        <span class="app-tag" style="background: rgba(108,123,255,0.15); color: #6c7bff;">AI / Utility</span>
       </div>
     </a>
     <a class="app-card" href="support/fileforce/">
-      <div class="app-icon-placeholder" style="background: linear-gradient(135deg, #fab1a0, #e17055);">&#x1F4C4;</div>
+      <img class="app-icon" src="icons/fileforce.png" alt="FileForce" loading="lazy">
       <div class="app-info">
         <h4>FileForce</h4>
-        <p data-i18n="app_fileforce">Powerful PDF file manager. Merge, split, annotate, and organize documents.</p>
-        <span class="app-tag" style="background: rgba(250,177,160,0.15); color: #fab1a0;" data-i18n="tag_productivity">Productivity</span>
+        <p>Manage all your files — organized and under control.</p>
+        <span class="app-tag" style="background: rgba(250,177,160,0.15); color: #fab1a0;">Productivity</span>
       </div>
     </a>
   </div>
@@ -455,54 +456,54 @@
     <p data-i18n="trace_desc">Discover the world through our encyclopedia collection — beautifully illustrated guides</p>
   </div>
   <div class="apps-grid">
-    <div class="app-card">
-      <div class="app-icon-placeholder" style="background: linear-gradient(135deg, #00b894, #00cec9);">&#x1F333;</div>
-      <div class="app-info"><h4>ForestTrace</h4><p data-i18n="trace_forest">Explore mushrooms and forest ecosystems</p></div>
-    </div>
-    <div class="app-card">
-      <div class="app-icon-placeholder" style="background: linear-gradient(135deg, #fdcb6e, #e17055);">&#x1F98E;</div>
-      <div class="app-info"><h4>DinoTrace</h4><p data-i18n="trace_dino">Discover dinosaurs from every era</p></div>
-    </div>
-    <div class="app-card">
-      <div class="app-icon-placeholder" style="background: linear-gradient(135deg, #74b9ff, #0984e3);">&#x1F30A;</div>
-      <div class="app-info"><h4>MarineTrace</h4><p data-i18n="trace_marine">Dive into ocean creatures and marine life</p></div>
-    </div>
-    <div class="app-card">
-      <div class="app-icon-placeholder" style="background: linear-gradient(135deg, #ff6b6b, #ee5a24);">&#x1F41E;</div>
-      <div class="app-info"><h4>BugTrace</h4><p data-i18n="trace_bug">Identify and learn about insects worldwide</p></div>
-    </div>
-    <div class="app-card">
-      <div class="app-icon-placeholder" style="background: linear-gradient(135deg, #55efc4, #00b894);">&#x1F33F;</div>
-      <div class="app-info"><h4>BotanicaTrace</h4><p data-i18n="trace_botanica">Guide to plants, flowers, and botany</p></div>
-    </div>
-    <div class="app-card">
-      <div class="app-icon-placeholder" style="background: linear-gradient(135deg, #ffeaa7, #fdcb6e);">&#x1F426;</div>
-      <div class="app-info"><h4>FeatherTrace</h4><p data-i18n="trace_feather">Bird species identification and facts</p></div>
-    </div>
-    <div class="app-card">
-      <div class="app-icon-placeholder" style="background: linear-gradient(135deg, #a29bfe, #6c5ce7);">&#x1F48E;</div>
-      <div class="app-info"><h4>GemTrace</h4><p data-i18n="trace_gem">Gemstones, minerals, and crystals guide</p></div>
-    </div>
-    <div class="app-card">
-      <div class="app-icon-placeholder" style="background: linear-gradient(135deg, #fd79a8, #e84393);">&#x1F43E;</div>
-      <div class="app-info"><h4>PawTrace</h4><p data-i18n="trace_paw">Dog breeds encyclopedia and guide</p></div>
-    </div>
-    <div class="app-card">
-      <div class="app-icon-placeholder" style="background: linear-gradient(135deg, #fab1a0, #e17055);">&#x2B50;</div>
-      <div class="app-info"><h4>AstroTrace</h4><p data-i18n="trace_astro">Constellations and star maps</p></div>
-    </div>
-    <div class="app-card">
-      <div class="app-icon-placeholder" style="background: linear-gradient(135deg, #81ecec, #00cec9);">&#x1F3F3;</div>
-      <div class="app-info"><h4>FlagTrace</h4><p data-i18n="trace_flag">World flags and country facts</p></div>
-    </div>
-    <div class="app-card">
-      <div class="app-icon-placeholder" style="background: linear-gradient(135deg, #dfe6e9, #636e72);">&#x1F3DB;</div>
-      <div class="app-info"><h4>HeritageTrace</h4><p data-i18n="trace_heritage">World heritage sites and cultural landmarks</p></div>
-    </div>
-    <div class="app-card">
-      <div class="app-icon-placeholder" style="background: linear-gradient(135deg, #6c7bff, #a855f7);">&#x1F43E;</div>
-      <div class="app-info"><h4>WildTrace</h4><p data-i18n="trace_wild">Wildlife animals from around the globe</p></div>
-    </div>
+    <a class="app-card" href="support/mushroom-encyclopedia/">
+      <img class="app-icon" src="icons/mushroom-encyclopedia.png" alt="ForestTrace" loading="lazy">
+      <div class="app-info"><h4>ForestTrace</h4><p>Discover 100 mushroom species from around the globe.</p></div>
+    </a>
+    <a class="app-card" href="support/dinosaur-encyclopedia/">
+      <img class="app-icon" src="icons/dinosaur-encyclopedia.png" alt="DinoTrace" loading="lazy">
+      <div class="app-info"><h4>DinoTrace</h4><p>Travel back in time with dinosaur profiles and quizzes.</p></div>
+    </a>
+    <a class="app-card" href="support/marine-life-encyclopedia/">
+      <img class="app-icon" src="icons/marine-life-encyclopedia.png" alt="MarineTrace" loading="lazy">
+      <div class="app-info"><h4>MarineTrace</h4><p>100 fascinating ocean species from shallows to the abyss.</p></div>
+    </a>
+    <a class="app-card" href="support/insect-encyclopedia/">
+      <img class="app-icon" src="icons/insect-encyclopedia.png" alt="BugTrace" loading="lazy">
+      <div class="app-info"><h4>BugTrace</h4><p>Identify and learn about insects worldwide.</p></div>
+    </a>
+    <a class="app-card" href="support/plant-encyclopedia/">
+      <img class="app-icon" src="icons/plant-encyclopedia.png" alt="BotanicaTrace" loading="lazy">
+      <div class="app-info"><h4>BotanicaTrace</h4><p>Plant encyclopedia with care tips and identification.</p></div>
+    </a>
+    <a class="app-card" href="support/bird-encyclopedia/">
+      <img class="app-icon" src="icons/bird-encyclopedia.png" alt="FeatherTrace" loading="lazy">
+      <div class="app-info"><h4>FeatherTrace</h4><p>100 bird species with identification and migration maps.</p></div>
+    </a>
+    <a class="app-card" href="support/gemstone-encyclopedia/">
+      <img class="app-icon" src="icons/gemstone-encyclopedia.png" alt="GemTrace" loading="lazy">
+      <div class="app-info"><h4>GemTrace</h4><p>200+ gemstone profiles with Mohs scale and mining locations.</p></div>
+    </a>
+    <a class="app-card" href="support/dog-breeds-encyclopedia/">
+      <img class="app-icon" src="icons/dog-breeds-encyclopedia.png" alt="PawTrace" loading="lazy">
+      <div class="app-info"><h4>PawTrace</h4><p>100 dog breeds with care guides and breed comparison.</p></div>
+    </a>
+    <a class="app-card" href="support/constellation-encyclopedia/">
+      <img class="app-icon" src="icons/constellation-encyclopedia.png" alt="AstroTrace" loading="lazy">
+      <div class="app-info"><h4>AstroTrace</h4><p>88 constellations with star maps and mythology.</p></div>
+    </a>
+    <a class="app-card" href="support/world-flags-encyclopedia/">
+      <img class="app-icon" src="icons/world-flags-encyclopedia.png" alt="FlagTrace" loading="lazy">
+      <div class="app-info"><h4>FlagTrace</h4><p>Every country's flag, history, and national facts.</p></div>
+    </a>
+    <a class="app-card" href="support/heritagetrace/">
+      <img class="app-icon" src="icons/world-heritage-encyclopedia.png" alt="HeritageTrace" loading="lazy">
+      <div class="app-info"><h4>HeritageTrace</h4><p>100 UNESCO World Heritage Sites explored in detail.</p></div>
+    </a>
+    <a class="app-card" href="support/animal-encyclopedia/">
+      <img class="app-icon" src="icons/animal-encyclopedia.png" alt="WildTrace" loading="lazy">
+      <div class="app-info"><h4>WildTrace</h4><p>30+ animals with habitats, behaviors, and rich profiles.</p></div>
+    </a>
   </div>
 </section>
 
