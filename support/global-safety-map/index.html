@@ -1,78 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
   <title>Global Safety Map – Support | SK APPS</title>
-  <meta name="description" content="Global Safety Map support page. Check safety levels of cities and countries worldwide before you travel." />
+  <meta name="description" content="Global Safety Map - Check safety levels of cities and countries worldwide before you travel."/>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root { --c1: #00b894; --c2: #00cec9; }
-    body { font-family: 'Inter', -apple-system, sans-serif; background: #0a0a1a; color: #e8eaf0; line-height: 1.6; }
-
-    /* Nav */
-    nav { position: sticky; top: 0; z-index: 100; background: rgba(10,10,26,0.9); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(108,123,255,0.1); padding: 0 24px; }
-    .nav-inner { max-width: 800px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 56px; }
-    .nav-logo { font-size: 1.2rem; font-weight: 800; background: linear-gradient(135deg, #6c7bff, #a855f7); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-decoration: none; }
-    .nav-home { color: #9498b0; text-decoration: none; font-size: 0.85rem; font-weight: 500; transition: color 0.2s; }
-    .nav-home:hover { color: #e8eaf0; }
-
-    /* Hero */
-    .hero { background: linear-gradient(135deg, var(--c1), var(--c2)); text-align: center; padding: 56px 24px 48px; position: relative; overflow: hidden; }
-    .hero::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 60px; background: linear-gradient(transparent, #0a0a1a); }
-    .hero-emoji { font-size: 3.5rem; margin-bottom: 16px; filter: drop-shadow(0 4px 12px rgba(0,0,0,0.3)); }
-    .hero h1 { font-size: 1.8rem; font-weight: 800; margin-bottom: 8px; text-shadow: 0 2px 8px rgba(0,0,0,0.2); }
-    .hero-cat { display: inline-block; padding: 4px 14px; border-radius: 20px; background: rgba(255,255,255,0.2); font-size: 0.8rem; font-weight: 600; margin-bottom: 12px; }
-    .hero p { font-size: 1rem; opacity: 0.9; max-width: 500px; margin: 0 auto; }
-
-    /* Content */
-    .container { max-width: 700px; margin: 0 auto; padding: 32px 20px 60px; }
-
-    /* Cards */
-    .card { background: #1a1a35; border: 1px solid rgba(255,255,255,0.06); border-radius: 16px; padding: 28px; margin-bottom: 20px; transition: border-color 0.3s; }
-    .card:hover { border-color: rgba(108,123,255,0.15); }
-    .card h2 { font-size: 1.1rem; font-weight: 700; margin-bottom: 16px; color: var(--c1); display: flex; align-items: center; gap: 8px; }
-    .card h2 .icon { font-size: 1.2rem; }
-    .card p { color: #9498b0; font-size: 0.93rem; line-height: 1.8; }
-    .card ul { padding-left: 20px; list-style: none; }
-    .card li { color: #9498b0; font-size: 0.93rem; line-height: 1.8; margin-bottom: 8px; padding-left: 4px; }
-    .card li::before { content: '→'; color: var(--c1); margin-right: 8px; font-weight: 600; }
-    .card li strong { color: #e8eaf0; }
-
-    /* Features */
-    .features-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-    .feature { background: rgba(108,123,255,0.06); border-radius: 10px; padding: 14px 16px; font-size: 0.88rem; color: #b8bcd4; display: flex; align-items: center; gap: 8px; }
-    .feature-dot { width: 8px; height: 8px; border-radius: 50%; background: linear-gradient(135deg, var(--c1), var(--c2)); flex-shrink: 0; }
-    @media (max-width: 500px) { .features-grid { grid-template-columns: 1fr; } }
-
-    /* Download */
-    .download-btns { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 16px; }
-    .dl-btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 20px; border-radius: 10px; font-weight: 600; font-size: 0.88rem; text-decoration: none; transition: all 0.2s; }
-    .dl-btn-play { background: linear-gradient(135deg, var(--c1), var(--c2)); color: #fff; }
-    .dl-btn-play:hover { transform: translateY(-2px); box-shadow: 0 4px 16px rgba(0,0,0,0.3); }
-    .dl-btn-apple { background: #1a1a35; color: #e8eaf0; border: 1px solid rgba(255,255,255,0.1); }
-    .dl-btn-apple:hover { background: #222245; transform: translateY(-2px); }
-
-    /* Contact button */
-    .contact-btn { display: inline-flex; align-items: center; gap: 8px; margin-top: 16px; background: linear-gradient(135deg, var(--c1), var(--c2)); color: #fff; text-decoration: none; padding: 12px 24px; border-radius: 10px; font-weight: 600; font-size: 0.93rem; transition: all 0.2s; }
-    .contact-btn:hover { transform: translateY(-2px); box-shadow: 0 4px 16px rgba(0,0,0,0.3); }
-
-    /* Footer */
-    footer { border-top: 1px solid rgba(255,255,255,0.05); text-align: center; padding: 32px 20px; }
-    footer a { color: #6c7bff; text-decoration: none; font-size: 0.88rem; font-weight: 500; }
-    footer a:hover { color: #a29bfe; }
-    .footer-links { display: flex; gap: 20px; justify-content: center; margin-bottom: 16px; flex-wrap: wrap; }
-    .footer-copy { color: #9498b0; font-size: 0.75rem; opacity: 0.5; }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{--c1:#00b894;--c2:#00cec9;--bg:#0a0a1a;--bg2:#111128;--card:#1a1a35;--t1:#e8eaf0;--t2:#9498b0;--accent:#6c7bff}
+    body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var(--t1);line-height:1.6}
+    nav{position:sticky;top:0;z-index:100;background:rgba(10,10,26,.9);backdrop-filter:blur(20px);border-bottom:1px solid rgba(108,123,255,.1);padding:0 24px}
+    .nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px}
+    .nav-logo{font-size:1.3rem;font-weight:800;background:linear-gradient(135deg,#6c7bff,#a855f7);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none}
+    .nav-right{display:flex;align-items:center;gap:24px}
+    .nav-links{display:flex;gap:24px;list-style:none}
+    .nav-links a{color:var(--t2);text-decoration:none;font-size:.9rem;font-weight:500;transition:color .2s}
+    .nav-links a:hover{color:var(--t1)}
+    .lang-selector{position:relative}
+    .lang-btn{background:var(--card);border:1px solid rgba(255,255,255,.1);color:var(--t1);padding:6px 12px;border-radius:8px;font-size:.8rem;font-weight:500;cursor:pointer;display:flex;align-items:center;gap:6px;transition:all .2s}
+    .lang-btn:hover{border-color:rgba(108,123,255,.3)}
+    .lang-btn svg{width:14px;height:14px;fill:var(--t2);transition:transform .2s}
+    .lang-selector.open .lang-btn svg{transform:rotate(180deg)}
+    .lang-dropdown{display:none;position:absolute;top:100%;right:0;margin-top:8px;background:var(--card);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:8px;min-width:170px;box-shadow:0 8px 32px rgba(0,0,0,.4);z-index:200;max-height:400px;overflow-y:auto}
+    .lang-selector.open .lang-dropdown{display:block}
+    .lang-option{padding:8px 12px;border-radius:8px;cursor:pointer;font-size:.85rem;color:var(--t2);transition:all .15s}
+    .lang-option:hover{background:rgba(108,123,255,.1);color:var(--t1)}
+    .lang-option.active{color:var(--accent);font-weight:600}
+    .hero{background:linear-gradient(135deg,var(--c1),var(--c2));text-align:center;padding:56px 24px 48px;position:relative;overflow:hidden}
+    .hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:60px;background:linear-gradient(transparent,var(--bg))}
+    .hero-emoji{font-size:3.5rem;margin-bottom:16px;filter:drop-shadow(0 4px 12px rgba(0,0,0,.3))}
+    .hero h1{font-size:clamp(1.5rem,4vw,2rem);font-weight:800;margin-bottom:8px}
+    .hero-cat{display:inline-block;padding:4px 14px;border-radius:20px;background:rgba(255,255,255,.2);font-size:.8rem;font-weight:600;margin-bottom:12px}
+    .hero p{font-size:1rem;opacity:.9;max-width:500px;margin:0 auto}
+    .container{max-width:700px;margin:0 auto;padding:32px 20px 60px}
+    .card{background:var(--card);border:1px solid rgba(255,255,255,.06);border-radius:16px;padding:28px;margin-bottom:20px;transition:border-color .3s}
+    .card:hover{border-color:rgba(108,123,255,.15)}
+    .card h2{font-size:1.1rem;font-weight:700;margin-bottom:16px;color:var(--c1)}
+    .card p{color:var(--t2);font-size:.93rem;line-height:1.8}
+    .card ul{padding-left:0;list-style:none}
+    .card li{color:var(--t2);font-size:.93rem;line-height:1.8;margin-bottom:10px;padding-left:20px;position:relative}
+    .card li::before{content:"\2192";color:var(--c1);position:absolute;left:0;font-weight:600}
+    .card li strong{color:var(--t1)}
+    .features-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .feature{background:rgba(108,123,255,.06);border-radius:10px;padding:14px 16px;font-size:.88rem;color:#b8bcd4;display:flex;align-items:center;gap:8px}
+    .feature-dot{width:8px;height:8px;border-radius:50%;background:linear-gradient(135deg,var(--c1),var(--c2));flex-shrink:0}
+    @media(max-width:500px){.features-grid{grid-template-columns:1fr}.nav-links{display:none}}
+    .download-btns{display:flex;gap:12px;flex-wrap:wrap;margin-top:16px}
+    .dl-btn{display:inline-flex;align-items:center;gap:8px;padding:12px 20px;border-radius:10px;font-weight:600;font-size:.88rem;text-decoration:none;transition:all .2s}
+    .dl-btn-play{background:linear-gradient(135deg,var(--c1),var(--c2));color:#fff}
+    .dl-btn-play:hover{transform:translateY(-2px);box-shadow:0 4px 16px rgba(0,0,0,.3)}
+    .dl-btn-apple{background:var(--card);color:var(--t1);border:1px solid rgba(255,255,255,.1)}
+    .dl-btn-apple:hover{background:#222245;transform:translateY(-2px)}
+    .contact-btn{display:inline-flex;align-items:center;gap:8px;margin-top:16px;background:linear-gradient(135deg,var(--c1),var(--c2));color:#fff;text-decoration:none;padding:12px 24px;border-radius:10px;font-weight:600;font-size:.93rem;transition:all .2s}
+    .contact-btn:hover{transform:translateY(-2px);box-shadow:0 4px 16px rgba(0,0,0,.3)}
+    footer{border-top:1px solid rgba(255,255,255,.05);text-align:center;padding:32px 20px}
+    footer a{color:#6c7bff;text-decoration:none;font-size:.88rem;font-weight:500}
+    footer a:hover{color:#a29bfe}
+    .footer-links{display:flex;gap:20px;justify-content:center;margin-bottom:16px;flex-wrap:wrap}
+    .footer-copy{color:var(--t2);font-size:.75rem;opacity:.5}
   </style>
 </head>
 <body>
-
 <nav>
   <div class="nav-inner">
     <a href="/" class="nav-logo">SK APPS</a>
-    <a href="/" class="nav-home">&#8592; Home</a>
+    <div class="nav-right">
+      <ul class="nav-links">
+        <li><a href="/" data-i18n="home">Home</a></li>
+        <li><a href="mailto:app.develop.sk@gmail.com" data-i18n="contact">Contact</a></li>
+      </ul>
+      <div class="lang-selector" id="langSelector">
+        <button class="lang-btn" id="langBtn">
+          <span id="langLabel">EN</span>
+          <svg viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+        </button>
+        <div class="lang-dropdown" id="langDropdown"></div>
+      </div>
+    </div>
   </div>
 </nav>
 
@@ -84,61 +90,82 @@
 </div>
 
 <div class="container">
-
   <div class="card">
-    <h2><span class="icon">&#x2728;</span> Key Features</h2>
-    <div class="features-grid">
-      <div class="feature"><div class="feature-dot"></div>Real-time safety data</div><div class="feature"><div class="feature-dot"></div>Country risk ratings</div><div class="feature"><div class="feature-dot"></div>Travel advisory alerts</div><div class="feature"><div class="feature-dot"></div>Offline maps</div>
-    </div>
+    <h2 data-i18n="features">Key Features</h2>
+    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span>Real-time safety data</span></div><div class="feature"><div class="feature-dot"></div><span>Country risk ratings</span></div><div class="feature"><div class="feature-dot"></div><span>Travel advisory alerts</span></div><div class="feature"><div class="feature-dot"></div><span>Offline maps</span></div></div>
   </div>
 
   <div class="card">
-    <h2><span class="icon">&#x1F4F2;</span> Download</h2>
-    <p>Available on both iOS and Android. Download for free and start using today.</p>
+    <h2 data-i18n="download">Download</h2>
+    <p data-i18n="download_desc">Available on both iOS and Android. Download for free and start using today.</p>
     <div class="download-btns">
-      <a href="https://play.google.com/store/apps/dev?id=6428093678302702498" class="dl-btn dl-btn-play" target="_blank" rel="noopener">
-        &#x25B6; Google Play
-      </a>
-      <a href="https://apps.apple.com/developer/ken-shimizu/id1751493498" class="dl-btn dl-btn-apple" target="_blank" rel="noopener">
-        &#xF8FF; App Store
-      </a>
+      <a href="https://play.google.com/store/apps/dev?id=6428093678302702498" class="dl-btn dl-btn-play" target="_blank" rel="noopener">Google Play</a>
+      <a href="https://apps.apple.com/developer/ken-shimizu/id1751493498" class="dl-btn dl-btn-apple" target="_blank" rel="noopener">App Store</a>
     </div>
   </div>
 
   <div class="card">
-    <h2><span class="icon">&#x2753;</span> Frequently Asked Questions</h2>
+    <h2 data-i18n="faq">Frequently Asked Questions</h2>
     <ul>
-      <li><strong>How do I restore my purchase?</strong><br/>Open the app, go to Settings, and tap "Restore Purchases".</li>
-      <li><strong>The app is crashing. What should I do?</strong><br/>Try force-closing and restarting the app. Make sure you have the latest version installed. If the issue persists, reinstall the app.</li>
-      <li><strong>How do I cancel a subscription?</strong><br/>Go to your device Settings &#8594; Apple ID &#8594; Subscriptions (iOS) or Google Play &#8594; Subscriptions (Android), then select the app and cancel.</li>
-      <li><strong>Can I use the app offline?</strong><br/>Many features work offline. Some features that require an internet connection will show a notification.</li>
-      <li><strong>What languages are supported?</strong><br/>Global Safety Map supports 17 languages: English, Japanese, Chinese (Simplified &amp; Traditional), Korean, Spanish, Portuguese, French, German, Italian, Russian, Arabic, Thai, Indonesian, Turkish, Dutch, and Vietnamese.</li>
-      <li><strong>I have feedback or a feature request.</strong><br/>We'd love to hear from you! Send us an email at the address below.</li>
+      <li><strong data-i18n="faq1q">How do I restore my purchase?</strong><br/><span data-i18n="faq1a">Open the app, go to Settings, and tap "Restore Purchases".</span></li>
+      <li><strong data-i18n="faq2q">The app is crashing. What should I do?</strong><br/><span data-i18n="faq2a">Try force-closing and restarting the app. Make sure you have the latest version installed. If the issue persists, reinstall the app.</span></li>
+      <li><strong data-i18n="faq3q">How do I cancel a subscription?</strong><br/><span data-i18n="faq3a">Go to your device Settings → Apple ID → Subscriptions (iOS) or Google Play → Subscriptions (Android), then select the app and cancel.</span></li>
+      <li><strong data-i18n="faq4q">Can I use the app offline?</strong><br/><span data-i18n="faq4a">Many features work offline. Some features that require an internet connection will show a notification.</span></li>
+      <li><strong data-i18n="faq5q">What languages are supported?</strong><br/><span data-i18n="faq5a">This app supports 17 languages: English, Japanese, Chinese (Simplified &amp; Traditional), Korean, Spanish, Portuguese, French, German, Italian, Russian, Arabic, Thai, Indonesian, Turkish, Dutch, and Vietnamese.</span></li>
+      <li><strong data-i18n="faq6q">I have feedback or a feature request.</strong><br/><span data-i18n="faq6a">We'd love to hear from you! Send us an email at the address below.</span></li>
     </ul>
   </div>
 
   <div class="card">
-    <h2><span class="icon">&#x1F4E7;</span> Contact Us</h2>
-    <p>Have a question, found a bug, or want to give feedback? We typically respond within 1&#8211;2 business days.</p>
-    <a href="mailto:app.develop.sk@gmail.com" class="contact-btn">&#x2709; app.develop.sk@gmail.com</a>
+    <h2 data-i18n="contact">Contact Us</h2>
+    <p data-i18n="contact_desc">Have a question, found a bug, or want to give feedback? We typically respond within 1–2 business days.</p>
+    <a href="mailto:app.develop.sk@gmail.com" class="contact-btn">app.develop.sk@gmail.com</a>
   </div>
 
   <div class="card">
-    <h2><span class="icon">&#x1F512;</span> Privacy &amp; Data</h2>
-    <p>We take your privacy seriously. Read our <a href="https://appdevelopsk.github.io/privacy-policies/global-safety-map/" style="color:var(--c1);font-weight:500;">Privacy Policy</a> to learn how we handle your data. We do not sell personal information to third parties.</p>
+    <h2 data-i18n="privacy">Privacy &amp; Data</h2>
+    <p><span data-i18n="privacy_desc">We take your privacy seriously. We do not sell personal information to third parties.</span> <a href="https://appdevelopsk.github.io/privacy-policies/global-safety-map/" style="color:var(--c1);font-weight:500" data-i18n="privacy_link">Read our Privacy Policy</a></p>
   </div>
-
 </div>
 
 <footer>
   <div class="footer-links">
-    <a href="/">&#8592; Back to SK APPS</a>
+    <a href="/" data-i18n="back">Back to SK APPS</a>
     <a href="https://play.google.com/store/apps/dev?id=6428093678302702498" target="_blank" rel="noopener">Google Play</a>
     <a href="https://apps.apple.com/developer/ken-shimizu/id1751493498" target="_blank" rel="noopener">App Store</a>
-    <a href="mailto:app.develop.sk@gmail.com">Contact</a>
   </div>
-  <p class="footer-copy">&copy; 2026 SK APPS. All rights reserved.</p>
+  <p class="footer-copy">&copy; 2026 SK APPS. <span data-i18n="rights">All rights reserved.</span></p>
 </footer>
 
+<script>
+
+const LANGS={en:{label:"English",flag:"EN"},ja:{label:"日本語",flag:"JA"},zh:{label:"简体中文",flag:"ZH"},zh_TW:{label:"繁體中文",flag:"TW"},ko:{label:"한국어",flag:"KO"},es:{label:"Español",flag:"ES"},pt:{label:"Português",flag:"PT"},fr:{label:"Français",flag:"FR"},de:{label:"Deutsch",flag:"DE"},it:{label:"Italiano",flag:"IT"},ru:{label:"Русский",flag:"RU"},ar:{label:"العربية",flag:"AR"},th:{label:"ไทย",flag:"TH"},id:{label:"Indonesia",flag:"ID"},tr:{label:"Türkçe",flag:"TR"},nl:{label:"Nederlands",flag:"NL"},vi:{label:"Tiếng Việt",flag:"VI"}};
+const T={
+en:{home:"Home",features:"Key Features",download:"Download",download_desc:"Available on both iOS and Android. Download for free and start using today.",faq:"Frequently Asked Questions",faq1q:"How do I restore my purchase?",faq1a:"Open the app, go to Settings, and tap \"Restore Purchases\".",faq2q:"The app is crashing. What should I do?",faq2a:"Try force-closing and restarting the app. Make sure you have the latest version installed. If the issue persists, reinstall the app.",faq3q:"How do I cancel a subscription?",faq3a:"Go to your device Settings → Apple ID → Subscriptions (iOS) or Google Play → Subscriptions (Android), then select the app and cancel.",faq4q:"Can I use the app offline?",faq4a:"Many features work offline. Some features that require an internet connection will show a notification.",faq5q:"What languages are supported?",faq5a:"This app supports 17 languages: English, Japanese, Chinese (Simplified & Traditional), Korean, Spanish, Portuguese, French, German, Italian, Russian, Arabic, Thai, Indonesian, Turkish, Dutch, and Vietnamese.",faq6q:"I have feedback or a feature request.",faq6a:"We'd love to hear from you! Send us an email at the address below.",contact:"Contact Us",contact_desc:"Have a question, found a bug, or want to give feedback? We typically respond within 1–2 business days.",privacy:"Privacy & Data",privacy_desc:"We take your privacy seriously. We do not sell personal information to third parties.",privacy_link:"Read our Privacy Policy",back:"Back to SK APPS",rights:"All rights reserved."},
+ja:{home:"ホーム",features:"主な機能",download:"ダウンロード",download_desc:"iOSとAndroidの両方で利用可能。無料でダウンロードしてすぐに使い始めましょう。",faq:"よくある質問",faq1q:"購入を復元するには？",faq1a:"アプリを開き、設定から「購入を復元」をタップしてください。",faq2q:"アプリがクラッシュします。どうすればいいですか？",faq2a:"アプリを強制終了して再起動してください。最新バージョンがインストールされていることを確認してください。問題が続く場合は再インストールしてください。",faq3q:"サブスクリプションをキャンセルするには？",faq3a:"端末の設定 → Apple ID → サブスクリプション（iOS）またはGoogle Play → 定期購入（Android）から該当アプリを選択してキャンセルしてください。",faq4q:"オフラインで使えますか？",faq4a:"多くの機能はオフラインで動作します。インターネット接続が必要な機能は通知が表示されます。",faq5q:"対応言語は？",faq5a:"17言語に対応：英語、日本語、中国語（簡体字・繁体字）、韓国語、スペイン語、ポルトガル語、フランス語、ドイツ語、イタリア語、ロシア語、アラビア語、タイ語、インドネシア語、トルコ語、オランダ語、ベトナム語。",faq6q:"フィードバックや機能リクエストがあります。",faq6a:"ぜひお聞かせください！下記のメールアドレスまでご連絡ください。",contact:"お問い合わせ",contact_desc:"ご質問、バグ報告、フィードバックがありましたらお気軽にどうぞ。通常1〜2営業日以内に返信いたします。",privacy:"プライバシーとデータ",privacy_desc:"お客様のプライバシーを大切にしています。個人情報を第三者に販売することはありません。",privacy_link:"プライバシーポリシーを読む",back:"SK APPSに戻る",rights:"All rights reserved."},
+zh:{home:"首页",features:"主要功能",download:"下载",download_desc:"iOS和Android均可使用。免费下载，立即开始使用。",faq:"常见问题",faq1q:"如何恢复购买？",faq1a:"打开应用，进入设置，点击"恢复购买"。",faq2q:"应用崩溃了怎么办？",faq2a:"尝试强制关闭并重启应用。确保已安装最新版本。如果问题持续，请重新安装应用。",faq3q:"如何取消订阅？",faq3a:"前往设备设置 → Apple ID → 订阅（iOS）或 Google Play → 订阅（Android），选择应用并取消。",faq4q:"可以离线使用吗？",faq4a:"许多功能支持离线使用。需要网络连接的功能会显示通知。",faq5q:"支持哪些语言？",faq5a:"支持17种语言：英语、日语、中文（简体和繁体）、韩语、西班牙语、葡萄牙语、法语、德语、意大利语、俄语、阿拉伯语、泰语、印尼语、土耳其语、荷兰语和越南语。",faq6q:"我有反馈或功能建议。",faq6a:"我们很乐意听取您的意见！请发送邮件至下方地址。",contact:"联系我们",contact_desc:"有问题、发现bug或想提供反馈？我们通常在1-2个工作日内回复。",privacy:"隐私与数据",privacy_desc:"我们非常重视您的隐私。我们不会将个人信息出售给第三方。",privacy_link:"阅读隐私政策",back:"返回SK APPS",rights:"版权所有。"},
+zh_TW:{home:"首頁",features:"主要功能",download:"下載",download_desc:"iOS和Android均可使用。免費下載，立即開始使用。",faq:"常見問題",faq1q:"如何恢復購買？",faq1a:"打開應用，進入設定，點擊「恢復購買」。",faq2q:"應用當機了怎麼辦？",faq2a:"嘗試強制關閉並重啟應用。確保已安裝最新版本。如果問題持續，請重新安裝應用。",faq3q:"如何取消訂閱？",faq3a:"前往裝置設定 → Apple ID → 訂閱項目（iOS）或 Google Play → 訂閱（Android），選擇應用並取消。",faq4q:"可以離線使用嗎？",faq4a:"許多功能支援離線使用。需要網路連線的功能會顯示通知。",faq5q:"支援哪些語言？",faq5a:"支援17種語言：英語、日語、中文（簡體和繁體）、韓語、西班牙語、葡萄牙語、法語、德語、義大利語、俄語、阿拉伯語、泰語、印尼語、土耳其語、荷蘭語和越南語。",faq6q:"我有回饋或功能建議。",faq6a:"我們很樂意聽取您的意見！請發送郵件至下方地址。",contact:"聯絡我們",contact_desc:"有問題、發現bug或想提供回饋？我們通常在1-2個工作日內回覆。",privacy:"隱私與資料",privacy_desc:"我們非常重視您的隱私。我們不會將個人資訊出售給第三方。",privacy_link:"閱讀隱私政策",back:"返回SK APPS",rights:"版權所有。"},
+ko:{home:"홈",features:"주요 기능",download:"다운로드",download_desc:"iOS와 Android 모두 사용 가능합니다. 무료로 다운로드하고 바로 시작하세요.",faq:"자주 묻는 질문",faq1q:"구매를 복원하려면?",faq1a:"앱을 열고 설정에서 '구매 복원'을 탭하세요.",faq2q:"앱이 충돌합니다. 어떻게 해야 하나요?",faq2a:"앱을 강제 종료하고 다시 시작하세요. 최신 버전이 설치되어 있는지 확인하세요. 문제가 지속되면 앱을 재설치하세요.",faq3q:"구독을 취소하려면?",faq3a:"기기 설정 → Apple ID → 구독(iOS) 또는 Google Play → 구독(Android)에서 해당 앱을 선택하고 취소하세요.",faq4q:"오프라인에서 사용할 수 있나요?",faq4a:"많은 기능이 오프라인에서 작동합니다. 인터넷 연결이 필요한 기능은 알림이 표시됩니다.",faq5q:"지원되는 언어는?",faq5a:"17개 언어 지원: 영어, 일본어, 중국어(간체/번체), 한국어, 스페인어, 포르투갈어, 프랑스어, 독일어, 이탈리아어, 러시아어, 아랍어, 태국어, 인도네시아어, 터키어, 네덜란드어, 베트남어.",faq6q:"피드백이나 기능 요청이 있습니다.",faq6a:"여러분의 의견을 듣고 싶습니다! 아래 이메일로 연락해 주세요.",contact:"문의하기",contact_desc:"질문, 버그 신고, 피드백이 있으시면 편하게 연락해 주세요. 보통 1-2 영업일 내에 답변드립니다.",privacy:"개인정보 및 데이터",privacy_desc:"개인정보를 소중히 다룹니다. 개인정보를 제3자에게 판매하지 않습니다.",privacy_link:"개인정보 처리방침 읽기",back:"SK APPS로 돌아가기",rights:"All rights reserved."},
+es:{home:"Inicio",features:"Funciones principales",download:"Descargar",download_desc:"Disponible en iOS y Android. Descarga gratis y comienza a usarla hoy.",faq:"Preguntas frecuentes",faq1q:"¿Cómo restauro mi compra?",faq1a:"Abre la app, ve a Ajustes y toca \"Restaurar compras\".",faq2q:"La app se cierra. ¿Qué hago?",faq2a:"Intenta forzar el cierre y reiniciar la app. Asegúrate de tener la última versión. Si el problema persiste, reinstala la app.",faq3q:"¿Cómo cancelo una suscripción?",faq3a:"Ve a Ajustes del dispositivo → Apple ID → Suscripciones (iOS) o Google Play → Suscripciones (Android), selecciona la app y cancela.",faq4q:"¿Puedo usarla sin conexión?",faq4a:"Muchas funciones funcionan sin conexión. Las que requieren internet mostrarán una notificación.",faq5q:"¿Qué idiomas están disponibles?",faq5a:"17 idiomas: inglés, japonés, chino (simplificado y tradicional), coreano, español, portugués, francés, alemán, italiano, ruso, árabe, tailandés, indonesio, turco, neerlandés y vietnamita.",faq6q:"Tengo comentarios o una solicitud de función.",faq6a:"¡Nos encantaría escucharte! Envíanos un email a la dirección de abajo.",contact:"Contacto",contact_desc:"¿Preguntas, errores o comentarios? Normalmente respondemos en 1-2 días hábiles.",privacy:"Privacidad y datos",privacy_desc:"Nos tomamos en serio tu privacidad. No vendemos información personal a terceros.",privacy_link:"Leer política de privacidad",back:"Volver a SK APPS",rights:"Todos los derechos reservados."},
+pt:{home:"Início",features:"Recursos principais",download:"Baixar",download_desc:"Disponível para iOS e Android. Baixe grátis e comece a usar hoje.",faq:"Perguntas frequentes",faq1q:"Como restauro minha compra?",faq1a:"Abra o app, vá em Configurações e toque em \"Restaurar compras\".",faq2q:"O app está travando. O que faço?",faq2a:"Tente forçar o fechamento e reiniciar o app. Certifique-se de ter a versão mais recente. Se o problema persistir, reinstale o app.",faq3q:"Como cancelo uma assinatura?",faq3a:"Vá em Ajustes do dispositivo → Apple ID → Assinaturas (iOS) ou Google Play → Assinaturas (Android), selecione o app e cancele.",faq4q:"Posso usar offline?",faq4a:"Muitos recursos funcionam offline. Recursos que precisam de internet mostrarão uma notificação.",faq5q:"Quais idiomas são suportados?",faq5a:"17 idiomas: inglês, japonês, chinês (simplificado e tradicional), coreano, espanhol, português, francês, alemão, italiano, russo, árabe, tailandês, indonésio, turco, holandês e vietnamita.",faq6q:"Tenho feedback ou sugestão de recurso.",faq6a:"Adoraríamos ouvir você! Envie um email para o endereço abaixo.",contact:"Contato",contact_desc:"Dúvidas, bugs ou feedback? Geralmente respondemos em 1-2 dias úteis.",privacy:"Privacidade e dados",privacy_desc:"Levamos sua privacidade a sério. Não vendemos informações pessoais a terceiros.",privacy_link:"Ler política de privacidade",back:"Voltar para SK APPS",rights:"Todos os direitos reservados."},
+fr:{home:"Accueil",features:"Fonctionnalités",download:"Télécharger",download_desc:"Disponible sur iOS et Android. Téléchargez gratuitement et commencez à utiliser.",faq:"Questions fréquentes",faq1q:"Comment restaurer mon achat ?",faq1a:"Ouvrez l'app, allez dans Paramètres et appuyez sur « Restaurer les achats ».",faq2q:"L'app plante. Que faire ?",faq2a:"Essayez de forcer la fermeture et de redémarrer l'app. Assurez-vous d'avoir la dernière version. Si le problème persiste, réinstallez l'app.",faq3q:"Comment annuler un abonnement ?",faq3a:"Allez dans Réglages → Apple ID → Abonnements (iOS) ou Google Play → Abonnements (Android), sélectionnez l'app et annulez.",faq4q:"Puis-je utiliser l'app hors ligne ?",faq4a:"De nombreuses fonctionnalités fonctionnent hors ligne. Celles nécessitant internet afficheront une notification.",faq5q:"Quelles langues sont prises en charge ?",faq5a:"17 langues : anglais, japonais, chinois (simplifié et traditionnel), coréen, espagnol, portugais, français, allemand, italien, russe, arabe, thaï, indonésien, turc, néerlandais et vietnamien.",faq6q:"J'ai un retour ou une demande de fonctionnalité.",faq6a:"Nous serions ravis de vous entendre ! Envoyez-nous un email à l'adresse ci-dessous.",contact:"Contact",contact_desc:"Questions, bugs ou commentaires ? Nous répondons généralement sous 1-2 jours ouvrés.",privacy:"Confidentialité et données",privacy_desc:"Nous prenons votre vie privée au sérieux. Nous ne vendons pas de données personnelles à des tiers.",privacy_link:"Lire la politique de confidentialité",back:"Retour à SK APPS",rights:"Tous droits réservés."},
+de:{home:"Startseite",features:"Hauptfunktionen",download:"Herunterladen",download_desc:"Für iOS und Android verfügbar. Kostenlos herunterladen und sofort loslegen.",faq:"Häufige Fragen",faq1q:"Wie stelle ich meinen Kauf wieder her?",faq1a:"Öffne die App, gehe zu Einstellungen und tippe auf „Käufe wiederherstellen".",faq2q:"Die App stürzt ab. Was soll ich tun?",faq2a:"Versuche, die App zu beenden und neu zu starten. Stelle sicher, dass die neueste Version installiert ist. Falls das Problem weiterhin besteht, installiere die App neu.",faq3q:"Wie kündige ich ein Abo?",faq3a:"Gehe zu Einstellungen → Apple-ID → Abonnements (iOS) oder Google Play → Abonnements (Android), wähle die App und kündige.",faq4q:"Kann ich die App offline nutzen?",faq4a:"Viele Funktionen funktionieren offline. Funktionen, die eine Internetverbindung erfordern, zeigen eine Benachrichtigung an.",faq5q:"Welche Sprachen werden unterstützt?",faq5a:"17 Sprachen: Englisch, Japanisch, Chinesisch (vereinfacht und traditionell), Koreanisch, Spanisch, Portugiesisch, Französisch, Deutsch, Italienisch, Russisch, Arabisch, Thailändisch, Indonesisch, Türkisch, Niederländisch und Vietnamesisch.",faq6q:"Ich habe Feedback oder einen Feature-Wunsch.",faq6a:"Wir freuen uns über dein Feedback! Sende uns eine E-Mail an die untenstehende Adresse.",contact:"Kontakt",contact_desc:"Fragen, Bugs oder Feedback? Wir antworten in der Regel innerhalb von 1-2 Werktagen.",privacy:"Datenschutz",privacy_desc:"Wir nehmen deinen Datenschutz ernst. Wir verkaufen keine persönlichen Daten an Dritte.",privacy_link:"Datenschutzrichtlinie lesen",back:"Zurück zu SK APPS",rights:"Alle Rechte vorbehalten."},
+it:{home:"Home",features:"Funzionalità principali",download:"Scarica",download_desc:"Disponibile su iOS e Android. Scarica gratis e inizia a usare oggi.",faq:"Domande frequenti",faq1q:"Come ripristino il mio acquisto?",faq1a:"Apri l'app, vai su Impostazioni e tocca \"Ripristina acquisti\".",faq2q:"L'app si blocca. Cosa devo fare?",faq2a:"Prova a forzare la chiusura e riavviare l'app. Assicurati di avere l'ultima versione. Se il problema persiste, reinstalla l'app.",faq3q:"Come annullo un abbonamento?",faq3a:"Vai su Impostazioni → Apple ID → Abbonamenti (iOS) o Google Play → Abbonamenti (Android), seleziona l'app e annulla.",faq4q:"Posso usare l'app offline?",faq4a:"Molte funzionalità funzionano offline. Le funzionalità che richiedono internet mostreranno una notifica.",faq5q:"Quali lingue sono supportate?",faq5a:"17 lingue: inglese, giapponese, cinese (semplificato e tradizionale), coreano, spagnolo, portoghese, francese, tedesco, italiano, russo, arabo, tailandese, indonesiano, turco, olandese e vietnamita.",faq6q:"Ho feedback o una richiesta di funzionalità.",faq6a:"Ci piacerebbe sentirti! Inviaci un'email all'indirizzo qui sotto.",contact:"Contattaci",contact_desc:"Domande, bug o feedback? Rispondiamo solitamente entro 1-2 giorni lavorativi.",privacy:"Privacy e dati",privacy_desc:"Prendiamo sul serio la tua privacy. Non vendiamo dati personali a terzi.",privacy_link:"Leggi l'informativa sulla privacy",back:"Torna a SK APPS",rights:"Tutti i diritti riservati."},
+ru:{home:"Главная",features:"Основные функции",download:"Скачать",download_desc:"Доступно для iOS и Android. Скачайте бесплатно и начните использовать прямо сейчас.",faq:"Часто задаваемые вопросы",faq1q:"Как восстановить покупку?",faq1a:"Откройте приложение, перейдите в Настройки и нажмите «Восстановить покупки».",faq2q:"Приложение вылетает. Что делать?",faq2a:"Попробуйте принудительно закрыть и перезапустить приложение. Убедитесь, что установлена последняя версия. Если проблема сохраняется, переустановите приложение.",faq3q:"Как отменить подписку?",faq3a:"Перейдите в Настройки устройства → Apple ID → Подписки (iOS) или Google Play → Подписки (Android), выберите приложение и отмените.",faq4q:"Можно ли использовать офлайн?",faq4a:"Многие функции работают офлайн. Функции, требующие интернет, покажут уведомление.",faq5q:"Какие языки поддерживаются?",faq5a:"17 языков: английский, японский, китайский (упрощённый и традиционный), корейский, испанский, португальский, французский, немецкий, итальянский, русский, арабский, тайский, индонезийский, турецкий, нидерландский и вьетнамский.",faq6q:"У меня есть отзыв или запрос на функцию.",faq6a:"Мы будем рады услышать вас! Отправьте email на адрес ниже.",contact:"Связаться с нами",contact_desc:"Вопросы, баги или отзывы? Обычно отвечаем в течение 1-2 рабочих дней.",privacy:"Конфиденциальность",privacy_desc:"Мы серьёзно относимся к вашей конфиденциальности. Мы не продаём персональные данные третьим лицам.",privacy_link:"Читать политику конфиденциальности",back:"Вернуться к SK APPS",rights:"Все права защищены."},
+ar:{home:"الرئيسية",features:"الميزات الرئيسية",download:"تحميل",download_desc:"متاح على iOS و Android. حمّل مجاناً وابدأ الاستخدام اليوم.",faq:"الأسئلة الشائعة",faq1q:"كيف أستعيد مشترياتي؟",faq1a:"افتح التطبيق، اذهب إلى الإعدادات واضغط على \"استعادة المشتريات\".",faq2q:"التطبيق يتعطل. ماذا أفعل؟",faq2a:"حاول إغلاق التطبيق بالقوة وإعادة تشغيله. تأكد من تثبيت أحدث إصدار. إذا استمرت المشكلة، أعد تثبيت التطبيق.",faq3q:"كيف ألغي الاشتراك؟",faq3a:"اذهب إلى إعدادات الجهاز → Apple ID → الاشتراكات (iOS) أو Google Play → الاشتراكات (Android)، حدد التطبيق وألغِ.",faq4q:"هل يمكنني الاستخدام بدون إنترنت؟",faq4a:"العديد من الميزات تعمل بدون اتصال. الميزات التي تتطلب إنترنت ستظهر إشعاراً.",faq5q:"ما اللغات المدعومة؟",faq5a:"17 لغة: الإنجليزية واليابانية والصينية (المبسطة والتقليدية) والكورية والإسبانية والبرتغالية والفرنسية والألمانية والإيطالية والروسية والعربية والتايلاندية والإندونيسية والتركية والهولندية والفيتنامية.",faq6q:"لديّ ملاحظات أو طلب ميزة.",faq6a:"نحب أن نسمع منك! أرسل لنا بريداً إلكترونياً على العنوان أدناه.",contact:"اتصل بنا",contact_desc:"أسئلة أو أخطاء أو ملاحظات؟ نرد عادةً خلال 1-2 يوم عمل.",privacy:"الخصوصية والبيانات",privacy_desc:"نأخذ خصوصيتك على محمل الجد. لا نبيع المعلومات الشخصية لأطراف ثالثة.",privacy_link:"اقرأ سياسة الخصوصية",back:"العودة إلى SK APPS",rights:"جميع الحقوق محفوظة."},
+th:{home:"หน้าแรก",features:"ฟีเจอร์หลัก",download:"ดาวน์โหลด",download_desc:"ใช้ได้ทั้ง iOS และ Android ดาวน์โหลดฟรีและเริ่มใช้งานวันนี้",faq:"คำถามที่พบบ่อย",faq1q:"กู้คืนการซื้อได้อย่างไร?",faq1a:"เปิดแอป ไปที่ตั้งค่า แล้วแตะ \"กู้คืนการซื้อ\"",faq2q:"แอปค้าง ต้องทำอย่างไร?",faq2a:"ลองบังคับปิดและเปิดแอปใหม่ ตรวจสอบว่าติดตั้งเวอร์ชันล่าสุดแล้ว หากยังมีปัญหา ให้ติดตั้งแอปใหม่",faq3q:"ยกเลิกการสมัครสมาชิกได้อย่างไร?",faq3a:"ไปที่ตั้งค่าอุปกรณ์ → Apple ID → การสมัครสมาชิก (iOS) หรือ Google Play → การสมัครสมาชิก (Android) เลือกแอปและยกเลิก",faq4q:"ใช้แบบออฟไลน์ได้ไหม?",faq4a:"ฟีเจอร์หลายอย่างใช้ได้แบบออฟไลน์ ฟีเจอร์ที่ต้องใช้อินเทอร์เน็ตจะแสดงการแจ้งเตือน",faq5q:"รองรับภาษาอะไรบ้าง?",faq5a:"17 ภาษา: อังกฤษ ญี่ปุ่น จีน (ตัวย่อและตัวเต็ม) เกาหลี สเปน โปรตุเกส ฝรั่งเศส เยอรมัน อิตาลี รัสเซีย อาหรับ ไทย อินโดนีเซีย ตุรกี ดัตช์ และเวียดนาม",faq6q:"มีข้อเสนอแนะหรืออยากขอฟีเจอร์",faq6a:"เรายินดีรับฟัง! ส่งอีเมลมาที่ที่อยู่ด้านล่าง",contact:"ติดต่อเรา",contact_desc:"มีคำถาม พบบั๊ก หรืออยากให้ข้อเสนอแนะ? เราตอบกลับภายใน 1-2 วันทำการ",privacy:"ความเป็นส่วนตัวและข้อมูล",privacy_desc:"เราให้ความสำคัญกับความเป็นส่วนตัวของคุณ เราไม่ขายข้อมูลส่วนบุคคลให้บุคคลที่สาม",privacy_link:"อ่านนโยบายความเป็นส่วนตัว",back:"กลับไป SK APPS",rights:"สงวนลิขสิทธิ์"},
+id:{home:"Beranda",features:"Fitur Utama",download:"Unduh",download_desc:"Tersedia di iOS dan Android. Unduh gratis dan mulai gunakan sekarang.",faq:"Pertanyaan Umum",faq1q:"Bagaimana memulihkan pembelian?",faq1a:"Buka aplikasi, buka Pengaturan, dan ketuk \"Pulihkan Pembelian\".",faq2q:"Aplikasi mogok. Apa yang harus dilakukan?",faq2a:"Coba paksa tutup dan mulai ulang aplikasi. Pastikan versi terbaru terinstal. Jika masalah berlanjut, instal ulang aplikasi.",faq3q:"Bagaimana membatalkan langganan?",faq3a:"Buka Pengaturan perangkat → Apple ID → Langganan (iOS) atau Google Play → Langganan (Android), pilih aplikasi dan batalkan.",faq4q:"Bisa digunakan offline?",faq4a:"Banyak fitur bekerja offline. Fitur yang memerlukan internet akan menampilkan notifikasi.",faq5q:"Bahasa apa saja yang didukung?",faq5a:"17 bahasa: Inggris, Jepang, Cina (Sederhana dan Tradisional), Korea, Spanyol, Portugis, Prancis, Jerman, Italia, Rusia, Arab, Thai, Indonesia, Turki, Belanda, dan Vietnam.",faq6q:"Saya punya masukan atau permintaan fitur.",faq6a:"Kami senang mendengar dari Anda! Kirim email ke alamat di bawah.",contact:"Hubungi Kami",contact_desc:"Ada pertanyaan, bug, atau masukan? Kami biasanya merespons dalam 1-2 hari kerja.",privacy:"Privasi & Data",privacy_desc:"Kami menghargai privasi Anda. Kami tidak menjual informasi pribadi kepada pihak ketiga.",privacy_link:"Baca kebijakan privasi",back:"Kembali ke SK APPS",rights:"Hak cipta dilindungi."},
+tr:{home:"Ana Sayfa",features:"Temel Özellikler",download:"İndir",download_desc:"iOS ve Android'de kullanılabilir. Ücretsiz indirin ve hemen kullanmaya başlayın.",faq:"Sık Sorulan Sorular",faq1q:"Satın almamı nasıl geri yüklerim?",faq1a:"Uygulamayı açın, Ayarlar'a gidin ve \"Satın Almaları Geri Yükle\"ye dokunun.",faq2q:"Uygulama çöküyor. Ne yapmalıyım?",faq2a:"Uygulamayı zorla kapatıp yeniden başlatmayı deneyin. En son sürümün yüklü olduğundan emin olun. Sorun devam ederse uygulamayı yeniden yükleyin.",faq3q:"Aboneliği nasıl iptal ederim?",faq3a:"Cihaz Ayarları → Apple ID → Abonelikler (iOS) veya Google Play → Abonelikler (Android)'e gidin, uygulamayı seçin ve iptal edin.",faq4q:"Çevrimdışı kullanabilir miyim?",faq4a:"Birçok özellik çevrimdışı çalışır. İnternet gerektiren özellikler bildirim gösterecektir.",faq5q:"Hangi diller destekleniyor?",faq5a:"17 dil: İngilizce, Japonca, Çince (Basitleştirilmiş ve Geleneksel), Korece, İspanyolca, Portekizce, Fransızca, Almanca, İtalyanca, Rusça, Arapça, Tayca, Endonezce, Türkçe, Felemenkçe ve Vietnamca.",faq6q:"Geri bildirimim veya özellik isteğim var.",faq6a:"Sizden duymak isteriz! Aşağıdaki adrese e-posta gönderin.",contact:"İletişim",contact_desc:"Soru, hata veya geri bildirim mi var? Genellikle 1-2 iş günü içinde yanıt veririz.",privacy:"Gizlilik ve Veri",privacy_desc:"Gizliliğinizi ciddiye alıyoruz. Kişisel bilgileri üçüncü taraflara satmıyoruz.",privacy_link:"Gizlilik politikasını oku",back:"SK APPS'a dön",rights:"Tüm hakları saklıdır."},
+nl:{home:"Home",features:"Belangrijkste functies",download:"Downloaden",download_desc:"Beschikbaar op iOS en Android. Download gratis en begin vandaag nog.",faq:"Veelgestelde vragen",faq1q:"Hoe herstel ik mijn aankoop?",faq1a:"Open de app, ga naar Instellingen en tik op \"Aankopen herstellen\".",faq2q:"De app crasht. Wat moet ik doen?",faq2a:"Probeer de app geforceerd te sluiten en opnieuw te starten. Zorg dat de nieuwste versie is geïnstalleerd. Als het probleem aanhoudt, installeer de app opnieuw.",faq3q:"Hoe annuleer ik een abonnement?",faq3a:"Ga naar Instellingen → Apple ID → Abonnementen (iOS) of Google Play → Abonnementen (Android), selecteer de app en annuleer.",faq4q:"Kan ik de app offline gebruiken?",faq4a:"Veel functies werken offline. Functies die internet vereisen tonen een melding.",faq5q:"Welke talen worden ondersteund?",faq5a:"17 talen: Engels, Japans, Chinees (vereenvoudigd en traditioneel), Koreaans, Spaans, Portugees, Frans, Duits, Italiaans, Russisch, Arabisch, Thais, Indonesisch, Turks, Nederlands en Vietnamees.",faq6q:"Ik heb feedback of een functieverzoek.",faq6a:"We horen graag van je! Stuur een e-mail naar het onderstaande adres.",contact:"Contact",contact_desc:"Vragen, bugs of feedback? We reageren meestal binnen 1-2 werkdagen.",privacy:"Privacy & gegevens",privacy_desc:"We nemen je privacy serieus. We verkopen geen persoonlijke gegevens aan derden.",privacy_link:"Lees het privacybeleid",back:"Terug naar SK APPS",rights:"Alle rechten voorbehouden."},
+vi:{home:"Trang chủ",features:"Tính năng chính",download:"Tải xuống",download_desc:"Có sẵn trên cả iOS và Android. Tải miễn phí và bắt đầu sử dụng ngay.",faq:"Câu hỏi thường gặp",faq1q:"Làm sao để khôi phục giao dịch?",faq1a:"Mở ứng dụng, vào Cài đặt và nhấn \"Khôi phục giao dịch\".",faq2q:"Ứng dụng bị lỗi. Tôi phải làm gì?",faq2a:"Thử đóng ứng dụng và khởi động lại. Đảm bảo đã cài phiên bản mới nhất. Nếu vẫn lỗi, hãy cài lại ứng dụng.",faq3q:"Làm sao để hủy đăng ký?",faq3a:"Vào Cài đặt thiết bị → Apple ID → Đăng ký (iOS) hoặc Google Play → Đăng ký (Android), chọn ứng dụng và hủy.",faq4q:"Có dùng được ngoại tuyến không?",faq4a:"Nhiều tính năng hoạt động ngoại tuyến. Các tính năng cần internet sẽ hiển thị thông báo.",faq5q:"Hỗ trợ những ngôn ngữ nào?",faq5a:"17 ngôn ngữ: Anh, Nhật, Trung (giản thể và phồn thể), Hàn, Tây Ban Nha, Bồ Đào Nha, Pháp, Đức, Ý, Nga, Ả Rập, Thái, Indonesia, Thổ Nhĩ Kỳ, Hà Lan và Việt Nam.",faq6q:"Tôi có phản hồi hoặc yêu cầu tính năng.",faq6a:"Chúng tôi rất muốn nghe từ bạn! Gửi email đến địa chỉ bên dưới.",contact:"Liên hệ",contact_desc:"Có câu hỏi, lỗi hoặc phản hồi? Chúng tôi thường trả lời trong 1-2 ngày làm việc.",privacy:"Quyền riêng tư & Dữ liệu",privacy_desc:"Chúng tôi coi trọng quyền riêng tư của bạn. Chúng tôi không bán thông tin cá nhân cho bên thứ ba.",privacy_link:"Đọc chính sách bảo mật",back:"Quay lại SK APPS",rights:"Đã đăng ký bản quyền."}
+};
+
+function detectLang(){const s=localStorage.getItem('sk_lang');if(s&&T[s])return s;const n=(navigator.language||'en').toLowerCase();if(n.startsWith('zh-tw')||n.startsWith('zh-hant'))return'zh_TW';if(n.startsWith('zh'))return'zh';const c=n.split('-')[0];return T[c]?c:'en'}
+function applyLang(l){const t=T[l]||T.en;document.documentElement.lang=l.replace('_','-');document.documentElement.dir=l==='ar'?'rtl':'ltr';document.querySelectorAll('[data-i18n]').forEach(e=>{const k=e.getAttribute('data-i18n');if(t[k])e.textContent=t[k]});document.getElementById('langLabel').textContent=LANGS[l].flag;document.querySelectorAll('.lang-option').forEach(o=>o.classList.toggle('active',o.dataset.lang===l));localStorage.setItem('sk_lang',l)}
+const dd=document.getElementById('langDropdown');Object.entries(LANGS).forEach(([c,i])=>{const o=document.createElement('div');o.className='lang-option';o.dataset.lang=c;o.textContent=i.label;o.addEventListener('click',()=>{applyLang(c);document.getElementById('langSelector').classList.remove('open')});dd.appendChild(o)});
+document.getElementById('langBtn').addEventListener('click',e=>{e.stopPropagation();document.getElementById('langSelector').classList.toggle('open')});
+document.addEventListener('click',()=>document.getElementById('langSelector').classList.remove('open'));
+applyLang(detectLang());
+</script>
 </body>
 </html>
