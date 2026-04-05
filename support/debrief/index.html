@@ -86,7 +86,7 @@
   <div class="hero-emoji">📋</div>
   <div class="hero-cat">Productivity</div>
   <h1>Meetlog Debrief</h1>
-  <p>Log and summarize your meetings effortlessly. Never forget key decisions and action items.</p>
+  <p id="heroDesc">Log and summarize your meetings effortlessly. Never forget key decisions and action items.</p>
 </div>
 
 <div class="container">
@@ -166,6 +166,9 @@ const dd=document.getElementById('langDropdown');Object.entries(LANGS).forEach((
 document.getElementById('langBtn').addEventListener('click',e=>{e.stopPropagation();document.getElementById('langSelector').classList.toggle('open')});
 document.addEventListener('click',()=>document.getElementById('langSelector').classList.remove('open'));
 applyLang(detectLang());
+const APP_T={en:"Meeting Reflection Journal",ja:"会議後の感情整理アプリ",zh:"会议情绪反思日记",zh_TW:"會議情緒反思日記",ko:"회의 감정 반성 일지",es:"Diario de reflexión laboral",pt:"Diário de reflexão de reuniões",fr:"Journal réunions & émotions",de:"Meeting-Reflexions-Tagebuch",it:"Diario di riflessione riunioni",ru:"Дневник рефлексии встреч",ar:"مجلة تأمل في اجتماعاتك",th:"ไดอารี่สะท้อนความคิดหลังประชุม",id:"Jurnal refleksi rapat harian",tr:"Toplantı yansıma günlüğü",nl:"Vergadering reflectie dagboek",vi:"Nhật ký suy ngẫm sau cuộc họp",};
+const _oA=applyLang;applyLang=function(l){_oA(l);const t=APP_T[l]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;};
+(function(){const l=localStorage.getItem('sk_lang');const lang=l||detectLang();const t=APP_T[lang]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;})();
 </script>
 </body>
 </html>

@@ -86,7 +86,7 @@
   <div class="hero-emoji">💝</div>
   <div class="hero-cat">AI / Social</div>
   <h1>DatePilot</h1>
-  <p>Your AI-powered dating coach. Get conversation starters, date ideas, and relationship advice.</p>
+  <p id="heroDesc">Your AI-powered dating coach. Get conversation starters, date ideas, and relationship advice.</p>
 </div>
 
 <div class="container">
@@ -166,6 +166,9 @@ const dd=document.getElementById('langDropdown');Object.entries(LANGS).forEach((
 document.getElementById('langBtn').addEventListener('click',e=>{e.stopPropagation();document.getElementById('langSelector').classList.toggle('open')});
 document.addEventListener('click',()=>document.getElementById('langSelector').classList.remove('open'));
 applyLang(detectLang());
+const APP_T={en:"AI Dating Coach & Advice",ja:"AI恋愛コーチ & アドバイザー",zh:"AI Dating Coach & Advice",zh_TW:"AI Dating Coach & Advice",ko:"AI Dating Coach & Advice",es:"Coach de citas con IA",pt:"Coach de Namoro com IA",fr:"AI Dating Coach & Advice",de:"AI Dating Coach & Advice",it:"Coach per Appuntamenti con IA",ru:"ИИ-коуч по свиданиям",ar:"مدرب مواعدة بالذكاء الاصطناعي",th:"โค้ชหาคู่ด้วย AI",id:"Pelatih Kencan dengan AI",tr:"Yapay Zeka Flört Koçu",nl:"AI Datingcoach & Adviseur",vi:"Huấn luyện viên hẹn hò AI",};
+const _oA=applyLang;applyLang=function(l){_oA(l);const t=APP_T[l]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;};
+(function(){const l=localStorage.getItem('sk_lang');const lang=l||detectLang();const t=APP_T[lang]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;})();
 </script>
 </body>
 </html>

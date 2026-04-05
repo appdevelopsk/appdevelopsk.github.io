@@ -86,7 +86,7 @@
   <div class="hero-emoji">🍕</div>
   <div class="hero-cat">Lifestyle</div>
   <h1>Food Roulette</h1>
-  <p>Can't decide what to eat? Spin the wheel and let fate choose your next meal!</p>
+  <p id="heroDesc">Can't decide what to eat? Spin the wheel and let fate choose your next meal!</p>
 </div>
 
 <div class="container">
@@ -166,6 +166,9 @@ const dd=document.getElementById('langDropdown');Object.entries(LANGS).forEach((
 document.getElementById('langBtn').addEventListener('click',e=>{e.stopPropagation();document.getElementById('langSelector').classList.toggle('open')});
 document.addEventListener('click',()=>document.getElementById('langSelector').classList.remove('open'));
 applyLang(detectLang());
+const APP_T={en:"Decide Lunch Fast & Fun",ja:"今日のごはんを楽しく即決",zh:"快速决定今天吃什么",zh_TW:"快速決定今天吃什麼",ko:"오늘 뭐 먹을지 즐겁게 결정",es:"Decide dónde comer al instante",pt:"Decida onde comer rapidinho",fr:"Décide où manger rapidement",de:"Schnell entscheiden wo du isst",it:"Decidi dove mangiare subito",ru:"Быстро решай, где поесть",ar:"قرر أين تأكل بسرعة",th:"ตัดสินใจว่าจะกินอะไรได้ทันที",id:"Putuskan makan apa sekarang",tr:"Nerede yemek yiyeceğini seç",nl:"Beslis snel waar je gaat eten",vi:"Quyết định ăn gì ngay lập tức",};
+const _oA=applyLang;applyLang=function(l){_oA(l);const t=APP_T[l]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;};
+(function(){const l=localStorage.getItem('sk_lang');const lang=l||detectLang();const t=APP_T[lang]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;})();
 </script>
 </body>
 </html>

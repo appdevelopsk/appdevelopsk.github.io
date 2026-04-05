@@ -86,7 +86,7 @@
   <div class="hero-emoji">📈</div>
   <div class="hero-cat">Social</div>
   <h1>PercentPulse</h1>
-  <p>Quick polls and percentage-based predictions. See what the crowd thinks!</p>
+  <p id="heroDesc">Quick polls and percentage-based predictions. See what the crowd thinks!</p>
 </div>
 
 <div class="container">
@@ -166,6 +166,9 @@ const dd=document.getElementById('langDropdown');Object.entries(LANGS).forEach((
 document.getElementById('langBtn').addEventListener('click',e=>{e.stopPropagation();document.getElementById('langSelector').classList.toggle('open')});
 document.addEventListener('click',()=>document.getElementById('langSelector').classList.remove('open'));
 applyLang(detectLang());
+const APP_T={en:"Real-Time Global Stats Game",ja:"みんなの答えを予測するゲーム",zh:"猜猜大众怎么想",zh_TW:"猜猜大眾怎麼想",ko:"대중이 어떻게 생각하는지 맞춰보세요",es:"Adivina qué piensa la gente",pt:"Adivinhe o que a multidão",fr:"Devinez ce que pense la foule",de:"Errate, was die Masse denkt",it:"Indovina cosa pensa la folla",ru:"Угадайте мнение толпы",ar:"خمّن ما تفكر فيه الجماهير",th:"ทายว่าฝูงชนคิดอะไร",id:"Tebak Pendapat Orang Banyak",tr:"Kalabalığın ne düşündüğünü",nl:"Raad wat de menigte denkt",vi:"Đoán xem đám đông nghĩ gì",};
+const _oA=applyLang;applyLang=function(l){_oA(l);const t=APP_T[l]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;};
+(function(){const l=localStorage.getItem('sk_lang');const lang=l||detectLang();const t=APP_T[lang]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;})();
 </script>
 </body>
 </html>

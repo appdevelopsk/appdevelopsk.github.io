@@ -86,7 +86,7 @@
   <div class="hero-emoji">💘</div>
   <div class="hero-cat">Social</div>
   <h1>MatchRate</h1>
-  <p>Discover your compatibility with friends, partners, or crushes through fun personality quizzes.</p>
+  <p id="heroDesc">Discover your compatibility with friends, partners, or crushes through fun personality quizzes.</p>
 </div>
 
 <div class="container">
@@ -166,6 +166,9 @@ const dd=document.getElementById('langDropdown');Object.entries(LANGS).forEach((
 document.getElementById('langBtn').addEventListener('click',e=>{e.stopPropagation();document.getElementById('langSelector').classList.toggle('open')});
 document.addEventListener('click',()=>document.getElementById('langSelector').classList.remove('open'));
 applyLang(detectLang());
+const APP_T={en:"Compatibility Score & Match",ja:"友達との相性をチェック",zh:"找到你的匹配度",zh_TW:"找到你的配對結果",ko:"나의 궁합 점수 확인하기",es:"Encuentra tu compatibilidad",pt:"Encontre sua combinação ideal",fr:"Trouvez votre compatibilité",de:"Finde deine Kompatibilität",it:"Trova la tua compatibilità",ru:"Найди своё совпадение",ar:"اكتشف مدى توافقك مع الآخرين",th:"ค้นหาคะแนนความเข้ากันของคุณ",id:"Temukan kecocokan sempurnamu",tr:"Uyumluluk eşleşmeni bul",nl:"Vind jouw perfecte match",vi:"Tìm điểm tương thích của bạn",};
+const _oA=applyLang;applyLang=function(l){_oA(l);const t=APP_T[l]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;};
+(function(){const l=localStorage.getItem('sk_lang');const lang=l||detectLang();const t=APP_T[lang]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;})();
 </script>
 </body>
 </html>

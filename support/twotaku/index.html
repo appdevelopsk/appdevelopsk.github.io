@@ -86,7 +86,7 @@
   <div class="hero-emoji">🎌</div>
   <div class="hero-cat">Social</div>
   <h1>Twotaku</h1>
-  <p>Connect with anime and manga fans. Discover, discuss, and share your favorite series.</p>
+  <p id="heroDesc">Connect with anime and manga fans. Discover, discuss, and share your favorite series.</p>
 </div>
 
 <div class="container">
@@ -166,6 +166,9 @@ const dd=document.getElementById('langDropdown');Object.entries(LANGS).forEach((
 document.getElementById('langBtn').addEventListener('click',e=>{e.stopPropagation();document.getElementById('langSelector').classList.toggle('open')});
 document.addEventListener('click',()=>document.getElementById('langSelector').classList.remove('open'));
 applyLang(detectLang());
+const APP_T={en:"Your Virtual Buddy & Friend",ja:"究極の2択クイズ",zh:"终极二选一问答",zh_TW:"終極二選一問答",ko:"최강 2지선다 퀴즈",es:"Quiz definitivo de 2 opciones",pt:"Quiz definitivo de 2 escolhas",fr:"Quiz ultime à 2 choix",de:"Das ultimative 2-Wahl-Quiz",it:"Quiz definitivo a 2 scelte",ru:"Квиз на два варианта",ar:"اختبار الخيارين المطلق",th:"ควิซ 2 ตัวเลือกสุดมันส์",id:"Kuis 2 pilihan terbaik",tr:"En iyi 2 seçenekli quiz",nl:"Ultieme 2-keuze quiz",vi:"Câu đố 2 lựa chọn tối thượng",};
+const _oA=applyLang;applyLang=function(l){_oA(l);const t=APP_T[l]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;};
+(function(){const l=localStorage.getItem('sk_lang');const lang=l||detectLang();const t=APP_T[lang]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;})();
 </script>
 </body>
 </html>

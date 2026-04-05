@@ -86,7 +86,7 @@
   <div class="hero-emoji">🎬</div>
   <div class="hero-cat">Lifestyle</div>
   <h1>Movie Roulette</h1>
-  <p>Can't decide what to watch? Spin the wheel and discover your next movie or show!</p>
+  <p id="heroDesc">Can't decide what to watch? Spin the wheel and discover your next movie or show!</p>
 </div>
 
 <div class="container">
@@ -166,6 +166,9 @@ const dd=document.getElementById('langDropdown');Object.entries(LANGS).forEach((
 document.getElementById('langBtn').addEventListener('click',e=>{e.stopPropagation();document.getElementById('langSelector').classList.toggle('open')});
 document.addEventListener('click',()=>document.getElementById('langSelector').classList.remove('open'));
 applyLang(detectLang());
+const APP_T={en:"Spin to decide what to watch",ja:"今夜観る作品をルーレットで",zh:"用轮盘决定今晚看什么",zh_TW:"用輪盤決定今晚看什麼",ko:"룰렛으로 오늘 볼 영화 결정",es:"Gira y decide qué ver hoy",pt:"Gire e decida o que ver",fr:"Tournez & choisissez un film",de:"Drehen & Film entscheiden",it:"Gira e decidi cosa guardare",ru:"Крути и выбирай кино",ar:"دوّر وقرر ما ستشاهده الليلة",th:"หมุนรูเล็ตเพื่อเลือกหนัง",id:"Putar & tentukan tontonanmu",tr:"Karar ver, ne izleyeceksin",nl:"Draai & beslis wat je kijkt",vi:"Quay & quyết định xem gì",};
+const _oA=applyLang;applyLang=function(l){_oA(l);const t=APP_T[l]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;};
+(function(){const l=localStorage.getItem('sk_lang');const lang=l||detectLang();const t=APP_T[lang]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;})();
 </script>
 </body>
 </html>

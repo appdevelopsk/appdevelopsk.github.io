@@ -86,7 +86,7 @@
   <div class="hero-emoji">🧴</div>
   <div class="hero-cat">AI / Health</div>
   <h1>SkinSage</h1>
-  <p>Get personalized skincare routines and product recommendations powered by AI analysis.</p>
+  <p id="heroDesc">Get personalized skincare routines and product recommendations powered by AI analysis.</p>
 </div>
 
 <div class="container">
@@ -166,6 +166,9 @@ const dd=document.getElementById('langDropdown');Object.entries(LANGS).forEach((
 document.getElementById('langBtn').addEventListener('click',e=>{e.stopPropagation();document.getElementById('langSelector').classList.toggle('open')});
 document.addEventListener('click',()=>document.getElementById('langSelector').classList.remove('open'));
 applyLang(detectLang());
+const APP_T={en:"AI Skin Analysis & Routine",ja:"AI肌分析・パーソナルルーティン",zh:"AI肌肤分析与护肤程序",zh_TW:"AI肌膚分析與保養程序",ko:"AI 피부 분석 & 루틴",es:"Análisis de Piel IA & Rutina",pt:"Análise de Pele IA & Rotina",fr:"Analyse de Peau IA & Routine",de:"KI-Hautanalyse & Pfegeroutine",it:"Analisi Pelle IA & Routine",ru:"ИИ-анализ кожи и уход",ar:"تحليل البشرة بالذكاء الاصطناعي",th:"วิเคราะห์ผิวด้วย AI & รูทีน",id:"Analisis Kulit AI & Rutinitas",tr:"AI Cilt Analizi & Rutin",nl:"AI Huidanalyse & Verzorging",vi:"Phân tích da AI & Quy trình",};
+const _oA=applyLang;applyLang=function(l){_oA(l);const t=APP_T[l]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;};
+(function(){const l=localStorage.getItem('sk_lang');const lang=l||detectLang();const t=APP_T[lang]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;})();
 </script>
 </body>
 </html>

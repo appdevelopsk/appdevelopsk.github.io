@@ -86,7 +86,7 @@
   <div class="hero-emoji">📊</div>
   <div class="hero-cat">Productivity</div>
   <h1>LifeBoard</h1>
-  <p>Visualize your life goals, habits, and progress on a beautiful dashboard.</p>
+  <p id="heroDesc">Visualize your life goals, habits, and progress on a beautiful dashboard.</p>
 </div>
 
 <div class="container">
@@ -166,6 +166,9 @@ const dd=document.getElementById('langDropdown');Object.entries(LANGS).forEach((
 document.getElementById('langBtn').addEventListener('click',e=>{e.stopPropagation();document.getElementById('langSelector').classList.toggle('open')});
 document.addEventListener('click',()=>document.getElementById('langSelector').classList.remove('open'));
 applyLang(detectLang());
+const APP_T={en:"Goals & Life Progress Board",ja:"人生を可視化しよう",zh:"可视化你的人生旅程",zh_TW:"視覺化你的人生旅程",ko:"당신의 인생 여정을 시각화하세요",es:"Visualiza tu trayectoria vital",pt:"Visualize sua jornada de vida",fr:"Visualisez votre parcours vie",de:"Visualisiere deine Lebensreise",it:"Visualizza percorso di vita",ru:"Визуализируй жизненный путь",ar:"تصوّر رحلتك في الحياة",th:"แสดงภาพเส้นทางชีวิตของคุณ",id:"Visualisasi perjalanan hidupmu",tr:"Hayat yolculuğunu görselleştir",nl:"Visualiseer je levensreis",vi:"Hình dung hành trình đời bạn",};
+const _oA=applyLang;applyLang=function(l){_oA(l);const t=APP_T[l]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;};
+(function(){const l=localStorage.getItem('sk_lang');const lang=l||detectLang();const t=APP_T[lang]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;})();
 </script>
 </body>
 </html>

@@ -86,7 +86,7 @@
   <div class="hero-emoji">📅</div>
   <div class="hero-cat">Lifestyle</div>
   <h1>Rank My Day</h1>
-  <p>Rate and reflect on your day with a simple scoring system. Track trends over time.</p>
+  <p id="heroDesc">Rate and reflect on your day with a simple scoring system. Track trends over time.</p>
 </div>
 
 <div class="container">
@@ -166,6 +166,9 @@ const dd=document.getElementById('langDropdown');Object.entries(LANGS).forEach((
 document.getElementById('langBtn').addEventListener('click',e=>{e.stopPropagation();document.getElementById('langSelector').classList.toggle('open')});
 document.addEventListener('click',()=>document.getElementById('langSelector').classList.remove('open'));
 applyLang(detectLang());
+const APP_T={en:"Daily Rating & Mood Tracker",ja:"毎日の評価 & 気分トラッカー",zh:"每日评分 & 心情追踪",zh_TW:"每日評分 & 心情追蹤",ko:"매일 평가 & 기분 트래커",es:"Califica tu Día y Ánimo",pt:"Avaliação Diária & Humor",fr:"Note du Jour & Suivi Humeur",de:"Tagesbewertung & Stimmung",it:"Voto Giornaliero & Umore",ru:"Оценка Дня & Настроение",ar:"تقييم يومي ومتابعة المزاج",th:"ให้คะแนนวัน & ติดตามอารมณ์",id:"Nilai Hari & Pelacak Suasana",tr:"Günlük Puanlama & Ruh Hali",nl:"Dagelijkse Score & Stemming",vi:"Chấm Điểm Ngày & Tâm Trạng",};
+const _oA=applyLang;applyLang=function(l){_oA(l);const t=APP_T[l]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;};
+(function(){const l=localStorage.getItem('sk_lang');const lang=l||detectLang();const t=APP_T[lang]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;})();
 </script>
 </body>
 </html>

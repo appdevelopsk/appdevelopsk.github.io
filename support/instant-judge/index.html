@@ -86,7 +86,7 @@
   <div class="hero-emoji">⚡</div>
   <div class="hero-cat">Social</div>
   <h1>Instant Judge</h1>
-  <p>Cast your vote in 3 seconds! Quick polls and snap judgments on trending topics.</p>
+  <p id="heroDesc">Cast your vote in 3 seconds! Quick polls and snap judgments on trending topics.</p>
 </div>
 
 <div class="container">
@@ -166,6 +166,9 @@ const dd=document.getElementById('langDropdown');Object.entries(LANGS).forEach((
 document.getElementById('langBtn').addEventListener('click',e=>{e.stopPropagation();document.getElementById('langSelector').classList.toggle('open')});
 document.addEventListener('click',()=>document.getElementById('langSelector').classList.remove('open'));
 applyLang(detectLang());
+const APP_T={en:"Instant Votes & Opinions",ja:"コミュニティが24時間で判定",zh:"社区24小时裁决",zh_TW:"社群24小時裁決",ko:"커뮤니티 24시간 판결",es:"Veredicto comunitario en 24h",pt:"Veredicto da comunidade em 24h",fr:"Verdict communautaire en 24h",de:"Community-Urteil in 24 Stunden",it:"Verdetto community in 24 ore",ru:"Вердикт сообщества за 24 часа",ar:"حكم المجتمع خلال 24 ساعة",th:"คำตัดสินชุมชนใน 24 ชั่วโมง",id:"Vonis komunitas dalam 24 jam",tr:"Topluluk kararı 24 saatte",nl:"Community-oordeel in 24 uur",vi:"Phán quyết cộng đồng trong 24h",};
+const _oA=applyLang;applyLang=function(l){_oA(l);const t=APP_T[l]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;};
+(function(){const l=localStorage.getItem('sk_lang');const lang=l||detectLang();const t=APP_T[lang]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;})();
 </script>
 </body>
 </html>

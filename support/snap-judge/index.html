@@ -86,7 +86,7 @@
   <div class="hero-emoji">⚡</div>
   <div class="hero-cat">Game</div>
   <h1>Snap Judge</h1>
-  <p>Test your reflexes! Judge images in just 0.5 seconds in this lightning-fast visual quiz.</p>
+  <p id="heroDesc">Test your reflexes! Judge images in just 0.5 seconds in this lightning-fast visual quiz.</p>
 </div>
 
 <div class="container">
@@ -166,6 +166,9 @@ const dd=document.getElementById('langDropdown');Object.entries(LANGS).forEach((
 document.getElementById('langBtn').addEventListener('click',e=>{e.stopPropagation();document.getElementById('langSelector').classList.toggle('open')});
 document.addEventListener('click',()=>document.getElementById('langSelector').classList.remove('open'));
 applyLang(detectLang());
+const APP_T={en:"Judge Anything in 0.5 Sec",ja:"0.5秒の直感判定ゲーム",zh:"0.5秒内相信你的直觉",zh_TW:"0.5秒內相信你的直覺",ko:"0.5초 만에 직감을 믿어라",es:"Confía en tu instinto en 0.5s",pt:"Confie no seu instinto em 0,5s",fr:"Fiez-vous à l\'instinct en 0,5s",de:"0,5s Instinkt-Quiz",it:"Fidati del tuo istinto in 0,5s",ru:"Доверяй инстинкту за 0,5с",ar:"ثق بحدسك في نصف ثانية",th:"เชื่อสัญชาตญาณ 0.5 วิ",id:"Percayai Instinkmu 0,5 Detik",tr:"0,5s\'de İçgüdüne Güven",nl:"Vertrouw je instinct in 0,5s",vi:"Tin bản năng trong 0,5 giây",};
+const _oA=applyLang;applyLang=function(l){_oA(l);const t=APP_T[l]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;};
+(function(){const l=localStorage.getItem('sk_lang');const lang=l||detectLang();const t=APP_T[lang]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;})();
 </script>
 </body>
 </html>

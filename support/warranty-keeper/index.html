@@ -86,7 +86,7 @@
   <div class="hero-emoji">📦</div>
   <div class="hero-cat">Productivity</div>
   <h1>My Warranty Log</h1>
-  <p>Never lose track of warranties again. Store, organize, and get expiry reminders.</p>
+  <p id="heroDesc">Never lose track of warranties again. Store, organize, and get expiry reminders.</p>
 </div>
 
 <div class="container">
@@ -166,6 +166,9 @@ const dd=document.getElementById('langDropdown');Object.entries(LANGS).forEach((
 document.getElementById('langBtn').addEventListener('click',e=>{e.stopPropagation();document.getElementById('langSelector').classList.toggle('open')});
 document.addEventListener('click',()=>document.getElementById('langSelector').classList.remove('open'));
 applyLang(detectLang());
+const APP_T={en:"Track Product Warranties",ja:"製品の保証期限を管理",zh:"追踪产品保修期限",zh_TW:"追蹤產品保固期限",ko:"제품 보증기간 관리",es:"Gestiona Tus Garantías",pt:"Gerencie Garantias de Produtos",fr:"Suivez vos Garanties Produits",de:"Produktgarantien verwalten",it:"Gestisci le Garanzie Prodotti",ru:"Управление гарантиями",ar:"تتبع ضمانات المنتجات",th:"ติดตามการรับประกันสินค้า",id:"Kelola Garansi Produk Anda",tr:"Ürün Garantilerini Takip Edin",nl:"Beheer Productgaranties",vi:"Quản lý bảo hành sản phẩm",};
+const _oA=applyLang;applyLang=function(l){_oA(l);const t=APP_T[l]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;};
+(function(){const l=localStorage.getItem('sk_lang');const lang=l||detectLang();const t=APP_T[lang]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;})();
 </script>
 </body>
 </html>

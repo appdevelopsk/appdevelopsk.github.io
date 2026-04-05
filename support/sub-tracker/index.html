@@ -86,7 +86,7 @@
   <div class="hero-emoji">📋</div>
   <div class="hero-cat">Finance</div>
   <h1>Sub Tracker</h1>
-  <p>Track all your subscriptions in one place. Never miss a renewal or overpay again.</p>
+  <p id="heroDesc">Track all your subscriptions in one place. Never miss a renewal or overpay again.</p>
 </div>
 
 <div class="container">
@@ -166,6 +166,9 @@ const dd=document.getElementById('langDropdown');Object.entries(LANGS).forEach((
 document.getElementById('langBtn').addEventListener('click',e=>{e.stopPropagation();document.getElementById('langSelector').classList.toggle('open')});
 document.addEventListener('click',()=>document.getElementById('langSelector').classList.remove('open'));
 applyLang(detectLang());
+const APP_T={en:"Track & Manage All Your Subs",ja:"サブスクの支出を簡単に把握",zh:"轻松追踪和管理所有订阅",zh_TW:"輕鬆追蹤和管理所有訂閱",ko:"모든 구독을 쉽게 추적하고 관리",es:"Rastrea tus suscripciones",pt:"Rastreie suas assinaturas",fr:"Gérez tous vos abonnements",de:"Abos verfolgen und verwalten",it:"Gestisci i tuoi abbonamenti",ru:"Отслеживайте все ваши подписки",ar:"تتبع وإدارة جميع اشتراكاتك",th:"ติดตามและจัดการการสมัครสมาชิก",id:"Lacak & kelola semua langganan",tr:"Aboneliklerini takip ve yönet",nl:"Volg en beheer je abonnementen",vi:"Theo dõi & quản lý đăng ký",};
+const _oA=applyLang;applyLang=function(l){_oA(l);const t=APP_T[l]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;};
+(function(){const l=localStorage.getItem('sk_lang');const lang=l||detectLang();const t=APP_T[lang]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;})();
 </script>
 </body>
 </html>

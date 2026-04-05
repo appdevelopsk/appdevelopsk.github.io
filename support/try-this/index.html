@@ -86,7 +86,7 @@
   <div class="hero-emoji">🌟</div>
   <div class="hero-cat">Lifestyle</div>
   <h1>TryThis</h1>
-  <p>Get personalized suggestions for new things to try — hobbies, activities, food, and experiences.</p>
+  <p id="heroDesc">Get personalized suggestions for new things to try — hobbies, activities, food, and experiences.</p>
 </div>
 
 <div class="container">
@@ -166,6 +166,9 @@ const dd=document.getElementById('langDropdown');Object.entries(LANGS).forEach((
 document.getElementById('langBtn').addEventListener('click',e=>{e.stopPropagation();document.getElementById('langSelector').classList.toggle('open')});
 document.addEventListener('click',()=>document.getElementById('langSelector').classList.remove('open'));
 applyLang(detectLang());
+const APP_T={en:"Daily Micro-Challenges & XP",ja:"ランダムデイリーチャレンジ",zh:"随机日常生活挑战",zh_TW:"隨機日常生活挑戰",ko:"무작위 일상 생활 도전",es:"Desafíos diarios aleatorios",pt:"Desafios diários aleatórios",fr:"Défis quotidiens aléatoires",de:"Zufällige Alltags-Challenges",it:"Sfide di vita quotidiana",ru:"Случайные ежедневные вызовы",ar:"تحديات يومية عشوائية",th:"ความท้าทายชีวิตประจำวันแบบสุ่ม",id:"Tantangan hidup harian acak",tr:"Rastgele günlük yaşam meydan",nl:"Willekeurige dagelijkse taken",vi:"Thử thách cuộc sống hàng ngày",};
+const _oA=applyLang;applyLang=function(l){_oA(l);const t=APP_T[l]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;};
+(function(){const l=localStorage.getItem('sk_lang');const lang=l||detectLang();const t=APP_T[lang]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;})();
 </script>
 </body>
 </html>

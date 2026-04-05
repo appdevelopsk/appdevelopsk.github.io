@@ -86,7 +86,7 @@
   <div class="hero-emoji">🏆</div>
   <div class="hero-cat">Social</div>
   <h1>RankHub</h1>
-  <p>Create and share rankings on any topic. Movies, food, music — rank everything!</p>
+  <p id="heroDesc">Create and share rankings on any topic. Movies, food, music — rank everything!</p>
 </div>
 
 <div class="container">
@@ -166,6 +166,9 @@ const dd=document.getElementById('langDropdown');Object.entries(LANGS).forEach((
 document.getElementById('langBtn').addEventListener('click',e=>{e.stopPropagation();document.getElementById('langSelector').classList.toggle('open')});
 document.addEventListener('click',()=>document.getElementById('langSelector').classList.remove('open'));
 applyLang(detectLang());
+const APP_T={en:"Rank, Compare & Compete",ja:"ランク付けして世界と比較",zh:"排名、比较、竞争",zh_TW:"排名、比較、競爭",ko:"순위를 매기고 세계와 비교",es:"Clasifica, Compara y Compite",pt:"Classifique, Compare e Compita",fr:"Classez, Comparez, Rivalisez",de:"Ranken, Vergleichen, Siegen",it:"Classifica, Confronta, Competi",ru:"Ранжируй, сравнивай, борись",ar:"رتّب، قارن، وتنافس",th:"จัดอันดับ เปรียบเทียบ แข่งขัน",id:"Ranking, Bandingkan & Bersaing",tr:"Sırala, Karşılaştır, Yarış",nl:"Rangschik, Vergelijk & Strijd",vi:"Xếp hạng, So sánh & Thi đấu",};
+const _oA=applyLang;applyLang=function(l){_oA(l);const t=APP_T[l]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;};
+(function(){const l=localStorage.getItem('sk_lang');const lang=l||detectLang();const t=APP_T[lang]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;})();
 </script>
 </body>
 </html>

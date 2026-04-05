@@ -86,7 +86,7 @@
   <div class="hero-emoji">🎡</div>
   <div class="hero-cat">Lifestyle</div>
   <h1>Weekend Roulette</h1>
-  <p>Bored on the weekend? Spin the wheel for fun activity suggestions near you!</p>
+  <p id="heroDesc">Bored on the weekend? Spin the wheel for fun activity suggestions near you!</p>
 </div>
 
 <div class="container">
@@ -166,6 +166,9 @@ const dd=document.getElementById('langDropdown');Object.entries(LANGS).forEach((
 document.getElementById('langBtn').addEventListener('click',e=>{e.stopPropagation();document.getElementById('langSelector').classList.toggle('open')});
 document.addEventListener('click',()=>document.getElementById('langSelector').classList.remove('open'));
 applyLang(detectLang());
+const APP_T={en:"Spin & plan your weekend",ja:"週末プランをルーレットで決める",zh:"用轮盘决定周末计划",zh_TW:"用輪盤決定週末計劃",ko:"룰렛으로 주말 계획 결정",es:"Gira y decide tu fin de semana",pt:"Gire e decida o fim de semana",fr:"Tournez & décidez le weekend",de:"Drehen & Wochenendplan wählen",it:"Gira e decidi il tuo weekend",ru:"Крути и планируй выходные",ar:"دوّر وقرر خطتك لنهاية الأسبوع",th:"หมุนรูเล็ตเพื่อวางแผนวันหยุด",id:"Putar & tentukan akhir pekan",tr:"Çevir & hafta sonu planını seç",nl:"Draai & beslis je weekendplan",vi:"Quay & quyết định cuối tuần",};
+const _oA=applyLang;applyLang=function(l){_oA(l);const t=APP_T[l]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;};
+(function(){const l=localStorage.getItem('sk_lang');const lang=l||detectLang();const t=APP_T[lang]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;})();
 </script>
 </body>
 </html>

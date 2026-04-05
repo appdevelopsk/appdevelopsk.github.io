@@ -86,7 +86,7 @@
   <div class="hero-emoji">🙏</div>
   <div class="hero-cat">Health</div>
   <h1>Gratitude Challenge</h1>
-  <p>Build a gratitude habit with daily challenges. Write what you're thankful for each day.</p>
+  <p id="heroDesc">Build a gratitude habit with daily challenges. Write what you're thankful for each day.</p>
 </div>
 
 <div class="container">
@@ -166,6 +166,9 @@ const dd=document.getElementById('langDropdown');Object.entries(LANGS).forEach((
 document.getElementById('langBtn').addEventListener('click',e=>{e.stopPropagation();document.getElementById('langSelector').classList.toggle('open')});
 document.addEventListener('click',()=>document.getElementById('langSelector').classList.remove('open'));
 applyLang(detectLang());
+const APP_T={en:"30-Day Gratitude Journey",ja:"30-Day Gratitude Journey",zh:"30-Day Gratitude Journey",zh_TW:"30-Day Gratitude Journey",ko:"30-Day Gratitude Journey",es:"30-Day Gratitude Journey",pt:"30-Day Gratitude Journey",fr:"30-Day Gratitude Journey",de:"30-Day Gratitude Journey",it:"30-Day Gratitude Journey",ru:"30-Day Gratitude Journey",ar:"30-Day Gratitude Journey",th:"30-Day Gratitude Journey",id:"30-Day Gratitude Journey",tr:"30-Day Gratitude Journey",nl:"30-Day Gratitude Journey",vi:"30-Day Gratitude Journey",};
+const _oA=applyLang;applyLang=function(l){_oA(l);const t=APP_T[l]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;};
+(function(){const l=localStorage.getItem('sk_lang');const lang=l||detectLang();const t=APP_T[lang]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;})();
 </script>
 </body>
 </html>

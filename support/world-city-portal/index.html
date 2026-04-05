@@ -86,7 +86,7 @@
   <div class="hero-emoji">🌆</div>
   <div class="hero-cat">Travel</div>
   <h1>World City Portal</h1>
-  <p>Explore cities around the world with insider guides, local tips, and curated experiences.</p>
+  <p id="heroDesc">Explore cities around the world with insider guides, local tips, and curated experiences.</p>
 </div>
 
 <div class="container">
@@ -166,6 +166,9 @@ const dd=document.getElementById('langDropdown');Object.entries(LANGS).forEach((
 document.getElementById('langBtn').addEventListener('click',e=>{e.stopPropagation();document.getElementById('langSelector').classList.toggle('open')});
 document.addEventListener('click',()=>document.getElementById('langSelector').classList.remove('open'));
 applyLang(detectLang());
+const APP_T={en:"Explore Cities Worldwide",ja:"世界の都市情報をまとめて確認",zh:"探索全球城市信息",zh_TW:"探索全球城市資訊",ko:"전 세계 도시 정보 탐색",es:"Explora ciudades del mundo",pt:"Explore cidades do mundo todo",fr:"Explorez les villes du monde",de:"Städte weltweit entdecken",it:"Esplora città nel mondo",ru:"Исследуйте города мира",ar:"استكشف مدن العالم",th:"สำรวจเมืองทั่วโลก",id:"Jelajahi Kota di Seluruh Dunia",tr:"Dünya Şehirlerini Keşfet",nl:"Verken steden wereldwijd",vi:"Khám phá thành phố thế giới",};
+const _oA=applyLang;applyLang=function(l){_oA(l);const t=APP_T[l]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;};
+(function(){const l=localStorage.getItem('sk_lang');const lang=l||detectLang();const t=APP_T[lang]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;})();
 </script>
 </body>
 </html>

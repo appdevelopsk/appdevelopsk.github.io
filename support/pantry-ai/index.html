@@ -86,7 +86,7 @@
   <div class="hero-emoji">🍽️</div>
   <div class="hero-cat">AI / Lifestyle</div>
   <h1>PantryAI Recipes</h1>
-  <p>Tell the AI what's in your pantry and get delicious recipe suggestions instantly.</p>
+  <p id="heroDesc">Tell the AI what's in your pantry and get delicious recipe suggestions instantly.</p>
 </div>
 
 <div class="container">
@@ -166,6 +166,9 @@ const dd=document.getElementById('langDropdown');Object.entries(LANGS).forEach((
 document.getElementById('langBtn').addEventListener('click',e=>{e.stopPropagation();document.getElementById('langSelector').classList.toggle('open')});
 document.addEventListener('click',()=>document.getElementById('langSelector').classList.remove('open'));
 applyLang(detectLang());
+const APP_T={en:"AI Pantry & Recipe Manager",ja:"AIレシピ提案＆食材管理",zh:"AI智能食谱与食材管理",zh_TW:"AI智慧食譜與食材管理",ko:"AI 식단 플래너 & 식품 관리",es:"Planificador de Comidas con IA",pt:"Planejador de Refeições com IA",fr:"Planificateur de repas IA",de:"KI-Mahlzeitenplaner & Vorrat",it:"Pianificatore Pasti IA",ru:"ИИ-планировщик питания",ar:"مخطط وجبات بالذكاء الاصطناعي",th:"วางแผนอาหารด้วย AI",id:"Perencana Makan AI & Dapur",tr:"AI Yemek Planlayıcı & Kiler",nl:"AI Maaltijdplanner & Voorraad",vi:"Lập kế hoạch bữa ăn bằng AI",};
+const _oA=applyLang;applyLang=function(l){_oA(l);const t=APP_T[l]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;};
+(function(){const l=localStorage.getItem('sk_lang');const lang=l||detectLang();const t=APP_T[lang]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;})();
 </script>
 </body>
 </html>

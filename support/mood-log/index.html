@@ -86,7 +86,7 @@
   <div class="hero-emoji">😊</div>
   <div class="hero-cat">Health</div>
   <h1>Mood Log</h1>
-  <p>Track your daily mood and emotional patterns. Understand what affects your well-being.</p>
+  <p id="heroDesc">Track your daily mood and emotional patterns. Understand what affects your well-being.</p>
 </div>
 
 <div class="container">
@@ -166,6 +166,9 @@ const dd=document.getElementById('langDropdown');Object.entries(LANGS).forEach((
 document.getElementById('langBtn').addEventListener('click',e=>{e.stopPropagation();document.getElementById('langSelector').classList.toggle('open')});
 document.addEventListener('click',()=>document.getElementById('langSelector').classList.remove('open'));
 applyLang(detectLang());
+const APP_T={en:"Daily Mood & Mental Health Log",ja:"Daily Mood & Mental Health Log",zh:"Daily Mood & Mental Health Log",zh_TW:"Daily Mood & Mental Health Log",ko:"Daily Mood & Mental Health Log",es:"Daily Mood & Mental Health Log",pt:"Daily Mood & Mental Health Log",fr:"Daily Mood & Mental Health Log",de:"Daily Mood & Mental Health Log",it:"Daily Mood & Mental Health Log",ru:"Daily Mood & Mental Health Log",ar:"Daily Mood & Mental Health Log",th:"Daily Mood & Mental Health Log",id:"Daily Mood & Mental Health Log",tr:"Daily Mood & Mental Health Log",nl:"Daily Mood & Mental Health Log",vi:"Daily Mood & Mental Health Log",};
+const _oA=applyLang;applyLang=function(l){_oA(l);const t=APP_T[l]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;};
+(function(){const l=localStorage.getItem('sk_lang');const lang=l||detectLang();const t=APP_T[lang]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;})();
 </script>
 </body>
 </html>

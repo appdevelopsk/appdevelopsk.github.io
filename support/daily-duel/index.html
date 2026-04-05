@@ -86,7 +86,7 @@
   <div class="hero-emoji">⚔️</div>
   <div class="hero-cat">Game</div>
   <h1>Daily Duel</h1>
-  <p>Challenge your brain daily with competitive puzzles. Compare your scores with players worldwide.</p>
+  <p id="heroDesc">Challenge your brain daily with competitive puzzles. Compare your scores with players worldwide.</p>
 </div>
 
 <div class="container">
@@ -166,6 +166,9 @@ const dd=document.getElementById('langDropdown');Object.entries(LANGS).forEach((
 document.getElementById('langBtn').addEventListener('click',e=>{e.stopPropagation();document.getElementById('langSelector').classList.toggle('open')});
 document.addEventListener('click',()=>document.getElementById('langSelector').classList.remove('open'));
 applyLang(detectLang());
+const APP_T={en:"Daily 1v1 Quiz Battle",ja:"毎日1回、世界と対決",zh:"每日一战，挑战全球",zh_TW:"每日一挑戰。",ko:"매일 하나의 도전, 전 세계와 대결",es:"Un desafío. Cada día.",pt:"Um desafio. Todo dia.",fr:"Un défi. Chaque jour.",de:"Eine Challenge. Jeden Tag.",it:"Una sfida. Ogni giorno.",ru:"Один вызов. Каждый день.",ar:"تحدٍّ واحد. كل يوم.",th:"ความท้าทายหนึ่งเดียว ทุกวัน",id:"Satu Tantangan. Setiap Hari.",tr:"Bir Meydan Okuma. Her Gün.",nl:"Één uitdaging. Elke dag.",vi:"Một thử thách. Mỗi ngày.",};
+const _oA=applyLang;applyLang=function(l){_oA(l);const t=APP_T[l]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;};
+(function(){const l=localStorage.getItem('sk_lang');const lang=l||detectLang();const t=APP_T[lang]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;})();
 </script>
 </body>
 </html>

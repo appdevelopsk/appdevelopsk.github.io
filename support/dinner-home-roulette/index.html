@@ -86,7 +86,7 @@
   <div class="hero-emoji">🍳</div>
   <div class="hero-cat">Lifestyle</div>
   <h1>Dinner Roulette</h1>
-  <p>Can't decide what to cook? Spin the wheel for dinner inspiration with easy home cooking ideas.</p>
+  <p id="heroDesc">Can't decide what to cook? Spin the wheel for dinner inspiration with easy home cooking ideas.</p>
 </div>
 
 <div class="container">
@@ -166,6 +166,9 @@ const dd=document.getElementById('langDropdown');Object.entries(LANGS).forEach((
 document.getElementById('langBtn').addEventListener('click',e=>{e.stopPropagation();document.getElementById('langSelector').classList.toggle('open')});
 document.addEventListener('click',()=>document.getElementById('langSelector').classList.remove('open'));
 applyLang(detectLang());
+const APP_T={en:"Spin to pick tonight\'s dinner",ja:"今夜のメニューをルーレットで",zh:"用轮盘决定今晚吃什么",zh_TW:"用輪盤決定今晚吃什麼",ko:"룰렛으로 오늘 저녁 메뉴 결정",es:"Gira y decide la cena de hoy",pt:"Gire e decida o jantar de hoje",fr:"Tournez et décidez le dîner",de:"Drehen & Abendessen wählen",it:"Gira e decidi la cena",ru:"Крути и решай ужин",ar:"دوّر وقرر وجبة العشاء",th:"หมุนรูเล็ตเพื่อเมนูอาหารเย็น",id:"Putar & tentukan menu malam",tr:"Çevir & akşam yemeği seç",nl:"Draai & beslis het avondeten",vi:"Quay & quyết định bữa tối",};
+const _oA=applyLang;applyLang=function(l){_oA(l);const t=APP_T[l]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;};
+(function(){const l=localStorage.getItem('sk_lang');const lang=l||detectLang();const t=APP_T[lang]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;})();
 </script>
 </body>
 </html>

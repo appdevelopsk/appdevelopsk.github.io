@@ -86,7 +86,7 @@
   <div class="hero-emoji">🎲</div>
   <div class="hero-cat">Lifestyle</div>
   <h1>Date Roulette</h1>
-  <p>Can't decide on a date activity? Spin the wheel and discover fun, creative date ideas.</p>
+  <p id="heroDesc">Can't decide on a date activity? Spin the wheel and discover fun, creative date ideas.</p>
 </div>
 
 <div class="container">
@@ -166,6 +166,9 @@ const dd=document.getElementById('langDropdown');Object.entries(LANGS).forEach((
 document.getElementById('langBtn').addEventListener('click',e=>{e.stopPropagation();document.getElementById('langSelector').classList.toggle('open')});
 document.addEventListener('click',()=>document.getElementById('langSelector').classList.remove('open'));
 applyLang(detectLang());
+const APP_T={en:"Spin for your perfect date",ja:"最高のデートを決めよう",zh:"转出你的完美约会",zh_TW:"轉出你的完美約會",ko:"완벽한 데이트를 돌려라",es:"Gira para tu cita perfecta",pt:"Gire para o encontro perfeito",fr:"Tournez pour votre rendez-vous",de:"Drehen für das perfekte Date",it:"Gira per il tuo appuntamento",ru:"Крути для идеального свидания",ar:"أدر لموعدك المثالي",th:"หมุนเพื่อหาเดตในฝัน",id:"Putar untuk kencan sempurna",tr:"Mükemmel buluşma için döndür",nl:"Draai voor perfecte afspraak",vi:"Quay để tìm hẹn hò hoàn hảo",};
+const _oA=applyLang;applyLang=function(l){_oA(l);const t=APP_T[l]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;};
+(function(){const l=localStorage.getItem('sk_lang');const lang=l||detectLang();const t=APP_T[lang]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;})();
 </script>
 </body>
 </html>

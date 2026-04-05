@@ -86,7 +86,7 @@
   <div class="hero-emoji">🏳️</div>
   <div class="hero-cat">Encyclopedia</div>
   <h1>FlagTrace</h1>
-  <p>Learn about every country's flag, history, and national facts in this comprehensive guide.</p>
+  <p id="heroDesc">Learn about every country's flag, history, and national facts in this comprehensive guide.</p>
 </div>
 
 <div class="container">
@@ -166,6 +166,9 @@ const dd=document.getElementById('langDropdown');Object.entries(LANGS).forEach((
 document.getElementById('langBtn').addEventListener('click',e=>{e.stopPropagation();document.getElementById('langSelector').classList.toggle('open')});
 document.addEventListener('click',()=>document.getElementById('langSelector').classList.remove('open'));
 applyLang(detectLang());
+const APP_T={en:"World Flags Encyclopedia",ja:"世界の国旗図鑑",zh:"世界国旗百科",zh_TW:"世界國旗百科",ko:"세계 국기 백과사전",es:"Enciclopedia de Banderas",pt:"Enciclopédia de Bandeiras",fr:"Encyclopédie des Drapeaux",de:"Flaggen-Enzyklopädie",it:"Enciclopedia delle Bandiere",ru:"Энциклопедия флагов мира",ar:"موسوعة أعلام العالم",th:"สารานุกรมธงชาติโลก",id:"Ensiklopedia Bendera Dunia",tr:"Dünya Bayrakları Ansiklopedisi",nl:"Wereld Vlaggen Encyclopedie",vi:"Bách khoa Quốc kỳ Thế giới",};
+const _oA=applyLang;applyLang=function(l){_oA(l);const t=APP_T[l]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;};
+(function(){const l=localStorage.getItem('sk_lang');const lang=l||detectLang();const t=APP_T[lang]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;})();
 </script>
 </body>
 </html>

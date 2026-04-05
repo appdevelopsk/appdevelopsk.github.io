@@ -86,7 +86,7 @@
   <div class="hero-emoji">⏳</div>
   <div class="hero-cat">Productivity</div>
   <h1>Kairos</h1>
-  <p>Plan your day according to your natural energy rhythms. Work smarter, not harder.</p>
+  <p id="heroDesc">Plan your day according to your natural energy rhythms. Work smarter, not harder.</p>
 </div>
 
 <div class="container">
@@ -166,6 +166,9 @@ const dd=document.getElementById('langDropdown');Object.entries(LANGS).forEach((
 document.getElementById('langBtn').addEventListener('click',e=>{e.stopPropagation();document.getElementById('langSelector').classList.toggle('open')});
 document.addEventListener('click',()=>document.getElementById('langSelector').classList.remove('open'));
 applyLang(detectLang());
+const APP_T={en:"Peak performance, every hour",ja:"科学が導く最適パフォーマンス",zh:"Peak performance, every hour",zh_TW:"Peak performance, every hour",ko:"Peak performance, every hour",es:"Peak performance, every hour",pt:"Peak performance, every hour",fr:"Peak performance, every hour",de:"Peak performance, every hour",it:"Peak performance, every hour",ru:"Peak performance, every hour",ar:"Peak performance, every hour",th:"Peak performance, every hour",id:"Peak performance, every hour",tr:"Peak performance, every hour",nl:"Peak performance, every hour",vi:"Peak performance, every hour",};
+const _oA=applyLang;applyLang=function(l){_oA(l);const t=APP_T[l]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;};
+(function(){const l=localStorage.getItem('sk_lang');const lang=l||detectLang();const t=APP_T[lang]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;})();
 </script>
 </body>
 </html>

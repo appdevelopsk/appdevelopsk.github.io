@@ -86,7 +86,7 @@
   <div class="hero-emoji">🐾</div>
   <div class="hero-cat">Encyclopedia</div>
   <h1>PawTrace</h1>
-  <p>The ultimate dog breeds encyclopedia. Learn about temperament, care needs, and breed history.</p>
+  <p id="heroDesc">The ultimate dog breeds encyclopedia. Learn about temperament, care needs, and breed history.</p>
 </div>
 
 <div class="container">
@@ -166,6 +166,9 @@ const dd=document.getElementById('langDropdown');Object.entries(LANGS).forEach((
 document.getElementById('langBtn').addEventListener('click',e=>{e.stopPropagation();document.getElementById('langSelector').classList.toggle('open')});
 document.addEventListener('click',()=>document.getElementById('langSelector').classList.remove('open'));
 applyLang(detectLang());
+const APP_T={en:"Dog Breeds Guide & Compare",ja:"犬種図鑑 & 比較ガイド",zh:"犬种百科与比较指南",zh_TW:"犬種百科與比較指南",ko:"견종 도감 & 비교 가이드",es:"Guía de Razas de Perros",pt:"Guia de Raças de Cães",fr:"Guide des Races de Chiens",de:"Hunderassen-Lexikon & Quiz",it:"Guida Razze Canine & Confronto",ru:"Породы собак: гид и сравнение",ar:"موسوعة سلالات الكلاب",th:"สารานุกรมสายพันธุ์สุนัข",id:"Ensiklopedia Ras Anjing",tr:"Köpek Irkları Ansiklopedisi",nl:"Hondenrassen Gids & Vergelijk",vi:"Bách khoa giống chó & So sánh",};
+const _oA=applyLang;applyLang=function(l){_oA(l);const t=APP_T[l]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;};
+(function(){const l=localStorage.getItem('sk_lang');const lang=l||detectLang();const t=APP_T[lang]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;})();
 </script>
 </body>
 </html>

@@ -86,7 +86,7 @@
   <div class="hero-emoji">🦁</div>
   <div class="hero-cat">Encyclopedia</div>
   <h1>Animal Encyclopedia</h1>
-  <p>Discover the world of animals with detailed profiles, habitats, and fascinating facts.</p>
+  <p id="heroDesc">Discover the world of animals with detailed profiles, habitats, and fascinating facts.</p>
 </div>
 
 <div class="container">
@@ -166,6 +166,9 @@ const dd=document.getElementById('langDropdown');Object.entries(LANGS).forEach((
 document.getElementById('langBtn').addEventListener('click',e=>{e.stopPropagation();document.getElementById('langSelector').classList.toggle('open')});
 document.addEventListener('click',()=>document.getElementById('langSelector').classList.remove('open'));
 applyLang(detectLang());
+const APP_T={en:"Animal Encyclopedia & Quiz",ja:"動物図鑑 & クイズ",zh:"动物百科全书与测验",zh_TW:"動物百科全書與測驗",ko:"동물 백과사전 & 퀴즈",es:"Enciclopedia Animal y Quiz",pt:"Enciclopédia Animal e Quiz",fr:"Encyclopédie Animale & Quiz",de:"Tierlexikon & Quiz",it:"Enciclopedia Animale e Quiz",ru:"Энциклопедия и викторина",ar:"موسوعة الحيوانات واختبار",th:"สารานุกรมสัตว์และแบบทดสอบ",id:"Ensiklopedia Hewan & Kuis",tr:"Hayvan Ansiklopedisi ve Quiz",nl:"Dierenencyclopedie & Quiz",vi:"Bách Khoa Động Vật & Câu Đố",};
+const _oA=applyLang;applyLang=function(l){_oA(l);const t=APP_T[l]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;};
+(function(){const l=localStorage.getItem('sk_lang');const lang=l||detectLang();const t=APP_T[lang]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;})();
 </script>
 </body>
 </html>

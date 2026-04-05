@@ -86,7 +86,7 @@
   <div class="hero-emoji">🎖️</div>
   <div class="hero-cat">Social</div>
   <h1>Tier Rank Me</h1>
-  <p>Create tier lists for anything — movies, food, games, and more. Share and compare!</p>
+  <p id="heroDesc">Create tier lists for anything — movies, food, games, and more. Share and compare!</p>
 </div>
 
 <div class="container">
@@ -166,6 +166,9 @@ const dd=document.getElementById('langDropdown');Object.entries(LANGS).forEach((
 document.getElementById('langBtn').addEventListener('click',e=>{e.stopPropagation();document.getElementById('langSelector').classList.toggle('open')});
 document.addEventListener('click',()=>document.getElementById('langSelector').classList.remove('open'));
 applyLang(detectLang());
+const APP_T={en:"Build & Share Tier Lists",ja:"友達を変なテーマでTier化",zh:"为朋友排名，超好笑",zh_TW:"為朋友排名，超好笑",ko:"웃긴 테마로 친구 랭킹 매기기",es:"Rankea amigos temas divertidos",pt:"Ranqueie amigos temas divert.",fr:"Classez amis sur thèmes fun",de:"Bewerte Freunde lustig ranken",it:"Classifica amici per tema",ru:"Ранжируй друзей по темам",ar:"رتّب أصدقاءك في موضوعات مضحكة",th:"จัดอันดับเพื่อนในธีมสุดฮา",id:"Ranking teman dengan tema seru",tr:"Arkadaşları eğlenceli rankla",nl:"Rangschik vrienden grappig",vi:"Xếp hạng bạn bè chủ đề vui",};
+const _oA=applyLang;applyLang=function(l){_oA(l);const t=APP_T[l]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;};
+(function(){const l=localStorage.getItem('sk_lang');const lang=l||detectLang();const t=APP_T[lang]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;})();
 </script>
 </body>
 </html>

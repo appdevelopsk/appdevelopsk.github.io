@@ -86,7 +86,7 @@
   <div class="hero-emoji">🎰</div>
   <div class="hero-cat">Lifestyle</div>
   <h1>Chore Roulette</h1>
-  <p>Fairly assign household chores with a fun spinning wheel. No more arguments about who does what!</p>
+  <p id="heroDesc">Fairly assign household chores with a fun spinning wheel. No more arguments about who does what!</p>
 </div>
 
 <div class="container">
@@ -166,6 +166,9 @@ const dd=document.getElementById('langDropdown');Object.entries(LANGS).forEach((
 document.getElementById('langBtn').addEventListener('click',e=>{e.stopPropagation();document.getElementById('langSelector').classList.toggle('open')});
 document.addEventListener('click',()=>document.getElementById('langSelector').classList.remove('open'));
 applyLang(detectLang());
+const APP_T={en:"Spin & assign household chores",ja:"Spin & assign household chores",zh:"Spin & assign household chores",zh_TW:"Spin & assign household chores",ko:"Spin & assign household chores",es:"Spin & assign household chores",pt:"Spin & assign household chores",fr:"Spin & assign household chores",de:"Spin & assign household chores",it:"Spin & assign household chores",ru:"Spin & assign household chores",ar:"Spin & assign household chores",th:"Spin & assign household chores",id:"Spin & assign household chores",tr:"Spin & assign household chores",nl:"Spin & assign household chores",vi:"Spin & assign household chores",};
+const _oA=applyLang;applyLang=function(l){_oA(l);const t=APP_T[l]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;};
+(function(){const l=localStorage.getItem('sk_lang');const lang=l||detectLang();const t=APP_T[lang]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;})();
 </script>
 </body>
 </html>

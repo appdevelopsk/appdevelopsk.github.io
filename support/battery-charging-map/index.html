@@ -86,7 +86,7 @@
   <div class="hero-emoji">🔋</div>
   <div class="hero-cat">Utility</div>
   <h1>Battery Charging Map</h1>
-  <p>Find nearby EV charging stations and battery swap locations with real-time availability.</p>
+  <p id="heroDesc">Find nearby EV charging stations and battery swap locations with real-time availability.</p>
 </div>
 
 <div class="container">
@@ -166,6 +166,9 @@ const dd=document.getElementById('langDropdown');Object.entries(LANGS).forEach((
 document.getElementById('langBtn').addEventListener('click',e=>{e.stopPropagation();document.getElementById('langSelector').classList.toggle('open')});
 document.addEventListener('click',()=>document.getElementById('langSelector').classList.remove('open'));
 applyLang(detectLang());
+const APP_T={en:"Battery & Charging Map",ja:"充電スタンドの混雑・速度をリアルタイム確認",zh:"实时充电站信息",zh_TW:"即時充電站資訊",ko:"실시간 충전소 정보",es:"Info de carga en tiempo real",pt:"Carregamento em tempo real",fr:"Info de recharge en temps réel",de:"Echtzeit-Ladestationsinfo",it:"Info ricarica in tempo reale",ru:"Информация в реальном времени",ar:"معلومات الشحن الآن",th:"ข้อมูลสถานีชาร์จเรียลไทม์",id:"Info pengisian daya real-time",tr:"Gerçek zamanlı şarj bilgisi",nl:"Realtime laadstationinfo",vi:"Thông tin sạc thời gian thực",};
+const _oA=applyLang;applyLang=function(l){_oA(l);const t=APP_T[l]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;};
+(function(){const l=localStorage.getItem('sk_lang');const lang=l||detectLang();const t=APP_T[lang]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;})();
 </script>
 </body>
 </html>

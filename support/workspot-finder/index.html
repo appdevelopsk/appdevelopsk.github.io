@@ -86,7 +86,7 @@
   <div class="hero-emoji">💻</div>
   <div class="hero-cat">Utility</div>
   <h1>WorkSpot Finder</h1>
-  <p>Find the perfect cafe or coworking space to work from with WiFi, power, and ambiance ratings.</p>
+  <p id="heroDesc">Find the perfect cafe or coworking space to work from with WiFi, power, and ambiance ratings.</p>
 </div>
 
 <div class="container">
@@ -166,6 +166,9 @@ const dd=document.getElementById('langDropdown');Object.entries(LANGS).forEach((
 document.getElementById('langBtn').addEventListener('click',e=>{e.stopPropagation();document.getElementById('langSelector').classList.toggle('open')});
 document.addEventListener('click',()=>document.getElementById('langSelector').classList.remove('open'));
 applyLang(detectLang());
+const APP_T={en:"Find Work-Friendly Spots",ja:"作業スポットをリアルタイム共有",zh:"发现适合办公的地点",zh_TW:"發現適合辦公的地點",ko:"작업하기 좋은 장소 찾기",es:"Halla tu lugar de trabajo hoy",pt:"Encontre locais para trabalhar",fr:"Trouvez où travailler",de:"Arbeitsorte für Nomaden finden",it:"Trova posti dove lavorare",ru:"Места для удалённой работы",ar:"أماكن العمل للرُحَّل الرقميين",th:"หาที่ทำงานสำหรับนักเดินทาง",id:"Temukan Tempat Kerja Terbaik",tr:"Çalışmak için yer bul",nl:"Vind werkplekken voor nomaden",vi:"Tìm nơi làm việc lý tưởng",};
+const _oA=applyLang;applyLang=function(l){_oA(l);const t=APP_T[l]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;};
+(function(){const l=localStorage.getItem('sk_lang');const lang=l||detectLang();const t=APP_T[lang]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;})();
 </script>
 </body>
 </html>

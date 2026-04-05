@@ -86,7 +86,7 @@
   <div class="hero-emoji">😤</div>
   <div class="hero-cat">Social</div>
   <h1>Grumble</h1>
-  <p>A safe space to vent your frustrations anonymously. Get it off your chest and feel better.</p>
+  <p id="heroDesc">A safe space to vent your frustrations anonymously. Get it off your chest and feel better.</p>
 </div>
 
 <div class="container">
@@ -166,6 +166,9 @@ const dd=document.getElementById('langDropdown');Object.entries(LANGS).forEach((
 document.getElementById('langBtn').addEventListener('click',e=>{e.stopPropagation();document.getElementById('langSelector').classList.toggle('open')});
 document.addEventListener('click',()=>document.getElementById('langSelector').classList.remove('open'));
 applyLang(detectLang());
+const APP_T={en:"Post & React to Complaints",ja:"グチを投稿してスッキリしよう",zh:"发泄、共鸣、感受理解",zh_TW:"發洩、共鳴、感受理解",ko:"익명으로 투덜거리고 공감받자",es:"Publica quejas y reacciona",pt:"Poste reclamações e reaja",fr:"Publiez vos plaintes anon.",de:"Beschwerden anonym teilen",it:"Posta lamentele e reagisci",ru:"Публикуй жалобы и реагируй",ar:"انشر شكاواك وتفاعل مع الآخرين",th:"โพสต์บ่นและรีแอ็กต์กับคนอื่น",id:"Posting keluhan dan bereaksi",tr:"Şikayet paylaş ve tepki ver",nl:"Post klachten en reageer",vi:"Đăng phàn nàn và phản ứng",};
+const _oA=applyLang;applyLang=function(l){_oA(l);const t=APP_T[l]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;};
+(function(){const l=localStorage.getItem('sk_lang');const lang=l||detectLang();const t=APP_T[lang]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;})();
 </script>
 </body>
 </html>

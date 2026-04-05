@@ -86,7 +86,7 @@
   <div class="hero-emoji">👁️</div>
   <div class="hero-cat">Health</div>
   <h1>Eye Break</h1>
-  <p>Protect your eyes with smart reminders to take breaks from screen time using the 20-20-20 rule.</p>
+  <p id="heroDesc">Protect your eyes with smart reminders to take breaks from screen time using the 20-20-20 rule.</p>
 </div>
 
 <div class="container">
@@ -166,6 +166,9 @@ const dd=document.getElementById('langDropdown');Object.entries(LANGS).forEach((
 document.getElementById('langBtn').addEventListener('click',e=>{e.stopPropagation();document.getElementById('langSelector').classList.toggle('open')});
 document.addEventListener('click',()=>document.getElementById('langSelector').classList.remove('open'));
 applyLang(detectLang());
+const APP_T={en:"Vision Care & Break Timer",ja:"目の休憩タイマー＆画面時間管理",zh:"护眼休息与计时器",zh_TW:"護眼休息與計時器",ko:"눈 휴식 & 화면 타이머",es:"Descanso visual y temporizador",pt:"Descanso visual e temporizador",fr:"Repos oculaire & minuterie",de:"Augenpause & Bildschirmtimer",it:"Riposo oculare & timer schermo",ru:"Отдых для глаз и таймер",ar:"راحة العيون ومؤقت الشاشة",th:"พักสายตาและตั้งเวลาหน้าจอ",id:"Istirahat Mata & Timer Layar",tr:"Göz Dinlendirme & Zamanlayıcı",nl:"Oogrust & schermtimer",vi:"Nghỉ ngơi mắt & hẹn giờ",};
+const _oA=applyLang;applyLang=function(l){_oA(l);const t=APP_T[l]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;};
+(function(){const l=localStorage.getItem('sk_lang');const lang=l||detectLang();const t=APP_T[lang]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;})();
 </script>
 </body>
 </html>

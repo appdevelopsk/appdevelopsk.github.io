@@ -86,7 +86,7 @@
   <div class="hero-emoji">👔</div>
   <div class="hero-cat">AI / Lifestyle</div>
   <h1>WhatWear</h1>
-  <p>Get AI-powered outfit suggestions based on weather, occasion, and your wardrobe.</p>
+  <p id="heroDesc">Get AI-powered outfit suggestions based on weather, occasion, and your wardrobe.</p>
 </div>
 
 <div class="container">
@@ -166,6 +166,9 @@ const dd=document.getElementById('langDropdown');Object.entries(LANGS).forEach((
 document.getElementById('langBtn').addEventListener('click',e=>{e.stopPropagation();document.getElementById('langSelector').classList.toggle('open')});
 document.addEventListener('click',()=>document.getElementById('langSelector').classList.remove('open'));
 applyLang(detectLang());
+const APP_T={en:"AI Outfit Planner",ja:"天気と予定でコーデを提案",zh:"根据天气和场合推荐穿搭",zh_TW:"根據天氣和場合推薦穿搭",ko:"날씨와 일정에 맞는 코디 제안",es:"Outfits según clima y ocasión",pt:"Looks para o clima e ocasião",fr:"Tenues météo & occasion",de:"Outfits nach Wetter und Anlass",it:"Outfit per meteo e occasione",ru:"Образы по погоде и поводу",ar:"أزياء حسب الطقس والمناسبة",th:"ชุดตามสภาพอากาศและโอกาส",id:"Outfit sesuai cuaca dan momen",tr:"Hava ve etkinliğe göre kıyafet",nl:"Outfits op weer & gelegenheid",vi:"Trang phục theo thời tiết",};
+const _oA=applyLang;applyLang=function(l){_oA(l);const t=APP_T[l]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;};
+(function(){const l=localStorage.getItem('sk_lang');const lang=l||detectLang();const t=APP_T[lang]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;})();
 </script>
 </body>
 </html>

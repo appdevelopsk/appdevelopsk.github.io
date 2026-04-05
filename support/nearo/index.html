@@ -86,7 +86,7 @@
   <div class="hero-emoji">📍</div>
   <div class="hero-cat">Utility</div>
   <h1>Nearo</h1>
-  <p>Share your real-time location with friends and family. Simple, private, and battery-friendly.</p>
+  <p id="heroDesc">Share your real-time location with friends and family. Simple, private, and battery-friendly.</p>
 </div>
 
 <div class="container">
@@ -166,6 +166,9 @@ const dd=document.getElementById('langDropdown');Object.entries(LANGS).forEach((
 document.getElementById('langBtn').addEventListener('click',e=>{e.stopPropagation();document.getElementById('langSelector').classList.toggle('open')});
 document.addEventListener('click',()=>document.getElementById('langSelector').classList.remove('open'));
 applyLang(detectLang());
+const APP_T={en:"Connect at the right distance",ja:"大切な人と、ちょうどいい距離でつながる",zh:"根据关系类型分享不同精度的位置",zh_TW:"與重要的人保持恰當的距離",ko:"소중한 사람과 딱 맞는 거리로 연결",es:"Conecta a la distancia ideal",pt:"Conecte-se na distância certa",fr:"Connectez à la bonne distance",de:"Mit richtiger Distanz",it:"Connetti alla distanza giusta",ru:"Связь на правильном расстоянии",ar:"تواصل بالمسافة المناسبة",th:"เชื่อมต่อในระยะที่เหมาะสม",id:"Terhubung di jarak yang tepat",tr:"Doğru mesafede bağlan",nl:"Verbonden op de juiste afstand",vi:"Kết nối ở khoảng cách phù hợp",};
+const _oA=applyLang;applyLang=function(l){_oA(l);const t=APP_T[l]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;};
+(function(){const l=localStorage.getItem('sk_lang');const lang=l||detectLang();const t=APP_T[lang]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;})();
 </script>
 </body>
 </html>

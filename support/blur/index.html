@@ -86,7 +86,7 @@
   <div class="hero-emoji">🔍</div>
   <div class="hero-cat">Game</div>
   <h1>Blur: Guess the Image</h1>
-  <p>A fun image guessing game where pictures gradually become clearer. Can you guess before the reveal?</p>
+  <p id="heroDesc">A fun image guessing game where pictures gradually become clearer. Can you guess before the reveal?</p>
 </div>
 
 <div class="container">
@@ -166,6 +166,9 @@ const dd=document.getElementById('langDropdown');Object.entries(LANGS).forEach((
 document.getElementById('langBtn').addEventListener('click',e=>{e.stopPropagation();document.getElementById('langSelector').classList.toggle('open')});
 document.addEventListener('click',()=>document.getElementById('langSelector').classList.remove('open'));
 applyLang(detectLang());
+const APP_T={en:"Unblur & Guess the Photo",ja:"ぼかし画像を見破れ！",zh:"模糊图片猜猜看",zh_TW:"模糊圖片猜猜看",ko:"블러 이미지 맞추기 게임",es:"Desenfoca y adivina la imagen",pt:"Desvaneça e adivinhe a imagem",fr:"Défloute et devine l\'image",de:"Entschärfe & rate das Bild",it:"Sfoca e indovina l\'immagine",ru:"Размой и угадай изображение",ar:"ازل الضبابية وخمّن الصورة",th:"เบลอแล้วทายรูปภาพ",id:"Buram & tebak gambarnya",tr:"Bulanıklaştır ve resmi tahmin",nl:"Onscherp & raad de afbeelding",vi:"Xóa mờ và đoán hình ảnh",};
+const _oA=applyLang;applyLang=function(l){_oA(l);const t=APP_T[l]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;};
+(function(){const l=localStorage.getItem('sk_lang');const lang=l||detectLang();const t=APP_T[lang]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;})();
 </script>
 </body>
 </html>

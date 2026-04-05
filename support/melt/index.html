@@ -86,7 +86,7 @@
   <div class="hero-emoji">❤️‍🔥</div>
   <div class="hero-cat">Social</div>
   <h1>Melt</h1>
-  <p>A refreshing dating app focused on meaningful connections through shared interests.</p>
+  <p id="heroDesc">A refreshing dating app focused on meaningful connections through shared interests.</p>
 </div>
 
 <div class="container">
@@ -166,6 +166,9 @@ const dd=document.getElementById('langDropdown');Object.entries(LANGS).forEach((
 document.getElementById('langBtn').addEventListener('click',e=>{e.stopPropagation();document.getElementById('langSelector').classList.toggle('open')});
 document.addEventListener('click',()=>document.getElementById('langSelector').classList.remove('open'));
 applyLang(detectLang());
+const APP_T={en:"Warm Connections & Love",ja:"ムード・価値観でマッチ",zh:"按心情和价值观匹配",zh_TW:"按心情和價值觀配對",ko:"무드와 가치관으로 매칭",es:"Conecta por Ánimo y Valores",pt:"Combine por Humor e Valores",fr:"Match par Humeur et Valeurs",de:"Match nach Stimmung & Werten",it:"Match per Umore e Valori",ru:"Совпадение по настроению",ar:"تطابق بالمزاج والقيم",th:"จับคู่ตามอารมณ์และค่านิยม",id:"Cocok Berdasarkan Suasana Hati",tr:"Ruh Hali ve Değerlerle Eşleş",nl:"Match op Stemming en Waarden",vi:"Kết nối theo Tâm trạng",};
+const _oA=applyLang;applyLang=function(l){_oA(l);const t=APP_T[l]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;};
+(function(){const l=localStorage.getItem('sk_lang');const lang=l||detectLang();const t=APP_T[lang]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;})();
 </script>
 </body>
 </html>

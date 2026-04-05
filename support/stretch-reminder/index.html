@@ -86,7 +86,7 @@
   <div class="hero-emoji">🤸</div>
   <div class="hero-cat">Health</div>
   <h1>Stretch Reminder</h1>
-  <p>Stay limber with customizable stretch reminders and guided stretching routines.</p>
+  <p id="heroDesc">Stay limber with customizable stretch reminders and guided stretching routines.</p>
 </div>
 
 <div class="container">
@@ -166,6 +166,9 @@ const dd=document.getElementById('langDropdown');Object.entries(LANGS).forEach((
 document.getElementById('langBtn').addEventListener('click',e=>{e.stopPropagation();document.getElementById('langSelector').classList.toggle('open')});
 document.addEventListener('click',()=>document.getElementById('langSelector').classList.remove('open'));
 applyLang(detectLang());
+const APP_T={en:"Desk Stretch & Break Reminder",ja:"Desk Stretch & Break Reminder",zh:"Desk Stretch & Break Reminder",zh_TW:"Desk Stretch & Break Reminder",ko:"Desk Stretch & Break Reminder",es:"Desk Stretch & Break Reminder",pt:"Desk Stretch & Break Reminder",fr:"Desk Stretch & Break Reminder",de:"Desk Stretch & Break Reminder",it:"Desk Stretch & Break Reminder",ru:"Desk Stretch & Break Reminder",ar:"Desk Stretch & Break Reminder",th:"Desk Stretch & Break Reminder",id:"Desk Stretch & Break Reminder",tr:"Desk Stretch & Break Reminder",nl:"Desk Stretch & Break Reminder",vi:"Desk Stretch & Break Reminder",};
+const _oA=applyLang;applyLang=function(l){_oA(l);const t=APP_T[l]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;};
+(function(){const l=localStorage.getItem('sk_lang');const lang=l||detectLang();const t=APP_T[lang]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;})();
 </script>
 </body>
 </html>

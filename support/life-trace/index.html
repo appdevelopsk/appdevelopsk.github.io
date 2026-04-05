@@ -86,7 +86,7 @@
   <div class="hero-emoji">📝</div>
   <div class="hero-cat">AI / Utility</div>
   <h1>LifeTrace</h1>
-  <p>An AI-powered life recorder that helps you capture, organize, and reflect on daily moments.</p>
+  <p id="heroDesc">An AI-powered life recorder that helps you capture, organize, and reflect on daily moments.</p>
 </div>
 
 <div class="container">
@@ -166,6 +166,9 @@ const dd=document.getElementById('langDropdown');Object.entries(LANGS).forEach((
 document.getElementById('langBtn').addEventListener('click',e=>{e.stopPropagation();document.getElementById('langSelector').classList.toggle('open')});
 document.addEventListener('click',()=>document.getElementById('langSelector').classList.remove('open'));
 applyLang(detectLang());
+const APP_T={en:"Life Timeline & AI Diary",ja:"あなたのAI日記アプリ",zh:"你的AI每日生活日记",zh_TW:"你的AI每日生活日記",ko:"나의 AI 일상 다이어리",es:"Tu diario diario con IA",pt:"Seu diário diário com IA",fr:"Votre journal quotidien IA",de:"Dein KI-Tagebuch für jeden Tag",it:"Il tuo diario IA quotidiano",ru:"Ваш ИИ-дневник каждого дня",ar:"يومياتك اليومية مع الذكاء",th:"ไดอารี่ AI รายวันของคุณ",id:"Diari Harian AI Kamu",tr:"Günlük YZ Günlüğünüz",nl:"Jouw dagelijks AI-dagboek",vi:"Nhật ký AI hàng ngày của bạn",};
+const _oA=applyLang;applyLang=function(l){_oA(l);const t=APP_T[l]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;};
+(function(){const l=localStorage.getItem('sk_lang');const lang=l||detectLang();const t=APP_T[lang]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;})();
 </script>
 </body>
 </html>

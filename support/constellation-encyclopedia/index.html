@@ -86,7 +86,7 @@
   <div class="hero-emoji">⭐</div>
   <div class="hero-cat">Encyclopedia</div>
   <h1>AstroTrace</h1>
-  <p>Explore constellations, stars, and celestial objects with beautiful illustrations and star maps.</p>
+  <p id="heroDesc">Explore constellations, stars, and celestial objects with beautiful illustrations and star maps.</p>
 </div>
 
 <div class="container">
@@ -166,6 +166,9 @@ const dd=document.getElementById('langDropdown');Object.entries(LANGS).forEach((
 document.getElementById('langBtn').addEventListener('click',e=>{e.stopPropagation();document.getElementById('langSelector').classList.toggle('open')});
 document.addEventListener('click',()=>document.getElementById('langSelector').classList.remove('open'));
 applyLang(detectLang());
+const APP_T={en:"Constellation Encyclopedia",ja:"星座図鑑 - 100の天体ガイド",zh:"星座百科全书",zh_TW:"星座百科全書",ko:"별자리 백과사전",es:"Enciclopedia de Constelaciones",pt:"Enciclopédia de Constelações",fr:"Encyclopédie Constellations",de:"Sternbild-Lexikon",it:"Enciclopedia Costellazioni",ru:"Энциклопедия созвездий",ar:"موسوعة الأبراج والنجوم",th:"สารานุกรมกลุ่มดาว",id:"Ensiklopedia Rasi Bintang",tr:"Takımyıldız Ansiklopedisi",nl:"Sterrenbeeld Encyclopedie",vi:"Bách khoa Chòm sao",};
+const _oA=applyLang;applyLang=function(l){_oA(l);const t=APP_T[l]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;};
+(function(){const l=localStorage.getItem('sk_lang');const lang=l||detectLang();const t=APP_T[lang]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;})();
 </script>
 </body>
 </html>

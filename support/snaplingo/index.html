@@ -86,7 +86,7 @@
   <div class="hero-emoji">📸</div>
   <div class="hero-cat">AI / Education</div>
   <h1>SnapLingo</h1>
-  <p>Point your camera at anything and learn vocabulary in 17 languages with AI-powered recognition.</p>
+  <p id="heroDesc">Point your camera at anything and learn vocabulary in 17 languages with AI-powered recognition.</p>
 </div>
 
 <div class="container">
@@ -166,6 +166,9 @@ const dd=document.getElementById('langDropdown');Object.entries(LANGS).forEach((
 document.getElementById('langBtn').addEventListener('click',e=>{e.stopPropagation();document.getElementById('langSelector').classList.toggle('open')});
 document.addEventListener('click',()=>document.getElementById('langSelector').classList.remove('open'));
 applyLang(detectLang());
+const APP_T={en:"Snap. Learn. Speak.",ja:"写真で単語を学ぼう",zh:"拍照学单词",zh_TW:"拍照學單詞",ko:"사진으로 단어 학습",es:"Aprende con tus fotos",pt:"Aprenda com suas fotos",fr:"Apprenez avec vos photos",de:"Lerne mit deinen Fotos",it:"Impara con le tue foto",ru:"Учись по фотографиям",ar:"تعلم من صورك",th:"เรียนรู้จากภาพถ่าย",id:"Belajar dari fotomu",tr:"Fotoğraflarla öğren",nl:"Leer van je foto\'s",vi:"Học từ ảnh hàng ngày",};
+const _oA=applyLang;applyLang=function(l){_oA(l);const t=APP_T[l]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;};
+(function(){const l=localStorage.getItem('sk_lang');const lang=l||detectLang();const t=APP_T[lang]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;})();
 </script>
 </body>
 </html>

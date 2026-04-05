@@ -86,7 +86,7 @@
   <div class="hero-emoji">✈️</div>
   <div class="hero-cat">Travel</div>
   <h1>Trip Roulette</h1>
-  <p>Can't decide where to travel? Spin the wheel and discover your next destination!</p>
+  <p id="heroDesc">Can't decide where to travel? Spin the wheel and discover your next destination!</p>
 </div>
 
 <div class="container">
@@ -166,6 +166,9 @@ const dd=document.getElementById('langDropdown');Object.entries(LANGS).forEach((
 document.getElementById('langBtn').addEventListener('click',e=>{e.stopPropagation();document.getElementById('langSelector').classList.toggle('open')});
 document.addEventListener('click',()=>document.getElementById('langSelector').classList.remove('open'));
 applyLang(detectLang());
+const APP_T={en:"Spin & discover today\'s outing",ja:"今日のおでかけをルーレットで",zh:"用轮盘决定今天的出行",zh_TW:"用輪盤決定今天的出行",ko:"오늘의 나들이를 룰렛으로",es:"Gira y descubre tu salida",pt:"Gire e descubra seu passeio",fr:"Tournez & découvrez la sortie",de:"Drehen & Ausflug entdecken",it:"Gira e scopri la tua gita",ru:"Крути и открывай",ar:"دوّر واكتشف رحلتك اليوم",th:"หมุนรูเล็ตเพื่อค้นพบที่เที่ยว",id:"Putar & temukan destinasimu",tr:"Çevir ve günün gezisini keşfet",nl:"Draai & ontdek jouw uitstapje",vi:"Quay & khám phá chuyến đi",};
+const _oA=applyLang;applyLang=function(l){_oA(l);const t=APP_T[l]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;};
+(function(){const l=localStorage.getItem('sk_lang');const lang=l||detectLang();const t=APP_T[lang]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;})();
 </script>
 </body>
 </html>

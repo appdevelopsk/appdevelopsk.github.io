@@ -86,7 +86,7 @@
   <div class="hero-emoji">💧</div>
   <div class="hero-cat">Health</div>
   <h1>Water Reminder</h1>
-  <p>Stay hydrated with smart water intake reminders and daily tracking.</p>
+  <p id="heroDesc">Stay hydrated with smart water intake reminders and daily tracking.</p>
 </div>
 
 <div class="container">
@@ -166,6 +166,9 @@ const dd=document.getElementById('langDropdown');Object.entries(LANGS).forEach((
 document.getElementById('langBtn').addEventListener('click',e=>{e.stopPropagation();document.getElementById('langSelector').classList.toggle('open')});
 document.addEventListener('click',()=>document.getElementById('langSelector').classList.remove('open'));
 applyLang(detectLang());
+const APP_T={en:"Hydration Tracker & Reminder",ja:"Hydration Tracker & Reminder",zh:"Hydration Tracker & Reminder",zh_TW:"Hydration Tracker & Reminder",ko:"Hydration Tracker & Reminder",es:"Hydration Tracker & Reminder",pt:"Hydration Tracker & Reminder",fr:"Hydration Tracker & Reminder",de:"Hydration Tracker & Reminder",it:"Hydration Tracker & Reminder",ru:"Hydration Tracker & Reminder",ar:"Hydration Tracker & Reminder",th:"Hydration Tracker & Reminder",id:"Hydration Tracker & Reminder",tr:"Hydration Tracker & Reminder",nl:"Hydration Tracker & Reminder",vi:"Hydration Tracker & Reminder",};
+const _oA=applyLang;applyLang=function(l){_oA(l);const t=APP_T[l]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;};
+(function(){const l=localStorage.getItem('sk_lang');const lang=l||detectLang();const t=APP_T[lang]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;})();
 </script>
 </body>
 </html>

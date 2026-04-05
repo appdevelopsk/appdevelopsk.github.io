@@ -86,7 +86,7 @@
   <div class="hero-emoji">🎵</div>
   <div class="hero-cat">Education</div>
   <h1>EarSense</h1>
-  <p>Develop your musical hearing through interactive ear training exercises for notes, intervals, and chords.</p>
+  <p id="heroDesc">Develop your musical hearing through interactive ear training exercises for notes, intervals, and chords.</p>
 </div>
 
 <div class="container">
@@ -166,6 +166,9 @@ const dd=document.getElementById('langDropdown');Object.entries(LANGS).forEach((
 document.getElementById('langBtn').addEventListener('click',e=>{e.stopPropagation();document.getElementById('langSelector').classList.toggle('open')});
 document.addEventListener('click',()=>document.getElementById('langSelector').classList.remove('open'));
 applyLang(detectLang());
+const APP_T={en:"Music Ear Training",ja:"音楽耳トレーニング",zh:"音乐听力训练",zh_TW:"音樂聽力訓練",ko:"음악 청음 훈련",es:"Entrenamiento Musical del Oído",pt:"Treinamento Musical de Ouvido",fr:"Entraînement Musical",de:"Musikalisches Gehörtraining",it:"Allenamento Musicale",ru:"Музыкальный Слух Тренажёр",ar:"تدريب الأذن الموسيقية",th:"ฝึกหูดนตรี",id:"Pelatihan Telinga Musik",tr:"Müzikal İşitme Eğitimi",nl:"Muzikale Gehoortraining",vi:"Luyện Tai Nghe Âm Nhạc",};
+const _oA=applyLang;applyLang=function(l){_oA(l);const t=APP_T[l]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;};
+(function(){const l=localStorage.getItem('sk_lang');const lang=l||detectLang();const t=APP_T[lang]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;})();
 </script>
 </body>
 </html>

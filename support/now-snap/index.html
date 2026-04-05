@@ -86,7 +86,7 @@
   <div class="hero-emoji">📸</div>
   <div class="hero-cat">Social</div>
   <h1>Now Snap</h1>
-  <p>Share authentic moments right now. No filters, no edits — just real life.</p>
+  <p id="heroDesc">Share authentic moments right now. No filters, no edits — just real life.</p>
 </div>
 
 <div class="container">
@@ -166,6 +166,9 @@ const dd=document.getElementById('langDropdown');Object.entries(LANGS).forEach((
 document.getElementById('langBtn').addEventListener('click',e=>{e.stopPropagation();document.getElementById('langSelector').classList.toggle('open')});
 document.addEventListener('click',()=>document.getElementById('langSelector').classList.remove('open'));
 applyLang(detectLang());
+const APP_T={en:"Snap Now & Share Instantly",ja:"毎日フォトチャレンジ",zh:"每日摄影挑战",zh_TW:"每日攝影挑戰",ko:"매일 사진 챌린지",es:"Desafío Fotográfico Diario",pt:"Desafio Fotográfico Diário",fr:"Défi Photo Quotidien",de:"Tägliche Foto-Challenge",it:"Sfida Fotografica Quotidiana",ru:"Ежедневный фотовызов",ar:"تحدي التصوير اليومي",th:"ความท้าทายถ่ายภาพรายวัน",id:"Tantangan Foto Harian",tr:"Günlük Fotoğraf Mücadelesi",nl:"Daily Photography Challenge",vi:"Thách Thức Ảnh Hàng Ngày",};
+const _oA=applyLang;applyLang=function(l){_oA(l);const t=APP_T[l]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;};
+(function(){const l=localStorage.getItem('sk_lang');const lang=l||detectLang();const t=APP_T[lang]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;})();
 </script>
 </body>
 </html>

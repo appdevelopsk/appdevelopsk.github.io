@@ -86,7 +86,7 @@
   <div class="hero-emoji">⏱️</div>
   <div class="hero-cat">Game</div>
   <h1>30sec Challenge</h1>
-  <p>A fast-paced trivia game where you answer as many questions as possible in 30 seconds.</p>
+  <p id="heroDesc">A fast-paced trivia game where you answer as many questions as possible in 30 seconds.</p>
 </div>
 
 <div class="container">
@@ -166,6 +166,9 @@ const dd=document.getElementById('langDropdown');Object.entries(LANGS).forEach((
 document.getElementById('langBtn').addEventListener('click',e=>{e.stopPropagation();document.getElementById('langSelector').classList.toggle('open')});
 document.addEventListener('click',()=>document.getElementById('langSelector').classList.remove('open'));
 applyLang(detectLang());
+const APP_T={en:"Record. Compete. Go Viral.",ja:"毎日の動画チャレンジ＆投票",zh:"每日短视频挑战与投票",zh_TW:"每日短影音挑戰與投票",ko:"매일 영상 챌린지 & 투표",es:"Reto diario de video y votos",pt:"Desafio diário de vídeo e voto",fr:"Défi vidéo quotidien & votes",de:"Tägliche Video-Challenge &Vote",it:"Sfida video quotidiana e voti",ru:"Ежедневный видеочеллендж",ar:"تحدي الفيديو اليومي والتصويت",th:"ชาเลนจ์วิดีโอรายวันและโหวต",id:"Tantangan video harian voting",tr:"Günlük video meydan okuması",nl:"Dagelijkse video uitdaging",vi:"Thử thách video hàng ngày",};
+const _oA=applyLang;applyLang=function(l){_oA(l);const t=APP_T[l]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;};
+(function(){const l=localStorage.getItem('sk_lang');const lang=l||detectLang();const t=APP_T[lang]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;})();
 </script>
 </body>
 </html>

@@ -86,7 +86,7 @@
   <div class="hero-emoji">📄</div>
   <div class="hero-cat">Productivity</div>
   <h1>FileForce</h1>
-  <p>A powerful PDF file manager. Merge, split, annotate, compress, and organize your documents.</p>
+  <p id="heroDesc">A powerful PDF file manager. Merge, split, annotate, compress, and organize your documents.</p>
 </div>
 
 <div class="container">
@@ -166,6 +166,9 @@ const dd=document.getElementById('langDropdown');Object.entries(LANGS).forEach((
 document.getElementById('langBtn').addEventListener('click',e=>{e.stopPropagation();document.getElementById('langSelector').classList.toggle('open')});
 document.addEventListener('click',()=>document.getElementById('langSelector').classList.remove('open'));
 applyLang(detectLang());
+const APP_T={en:"File Manager & Organizer",ja:"PDF・OCR・ZIP対応",zh:"PDF、OCR、ZIP等功能",zh_TW:"PDF、OCR、ZIP等功能",ko:"PDF, OCR, ZIP 지원",es:"PDF, OCR, ZIP y más",pt:"PDF, OCR, ZIP e mais",fr:"PDF, OCR, ZIP et plus",de:"PDF, OCR, ZIP und mehr",it:"PDF, OCR, ZIP e altro",ru:"PDF, OCR, ZIP и многое другое",ar:"PDF وOCR وZIP والمزيد",th:"PDF, OCR, ZIP และอื่นๆ",id:"PDF, OCR, ZIP dan Lainnya",tr:"PDF, OCR, ZIP ve Daha Fazlası",nl:"PDF, OCR, ZIP en meer",vi:"PDF, OCR, ZIP và Nhiều Hơn Nữa",};
+const _oA=applyLang;applyLang=function(l){_oA(l);const t=APP_T[l]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;};
+(function(){const l=localStorage.getItem('sk_lang');const lang=l||detectLang();const t=APP_T[lang]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;})();
 </script>
 </body>
 </html>

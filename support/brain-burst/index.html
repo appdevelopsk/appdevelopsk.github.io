@@ -86,7 +86,7 @@
   <div class="hero-emoji">🧠</div>
   <div class="hero-cat">Game</div>
   <h1>Brain Burst!</h1>
-  <p>Train your brain with quick cognitive challenges across memory, math, logic, and reaction time.</p>
+  <p id="heroDesc">Train your brain with quick cognitive challenges across memory, math, logic, and reaction time.</p>
 </div>
 
 <div class="container">
@@ -166,6 +166,9 @@ const dd=document.getElementById('langDropdown');Object.entries(LANGS).forEach((
 document.getElementById('langBtn').addEventListener('click',e=>{e.stopPropagation();document.getElementById('langSelector').classList.toggle('open')});
 document.addEventListener('click',()=>document.getElementById('langSelector').classList.remove('open'));
 applyLang(detectLang());
+const APP_T={en:"AI Trivia Quiz & Battles",ja:"AIクイズ＆毎日バトル",zh:"AI问答与每日对战",zh_TW:"AI問答與每日對戰",ko:"AI 퀴즈 & 매일 배틀",es:"Quiz de IA y batalla diaria",pt:"Quiz de IA e batalha diária",fr:"Quiz IA & bataille quotidienne",de:"KI-Quiz & tägliche Battles",it:"Quiz AI e battaglia quotidiana",ru:"ИИ-викторина и ежедневные бои",ar:"مسابقة ذكاء اصطناعي يومية",th:"ควิซ AI และการต่อสู้รายวัน",id:"Kuis AI & pertarungan harian",tr:"Yapay zeka quiz günlük savaş",nl:"AI-quiz en dagelijkse strijd",vi:"Quiz AI trận chiến hàng ngày",};
+const _oA=applyLang;applyLang=function(l){_oA(l);const t=APP_T[l]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;};
+(function(){const l=localStorage.getItem('sk_lang');const lang=l||detectLang();const t=APP_T[lang]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;})();
 </script>
 </body>
 </html>

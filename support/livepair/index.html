@@ -86,7 +86,7 @@
   <div class="hero-emoji">💕</div>
   <div class="hero-cat">Social</div>
   <h1>LivePair</h1>
-  <p>Connect with people nearby for real-time meetups and activities.</p>
+  <p id="heroDesc">Connect with people nearby for real-time meetups and activities.</p>
 </div>
 
 <div class="container">
@@ -166,6 +166,9 @@ const dd=document.getElementById('langDropdown');Object.entries(LANGS).forEach((
 document.getElementById('langBtn').addEventListener('click',e=>{e.stopPropagation();document.getElementById('langSelector').classList.toggle('open')});
 document.addEventListener('click',()=>document.getElementById('langSelector').classList.remove('open'));
 applyLang(detectLang());
+const APP_T={en:"Real-Time Matching App",ja:"リアルタイムマッチング",zh:"实时配对应用",zh_TW:"即時配對應用程式",ko:"실시간 매칭 앱",es:"App de Matchmaking",pt:"App de Combinação",fr:"App Rencontres Temps Réel",de:"Echtzeit-Matching-App",it:"App di Matching in Tempo Reale",ru:"Знакомства реального времени",ar:"تطبيق مطابقة فوري",th:"แอปจับคู่เรียลไทม์",id:"Aplikasi Pencocokan Real-Time",tr:"Eşleşme Uygulaması",nl:"Realtime Matching App",vi:"Kết Đôi Thời Gian Thực",};
+const _oA=applyLang;applyLang=function(l){_oA(l);const t=APP_T[l]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;};
+(function(){const l=localStorage.getItem('sk_lang');const lang=l||detectLang();const t=APP_T[lang]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;})();
 </script>
 </body>
 </html>

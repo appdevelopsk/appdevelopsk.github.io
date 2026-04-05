@@ -86,7 +86,7 @@
   <div class="hero-emoji">🕊️</div>
   <div class="hero-cat">Health</div>
   <h1>Solace</h1>
-  <p>A mindful companion for emotional well-being. Guided journaling, breathing, and reflection.</p>
+  <p id="heroDesc">A mindful companion for emotional well-being. Guided journaling, breathing, and reflection.</p>
 </div>
 
 <div class="container">
@@ -166,6 +166,9 @@ const dd=document.getElementById('langDropdown');Object.entries(LANGS).forEach((
 document.getElementById('langBtn').addEventListener('click',e=>{e.stopPropagation();document.getElementById('langSelector').classList.toggle('open')});
 document.addEventListener('click',()=>document.getElementById('langSelector').classList.remove('open'));
 applyLang(detectLang());
+const APP_T={en:"AI Mental Wellness Support",ja:"AIメンタルウェルネスコンパニオン",zh:"AI心理健康陪伴",zh_TW:"AI心理健康陪伴",ko:"AI 멘탈 웰니스 동반자",es:"Compañero de bienestar mental",pt:"Companheiro de bem-estar IA",fr:"Compagnon bien-être mental IA",de:"KI-Begleiter für mentales Wohl",it:"Compagno benessere mentale IA",ru:"ИИ для ментального здоровья",ar:"رفيق صحة نفسية بالذكاء",th:"เพื่อนสุขภาพจิต AI",id:"Teman kesehatan mental AI",tr:"Yapay zeka ruh sağlığı dostu",nl:"AI-begeleider mentaal welzijn",vi:"Bạn đồng hành sức khỏe tâm",};
+const _oA=applyLang;applyLang=function(l){_oA(l);const t=APP_T[l]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;};
+(function(){const l=localStorage.getItem('sk_lang');const lang=l||detectLang();const t=APP_T[lang]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;})();
 </script>
 </body>
 </html>

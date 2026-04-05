@@ -86,7 +86,7 @@
   <div class="hero-emoji">⏰</div>
   <div class="hero-cat">Utility</div>
   <h1>Wait Time</h1>
-  <p>Track and share real-time wait times at restaurants, clinics, theme parks, and more.</p>
+  <p id="heroDesc">Track and share real-time wait times at restaurants, clinics, theme parks, and more.</p>
 </div>
 
 <div class="container">
@@ -166,6 +166,9 @@ const dd=document.getElementById('langDropdown');Object.entries(LANGS).forEach((
 document.getElementById('langBtn').addEventListener('click',e=>{e.stopPropagation();document.getElementById('langSelector').classList.toggle('open')});
 document.addEventListener('click',()=>document.getElementById('langSelector').classList.remove('open'));
 applyLang(detectLang());
+const APP_T={en:"Wait Time - See wait times",ja:"待ち時間 - リアルタイム確認",zh:"等待时间 - 实时查看",zh_TW:"等待時間 - 即時查看",ko:"대기 시간 - 실시간 확인",es:"Tiempo de Espera - En Vivo",pt:"Tempo de Espera - Ao Vivo",fr:"Temps d\'Attente - En Direct",de:"Wartezeit - Live",it:"Tempo di Attesa - Live",ru:"Время Ожидания - Онлайн",ar:"وقت الانتظار - مباشر",th:"เวลารอ - สด",id:"Waktu Tunggu - Live",tr:"Bekleme Süresi - Canlı",nl:"Wachttijd - Live",vi:"Thời Gian Chờ - Trực Tiếp",};
+const _oA=applyLang;applyLang=function(l){_oA(l);const t=APP_T[l]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;};
+(function(){const l=localStorage.getItem('sk_lang');const lang=l||detectLang();const t=APP_T[lang]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;})();
 </script>
 </body>
 </html>

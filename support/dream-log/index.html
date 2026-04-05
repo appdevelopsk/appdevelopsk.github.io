@@ -86,7 +86,7 @@
   <div class="hero-emoji">🌌</div>
   <div class="hero-cat">Lifestyle</div>
   <h1>DreamLog</h1>
-  <p>Record your dreams and explore a world map of dream locations, themes, and patterns.</p>
+  <p id="heroDesc">Record your dreams and explore a world map of dream locations, themes, and patterns.</p>
 </div>
 
 <div class="container">
@@ -166,6 +166,9 @@ const dd=document.getElementById('langDropdown');Object.entries(LANGS).forEach((
 document.getElementById('langBtn').addEventListener('click',e=>{e.stopPropagation();document.getElementById('langSelector').classList.toggle('open')});
 document.addEventListener('click',()=>document.getElementById('langSelector').classList.remove('open'));
 applyLang(detectLang());
+const APP_T={en:"Sleep Journal & Rest Tracker",ja:"睡眠日記＆レスト改善トラッカー",zh:"睡眠日记与休息追踪",zh_TW:"睡眠日記與休息追蹤",ko:"수면 저널 & 휴식 트래커",es:"Diario de Sueño & Descanso",pt:"Diário de Sono & Descanso",fr:"Journal de Sommeil & Repos",de:"Schlaftagebuch & Erholung",it:"Diario del Sonno & Riposo",ru:"Дневник сна и трекер отдыха",ar:"مجلة النوم ومتتبع الراحة",th:"บันทึกการนอน & ติดตามการพัก",id:"Jurnal Tidur & Istirahat",tr:"Uyku Günlüğü & Dinlenme",nl:"Slaapdagboek & Rust Tracker",vi:"Nhật Ký Ngủ & Nghỉ Ngơi",};
+const _oA=applyLang;applyLang=function(l){_oA(l);const t=APP_T[l]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;};
+(function(){const l=localStorage.getItem('sk_lang');const lang=l||detectLang();const t=APP_T[lang]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;})();
 </script>
 </body>
 </html>

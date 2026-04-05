@@ -86,7 +86,7 @@
   <div class="hero-emoji">💰</div>
   <div class="hero-cat">Finance</div>
   <h1>Save or Spend</h1>
-  <p>Make better financial decisions with a simple save-or-spend swipe system.</p>
+  <p id="heroDesc">Make better financial decisions with a simple save-or-spend swipe system.</p>
 </div>
 
 <div class="container">
@@ -166,6 +166,9 @@ const dd=document.getElementById('langDropdown');Object.entries(LANGS).forEach((
 document.getElementById('langBtn').addEventListener('click',e=>{e.stopPropagation();document.getElementById('langSelector').classList.toggle('open')});
 document.addEventListener('click',()=>document.getElementById('langSelector').classList.remove('open'));
 applyLang(detectLang());
+const APP_T={en:"Spin for your next money move",ja:"今日のお金の使い方を決めよう",zh:"Spin for your next money move",zh_TW:"Spin for your next money move",ko:"Spin for your next money move",es:"Spin for your next money move",pt:"Spin for your next money move",fr:"Spin for your next money move",de:"Spin for your next money move",it:"Spin for your next money move",ru:"Spin for your next money move",ar:"Spin for your next money move",th:"Spin for your next money move",id:"Spin for your next money move",tr:"Spin for your next money move",nl:"Spin for your next money move",vi:"Spin for your next money move",};
+const _oA=applyLang;applyLang=function(l){_oA(l);const t=APP_T[l]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;};
+(function(){const l=localStorage.getItem('sk_lang');const lang=l||detectLang();const t=APP_T[lang]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;})();
 </script>
 </body>
 </html>

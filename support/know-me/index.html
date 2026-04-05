@@ -86,7 +86,7 @@
   <div class="hero-emoji">❓</div>
   <div class="hero-cat">Social</div>
   <h1>KnowMe</h1>
-  <p>Create fun quizzes about yourself and see how well your friends really know you!</p>
+  <p id="heroDesc">Create fun quizzes about yourself and see how well your friends really know you!</p>
 </div>
 
 <div class="container">
@@ -166,6 +166,9 @@ const dd=document.getElementById('langDropdown');Object.entries(LANGS).forEach((
 document.getElementById('langBtn').addEventListener('click',e=>{e.stopPropagation();document.getElementById('langSelector').classList.toggle('open')});
 document.addEventListener('click',()=>document.getElementById('langSelector').classList.remove('open'));
 applyLang(detectLang());
+const APP_T={en:"Friends Quiz & Personality",ja:"クイズ作成＆友達テスト",zh:"创建测验，考验朋友",zh_TW:"建立測驗，考驗朋友",ko:"퀴즈 만들고 친구 테스트하기",es:"Crea quizzes y reta amigos",pt:"Crie quizzes e teste amigos",fr:"Quiz & défier vos amis",de:"Quizze & Freunde herausfordern",it:"Crea quiz, sfida gli amici",ru:"Создай викторину для друзей",ar:"أنشئ اختبارات واختبر أصدقاءك",th:"สร้างควิซและทดสอบเพื่อน",id:"Buat kuis & uji temanmu",tr:"Test yap ve arkadaşı sına",nl:"Maak quizzen en test vrienden",vi:"Tạo câu đố & thử thách bạn bè",};
+const _oA=applyLang;applyLang=function(l){_oA(l);const t=APP_T[l]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;};
+(function(){const l=localStorage.getItem('sk_lang');const lang=l||detectLang();const t=APP_T[lang]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;})();
 </script>
 </body>
 </html>

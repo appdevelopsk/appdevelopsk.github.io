@@ -86,7 +86,7 @@
   <div class="hero-emoji">🦎</div>
   <div class="hero-cat">Encyclopedia</div>
   <h1>DinoTrace</h1>
-  <p>Travel back in time and discover dinosaurs from every era with detailed profiles and illustrations.</p>
+  <p id="heroDesc">Travel back in time and discover dinosaurs from every era with detailed profiles and illustrations.</p>
 </div>
 
 <div class="container">
@@ -166,6 +166,9 @@ const dd=document.getElementById('langDropdown');Object.entries(LANGS).forEach((
 document.getElementById('langBtn').addEventListener('click',e=>{e.stopPropagation();document.getElementById('langSelector').classList.toggle('open')});
 document.addEventListener('click',()=>document.getElementById('langSelector').classList.remove('open'));
 applyLang(detectLang());
+const APP_T={en:"Dinosaur Encyclopedia & Quiz",ja:"恐竜図鑑 & クイズ",zh:"恐龙百科与问答",zh_TW:"恐龍百科與問答",ko:"공룡 백과사전 & 퀴즈",es:"Enciclopedia de Dinosaurios",pt:"Enciclopédia de Dinossauros",fr:"Encyclopédie des Dinosaures",de:"Dinosaurier-Enzyklopädie",it:"Enciclopedia dei Dinosauri",ru:"Энциклопедия динозавров",ar:"موسوعة الديناصورات والاختبار",th:"สารานุกรมไดโนเสาร์และแบบทดสอบ",id:"Ensiklopedia Dinosaurus & Kuis",tr:"Dinozor Ansiklopedisi ve Quiz",nl:"Dinosaurus Encyclopedie",vi:"Bách khoa Khủng long & Quiz",};
+const _oA=applyLang;applyLang=function(l){_oA(l);const t=APP_T[l]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;};
+(function(){const l=localStorage.getItem('sk_lang');const lang=l||detectLang();const t=APP_T[lang]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;})();
 </script>
 </body>
 </html>

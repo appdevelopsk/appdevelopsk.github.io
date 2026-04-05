@@ -86,7 +86,7 @@
   <div class="hero-emoji">🗣️</div>
   <div class="hero-cat">Education</div>
   <h1>Language Challenge</h1>
-  <p>Learn new languages through daily challenges, vocabulary games, and practice exercises.</p>
+  <p id="heroDesc">Learn new languages through daily challenges, vocabulary games, and practice exercises.</p>
 </div>
 
 <div class="container">
@@ -166,6 +166,9 @@ const dd=document.getElementById('langDropdown');Object.entries(LANGS).forEach((
 document.getElementById('langBtn').addEventListener('click',e=>{e.stopPropagation();document.getElementById('langSelector').classList.toggle('open')});
 document.addEventListener('click',()=>document.getElementById('langSelector').classList.remove('open'));
 applyLang(detectLang());
+const APP_T={en:"Learn Words in 5 Min a Day",ja:"Learn Words in 5 Min a Day",zh:"Learn Words in 5 Min a Day",zh_TW:"Learn Words in 5 Min a Day",ko:"Learn Words in 5 Min a Day",es:"Learn Words in 5 Min a Day",pt:"Learn Words in 5 Min a Day",fr:"Learn Words in 5 Min a Day",de:"Learn Words in 5 Min a Day",it:"Learn Words in 5 Min a Day",ru:"Learn Words in 5 Min a Day",ar:"Learn Words in 5 Min a Day",th:"Learn Words in 5 Min a Day",id:"Learn Words in 5 Min a Day",tr:"Learn Words in 5 Min a Day",nl:"Learn Words in 5 Min a Day",vi:"Learn Words in 5 Min a Day",};
+const _oA=applyLang;applyLang=function(l){_oA(l);const t=APP_T[l]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;};
+(function(){const l=localStorage.getItem('sk_lang');const lang=l||detectLang();const t=APP_T[lang]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;})();
 </script>
 </body>
 </html>
