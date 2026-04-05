@@ -56,12 +56,42 @@
       background: var(--gradient-1); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
       letter-spacing: -0.5px;
     }
+    .nav-right { display: flex; align-items: center; gap: 24px; }
     .nav-links { display: flex; gap: 32px; list-style: none; }
     .nav-links a {
       color: var(--text-secondary); text-decoration: none; font-size: 0.9rem; font-weight: 500;
       transition: color 0.2s;
     }
     .nav-links a:hover { color: var(--text-primary); }
+
+    /* Language Selector */
+    .lang-selector {
+      position: relative;
+    }
+    .lang-btn {
+      background: var(--bg-card); border: 1px solid rgba(255,255,255,0.1);
+      color: var(--text-primary); padding: 6px 12px; border-radius: 8px;
+      font-size: 0.8rem; font-weight: 500; cursor: pointer;
+      display: flex; align-items: center; gap: 6px; transition: all 0.2s;
+    }
+    .lang-btn:hover { border-color: rgba(108, 123, 255, 0.3); }
+    .lang-btn svg { width: 14px; height: 14px; fill: var(--text-secondary); transition: transform 0.2s; }
+    .lang-selector.open .lang-btn svg { transform: rotate(180deg); }
+    .lang-dropdown {
+      display: none; position: absolute; top: 100%; right: 0; margin-top: 8px;
+      background: var(--bg-card); border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 12px; padding: 8px; min-width: 180px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.4); z-index: 200;
+      max-height: 400px; overflow-y: auto;
+    }
+    .lang-selector.open .lang-dropdown { display: block; }
+    .lang-option {
+      padding: 8px 12px; border-radius: 8px; cursor: pointer;
+      font-size: 0.85rem; color: var(--text-secondary); transition: all 0.15s;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .lang-option:hover { background: rgba(108, 123, 255, 0.1); color: var(--text-primary); }
+    .lang-option.active { color: var(--accent); font-weight: 600; }
 
     /* Hero */
     .hero {
@@ -215,21 +245,30 @@
 <nav>
   <div class="nav-inner">
     <div class="nav-logo">SK APPS</div>
-    <ul class="nav-links">
-      <li><a href="#apps">Apps</a></li>
-      <li><a href="#categories">Categories</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
+    <div class="nav-right">
+      <ul class="nav-links">
+        <li><a href="#apps" data-i18n="nav_apps">Apps</a></li>
+        <li><a href="#categories" data-i18n="nav_categories">Categories</a></li>
+        <li><a href="#about" data-i18n="nav_about">About</a></li>
+        <li><a href="#contact" data-i18n="nav_contact">Contact</a></li>
+      </ul>
+      <div class="lang-selector" id="langSelector">
+        <button class="lang-btn" id="langBtn">
+          <span id="langLabel">EN</span>
+          <svg viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+        </button>
+        <div class="lang-dropdown" id="langDropdown"></div>
+      </div>
+    </div>
   </div>
 </nav>
 
 <!-- Hero -->
 <section class="hero">
   <div class="hero-content">
-    <div class="hero-badge">98+ Apps Published</div>
-    <h1>Innovative <span class="gradient">Mobile Experiences</span></h1>
-    <p>We craft fun, useful, and beautifully designed apps — from brain-teasing games to AI-powered tools and everyday utilities.</p>
+    <div class="hero-badge" data-i18n="hero_badge">98+ Apps Published</div>
+    <h1 data-i18n-html="hero_title">Innovative <span class="gradient">Mobile Experiences</span></h1>
+    <p data-i18n="hero_desc">We craft fun, useful, and beautifully designed apps — from brain-teasing games to AI-powered tools and everyday utilities.</p>
     <div class="hero-buttons">
       <a href="https://play.google.com/store/apps/dev?id=6428093678302702498" class="btn btn-primary" target="_blank" rel="noopener">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 0 1-.61-.92V2.734a1 1 0 0 1 .609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-1.707l2.033 1.18c.558.322.558 1.318 0 1.64l-2.033 1.18-2.546-2.5 2.546-2.5zM5.864 2.658L16.8 8.99l-2.302 2.302-8.634-8.634z"/></svg>
@@ -247,58 +286,58 @@
 <div class="stats">
   <div class="stat">
     <div class="stat-number">98+</div>
-    <div class="stat-label">Published Apps</div>
+    <div class="stat-label" data-i18n="stat_apps">Published Apps</div>
   </div>
   <div class="stat">
     <div class="stat-number">17</div>
-    <div class="stat-label">Languages Supported</div>
+    <div class="stat-label" data-i18n="stat_langs">Languages Supported</div>
   </div>
   <div class="stat">
     <div class="stat-number">2</div>
-    <div class="stat-label">Platforms</div>
+    <div class="stat-label" data-i18n="stat_platforms">Platforms</div>
   </div>
   <div class="stat">
     <div class="stat-number">10+</div>
-    <div class="stat-label">App Categories</div>
+    <div class="stat-label" data-i18n="stat_categories">App Categories</div>
   </div>
 </div>
 
 <!-- Categories -->
 <section id="categories">
   <div class="section-header">
-    <h2>What We Build</h2>
-    <p>Diverse apps spanning multiple categories, each crafted with attention to detail</p>
+    <h2 data-i18n="cat_title">What We Build</h2>
+    <p data-i18n="cat_desc">Diverse apps spanning multiple categories, each crafted with attention to detail</p>
   </div>
   <div class="categories">
     <div class="category">
       <div class="category-icon">&#x1F3AE;</div>
-      <h3>Games &amp; Puzzles</h3>
-      <p>Brain teasers, typing battles, quiz games, and challenges that keep you sharp. From 30-second speed rounds to deep puzzle solving.</p>
+      <h3 data-i18n="cat_games">Games &amp; Puzzles</h3>
+      <p data-i18n="cat_games_desc">Brain teasers, typing battles, quiz games, and challenges that keep you sharp. From 30-second speed rounds to deep puzzle solving.</p>
     </div>
     <div class="category">
       <div class="category-icon">&#x1F916;</div>
-      <h3>AI-Powered Tools</h3>
-      <p>Smart apps that use AI for photo learning, voice diaries, dating coaching, debate practice, recipe suggestions, and more.</p>
+      <h3 data-i18n="cat_ai">AI-Powered Tools</h3>
+      <p data-i18n="cat_ai_desc">Smart apps that use AI for photo learning, voice diaries, dating coaching, debate practice, recipe suggestions, and more.</p>
     </div>
     <div class="category">
       <div class="category-icon">&#x1F30D;</div>
-      <h3>Encyclopedias &amp; Guides</h3>
-      <p>Trace and discover the world — animals, plants, insects, marine life, gems, dinosaurs, birds, mushrooms, constellations, and flags.</p>
+      <h3 data-i18n="cat_encyclopedia">Encyclopedias &amp; Guides</h3>
+      <p data-i18n="cat_encyclopedia_desc">Trace and discover the world — animals, plants, insects, marine life, gems, dinosaurs, birds, mushrooms, constellations, and flags.</p>
     </div>
     <div class="category">
       <div class="category-icon">&#x2764;&#xFE0F;</div>
-      <h3>Health &amp; Wellness</h3>
-      <p>Posture reminders, stretch timers, sleep preparation, eye break alerts, water tracking, mood logging, and skincare analysis.</p>
+      <h3 data-i18n="cat_health">Health &amp; Wellness</h3>
+      <p data-i18n="cat_health_desc">Posture reminders, stretch timers, sleep preparation, eye break alerts, water tracking, mood logging, and skincare analysis.</p>
     </div>
     <div class="category">
       <div class="category-icon">&#x1F4B0;</div>
-      <h3>Productivity &amp; Finance</h3>
-      <p>Save-or-spend decisions, subscription tracking, warranty management, PDF tools, daily planners, and life visualization.</p>
+      <h3 data-i18n="cat_productivity">Productivity &amp; Finance</h3>
+      <p data-i18n="cat_productivity_desc">Save-or-spend decisions, subscription tracking, warranty management, PDF tools, daily planners, and life visualization.</p>
     </div>
     <div class="category">
       <div class="category-icon">&#x1F389;</div>
-      <h3>Social &amp; Fun</h3>
-      <p>Roulette pickers for movies, dates, dinners, and study topics. Party games, compatibility quizzes, and friend challenges.</p>
+      <h3 data-i18n="cat_social">Social &amp; Fun</h3>
+      <p data-i18n="cat_social_desc">Roulette pickers for movies, dates, dinners, and study topics. Party games, compatibility quizzes, and friend challenges.</p>
     </div>
   </div>
 </section>
@@ -306,200 +345,185 @@
 <!-- Featured Apps -->
 <section id="apps" style="background: var(--bg-secondary);">
   <div class="section-header">
-    <h2>Featured Apps</h2>
-    <p>A selection of our most popular apps across categories</p>
+    <h2 data-i18n="featured_title">Featured Apps</h2>
+    <p data-i18n="featured_desc">A selection of our most popular apps across categories</p>
   </div>
   <div class="apps-grid">
-
     <a class="app-card" href="support/30sec-challenge/">
       <div class="app-icon-placeholder" style="background: linear-gradient(135deg, #ff6b6b, #ee5a24);">&#x23F1;</div>
       <div class="app-info">
         <h4>30sec Challenge</h4>
-        <p>Fast-paced trivia game. Answer as many questions as you can in 30 seconds.</p>
-        <span class="app-tag" style="background: rgba(255,107,107,0.15); color: #ff6b6b;">Game</span>
+        <p data-i18n="app_30sec">Fast-paced trivia game. Answer as many questions as you can in 30 seconds.</p>
+        <span class="app-tag" style="background: rgba(255,107,107,0.15); color: #ff6b6b;" data-i18n="tag_game">Game</span>
       </div>
     </a>
-
     <a class="app-card" href="support/snaplingo/">
       <div class="app-icon-placeholder" style="background: linear-gradient(135deg, #6c7bff, #a855f7);">&#x1F4F8;</div>
       <div class="app-info">
         <h4>SnapLingo</h4>
-        <p>Point your camera at anything and learn vocabulary in multiple languages with AI.</p>
-        <span class="app-tag" style="background: rgba(108,123,255,0.15); color: #6c7bff;">AI / Education</span>
+        <p data-i18n="app_snaplingo">Point your camera at anything and learn vocabulary in multiple languages with AI.</p>
+        <span class="app-tag" style="background: rgba(108,123,255,0.15); color: #6c7bff;" data-i18n="tag_ai_edu">AI / Education</span>
       </div>
     </a>
-
     <a class="app-card" href="support/life-trace/">
       <div class="app-icon-placeholder" style="background: linear-gradient(135deg, #00b894, #00cec9);">&#x1F4DD;</div>
       <div class="app-info">
         <h4>LifeTrace</h4>
-        <p>AI-powered life recorder. Capture and reflect on your daily moments automatically.</p>
-        <span class="app-tag" style="background: rgba(0,184,148,0.15); color: #00b894;">AI / Utility</span>
+        <p data-i18n="app_lifetrace">AI-powered life recorder. Capture and reflect on your daily moments automatically.</p>
+        <span class="app-tag" style="background: rgba(0,184,148,0.15); color: #00b894;" data-i18n="tag_ai_util">AI / Utility</span>
       </div>
     </a>
-
     <a class="app-card" href="support/brain-burst/">
       <div class="app-icon-placeholder" style="background: linear-gradient(135deg, #fdcb6e, #e17055);">&#x1F9E0;</div>
       <div class="app-info">
         <h4>Brain Burst!</h4>
-        <p>Train your brain with quick cognitive challenges across multiple categories.</p>
-        <span class="app-tag" style="background: rgba(253,203,110,0.15); color: #fdcb6e;">Game</span>
+        <p data-i18n="app_brainburst">Train your brain with quick cognitive challenges across multiple categories.</p>
+        <span class="app-tag" style="background: rgba(253,203,110,0.15); color: #fdcb6e;" data-i18n="tag_game">Game</span>
       </div>
     </a>
-
     <a class="app-card" href="support/keyclash/">
       <div class="app-icon-placeholder" style="background: linear-gradient(135deg, #74b9ff, #0984e3);">&#x2328;</div>
       <div class="app-info">
         <h4>KeyClash</h4>
-        <p>Competitive typing battle. Race against the clock and other players.</p>
-        <span class="app-tag" style="background: rgba(116,185,255,0.15); color: #74b9ff;">Game</span>
+        <p data-i18n="app_keyclash">Competitive typing battle. Race against the clock and other players.</p>
+        <span class="app-tag" style="background: rgba(116,185,255,0.15); color: #74b9ff;" data-i18n="tag_game">Game</span>
       </div>
     </a>
-
     <a class="app-card" href="support/geo-sense/">
       <div class="app-icon-placeholder" style="background: linear-gradient(135deg, #55efc4, #00b894);">&#x1F5FA;</div>
       <div class="app-info">
         <h4>GeoSense</h4>
-        <p>Photo location quiz. Guess where in the world each photo was taken.</p>
-        <span class="app-tag" style="background: rgba(85,239,196,0.15); color: #55efc4;">Quiz</span>
+        <p data-i18n="app_geosense">Photo location quiz. Guess where in the world each photo was taken.</p>
+        <span class="app-tag" style="background: rgba(85,239,196,0.15); color: #55efc4;" data-i18n="tag_quiz">Quiz</span>
       </div>
     </a>
-
     <a class="app-card" href="support/chaos/">
       <div class="app-icon-placeholder" style="background: linear-gradient(135deg, #fd79a8, #e84393);">&#x1F525;</div>
       <div class="app-info">
         <h4>Chaos: Daily Missions</h4>
-        <p>Random daily challenges that push you out of your comfort zone.</p>
-        <span class="app-tag" style="background: rgba(253,121,168,0.15); color: #fd79a8;">Lifestyle</span>
+        <p data-i18n="app_chaos">Random daily challenges that push you out of your comfort zone.</p>
+        <span class="app-tag" style="background: rgba(253,121,168,0.15); color: #fd79a8;" data-i18n="tag_lifestyle">Lifestyle</span>
       </div>
     </a>
-
     <a class="app-card" href="support/debate-me/">
       <div class="app-icon-placeholder" style="background: linear-gradient(135deg, #a29bfe, #6c5ce7);">&#x1F399;</div>
       <div class="app-info">
         <h4>Debate Me</h4>
-        <p>Practice debate skills with AI. Sharpen your arguments on any topic.</p>
-        <span class="app-tag" style="background: rgba(162,155,254,0.15); color: #a29bfe;">AI / Education</span>
+        <p data-i18n="app_debateme">Practice debate skills with AI. Sharpen your arguments on any topic.</p>
+        <span class="app-tag" style="background: rgba(162,155,254,0.15); color: #a29bfe;" data-i18n="tag_ai_edu">AI / Education</span>
       </div>
     </a>
-
     <a class="app-card" href="support/nodo/">
       <div class="app-icon-placeholder" style="background: linear-gradient(135deg, #ffeaa7, #fdcb6e);">&#x1F9E9;</div>
       <div class="app-info">
         <h4>Nodo Puzzle</h4>
-        <p>Elegant node-connecting puzzle game. Simple rules, deep strategy.</p>
-        <span class="app-tag" style="background: rgba(255,234,167,0.15); color: #fdcb6e;">Puzzle</span>
+        <p data-i18n="app_nodo">Elegant node-connecting puzzle game. Simple rules, deep strategy.</p>
+        <span class="app-tag" style="background: rgba(255,234,167,0.15); color: #fdcb6e;" data-i18n="tag_puzzle">Puzzle</span>
       </div>
     </a>
-
     <a class="app-card" href="support/real-feel-weather/">
       <div class="app-icon-placeholder" style="background: linear-gradient(135deg, #81ecec, #00cec9);">&#x1F326;</div>
       <div class="app-info">
         <h4>RealFeel Weather</h4>
-        <p>Weather app focused on how it actually feels outside, not just the numbers.</p>
-        <span class="app-tag" style="background: rgba(129,236,236,0.15); color: #81ecec;">Weather</span>
+        <p data-i18n="app_realfeel">Weather app focused on how it actually feels outside, not just the numbers.</p>
+        <span class="app-tag" style="background: rgba(129,236,236,0.15); color: #81ecec;" data-i18n="tag_weather">Weather</span>
       </div>
     </a>
-
     <a class="app-card" href="support/dream-log/">
       <div class="app-icon-placeholder" style="background: linear-gradient(135deg, #dfe6e9, #b2bec3);">&#x1F30C;</div>
       <div class="app-info">
         <h4>DreamLog</h4>
-        <p>Record your dreams and explore a world map of dream locations and themes.</p>
-        <span class="app-tag" style="background: rgba(178,190,195,0.15); color: #b2bec3;">Lifestyle</span>
+        <p data-i18n="app_dreamlog">Record your dreams and explore a world map of dream locations and themes.</p>
+        <span class="app-tag" style="background: rgba(178,190,195,0.15); color: #b2bec3;" data-i18n="tag_lifestyle">Lifestyle</span>
       </div>
     </a>
-
     <a class="app-card" href="support/fileforce/">
       <div class="app-icon-placeholder" style="background: linear-gradient(135deg, #fab1a0, #e17055);">&#x1F4C4;</div>
       <div class="app-info">
         <h4>FileForce</h4>
-        <p>Powerful PDF file manager. Merge, split, annotate, and organize documents.</p>
-        <span class="app-tag" style="background: rgba(250,177,160,0.15); color: #fab1a0;">Productivity</span>
+        <p data-i18n="app_fileforce">Powerful PDF file manager. Merge, split, annotate, and organize documents.</p>
+        <span class="app-tag" style="background: rgba(250,177,160,0.15); color: #fab1a0;" data-i18n="tag_productivity">Productivity</span>
       </div>
     </a>
-
   </div>
 </section>
 
 <!-- Trace Series -->
 <section>
   <div class="section-header">
-    <h2>Trace Series</h2>
-    <p>Discover the world through our encyclopedia collection — beautifully illustrated guides</p>
+    <h2 data-i18n="trace_title">Trace Series</h2>
+    <p data-i18n="trace_desc">Discover the world through our encyclopedia collection — beautifully illustrated guides</p>
   </div>
   <div class="apps-grid">
-
     <div class="app-card">
       <div class="app-icon-placeholder" style="background: linear-gradient(135deg, #00b894, #00cec9);">&#x1F333;</div>
-      <div class="app-info"><h4>ForestTrace</h4><p>Explore mushrooms and forest ecosystems</p></div>
+      <div class="app-info"><h4>ForestTrace</h4><p data-i18n="trace_forest">Explore mushrooms and forest ecosystems</p></div>
     </div>
     <div class="app-card">
       <div class="app-icon-placeholder" style="background: linear-gradient(135deg, #fdcb6e, #e17055);">&#x1F98E;</div>
-      <div class="app-info"><h4>DinoTrace</h4><p>Discover dinosaurs from every era</p></div>
+      <div class="app-info"><h4>DinoTrace</h4><p data-i18n="trace_dino">Discover dinosaurs from every era</p></div>
     </div>
     <div class="app-card">
       <div class="app-icon-placeholder" style="background: linear-gradient(135deg, #74b9ff, #0984e3);">&#x1F30A;</div>
-      <div class="app-info"><h4>MarineTrace</h4><p>Dive into ocean creatures and marine life</p></div>
+      <div class="app-info"><h4>MarineTrace</h4><p data-i18n="trace_marine">Dive into ocean creatures and marine life</p></div>
     </div>
     <div class="app-card">
       <div class="app-icon-placeholder" style="background: linear-gradient(135deg, #ff6b6b, #ee5a24);">&#x1F41E;</div>
-      <div class="app-info"><h4>BugTrace</h4><p>Identify and learn about insects worldwide</p></div>
+      <div class="app-info"><h4>BugTrace</h4><p data-i18n="trace_bug">Identify and learn about insects worldwide</p></div>
     </div>
     <div class="app-card">
       <div class="app-icon-placeholder" style="background: linear-gradient(135deg, #55efc4, #00b894);">&#x1F33F;</div>
-      <div class="app-info"><h4>BotanicaTrace</h4><p>Guide to plants, flowers, and botany</p></div>
+      <div class="app-info"><h4>BotanicaTrace</h4><p data-i18n="trace_botanica">Guide to plants, flowers, and botany</p></div>
     </div>
     <div class="app-card">
       <div class="app-icon-placeholder" style="background: linear-gradient(135deg, #ffeaa7, #fdcb6e);">&#x1F426;</div>
-      <div class="app-info"><h4>FeatherTrace</h4><p>Bird species identification and facts</p></div>
+      <div class="app-info"><h4>FeatherTrace</h4><p data-i18n="trace_feather">Bird species identification and facts</p></div>
     </div>
     <div class="app-card">
       <div class="app-icon-placeholder" style="background: linear-gradient(135deg, #a29bfe, #6c5ce7);">&#x1F48E;</div>
-      <div class="app-info"><h4>GemTrace</h4><p>Gemstones, minerals, and crystals guide</p></div>
+      <div class="app-info"><h4>GemTrace</h4><p data-i18n="trace_gem">Gemstones, minerals, and crystals guide</p></div>
     </div>
     <div class="app-card">
       <div class="app-icon-placeholder" style="background: linear-gradient(135deg, #fd79a8, #e84393);">&#x1F43E;</div>
-      <div class="app-info"><h4>PawTrace</h4><p>Dog breeds encyclopedia and guide</p></div>
+      <div class="app-info"><h4>PawTrace</h4><p data-i18n="trace_paw">Dog breeds encyclopedia and guide</p></div>
     </div>
     <div class="app-card">
       <div class="app-icon-placeholder" style="background: linear-gradient(135deg, #fab1a0, #e17055);">&#x2B50;</div>
-      <div class="app-info"><h4>AstroTrace</h4><p>Constellations and star maps</p></div>
+      <div class="app-info"><h4>AstroTrace</h4><p data-i18n="trace_astro">Constellations and star maps</p></div>
     </div>
     <div class="app-card">
       <div class="app-icon-placeholder" style="background: linear-gradient(135deg, #81ecec, #00cec9);">&#x1F3F3;</div>
-      <div class="app-info"><h4>FlagTrace</h4><p>World flags and country facts</p></div>
+      <div class="app-info"><h4>FlagTrace</h4><p data-i18n="trace_flag">World flags and country facts</p></div>
     </div>
     <div class="app-card">
       <div class="app-icon-placeholder" style="background: linear-gradient(135deg, #dfe6e9, #636e72);">&#x1F3DB;</div>
-      <div class="app-info"><h4>HeritageTrace</h4><p>World heritage sites and cultural landmarks</p></div>
+      <div class="app-info"><h4>HeritageTrace</h4><p data-i18n="trace_heritage">World heritage sites and cultural landmarks</p></div>
     </div>
     <div class="app-card">
       <div class="app-icon-placeholder" style="background: linear-gradient(135deg, #6c7bff, #a855f7);">&#x1F43E;</div>
-      <div class="app-info"><h4>WildTrace</h4><p>Wildlife animals from around the globe</p></div>
+      <div class="app-info"><h4>WildTrace</h4><p data-i18n="trace_wild">Wildlife animals from around the globe</p></div>
     </div>
-
   </div>
 </section>
 
 <!-- About -->
 <section id="about" style="background: var(--bg-secondary);">
   <div class="section-header">
-    <h2>About SK APPS</h2>
-    <p>Building apps that people actually want to use</p>
+    <h2 data-i18n="about_title">About SK APPS</h2>
+    <p data-i18n="about_desc">Building apps that people actually want to use</p>
   </div>
   <div class="about-content">
     <div class="about-card">
-      <h3>Our Approach</h3>
-      <p>Every app we build follows the same principles: clean design, fast performance, and genuine usefulness. We use Flutter for cross-platform consistency, support 17 languages out of the box, and never ship an app we wouldn't use ourselves.</p>
+      <h3 data-i18n="about_approach">Our Approach</h3>
+      <p data-i18n="about_approach_desc">Every app we build follows the same principles: clean design, fast performance, and genuine usefulness. We use Flutter for cross-platform consistency, support 17 languages out of the box, and never ship an app we wouldn't use ourselves.</p>
     </div>
     <div class="about-card">
-      <h3>Technology</h3>
-      <p>Built with Flutter and Node.js. Our apps run natively on both iOS and Android, with server-side features powered by TypeScript, PostgreSQL, and Redis. AI features use cutting-edge language models to deliver smart, context-aware experiences.</p>
+      <h3 data-i18n="about_tech">Technology</h3>
+      <p data-i18n="about_tech_desc">Built with Flutter and Node.js. Our apps run natively on both iOS and Android, with server-side features powered by TypeScript, PostgreSQL, and Redis. AI features use cutting-edge language models to deliver smart, context-aware experiences.</p>
     </div>
     <div class="about-card">
-      <h3>Global First</h3>
-      <p>All apps support 17 languages from day one: English, Japanese, Chinese (Simplified &amp; Traditional), Korean, Spanish, Portuguese, French, German, Italian, Russian, Arabic, Thai, Indonesian, Turkish, Dutch, and Vietnamese.</p>
+      <h3 data-i18n="about_global">Global First</h3>
+      <p data-i18n="about_global_desc">All apps support 17 languages from day one: English, Japanese, Chinese (Simplified &amp; Traditional), Korean, Spanish, Portuguese, French, German, Italian, Russian, Arabic, Thai, Indonesian, Turkish, Dutch, and Vietnamese.</p>
     </div>
   </div>
 </section>
@@ -507,8 +531,8 @@
 <!-- Contact -->
 <section id="contact">
   <div class="section-header">
-    <h2>Get in Touch</h2>
-    <p>Have questions, feedback, or ideas? We'd love to hear from you.</p>
+    <h2 data-i18n="contact_title">Get in Touch</h2>
+    <p data-i18n="contact_desc">Have questions, feedback, or ideas? We'd love to hear from you.</p>
   </div>
   <div style="text-align: center;">
     <a href="mailto:app.develop.sk@gmail.com" class="btn btn-primary" style="font-size: 1.05rem;">
@@ -524,10 +548,663 @@
   <div class="footer-links">
     <a href="https://play.google.com/store/apps/dev?id=6428093678302702498" target="_blank" rel="noopener">Google Play</a>
     <a href="https://apps.apple.com/developer/ken-shimizu/id1751493498" target="_blank" rel="noopener">App Store</a>
-    <a href="mailto:app.develop.sk@gmail.com">Contact</a>
+    <a href="mailto:app.develop.sk@gmail.com" data-i18n="nav_contact">Contact</a>
   </div>
   <p class="footer-copy">&copy; 2026 SK APPS. All rights reserved.</p>
 </footer>
+
+<script>
+const LANGS = {
+  en: { label: "English", flag: "EN" },
+  ja: { label: "日本語", flag: "JA" },
+  zh: { label: "简体中文", flag: "ZH" },
+  zh_TW: { label: "繁體中文", flag: "TW" },
+  ko: { label: "한국어", flag: "KO" },
+  es: { label: "Español", flag: "ES" },
+  pt: { label: "Português", flag: "PT" },
+  fr: { label: "Français", flag: "FR" },
+  de: { label: "Deutsch", flag: "DE" },
+  it: { label: "Italiano", flag: "IT" },
+  ru: { label: "Русский", flag: "RU" },
+  ar: { label: "العربية", flag: "AR" },
+  th: { label: "ไทย", flag: "TH" },
+  id: { label: "Indonesia", flag: "ID" },
+  tr: { label: "Türkçe", flag: "TR" },
+  nl: { label: "Nederlands", flag: "NL" },
+  vi: { label: "Tiếng Việt", flag: "VI" }
+};
+
+const I18N = {
+  en: {
+    nav_apps: "Apps", nav_categories: "Categories", nav_about: "About", nav_contact: "Contact",
+    hero_badge: "98+ Apps Published",
+    hero_title: 'Innovative <span class="gradient">Mobile Experiences</span>',
+    hero_desc: "We craft fun, useful, and beautifully designed apps — from brain-teasing games to AI-powered tools and everyday utilities.",
+    stat_apps: "Published Apps", stat_langs: "Languages Supported", stat_platforms: "Platforms", stat_categories: "App Categories",
+    cat_title: "What We Build", cat_desc: "Diverse apps spanning multiple categories, each crafted with attention to detail",
+    cat_games: "Games & Puzzles", cat_games_desc: "Brain teasers, typing battles, quiz games, and challenges that keep you sharp. From 30-second speed rounds to deep puzzle solving.",
+    cat_ai: "AI-Powered Tools", cat_ai_desc: "Smart apps that use AI for photo learning, voice diaries, dating coaching, debate practice, recipe suggestions, and more.",
+    cat_encyclopedia: "Encyclopedias & Guides", cat_encyclopedia_desc: "Trace and discover the world — animals, plants, insects, marine life, gems, dinosaurs, birds, mushrooms, constellations, and flags.",
+    cat_health: "Health & Wellness", cat_health_desc: "Posture reminders, stretch timers, sleep preparation, eye break alerts, water tracking, mood logging, and skincare analysis.",
+    cat_productivity: "Productivity & Finance", cat_productivity_desc: "Save-or-spend decisions, subscription tracking, warranty management, PDF tools, daily planners, and life visualization.",
+    cat_social: "Social & Fun", cat_social_desc: "Roulette pickers for movies, dates, dinners, and study topics. Party games, compatibility quizzes, and friend challenges.",
+    featured_title: "Featured Apps", featured_desc: "A selection of our most popular apps across categories",
+    app_30sec: "Fast-paced trivia game. Answer as many questions as you can in 30 seconds.",
+    app_snaplingo: "Point your camera at anything and learn vocabulary in multiple languages with AI.",
+    app_lifetrace: "AI-powered life recorder. Capture and reflect on your daily moments automatically.",
+    app_brainburst: "Train your brain with quick cognitive challenges across multiple categories.",
+    app_keyclash: "Competitive typing battle. Race against the clock and other players.",
+    app_geosense: "Photo location quiz. Guess where in the world each photo was taken.",
+    app_chaos: "Random daily challenges that push you out of your comfort zone.",
+    app_debateme: "Practice debate skills with AI. Sharpen your arguments on any topic.",
+    app_nodo: "Elegant node-connecting puzzle game. Simple rules, deep strategy.",
+    app_realfeel: "Weather app focused on how it actually feels outside, not just the numbers.",
+    app_dreamlog: "Record your dreams and explore a world map of dream locations and themes.",
+    app_fileforce: "Powerful PDF file manager. Merge, split, annotate, and organize documents.",
+    tag_game: "Game", tag_ai_edu: "AI / Education", tag_ai_util: "AI / Utility", tag_quiz: "Quiz", tag_lifestyle: "Lifestyle", tag_puzzle: "Puzzle", tag_weather: "Weather", tag_productivity: "Productivity",
+    trace_title: "Trace Series", trace_desc: "Discover the world through our encyclopedia collection — beautifully illustrated guides",
+    trace_forest: "Explore mushrooms and forest ecosystems", trace_dino: "Discover dinosaurs from every era",
+    trace_marine: "Dive into ocean creatures and marine life", trace_bug: "Identify and learn about insects worldwide",
+    trace_botanica: "Guide to plants, flowers, and botany", trace_feather: "Bird species identification and facts",
+    trace_gem: "Gemstones, minerals, and crystals guide", trace_paw: "Dog breeds encyclopedia and guide",
+    trace_astro: "Constellations and star maps", trace_flag: "World flags and country facts",
+    trace_heritage: "World heritage sites and cultural landmarks", trace_wild: "Wildlife animals from around the globe",
+    about_title: "About SK APPS", about_desc: "Building apps that people actually want to use",
+    about_approach: "Our Approach", about_approach_desc: "Every app we build follows the same principles: clean design, fast performance, and genuine usefulness. We use Flutter for cross-platform consistency, support 17 languages out of the box, and never ship an app we wouldn't use ourselves.",
+    about_tech: "Technology", about_tech_desc: "Built with Flutter and Node.js. Our apps run natively on both iOS and Android, with server-side features powered by TypeScript, PostgreSQL, and Redis. AI features use cutting-edge language models to deliver smart, context-aware experiences.",
+    about_global: "Global First", about_global_desc: "All apps support 17 languages from day one: English, Japanese, Chinese (Simplified & Traditional), Korean, Spanish, Portuguese, French, German, Italian, Russian, Arabic, Thai, Indonesian, Turkish, Dutch, and Vietnamese.",
+    contact_title: "Get in Touch", contact_desc: "Have questions, feedback, or ideas? We'd love to hear from you."
+  },
+  ja: {
+    nav_apps: "アプリ", nav_categories: "カテゴリ", nav_about: "概要", nav_contact: "お問い合わせ",
+    hero_badge: "98以上のアプリを公開中",
+    hero_title: '革新的な<span class="gradient">モバイル体験</span>',
+    hero_desc: "脳トレゲームからAIツール、日常ユーティリティまで — 楽しく、便利で、美しくデザインされたアプリを作っています。",
+    stat_apps: "公開アプリ数", stat_langs: "対応言語", stat_platforms: "プラットフォーム", stat_categories: "アプリカテゴリ",
+    cat_title: "私たちが作るもの", cat_desc: "多彩なカテゴリにわたるアプリを、細部までこだわって開発",
+    cat_games: "ゲーム＆パズル", cat_games_desc: "脳トレ、タイピングバトル、クイズゲーム、チャレンジなど。30秒のスピード勝負から本格パズルまで。",
+    cat_ai: "AI搭載ツール", cat_ai_desc: "写真学習、音声日記、恋愛コーチ、ディベート練習、レシピ提案など、AIを活用したスマートアプリ。",
+    cat_encyclopedia: "図鑑＆ガイド", cat_encyclopedia_desc: "動物、植物、昆虫、海洋生物、宝石、恐竜、鳥、キノコ、星座、国旗 — 世界を発見するTraceシリーズ。",
+    cat_health: "健康＆ウェルネス", cat_health_desc: "姿勢リマインダー、ストレッチタイマー、睡眠準備、目の休憩、水分管理、気分記録、スキンケア分析。",
+    cat_productivity: "生産性＆ファイナンス", cat_productivity_desc: "貯蓄 or 消費判断、サブスク管理、保証書管理、PDFツール、デイリープランナー、ライフ可視化。",
+    cat_social: "ソーシャル＆楽しい", cat_social_desc: "映画、デート、晩ごはん、勉強のルーレット。パーティーゲーム、相性クイズ、友達チャレンジ。",
+    featured_title: "注目のアプリ", featured_desc: "カテゴリを横断した人気アプリのセレクション",
+    app_30sec: "スピード感あふれるトリビアゲーム。30秒でどれだけ答えられるか挑戦！",
+    app_snaplingo: "カメラを向けるだけでAIが多言語の単語を教えてくれる学習アプリ。",
+    app_lifetrace: "AI搭載のライフレコーダー。日常の瞬間を自動で記録・振り返り。",
+    app_brainburst: "多彩なカテゴリの認知チャレンジで脳をトレーニング。",
+    app_keyclash: "タイピングバトル。時計と他のプレイヤーに挑め。",
+    app_geosense: "写真位置当てクイズ。世界のどこで撮影されたか当てよう。",
+    app_chaos: "コンフォートゾーンを飛び出すランダムデイリーチャレンジ。",
+    app_debateme: "AIとディベート練習。あらゆるトピックで議論力を磨こう。",
+    app_nodo: "エレガントなノード接続パズル。シンプルなルール、深い戦略。",
+    app_realfeel: "数字だけじゃない、実際の体感に焦点を当てた天気アプリ。",
+    app_dreamlog: "夢を記録して、夢の場所やテーマのワールドマップを探索。",
+    app_fileforce: "強力なPDFファイルマネージャー。結合、分割、注釈、整理。",
+    tag_game: "ゲーム", tag_ai_edu: "AI / 教育", tag_ai_util: "AI / ユーティリティ", tag_quiz: "クイズ", tag_lifestyle: "ライフスタイル", tag_puzzle: "パズル", tag_weather: "天気", tag_productivity: "生産性",
+    trace_title: "Traceシリーズ", trace_desc: "美しいイラスト付き図鑑コレクションで世界を発見",
+    trace_forest: "キノコと森の生態系を探索", trace_dino: "あらゆる時代の恐竜を発見",
+    trace_marine: "海の生き物と海洋生物の世界へ", trace_bug: "世界中の昆虫を識別・学習",
+    trace_botanica: "植物、花、植物学ガイド", trace_feather: "鳥類の種別識別と豆知識",
+    trace_gem: "宝石、鉱物、クリスタルガイド", trace_paw: "犬種図鑑＆ガイド",
+    trace_astro: "星座と星図", trace_flag: "世界の国旗と国の情報",
+    trace_heritage: "世界遺産と文化的ランドマーク", trace_wild: "世界中の野生動物",
+    about_title: "SK APPSについて", about_desc: "本当に使いたくなるアプリを作る",
+    about_approach: "私たちのアプローチ", about_approach_desc: "すべてのアプリは同じ原則に基づいています：クリーンなデザイン、高速なパフォーマンス、本当の実用性。Flutterでクロスプラットフォームの一貫性を確保し、17言語を標準サポート。自分たちが使いたくないアプリはリリースしません。",
+    about_tech: "テクノロジー", about_tech_desc: "FlutterとNode.jsで構築。iOSとAndroidの両方でネイティブに動作し、サーバーサイドはTypeScript、PostgreSQL、Redisで構成。AI機能は最先端の言語モデルを活用しています。",
+    about_global: "グローバルファースト", about_global_desc: "すべてのアプリが初日から17言語に対応：英語、日本語、中国語（簡体字・繁体字）、韓国語、スペイン語、ポルトガル語、フランス語、ドイツ語、イタリア語、ロシア語、アラビア語、タイ語、インドネシア語、トルコ語、オランダ語、ベトナム語。",
+    contact_title: "お問い合わせ", contact_desc: "ご質問、フィードバック、アイデアがありましたらお気軽にどうぞ。"
+  },
+  zh: {
+    nav_apps: "应用", nav_categories: "分类", nav_about: "关于", nav_contact: "联系我们",
+    hero_badge: "已发布98+款应用",
+    hero_title: '创新的<span class="gradient">移动体验</span>',
+    hero_desc: "我们打造有趣、实用、设计精美的应用——从烧脑游戏到AI工具和日常实用程序。",
+    stat_apps: "已发布应用", stat_langs: "支持语言", stat_platforms: "平台", stat_categories: "应用类别",
+    cat_title: "我们的产品", cat_desc: "横跨多个类别的应用，每一款都精心打造",
+    cat_games: "游戏和拼图", cat_games_desc: "脑力挑战、打字对战、问答游戏等。从30秒极速挑战到深度解谜。",
+    cat_ai: "AI工具", cat_ai_desc: "利用AI进行拍照学习、语音日记、恋爱指导、辩论练习、菜谱推荐等。",
+    cat_encyclopedia: "百科和指南", cat_encyclopedia_desc: "探索世界——动物、植物、昆虫、海洋生物、宝石、恐龙、鸟类、蘑菇、星座和国旗。",
+    cat_health: "健康和养生", cat_health_desc: "姿势提醒、拉伸计时器、睡眠准备、护眼提醒、饮水追踪、心情记录和护肤分析。",
+    cat_productivity: "效率和财务", cat_productivity_desc: "储蓄或消费决策、订阅管理、保修管理、PDF工具、日程规划和生活可视化。",
+    cat_social: "社交和趣味", cat_social_desc: "电影、约会、晚餐、学习话题随机选择器。派对游戏、兼容性测试和好友挑战。",
+    featured_title: "精选应用", featured_desc: "跨类别的热门应用精选",
+    app_30sec: "快节奏问答游戏。在30秒内尽可能多地回答问题。", app_snaplingo: "拍照即学，AI帮你学习多语言词汇。",
+    app_lifetrace: "AI生活记录器。自动捕捉并回顾每日精彩瞬间。", app_brainburst: "多类别认知挑战，锻炼你的大脑。",
+    app_keyclash: "竞技打字对战。与时间和其他玩家赛跑。", app_geosense: "照片定位问答。猜猜这张照片拍自哪里。",
+    app_chaos: "随机每日挑战，带你走出舒适区。", app_debateme: "与AI练习辩论，磨练你的论证能力。",
+    app_nodo: "优雅的节点连接益智游戏。简单规则，深度策略。", app_realfeel: "关注实际体感的天气应用，不仅仅是数字。",
+    app_dreamlog: "记录梦境，探索梦境地点和主题的世界地图。", app_fileforce: "强大的PDF文件管理器。合并、拆分、标注和整理。",
+    tag_game: "游戏", tag_ai_edu: "AI / 教育", tag_ai_util: "AI / 工具", tag_quiz: "问答", tag_lifestyle: "生活", tag_puzzle: "益智", tag_weather: "天气", tag_productivity: "效率",
+    trace_title: "Trace系列", trace_desc: "通过精美插图百科系列发现世界",
+    trace_forest: "探索蘑菇和森林生态", trace_dino: "发现各个时代的恐龙", trace_marine: "深入海洋生物的世界",
+    trace_bug: "识别和了解全球昆虫", trace_botanica: "植物、花卉和植物学指南", trace_feather: "鸟类物种识别与趣知",
+    trace_gem: "宝石、矿物和水晶指南", trace_paw: "犬种百科与指南", trace_astro: "星座和星图",
+    trace_flag: "世界国旗和国家知识", trace_heritage: "世界遗产和文化地标", trace_wild: "全球野生动物",
+    about_title: "关于SK APPS", about_desc: "打造人们真正想用的应用",
+    about_approach: "我们的理念", about_approach_desc: "每款应用都遵循相同原则：简洁设计、极速性能、真正实用。我们使用Flutter确保跨平台一致性，开箱即支持17种语言，绝不发布自己不愿使用的应用。",
+    about_tech: "技术栈", about_tech_desc: "使用Flutter和Node.js构建。应用在iOS和Android上原生运行，服务端采用TypeScript、PostgreSQL和Redis。AI功能使用前沿语言模型。",
+    about_global: "全球优先", about_global_desc: "所有应用从第一天起就支持17种语言：英语、日语、中文（简体和繁体）、韩语、西班牙语、葡萄牙语、法语、德语、意大利语、俄语、阿拉伯语、泰语、印尼语、土耳其语、荷兰语和越南语。",
+    contact_title: "联系我们", contact_desc: "有问题、反馈或建议？欢迎随时与我们联系。"
+  },
+  zh_TW: {
+    nav_apps: "應用", nav_categories: "分類", nav_about: "關於", nav_contact: "聯絡我們",
+    hero_badge: "已發布98+款應用",
+    hero_title: '創新的<span class="gradient">行動體驗</span>',
+    hero_desc: "我們打造有趣、實用、設計精美的應用——從燒腦遊戲到AI工具和日常實用程式。",
+    stat_apps: "已發布應用", stat_langs: "支援語言", stat_platforms: "平台", stat_categories: "應用類別",
+    cat_title: "我們的產品", cat_desc: "橫跨多個類別的應用，每一款都精心打造",
+    cat_games: "遊戲與拼圖", cat_games_desc: "腦力挑戰、打字對戰、問答遊戲等。從30秒極速挑戰到深度解謎。",
+    cat_ai: "AI工具", cat_ai_desc: "利用AI進行拍照學習、語音日記、戀愛指導、辯論練習、食譜推薦等。",
+    cat_encyclopedia: "百科與指南", cat_encyclopedia_desc: "探索世界——動物、植物、昆蟲、海洋生物、寶石、恐龍、鳥類、蘑菇、星座和國旗。",
+    cat_health: "健康與養生", cat_health_desc: "姿勢提醒、伸展計時器、睡眠準備、護眼提醒、飲水追蹤、心情記錄和護膚分析。",
+    cat_productivity: "效率與財務", cat_productivity_desc: "儲蓄或消費決策、訂閱管理、保固管理、PDF工具、日程規劃和生活視覺化。",
+    cat_social: "社交與趣味", cat_social_desc: "電影、約會、晚餐、學習主題隨機選擇器。派對遊戲、相容性測試和好友挑戰。",
+    featured_title: "精選應用", featured_desc: "跨類別的熱門應用精選",
+    app_30sec: "快節奏問答遊戲。在30秒內盡可能多地回答問題。", app_snaplingo: "拍照即學，AI幫你學習多語言詞彙。",
+    app_lifetrace: "AI生活記錄器。自動捕捉並回顧每日精彩時刻。", app_brainburst: "多類別認知挑戰，鍛鍊你的大腦。",
+    app_keyclash: "競技打字對戰。與時間和其他玩家賽跑。", app_geosense: "照片定位問答。猜猜這張照片拍自哪裡。",
+    app_chaos: "隨機每日挑戰，帶你走出舒適區。", app_debateme: "與AI練習辯論，磨練你的論證能力。",
+    app_nodo: "優雅的節點連接益智遊戲。簡單規則，深度策略。", app_realfeel: "關注實際體感的天氣應用，不僅僅是數字。",
+    app_dreamlog: "記錄夢境，探索夢境地點和主題的世界地圖。", app_fileforce: "強大的PDF檔案管理器。合併、拆分、標註和整理。",
+    tag_game: "遊戲", tag_ai_edu: "AI / 教育", tag_ai_util: "AI / 工具", tag_quiz: "問答", tag_lifestyle: "生活", tag_puzzle: "益智", tag_weather: "天氣", tag_productivity: "效率",
+    trace_title: "Trace系列", trace_desc: "透過精美插圖百科系列發現世界",
+    trace_forest: "探索蘑菇和森林生態", trace_dino: "發現各個時代的恐龍", trace_marine: "深入海洋生物的世界",
+    trace_bug: "識別和了解全球昆蟲", trace_botanica: "植物、花卉和植物學指南", trace_feather: "鳥類物種識別與趣知",
+    trace_gem: "寶石、礦物和水晶指南", trace_paw: "犬種百科與指南", trace_astro: "星座和星圖",
+    trace_flag: "世界國旗和國家知識", trace_heritage: "世界遺產和文化地標", trace_wild: "全球野生動物",
+    about_title: "關於SK APPS", about_desc: "打造人們真正想用的應用",
+    about_approach: "我們的理念", about_approach_desc: "每款應用都遵循相同原則：簡潔設計、極速效能、真正實用。我們使用Flutter確保跨平台一致性，開箱即支援17種語言，絕不發布自己不願使用的應用。",
+    about_tech: "技術架構", about_tech_desc: "使用Flutter和Node.js構建。應用在iOS和Android上原生運行，伺服器端採用TypeScript、PostgreSQL和Redis。AI功能使用前沿語言模型。",
+    about_global: "全球優先", about_global_desc: "所有應用從第一天起就支援17種語言：英語、日語、中文（簡體和繁體）、韓語、西班牙語、葡萄牙語、法語、德語、義大利語、俄語、阿拉伯語、泰語、印尼語、土耳其語、荷蘭語和越南語。",
+    contact_title: "聯絡我們", contact_desc: "有問題、回饋或建議？歡迎隨時與我們聯繫。"
+  },
+  ko: {
+    nav_apps: "앱", nav_categories: "카테고리", nav_about: "소개", nav_contact: "문의",
+    hero_badge: "98개 이상의 앱 출시",
+    hero_title: '혁신적인 <span class="gradient">모바일 경험</span>',
+    hero_desc: "두뇌 게임부터 AI 도구, 일상 유틸리티까지 — 재미있고, 유용하고, 아름답게 디자인된 앱을 만듭니다.",
+    stat_apps: "출시 앱", stat_langs: "지원 언어", stat_platforms: "플랫폼", stat_categories: "앱 카테고리",
+    cat_title: "우리가 만드는 것", cat_desc: "다양한 카테고리의 앱을 세심하게 개발합니다",
+    cat_games: "게임 & 퍼즐", cat_games_desc: "두뇌 훈련, 타이핑 배틀, 퀴즈 게임, 챌린지 등. 30초 스피드 라운드부터 깊은 퍼즐까지.",
+    cat_ai: "AI 도구", cat_ai_desc: "사진 학습, 음성 일기, 연애 코칭, 토론 연습, 레시피 추천 등 AI를 활용한 스마트 앱.",
+    cat_encyclopedia: "백과사전 & 가이드", cat_encyclopedia_desc: "동물, 식물, 곤충, 해양생물, 보석, 공룡, 새, 버섯, 별자리, 국기 — 세계를 발견하세요.",
+    cat_health: "건강 & 웰니스", cat_health_desc: "자세 알림, 스트레칭 타이머, 수면 준비, 눈 휴식, 수분 관리, 기분 기록, 스킨케어 분석.",
+    cat_productivity: "생산성 & 금융", cat_productivity_desc: "저축 vs 소비 판단, 구독 관리, 보증서 관리, PDF 도구, 일정 관리, 라이프 시각화.",
+    cat_social: "소셜 & 재미", cat_social_desc: "영화, 데이트, 저녁, 공부 주제 룰렛. 파티 게임, 궁합 테스트, 친구 챌린지.",
+    featured_title: "추천 앱", featured_desc: "카테고리를 넘나드는 인기 앱 셀렉션",
+    app_30sec: "빠른 퀴즈 게임. 30초 안에 최대한 많은 문제에 답하세요.", app_snaplingo: "카메라로 찍으면 AI가 다국어 어휘를 가르쳐줍니다.",
+    app_lifetrace: "AI 라이프 레코더. 일상의 순간을 자동으로 기록하고 돌아보세요.", app_brainburst: "다양한 카테고리의 인지 챌린지로 두뇌를 훈련하세요.",
+    app_keyclash: "타이핑 배틀. 시계와 다른 플레이어에 도전하세요.", app_geosense: "사진 위치 퀴즈. 세계 어디서 찍은 사진인지 맞혀보세요.",
+    app_chaos: "컴포트존을 벗어나는 랜덤 데일리 챌린지.", app_debateme: "AI와 토론 연습. 다양한 주제로 논증력을 키우세요.",
+    app_nodo: "우아한 노드 연결 퍼즐 게임. 심플한 규칙, 깊은 전략.", app_realfeel: "숫자가 아닌 실제 체감에 초점을 맞춘 날씨 앱.",
+    app_dreamlog: "꿈을 기록하고 꿈의 장소와 테마 세계지도를 탐색하세요.", app_fileforce: "강력한 PDF 파일 관리자. 병합, 분할, 주석, 정리.",
+    tag_game: "게임", tag_ai_edu: "AI / 교육", tag_ai_util: "AI / 유틸리티", tag_quiz: "퀴즈", tag_lifestyle: "라이프스타일", tag_puzzle: "퍼즐", tag_weather: "날씨", tag_productivity: "생산성",
+    trace_title: "Trace 시리즈", trace_desc: "아름다운 일러스트 백과사전 컬렉션으로 세계를 발견하세요",
+    trace_forest: "버섯과 숲 생태계 탐험", trace_dino: "모든 시대의 공룡 발견", trace_marine: "해양 생물의 세계로",
+    trace_bug: "전 세계 곤충 식별 및 학습", trace_botanica: "식물, 꽃, 식물학 가이드", trace_feather: "조류 종 식별과 정보",
+    trace_gem: "보석, 광물, 크리스탈 가이드", trace_paw: "견종 백과사전 & 가이드", trace_astro: "별자리와 성도",
+    trace_flag: "세계 국기와 국가 정보", trace_heritage: "세계유산과 문화 랜드마크", trace_wild: "전 세계의 야생동물",
+    about_title: "SK APPS 소개", about_desc: "사람들이 정말 쓰고 싶은 앱을 만듭니다",
+    about_approach: "우리의 접근법", about_approach_desc: "모든 앱은 같은 원칙을 따릅니다: 깔끔한 디자인, 빠른 성능, 진정한 유용성. Flutter로 크로스 플랫폼 일관성을 확보하고, 17개 언어를 기본 지원하며, 스스로 쓰고 싶지 않은 앱은 출시하지 않습니다.",
+    about_tech: "기술 스택", about_tech_desc: "Flutter와 Node.js로 구축. iOS와 Android 모두 네이티브로 실행되며, 서버 사이드는 TypeScript, PostgreSQL, Redis로 구성. AI 기능은 최첨단 언어 모델을 활용합니다.",
+    about_global: "글로벌 퍼스트", about_global_desc: "모든 앱이 첫날부터 17개 언어를 지원합니다: 영어, 일본어, 중국어(간체/번체), 한국어, 스페인어, 포르투갈어, 프랑스어, 독일어, 이탈리아어, 러시아어, 아랍어, 태국어, 인도네시아어, 터키어, 네덜란드어, 베트남어.",
+    contact_title: "문의하기", contact_desc: "질문, 피드백, 아이디어가 있으시면 언제든 연락주세요."
+  },
+  es: {
+    nav_apps: "Apps", nav_categories: "Categorías", nav_about: "Acerca de", nav_contact: "Contacto",
+    hero_badge: "98+ aplicaciones publicadas",
+    hero_title: 'Experiencias <span class="gradient">móviles innovadoras</span>',
+    hero_desc: "Creamos aplicaciones divertidas, útiles y bellamente diseñadas — desde juegos mentales hasta herramientas de IA y utilidades cotidianas.",
+    stat_apps: "Apps publicadas", stat_langs: "Idiomas", stat_platforms: "Plataformas", stat_categories: "Categorías",
+    cat_title: "Lo que creamos", cat_desc: "Aplicaciones diversas en múltiples categorías, cada una desarrollada con atención al detalle",
+    cat_games: "Juegos y puzles", cat_games_desc: "Retos mentales, batallas de escritura, juegos de preguntas y desafíos. Desde rondas de 30 segundos hasta puzles profundos.",
+    cat_ai: "Herramientas con IA", cat_ai_desc: "Apps inteligentes con IA para aprendizaje fotográfico, diarios de voz, coaching de citas, práctica de debate y más.",
+    cat_encyclopedia: "Enciclopedias y guías", cat_encyclopedia_desc: "Descubre el mundo — animales, plantas, insectos, vida marina, gemas, dinosaurios, aves, setas, constelaciones y banderas.",
+    cat_health: "Salud y bienestar", cat_health_desc: "Recordatorios de postura, temporizadores de estiramientos, preparación del sueño, descanso visual, hidratación y análisis de piel.",
+    cat_productivity: "Productividad y finanzas", cat_productivity_desc: "Decisiones de ahorro o gasto, gestión de suscripciones, garantías, herramientas PDF, planificadores y visualización.",
+    cat_social: "Social y diversión", cat_social_desc: "Ruletas para películas, citas, cenas y temas de estudio. Juegos de fiesta, tests de compatibilidad y retos entre amigos.",
+    featured_title: "Apps destacadas", featured_desc: "Una selección de nuestras apps más populares",
+    app_30sec: "Juego de trivia rápido. Responde tantas preguntas como puedas en 30 segundos.", app_snaplingo: "Apunta tu cámara y aprende vocabulario en múltiples idiomas con IA.",
+    app_lifetrace: "Grabador de vida con IA. Captura y reflexiona sobre tus momentos diarios.", app_brainburst: "Entrena tu cerebro con desafíos cognitivos rápidos.",
+    app_keyclash: "Batalla de escritura competitiva. Compite contra el reloj y otros jugadores.", app_geosense: "Quiz de ubicación fotográfica. Adivina dónde se tomó cada foto.",
+    app_chaos: "Desafíos diarios aleatorios que te sacan de tu zona de confort.", app_debateme: "Practica debate con IA. Afina tus argumentos sobre cualquier tema.",
+    app_nodo: "Elegante puzle de conexión de nodos. Reglas simples, estrategia profunda.", app_realfeel: "App del tiempo enfocada en la sensación real, no solo números.",
+    app_dreamlog: "Registra tus sueños y explora un mapa mundial de ubicaciones y temas.", app_fileforce: "Potente gestor de archivos PDF. Combina, divide, anota y organiza.",
+    tag_game: "Juego", tag_ai_edu: "IA / Educación", tag_ai_util: "IA / Utilidad", tag_quiz: "Quiz", tag_lifestyle: "Estilo de vida", tag_puzzle: "Puzle", tag_weather: "Clima", tag_productivity: "Productividad",
+    trace_title: "Serie Trace", trace_desc: "Descubre el mundo a través de nuestra colección de enciclopedias ilustradas",
+    trace_forest: "Explora setas y ecosistemas forestales", trace_dino: "Descubre dinosaurios de todas las eras", trace_marine: "Sumérgete en criaturas oceánicas",
+    trace_bug: "Identifica y aprende sobre insectos", trace_botanica: "Guía de plantas, flores y botánica", trace_feather: "Identificación de aves y datos",
+    trace_gem: "Guía de gemas, minerales y cristales", trace_paw: "Enciclopedia de razas de perros", trace_astro: "Constelaciones y mapas estelares",
+    trace_flag: "Banderas del mundo y datos de países", trace_heritage: "Patrimonio mundial y monumentos culturales", trace_wild: "Animales salvajes del mundo",
+    about_title: "Sobre SK APPS", about_desc: "Creando apps que la gente realmente quiere usar",
+    about_approach: "Nuestro enfoque", about_approach_desc: "Cada app sigue los mismos principios: diseño limpio, rendimiento rápido y utilidad genuina. Usamos Flutter para consistencia multiplataforma, soportamos 17 idiomas desde el inicio.",
+    about_tech: "Tecnología", about_tech_desc: "Construido con Flutter y Node.js. Nuestras apps funcionan nativamente en iOS y Android, con servidor en TypeScript, PostgreSQL y Redis. Las funciones de IA usan modelos de lenguaje de vanguardia.",
+    about_global: "Global primero", about_global_desc: "Todas las apps soportan 17 idiomas desde el primer día: inglés, japonés, chino (simplificado y tradicional), coreano, español, portugués, francés, alemán, italiano, ruso, árabe, tailandés, indonesio, turco, neerlandés y vietnamita.",
+    contact_title: "Contáctanos", contact_desc: "¿Preguntas, comentarios o ideas? Nos encantaría escucharte."
+  },
+  pt: {
+    nav_apps: "Apps", nav_categories: "Categorias", nav_about: "Sobre", nav_contact: "Contato",
+    hero_badge: "98+ apps publicados",
+    hero_title: 'Experiências <span class="gradient">móveis inovadoras</span>',
+    hero_desc: "Criamos apps divertidos, úteis e com design impecável — de jogos mentais a ferramentas de IA e utilitários do dia a dia.",
+    stat_apps: "Apps publicados", stat_langs: "Idiomas", stat_platforms: "Plataformas", stat_categories: "Categorias",
+    cat_title: "O que criamos", cat_desc: "Apps diversos em múltiplas categorias, cada um desenvolvido com atenção aos detalhes",
+    cat_games: "Jogos e puzzles", cat_games_desc: "Desafios mentais, batalhas de digitação, quizzes e desafios. De rodadas de 30 segundos a puzzles complexos.",
+    cat_ai: "Ferramentas com IA", cat_ai_desc: "Apps inteligentes com IA para aprendizado por fotos, diários de voz, coaching de encontros, prática de debate e mais.",
+    cat_encyclopedia: "Enciclopédias e guias", cat_encyclopedia_desc: "Descubra o mundo — animais, plantas, insetos, vida marinha, gemas, dinossauros, aves, cogumelos, constelações e bandeiras.",
+    cat_health: "Saúde e bem-estar", cat_health_desc: "Lembretes de postura, timers de alongamento, preparação do sono, descanso visual, hidratação e análise de pele.",
+    cat_productivity: "Produtividade e finanças", cat_productivity_desc: "Decisões de poupar ou gastar, gestão de assinaturas, garantias, ferramentas PDF, planejadores e visualização.",
+    cat_social: "Social e diversão", cat_social_desc: "Roletas para filmes, encontros, jantares e temas de estudo. Jogos de festa, testes de compatibilidade e desafios.",
+    featured_title: "Apps em destaque", featured_desc: "Uma seleção dos nossos apps mais populares",
+    app_30sec: "Jogo de trivia rápido. Responda o máximo de perguntas em 30 segundos.", app_snaplingo: "Aponte a câmera e aprenda vocabulário em múltiplos idiomas com IA.",
+    app_lifetrace: "Gravador de vida com IA. Capture e reflita sobre seus momentos diários.", app_brainburst: "Treine seu cérebro com desafios cognitivos rápidos.",
+    app_keyclash: "Batalha de digitação competitiva. Compita contra o relógio.", app_geosense: "Quiz de localização. Adivinhe onde cada foto foi tirada.",
+    app_chaos: "Desafios diários aleatórios que te tiram da zona de conforto.", app_debateme: "Pratique debate com IA. Aprimore seus argumentos.",
+    app_nodo: "Elegante puzzle de conexão de nós. Regras simples, estratégia profunda.", app_realfeel: "App de clima focado na sensação real, não apenas números.",
+    app_dreamlog: "Registre seus sonhos e explore um mapa mundial de locais e temas.", app_fileforce: "Poderoso gerenciador de PDF. Combine, divida, anote e organize.",
+    tag_game: "Jogo", tag_ai_edu: "IA / Educação", tag_ai_util: "IA / Utilidade", tag_quiz: "Quiz", tag_lifestyle: "Estilo de vida", tag_puzzle: "Puzzle", tag_weather: "Clima", tag_productivity: "Produtividade",
+    trace_title: "Série Trace", trace_desc: "Descubra o mundo através da nossa coleção de enciclopédias ilustradas",
+    trace_forest: "Explore cogumelos e ecossistemas florestais", trace_dino: "Descubra dinossauros de todas as eras", trace_marine: "Mergulhe em criaturas oceânicas",
+    trace_bug: "Identifique e aprenda sobre insetos", trace_botanica: "Guia de plantas, flores e botânica", trace_feather: "Identificação de aves e curiosidades",
+    trace_gem: "Guia de gemas, minerais e cristais", trace_paw: "Enciclopédia de raças de cães", trace_astro: "Constelações e mapas estelares",
+    trace_flag: "Bandeiras do mundo e dados de países", trace_heritage: "Patrimônio mundial e marcos culturais", trace_wild: "Animais selvagens do mundo",
+    about_title: "Sobre SK APPS", about_desc: "Criando apps que as pessoas realmente querem usar",
+    about_approach: "Nossa abordagem", about_approach_desc: "Cada app segue os mesmos princípios: design limpo, desempenho rápido e utilidade genuína. Usamos Flutter para consistência multiplataforma, suportamos 17 idiomas desde o início.",
+    about_tech: "Tecnologia", about_tech_desc: "Construído com Flutter e Node.js. Nossos apps rodam nativamente em iOS e Android, com servidor em TypeScript, PostgreSQL e Redis.",
+    about_global: "Global primeiro", about_global_desc: "Todos os apps suportam 17 idiomas desde o primeiro dia: inglês, japonês, chinês (simplificado e tradicional), coreano, espanhol, português, francês, alemão, italiano, russo, árabe, tailandês, indonésio, turco, holandês e vietnamita.",
+    contact_title: "Entre em contato", contact_desc: "Tem perguntas, feedback ou ideias? Adoraríamos ouvir você."
+  },
+  fr: {
+    nav_apps: "Apps", nav_categories: "Catégories", nav_about: "À propos", nav_contact: "Contact",
+    hero_badge: "98+ applications publiées",
+    hero_title: 'Expériences <span class="gradient">mobiles innovantes</span>',
+    hero_desc: "Nous créons des applications amusantes, utiles et magnifiquement conçues — des jeux cérébraux aux outils IA et utilitaires quotidiens.",
+    stat_apps: "Apps publiées", stat_langs: "Langues", stat_platforms: "Plateformes", stat_categories: "Catégories",
+    cat_title: "Ce que nous créons", cat_desc: "Des applications variées dans de multiples catégories, chacune développée avec soin",
+    cat_games: "Jeux et puzzles", cat_games_desc: "Défis cérébraux, batailles de frappe, quiz et challenges. De rondes de 30 secondes aux puzzles complexes.",
+    cat_ai: "Outils IA", cat_ai_desc: "Des apps intelligentes utilisant l'IA pour l'apprentissage photo, journaux vocaux, coaching amoureux, pratique du débat et plus.",
+    cat_encyclopedia: "Encyclopédies et guides", cat_encyclopedia_desc: "Découvrez le monde — animaux, plantes, insectes, vie marine, gemmes, dinosaures, oiseaux, champignons, constellations et drapeaux.",
+    cat_health: "Santé et bien-être", cat_health_desc: "Rappels de posture, minuteurs d'étirements, préparation au sommeil, repos des yeux, suivi d'hydratation et analyse de peau.",
+    cat_productivity: "Productivité et finance", cat_productivity_desc: "Décisions épargne/dépense, gestion d'abonnements, garanties, outils PDF, planificateurs et visualisation de vie.",
+    cat_social: "Social et fun", cat_social_desc: "Roulettes pour films, rendez-vous, dîners et sujets d'étude. Jeux de fête, tests de compatibilité et défis entre amis.",
+    featured_title: "Apps en vedette", featured_desc: "Une sélection de nos applications les plus populaires",
+    app_30sec: "Jeu de trivia rapide. Répondez à un maximum de questions en 30 secondes.", app_snaplingo: "Pointez votre appareil photo et apprenez du vocabulaire en plusieurs langues avec l'IA.",
+    app_lifetrace: "Enregistreur de vie IA. Capturez et revivez vos moments quotidiens.", app_brainburst: "Entraînez votre cerveau avec des défis cognitifs rapides.",
+    app_keyclash: "Bataille de frappe compétitive. Affrontez le chrono et d'autres joueurs.", app_geosense: "Quiz de localisation photo. Devinez où chaque photo a été prise.",
+    app_chaos: "Défis quotidiens aléatoires qui vous sortent de votre zone de confort.", app_debateme: "Pratiquez le débat avec l'IA. Affûtez vos arguments sur n'importe quel sujet.",
+    app_nodo: "Élégant puzzle de connexion de nœuds. Règles simples, stratégie profonde.", app_realfeel: "App météo axée sur le ressenti réel, pas seulement les chiffres.",
+    app_dreamlog: "Enregistrez vos rêves et explorez une carte mondiale des lieux et thèmes.", app_fileforce: "Puissant gestionnaire de fichiers PDF. Fusionner, diviser, annoter et organiser.",
+    tag_game: "Jeu", tag_ai_edu: "IA / Éducation", tag_ai_util: "IA / Utilitaire", tag_quiz: "Quiz", tag_lifestyle: "Style de vie", tag_puzzle: "Puzzle", tag_weather: "Météo", tag_productivity: "Productivité",
+    trace_title: "Série Trace", trace_desc: "Découvrez le monde à travers notre collection d'encyclopédies illustrées",
+    trace_forest: "Explorez champignons et écosystèmes forestiers", trace_dino: "Découvrez les dinosaures de toutes les ères", trace_marine: "Plongez dans les créatures océaniques",
+    trace_bug: "Identifiez et apprenez sur les insectes", trace_botanica: "Guide des plantes, fleurs et botanique", trace_feather: "Identification des oiseaux et anecdotes",
+    trace_gem: "Guide des gemmes, minéraux et cristaux", trace_paw: "Encyclopédie des races de chiens", trace_astro: "Constellations et cartes célestes",
+    trace_flag: "Drapeaux du monde et infos pays", trace_heritage: "Patrimoine mondial et monuments culturels", trace_wild: "Animaux sauvages du monde entier",
+    about_title: "À propos de SK APPS", about_desc: "Créer des apps que les gens veulent vraiment utiliser",
+    about_approach: "Notre approche", about_approach_desc: "Chaque app suit les mêmes principes : design épuré, performance rapide et utilité réelle. Nous utilisons Flutter pour la cohérence multiplateforme et supportons 17 langues nativement.",
+    about_tech: "Technologie", about_tech_desc: "Construit avec Flutter et Node.js. Nos apps fonctionnent nativement sur iOS et Android, avec un serveur en TypeScript, PostgreSQL et Redis.",
+    about_global: "Global d'abord", about_global_desc: "Toutes les apps supportent 17 langues dès le premier jour : anglais, japonais, chinois (simplifié et traditionnel), coréen, espagnol, portugais, français, allemand, italien, russe, arabe, thaï, indonésien, turc, néerlandais et vietnamien.",
+    contact_title: "Nous contacter", contact_desc: "Des questions, commentaires ou idées ? Nous serions ravis de vous entendre."
+  },
+  de: {
+    nav_apps: "Apps", nav_categories: "Kategorien", nav_about: "Über uns", nav_contact: "Kontakt",
+    hero_badge: "98+ veröffentlichte Apps",
+    hero_title: 'Innovative <span class="gradient">mobile Erlebnisse</span>',
+    hero_desc: "Wir entwickeln unterhaltsame, nützliche und wunderschön gestaltete Apps — von Denkspielen bis zu KI-Tools und Alltagshelfern.",
+    stat_apps: "Veröffentlichte Apps", stat_langs: "Sprachen", stat_platforms: "Plattformen", stat_categories: "App-Kategorien",
+    cat_title: "Was wir entwickeln", cat_desc: "Vielfältige Apps in mehreren Kategorien, jede mit Liebe zum Detail entwickelt",
+    cat_games: "Spiele & Rätsel", cat_games_desc: "Denksport, Tipp-Battles, Quizspiele und Challenges. Von 30-Sekunden-Runden bis zu tiefgründigen Rätseln.",
+    cat_ai: "KI-Tools", cat_ai_desc: "Smarte Apps mit KI für Foto-Lernen, Sprach-Tagebücher, Dating-Coaching, Debattieren und mehr.",
+    cat_encyclopedia: "Enzyklopädien & Guides", cat_encyclopedia_desc: "Entdecke die Welt — Tiere, Pflanzen, Insekten, Meereslebewesen, Edelsteine, Dinosaurier, Vögel, Pilze, Sternbilder und Flaggen.",
+    cat_health: "Gesundheit & Wellness", cat_health_desc: "Haltungserinnerungen, Dehn-Timer, Schlafvorbereitung, Augenpausen, Wasserzufuhr, Stimmungstagebuch und Hautpflegeanalyse.",
+    cat_productivity: "Produktivität & Finanzen", cat_productivity_desc: "Spar- oder Ausgabenentscheidungen, Abo-Verwaltung, Garantieverwaltung, PDF-Tools, Tagesplaner und Lebensvisualisierung.",
+    cat_social: "Social & Fun", cat_social_desc: "Zufallsgeneratoren für Filme, Dates, Abendessen und Lernthemen. Partyspiele, Kompatibilitätstests und Freundes-Challenges.",
+    featured_title: "Empfohlene Apps", featured_desc: "Eine Auswahl unserer beliebtesten Apps",
+    app_30sec: "Schnelles Quizspiel. Beantworte so viele Fragen wie möglich in 30 Sekunden.", app_snaplingo: "Richte deine Kamera auf etwas und lerne Vokabeln in mehreren Sprachen mit KI.",
+    app_lifetrace: "KI-Lebensrekorder. Erfasse und reflektiere deine täglichen Momente.", app_brainburst: "Trainiere dein Gehirn mit schnellen kognitiven Herausforderungen.",
+    app_keyclash: "Kompetitiver Tipp-Kampf. Tritt gegen die Uhr und andere Spieler an.", app_geosense: "Foto-Standort-Quiz. Rate, wo auf der Welt jedes Foto aufgenommen wurde.",
+    app_chaos: "Zufällige tägliche Herausforderungen, die dich aus deiner Komfortzone bringen.", app_debateme: "Übe Debattieren mit KI. Schärfe deine Argumente zu jedem Thema.",
+    app_nodo: "Elegantes Knoten-Verbindungspuzzle. Einfache Regeln, tiefe Strategie.", app_realfeel: "Wetter-App mit Fokus auf echtes Gefühl, nicht nur Zahlen.",
+    app_dreamlog: "Zeichne deine Träume auf und erkunde eine Weltkarte der Traumorte.", app_fileforce: "Leistungsstarker PDF-Manager. Zusammenführen, teilen, kommentieren und organisieren.",
+    tag_game: "Spiel", tag_ai_edu: "KI / Bildung", tag_ai_util: "KI / Werkzeug", tag_quiz: "Quiz", tag_lifestyle: "Lifestyle", tag_puzzle: "Rätsel", tag_weather: "Wetter", tag_productivity: "Produktivität",
+    trace_title: "Trace-Serie", trace_desc: "Entdecke die Welt durch unsere illustrierte Enzyklopädie-Sammlung",
+    trace_forest: "Erkunde Pilze und Waldökosysteme", trace_dino: "Entdecke Dinosaurier aus allen Epochen", trace_marine: "Tauche in Meeresbewohner ein",
+    trace_bug: "Identifiziere und lerne über Insekten weltweit", trace_botanica: "Pflanzen-, Blumen- und Botanik-Guide", trace_feather: "Vogelarten-Bestimmung und Fakten",
+    trace_gem: "Edelstein-, Mineral- und Kristall-Guide", trace_paw: "Hunderassen-Enzyklopädie", trace_astro: "Sternbilder und Sternkarten",
+    trace_flag: "Weltflaggen und Länderfakten", trace_heritage: "Welterbestätten und Kulturdenkmäler", trace_wild: "Wildtiere aus aller Welt",
+    about_title: "Über SK APPS", about_desc: "Apps entwickeln, die Menschen wirklich nutzen wollen",
+    about_approach: "Unser Ansatz", about_approach_desc: "Jede App folgt denselben Prinzipien: sauberes Design, schnelle Performance und echte Nützlichkeit. Wir nutzen Flutter für plattformübergreifende Konsistenz und unterstützen 17 Sprachen ab Start.",
+    about_tech: "Technologie", about_tech_desc: "Gebaut mit Flutter und Node.js. Unsere Apps laufen nativ auf iOS und Android, mit Server-Seite in TypeScript, PostgreSQL und Redis.",
+    about_global: "Global zuerst", about_global_desc: "Alle Apps unterstützen ab dem ersten Tag 17 Sprachen: Englisch, Japanisch, Chinesisch (vereinfacht und traditionell), Koreanisch, Spanisch, Portugiesisch, Französisch, Deutsch, Italienisch, Russisch, Arabisch, Thai, Indonesisch, Türkisch, Niederländisch und Vietnamesisch.",
+    contact_title: "Kontakt", contact_desc: "Fragen, Feedback oder Ideen? Wir freuen uns von dir zu hören."
+  },
+  it: {
+    nav_apps: "App", nav_categories: "Categorie", nav_about: "Chi siamo", nav_contact: "Contatti",
+    hero_badge: "98+ app pubblicate",
+    hero_title: 'Esperienze <span class="gradient">mobili innovative</span>',
+    hero_desc: "Creiamo app divertenti, utili e dal design curato — dai giochi mentali agli strumenti IA e utility quotidiane.",
+    stat_apps: "App pubblicate", stat_langs: "Lingue", stat_platforms: "Piattaforme", stat_categories: "Categorie",
+    cat_title: "Cosa creiamo", cat_desc: "App diverse in molteplici categorie, ognuna sviluppata con attenzione ai dettagli",
+    cat_games: "Giochi e puzzle", cat_games_desc: "Sfide mentali, battaglie di digitazione, quiz e challenge. Da round di 30 secondi a puzzle profondi.",
+    cat_ai: "Strumenti IA", cat_ai_desc: "App intelligenti con IA per apprendimento fotografico, diari vocali, coaching sentimentale, pratica di dibattito e altro.",
+    cat_encyclopedia: "Enciclopedie e guide", cat_encyclopedia_desc: "Scopri il mondo — animali, piante, insetti, vita marina, gemme, dinosauri, uccelli, funghi, costellazioni e bandiere.",
+    cat_health: "Salute e benessere", cat_health_desc: "Promemoria postura, timer stretching, preparazione sonno, pausa occhi, idratazione, umore e analisi pelle.",
+    cat_productivity: "Produttività e finanza", cat_productivity_desc: "Decisioni risparmio/spesa, gestione abbonamenti, garanzie, strumenti PDF, pianificatori e visualizzazione.",
+    cat_social: "Social e divertimento", cat_social_desc: "Roulette per film, appuntamenti, cene e temi di studio. Giochi di gruppo, test compatibilità e sfide tra amici.",
+    featured_title: "App in evidenza", featured_desc: "Una selezione delle nostre app più popolari",
+    app_30sec: "Gioco trivia veloce. Rispondi a più domande possibili in 30 secondi.", app_snaplingo: "Punta la fotocamera e impara vocaboli in più lingue con l'IA.",
+    app_lifetrace: "Registratore di vita IA. Cattura e rifletti sui tuoi momenti quotidiani.", app_brainburst: "Allena il cervello con sfide cognitive rapide.",
+    app_keyclash: "Battaglia di digitazione competitiva. Gareggia contro il tempo.", app_geosense: "Quiz sulla posizione delle foto. Indovina dove è stata scattata.",
+    app_chaos: "Sfide giornaliere casuali che ti portano fuori dalla tua zona di comfort.", app_debateme: "Pratica il dibattito con l'IA. Affina i tuoi argomenti.",
+    app_nodo: "Elegante puzzle di connessione nodi. Regole semplici, strategia profonda.", app_realfeel: "App meteo focalizzata sulla sensazione reale, non solo i numeri.",
+    app_dreamlog: "Registra i tuoi sogni ed esplora una mappa mondiale di luoghi e temi.", app_fileforce: "Potente gestore file PDF. Unisci, dividi, annota e organizza.",
+    tag_game: "Gioco", tag_ai_edu: "IA / Istruzione", tag_ai_util: "IA / Utilità", tag_quiz: "Quiz", tag_lifestyle: "Lifestyle", tag_puzzle: "Puzzle", tag_weather: "Meteo", tag_productivity: "Produttività",
+    trace_title: "Serie Trace", trace_desc: "Scopri il mondo attraverso la nostra collezione di enciclopedie illustrate",
+    trace_forest: "Esplora funghi ed ecosistemi forestali", trace_dino: "Scopri dinosauri di ogni era", trace_marine: "Immergiti nelle creature oceaniche",
+    trace_bug: "Identifica e impara sugli insetti", trace_botanica: "Guida a piante, fiori e botanica", trace_feather: "Identificazione uccelli e curiosità",
+    trace_gem: "Guida a gemme, minerali e cristalli", trace_paw: "Enciclopedia razze canine", trace_astro: "Costellazioni e mappe stellari",
+    trace_flag: "Bandiere del mondo e info paesi", trace_heritage: "Patrimonio mondiale e monumenti culturali", trace_wild: "Animali selvatici dal mondo",
+    about_title: "Chi è SK APPS", about_desc: "Creare app che le persone vogliono davvero usare",
+    about_approach: "Il nostro approccio", about_approach_desc: "Ogni app segue gli stessi principi: design pulito, prestazioni veloci e utilità genuina. Usiamo Flutter per la coerenza multipiattaforma e supportiamo 17 lingue nativamente.",
+    about_tech: "Tecnologia", about_tech_desc: "Costruito con Flutter e Node.js. Le nostre app funzionano nativamente su iOS e Android, con server in TypeScript, PostgreSQL e Redis.",
+    about_global: "Global first", about_global_desc: "Tutte le app supportano 17 lingue dal primo giorno: inglese, giapponese, cinese (semplificato e tradizionale), coreano, spagnolo, portoghese, francese, tedesco, italiano, russo, arabo, thai, indonesiano, turco, olandese e vietnamita.",
+    contact_title: "Contattaci", contact_desc: "Domande, feedback o idee? Ci piacerebbe sentirti."
+  },
+  ru: {
+    nav_apps: "Приложения", nav_categories: "Категории", nav_about: "О нас", nav_contact: "Контакты",
+    hero_badge: "98+ опубликованных приложений",
+    hero_title: 'Инновационный <span class="gradient">мобильный опыт</span>',
+    hero_desc: "Мы создаём весёлые, полезные и красиво оформленные приложения — от головоломок до инструментов ИИ и повседневных утилит.",
+    stat_apps: "Опубликовано", stat_langs: "Языков", stat_platforms: "Платформы", stat_categories: "Категории",
+    cat_title: "Что мы создаём", cat_desc: "Разнообразные приложения в нескольких категориях, каждое с вниманием к деталям",
+    cat_games: "Игры и головоломки", cat_games_desc: "Интеллектуальные задачи, соревнования по набору текста, викторины и челленджи. От 30-секундных раундов до сложных пазлов.",
+    cat_ai: "Инструменты ИИ", cat_ai_desc: "Умные приложения с ИИ для фотообучения, голосовых дневников, коучинга свиданий, практики дебатов и многого другого.",
+    cat_encyclopedia: "Энциклопедии и справочники", cat_encyclopedia_desc: "Откройте мир — животные, растения, насекомые, морская жизнь, самоцветы, динозавры, птицы, грибы, созвездия и флаги.",
+    cat_health: "Здоровье и благополучие", cat_health_desc: "Напоминания о осанке, таймеры растяжки, подготовка ко сну, отдых для глаз, контроль воды, дневник настроения и анализ кожи.",
+    cat_productivity: "Продуктивность и финансы", cat_productivity_desc: "Решения «сохранить или потратить», управление подписками, гарантии, PDF-инструменты, планировщики и визуализация жизни.",
+    cat_social: "Социальное и развлечения", cat_social_desc: "Рулетки для фильмов, свиданий, ужинов и тем учёбы. Вечеринки, тесты совместимости и челленджи с друзьями.",
+    featured_title: "Избранные приложения", featured_desc: "Подборка наших самых популярных приложений",
+    app_30sec: "Быстрая викторина. Ответьте на максимум вопросов за 30 секунд.", app_snaplingo: "Наведите камеру на что угодно и учите слова на разных языках с ИИ.",
+    app_lifetrace: "ИИ-регистратор жизни. Записывайте и осмысляйте ваши моменты.", app_brainburst: "Тренируйте мозг быстрыми когнитивными задачами.",
+    app_keyclash: "Соревнование по набору текста. Гонка со временем.", app_geosense: "Фотовикторина. Угадайте, где сделан снимок.",
+    app_chaos: "Случайные ежедневные задачи, выводящие из зоны комфорта.", app_debateme: "Тренируйте навыки дебатов с ИИ.",
+    app_nodo: "Элегантная головоломка с узлами. Простые правила, глубокая стратегия.", app_realfeel: "Погодное приложение на основе реальных ощущений.",
+    app_dreamlog: "Записывайте сны и исследуйте мировую карту мест и тем.", app_fileforce: "Мощный менеджер PDF. Объединение, разделение, аннотации и организация.",
+    tag_game: "Игра", tag_ai_edu: "ИИ / Обучение", tag_ai_util: "ИИ / Утилита", tag_quiz: "Викторина", tag_lifestyle: "Стиль жизни", tag_puzzle: "Головоломка", tag_weather: "Погода", tag_productivity: "Продуктивность",
+    trace_title: "Серия Trace", trace_desc: "Откройте мир через нашу коллекцию иллюстрированных энциклопедий",
+    trace_forest: "Грибы и лесные экосистемы", trace_dino: "Динозавры всех эпох", trace_marine: "Погружение в мир океана",
+    trace_bug: "Определение и изучение насекомых", trace_botanica: "Справочник по растениям и ботанике", trace_feather: "Определение видов птиц",
+    trace_gem: "Справочник по самоцветам и минералам", trace_paw: "Энциклопедия пород собак", trace_astro: "Созвездия и звёздные карты",
+    trace_flag: "Флаги мира и факты о странах", trace_heritage: "Объекты всемирного наследия", trace_wild: "Дикие животные со всего мира",
+    about_title: "О SK APPS", about_desc: "Создаём приложения, которые люди действительно хотят использовать",
+    about_approach: "Наш подход", about_approach_desc: "Каждое приложение следует одним принципам: чистый дизайн, быстрая работа и реальная польза. Flutter для кроссплатформенности, 17 языков с первого дня.",
+    about_tech: "Технологии", about_tech_desc: "Построено на Flutter и Node.js. Приложения работают нативно на iOS и Android, серверная часть — TypeScript, PostgreSQL и Redis.",
+    about_global: "Глобальный подход", about_global_desc: "Все приложения поддерживают 17 языков с первого дня: английский, японский, китайский (упрощённый и традиционный), корейский, испанский, португальский, французский, немецкий, итальянский, русский, арабский, тайский, индонезийский, турецкий, нидерландский и вьетнамский.",
+    contact_title: "Связаться с нами", contact_desc: "Есть вопросы, отзывы или идеи? Мы будем рады услышать вас."
+  },
+  ar: {
+    nav_apps: "التطبيقات", nav_categories: "الفئات", nav_about: "حولنا", nav_contact: "اتصل بنا",
+    hero_badge: "+98 تطبيقاً منشوراً",
+    hero_title: 'تجارب <span class="gradient">جوال مبتكرة</span>',
+    hero_desc: "نصنع تطبيقات ممتعة ومفيدة وجميلة التصميم — من ألعاب الذكاء إلى أدوات الذكاء الاصطناعي والأدوات اليومية.",
+    stat_apps: "تطبيقات منشورة", stat_langs: "لغات مدعومة", stat_platforms: "منصات", stat_categories: "فئات التطبيقات",
+    cat_title: "ما نبنيه", cat_desc: "تطبيقات متنوعة في فئات متعددة، كل منها مصمم بعناية",
+    cat_games: "ألعاب وألغاز", cat_games_desc: "تحديات ذهنية ومسابقات كتابة وألعاب أسئلة. من جولات 30 ثانية إلى ألغاز عميقة.",
+    cat_ai: "أدوات الذكاء الاصطناعي", cat_ai_desc: "تطبيقات ذكية تستخدم الذكاء الاصطناعي للتعلم بالصور والمذكرات الصوتية وتدريب المواعدة والمزيد.",
+    cat_encyclopedia: "موسوعات وأدلة", cat_encyclopedia_desc: "اكتشف العالم — الحيوانات والنباتات والحشرات والحياة البحرية والأحجار الكريمة والديناصورات والطيور والفطر والأبراج والأعلام.",
+    cat_health: "الصحة والعافية", cat_health_desc: "تذكيرات الوضعية ومؤقتات التمدد وإعداد النوم وراحة العيون وتتبع الماء وتسجيل المزاج وتحليل البشرة.",
+    cat_productivity: "الإنتاجية والمالية", cat_productivity_desc: "قرارات الادخار أو الإنفاق وإدارة الاشتراكات والضمانات وأدوات PDF والمخططات.",
+    cat_social: "اجتماعي وترفيهي", cat_social_desc: "عجلات عشوائية للأفلام والمواعيد والعشاء ومواضيع الدراسة. ألعاب جماعية واختبارات توافق.",
+    featured_title: "تطبيقات مميزة", featured_desc: "مجموعة مختارة من أشهر تطبيقاتنا",
+    app_30sec: "لعبة أسئلة سريعة. أجب على أكبر عدد من الأسئلة في 30 ثانية.", app_snaplingo: "وجّه الكاميرا وتعلم مفردات بعدة لغات مع الذكاء الاصطناعي.",
+    app_lifetrace: "مسجل حياة بالذكاء الاصطناعي. سجّل وتأمل لحظاتك اليومية.", app_brainburst: "درّب عقلك بتحديات معرفية سريعة.",
+    app_keyclash: "مسابقة كتابة تنافسية. سابق الزمن واللاعبين الآخرين.", app_geosense: "اختبار موقع الصور. خمّن أين التُقطت كل صورة.",
+    app_chaos: "تحديات يومية عشوائية تخرجك من منطقة الراحة.", app_debateme: "تدرب على المناظرة مع الذكاء الاصطناعي.",
+    app_nodo: "لغز ربط العُقد الأنيق. قواعد بسيطة واستراتيجية عميقة.", app_realfeel: "تطبيق طقس يركز على الإحساس الحقيقي وليس الأرقام فقط.",
+    app_dreamlog: "سجّل أحلامك واستكشف خريطة عالمية للأماكن والموضوعات.", app_fileforce: "مدير ملفات PDF قوي. دمج وتقسيم وتعليق وتنظيم.",
+    tag_game: "لعبة", tag_ai_edu: "ذكاء اصطناعي / تعليم", tag_ai_util: "ذكاء اصطناعي / أداة", tag_quiz: "اختبار", tag_lifestyle: "نمط حياة", tag_puzzle: "لغز", tag_weather: "طقس", tag_productivity: "إنتاجية",
+    trace_title: "سلسلة Trace", trace_desc: "اكتشف العالم من خلال مجموعة الموسوعات المصورة",
+    trace_forest: "استكشف الفطر والنظم البيئية الحرجية", trace_dino: "اكتشف ديناصورات من كل العصور", trace_marine: "انغمس في مخلوقات المحيط",
+    trace_bug: "تعرّف على الحشرات حول العالم", trace_botanica: "دليل النباتات والزهور وعلم النبات", trace_feather: "تعريف أنواع الطيور وحقائق",
+    trace_gem: "دليل الأحجار الكريمة والمعادن والبلورات", trace_paw: "موسوعة سلالات الكلاب", trace_astro: "الأبراج وخرائط النجوم",
+    trace_flag: "أعلام العالم ومعلومات البلدان", trace_heritage: "مواقع التراث العالمي والمعالم الثقافية", trace_wild: "الحيوانات البرية من حول العالم",
+    about_title: "عن SK APPS", about_desc: "بناء تطبيقات يريد الناس استخدامها فعلاً",
+    about_approach: "نهجنا", about_approach_desc: "كل تطبيق يتبع نفس المبادئ: تصميم نظيف وأداء سريع وفائدة حقيقية. نستخدم Flutter للتوافق عبر المنصات وندعم 17 لغة.",
+    about_tech: "التقنية", about_tech_desc: "مبني بـ Flutter و Node.js. تعمل تطبيقاتنا أصلياً على iOS و Android مع خادم TypeScript و PostgreSQL و Redis.",
+    about_global: "عالمي أولاً", about_global_desc: "جميع التطبيقات تدعم 17 لغة من اليوم الأول: الإنجليزية واليابانية والصينية (المبسطة والتقليدية) والكورية والإسبانية والبرتغالية والفرنسية والألمانية والإيطالية والروسية والعربية والتايلاندية والإندونيسية والتركية والهولندية والفيتنامية.",
+    contact_title: "تواصل معنا", contact_desc: "أسئلة أو ملاحظات أو أفكار؟ نحب أن نسمع منك."
+  },
+  th: {
+    nav_apps: "แอป", nav_categories: "หมวดหมู่", nav_about: "เกี่ยวกับ", nav_contact: "ติดต่อ",
+    hero_badge: "เผยแพร่แอปมากกว่า 98 แอป",
+    hero_title: 'ประสบการณ์<span class="gradient">มือถือที่สร้างสรรค์</span>',
+    hero_desc: "เราสร้างแอปที่สนุก มีประโยชน์ และออกแบบสวยงาม — ตั้งแต่เกมฝึกสมองไปจนถึงเครื่องมือ AI และยูทิลิตี้ในชีวิตประจำวัน",
+    stat_apps: "แอปที่เผยแพร่", stat_langs: "ภาษาที่รองรับ", stat_platforms: "แพลตฟอร์ม", stat_categories: "หมวดหมู่แอป",
+    cat_title: "สิ่งที่เราสร้าง", cat_desc: "แอปหลากหลายหมวดหมู่ แต่ละแอปสร้างด้วยความใส่ใจในรายละเอียด",
+    cat_games: "เกมและปริศนา", cat_games_desc: "เกมฝึกสมอง แข่งพิมพ์ ตอบคำถาม และท้าทาย ตั้งแต่รอบ 30 วินาทีไปจนถึงปริศนาเชิงลึก",
+    cat_ai: "เครื่องมือ AI", cat_ai_desc: "แอปอัจฉริยะที่ใช้ AI สำหรับเรียนรู้จากรูปถ่าย ไดอารี่เสียง โค้ชเดท ฝึกโต้วาที และอื่นๆ",
+    cat_encyclopedia: "สารานุกรมและไกด์", cat_encyclopedia_desc: "ค้นพบโลก — สัตว์ พืช แมลง สัตว์ทะเล อัญมณี ไดโนเสาร์ นก เห็ด กลุ่มดาว และธง",
+    cat_health: "สุขภาพและความเป็นอยู่", cat_health_desc: "เตือนท่าทาง ตั้งเวลายืดเหยียด เตรียมนอน พักสายตา ติดตามน้ำ บันทึกอารมณ์ และวิเคราะห์ผิว",
+    cat_productivity: "ผลิตภาพและการเงิน", cat_productivity_desc: "ตัดสินใจออม/ใช้จ่าย จัดการสมาชิก การรับประกัน เครื่องมือ PDF แพลนเนอร์ และการแสดงผลชีวิต",
+    cat_social: "โซเชียลและสนุก", cat_social_desc: "สุ่มหนัง เดท อาหารเย็น และหัวข้อเรียน เกมปาร์ตี้ ทดสอบความเข้ากัน และท้าทายเพื่อน",
+    featured_title: "แอปแนะนำ", featured_desc: "คัดสรรแอปยอดนิยมจากหลายหมวดหมู่",
+    app_30sec: "เกมตอบคำถามสุดเร็ว ตอบให้มากที่สุดใน 30 วินาที", app_snaplingo: "ชี้กล้องแล้วเรียนคำศัพท์หลายภาษาด้วย AI",
+    app_lifetrace: "บันทึกชีวิตด้วย AI จับและทบทวนช่วงเวลาประจำวัน", app_brainburst: "ฝึกสมองด้วยความท้าทายทางปัญญาที่รวดเร็ว",
+    app_keyclash: "แข่งพิมพ์ แข่งกับเวลาและผู้เล่นอื่น", app_geosense: "ควิซตำแหน่งรูปถ่าย ทายว่าถ่ายที่ไหน",
+    app_chaos: "ท้าทายรายวันสุ่มที่พาคุณออกจากคอมฟอร์ตโซน", app_debateme: "ฝึกโต้วาทีกับ AI ลับคมข้อโต้แย้ง",
+    app_nodo: "เกมปริศนาเชื่อมโหนด กฎง่ายกลยุทธ์ลึก", app_realfeel: "แอปอากาศที่เน้นความรู้สึกจริง ไม่ใช่แค่ตัวเลข",
+    app_dreamlog: "บันทึกความฝันและสำรวจแผนที่โลกของสถานที่และธีม", app_fileforce: "จัดการไฟล์ PDF ทรงพลัง รวม แยก ใส่หมายเหตุ และจัดระเบียบ",
+    tag_game: "เกม", tag_ai_edu: "AI / การศึกษา", tag_ai_util: "AI / ยูทิลิตี้", tag_quiz: "ควิซ", tag_lifestyle: "ไลฟ์สไตล์", tag_puzzle: "ปริศนา", tag_weather: "อากาศ", tag_productivity: "ผลิตภาพ",
+    trace_title: "ซีรีส์ Trace", trace_desc: "ค้นพบโลกผ่านคอลเลกชันสารานุกรมภาพสวยงาม",
+    trace_forest: "สำรวจเห็ดและระบบนิเวศป่า", trace_dino: "ค้นพบไดโนเสาร์ทุกยุค", trace_marine: "ดำดิ่งสู่สิ่งมีชีวิตในมหาสมุทร",
+    trace_bug: "ระบุและเรียนรู้แมลงทั่วโลก", trace_botanica: "ไกด์พืช ดอกไม้ และพฤกษศาสตร์", trace_feather: "ระบุชนิดนกและข้อมูล",
+    trace_gem: "ไกด์อัญมณี แร่ และคริสตัล", trace_paw: "สารานุกรมสายพันธุ์สุนัข", trace_astro: "กลุ่มดาวและแผนที่ดาว",
+    trace_flag: "ธงโลกและข้อมูลประเทศ", trace_heritage: "มรดกโลกและสถานที่สำคัญทางวัฒนธรรม", trace_wild: "สัตว์ป่าจากทั่วโลก",
+    about_title: "เกี่ยวกับ SK APPS", about_desc: "สร้างแอปที่คนอยากใช้จริงๆ",
+    about_approach: "แนวทางของเรา", about_approach_desc: "ทุกแอปยึดหลักเดียวกัน: ดีไซน์สะอาด ประสิทธิภาพเร็ว และมีประโยชน์จริง ใช้ Flutter รองรับ 17 ภาษาตั้งแต่เริ่มต้น",
+    about_tech: "เทคโนโลยี", about_tech_desc: "สร้างด้วย Flutter และ Node.js แอปทำงานแบบเนทีฟบนทั้ง iOS และ Android เซิร์ฟเวอร์ใช้ TypeScript, PostgreSQL และ Redis",
+    about_global: "ทั่วโลกก่อน", about_global_desc: "ทุกแอปรองรับ 17 ภาษาตั้งแต่วันแรก: อังกฤษ ญี่ปุ่น จีน (ตัวย่อและตัวเต็ม) เกาหลี สเปน โปรตุเกส ฝรั่งเศส เยอรมัน อิตาลี รัสเซีย อาหรับ ไทย อินโดนีเซีย ตุรกี ดัตช์ และเวียดนาม",
+    contact_title: "ติดต่อเรา", contact_desc: "มีคำถาม ข้อเสนอแนะ หรือไอเดีย? เรายินดีรับฟัง"
+  },
+  id: {
+    nav_apps: "Aplikasi", nav_categories: "Kategori", nav_about: "Tentang", nav_contact: "Kontak",
+    hero_badge: "98+ Aplikasi Diterbitkan",
+    hero_title: 'Pengalaman <span class="gradient">Mobile Inovatif</span>',
+    hero_desc: "Kami membuat aplikasi yang menyenangkan, berguna, dan dirancang indah — dari game otak hingga alat AI dan utilitas harian.",
+    stat_apps: "Aplikasi Diterbitkan", stat_langs: "Bahasa Didukung", stat_platforms: "Platform", stat_categories: "Kategori Aplikasi",
+    cat_title: "Yang Kami Bangun", cat_desc: "Aplikasi beragam di berbagai kategori, masing-masing dibuat dengan perhatian detail",
+    cat_games: "Game & Teka-teki", cat_games_desc: "Tantangan otak, pertarungan mengetik, kuis, dan tantangan. Dari ronde 30 detik hingga puzzle mendalam.",
+    cat_ai: "Alat AI", cat_ai_desc: "Aplikasi pintar menggunakan AI untuk belajar dari foto, jurnal suara, pelatihan kencan, latihan debat, dan lainnya.",
+    cat_encyclopedia: "Ensiklopedia & Panduan", cat_encyclopedia_desc: "Jelajahi dunia — hewan, tumbuhan, serangga, kehidupan laut, batu permata, dinosaurus, burung, jamur, rasi bintang, dan bendera.",
+    cat_health: "Kesehatan & Kebugaran", cat_health_desc: "Pengingat postur, timer peregangan, persiapan tidur, istirahat mata, pelacak air, catatan suasana hati, dan analisis kulit.",
+    cat_productivity: "Produktivitas & Keuangan", cat_productivity_desc: "Keputusan menabung atau menghabiskan, manajemen langganan, garansi, alat PDF, perencana harian, dan visualisasi hidup.",
+    cat_social: "Sosial & Seru", cat_social_desc: "Roulette untuk film, kencan, makan malam, dan topik belajar. Game pesta, tes kecocokan, dan tantangan teman.",
+    featured_title: "Aplikasi Unggulan", featured_desc: "Pilihan aplikasi terpopuler kami dari berbagai kategori",
+    app_30sec: "Game trivia cepat. Jawab sebanyak mungkin pertanyaan dalam 30 detik.", app_snaplingo: "Arahkan kamera dan pelajari kosakata dalam beberapa bahasa dengan AI.",
+    app_lifetrace: "Perekam kehidupan AI. Tangkap dan renungkan momen harian Anda.", app_brainburst: "Latih otak Anda dengan tantangan kognitif cepat.",
+    app_keyclash: "Pertarungan mengetik kompetitif. Lomba melawan waktu.", app_geosense: "Kuis lokasi foto. Tebak di mana foto itu diambil.",
+    app_chaos: "Tantangan harian acak yang mendorong Anda keluar dari zona nyaman.", app_debateme: "Latihan debat dengan AI. Pertajam argumen Anda.",
+    app_nodo: "Puzzle koneksi node yang elegan. Aturan sederhana, strategi mendalam.", app_realfeel: "Aplikasi cuaca yang fokus pada perasaan sebenarnya, bukan hanya angka.",
+    app_dreamlog: "Catat mimpi Anda dan jelajahi peta dunia lokasi dan tema mimpi.", app_fileforce: "Manajer file PDF yang kuat. Gabung, pisah, anotasi, dan atur.",
+    tag_game: "Game", tag_ai_edu: "AI / Pendidikan", tag_ai_util: "AI / Utilitas", tag_quiz: "Kuis", tag_lifestyle: "Gaya Hidup", tag_puzzle: "Teka-teki", tag_weather: "Cuaca", tag_productivity: "Produktivitas",
+    trace_title: "Seri Trace", trace_desc: "Temukan dunia melalui koleksi ensiklopedia bergambar kami",
+    trace_forest: "Jelajahi jamur dan ekosistem hutan", trace_dino: "Temukan dinosaurus dari setiap era", trace_marine: "Selami makhluk laut",
+    trace_bug: "Identifikasi dan pelajari serangga di seluruh dunia", trace_botanica: "Panduan tanaman, bunga, dan botani", trace_feather: "Identifikasi spesies burung dan fakta",
+    trace_gem: "Panduan batu permata, mineral, dan kristal", trace_paw: "Ensiklopedia ras anjing", trace_astro: "Rasi bintang dan peta bintang",
+    trace_flag: "Bendera dunia dan fakta negara", trace_heritage: "Situs warisan dunia dan landmark budaya", trace_wild: "Hewan liar dari seluruh dunia",
+    about_title: "Tentang SK APPS", about_desc: "Membuat aplikasi yang benar-benar ingin digunakan orang",
+    about_approach: "Pendekatan Kami", about_approach_desc: "Setiap aplikasi mengikuti prinsip yang sama: desain bersih, performa cepat, dan kegunaan nyata. Kami menggunakan Flutter dan mendukung 17 bahasa sejak awal.",
+    about_tech: "Teknologi", about_tech_desc: "Dibangun dengan Flutter dan Node.js. Aplikasi kami berjalan secara native di iOS dan Android, dengan server TypeScript, PostgreSQL, dan Redis.",
+    about_global: "Global Dulu", about_global_desc: "Semua aplikasi mendukung 17 bahasa sejak hari pertama: Inggris, Jepang, Cina (Sederhana dan Tradisional), Korea, Spanyol, Portugis, Prancis, Jerman, Italia, Rusia, Arab, Thai, Indonesia, Turki, Belanda, dan Vietnam.",
+    contact_title: "Hubungi Kami", contact_desc: "Punya pertanyaan, masukan, atau ide? Kami senang mendengar dari Anda."
+  },
+  tr: {
+    nav_apps: "Uygulamalar", nav_categories: "Kategoriler", nav_about: "Hakkında", nav_contact: "İletişim",
+    hero_badge: "98+ Yayınlanan Uygulama",
+    hero_title: 'Yenilikçi <span class="gradient">Mobil Deneyimler</span>',
+    hero_desc: "Eğlenceli, kullanışlı ve güzel tasarlanmış uygulamalar yapıyoruz — beyin oyunlarından AI araçlarına ve günlük yardımcılara.",
+    stat_apps: "Yayınlanan Uygulama", stat_langs: "Desteklenen Dil", stat_platforms: "Platform", stat_categories: "Uygulama Kategorisi",
+    cat_title: "Ne Yapıyoruz", cat_desc: "Birden çok kategoride çeşitli uygulamalar, her biri detaylara özen gösterilerek geliştirildi",
+    cat_games: "Oyunlar ve Bulmacalar", cat_games_desc: "Beyin egzersizleri, yazma yarışları, bilgi yarışmaları ve meydan okumalar. 30 saniyelik turlardan derin bulmacalara.",
+    cat_ai: "AI Araçları", cat_ai_desc: "Fotoğrafla öğrenme, sesli günlük, flört koçluğu, tartışma pratiği ve daha fazlası için AI kullanan akıllı uygulamalar.",
+    cat_encyclopedia: "Ansiklopediler ve Rehberler", cat_encyclopedia_desc: "Dünyayı keşfedin — hayvanlar, bitkiler, böcekler, deniz yaşamı, değerli taşlar, dinozorlar, kuşlar, mantarlar, takımyıldızlar ve bayraklar.",
+    cat_health: "Sağlık ve Wellness", cat_health_desc: "Duruş hatırlatıcıları, esneme zamanlayıcıları, uyku hazırlığı, göz dinlendirme, su takibi, ruh hali kaydı ve cilt analizi.",
+    cat_productivity: "Verimlilik ve Finans", cat_productivity_desc: "Biriktir veya harca kararları, abonelik yönetimi, garanti takibi, PDF araçları, günlük planlayıcılar ve yaşam görselleştirme.",
+    cat_social: "Sosyal ve Eğlence", cat_social_desc: "Film, buluşma, akşam yemeği ve çalışma konusu ruletleri. Parti oyunları, uyumluluk testleri ve arkadaş meydan okumaları.",
+    featured_title: "Öne Çıkan Uygulamalar", featured_desc: "Kategoriler arası en popüler uygulamalarımızdan bir seçki",
+    app_30sec: "Hızlı bilgi yarışması. 30 saniyede mümkün olduğunca çok soruyu yanıtlayın.", app_snaplingo: "Kameranızı herhangi bir şeye yöneltin ve AI ile birden fazla dilde kelime öğrenin.",
+    app_lifetrace: "AI yaşam kaydedici. Günlük anlarınızı yakalayın ve düşünün.", app_brainburst: "Hızlı bilişsel zorluklarla beyninizi eğitin.",
+    app_keyclash: "Rekabetçi yazma savaşı. Zamana karşı yarışın.", app_geosense: "Fotoğraf konum bilmecesi. Her fotoğrafın nerede çekildiğini tahmin edin.",
+    app_chaos: "Konfor alanınızdan çıkaran rastgele günlük meydan okumalar.", app_debateme: "AI ile tartışma pratiği yapın. Argümanlarınızı keskinleştirin.",
+    app_nodo: "Zarif düğüm bağlama bulmacası. Basit kurallar, derin strateji.", app_realfeel: "Sadece rakamlara değil, gerçek hissiyata odaklanan hava durumu uygulaması.",
+    app_dreamlog: "Rüyalarınızı kaydedin ve dünya haritasında konumları keşfedin.", app_fileforce: "Güçlü PDF dosya yöneticisi. Birleştirin, bölün, açıklama ekleyin ve düzenleyin.",
+    tag_game: "Oyun", tag_ai_edu: "AI / Eğitim", tag_ai_util: "AI / Araç", tag_quiz: "Bilmece", tag_lifestyle: "Yaşam Tarzı", tag_puzzle: "Bulmaca", tag_weather: "Hava", tag_productivity: "Verimlilik",
+    trace_title: "Trace Serisi", trace_desc: "Güzel resimli ansiklopedi koleksiyonumuzla dünyayı keşfedin",
+    trace_forest: "Mantarları ve orman ekosistemlerini keşfedin", trace_dino: "Her çağdan dinozorları keşfedin", trace_marine: "Okyanus canlılarına dalın",
+    trace_bug: "Dünya genelinde böcekleri tanımlayın ve öğrenin", trace_botanica: "Bitki, çiçek ve botanik rehberi", trace_feather: "Kuş türü tanımlama ve bilgiler",
+    trace_gem: "Değerli taş, mineral ve kristal rehberi", trace_paw: "Köpek ırkları ansiklopedisi", trace_astro: "Takımyıldızlar ve yıldız haritaları",
+    trace_flag: "Dünya bayrakları ve ülke bilgileri", trace_heritage: "Dünya mirası alanları ve kültürel simgeler", trace_wild: "Dünyanın dört bir yanından vahşi hayvanlar",
+    about_title: "SK APPS Hakkında", about_desc: "İnsanların gerçekten kullanmak istediği uygulamalar yapıyoruz",
+    about_approach: "Yaklaşımımız", about_approach_desc: "Her uygulama aynı ilkeleri takip eder: temiz tasarım, hızlı performans ve gerçek fayda. Flutter ile çapraz platform tutarlılığı ve 17 dil desteği.",
+    about_tech: "Teknoloji", about_tech_desc: "Flutter ve Node.js ile inşa edildi. Uygulamalarımız iOS ve Android'de doğal olarak çalışır, sunucu tarafı TypeScript, PostgreSQL ve Redis.",
+    about_global: "Önce Küresel", about_global_desc: "Tüm uygulamalar ilk günden 17 dili destekler: İngilizce, Japonca, Çince (Basitleştirilmiş ve Geleneksel), Korece, İspanyolca, Portekizce, Fransızca, Almanca, İtalyanca, Rusça, Arapça, Tayca, Endonezce, Türkçe, Felemenkçe ve Vietnamca.",
+    contact_title: "İletişime Geçin", contact_desc: "Sorularınız, geri bildirimleriniz veya fikirleriniz mi var? Sizden duymak isteriz."
+  },
+  nl: {
+    nav_apps: "Apps", nav_categories: "Categorieën", nav_about: "Over ons", nav_contact: "Contact",
+    hero_badge: "98+ gepubliceerde apps",
+    hero_title: 'Innovatieve <span class="gradient">mobiele ervaringen</span>',
+    hero_desc: "We maken leuke, nuttige en prachtig ontworpen apps — van hersenkrakers tot AI-tools en dagelijkse hulpmiddelen.",
+    stat_apps: "Gepubliceerde apps", stat_langs: "Talen", stat_platforms: "Platformen", stat_categories: "App-categorieën",
+    cat_title: "Wat we bouwen", cat_desc: "Diverse apps in meerdere categorieën, elk met oog voor detail ontwikkeld",
+    cat_games: "Games & Puzzels", cat_games_desc: "Hersenkrakers, typwedstrijden, quizzen en uitdagingen. Van 30-secondenronden tot diepgaande puzzels.",
+    cat_ai: "AI-tools", cat_ai_desc: "Slimme apps met AI voor fotoleren, spraakdagboeken, datingcoaching, debattraining en meer.",
+    cat_encyclopedia: "Encyclopedieën & Gidsen", cat_encyclopedia_desc: "Ontdek de wereld — dieren, planten, insecten, zeeleven, edelstenen, dinosaurussen, vogels, paddenstoelen, sterrenbeelden en vlaggen.",
+    cat_health: "Gezondheid & Welzijn", cat_health_desc: "Houding-reminders, stretch-timers, slaapvoorbereiding, oogrust, wateropname, stemmingslog en huidanalyse.",
+    cat_productivity: "Productiviteit & Financiën", cat_productivity_desc: "Sparen-of-uitgeven-beslissingen, abonnementenbeheer, garantiebeheer, PDF-tools, dagplanners en levensvisualisatie.",
+    cat_social: "Sociaal & Fun", cat_social_desc: "Roulettes voor films, dates, diners en studieonderwerpen. Partyspellen, compatibiliteitstests en vriendenuitdagingen.",
+    featured_title: "Uitgelichte apps", featured_desc: "Een selectie van onze populairste apps",
+    app_30sec: "Snelle trivia-game. Beantwoord zo veel mogelijk vragen in 30 seconden.", app_snaplingo: "Richt je camera en leer woordenschat in meerdere talen met AI.",
+    app_lifetrace: "AI-levensrecorder. Leg je dagelijkse momenten vast en reflecteer.", app_brainburst: "Train je hersenen met snelle cognitieve uitdagingen.",
+    app_keyclash: "Competitieve typwedstrijd. Race tegen de klok.", app_geosense: "Fotolocatie-quiz. Raad waar elke foto is genomen.",
+    app_chaos: "Willekeurige dagelijkse uitdagingen die je uit je comfortzone halen.", app_debateme: "Oefen debatteren met AI. Scherp je argumenten aan.",
+    app_nodo: "Elegante knooppuntpuzzel. Eenvoudige regels, diepe strategie.", app_realfeel: "Weer-app gericht op hoe het echt aanvoelt, niet alleen cijfers.",
+    app_dreamlog: "Leg je dromen vast en verken een wereldkaart van locaties en thema's.", app_fileforce: "Krachtige PDF-manager. Samenvoegen, splitsen, annoteren en organiseren.",
+    tag_game: "Game", tag_ai_edu: "AI / Onderwijs", tag_ai_util: "AI / Hulpmiddel", tag_quiz: "Quiz", tag_lifestyle: "Lifestyle", tag_puzzle: "Puzzel", tag_weather: "Weer", tag_productivity: "Productiviteit",
+    trace_title: "Trace-serie", trace_desc: "Ontdek de wereld via onze geïllustreerde encyclopediecollectie",
+    trace_forest: "Verken paddenstoelen en bosecosystemen", trace_dino: "Ontdek dinosaurussen uit alle tijdperken", trace_marine: "Duik in oceaanwezens",
+    trace_bug: "Identificeer en leer over insecten wereldwijd", trace_botanica: "Gids voor planten, bloemen en plantkunde", trace_feather: "Vogelsoorten herkennen en feiten",
+    trace_gem: "Gids voor edelstenen, mineralen en kristallen", trace_paw: "Hondenrassenencyclopedie", trace_astro: "Sterrenbeelden en sterrenkaarten",
+    trace_flag: "Wereldvlaggen en landinformatie", trace_heritage: "Werelderfgoedlocaties en culturele bezienswaardigheden", trace_wild: "Wilde dieren van over de hele wereld",
+    about_title: "Over SK APPS", about_desc: "Apps bouwen die mensen echt willen gebruiken",
+    about_approach: "Onze aanpak", about_approach_desc: "Elke app volgt dezelfde principes: strak design, snelle prestaties en echte bruikbaarheid. We gebruiken Flutter voor platformconsistentie en ondersteunen 17 talen vanaf dag één.",
+    about_tech: "Technologie", about_tech_desc: "Gebouwd met Flutter en Node.js. Onze apps draaien native op iOS en Android, met server-side TypeScript, PostgreSQL en Redis.",
+    about_global: "Global first", about_global_desc: "Alle apps ondersteunen 17 talen vanaf dag één: Engels, Japans, Chinees (vereenvoudigd en traditioneel), Koreaans, Spaans, Portugees, Frans, Duits, Italiaans, Russisch, Arabisch, Thais, Indonesisch, Turks, Nederlands en Vietnamees.",
+    contact_title: "Neem contact op", contact_desc: "Vragen, feedback of ideeën? We horen graag van je."
+  },
+  vi: {
+    nav_apps: "Ứng dụng", nav_categories: "Danh mục", nav_about: "Giới thiệu", nav_contact: "Liên hệ",
+    hero_badge: "98+ ứng dụng đã phát hành",
+    hero_title: 'Trải nghiệm <span class="gradient">di động sáng tạo</span>',
+    hero_desc: "Chúng tôi tạo ra các ứng dụng thú vị, hữu ích và được thiết kế đẹp mắt — từ game trí tuệ đến công cụ AI và tiện ích hàng ngày.",
+    stat_apps: "Ứng dụng đã phát hành", stat_langs: "Ngôn ngữ hỗ trợ", stat_platforms: "Nền tảng", stat_categories: "Danh mục ứng dụng",
+    cat_title: "Chúng tôi xây dựng gì", cat_desc: "Ứng dụng đa dạng thuộc nhiều danh mục, mỗi ứng dụng được phát triển với sự chú ý đến từng chi tiết",
+    cat_games: "Game & Câu đố", cat_games_desc: "Thử thách trí tuệ, đấu gõ phím, game trắc nghiệm và thử thách. Từ vòng 30 giây đến câu đố chuyên sâu.",
+    cat_ai: "Công cụ AI", cat_ai_desc: "Ứng dụng thông minh sử dụng AI để học từ ảnh, nhật ký giọng nói, huấn luyện hẹn hò, luyện tranh luận và hơn thế nữa.",
+    cat_encyclopedia: "Bách khoa & Hướng dẫn", cat_encyclopedia_desc: "Khám phá thế giới — động vật, thực vật, côn trùng, sinh vật biển, đá quý, khủng long, chim, nấm, chòm sao và cờ.",
+    cat_health: "Sức khỏe & Wellness", cat_health_desc: "Nhắc nhở tư thế, hẹn giờ kéo giãn, chuẩn bị ngủ, nghỉ mắt, theo dõi nước, ghi chú tâm trạng và phân tích da.",
+    cat_productivity: "Năng suất & Tài chính", cat_productivity_desc: "Quyết định tiết kiệm hay chi tiêu, quản lý đăng ký, bảo hành, công cụ PDF, kế hoạch ngày và trực quan hóa cuộc sống.",
+    cat_social: "Xã hội & Giải trí", cat_social_desc: "Roulette cho phim, hẹn hò, bữa tối và chủ đề học. Game tiệc, bài test tương hợp và thử thách bạn bè.",
+    featured_title: "Ứng dụng nổi bật", featured_desc: "Tuyển chọn những ứng dụng phổ biến nhất của chúng tôi",
+    app_30sec: "Game trắc nghiệm nhanh. Trả lời càng nhiều câu hỏi càng tốt trong 30 giây.", app_snaplingo: "Hướng camera vào bất cứ thứ gì và học từ vựng đa ngôn ngữ với AI.",
+    app_lifetrace: "Máy ghi cuộc sống AI. Ghi lại và suy ngẫm về khoảnh khắc hàng ngày.", app_brainburst: "Rèn luyện não bộ với thử thách nhận thức nhanh.",
+    app_keyclash: "Đấu gõ phím cạnh tranh. Đua với thời gian.", app_geosense: "Quiz vị trí ảnh. Đoán xem ảnh được chụp ở đâu.",
+    app_chaos: "Thử thách hàng ngày ngẫu nhiên đưa bạn ra khỏi vùng an toàn.", app_debateme: "Luyện tranh luận với AI. Mài sắc lý lẽ của bạn.",
+    app_nodo: "Puzzle kết nối nút thanh lịch. Luật đơn giản, chiến lược sâu.", app_realfeel: "Ứng dụng thời tiết tập trung vào cảm giác thực, không chỉ con số.",
+    app_dreamlog: "Ghi lại giấc mơ và khám phá bản đồ thế giới về địa điểm và chủ đề.", app_fileforce: "Quản lý file PDF mạnh mẽ. Gộp, tách, chú thích và sắp xếp.",
+    tag_game: "Game", tag_ai_edu: "AI / Giáo dục", tag_ai_util: "AI / Tiện ích", tag_quiz: "Trắc nghiệm", tag_lifestyle: "Lối sống", tag_puzzle: "Câu đố", tag_weather: "Thời tiết", tag_productivity: "Năng suất",
+    trace_title: "Dòng Trace", trace_desc: "Khám phá thế giới qua bộ sưu tập bách khoa minh họa đẹp mắt",
+    trace_forest: "Khám phá nấm và hệ sinh thái rừng", trace_dino: "Khám phá khủng long mọi thời đại", trace_marine: "Lặn vào thế giới sinh vật biển",
+    trace_bug: "Nhận dạng và tìm hiểu côn trùng toàn cầu", trace_botanica: "Hướng dẫn thực vật, hoa và thực vật học", trace_feather: "Nhận dạng loài chim và thông tin",
+    trace_gem: "Hướng dẫn đá quý, khoáng vật và pha lê", trace_paw: "Bách khoa giống chó", trace_astro: "Chòm sao và bản đồ sao",
+    trace_flag: "Cờ thế giới và thông tin quốc gia", trace_heritage: "Di sản thế giới và di tích văn hóa", trace_wild: "Động vật hoang dã từ khắp nơi",
+    about_title: "Về SK APPS", about_desc: "Xây dựng ứng dụng mà mọi người thực sự muốn dùng",
+    about_approach: "Cách tiếp cận", about_approach_desc: "Mỗi ứng dụng tuân theo cùng nguyên tắc: thiết kế gọn gàng, hiệu suất nhanh và hữu ích thực sự. Chúng tôi dùng Flutter và hỗ trợ 17 ngôn ngữ ngay từ đầu.",
+    about_tech: "Công nghệ", about_tech_desc: "Xây dựng bằng Flutter và Node.js. Ứng dụng chạy native trên cả iOS và Android, server dùng TypeScript, PostgreSQL và Redis.",
+    about_global: "Toàn cầu trước", about_global_desc: "Tất cả ứng dụng hỗ trợ 17 ngôn ngữ từ ngày đầu: Anh, Nhật, Trung (giản thể và phồn thể), Hàn, Tây Ban Nha, Bồ Đào Nha, Pháp, Đức, Ý, Nga, Ả Rập, Thái, Indonesia, Thổ Nhĩ Kỳ, Hà Lan và Việt Nam.",
+    contact_title: "Liên hệ", contact_desc: "Có câu hỏi, phản hồi hay ý tưởng? Chúng tôi rất muốn nghe từ bạn."
+  }
+};
+
+// Detect browser language and map to our supported languages
+function detectLang() {
+  const saved = localStorage.getItem('sk_lang');
+  if (saved && I18N[saved]) return saved;
+  const nav = navigator.language || navigator.userLanguage || 'en';
+  const code = nav.toLowerCase();
+  if (code.startsWith('zh-tw') || code.startsWith('zh-hant')) return 'zh_TW';
+  if (code.startsWith('zh')) return 'zh';
+  const short = code.split('-')[0];
+  return I18N[short] ? short : 'en';
+}
+
+function applyLang(lang) {
+  const t = I18N[lang] || I18N.en;
+  document.documentElement.lang = lang.replace('_', '-');
+
+  // Apply RTL for Arabic
+  document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+
+  // Update text content
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (t[key]) el.textContent = t[key];
+  });
+
+  // Update innerHTML (for hero title with gradient span)
+  document.querySelectorAll('[data-i18n-html]').forEach(el => {
+    const key = el.getAttribute('data-i18n-html');
+    if (t[key]) el.innerHTML = t[key];
+  });
+
+  // Update lang button label
+  document.getElementById('langLabel').textContent = LANGS[lang].flag;
+
+  // Update active state in dropdown
+  document.querySelectorAll('.lang-option').forEach(opt => {
+    opt.classList.toggle('active', opt.dataset.lang === lang);
+  });
+
+  localStorage.setItem('sk_lang', lang);
+}
+
+// Build dropdown
+const dropdown = document.getElementById('langDropdown');
+Object.entries(LANGS).forEach(([code, info]) => {
+  const opt = document.createElement('div');
+  opt.className = 'lang-option';
+  opt.dataset.lang = code;
+  opt.textContent = info.label;
+  opt.addEventListener('click', () => {
+    applyLang(code);
+    document.getElementById('langSelector').classList.remove('open');
+  });
+  dropdown.appendChild(opt);
+});
+
+// Toggle dropdown
+document.getElementById('langBtn').addEventListener('click', (e) => {
+  e.stopPropagation();
+  document.getElementById('langSelector').classList.toggle('open');
+});
+document.addEventListener('click', () => {
+  document.getElementById('langSelector').classList.remove('open');
+});
+
+// Init
+applyLang(detectLang());
+</script>
 
 </body>
 </html>
