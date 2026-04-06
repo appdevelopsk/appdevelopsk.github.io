@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Excel Formula – Support | SK APPS</title>
+  <meta name="description" content="Excel Formula - Build, learn, and master spreadsheet formulas with a formula builder, formula library, and OCR formula detection."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{--c1:#217346;--c2:#1a5c38;--bg:#0a0a1a;--bg2:#111128;--card:#1a1a35;--t1:#e8eaf0;--t2:#9498b0;--accent:#6c7bff}
+    body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var(--t1);line-height:1.6}
+    nav{position:sticky;top:0;z-index:100;background:rgba(10,10,26,.9);backdrop-filter:blur(20px);border-bottom:1px solid rgba(33,115,70,.1);padding:0 24px}
+    .nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px}
+    .nav-logo{font-size:1.3rem;font-weight:800;background:linear-gradient(135deg,#217346,#34a853);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none}
+    .nav-right{display:flex;align-items:center;gap:24px}
+    .nav-links{display:flex;gap:24px;list-style:none}
+    .nav-links a{color:var(--t2);text-decoration:none;font-size:.9rem;font-weight:500;transition:color .2s}
+    .nav-links a:hover{color:var(--t1)}
+    .lang-selector{position:relative}
+    .lang-btn{background:var(--card);border:1px solid rgba(255,255,255,.1);color:var(--t1);padding:6px 12px;border-radius:8px;font-size:.8rem;font-weight:500;cursor:pointer;display:flex;align-items:center;gap:6px;transition:all .2s}
+    .lang-btn:hover{border-color:rgba(33,115,70,.3)}
+    .lang-btn svg{width:14px;height:14px;fill:var(--t2);transition:transform .2s}
+    .lang-selector.open .lang-btn svg{transform:rotate(180deg)}
+    .lang-dropdown{display:none;position:absolute;top:100%;right:0;margin-top:8px;background:var(--card);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:8px;min-width:170px;box-shadow:0 8px 32px rgba(0,0,0,.4);z-index:200;max-height:400px;overflow-y:auto}
+    .lang-selector.open .lang-dropdown{display:block}
+    .lang-option{padding:8px 12px;border-radius:8px;cursor:pointer;font-size:.85rem;color:var(--t2);transition:all .15s}
+    .lang-option:hover{background:rgba(33,115,70,.1);color:var(--t1)}
+    .lang-option.active{color:var(--c1);font-weight:600}
+    .hero{background:linear-gradient(135deg,var(--c1),var(--c2));text-align:center;padding:56px 24px 48px;position:relative;overflow:hidden}
+    .hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:60px;background:linear-gradient(transparent,var(--bg))}
+    .hero-emoji{font-size:3.5rem;margin-bottom:16px;filter:drop-shadow(0 4px 12px rgba(0,0,0,.3))}
+    .hero h1{font-size:clamp(1.5rem,4vw,2rem);font-weight:800;margin-bottom:8px}
+    .hero-cat{display:inline-block;padding:4px 14px;border-radius:20px;background:rgba(255,255,255,.2);font-size:.8rem;font-weight:600;margin-bottom:12px}
+    .hero p{font-size:1rem;opacity:.9;max-width:500px;margin:0 auto}
+    .container{max-width:700px;margin:0 auto;padding:32px 20px 60px}
+    .card{background:var(--card);border:1px solid rgba(255,255,255,.06);border-radius:16px;padding:28px;margin-bottom:20px;transition:border-color .3s}
+    .card:hover{border-color:rgba(33,115,70,.15)}
+    .card h2{font-size:1.1rem;font-weight:700;margin-bottom:16px;color:var(--c1)}
+    .card p{color:var(--t2);font-size:.93rem;line-height:1.8}
+    .card ul{padding-left:0;list-style:none}
+    .card li{color:var(--t2);font-size:.93rem;line-height:1.8;margin-bottom:10px;padding-left:20px;position:relative}
+    .card li::before{content:"\2192";color:var(--c1);position:absolute;left:0;font-weight:600}
+    .card li strong{color:var(--t1)}
+    .features-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .feature{background:rgba(33,115,70,.06);border-radius:10px;padding:14px 16px;font-size:.88rem;color:#b8bcd4;display:flex;align-items:center;gap:8px}
+    .feature-dot{width:8px;height:8px;border-radius:50%;background:linear-gradient(135deg,var(--c1),var(--c2));flex-shrink:0}
+    @media(max-width:500px){.features-grid{grid-template-columns:1fr}.nav-links{display:none}}
+    .download-btns{display:flex;gap:12px;flex-wrap:wrap;margin-top:16px}
+    .dl-btn{display:inline-flex;align-items:center;gap:8px;padding:12px 20px;border-radius:10px;font-weight:600;font-size:.88rem;text-decoration:none;transition:all .2s}
+    .dl-btn-play{background:linear-gradient(135deg,var(--c1),var(--c2));color:#fff}
+    .dl-btn-play:hover{transform:translateY(-2px);box-shadow:0 4px 16px rgba(0,0,0,.3)}
+    .dl-btn-apple{background:var(--card);color:var(--t1);border:1px solid rgba(255,255,255,.1)}
+    .dl-btn-apple:hover{background:#222245;transform:translateY(-2px)}
+    .contact-btn{display:inline-flex;align-items:center;gap:8px;margin-top:16px;background:linear-gradient(135deg,var(--c1),var(--c2));color:#fff;text-decoration:none;padding:12px 24px;border-radius:10px;font-weight:600;font-size:.93rem;transition:all .2s}
+    .contact-btn:hover{transform:translateY(-2px);box-shadow:0 4px 16px rgba(0,0,0,.3)}
+    footer{border-top:1px solid rgba(255,255,255,.05);text-align:center;padding:32px 20px}
+    footer a{color:#217346;text-decoration:none;font-size:.88rem;font-weight:500}
+    footer a:hover{color:#34a853}
+    .footer-links{display:flex;gap:20px;justify-content:center;margin-bottom:16px;flex-wrap:wrap}
+    .footer-copy{color:var(--t2);font-size:.75rem;opacity:.5}
+  </style>
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">SK APPS</a>
+    <div class="nav-right">
+      <ul class="nav-links">
+        <li><a href="/" data-i18n="home">Home</a></li>
+        <li><a href="mailto:app.develop.sk@gmail.com" data-i18n="contact">Contact</a></li>
+      </ul>
+      <div class="lang-selector" id="langSelector">
+        <button class="lang-btn" id="langBtn">
+          <span id="langLabel">EN</span>
+          <svg viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+        </button>
+        <div class="lang-dropdown" id="langDropdown"></div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="hero-emoji">📊</div>
+  <div class="hero-cat">Productivity</div>
+  <h1>Excel Formula</h1>
+  <p id="heroDesc">Build, learn, and master spreadsheet formulas. Formula builder, library, and OCR formula detection.</p>
+</div>
+
+<div class="container">
+  <div class="card">
+    <h2 data-i18n="features">Key Features</h2>
+    <div class="features-grid">
+      <div class="feature"><div class="feature-dot"></div><span data-feat="0">Formula Builder</span></div>
+      <div class="feature"><div class="feature-dot"></div><span data-feat="1">Formula Library</span></div>
+      <div class="feature"><div class="feature-dot"></div><span data-feat="2">OCR Formula Detection</span></div>
+      <div class="feature"><div class="feature-dot"></div><span data-feat="3">Formula History</span></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2 data-i18n="download">Download</h2>
+    <p data-i18n="download_desc">Available on both iOS and Android. Download for free and start using today.</p>
+    <div class="download-btns">
+      <a href="https://play.google.com/store/apps/details?id=jp.appdevelopsk.excelformula" class="dl-btn dl-btn-play" target="_blank" rel="noopener">Google Play</a>
+      <a href="https://apps.apple.com/developer/kenichiro-sakamoto/id1880329270" class="dl-btn dl-btn-apple" target="_blank" rel="noopener">App Store</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2 data-i18n="faq">Frequently Asked Questions</h2>
+    <ul>
+      <li><strong data-i18n="faq1q">How do I restore my purchase?</strong><br/><span data-i18n="faq1a">Open the app, go to Settings, and tap "Restore Purchases".</span></li>
+      <li><strong data-i18n="faq2q">The app is crashing. What should I do?</strong><br/><span data-i18n="faq2a">Try force-closing and restarting the app. Make sure you have the latest version installed. If the issue persists, reinstall the app.</span></li>
+      <li><strong data-i18n="faq3q">How do I cancel a subscription?</strong><br/><span data-i18n="faq3a">Go to your device Settings → Apple ID → Subscriptions (iOS) or Google Play → Subscriptions (Android), then select the app and cancel.</span></li>
+      <li><strong data-i18n="faq4q">How does the OCR formula detection work?</strong><br/><span data-i18n="faq4a">Point your camera at a spreadsheet formula in a book, screen, or printed material. The app will detect and parse the formula automatically.</span></li>
+      <li><strong data-i18n="faq5q">What languages are supported?</strong><br/><span data-i18n="faq5a">This app supports 17 languages: English, Japanese, Chinese (Simplified &amp; Traditional), Korean, Spanish, Portuguese, French, German, Italian, Russian, Arabic, Thai, Indonesian, Turkish, Dutch, and Vietnamese.</span></li>
+      <li><strong data-i18n="faq6q">I have feedback or a feature request.</strong><br/><span data-i18n="faq6a">We'd love to hear from you! Send us an email at the address below.</span></li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2 data-i18n="contact">Contact Us</h2>
+    <p data-i18n="contact_desc">Have a question, found a bug, or want to give feedback? We typically respond within 1–2 business days.</p>
+    <a href="mailto:app.develop.sk@gmail.com" class="contact-btn">app.develop.sk@gmail.com</a>
+  </div>
+
+  <div class="card">
+    <h2 data-i18n="privacy">Privacy &amp; Data</h2>
+    <p><span data-i18n="privacy_desc">We take your privacy seriously. We do not sell personal information to third parties.</span> <a href="https://appdevelopsk.github.io/privacy-policies/excel-formula/" style="color:var(--c1);font-weight:500" data-i18n="privacy_link">Read our Privacy Policy</a></p>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-links">
+    <a href="/" data-i18n="back">Back to SK APPS</a>
+    <a href="https://play.google.com/store/apps/dev?id=7594721997967679516" target="_blank" rel="noopener">Google Play</a>
+    <a href="https://apps.apple.com/developer/kenichiro-sakamoto/id1880329270" target="_blank" rel="noopener">App Store</a>
+  </div>
+  <p class="footer-copy">&copy; 2026 SK APPS. <span data-i18n="rights">All rights reserved.</span></p>
+</footer>
+
+<script>
+const LANGS={en:{label:"English",flag:"EN"},ja:{label:"日本語",flag:"JA"},zh:{label:"简体中文",flag:"ZH"},zh_TW:{label:"繁體中文",flag:"TW"},ko:{label:"한국어",flag:"KO"},es:{label:"Español",flag:"ES"},pt:{label:"Português",flag:"PT"},fr:{label:"Français",flag:"FR"},de:{label:"Deutsch",flag:"DE"},it:{label:"Italiano",flag:"IT"},ru:{label:"Русский",flag:"RU"},ar:{label:"العربية",flag:"AR"},th:{label:"ไทย",flag:"TH"},id:{label:"Indonesia",flag:"ID"},tr:{label:"Türkçe",flag:"TR"},nl:{label:"Nederlands",flag:"NL"},vi:{label:"Tiếng Việt",flag:"VI"}};
+const FEATS={en:["Formula Builder","Formula Library","OCR Formula Detection","Formula History"],ja:["数式ビルダー","数式ライブラリ","OCR数式検出","数式履歴"],zh:["公式构建器","公式库","OCR公式检测","公式历史"],zh_TW:["公式建構器","公式庫","OCR公式偵測","公式歷史"],ko:["수식 빌더","수식 라이브러리","OCR 수식 감지","수식 기록"],es:["Constructor de fórmulas","Biblioteca de fórmulas","Detección OCR","Historial de fórmulas"],pt:["Construtor de fórmulas","Biblioteca de fórmulas","Detecção OCR","Histórico de fórmulas"],fr:["Constructeur de formules","Bibliothèque de formules","Détection OCR","Historique des formules"],de:["Formel-Builder","Formel-Bibliothek","OCR-Formelerkennung","Formelverlauf"],it:["Costruttore di formule","Libreria formule","Rilevamento OCR","Cronologia formule"],ru:["Конструктор формул","Библиотека формул","Распознавание формул (OCR)","История формул"],ar:["منشئ المعادلات","مكتبة المعادلات","اكتشاف المعادلات بـ OCR","سجل المعادلات"],th:["เครื่องมือสร้างสูตร","คลังสูตร","ตรวจจับสูตรด้วย OCR","ประวัติสูตร"],id:["Pembuat Rumus","Perpustakaan Rumus","Deteksi Rumus OCR","Riwayat Rumus"],tr:["Formül Oluşturucu","Formül Kütüphanesi","OCR Formül Tespiti","Formül Geçmişi"],nl:["Formule-bouwer","Formelbibliotheek","OCR-formuledetectie","Formulegeschiedenis"],vi:["Trình tạo công thức","Thư viện công thức","Phát hiện công thức OCR","Lịch sử công thức"]};
+const HERO={en:"Build, learn, and master spreadsheet formulas. Formula builder, library, and OCR formula detection.",ja:"スプレッドシートの数式を構築・学習・マスター。数式ビルダー、ライブラリ、OCR数式検出機能。",zh:"构建、学习和掌握电子表格公式。公式构建器、公式库和OCR公式检测。",zh_TW:"構建、學習和掌握試算表公式。公式建構器、公式庫和OCR公式偵測。",ko:"스프레드시트 수식을 구축하고 학습하세요. 수식 빌더, 라이브러리, OCR 수식 감지.",es:"Crea, aprende y domina las fórmulas de hojas de cálculo. Constructor, biblioteca y detección OCR.",pt:"Construa, aprenda e domine fórmulas de planilhas. Construtor, biblioteca e detecção OCR.",fr:"Créez, apprenez et maîtrisez les formules de tableur. Constructeur, bibliothèque et détection OCR.",de:"Erstellen, lernen und meistern Sie Tabellenformeln. Builder, Bibliothek und OCR-Erkennung.",it:"Crea, impara e padroneggia le formule del foglio di calcolo. Builder, libreria e rilevamento OCR.",ru:"Создавайте, изучайте и осваивайте формулы таблиц. Конструктор, библиотека и распознавание OCR.",ar:"أنشئ وتعلّم وأتقن معادلات جداول البيانات. منشئ المعادلات والمكتبة واكتشاف OCR.",th:"สร้าง เรียนรู้ และเชี่ยวชาญสูตรสเปรดชีต เครื่องมือสร้างสูตร คลังสูตร และการตรวจจับ OCR",id:"Buat, pelajari, dan kuasai rumus spreadsheet. Pembuat rumus, perpustakaan, dan deteksi OCR.",tr:"Elektronik tablo formüllerini oluşturun, öğrenin ve ustalaşın. Formül oluşturucu, kütüphane ve OCR tespiti.",nl:"Bouw, leer en beheers spreadsheetformules. Formule-bouwer, bibliotheek en OCR-detectie.",vi:"Xây dựng, học và thành thạo công thức bảng tính. Trình tạo công thức, thư viện và phát hiện OCR."};
+const T={
+en:{home:"Home",features:"Key Features",download:"Download",download_desc:"Available on both iOS and Android. Download for free and start using today.",faq:"Frequently Asked Questions",faq1q:"How do I restore my purchase?",faq1a:'Open the app, go to Settings, and tap "Restore Purchases".',faq2q:"The app is crashing. What should I do?",faq2a:"Try force-closing and restarting the app. Make sure you have the latest version installed. If the issue persists, reinstall the app.",faq3q:"How do I cancel a subscription?",faq3a:"Go to your device Settings → Apple ID → Subscriptions (iOS) or Google Play → Subscriptions (Android), then select the app and cancel.",faq4q:"How does the OCR formula detection work?",faq4a:"Point your camera at a spreadsheet formula in a book, screen, or printed material. The app will detect and parse the formula automatically.",faq5q:"What languages are supported?",faq5a:"This app supports 17 languages: English, Japanese, Chinese (Simplified & Traditional), Korean, Spanish, Portuguese, French, German, Italian, Russian, Arabic, Thai, Indonesian, Turkish, Dutch, and Vietnamese.",faq6q:"I have feedback or a feature request.",faq6a:"We'd love to hear from you! Send us an email at the address below.",contact:"Contact Us",contact_desc:"Have a question, found a bug, or want to give feedback? We typically respond within 1–2 business days.",privacy:"Privacy & Data",privacy_desc:"We take your privacy seriously. We do not sell personal information to third parties.",privacy_link:"Read our Privacy Policy",back:"Back to SK APPS",rights:"All rights reserved."},
+ja:{home:"ホーム",features:"主な機能",download:"ダウンロード",download_desc:"iOSとAndroidの両方で利用可能。無料でダウンロードしてすぐに使い始めましょう。",faq:"よくある質問",faq1q:"購入を復元するには？",faq1a:"アプリを開き、設定から「購入を復元」をタップしてください。",faq2q:"アプリがクラッシュします。",faq2a:"アプリを強制終了して再起動してください。最新バージョンか確認し、問題が続く場合は再インストールしてください。",faq3q:"サブスクリプションをキャンセルするには？",faq3a:"設定 → Apple ID → サブスクリプション（iOS）またはGoogle Play → 定期購入（Android）から該当アプリを選択してキャンセル。",faq4q:"OCR数式検出の使い方は？",faq4a:"本、画面、印刷物などのスプレッドシートの数式にカメラを向けると、自動で数式を検出・解析します。",faq5q:"対応言語は？",faq5a:"17言語対応：英語、日本語、中国語（簡体字・繁体字）、韓国語、スペイン語、ポルトガル語、フランス語、ドイツ語、イタリア語、ロシア語、アラビア語、タイ語、インドネシア語、トルコ語、オランダ語、ベトナム語。",faq6q:"フィードバックや機能リクエストがあります。",faq6a:"ぜひお聞かせください！下記のメールアドレスまでご連絡ください。",contact:"お問い合わせ",contact_desc:"ご質問、バグ報告、フィードバックがありましたらお気軽にどうぞ。通常1〜2営業日以内に返信いたします。",privacy:"プライバシーとデータ",privacy_desc:"お客様のプライバシーを大切にしています。個人情報を第三者に販売することはありません。",privacy_link:"プライバシーポリシーを読む",back:"SK APPSに戻る",rights:"All rights reserved."}
+};
+let lang='en';
+function detectLang(){const l=navigator.language||'en';const code=l.replace('-','_');if(T[code])return code;const short=l.split('-')[0];if(T[short])return short;return'en';}
+function applyLang(l){if(!T[l])l='en';lang=l;document.getElementById('heroDesc').textContent=HERO[l]||HERO.en;document.querySelectorAll('[data-i18n]').forEach(el=>{const k=el.getAttribute('data-i18n');if(T[l]&&T[l][k])el.textContent=T[l][k];else if(T.en[k])el.textContent=T.en[k];});const feats=FEATS[l]||FEATS.en;document.querySelectorAll('[data-feat]').forEach(el=>{const i=parseInt(el.getAttribute('data-feat'));if(feats[i])el.textContent=feats[i];});document.getElementById('langLabel').textContent=LANGS[l]?LANGS[l].flag:'EN';document.querySelectorAll('.lang-option').forEach(o=>{o.classList.toggle('active',o.dataset.lang===l);});}
+function buildDropdown(){const dd=document.getElementById('langDropdown');dd.innerHTML='';Object.keys(LANGS).forEach(k=>{const d=document.createElement('div');d.className='lang-option';d.dataset.lang=k;d.textContent=LANGS[k].label;d.onclick=()=>{applyLang(k);localStorage.setItem('lang',k);document.getElementById('langSelector').classList.remove('open');};dd.appendChild(d);});}
+document.getElementById('langBtn').addEventListener('click',()=>{document.getElementById('langSelector').classList.toggle('open');});
+document.addEventListener('click',e=>{if(!document.getElementById('langSelector').contains(e.target))document.getElementById('langSelector').classList.remove('open');});
+buildDropdown();
+const saved=localStorage.getItem('lang');
+applyLang(saved||detectLang());
+</script>
+</body>
+</html>
