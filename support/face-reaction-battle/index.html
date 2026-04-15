@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Face Reaction Battle – Support | SK APPS</title>
+  <meta name="description" content="Face Reaction Battle - Real-time face expression game using your camera. Support page."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{--c1:#4C6EF5;--c2:#FF6B6B;--bg:#0a0a1a;--bg2:#111128;--card:#1a1a35;--t1:#e8eaf0;--t2:#9498b0;--accent:#4C6EF5}
+    body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var(--t1);line-height:1.6}
+    nav{position:sticky;top:0;z-index:100;background:rgba(10,10,26,.9);backdrop-filter:blur(20px);border-bottom:1px solid rgba(76,110,245,.1);padding:0 24px}
+    .nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px}
+    .nav-logo{font-size:1.3rem;font-weight:800;background:linear-gradient(135deg,#4C6EF5,#FF6B6B);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none}
+    .nav-right{display:flex;align-items:center;gap:24px}
+    .nav-links{display:flex;gap:24px;list-style:none}
+    .nav-links a{color:var(--t2);text-decoration:none;font-size:.9rem;font-weight:500;transition:color .2s}
+    .nav-links a:hover{color:var(--t1)}
+    .hero{background:linear-gradient(135deg,var(--c1),var(--c2));text-align:center;padding:56px 24px 48px;position:relative;overflow:hidden}
+    .hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:60px;background:linear-gradient(transparent,var(--bg))}
+    .hero-emoji{font-size:3.5rem;margin-bottom:16px;filter:drop-shadow(0 4px 12px rgba(0,0,0,.3))}
+    .hero h1{font-size:clamp(1.5rem,4vw,2rem);font-weight:800;margin-bottom:8px}
+    .hero-cat{display:inline-block;padding:4px 14px;border-radius:20px;background:rgba(255,255,255,.2);font-size:.8rem;font-weight:600;margin-bottom:12px}
+    .hero p{font-size:1rem;opacity:.9;max-width:500px;margin:0 auto}
+    .container{max-width:700px;margin:0 auto;padding:32px 20px 60px}
+    .card{background:var(--card);border:1px solid rgba(255,255,255,.06);border-radius:16px;padding:28px;margin-bottom:20px}
+    .card h2{font-size:1.1rem;font-weight:700;margin-bottom:16px;color:var(--c1)}
+    .card p{color:var(--t2);font-size:.93rem;line-height:1.8}
+    .card ul{padding-left:0;list-style:none}
+    .card li{color:var(--t2);font-size:.93rem;line-height:1.8;margin-bottom:10px;padding-left:20px;position:relative}
+    .card li::before{content:"\2192";color:var(--c1);position:absolute;left:0;font-weight:600}
+    .card li strong{color:var(--t1)}
+    .features-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .feature{background:rgba(76,110,245,.06);border-radius:10px;padding:14px 16px;font-size:.88rem;color:#b8bcd4;display:flex;align-items:center;gap:8px}
+    .feature-dot{width:8px;height:8px;border-radius:50%;background:linear-gradient(135deg,var(--c1),var(--c2));flex-shrink:0}
+    @media(max-width:500px){.features-grid{grid-template-columns:1fr}.nav-links{display:none}}
+    .download-btns{display:flex;gap:12px;flex-wrap:wrap;margin-top:16px}
+    .dl-btn{display:inline-flex;align-items:center;gap:8px;padding:12px 20px;border-radius:10px;font-weight:600;font-size:.88rem;text-decoration:none;transition:all .2s}
+    .dl-btn-apple{background:linear-gradient(135deg,var(--c1),var(--c2));color:#fff}
+    .dl-btn-apple:hover{transform:translateY(-2px);box-shadow:0 4px 16px rgba(0,0,0,.3)}
+    .contact-btn{display:inline-flex;align-items:center;gap:8px;margin-top:16px;background:linear-gradient(135deg,var(--c1),var(--c2));color:#fff;text-decoration:none;padding:12px 24px;border-radius:10px;font-weight:600;font-size:.93rem;transition:all .2s}
+    .contact-btn:hover{transform:translateY(-2px);box-shadow:0 4px 16px rgba(0,0,0,.3)}
+    footer{border-top:1px solid rgba(255,255,255,.05);text-align:center;padding:32px 20px}
+    footer a{color:#4C6EF5;text-decoration:none;font-size:.88rem;font-weight:500}
+    footer a:hover{color:#a29bfe}
+    .footer-links{display:flex;gap:20px;justify-content:center;margin-bottom:16px;flex-wrap:wrap}
+    .footer-copy{color:var(--t2);font-size:.75rem;opacity:.5}
+  </style>
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">SK APPS</a>
+    <div class="nav-right">
+      <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="mailto:app.develop.sk@gmail.com">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="hero-emoji">😄🆚😠</div>
+  <div class="hero-cat">Game</div>
+  <h1>Face Reaction Battle</h1>
+  <p>Real-time face expression game using your camera. Challenge friends or beat your high score!</p>
+</div>
+
+<div class="container">
+  <div class="card">
+    <h2>Key Features</h2>
+    <div class="features-grid">
+      <div class="feature"><div class="feature-dot"></div><span>Real-time face detection</span></div>
+      <div class="feature"><div class="feature-dot"></div><span>Solo Score Attack mode</span></div>
+      <div class="feature"><div class="feature-dot"></div><span>1v1 Battle mode</span></div>
+      <div class="feature"><div class="feature-dot"></div><span>Global leaderboard</span></div>
+      <div class="feature"><div class="feature-dot"></div><span>Calibration system</span></div>
+      <div class="feature"><div class="feature-dot"></div><span>4 emotions: 😄😲😠😐</span></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Download</h2>
+    <p>Available on iOS. Download for free and start the face-off!</p>
+    <div class="download-btns">
+      <a href="https://apps.apple.com/app/id6762256678" class="dl-btn dl-btn-apple" target="_blank" rel="noopener">App Store</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Frequently Asked Questions</h2>
+    <ul>
+      <li><strong>The camera doesn't detect my face.</strong> Make sure you are in good lighting and your face is clearly visible. Try the Calibration feature in Settings to personalize detection for your face.</li>
+      <li><strong>How do I play Battle mode?</strong> Share a room code with a friend. Both players need to be on the same Wi-Fi or close proximity. The app uses your camera to detect the target emotion in real time.</li>
+      <li><strong>My score was not submitted to the leaderboard.</strong> Ensure you have an internet connection when submitting. Enter a display name and tap Submit to appear on the global ranking.</li>
+      <li><strong>The FAKE! round caught me off guard.</strong> In Solo mode, occasional FAKE! rounds announce a different emotion than the actual target. Stay sharp — it's part of the challenge!</li>
+      <li><strong>How do I restore my Premium purchase?</strong> Go to Settings → Premium and tap "Restore Purchase". Make sure you are signed in with the same Apple ID used for the original purchase.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>Contact Support</h2>
+    <p>Having an issue not listed above? We're happy to help!</p>
+    <a href="mailto:app.develop.sk@gmail.com" class="contact-btn">✉️ Email Support</a>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-links">
+    <a href="/privacy-policies/face-reaction-battle/">Privacy Policy</a>
+    <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/">Terms of Use (EULA)</a>
+    <a href="mailto:app.develop.sk@gmail.com">Contact</a>
+  </div>
+  <p class="footer-copy">© 2025 SK APPS. All rights reserved.</p>
+</footer>
+</body>
+</html>
