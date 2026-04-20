@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-  <title>Reset Loop – Support | SK APPS</title>
-  <meta name="description" content="Reset Loop - Set daily screen time limits, track usage, and commit to donating when you exceed them."/>
+  <title>Candid – Support | SK APPS</title>
+  <meta name="description" content="Candid - Post and read anonymous messages by topic — get real-time replies without revealing your identity."/>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-    :root{--c1:#00b894;--c2:#55efc4;--bg:#0a0a1a;--bg2:#111128;--card:#1a1a35;--t1:#e8eaf0;--t2:#9498b0;--accent:#6c7bff}
+    :root{--c1:#6c5ce7;--c2:#a29bfe;--bg:#0a0a1a;--bg2:#111128;--card:#1a1a35;--t1:#e8eaf0;--t2:#9498b0;--accent:#6c7bff}
     body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var(--t1);line-height:1.6}
     nav{position:sticky;top:0;z-index:100;background:rgba(10,10,26,.9);backdrop-filter:blur(20px);border-bottom:1px solid rgba(108,123,255,.1);padding:0 24px}
     .nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px}
@@ -84,16 +84,16 @@
 </nav>
 
 <div class="hero">
-  <div class="hero-emoji">🔄</div>
-  <div class="hero-cat">Lifestyle</div>
-  <h1>Reset Loop</h1>
-  <p id="heroDesc">Set daily screen time limits, track usage, and commit to donating when you exceed them.</p>
+  <div class="hero-emoji">💬</div>
+  <div class="hero-cat">Social</div>
+  <h1>Candid</h1>
+  <p id="heroDesc">Post and read anonymous messages by topic — get real-time replies without revealing your identity.</p>
 </div>
 
 <div class="container">
   <div class="card">
     <h2 data-i18n="features">Key Features</h2>
-    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span data-feat="0">Daily screen time tracking</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="1">Commitment &amp; limit settings</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="2">Planned donation per trigger</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="3">Weekly usage reports</span></div></div>
+    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span data-feat="0">Anonymous posting</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="1">Category filters</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="2">Real-time replies with Socket.IO</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="3">Like &amp; report content</span></div></div>
   </div>
 
   <div class="card">
@@ -123,7 +123,7 @@
 
   <div class="card">
     <h2 data-i18n="privacy">Privacy &amp; Data</h2>
-    <p><span data-i18n="privacy_desc">We take your privacy seriously. We do not sell personal information to third parties.</span> <a href="https://appdevelopsk.github.io/privacy-policy/reset-loop/" style="color:var(--c1);font-weight:500" data-i18n="privacy_link">Read our Privacy Policy</a></p>
+    <p><span data-i18n="privacy_desc">We take your privacy seriously. We do not sell personal information to third parties.</span> <a href="https://appdevelopsk.github.io/privacy-policy/candid/" style="color:var(--c1);font-weight:500" data-i18n="privacy_link">Read our Privacy Policy</a></p>
   </div>
 </div>
 
@@ -167,45 +167,45 @@ document.addEventListener('click',()=>document.getElementById('langSelector').cl
 applyLang(detectLang());
 
 const APP_T={
-en:"Set daily screen time limits, track usage, and commit to donating when you exceed them.",
-ja:"1日の画面使用時間の上限を設定し、使用状況を記録。超えてしまったら寄付をコミットできます。",
-zh:"设置每日屏幕时间限制，追踪使用情况，并在超出时承诺捐款。",
-zh_TW:"設定每日螢幕使用時間上限，追蹤使用狀況，並在超出時承諾捐款。",
-ko:"일일 화면 사용 시간 한도를 설정하고, 사용량을 추적하며, 초과 시 기부를 약속하세요.",
-es:"Establece límites diarios de tiempo de pantalla, controla el uso y comprométete a donar cuando los superes.",
-pt:"Defina limites diários de tempo de tela, acompanhe o uso e comprometa-se a doar quando excedê-los.",
-fr:"Fixez des limites quotidiennes de temps d'écran, suivez votre utilisation et engagez-vous à faire un don en cas de dépassement.",
-de:"Lege tägliche Bildschirmzeitlimits fest, verfolge die Nutzung und verpflichte dich zur Spende, wenn du sie überschreitest.",
-it:"Imposta limiti giornalieri di utilizzo dello schermo, monitora l'uso e impegnati a donare quando li superi.",
-ru:"Установите дневные лимиты экранного времени, отслеживайте использование и берите обязательство пожертвовать при превышении.",
-ar:"حدد حدوداً يومية لوقت الشاشة، وتتبع الاستخدام، والتزم بالتبرع عند تجاوزها.",
-th:"ตั้งขีดจำกัดเวลาหน้าจอรายวัน ติดตามการใช้งาน และมุ่งมั่นที่จะบริจาคเมื่อเกินขีดจำกัด",
-id:"Tetapkan batas waktu layar harian, lacak penggunaan, dan berkomitmen untuk menyumbang ketika Anda melebihinya.",
-tr:"Günlük ekran süresi sınırları belirle, kullanımı takip et ve sınırı aştığında bağış yapmayı taahhüt et.",
-nl:"Stel dagelijkse schermtijdlimieten in, volg het gebruik en verplicht je tot doneren wanneer je ze overschrijdt.",
-vi:"Đặt giới hạn thời gian sử dụng màn hình hàng ngày, theo dõi mức sử dụng và cam kết quyên góp khi vượt quá."
+en:"Post and read anonymous messages by topic — get real-time replies without revealing your identity.",
+ja:"トピック別に匿名メッセージを投稿・閲覧 — 身元を明かさずにリアルタイムで返信がもらえます。",
+zh:"按话题发布和阅读匿名消息 — 无需透露身份即可获得实时回复。",
+zh_TW:"按主題發布和閱讀匿名訊息 — 無需透露身份即可獲得即時回覆。",
+ko:"주제별로 익명 메시지를 게시하고 읽어보세요 — 신원을 밝히지 않고 실시간 답변을 받을 수 있습니다.",
+es:"Publica y lee mensajes anónimos por tema — recibe respuestas en tiempo real sin revelar tu identidad.",
+pt:"Publique e leia mensagens anônimas por tópico — receba respostas em tempo real sem revelar sua identidade.",
+fr:"Publiez et lisez des messages anonymes par sujet — recevez des réponses en temps réel sans révéler votre identité.",
+de:"Veröffentliche und lese anonyme Nachrichten nach Thema — erhalte Echtzeit-Antworten, ohne deine Identität preiszugeben.",
+it:"Pubblica e leggi messaggi anonimi per argomento — ricevi risposte in tempo reale senza rivelare la tua identità.",
+ru:"Публикуйте и читайте анонимные сообщения по темам — получайте ответы в реальном времени, не раскрывая своей личности.",
+ar:"انشر واقرأ رسائل مجهولة الهوية حسب الموضوع — احصل على ردود فورية دون الكشف عن هويتك.",
+th:"โพสต์และอ่านข้อความนิรนามตามหัวข้อ — รับการตอบกลับแบบเรียลไทม์โดยไม่ต้องเปิดเผยตัวตน",
+id:"Posting dan baca pesan anonim berdasarkan topik — dapatkan balasan real-time tanpa mengungkapkan identitas Anda.",
+tr:"Konuya göre anonim mesajlar yayınlayın ve okuyun — kimliğinizi açıklamadan gerçek zamanlı yanıtlar alın.",
+nl:"Plaats en lees anonieme berichten per onderwerp — ontvang real-time antwoorden zonder je identiteit prijs te geven.",
+vi:"Đăng và đọc tin nhắn ẩn danh theo chủ đề — nhận phản hồi theo thời gian thực mà không cần tiết lộ danh tính."
 };
 const _oA=applyLang;applyLang=function(l){_oA(l);const t=APP_T[l]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;};
 (function(){const l=localStorage.getItem('sk_lang');const lang=l||detectLang();const t=APP_T[lang]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;})();
 
 const FEAT_T={
-en:{0:"Daily screen time tracking",1:"Commitment & limit settings",2:"Planned donation per trigger",3:"Weekly usage reports"},
-ja:{0:"毎日のスクリーンタイム記録",1:"コミットメント・上限設定",2:"トリガーごとの寄付プラン",3:"週次使用状況レポート"},
-zh:{0:"每日屏幕时间追踪",1:"承诺与限制设置",2:"每次触发的计划捐款",3:"每周使用报告"},
-zh_TW:{0:"每日螢幕時間追蹤",1:"承諾與限制設定",2:"每次觸發的計畫捐款",3:"每週使用報告"},
-ko:{0:"일일 화면 사용 시간 추적",1:"약속 및 한도 설정",2:"트리거당 계획 기부",3:"주간 사용량 리포트"},
-es:{0:"Seguimiento diario de tiempo de pantalla",1:"Compromisos y ajustes de límites",2:"Donación planificada por activación",3:"Informes de uso semanales"},
-pt:{0:"Rastreamento diário do tempo de tela",1:"Configurações de compromisso e limite",2:"Doação planejada por gatilho",3:"Relatórios semanais de uso"},
-fr:{0:"Suivi quotidien du temps d'écran",1:"Paramètres d'engagement et de limite",2:"Don planifié par déclenchement",3:"Rapports d'utilisation hebdomadaires"},
-de:{0:"Tägliches Tracking der Bildschirmzeit",1:"Verpflichtungs- und Limiteinstellungen",2:"Geplante Spende pro Auslösung",3:"Wöchentliche Nutzungsberichte"},
-it:{0:"Monitoraggio giornaliero del tempo schermo",1:"Impostazioni di impegno e limite",2:"Donazione pianificata per attivazione",3:"Rapporti di utilizzo settimanali"},
-ru:{0:"Ежедневный учёт экранного времени",1:"Настройки обязательств и лимитов",2:"Запланированное пожертвование при триггере",3:"Еженедельные отчёты об использовании"},
-ar:{0:"تتبع وقت الشاشة اليومي",1:"إعدادات الالتزام والحدود",2:"تبرع مخطط لكل تجاوز",3:"تقارير الاستخدام الأسبوعية"},
-th:{0:"การติดตามเวลาหน้าจอรายวัน",1:"การตั้งค่าความมุ่งมั่นและขีดจำกัด",2:"แผนการบริจาคต่อครั้งที่เกินขีดจำกัด",3:"รายงานการใช้งานรายสัปดาห์"},
-id:{0:"Pelacakan waktu layar harian",1:"Pengaturan komitmen & batas",2:"Donasi terencana per pemicu",3:"Laporan penggunaan mingguan"},
-tr:{0:"Günlük ekran süresi takibi",1:"Taahhüt ve limit ayarları",2:"Tetikleyici başına planlı bağış",3:"Haftalık kullanım raporları"},
-nl:{0:"Dagelijkse tracking van schermtijd",1:"Instellingen voor verbintenis en limiet",2:"Geplande donatie per trigger",3:"Wekelijkse gebruiksrapporten"},
-vi:{0:"Theo dõi thời gian màn hình hàng ngày",1:"Cài đặt cam kết và giới hạn",2:"Quyên góp theo kế hoạch mỗi lần kích hoạt",3:"Báo cáo sử dụng hàng tuần"}
+en:{0:"Anonymous posting",1:"Category filters",2:"Real-time replies with Socket.IO",3:"Like & report content"},
+ja:{0:"匿名投稿",1:"カテゴリフィルター",2:"Socket.IOによるリアルタイム返信",3:"いいね・報告機能"},
+zh:{0:"匿名发帖",1:"分类筛选",2:"Socket.IO 实时回复",3:"点赞与举报内容"},
+zh_TW:{0:"匿名發文",1:"分類篩選",2:"Socket.IO 即時回覆",3:"按讚與檢舉內容"},
+ko:{0:"익명 게시",1:"카테고리 필터",2:"Socket.IO 실시간 댓글",3:"좋아요 및 신고 기능"},
+es:{0:"Publicación anónima",1:"Filtros por categoría",2:"Respuestas en tiempo real con Socket.IO",3:"Me gusta y denunciar contenido"},
+pt:{0:"Publicação anônima",1:"Filtros por categoria",2:"Respostas em tempo real com Socket.IO",3:"Curtir e denunciar conteúdo"},
+fr:{0:"Publication anonyme",1:"Filtres par catégorie",2:"Réponses en temps réel avec Socket.IO",3:"Aimer et signaler du contenu"},
+de:{0:"Anonyme Beiträge",1:"Kategorie-Filter",2:"Echtzeit-Antworten mit Socket.IO",3:"Inhalte liken & melden"},
+it:{0:"Pubblicazione anonima",1:"Filtri per categoria",2:"Risposte in tempo reale con Socket.IO",3:"Mi piace e segnala contenuto"},
+ru:{0:"Анонимные публикации",1:"Фильтры по категориям",2:"Ответы в реальном времени через Socket.IO",3:"Лайки и жалобы на контент"},
+ar:{0:"النشر المجهول",1:"فلاتر الفئات",2:"ردود فورية عبر Socket.IO",3:"الإعجاب والإبلاغ عن المحتوى"},
+th:{0:"การโพสต์แบบไม่ระบุตัวตน",1:"ตัวกรองหมวดหมู่",2:"การตอบกลับแบบเรียลไทม์ด้วย Socket.IO",3:"ถูกใจและรายงานเนื้อหา"},
+id:{0:"Posting anonim",1:"Filter kategori",2:"Balasan real-time dengan Socket.IO",3:"Suka & laporkan konten"},
+tr:{0:"Anonim gönderi",1:"Kategori filtreleri",2:"Socket.IO ile gerçek zamanlı yanıtlar",3:"İçeriği beğen ve bildir"},
+nl:{0:"Anoniem posten",1:"Categoriefilters",2:"Realtime antwoorden met Socket.IO",3:"Inhoud liken en rapporteren"},
+vi:{0:"Đăng bài ẩn danh",1:"Bộ lọc danh mục",2:"Trả lời theo thời gian thực với Socket.IO",3:"Thích & báo cáo nội dung"}
 };
 const __oF=applyLang;applyLang=function(l){__oF(l);var ft=FEAT_T[l]||FEAT_T.en;var g=document.querySelector('.features-grid');if(ft&&g){g.innerHTML='';Object.keys(ft).sort(function(a,b){return a-b;}).forEach(function(k){if(ft[k]){var d=document.createElement('div');d.className='feature';d.innerHTML='<div class="feature-dot"></div><span>'+ft[k]+'</span>';g.appendChild(d);}});}};
 (function(){var l=localStorage.getItem('sk_lang')||detectLang();var ft=FEAT_T[l]||FEAT_T.en;var g=document.querySelector('.features-grid');if(ft&&g){g.innerHTML='';Object.keys(ft).sort(function(a,b){return a-b;}).forEach(function(k){if(ft[k]){var d=document.createElement('div');d.className='feature';d.innerHTML='<div class="feature-dot"></div><span>'+ft[k]+'</span>';g.appendChild(d);}});}})();
