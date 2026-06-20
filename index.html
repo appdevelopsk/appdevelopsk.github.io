@@ -9,6 +9,53 @@
   <meta property="og:description" content="Games, tools, AI-powered apps and more. 110+ apps crafted with care.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://appdevelopsk.com">
+
+  <!-- ===== Analytics: GA4 + Microsoft Clarity (SK APPS growth stack) ===== -->
+  <script>
+    // Fill after creating GA4 property (GA4 account: app.develop.sk) and Clarity project.
+    window.SK_GA_ID = 'G-5Z588FVC81';     // GA4 Measurement ID (account: app.develop.sk)
+    window.SK_CLARITY_ID = 'XXXXXXXXXX';  // ← Microsoft Clarity Project ID (pending)
+  </script>
+  <script>
+    // Google Analytics 4
+    (function () {
+      var id = window.SK_GA_ID;
+      if (!id || /X{4,}/.test(id)) return;
+      var s = document.createElement('script');
+      s.async = true;
+      s.src = 'https://www.googletagmanager.com/gtag/js?id=' + id;
+      document.head.appendChild(s);
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = function () { dataLayer.push(arguments); };
+      gtag('js', new Date());
+      gtag('config', id);
+    })();
+    // Microsoft Clarity
+    (function (c, l, a, r, i) {
+      if (!i || /X{4,}/.test(i)) return;
+      c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments); };
+      var t = l.createElement(r); t.async = 1; t.src = 'https://www.clarity.ms/tag/' + i;
+      var y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
+    })(window, document, 'clarity', 'script', window.SK_CLARITY_ID);
+    // Download / cross-promo click tracking → GA4 events (fires once GA4 is live)
+    document.addEventListener('click', function (e) {
+      var a = e.target.closest && e.target.closest('a[href]');
+      if (!a || !window.gtag) return;
+      var href = a.getAttribute('href') || '';
+      if (/play\.google\.com|apps\.apple\.com/.test(href)) {
+        gtag('event', 'download_click', {
+          store: /apple/.test(href) ? 'app_store' : 'google_play',
+          location: a.closest('footer') ? 'footer' : (a.closest('.hero') ? 'hero' : 'other'),
+          link_url: href
+        });
+      } else if (a.classList.contains('app-card')) {
+        gtag('event', 'app_view', { app: href.replace(/^support\//, '').replace(/\/$/, '') });
+      } else if (/pickly\.blog|toolify365\.com|fxea365\.com/.test(href)) {
+        gtag('event', 'crosspromo_click', { link_url: href });
+      }
+    }, true);
+  </script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -603,6 +650,9 @@
   <div class="footer-links">
     <a href="https://play.google.com/store/apps/dev?id=7594721997967679516" target="_blank" rel="noopener">Google Play</a>
     <a href="https://apps.apple.com/developer/kenichiro-sakamoto/id1880329270" target="_blank" rel="noopener">App Store</a>
+    <a href="https://pickly.blog" target="_blank" rel="noopener">Pickly</a>
+    <a href="https://toolify365.com" target="_blank" rel="noopener">Toolify365</a>
+    <a href="https://fxea365.com" target="_blank" rel="noopener">FXEA365</a>
     <a href="mailto:app.develop.sk@gmail.com" data-i18n="nav_contact">Contact</a>
   </div>
   <p class="footer-copy">&copy; 2026 SK APPS. All rights reserved.</p>
