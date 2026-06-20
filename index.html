@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SK APPS – Innovative Mobile Experiences</title>
-  <meta name="description" content="SK APPS creates fun, useful, and beautifully designed mobile apps. 110+ apps on Google Play and the App Store.">
+  <meta name="description" content="SK APPS creates fun, useful, and beautifully designed mobile apps. 110+ apps launching soon on Google Play and the App Store.">
   <meta property="og:title" content="SK APPS – Innovative Mobile Experiences">
   <meta property="og:description" content="Games, tools, AI-powered apps and more. 110+ apps crafted with care.">
   <meta property="og:type" content="website">
@@ -333,7 +333,11 @@
         App Store
       </a>
     </div>
-    <p class="hero-soon" style="margin-top:14px;font-size:.9rem;color:var(--text-secondary)">🚀 アプリは現在準備中です（近日公開予定）&nbsp;/&nbsp;Our apps are launching soon</p>
+    <form id="notifyForm" style="margin-top:18px;display:flex;gap:8px;flex-wrap:wrap;justify-content:center;max-width:440px;margin-left:auto;margin-right:auto">
+      <input type="email" id="notifyEmail" required autocomplete="email" placeholder="you@example.com" style="flex:1;min-width:200px;padding:12px 14px;border-radius:10px;border:1px solid rgba(255,255,255,.15);background:var(--bg-card);color:var(--text-primary);font-size:.95rem">
+      <button type="submit" id="notifyBtn" class="btn btn-primary" style="white-space:nowrap">Notify me</button>
+    </form>
+    <p id="notifyMsg" class="hero-soon" style="margin-top:12px;font-size:.9rem;color:var(--text-secondary);min-height:1.2em">🚀 Apps launching soon — get notified at launch</p>
   </div>
 </section>
 
@@ -689,7 +693,7 @@ const LANGS = {
 const I18N = {
   en: {
     nav_apps: "Apps", nav_categories: "Categories", nav_about: "About", nav_contact: "Contact",
-    hero_badge: "110+ Apps Published",
+    hero_badge: "110+ Apps Launching Soon",
     hero_title: 'Innovative <span class="gradient">Mobile Experiences</span>',
     hero_desc: "We craft fun, useful, and beautifully designed apps — from brain-teasing games to AI-powered tools and everyday utilities.",
     stat_apps: "Published Apps", stat_langs: "Languages Supported", stat_platforms: "Platforms", stat_categories: "App Categories",
@@ -731,7 +735,7 @@ const I18N = {
   },
   ja: {
     nav_apps: "アプリ", nav_categories: "カテゴリ", nav_about: "概要", nav_contact: "お問い合わせ",
-    hero_badge: "110以上のアプリを公開中",
+    hero_badge: "110以上のアプリを準備中",
     hero_title: '革新的な<span class="gradient">モバイル体験</span>',
     hero_desc: "脳トレゲームからAIツール、日常ユーティリティまで — 楽しく、便利で、美しくデザインされたアプリを作っています。",
     stat_apps: "公開アプリ数", stat_langs: "対応言語", stat_platforms: "プラットフォーム", stat_categories: "アプリカテゴリ",
@@ -773,7 +777,7 @@ const I18N = {
   },
   zh: {
     nav_apps: "应用", nav_categories: "分类", nav_about: "关于", nav_contact: "联系我们",
-    hero_badge: "已发布110+款应用",
+    hero_badge: "110+款应用即将上线",
     hero_title: '创新的<span class="gradient">移动体验</span>',
     hero_desc: "我们打造有趣、实用、设计精美的应用——从烧脑游戏到AI工具和日常实用程序。",
     stat_apps: "已发布应用", stat_langs: "支持语言", stat_platforms: "平台", stat_categories: "应用类别",
@@ -807,7 +811,7 @@ const I18N = {
   },
   zh_TW: {
     nav_apps: "應用", nav_categories: "分類", nav_about: "關於", nav_contact: "聯絡我們",
-    hero_badge: "已發布110+款應用",
+    hero_badge: "110+款應用即將上線",
     hero_title: '創新的<span class="gradient">行動體驗</span>',
     hero_desc: "我們打造有趣、實用、設計精美的應用——從燒腦遊戲到AI工具和日常實用程式。",
     stat_apps: "已發布應用", stat_langs: "支援語言", stat_platforms: "平台", stat_categories: "應用類別",
@@ -841,7 +845,7 @@ const I18N = {
   },
   ko: {
     nav_apps: "앱", nav_categories: "카테고리", nav_about: "소개", nav_contact: "문의",
-    hero_badge: "110개 이상의 앱 출시",
+    hero_badge: "110개 이상의 앱 출시 예정",
     hero_title: '혁신적인 <span class="gradient">모바일 경험</span>',
     hero_desc: "두뇌 게임부터 AI 도구, 일상 유틸리티까지 — 재미있고, 유용하고, 아름답게 디자인된 앱을 만듭니다.",
     stat_apps: "출시 앱", stat_langs: "지원 언어", stat_platforms: "플랫폼", stat_categories: "앱 카테고리",
@@ -875,7 +879,7 @@ const I18N = {
   },
   es: {
     nav_apps: "Apps", nav_categories: "Categorías", nav_about: "Acerca de", nav_contact: "Contacto",
-    hero_badge: "110+ aplicaciones publicadas",
+    hero_badge: "110+ aplicaciones próximamente",
     hero_title: 'Experiencias <span class="gradient">móviles innovadoras</span>',
     hero_desc: "Creamos aplicaciones divertidas, útiles y bellamente diseñadas — desde juegos mentales hasta herramientas de IA y utilidades cotidianas.",
     stat_apps: "Apps publicadas", stat_langs: "Idiomas", stat_platforms: "Plataformas", stat_categories: "Categorías",
@@ -909,7 +913,7 @@ const I18N = {
   },
   pt: {
     nav_apps: "Apps", nav_categories: "Categorias", nav_about: "Sobre", nav_contact: "Contato",
-    hero_badge: "110+ apps publicados",
+    hero_badge: "110+ apps em breve",
     hero_title: 'Experiências <span class="gradient">móveis inovadoras</span>',
     hero_desc: "Criamos apps divertidos, úteis e com design impecável — de jogos mentais a ferramentas de IA e utilitários do dia a dia.",
     stat_apps: "Apps publicados", stat_langs: "Idiomas", stat_platforms: "Plataformas", stat_categories: "Categorias",
@@ -943,7 +947,7 @@ const I18N = {
   },
   fr: {
     nav_apps: "Apps", nav_categories: "Catégories", nav_about: "À propos", nav_contact: "Contact",
-    hero_badge: "110+ applications publiées",
+    hero_badge: "110+ applications bientôt disponibles",
     hero_title: 'Expériences <span class="gradient">mobiles innovantes</span>',
     hero_desc: "Nous créons des applications amusantes, utiles et magnifiquement conçues — des jeux cérébraux aux outils IA et utilitaires quotidiens.",
     stat_apps: "Apps publiées", stat_langs: "Langues", stat_platforms: "Plateformes", stat_categories: "Catégories",
@@ -977,7 +981,7 @@ const I18N = {
   },
   de: {
     nav_apps: "Apps", nav_categories: "Kategorien", nav_about: "Über uns", nav_contact: "Kontakt",
-    hero_badge: "110+ veröffentlichte Apps",
+    hero_badge: "110+ Apps in Kürze",
     hero_title: 'Innovative <span class="gradient">mobile Erlebnisse</span>',
     hero_desc: "Wir entwickeln unterhaltsame, nützliche und wunderschön gestaltete Apps — von Denkspielen bis zu KI-Tools und Alltagshelfern.",
     stat_apps: "Veröffentlichte Apps", stat_langs: "Sprachen", stat_platforms: "Plattformen", stat_categories: "App-Kategorien",
@@ -1011,7 +1015,7 @@ const I18N = {
   },
   it: {
     nav_apps: "App", nav_categories: "Categorie", nav_about: "Chi siamo", nav_contact: "Contatti",
-    hero_badge: "110+ app pubblicate",
+    hero_badge: "110+ app in arrivo",
     hero_title: 'Esperienze <span class="gradient">mobili innovative</span>',
     hero_desc: "Creiamo app divertenti, utili e dal design curato — dai giochi mentali agli strumenti IA e utility quotidiane.",
     stat_apps: "App pubblicate", stat_langs: "Lingue", stat_platforms: "Piattaforme", stat_categories: "Categorie",
@@ -1045,7 +1049,7 @@ const I18N = {
   },
   ru: {
     nav_apps: "Приложения", nav_categories: "Категории", nav_about: "О нас", nav_contact: "Контакты",
-    hero_badge: "110+ опубликованных приложений",
+    hero_badge: "110+ приложений скоро",
     hero_title: 'Инновационный <span class="gradient">мобильный опыт</span>',
     hero_desc: "Мы создаём весёлые, полезные и красиво оформленные приложения — от головоломок до инструментов ИИ и повседневных утилит.",
     stat_apps: "Опубликовано", stat_langs: "Языков", stat_platforms: "Платформы", stat_categories: "Категории",
@@ -1079,7 +1083,7 @@ const I18N = {
   },
   ar: {
     nav_apps: "التطبيقات", nav_categories: "الفئات", nav_about: "حولنا", nav_contact: "اتصل بنا",
-    hero_badge: "+110 تطبيقاً منشوراً",
+    hero_badge: "أكثر من 110 تطبيقاً قريباً",
     hero_title: 'تجارب <span class="gradient">جوال مبتكرة</span>',
     hero_desc: "نصنع تطبيقات ممتعة ومفيدة وجميلة التصميم — من ألعاب الذكاء إلى أدوات الذكاء الاصطناعي والأدوات اليومية.",
     stat_apps: "تطبيقات منشورة", stat_langs: "لغات مدعومة", stat_platforms: "منصات", stat_categories: "فئات التطبيقات",
@@ -1113,7 +1117,7 @@ const I18N = {
   },
   th: {
     nav_apps: "แอป", nav_categories: "หมวดหมู่", nav_about: "เกี่ยวกับ", nav_contact: "ติดต่อ",
-    hero_badge: "เผยแพร่แอปมากกว่า 110 แอป",
+    hero_badge: "แอปกว่า 110 แอป เร็วๆ นี้",
     hero_title: 'ประสบการณ์<span class="gradient">มือถือที่สร้างสรรค์</span>',
     hero_desc: "เราสร้างแอปที่สนุก มีประโยชน์ และออกแบบสวยงาม — ตั้งแต่เกมฝึกสมองไปจนถึงเครื่องมือ AI และยูทิลิตี้ในชีวิตประจำวัน",
     stat_apps: "แอปที่เผยแพร่", stat_langs: "ภาษาที่รองรับ", stat_platforms: "แพลตฟอร์ม", stat_categories: "หมวดหมู่แอป",
@@ -1147,7 +1151,7 @@ const I18N = {
   },
   id: {
     nav_apps: "Aplikasi", nav_categories: "Kategori", nav_about: "Tentang", nav_contact: "Kontak",
-    hero_badge: "110+ Aplikasi Diterbitkan",
+    hero_badge: "110+ Aplikasi Segera Hadir",
     hero_title: 'Pengalaman <span class="gradient">Mobile Inovatif</span>',
     hero_desc: "Kami membuat aplikasi yang menyenangkan, berguna, dan dirancang indah — dari game otak hingga alat AI dan utilitas harian.",
     stat_apps: "Aplikasi Diterbitkan", stat_langs: "Bahasa Didukung", stat_platforms: "Platform", stat_categories: "Kategori Aplikasi",
@@ -1181,7 +1185,7 @@ const I18N = {
   },
   tr: {
     nav_apps: "Uygulamalar", nav_categories: "Kategoriler", nav_about: "Hakkında", nav_contact: "İletişim",
-    hero_badge: "110+ Yayınlanan Uygulama",
+    hero_badge: "110+ Uygulama Çok Yakında",
     hero_title: 'Yenilikçi <span class="gradient">Mobil Deneyimler</span>',
     hero_desc: "Eğlenceli, kullanışlı ve güzel tasarlanmış uygulamalar yapıyoruz — beyin oyunlarından AI araçlarına ve günlük yardımcılara.",
     stat_apps: "Yayınlanan Uygulama", stat_langs: "Desteklenen Dil", stat_platforms: "Platform", stat_categories: "Uygulama Kategorisi",
@@ -1215,7 +1219,7 @@ const I18N = {
   },
   nl: {
     nav_apps: "Apps", nav_categories: "Categorieën", nav_about: "Over ons", nav_contact: "Contact",
-    hero_badge: "110+ gepubliceerde apps",
+    hero_badge: "110+ apps binnenkort",
     hero_title: 'Innovatieve <span class="gradient">mobiele ervaringen</span>',
     hero_desc: "We maken leuke, nuttige en prachtig ontworpen apps — van hersenkrakers tot AI-tools en dagelijkse hulpmiddelen.",
     stat_apps: "Gepubliceerde apps", stat_langs: "Talen", stat_platforms: "Platformen", stat_categories: "App-categorieën",
@@ -1249,7 +1253,7 @@ const I18N = {
   },
   vi: {
     nav_apps: "Ứng dụng", nav_categories: "Danh mục", nav_about: "Giới thiệu", nav_contact: "Liên hệ",
-    hero_badge: "110+ ứng dụng đã phát hành",
+    hero_badge: "110+ ứng dụng sắp ra mắt",
     hero_title: 'Trải nghiệm <span class="gradient">di động sáng tạo</span>',
     hero_desc: "Chúng tôi tạo ra các ứng dụng thú vị, hữu ích và được thiết kế đẹp mắt — từ game trí tuệ đến công cụ AI và tiện ích hàng ngày.",
     stat_apps: "Ứng dụng đã phát hành", stat_langs: "Ngôn ngữ hỗ trợ", stat_platforms: "Nền tảng", stat_categories: "Danh mục ứng dụng",
@@ -1355,6 +1359,32 @@ const origApplyLang=applyLang;
 applyLang=function(l){origApplyLang(l);const d=APP_DESC[l]||APP_DESC.en;document.querySelectorAll('[data-app-desc]').forEach(el=>{const k=el.getAttribute('data-app-desc');if(d[k])el.textContent=d[k];});};
 // Re-apply to current lang
 (function(){const l=localStorage.getItem('sk_lang')||detectLang();const d=APP_DESC[l]||APP_DESC.en;document.querySelectorAll('[data-app-desc]').forEach(el=>{const k=el.getAttribute('data-app-desc');if(d[k])el.textContent=d[k];});})();
+
+// === App-launch notify: email capture → unified leads (source=skapps) ===
+const NOTIFY={
+en:{btn:"Notify me",hint:"🚀 Apps launching soon — get notified at launch",ok:"✓ Thanks! We'll email you when the apps launch.",err:"Something went wrong — please try again.",invalid:"Please enter a valid email address."},
+ja:{btn:"通知を受け取る",hint:"🚀 アプリは近日公開 — 公開時にメールでお知らせします",ok:"✓ ご登録ありがとうございます！公開時にメールします。",err:"エラーが発生しました。もう一度お試しください。",invalid:"有効なメールアドレスを入力してください。"},
+zh:{btn:"通知我",hint:"🚀 应用即将上线 — 上线时通知你",ok:"✓ 感谢订阅！应用上线时我们会发邮件通知你。",err:"出错了，请重试。",invalid:"请输入有效的邮箱地址。"},
+zh_TW:{btn:"通知我",hint:"🚀 應用即將上線 — 上線時通知你",ok:"✓ 感謝訂閱！應用上線時我們會寄信通知你。",err:"發生錯誤，請重試。",invalid:"請輸入有效的電子郵件。"},
+ko:{btn:"알림 받기",hint:"🚀 앱 출시 예정 — 출시되면 알려드릴게요",ok:"✓ 감사합니다! 앱 출시 시 이메일로 알려드립니다.",err:"오류가 발생했습니다. 다시 시도해 주세요.",invalid:"유효한 이메일을 입력해 주세요."},
+es:{btn:"Avísame",hint:"🚀 Apps muy pronto — te avisamos al lanzar",ok:"✓ ¡Gracias! Te avisaremos por correo al lanzar.",err:"Algo salió mal, inténtalo de nuevo.",invalid:"Introduce un correo válido."},
+pt:{btn:"Avise-me",hint:"🚀 Apps em breve — avisamos no lançamento",ok:"✓ Obrigado! Avisaremos por e-mail no lançamento.",err:"Algo deu errado, tente novamente.",invalid:"Insira um e-mail válido."},
+fr:{btn:"Me prévenir",hint:"🚀 Applis bientôt — soyez prévenu au lancement",ok:"✓ Merci ! Nous vous préviendrons par e-mail au lancement.",err:"Une erreur s'est produite, réessayez.",invalid:"Entrez une adresse e-mail valide."},
+de:{btn:"Benachrichtigen",hint:"🚀 Apps bald verfügbar — wir benachrichtigen dich",ok:"✓ Danke! Wir mailen dir zum Start.",err:"Etwas ist schiefgelaufen. Bitte erneut versuchen.",invalid:"Bitte gültige E-Mail eingeben."},
+it:{btn:"Avvisami",hint:"🚀 App in arrivo — ti avvisiamo al lancio",ok:"✓ Grazie! Ti avviseremo via email al lancio.",err:"Qualcosa è andato storto, riprova.",invalid:"Inserisci un'email valida."},
+ru:{btn:"Сообщить мне",hint:"🚀 Приложения скоро — сообщим о запуске",ok:"✓ Спасибо! Мы напишем вам при запуске.",err:"Что-то пошло не так, попробуйте снова.",invalid:"Введите корректный email."},
+ar:{btn:"أبلغني",hint:"🚀 التطبيقات قريباً — سنبلغك عند الإطلاق",ok:"✓ شكراً! سنراسلك عند الإطلاق.",err:"حدث خطأ، يرجى المحاولة مرة أخرى.",invalid:"يرجى إدخال بريد إلكتروني صالح."},
+th:{btn:"แจ้งเตือนฉัน",hint:"🚀 แอปเปิดตัวเร็วๆ นี้ — เราจะแจ้งคุณ",ok:"✓ ขอบคุณ! เราจะอีเมลแจ้งคุณเมื่อเปิดตัว",err:"เกิดข้อผิดพลาด โปรดลองอีกครั้ง",invalid:"กรุณากรอกอีเมลที่ถูกต้อง"},
+id:{btn:"Beri tahu saya",hint:"🚀 Aplikasi segera hadir — kami beri tahu saat rilis",ok:"✓ Terima kasih! Kami akan email saat rilis.",err:"Terjadi kesalahan, coba lagi.",invalid:"Masukkan email yang valid."},
+tr:{btn:"Beni bilgilendir",hint:"🚀 Uygulamalar çok yakında — lansmanda haber veririz",ok:"✓ Teşekkürler! Lansmanda e-posta göndereceğiz.",err:"Bir şeyler ters gitti, tekrar deneyin.",invalid:"Geçerli bir e-posta girin."},
+nl:{btn:"Houd me op de hoogte",hint:"🚀 Apps binnenkort — we laten het je weten",ok:"✓ Bedankt! We mailen je bij de lancering.",err:"Er ging iets mis, probeer opnieuw.",invalid:"Voer een geldig e-mailadres in."},
+vi:{btn:"Thông báo cho tôi",hint:"🚀 Ứng dụng sắp ra mắt — chúng tôi sẽ báo bạn",ok:"✓ Cảm ơn! Chúng tôi sẽ email khi ra mắt.",err:"Đã xảy ra lỗi, vui lòng thử lại.",invalid:"Vui lòng nhập email hợp lệ."}
+};
+function skNotify(l){return NOTIFY[l]||NOTIFY.en;}
+function applyNotify(l){const n=skNotify(l);const b=document.getElementById('notifyBtn');if(b)b.textContent=n.btn;const m=document.getElementById('notifyMsg');if(m&&!m.dataset.done)m.textContent=n.hint;}
+(function(){const prev=applyLang;applyLang=function(l){prev(l);applyNotify(l);};})();
+applyNotify(localStorage.getItem('sk_lang')||detectLang());
+(function(){var nf=document.getElementById('notifyForm');if(!nf)return;nf.addEventListener('submit',async function(ev){ev.preventDefault();var l=localStorage.getItem('sk_lang')||detectLang();var n=skNotify(l);var email=(document.getElementById('notifyEmail').value||'').trim();var msg=document.getElementById('notifyMsg');var btn=document.getElementById('notifyBtn');if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){msg.dataset.done='1';msg.textContent=n.invalid;return;}btn.disabled=true;try{var res=await fetch('https://fxea365.com/api/leads/subscribe',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:email,source:'skapps',locale:l})});if(!res.ok)throw new Error();msg.dataset.done='1';msg.textContent=n.ok;nf.style.display='none';if(window.gtag)gtag('event','notify_signup',{source:'skapps'});}catch(_){msg.dataset.done='1';msg.textContent=n.err;btn.disabled=false;}});})();
 
 </script>
 
