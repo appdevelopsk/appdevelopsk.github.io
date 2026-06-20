@@ -1,0 +1,16 @@
+# SK APPS — apex robots.txt
+User-agent: *
+Allow: /
+Disallow: /icons/
+
+# Explicit allow for ad crawlers
+User-agent: Mediapartners-Google
+Allow: /
+
+User-agent: AdsBot-Google
+Allow: /
+
+User-agent: AdsBot-Google-Mobile
+Allow: /
+
+Sitemap: https://appdevelopsk.com/sitemap.xml
