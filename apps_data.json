@@ -1,0 +1,688 @@
+[
+ {
+  "app": "face-symmetry",
+  "pkg": "jp.appdevelopsk.facesymmetry",
+  "title": "Face Symmetry - Mirror Check",
+  "desc": "Face symmetry test — take a selfie & get your AI symmetry score 0 to 100",
+  "installs": 35
+ },
+ {
+  "app": "excel-formula",
+  "pkg": "jp.appdevelopsk.excelformula",
+  "title": "Excel Formula",
+  "desc": "Excel formulas made easy — build, validate & learn with 200+ templates",
+  "installs": 29
+ },
+ {
+  "app": "debate-me",
+  "pkg": "jp.appdevelopsk.debate_me",
+  "title": "Debate Me - AI Debate Practice",
+  "desc": "AI debate practice to sharpen your arguments and win any discussion",
+  "installs": 28
+ },
+ {
+  "app": "roast-me",
+  "pkg": "jp.appdevelopsk.roast_me_app",
+  "title": "RoastMe - Roast & Rate",
+  "desc": "Post a photo and get roasted and rated by an anonymous global community",
+  "installs": 25
+ },
+ {
+  "app": "real-feel-weather",
+  "pkg": "com.realfeelweather.real_feel_weather",
+  "title": "RealFeel Weather",
+  "desc": "Real feel temperature, comfort score and what to wear before you go out",
+  "installs": 22
+ },
+ {
+  "app": "twotaku",
+  "pkg": "com.dotchi.dotchi_app",
+  "title": "Twotaku - Anime Debates",
+  "desc": "Anime debates and versus battles — vote on the best anime and see who wins",
+  "installs": 22
+ },
+ {
+  "app": "fileforce",
+  "pkg": "com.fileforce.fileforce_app",
+  "title": "FileForce - PDF & File Manager",
+  "desc": "File manager to organize, view & compress PDFs, documents and all your files",
+  "installs": 17
+ },
+ {
+  "app": "global-news",
+  "pkg": "jp.appdevelopsk.globalnews",
+  "title": "Global News - AI Summary",
+  "desc": "World news with AI summaries — read global headlines fast in your language",
+  "installs": 17
+ },
+ {
+  "app": "movie-roulette",
+  "pkg": "com.appdevelopsk.movie_roulette",
+  "title": "Movie Roulette: Film Picker",
+  "desc": "Movie picker: spin to decide what to watch by mood, genre and platform",
+  "installs": 17
+ },
+ {
+  "app": "voice-memo",
+  "pkg": "jp.appdevelopsk.voice_memo_app",
+  "title": "Speakly - AI Voice Diary",
+  "desc": "Voice diary with AI — record, transcribe and track your mood by speaking",
+  "installs": 17
+ },
+ {
+  "app": "color-sense",
+  "pkg": "jp.appdevelopsk.color_sense",
+  "title": "Color Sense",
+  "desc": "Color blind test and color vision training games to sharpen your eye for color",
+  "installs": 16
+ },
+ {
+  "app": "food-roulette",
+  "pkg": "com.appdevelopsk.food_roulette",
+  "title": "Food Roulette",
+  "desc": "What to eat? Spin the food roulette to pick a nearby restaurant in seconds",
+  "installs": 16
+ },
+ {
+  "app": "gratitude-challenge",
+  "pkg": "jp.appdevelopsk.gratitude_log",
+  "title": "Gratitude Challenge",
+  "desc": "30-day gratitude challenge: daily prompts & streaks for a positive mindset",
+  "installs": 16
+ },
+ {
+  "app": "idea-market",
+  "pkg": "jp.appdevelopsk.ideamarket",
+  "title": "Idea Market",
+  "desc": "Business idea marketplace: buy & sell startup ideas or find your next venture",
+  "installs": 16
+ },
+ {
+  "app": "trend",
+  "pkg": "jp.appdevelopsk.trend",
+  "title": "Trend - What's Trending",
+  "desc": "What to watch tonight? Instant movie & game picks based on your mood",
+  "installs": 16
+ },
+ {
+  "app": "blur",
+  "pkg": "com.blurapp.blur_app",
+  "title": "Blur: Guess the Image",
+  "desc": "Guess the photo as it slowly unblurs — a fun image guessing brain game",
+  "installs": 15
+ },
+ {
+  "app": "brain-burst",
+  "pkg": "com.brainburst.brain_burst",
+  "title": "BrainBurst - Daily Trivia Quiz",
+  "desc": "Daily trivia quiz with 1v1 battles and fresh AI questions to grow your knowledge",
+  "installs": 15
+ },
+ {
+  "app": "date-roulette",
+  "pkg": "com.appdevelopsk.date_roulette",
+  "title": "Date Roulette: Couple Ideas",
+  "desc": "Date night idea generator: spin the wheel for fun date plans for couples",
+  "installs": 15
+ },
+ {
+  "app": "dinner-home-roulette",
+  "pkg": "com.appdevelopsk.dinner_home_roulette",
+  "title": "Dinner Roulette: Home Cooking",
+  "desc": "What to cook tonight? Spin the dinner wheel for easy home-cooked meals",
+  "installs": 15
+ },
+ {
+  "app": "grumble",
+  "pkg": "com.grumble.grumble_app",
+  "title": "Grumble - Anonymous Vent",
+  "desc": "Anonymous vent app: post complaints, react & connect with people who get it",
+  "installs": 15
+ },
+ {
+  "app": "name-maker",
+  "pkg": "com.namemaker.name_maker_app",
+  "title": "NameCraft",
+  "desc": "AI name generator for baby, character, pet, business & username ideas",
+  "installs": 15
+ },
+ {
+  "app": "nodo",
+  "pkg": "com.nodopuzzle.nodoPuzzle",
+  "title": "Nodo - Daily Node Puzzle",
+  "desc": "Daily logic puzzle: solve number node networks and climb the leaderboard",
+  "installs": 15
+ },
+ {
+  "app": "now-snap",
+  "pkg": "com.nowsnap.now_snap",
+  "title": "Now Snap - Photo Challenge",
+  "desc": "Daily photo challenge: snap the global theme, share, vote and compete",
+  "installs": 15
+ },
+ {
+  "app": "quick-local-food",
+  "pkg": "com.appdevelopsk.quick_local_food",
+  "title": "Quick Local Food",
+  "desc": "Local food finder: compare prep times, freshness and value ratings near you",
+  "installs": 15
+ },
+ {
+  "app": "rental-inspector",
+  "pkg": "com.appdevelopsk.rentalinspector",
+  "title": "RentProof - Rental Inspection",
+  "desc": "Document rental condition with photos to protect your security deposit",
+  "installs": 15
+ },
+ {
+  "app": "story-verse",
+  "pkg": "jp.appdevelopsk.storyverse",
+  "title": "StoryVerse - AI Stories",
+  "desc": "Read novels and web fiction: romance, fantasy, mystery and sci-fi stories",
+  "installs": 15
+ },
+ {
+  "app": "study-roulette",
+  "pkg": "com.appdevelopsk.study_roulette",
+  "title": "Study Roulette: Learn Picker",
+  "desc": "Study planner with Pomodoro timer and AI plans to build study habits",
+  "installs": 15
+ },
+ {
+  "app": "tier-rank-me",
+  "pkg": "com.tierrankme.tier_rank_me",
+  "title": "Tier Rank Me",
+  "desc": "Tier list maker: build S-tier rankings, drag & drop, share with the world",
+  "installs": 15
+ },
+ {
+  "app": "trip-roulette",
+  "pkg": "com.appdevelopsk.trip_roulette",
+  "title": "Trip Roulette: Travel Spin",
+  "desc": "Day trip planner: spin to find places to go nearby — parks, cafes & more",
+  "installs": 15
+ },
+ {
+  "app": "truth-roulette",
+  "pkg": "com.appdevelopsk.truth_roulette",
+  "title": "Truth Roulette: Talk Topics",
+  "desc": "Conversation starters & party game — fun questions for friends and dates",
+  "installs": 15
+ },
+ {
+  "app": "wait-time",
+  "pkg": "com.appdevelopsk.wait_time",
+  "title": "Wait Time Tracker",
+  "desc": "Check real-time wait times for restaurants and attractions before you go",
+  "installs": 15
+ },
+ {
+  "app": "water-reminder",
+  "pkg": "jp.appdevelopsk.water_reminder",
+  "title": "Water Reminder - Hydration",
+  "desc": "Water tracker and hydration reminders to drink enough water every day",
+  "installs": 15
+ },
+ {
+  "app": "whatwear",
+  "pkg": "com.whatwear.whatwear",
+  "title": "WhatWear - AI Outfit Planner",
+  "desc": "AI outfit planner — decide what to wear today based on weather & closet",
+  "installs": 15
+ },
+ {
+  "app": "win-log",
+  "pkg": "jp.appdevelopsk.win_log",
+  "title": "Win Log Achievement Tracker",
+  "desc": "Achievement tracker & win journal — log daily wins and build momentum",
+  "installs": 15
+ },
+ {
+  "app": "30sec-challenge",
+  "pkg": "com.thirtysecchallenge.thirtySecChallenge",
+  "title": "30sec Challenge - Video Game",
+  "desc": "Record 30-second video challenges and climb the daily global leaderboard",
+  "installs": 14
+ },
+ {
+  "app": "candid",
+  "pkg": "jp.appdevelopsk.candid",
+  "title": "Candid",
+  "desc": "Anonymous chat board: post topics, vent and get live replies, no account needed",
+  "installs": 14
+ },
+ {
+  "app": "gratitude-log",
+  "pkg": "jp.appdevelopsk.gratitudelog",
+  "title": "Daily Reflect",
+  "desc": "Daily journal for gratitude, wins & mood — build a positive daily habit",
+  "installs": 14
+ },
+ {
+  "app": "bird-encyclopedia",
+  "pkg": "com.appdevelopsk.bird_encyclopedia",
+  "title": "FeatherTrace",
+  "desc": "Bird guide and song identifier: explore species, calls, and birding facts",
+  "installs": 14
+ },
+ {
+  "app": "mushroom-encyclopedia",
+  "pkg": "com.appdevelopsk.mushroom_encyclopedia",
+  "title": "ForestTrace",
+  "desc": "Mushroom identification guide with 100 species, edibility & toxicity info",
+  "installs": 14
+ },
+ {
+  "app": "future-me",
+  "pkg": "com.futureme.future_me",
+  "title": "FutureMe - AI Prediction",
+  "desc": "AI future predictions: write letters to your future self about love & career",
+  "installs": 14
+ },
+ {
+  "app": "gemstone-encyclopedia",
+  "pkg": "com.appdevelopsk.gemstone_encyclopedia",
+  "title": "GemTrace",
+  "desc": "Gemstone encyclopedia: explore 144 gems, birthstones, crystals & Mohs guide",
+  "installs": 14
+ },
+ {
+  "app": "know-me",
+  "pkg": "com.knowmeapp.know_me",
+  "title": "KnowMe - Quiz Your Friends",
+  "desc": "Make a quiz about yourself & see which friends really know you best",
+  "installs": 14
+ },
+ {
+  "app": "marine-life-encyclopedia",
+  "pkg": "com.appdevelopsk.marine_life_encyclopedia",
+  "title": "MarineTrace",
+  "desc": "Marine life encyclopedia: explore ocean species, daily facts & sea quizzes",
+  "installs": 14
+ },
+ {
+  "app": "match-rate",
+  "pkg": "com.matchrate.match_rate",
+  "title": "MatchRate: Compatibility Quiz",
+  "desc": "Compatibility quiz: share a link and see your match score with anyone",
+  "installs": 14
+ },
+ {
+  "app": "melt",
+  "pkg": "com.meltapp.flutter_app",
+  "title": "Melt - Dating & Match",
+  "desc": "Dating app with mood-based matching, shared missions and real conversations",
+  "installs": 14
+ },
+ {
+  "app": "nearo",
+  "pkg": "com.nearoapp.nearo",
+  "title": "Nearo - Share Your Location",
+  "desc": "Location sharing on your terms: precise for family, area-level for friends",
+  "installs": 14
+ },
+ {
+  "app": "pantry-ai",
+  "pkg": "com.pantryai.pantry_ai",
+  "title": "Pantry AI - Smart Food Manager",
+  "desc": "Pantry tracker & food inventory: cut waste, track expiry dates, plan meals",
+  "installs": 14
+ },
+ {
+  "app": "chore-roulette",
+  "pkg": "com.appdevelopsk.chore_roulette",
+  "title": "PickWhirl: Spin to Decide",
+  "desc": "Can't decide? Spin to pick chores, dinner, movies & more in one tap.",
+  "installs": 14
+ },
+ {
+  "app": "smile-score",
+  "pkg": "jp.appdevelopsk.smilescore",
+  "title": "Smile Score - Daily Mood Check",
+  "desc": "Track your daily mood with a smile selfie score and see your happiness trend",
+  "installs": 14
+ },
+ {
+  "app": "snap-judge",
+  "pkg": "com.snapjudge.snap_judge",
+  "title": "Snap Judge: 0.5s Flash Quiz",
+  "desc": "Make snap judgments in 0.5 seconds and test your gut instinct in a fun quiz",
+  "installs": 14
+ },
+ {
+  "app": "snaplingo",
+  "pkg": "com.appdevelopsk.snaplingo",
+  "title": "SnapLingo: Learn from Photos",
+  "desc": "Learn vocabulary in any language by snapping a photo of anything around you",
+  "installs": 14
+ },
+ {
+  "app": "weekend-roulette",
+  "pkg": "com.appdevelopsk.weekend_roulette",
+  "title": "Weekend Roulette: Plan Spin",
+  "desc": "Spin to plan your weekend — discover fun activities by budget and mood",
+  "installs": 14
+ },
+ {
+  "app": "constellation-encyclopedia",
+  "pkg": "com.appdevelopsk.constellation_encyclopedia",
+  "title": "AstroTrace",
+  "desc": "Stargazing guide and constellation encyclopedia with stars, myths and quizzes",
+  "installs": 13
+ },
+ {
+  "app": "battery-charging-map",
+  "pkg": "com.appdevelopsk.battery_charging_map",
+  "title": "Battery Charging Map",
+  "desc": "EV charger map with real-time charging speed, availability, and wait times",
+  "installs": 13
+ },
+ {
+  "app": "daily-duel",
+  "pkg": "com.dailyduel.daily_duel",
+  "title": "Daily Duel: Brain Challenge",
+  "desc": "Daily brain training puzzles and 1v1 quiz battles for logic, math and memory",
+  "installs": 13
+ },
+ {
+  "app": "date-pilot",
+  "pkg": "com.datepilot.date_pilot",
+  "title": "DatePilot - AI Dating Coach",
+  "desc": "AI dating coach: better messages, profile tips and dating advice that works",
+  "installs": 13
+ },
+ {
+  "app": "dream-log",
+  "pkg": "com.dreamlog.dream_log",
+  "title": "Dream Log",
+  "desc": "Dream journal with AI analysis — log your dreams & see the world's dreams",
+  "installs": 13
+ },
+ {
+  "app": "drift",
+  "pkg": "com.driftapp.drift_app",
+  "title": "Drift Sounds",
+  "desc": "Sleep sounds & white noise mixer — blend rain, ocean & nature to relax",
+  "installs": 13
+ },
+ {
+  "app": "ear-train",
+  "pkg": "com.appdevelopsk.eartrain",
+  "title": "EarSense",
+  "desc": "Ear training for musicians — practice notes, intervals, chords & rhythm",
+  "installs": 13
+ },
+ {
+  "app": "posture-reminder",
+  "pkg": "jp.appdevelopsk.posture_reminder",
+  "title": "ErgoAlert",
+  "desc": "Posture reminder: gentle alerts to fix slouching and ease back pain at work",
+  "installs": 13
+ },
+ {
+  "app": "eye-break",
+  "pkg": "com.eyebreak.eye_break",
+  "title": "Eye Break - 20-20-20 Timer",
+  "desc": "Eye care reminders with the 20-20-20 rule — beat screen fatigue & strain",
+  "installs": 13
+ },
+ {
+  "app": "face-vibe",
+  "pkg": "jp.appdevelopsk.facevibe",
+  "title": "FaceVibe - Mood Reader",
+  "desc": "Face reading personality test: scan your selfie to reveal your traits & mood",
+  "installs": 13
+ },
+ {
+  "app": "fitness-challenge",
+  "pkg": "jp.appdevelopsk.fitness_challenge",
+  "title": "Fitness Challenge",
+  "desc": "Daily workout challenges to build a fitness streak and stay motivated at home",
+  "installs": 13
+ },
+ {
+  "app": "world-flags-encyclopedia",
+  "pkg": "com.appdevelopsk.world_flags_encyclopedia",
+  "title": "FlagTrace",
+  "desc": "World flags encyclopedia: 144 country flags, facts, comparison and a flag quiz",
+  "installs": 13
+ },
+ {
+  "app": "geo-sense",
+  "pkg": "jp.appdevelopsk.geo_sense",
+  "title": "GeoSense - Photo Location Quiz",
+  "desc": "Geography quiz game: guess where photos were taken across the world & score",
+  "installs": 13
+ },
+ {
+  "app": "global-safety-map",
+  "pkg": "com.appdevelopsk.global_safety_map",
+  "title": "Global Safety Map",
+  "desc": "Travel safety map: check destination safety scores & scam alerts before you go",
+  "installs": 13
+ },
+ {
+  "app": "instant-judge",
+  "pkg": "com.instantjudge.instant_judge",
+  "title": "Instant Judge: Vote in 3s",
+  "desc": "Vote on photos & scenarios in 3 seconds and see what the community thinks",
+  "installs": 13
+ },
+ {
+  "app": "key-clash",
+  "pkg": "com.keyclash.key_clash",
+  "title": "KeyClash: Typing Battle",
+  "desc": "Typing speed game: race rivals in real-time battles & boost your WPM",
+  "installs": 13
+ },
+ {
+  "app": "language-challenge",
+  "pkg": "jp.appdevelopsk.language_challenge",
+  "title": "Language Challenge",
+  "desc": "Learn vocabulary in 5 minutes a day with daily challenges & spaced review",
+  "installs": 13
+ },
+ {
+  "app": "life-board",
+  "pkg": "com.lifeboard.life_board",
+  "title": "LifeBoard - Life Visualizer",
+  "desc": "Visualize your life in weeks, track goals & your bucket list progress",
+  "installs": 13
+ },
+ {
+  "app": "life-trace",
+  "pkg": "com.lifetrace.life_trace",
+  "title": "LifeTrace - AI Life Recorder",
+  "desc": "AI life journal: save memories by voice, photo & text in a timeline diary",
+  "installs": 13
+ },
+ {
+  "app": "livepair",
+  "pkg": "com.livepair.live_pair",
+  "title": "LivePair",
+  "desc": "Real-time matching: pair with a random partner now for live chat sessions",
+  "installs": 13
+ },
+ {
+  "app": "debrief",
+  "pkg": "com.debriefapp.debrief_app",
+  "title": "Meetlog Debrief",
+  "desc": "Meeting reflection journal to process work stress and leave work at work",
+  "installs": 13
+ },
+ {
+  "app": "mood-log",
+  "pkg": "jp.appdevelopsk.mood_log",
+  "title": "Mood Log",
+  "desc": "Mood tracker: log daily feelings, spot patterns and boost mental health",
+  "installs": 13
+ },
+ {
+  "app": "dog-breeds-encyclopedia",
+  "pkg": "com.appdevelopsk.dog_breeds_encyclopedia",
+  "title": "PawTrace",
+  "desc": "Dog breeds guide with 100 breed profiles, photos and a compare tool",
+  "installs": 13
+ },
+ {
+  "app": "percent-pulse",
+  "pkg": "com.percentpulse.percent_pulse",
+  "title": "PercentPulse",
+  "desc": "Opinion poll game: vote and see what percent of the world agrees with you",
+  "installs": 13
+ },
+ {
+  "app": "rank-my-day",
+  "pkg": "jp.appdevelopsk.rank_my_day",
+  "title": "Rank My Day",
+  "desc": "Rate your day 1-10, track mood patterns and build a reflection habit",
+  "installs": 13
+ },
+ {
+  "app": "rank-it",
+  "pkg": "jp.appdevelopsk.rank_it_app",
+  "title": "RankHub",
+  "desc": "Create tier lists and rankings, vote with friends and settle any debate",
+  "installs": 13
+ },
+ {
+  "app": "reset-loop",
+  "pkg": "jp.appdevelopsk.resetloop",
+  "title": "Reset Loop",
+  "desc": "Screen time tracker and digital detox to beat phone addiction for good",
+  "installs": 13
+ },
+ {
+  "app": "save-or-spend",
+  "pkg": "com.appdevelopsk.save_or_spend",
+  "title": "Save or Spend: Money Wheel",
+  "desc": "Spin the money wheel to decide save or spend and beat impulse buys",
+  "installs": 13
+ },
+ {
+  "app": "solace",
+  "pkg": "com.solaceai.solace_app",
+  "title": "Serene - AI Mental Wellness",
+  "desc": "AI support for mental wellness: talk through anxiety & track your daily mood",
+  "installs": 13
+ },
+ {
+  "app": "sleep-prep",
+  "pkg": "jp.appdevelopsk.sleep_prep",
+  "title": "Sleep Prep",
+  "desc": "Build a calming bedtime routine to wind down faster & sleep better tonight",
+  "installs": 13
+ },
+ {
+  "app": "take-sides",
+  "pkg": "com.takesides.takeSides",
+  "title": "TAKE SIDES - Daily Dilemma",
+  "desc": "Daily dilemma poll: pick a side and see how the world votes each day",
+  "installs": 13
+ },
+ {
+  "app": "true-me",
+  "pkg": "com.trueme.true_me",
+  "title": "TrueMe - True Face Mirror",
+  "desc": "Face symmetry test & true mirror — see your real face and symmetry score",
+  "installs": 13
+ },
+ {
+  "app": "try-this",
+  "pkg": "com.trythis.try_this",
+  "title": "TryThis - Try Something New",
+  "desc": "Daily challenge app: try something new each day, earn XP & build streaks",
+  "installs": 13
+ },
+ {
+  "app": "two-truths",
+  "pkg": "com.twotruths.two_truths",
+  "title": "TwoTruths: 2 Truths 1 Lie",
+  "desc": "Two Truths and a Lie party game — post, vote and guess the lie with friends",
+  "installs": 13
+ },
+ {
+  "app": "what-to-do",
+  "pkg": "com.appdevelopsk.what_to_do",
+  "title": "What To Do: Activity Picker",
+  "desc": "Activity picker to beat boredom — spin and decide what to do right now",
+  "installs": 13
+ },
+ {
+  "app": "workspot-finder",
+  "pkg": "com.appdevelopsk.nomadPulse",
+  "title": "WorkSpot Finder",
+  "desc": "Find cafes & coworking spots with fast WiFi and power, rated by digital nomads",
+  "installs": 13
+ },
+ {
+  "app": "stretch-reminder",
+  "pkg": "jp.appdevelopsk.stretch_reminder",
+  "title": "FlexBreak",
+  "desc": "Stretch break reminder with desk exercises to ease stiffness at work",
+  "installs": 12
+ },
+ {
+  "app": "world-heritage-encyclopedia",
+  "pkg": "com.appdevelopsk.world_heritage_encyclopedia",
+  "title": "HeritageTrace",
+  "desc": "UNESCO World Heritage guide: 100 sites with photos, history and travel info",
+  "installs": 12
+ },
+ {
+  "app": "warranty-keeper",
+  "pkg": "jp.appdevelopsk.warranty_keeper",
+  "title": "My Warranty Log",
+  "desc": "Track product warranties and receipts with expiry reminders in one place",
+  "installs": 12
+ },
+ {
+  "app": "spot-diff",
+  "pkg": "jp.appdevelopsk.spot_diff",
+  "title": "Spot the Diff!",
+  "desc": "Find the difference game with daily puzzles to train focus and sharp eyes",
+  "installs": 12
+ },
+ {
+  "app": "sub-tracker",
+  "pkg": "jp.appdevelopsk.sub_tracker",
+  "title": "SubWise: Sub Cost Manager",
+  "desc": "Subscription tracker to manage bills, renewal alerts and monthly costs",
+  "installs": 12
+ },
+ {
+  "app": "world-city-portal",
+  "pkg": "com.appname.worldCityPortal",
+  "title": "World City Portal",
+  "desc": "Explore any city worldwide: weather, attractions, local news and travel info",
+  "installs": 12
+ },
+ {
+  "app": "tappitsu-battle",
+  "pkg": "jp.appdevelopsk.tappitsubattle",
+  "title": "達筆バトル - Calligraphy Battle",
+  "desc": "Practice Japanese calligraphy — draw kanji & hiragana and score your brush",
+  "installs": 12
+ },
+ {
+  "app": "kairos",
+  "pkg": "com.kairosapp.kairos",
+  "title": "Kairos: Daily Rhythm Planner",
+  "desc": "Plan your day by your body clock & find peak hours for focus and energy",
+  "installs": 10
+ },
+ {
+  "app": "access-navi",
+  "pkg": "com.appdevelopsk.accessnavi",
+  "title": "Access Navi",
+  "desc": "Wheelchair accessible map: find barrier-free places and routes near you",
+  "installs": 8
+ },
+ {
+  "app": "quick-crew",
+  "pkg": "jp.appdevelopsk.quickcrew",
+  "title": "QuickCrew - Find Your Crew",
+  "desc": "Hire local help: post a task and get matched with skilled workers nearby",
+  "installs": 8
+ }
+]
