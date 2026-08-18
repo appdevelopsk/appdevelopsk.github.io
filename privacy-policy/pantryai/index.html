@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>プライバシーポリシー | PantryAI</title>
+<link rel="canonical" href="https://appdevelopsk.com/privacy-policy/pantryai/">
+  <style>
+    :root {
+      --green: #4CAF50;
+      --green-dark: #388E3C;
+      --green-light: #E8F5E9;
+      --text: #212121;
+      --text-sub: #555;
+      --border: #C8E6C9;
+      --bg: #FAFAFA;
+      --card: #ffffff;
+      --shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Hiragino Sans', 'Hiragino Kaku Gothic ProN',
+                   'Noto Sans JP', 'Yu Gothic', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.8;
+      font-size: 15px;
+    }
+    header {
+      background: linear-gradient(135deg, var(--green-dark) 0%, var(--green) 100%);
+      color: #fff;
+      padding: 40px 20px 32px;
+      text-align: center;
+    }
+    header .app-icon {
+      width: 72px; height: 72px;
+      background: rgba(255,255,255,0.2);
+      border-radius: 18px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 36px;
+      margin-bottom: 14px;
+    }
+    header h1 { font-size: 26px; font-weight: 700; letter-spacing: 0.02em; }
+    header p { margin-top: 6px; font-size: 13px; opacity: 0.85; }
+    .lang-toggle {
+      display: inline-flex;
+      margin-top: 16px;
+      background: rgba(255,255,255,0.15);
+      border-radius: 20px;
+      overflow: hidden;
+    }
+    .lang-toggle button {
+      border: none; cursor: pointer;
+      padding: 6px 18px;
+      font-size: 13px;
+      font-weight: 600;
+      background: transparent;
+      color: rgba(255,255,255,0.75);
+      transition: all 0.2s;
+    }
+    .lang-toggle button.active {
+      background: #fff;
+      color: var(--green-dark);
+      border-radius: 20px;
+    }
+    .container {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 32px 20px 60px;
+    }
+    .meta-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--green-light);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 10px 16px;
+      font-size: 12.5px;
+      color: var(--green-dark);
+      margin-bottom: 28px;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .toc {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 20px 24px;
+      margin-bottom: 28px;
+      box-shadow: var(--shadow);
+    }
+    .toc h2 {
+      font-size: 14px;
+      color: var(--green-dark);
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .toc ol {
+      padding-left: 20px;
+      columns: 2;
+      column-gap: 20px;
+    }
+    .toc li { font-size: 13.5px; margin-bottom: 4px; }
+    .toc a { color: var(--green-dark); text-decoration: none; }
+    .toc a:hover { text-decoration: underline; }
+    @media (max-width: 480px) { .toc ol { columns: 1; } }
+    section {
+      background: var(--card);
+      border-radius: 10px;
+      padding: 24px 26px;
+      margin-bottom: 20px;
+      box-shadow: var(--shadow);
+      border-left: 4px solid var(--green);
+    }
+    section h2 {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--green-dark);
+      margin-bottom: 14px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border);
+    }
+    section h3 {
+      font-size: 14.5px;
+      font-weight: 700;
+      color: var(--text);
+      margin: 16px 0 8px;
+    }
+    p { margin-bottom: 10px; color: var(--text-sub); }
+    ul, ol { padding-left: 20px; margin-bottom: 10px; color: var(--text-sub); }
+    li { margin-bottom: 5px; }
+    .highlight-box {
+      background: var(--green-light);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px 16px;
+      margin: 12px 0;
+      font-size: 14px;
+      color: var(--green-dark);
+    }
+    .highlight-box strong { display: block; margin-bottom: 4px; }
+    .third-party-card {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px 16px;
+      margin: 12px 0;
+      background: #f9fbe7;
+    }
+    .third-party-card h4 {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+    .third-party-card a { color: var(--green-dark); }
+    .third-party-card p { margin-bottom: 4px; font-size: 13.5px; }
+    .ai-box {
+      background: #f3e5f5;
+      border: 1px solid #ce93d8;
+      border-radius: 8px;
+      padding: 14px 16px;
+      margin: 12px 0;
+      font-size: 14px;
+    }
+    .ai-box h4 { color: #6a1b9a; margin-bottom: 6px; font-size: 14px; }
+    .ai-box p { color: #4a148c; margin-bottom: 4px; }
+    .warning-box {
+      background: #fff8e1;
+      border: 1px solid #ffe082;
+      border-radius: 8px;
+      padding: 14px 16px;
+      margin: 12px 0;
+      font-size: 13.5px;
+      color: #6d4c00;
+    }
+    footer {
+      text-align: center;
+      padding: 24px 20px;
+      font-size: 12.5px;
+      color: #999;
+      border-top: 1px solid var(--border);
+    }
+    footer a { color: var(--green-dark); }
+    /* Language visibility */
+    [data-lang="en"] { display: none; }
+    body.lang-en [data-lang="ja"] { display: none; }
+    body.lang-en [data-lang="en"] { display: block; }
+    body.lang-en span[data-lang="en"] { display: inline; }
+    body.lang-en span[data-lang="ja"] { display: none; }
+    span[data-lang="ja"] { display: inline; }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="app-icon">🥦</div>
+  <h1>PantryAI <span style="font-weight:300;opacity:0.8">/ パントリーAI</span></h1>
+  <p data-lang="ja">プライバシーポリシー &nbsp;|&nbsp; Privacy Policy</p>
+  <p data-lang="en">Privacy Policy &nbsp;|&nbsp; プライバシーポリシー</p>
+  <div class="lang-toggle">
+    <button id="btn-ja" class="active" onclick="setLang('ja')">日本語</button>
+    <button id="btn-en" onclick="setLang('en')">English</button>
+  </div>
+</header>
+
+<div class="container">
+
+  <div class="meta-bar">
+    <span data-lang="ja">📅 最終更新日：2026年2月24日</span>
+    <span data-lang="en">📅 Last updated: February 24, 2026</span>
+    <span>Bundle ID: com.pantryai.pantryAi</span>
+  </div>
+
+  <!-- Table of Contents -->
+  <div class="toc">
+    <h2 data-lang="ja">目次</h2>
+    <h2 data-lang="en">Contents</h2>
+    <ol data-lang="ja">
+      <li><a href="#s1">収集する情報</a></li>
+      <li><a href="#s2">利用目的</a></li>
+      <li><a href="#s3">第三者サービス</a></li>
+      <li><a href="#s4">データ保管・削除</a></li>
+      <li><a href="#s5">カメラアクセス</a></li>
+      <li><a href="#s6">AI処理について</a></li>
+      <li><a href="#s7">食品データについて</a></li>
+      <li><a href="#s8">子どものプライバシー</a></li>
+      <li><a href="#s9">ポリシー変更</a></li>
+      <li><a href="#s10">お問い合わせ</a></li>
+    </ol>
+    <ol data-lang="en">
+      <li><a href="#s1">Information We Collect</a></li>
+      <li><a href="#s2">How We Use Your Information</a></li>
+      <li><a href="#s3">Third-Party Services</a></li>
+      <li><a href="#s4">Data Storage &amp; Deletion</a></li>
+      <li><a href="#s5">Camera Access</a></li>
+      <li><a href="#s6">AI Processing</a></li>
+      <li><a href="#s7">Food Data</a></li>
+      <li><a href="#s8">Children's Privacy</a></li>
+      <li><a href="#s9">Policy Changes</a></li>
+      <li><a href="#s10">Contact Us</a></li>
+    </ol>
+  </div>
+
+  <!-- Intro -->
+  <section style="border-left-color:#81C784;">
+    <p data-lang="ja">
+      PantryAI（パントリーAI）をご利用いただきありがとうございます。本アプリは食品在庫の管理、栄養トラッキング、AIを活用した献立提案を提供します。お客様の大切な食品データ・個人情報を責任を持って扱うため、本プライバシーポリシーに従って情報の収集・利用を行います。アプリをご利用になることで、本ポリシーに同意したものとみなされます。
+    </p>
+    <p data-lang="en">
+      Thank you for using PantryAI. This app provides food inventory management, nutrition tracking, and AI-powered meal planning. We take the privacy of your personal and food data seriously. By using PantryAI, you agree to this Privacy Policy.
+    </p>
+  </section>
+
+  <!-- Section 1 -->
+  <section id="s1">
+    <h2 data-lang="ja">1. 収集する情報</h2>
+    <h2 data-lang="en">1. Information We Collect</h2>
+
+    <h3 data-lang="ja">アカウント情報</h3>
+    <h3 data-lang="en">Account Information</h3>
+    <ul data-lang="ja">
+      <li>メールアドレス（Googleログイン / Appleログイン経由）</li>
+      <li>ユーザー名・表示名</li>
+      <li>プロフィール画像（任意）</li>
+    </ul>
+    <ul data-lang="en">
+      <li>Email address (via Google Sign-In / Apple Sign-In)</li>
+      <li>Username and display name</li>
+      <li>Profile photo (optional)</li>
+    </ul>
+
+    <h3 data-lang="ja">食品・在庫データ</h3>
+    <h3 data-lang="en">Food &amp; Inventory Data</h3>
+    <ul data-lang="ja">
+      <li>登録した食品アイテム・数量・賞味期限</li>
+      <li>バーコードスキャン履歴</li>
+      <li>食品の写真（カメラまたはフォトライブラリから）</li>
+      <li>食事プランおよび献立記録</li>
+      <li>食事制限・アレルギー・好みなどの食事設定</li>
+      <li>栄養摂取記録</li>
+    </ul>
+    <ul data-lang="en">
+      <li>Registered food items, quantities, and expiry dates</li>
+      <li>Barcode scan history</li>
+      <li>Food photos (from camera or photo library)</li>
+      <li>Meal plans and meal records</li>
+      <li>Dietary restrictions, allergies, and food preferences</li>
+      <li>Nutrition intake records</li>
+    </ul>
+
+    <h3 data-lang="ja">技術情報</h3>
+    <h3 data-lang="en">Technical Information</h3>
+    <ul data-lang="ja">
+      <li>利用統計・行動ログ（Firebase Analytics）</li>
+      <li>クラッシュレポート（Firebase Crashlytics）</li>
+      <li>デバイス情報（OS、端末モデル、アプリバージョン）</li>
+      <li>IPアドレス（サーバー処理時）</li>
+    </ul>
+    <ul data-lang="en">
+      <li>Usage statistics and behavior logs (Firebase Analytics)</li>
+      <li>Crash reports (Firebase Crashlytics)</li>
+      <li>Device information (OS, device model, app version)</li>
+      <li>IP address (during server-side processing)</li>
+    </ul>
+  </section>
+
+  <!-- Section 2 -->
+  <section id="s2">
+    <h2 data-lang="ja">2. 利用目的</h2>
+    <h2 data-lang="en">2. How We Use Your Information</h2>
+    <ul data-lang="ja">
+      <li>アプリのコア機能（食品在庫管理、賞味期限通知、栄養トラッキング）の提供</li>
+      <li>Claude AI（Anthropic）を利用した献立提案・食品分析の生成</li>
+      <li>バーコードスキャンによる食品情報の自動入力</li>
+      <li>パーソナライズされた食事・栄養アドバイスの提供</li>
+      <li>アプリの品質改善・バグ修正・新機能開発</li>
+      <li>アカウント管理・サポート対応</li>
+      <li>利用規約・法的義務の遵守</li>
+    </ul>
+    <ul data-lang="en">
+      <li>Providing core app features (inventory management, expiry notifications, nutrition tracking)</li>
+      <li>Generating meal recommendations and food analysis via Claude AI (Anthropic)</li>
+      <li>Auto-filling food information through barcode scanning</li>
+      <li>Providing personalized meal and nutrition advice</li>
+      <li>Improving app quality, fixing bugs, and developing new features</li>
+      <li>Account management and customer support</li>
+      <li>Compliance with terms of service and legal obligations</li>
+    </ul>
+  </section>
+
+  <!-- Section 3 -->
+  <section id="s3">
+    <h2 data-lang="ja">3. 第三者サービス</h2>
+    <h2 data-lang="en">3. Third-Party Services</h2>
+    <p data-lang="ja">本アプリは以下の第三者サービスを利用します。各サービスのプライバシーポリシーをご確認ください。</p>
+    <p data-lang="en">This app uses the following third-party services. Please review their respective privacy policies.</p>
+
+    <div class="third-party-card">
+      <h4>🔥 Firebase (Google LLC)</h4>
+      <p data-lang="ja">認証（Google ログイン）、アプリ解析（Analytics）、クラッシュレポート（Crashlytics）、クラウドストレージ（食品画像の保存）に使用します。</p>
+      <p data-lang="en">Used for authentication (Google Sign-In), app analytics, crash reporting (Crashlytics), and cloud storage (food image storage).</p>
+      <p><a href="https://firebase.google.com/support/privacy" target="_blank">Firebase Privacy Policy →</a></p>
+    </div>
+
+    <div class="third-party-card">
+      <h4>📱 Google AdMob (Google LLC)</h4>
+      <p data-lang="ja">無料プランのユーザー向けに広告を表示するために使用します。AdMobはデバイス識別子・利用データを収集し、パーソナライズ広告の配信に使用する場合があります。</p>
+      <p data-lang="en">Used to display advertisements for free-tier users. AdMob may collect device identifiers and usage data to serve personalized ads.</p>
+      <p><a href="https://policies.google.com/privacy" target="_blank">Google Privacy Policy →</a></p>
+    </div>
+
+    <div class="third-party-card" style="background:#f3e5f5; border-color:#ce93d8;">
+      <h4>🤖 Anthropic Claude AI</h4>
+      <p data-lang="ja">献立提案・食品分析のために、食品データおよび食品写真をAnthropic社のClaude APIに送信します。Anthropicは送信されたデータを自社のプライバシーポリシーに従って処理します。詳細は<a href="#s6">「6. AI処理について」</a>をご参照ください。</p>
+      <p data-lang="en">Food data and food photos are sent to Anthropic's Claude API for meal recommendations and food analysis. Anthropic processes the transmitted data according to their privacy policy. See <a href="#s6">Section 6 (AI Processing)</a> for details.</p>
+      <p><a href="https://www.anthropic.com/privacy" target="_blank">Anthropic Privacy Policy →</a></p>
+    </div>
+
+    <div class="third-party-card">
+      <h4>🍎 Apple Sign-In (Apple Inc.)</h4>
+      <p data-lang="ja">Appleアカウントを使用したサインインに使用します。Appleはメールアドレスのリレーサービスを提供し、実際のメールアドレスを非開示にすることができます。</p>
+      <p data-lang="en">Used for Sign in with Apple authentication. Apple provides email relay services, allowing users to hide their real email address.</p>
+      <p><a href="https://www.apple.com/legal/privacy/" target="_blank">Apple Privacy Policy →</a></p>
+    </div>
+  </section>
+
+  <!-- Section 4 -->
+  <section id="s4">
+    <h2 data-lang="ja">4. データ保管・削除</h2>
+    <h2 data-lang="en">4. Data Storage &amp; Deletion</h2>
+
+    <h3 data-lang="ja">保管場所・期間</h3>
+    <h3 data-lang="en">Storage Location &amp; Retention</h3>
+    <p data-lang="ja">収集したデータはFirebaseのクラウドサービス（日本およびグローバルデータセンター）に保管されます。アカウントをお持ちの間はデータを保持し、アカウント削除後は90日以内にすべてのデータを消去します。</p>
+    <p data-lang="en">Collected data is stored in Firebase cloud services (Japan and global data centers). Data is retained while your account is active and deleted within 90 days after account deletion.</p>
+
+    <h3 data-lang="ja">データ削除の権利</h3>
+    <h3 data-lang="en">Right to Delete</h3>
+    <div class="highlight-box">
+      <strong data-lang="ja">アカウント削除方法</strong>
+      <strong data-lang="en">How to Delete Your Account</strong>
+      <span data-lang="ja">アプリ内の「設定 → アカウント → アカウントを削除」からいつでもアカウントと関連するすべてのデータを削除できます。または <a href="mailto:app.develop.sk@gmail.com">app.develop.sk@gmail.com</a> までご連絡ください。</span>
+      <span data-lang="en">You can delete your account and all associated data at any time via "Settings → Account → Delete Account" in the app, or by contacting <a href="mailto:app.develop.sk@gmail.com">app.develop.sk@gmail.com</a>.</span>
+    </div>
+
+    <h3 data-lang="ja">食品画像</h3>
+    <h3 data-lang="en">Food Images</h3>
+    <p data-lang="ja">アップロードした食品画像はFirebase Storageに保存され、アカウント削除時に一緒に削除されます。個別の画像もアプリ内から削除可能です。</p>
+    <p data-lang="en">Uploaded food images are stored in Firebase Storage and deleted together when your account is deleted. Individual images can also be deleted within the app.</p>
+  </section>
+
+  <!-- Section 5 -->
+  <section id="s5">
+    <h2 data-lang="ja">5. カメラアクセス</h2>
+    <h2 data-lang="en">5. Camera Access</h2>
+
+    <div class="highlight-box">
+      <strong data-lang="ja">カメラ使用目的</strong>
+      <strong data-lang="en">Camera Usage Purpose</strong>
+      <span data-lang="ja">本アプリはカメラへのアクセスを次の目的でのみ使用します：①バーコードスキャンによる食品の自動登録、②食品・料理の写真撮影（AI分析用）。</span>
+      <span data-lang="en">This app uses camera access exclusively for: ① Barcode scanning for automatic food registration, ② Taking photos of food/dishes for AI analysis.</span>
+    </div>
+
+    <p data-lang="ja">カメラによって撮影された画像は、ユーザーが明示的に保存・送信した場合を除き、デバイス外に送信されることはありません。カメラへのアクセスはシステム設定からいつでも取り消すことができます（ただし、バーコードスキャン・写真機能は利用不可になります）。</p>
+    <p data-lang="en">Images captured by the camera are not transmitted outside the device unless explicitly saved or submitted by the user. Camera access can be revoked at any time via system settings (though barcode scanning and photo features will become unavailable).</p>
+
+    <div class="warning-box" data-lang="ja">
+      ⚠️ AI献立提案のために食品写真をサーバーに送信する場合、その旨を送信前にアプリ内で明示します。
+    </div>
+    <div class="warning-box" data-lang="en">
+      ⚠️ When food photos are sent to our server for AI meal suggestions, the app will clearly notify you before transmission.
+    </div>
+  </section>
+
+  <!-- Section 6 -->
+  <section id="s6">
+    <h2 data-lang="ja">6. AI処理について</h2>
+    <h2 data-lang="en">6. AI Processing</h2>
+
+    <div class="ai-box">
+      <h4 data-lang="ja">🤖 Claude AI（Anthropic）による処理</h4>
+      <h4 data-lang="en">🤖 Processing by Claude AI (Anthropic)</h4>
+      <p data-lang="ja">本アプリは以下の目的でAnthropicのClaude AIを使用します：</p>
+      <p data-lang="en">This app uses Anthropic's Claude AI for the following purposes:</p>
+    </div>
+
+    <ul data-lang="ja">
+      <li>在庫食材をもとにした献立・レシピの提案</li>
+      <li>食品写真の内容認識・栄養推定</li>
+      <li>食事制限・アレルギーを考慮した食事アドバイス</li>
+      <li>食品の賞味期限に基づいた使い切りレシピの提案</li>
+    </ul>
+    <ul data-lang="en">
+      <li>Meal and recipe suggestions based on inventory ingredients</li>
+      <li>Food photo recognition and nutrition estimation</li>
+      <li>Dietary advice considering restrictions and allergies</li>
+      <li>Recipe suggestions for using up ingredients near expiry</li>
+    </ul>
+
+    <h3 data-lang="ja">Claude AIに送信されるデータ</h3>
+    <h3 data-lang="en">Data Sent to Claude AI</h3>
+    <ul data-lang="ja">
+      <li>食品在庫リスト（アイテム名、数量、賞味期限）</li>
+      <li>食品写真（ユーザーが分析を要求した場合のみ）</li>
+      <li>食事設定（アレルギー、食事制限など）</li>
+    </ul>
+    <ul data-lang="en">
+      <li>Food inventory list (item names, quantities, expiry dates)</li>
+      <li>Food photos (only when user requests analysis)</li>
+      <li>Dietary settings (allergies, dietary restrictions, etc.)</li>
+    </ul>
+
+    <div class="warning-box" data-lang="ja">
+      ⚠️ <strong>氏名・メールアドレス等の個人を特定できる情報はClaude AIに送信されません。</strong>送信される情報は食品・在庫に関するデータのみです。Anthropicのデータ取扱いについては <a href="https://www.anthropic.com/privacy" target="_blank">Anthropicプライバシーポリシー</a>をご参照ください。
+    </div>
+    <div class="warning-box" data-lang="en">
+      ⚠️ <strong>Personally identifiable information such as name or email address is NOT sent to Claude AI.</strong> Only food and inventory-related data is transmitted. For Anthropic's data handling, please refer to the <a href="https://www.anthropic.com/privacy" target="_blank">Anthropic Privacy Policy</a>.
+    </div>
+
+    <h3 data-lang="ja">サーバーサイド画像処理</h3>
+    <h3 data-lang="en">Server-Side Image Processing</h3>
+    <p data-lang="ja">食品画像はサーバーにてsharpライブラリを使用して最適化（リサイズ・圧縮）処理されます。処理後の画像はFirebase Storageに保存されます。</p>
+    <p data-lang="en">Food images are optimized (resized and compressed) on the server using the sharp library. Processed images are stored in Firebase Storage.</p>
+  </section>
+
+  <!-- Section 7 -->
+  <section id="s7">
+    <h2 data-lang="ja">7. 食品データについて</h2>
+    <h2 data-lang="en">7. Food Data</h2>
+
+    <p data-lang="ja">パントリー（食品棚）の内容は非常にプライベートな情報です。PantryAIはお客様の食品在庫データを最大限の注意を持って取り扱います。</p>
+    <p data-lang="en">The contents of your pantry are highly personal information. PantryAI handles your food inventory data with the utmost care.</p>
+
+    <div class="highlight-box">
+      <strong data-lang="ja">食品データに関する重要な約束</strong>
+      <strong data-lang="en">Our Commitments Regarding Food Data</strong>
+      <ul data-lang="ja" style="margin-top:8px;">
+        <li>食品在庫データを第三者への販売・マーケティング目的に使用することはありません</li>
+        <li>食品データは本人のサービス提供のみに使用されます</li>
+        <li>アカウント削除後、食品データはすべて消去されます</li>
+        <li>データは暗号化（転送中・保存時）されます</li>
+      </ul>
+      <ul data-lang="en" style="margin-top:8px;">
+        <li>Food inventory data will never be sold or used for third-party marketing</li>
+        <li>Food data is used solely to provide services to you</li>
+        <li>All food data is erased upon account deletion</li>
+        <li>Data is encrypted both in transit and at rest</li>
+      </ul>
+    </div>
+
+    <h3 data-lang="ja">バーコードスキャン履歴</h3>
+    <h3 data-lang="en">Barcode Scan History</h3>
+    <p data-lang="ja">スキャンしたバーコードの履歴は入力補助のために保存されます。この情報は食品データベースとの照合のみに使用され、ユーザー間で共有されることはありません。</p>
+    <p data-lang="en">Barcode scan history is saved for input assistance purposes. This information is used only for matching with food databases and is never shared between users.</p>
+
+    <h3 data-lang="ja">栄養データ</h3>
+    <h3 data-lang="en">Nutrition Data</h3>
+    <p data-lang="ja">栄養摂取記録は健康管理の補助として提供されます。医療診断・治療目的には使用せず、医療機関への提供も行いません。</p>
+    <p data-lang="en">Nutrition intake records are provided as a health management aid. They are not used for medical diagnosis or treatment, and are not shared with medical institutions.</p>
+  </section>
+
+  <!-- Section 8 -->
+  <section id="s8">
+    <h2 data-lang="ja">8. 子どものプライバシー</h2>
+    <h2 data-lang="en">8. Children's Privacy</h2>
+    <p data-lang="ja">本アプリは13歳未満の子どもを対象としておらず、意図的に13歳未満の個人情報を収集することはありません。13歳未満のお子様が本アプリを使用していることが判明した場合、当該データを速やかに削除します。お子様が登録している可能性がある場合は、<a href="mailto:app.develop.sk@gmail.com">app.develop.sk@gmail.com</a> までお知らせください。</p>
+    <p data-lang="en">This app is not directed at children under the age of 13, and we do not knowingly collect personal information from children under 13. If we become aware that a child under 13 has used this app, we will promptly delete their data. If you believe a child may have registered, please contact <a href="mailto:app.develop.sk@gmail.com">app.develop.sk@gmail.com</a>.</p>
+  </section>
+
+  <!-- Section 9 -->
+  <section id="s9">
+    <h2 data-lang="ja">9. ポリシー変更</h2>
+    <h2 data-lang="en">9. Policy Changes</h2>
+    <p data-lang="ja">本プライバシーポリシーは随時更新される場合があります。重要な変更がある場合は、アプリ内通知またはメールにてお知らせします。変更後も引き続きアプリをご利用になることで、改定されたポリシーへの同意とみなされます。最新のポリシーは常に本ページに掲載されます。</p>
+    <p data-lang="en">This Privacy Policy may be updated from time to time. We will notify you of significant changes via in-app notifications or email. Continued use of the app after changes constitutes acceptance of the revised policy. The latest policy will always be available on this page.</p>
+  </section>
+
+  <!-- Section 10 -->
+  <section id="s10">
+    <h2 data-lang="ja">10. お問い合わせ</h2>
+    <h2 data-lang="en">10. Contact Us</h2>
+    <p data-lang="ja">プライバシーに関するご質問・削除リクエスト・その他のお問い合わせは下記までご連絡ください。</p>
+    <p data-lang="en">For privacy-related questions, deletion requests, or other inquiries, please contact us at:</p>
+    <div class="highlight-box">
+      <strong>PantryAI / パントリーAI</strong>
+      📧 <a href="mailto:app.develop.sk@gmail.com">app.develop.sk@gmail.com</a>
+    </div>
+    <p data-lang="ja">お問い合わせいただいた場合、5営業日以内に返答するよう努めます。</p>
+    <p data-lang="en">We aim to respond to all inquiries within 5 business days.</p>
+  </section>
+
+</div>
+
+<footer>
+  <p>© 2026 PantryAI. All rights reserved.</p>
+  <p style="margin-top:6px;">
+    <a href="mailto:app.develop.sk@gmail.com">app.develop.sk@gmail.com</a>
+    &nbsp;|&nbsp; Bundle ID: com.pantryai.pantryAi
+  </p>
+</footer>
+
+<script>
+  function getLang() {
+    const params = new URLSearchParams(window.location.search);
+    return params.get('lang') === 'en' ? 'en' : 'ja';
+  }
+
+  function setLang(lang) {
+    const url = new URL(window.location.href);
+    if (lang === 'en') {
+      url.searchParams.set('lang', 'en');
+    } else {
+      url.searchParams.delete('lang');
+    }
+    window.history.replaceState({}, '', url.toString());
+    applyLang(lang);
+  }
+
+  function applyLang(lang) {
+    document.body.classList.toggle('lang-en', lang === 'en');
+    document.documentElement.lang = lang === 'en' ? 'en' : 'ja';
+    document.title = lang === 'en'
+      ? 'Privacy Policy | PantryAI'
+      : 'プライバシーポリシー | PantryAI';
+    document.getElementById('btn-ja').classList.toggle('active', lang !== 'en');
+    document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+  }
+
+  // On load, check URL param
+  applyLang(getLang());
+</script>
+
+</body>
+</html>

@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy — Debate Me</title>
+<link rel="canonical" href="https://appdevelopsk.com/privacy-policy/debate-me/">
+  <style>
+    :root {
+      --primary: #4F46E5;
+      --accent: #FF6F00;
+      --bg: #0D1117;
+      --surface: #161B22;
+      --border: #30363D;
+      --text: #E6EDF3;
+      --text-muted: #8B949E;
+      --highlight-bg: rgba(79, 70, 229, 0.12);
+      --highlight-border: rgba(79, 70, 229, 0.5);
+      --radius: 12px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Hiragino Kaku Gothic ProN",
+        "Yu Gothic", "Meiryo", "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.8;
+      font-size: 16px;
+    }
+
+    header {
+      background: linear-gradient(135deg, #1A1045 0%, #2D2570 50%, #0D1117 100%);
+      color: #fff;
+      padding: 48px 24px 40px;
+      text-align: center;
+      border-bottom: 1px solid var(--border);
+    }
+
+    header .app-icon {
+      width: 80px; height: 80px;
+      background: rgba(79, 70, 229, 0.25);
+      border-radius: 20px;
+      margin: 0 auto 16px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 40px;
+      border: 2px solid rgba(79, 70, 229, 0.4);
+    }
+
+    header h1 {
+      font-size: 1.75rem; font-weight: 700;
+      letter-spacing: -0.01em;
+      background: linear-gradient(135deg, #818CF8, #FF6F00);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    header p { margin-top: 6px; font-size: 0.95rem; opacity: 0.85; }
+
+    .lang-toggle { margin-top: 20px; display: flex; justify-content: center; gap: 8px; }
+    .lang-toggle button {
+      padding: 6px 20px; border-radius: 999px;
+      border: 2px solid rgba(255,255,255,0.4);
+      background: transparent; color: #fff; font-size: 0.875rem;
+      cursor: pointer; transition: all 0.2s; font-weight: 500;
+    }
+    .lang-toggle button.active {
+      background: var(--primary); border-color: var(--primary);
+    }
+    .lang-toggle button:hover:not(.active) {
+      background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.6);
+    }
+
+    main { max-width: 760px; margin: 0 auto; padding: 40px 24px 80px; }
+
+    .updated { text-align: center; font-size: 0.875rem; color: var(--text-muted); margin-bottom: 36px; }
+
+    section {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 28px; margin-bottom: 20px;
+    }
+
+    section h2 {
+      font-size: 1.05rem; font-weight: 700; color: #818CF8;
+      margin-bottom: 12px; display: flex; align-items: center; gap: 10px;
+    }
+
+    section h2 .num {
+      background: var(--primary); color: #fff; font-size: 0.75rem; font-weight: 700;
+      width: 24px; height: 24px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+
+    section p { color: #C9D1D9; margin-bottom: 10px; }
+    section p:last-child { margin-bottom: 0; }
+    section ul { padding-left: 1.4em; color: #C9D1D9; }
+    section ul li { margin-bottom: 6px; }
+    section ul li:last-child { margin-bottom: 0; }
+
+    .highlight-box {
+      background: var(--highlight-bg);
+      border-left: 4px solid var(--primary);
+      border-radius: 0 8px 8px 0; padding: 14px 16px;
+      margin-top: 12px; font-size: 0.9rem; color: #A5B4FC;
+    }
+
+    .contact-card {
+      background: linear-gradient(135deg, #1A1045 0%, #2D2570 100%);
+      color: #fff; border-radius: var(--radius); padding: 28px;
+      text-align: center; margin-top: 20px;
+      border: 1px solid rgba(79, 70, 229, 0.3);
+    }
+
+    .contact-card h2 { font-size: 1.1rem; font-weight: 700; margin-bottom: 10px; color: #fff; display: block; }
+    .contact-card a {
+      color: var(--accent); font-weight: 600; font-size: 1.05rem; text-decoration: none;
+      border-bottom: 2px solid rgba(255, 111, 0, 0.5); padding-bottom: 2px;
+    }
+    .contact-card a:hover { border-color: var(--accent); }
+
+    a { color: #818CF8; }
+
+    footer {
+      text-align: center; padding: 24px; font-size: 0.85rem;
+      color: var(--text-muted); border-top: 1px solid var(--border);
+    }
+
+    [data-lang] { display: none; }
+    .lang-en [data-lang="en"] { display: block; }
+    .lang-ja [data-lang="ja"] { display: block; }
+    .lang-en .contact-card[data-lang="en"] { display: block; }
+    .lang-ja .contact-card[data-lang="ja"] { display: block; }
+
+    @media (max-width: 600px) {
+      header h1 { font-size: 1.4rem; }
+      section { padding: 20px 18px; }
+      main { padding: 28px 16px 60px; }
+    }
+  </style>
+</head>
+<body class="lang-en">
+
+<header>
+  <div class="app-icon">&#9878;&#65039;</div>
+  <h1>Debate Me</h1>
+  <p id="header-sub">Privacy Policy</p>
+  <div class="lang-toggle">
+    <button id="btn-en" class="active" onclick="setLang('en')">English</button>
+    <button id="btn-ja" onclick="setLang('ja')">日本語</button>
+  </div>
+</header>
+
+<main>
+
+  <!-- ===== ENGLISH ===== -->
+  <p class="updated" data-lang="en">Last updated: March 2026</p>
+
+  <section data-lang="en">
+    <div class="highlight-box" style="margin-top:0; margin-bottom:0;">
+      <strong>Key Point:</strong> Debate Me is completely anonymous. We do not collect any personal information. No account, no email, no real name required.
+    </div>
+  </section>
+
+  <section data-lang="en">
+    <h2><span class="num">1</span>Information We Collect</h2>
+    <p>Debate Me ("the App") collects the minimum information necessary to provide the service:</p>
+    <ul>
+      <li><strong>Device ID:</strong> A randomly generated UUID stored on your device. This is used solely to identify your session and track your debate history. It is never linked to your real identity.</li>
+      <li><strong>Debate history:</strong> Topics you have debated, positions taken, and outcomes are stored locally on your device.</li>
+      <li><strong>Scores and statistics:</strong> Your win/loss record and debate performance metrics.</li>
+    </ul>
+    <p>We do <strong>not</strong> collect: name, email, phone number, physical location, IP address (beyond standard server logs), or any personally identifiable information.</p>
+  </section>
+
+  <section data-lang="en">
+    <h2><span class="num">2</span>How We Use Your Information</h2>
+    <p>We use collected information solely for the following purposes:</p>
+    <ul>
+      <li>Providing AI-powered debate experiences</li>
+      <li>Tracking your debate history and progress</li>
+      <li>Calculating and displaying scores and statistics</li>
+      <li>Improving app quality and performance</li>
+    </ul>
+  </section>
+
+  <section data-lang="en">
+    <h2><span class="num">3</span>Advertising</h2>
+    <p>Debate Me displays advertisements served by <strong>Google AdMob</strong>. AdMob may collect certain device information to serve relevant ads. On iOS, we request your permission via <strong>App Tracking Transparency (ATT)</strong> before any ad-related tracking occurs.</p>
+    <p>You can opt out of personalized advertising at any time through your device settings. For more information, see <a href="https://policies.google.com/privacy" target="_blank">Google's Privacy Policy</a>.</p>
+  </section>
+
+  <section data-lang="en">
+    <h2><span class="num">4</span>Analytics and Crash Reporting</h2>
+    <p>We use the following third-party services to improve app quality:</p>
+    <ul>
+      <li><strong>Firebase Analytics:</strong> Used for anonymous app usage analytics (e.g., which screens are visited most, feature usage patterns).</li>
+      <li><strong>Sentry:</strong> Used for crash reporting and error monitoring to improve app stability.</li>
+    </ul>
+    <p>Both services collect anonymous, non-personally-identifiable technical data such as device type, OS version, and app version.</p>
+  </section>
+
+  <section data-lang="en">
+    <h2><span class="num">5</span>AI Processing</h2>
+    <p>Debate Me uses AI to generate debate responses and evaluate arguments. Your debate input is sent to our server for AI processing in real time.</p>
+    <div class="highlight-box">
+      <strong>Important:</strong> Debate content is processed in real time and is not stored long-term on our servers. Once a debate session ends, the content is not retained. No debate transcripts are permanently stored server-side.
+    </div>
+  </section>
+
+  <section data-lang="en">
+    <h2><span class="num">6</span>Data Sharing</h2>
+    <p>We do <strong>not</strong> sell, rent, or share your personal data with third parties for marketing purposes. Data is shared only with:</p>
+    <ul>
+      <li><strong>Google AdMob:</strong> For serving advertisements (subject to your ATT consent on iOS)</li>
+      <li><strong>Firebase Analytics:</strong> For anonymous usage analytics</li>
+      <li><strong>Sentry:</strong> For anonymous crash and error reporting</li>
+    </ul>
+  </section>
+
+  <section data-lang="en">
+    <h2><span class="num">7</span>Data Retention</h2>
+    <p>Debate history and scores are stored <strong>locally on your device</strong>. Deleting the app will remove all local data. Server-side data is minimal and limited to anonymous analytics data collected by third-party services as described above.</p>
+  </section>
+
+  <section data-lang="en">
+    <h2><span class="num">8</span>Children's Privacy</h2>
+    <p>Debate Me is rated 4+ and does not contain user-generated content or offensive material. We do not knowingly collect personal information from children. Since no personal information is collected from any user, the App is compliant with applicable children's privacy regulations.</p>
+  </section>
+
+  <section data-lang="en">
+    <h2><span class="num">9</span>Security</h2>
+    <p>We use HTTPS encryption for all data transmission between the App and our servers. No payment information is collected or stored by the App. We employ industry-standard security practices to protect our infrastructure.</p>
+  </section>
+
+  <section data-lang="en">
+    <h2><span class="num">10</span>Changes to This Policy</h2>
+    <p>We may update this Privacy Policy from time to time. Changes will be reflected by the "Last updated" date at the top of this page. Continued use of the App constitutes acceptance of the updated policy.</p>
+  </section>
+
+  <div class="contact-card" data-lang="en">
+    <h2>11. Contact Us</h2>
+    <p style="margin-bottom:12px; opacity:0.9;">For privacy-related questions or data deletion requests, please contact us at:</p>
+    <a href="mailto:app.develop.sk@gmail.com">app.develop.sk@gmail.com</a>
+  </div>
+
+  <!-- ===== JAPANESE ===== -->
+  <p class="updated" data-lang="ja">最終更新日：2026年3月</p>
+
+  <section data-lang="ja">
+    <div class="highlight-box" style="margin-top:0; margin-bottom:0;">
+      <strong>重要：</strong>Debate Meは完全に匿名です。個人情報は一切収集しません。アカウント登録、メールアドレス、氏名は不要です。
+    </div>
+  </section>
+
+  <section data-lang="ja">
+    <h2><span class="num">1</span>収集する情報</h2>
+    <p>Debate Me（以下「本アプリ」）は、サービス提供に必要な最小限の情報のみを収集します。</p>
+    <ul>
+      <li><strong>デバイスID：</strong>端末上で自動生成されるランダムなUUIDです。セッションの識別とディベート履歴の管理にのみ使用され、実際の身元とは紐付けられません。</li>
+      <li><strong>ディベート履歴：</strong>ディベートしたトピック、選択した立場、結果はお使いの端末にローカル保存されます。</li>
+      <li><strong>スコアと統計：</strong>勝敗記録やディベートのパフォーマンス指標。</li>
+    </ul>
+    <p>氏名、メールアドレス、電話番号、位置情報、IPアドレス（標準的なサーバーログを除く）、その他の個人を特定できる情報は<strong>一切収集しません</strong>。</p>
+  </section>
+
+  <section data-lang="ja">
+    <h2><span class="num">2</span>情報の利用目的</h2>
+    <p>収集した情報は以下の目的のみに使用します。</p>
+    <ul>
+      <li>AIを活用したディベート体験の提供</li>
+      <li>ディベート履歴と進捗の管理</li>
+      <li>スコアと統計の算出・表示</li>
+      <li>アプリの品質とパフォーマンスの改善</li>
+    </ul>
+  </section>
+
+  <section data-lang="ja">
+    <h2><span class="num">3</span>広告について</h2>
+    <p>本アプリは<strong>Google AdMob</strong>による広告を表示します。AdMobは関連性の高い広告を配信するために、一定のデバイス情報を収集する場合があります。iOSでは、広告関連のトラッキングを行う前に<strong>App Tracking Transparency (ATT)</strong>を通じてお客様の許可を求めます。</p>
+    <p>パーソナライズド広告はお使いの端末の設定からいつでもオプトアウトできます。詳しくは<a href="https://policies.google.com/privacy" target="_blank">Googleのプライバシーポリシー</a>をご確認ください。</p>
+  </section>
+
+  <section data-lang="ja">
+    <h2><span class="num">4</span>アナリティクスとクラッシュレポート</h2>
+    <p>アプリの品質向上のため、以下の第三者サービスを利用しています。</p>
+    <ul>
+      <li><strong>Firebase Analytics：</strong>匿名のアプリ利用状況分析（画面の訪問数、機能の使用パターンなど）に使用されます。</li>
+      <li><strong>Sentry：</strong>アプリの安定性向上のためのクラッシュレポートおよびエラー監視に使用されます。</li>
+    </ul>
+    <p>いずれのサービスも、デバイスの種類、OSバージョン、アプリバージョンなど、匿名かつ個人を特定できない技術データのみを収集します。</p>
+  </section>
+
+  <section data-lang="ja">
+    <h2><span class="num">5</span>AI処理について</h2>
+    <p>本アプリはAIを使用してディベートの応答を生成し、議論を評価します。お客様のディベート入力はリアルタイムでサーバーに送信され、AI処理されます。</p>
+    <div class="highlight-box">
+      <strong>重要：</strong>ディベートの内容はリアルタイムで処理され、サーバーに長期保存されることはありません。ディベートセッションが終了すると、その内容は保持されません。ディベートのやり取りがサーバー側に永続的に保存されることはありません。
+    </div>
+  </section>
+
+  <section data-lang="ja">
+    <h2><span class="num">6</span>データの共有</h2>
+    <p>お客様の個人データをマーケティング目的で第三者に販売、貸与、共有することは<strong>一切ありません</strong>。データは以下のサービスとのみ共有されます。</p>
+    <ul>
+      <li><strong>Google AdMob：</strong>広告配信のため（iOSではATTの同意に基づく）</li>
+      <li><strong>Firebase Analytics：</strong>匿名の利用状況分析のため</li>
+      <li><strong>Sentry：</strong>匿名のクラッシュ・エラーレポートのため</li>
+    </ul>
+  </section>
+
+  <section data-lang="ja">
+    <h2><span class="num">7</span>データの保管</h2>
+    <p>ディベート履歴とスコアは<strong>お使いの端末にローカル保存</strong>されます。アプリを削除すると、すべてのローカルデータが削除されます。サーバー側のデータは最小限であり、上記の第三者サービスによって収集される匿名のアナリティクスデータに限定されます。</p>
+  </section>
+
+  <section data-lang="ja">
+    <h2><span class="num">8</span>お子様のプライバシー</h2>
+    <p>Debate Meは4+（全年齢対象）に設定されており、ユーザー生成コンテンツや不適切なコンテンツは含まれません。お子様の個人情報を故意に収集することはありません。すべてのユーザーから個人情報を収集しないため、本アプリは児童のプライバシーに関する適用法規に準拠しています。</p>
+  </section>
+
+  <section data-lang="ja">
+    <h2><span class="num">9</span>セキュリティ</h2>
+    <p>本アプリとサーバー間のすべてのデータ通信にはHTTPS暗号化を使用しています。本アプリでは決済情報の収集・保存は行いません。業界標準のセキュリティ対策を講じてインフラストラクチャを保護しています。</p>
+  </section>
+
+  <section data-lang="ja">
+    <h2><span class="num">10</span>ポリシーの変更</h2>
+    <p>本プライバシーポリシーは随時更新される場合があります。変更はこのページの上部にある「最終更新日」に反映されます。アプリの継続使用をもって、更新されたポリシーに同意したものとみなされます。</p>
+  </section>
+
+  <div class="contact-card" data-lang="ja">
+    <h2>11. お問い合わせ</h2>
+    <p style="margin-bottom:12px; opacity:0.9;">プライバシーに関するご質問やデータ削除のご依頼は、下記までご連絡ください。</p>
+    <a href="mailto:app.develop.sk@gmail.com">app.develop.sk@gmail.com</a>
+  </div>
+
+</main>
+
+<footer>
+  &copy; 2026 AppDevelopSK — Debate Me
+</footer>
+
+<script>
+  function setLang(lang) {
+    document.body.className = 'lang-' + lang;
+    document.getElementById('header-sub').textContent =
+      lang === 'ja' ? 'プライバシーポリシー' : 'Privacy Policy';
+    document.getElementById('btn-ja').classList.toggle('active', lang === 'ja');
+    document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+    document.title = lang === 'ja'
+      ? 'プライバシーポリシー — Debate Me'
+      : 'Privacy Policy — Debate Me';
+    const url = new URL(window.location);
+    url.searchParams.set('lang', lang);
+    history.replaceState({}, '', url);
+  }
+
+  (function () {
+    const params = new URLSearchParams(window.location.search);
+    const lang = params.get('lang');
+    if (lang === 'ja') setLang('ja');
+    else setLang('en');
+  })();
+</script>
+
+</body>
+</html>

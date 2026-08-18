@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy — SkinSage</title>
+<link rel="canonical" href="https://appdevelopsk.com/privacy-policy/skinsage/">
+  <style>
+    :root {
+      --accent: #E8A598;
+      --accent-light: #FDF3F1;
+      --bg: #FFFFFF;
+      --surface: #F8F8FE;
+      --text: #1A1A2E;
+      --text-muted: #6B7280;
+      --border: #E5E7EB;
+      --radius: 12px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Hiragino Kaku Gothic ProN",
+        "Yu Gothic", "Meiryo", "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.8;
+      font-size: 16px;
+    }
+
+    header {
+      background: linear-gradient(135deg, #E8A598 0%, #C97B6B 100%);
+      color: #fff;
+      padding: 48px 24px 40px;
+      text-align: center;
+    }
+
+    header .app-icon {
+      width: 72px; height: 72px;
+      background: rgba(255,255,255,0.25);
+      border-radius: 18px;
+      margin: 0 auto 16px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 36px;
+    }
+
+    header h1 { font-size: 1.75rem; font-weight: 700; letter-spacing: -0.01em; }
+    header p { margin-top: 6px; font-size: 0.95rem; opacity: 0.85; }
+
+    .lang-toggle { margin-top: 20px; display: flex; justify-content: center; gap: 8px; }
+    .lang-toggle button {
+      padding: 6px 20px; border-radius: 999px;
+      border: 2px solid rgba(255,255,255,0.6);
+      background: transparent; color: #fff; font-size: 0.875rem;
+      cursor: pointer; transition: background 0.2s, border-color 0.2s; font-weight: 500;
+    }
+    .lang-toggle button.active, .lang-toggle button:hover {
+      background: rgba(255,255,255,0.25); border-color: #fff;
+    }
+
+    main { max-width: 760px; margin: 0 auto; padding: 40px 24px 80px; }
+
+    .updated { text-align: center; font-size: 0.875rem; color: var(--text-muted); margin-bottom: 36px; }
+
+    section {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 28px; margin-bottom: 20px;
+    }
+
+    section h2 {
+      font-size: 1.05rem; font-weight: 700; color: var(--accent);
+      margin-bottom: 12px; display: flex; align-items: center; gap: 10px;
+    }
+
+    section h2 .num {
+      background: var(--accent); color: #fff; font-size: 0.75rem; font-weight: 700;
+      width: 24px; height: 24px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+
+    section p { color: #374151; margin-bottom: 10px; }
+    section p:last-child { margin-bottom: 0; }
+    section ul { padding-left: 1.4em; color: #374151; }
+    section ul li { margin-bottom: 6px; }
+    section ul li:last-child { margin-bottom: 0; }
+
+    .highlight-box {
+      background: var(--accent-light); border-left: 4px solid var(--accent);
+      border-radius: 0 8px 8px 0; padding: 14px 16px;
+      margin-top: 12px; font-size: 0.9rem; color: #374151;
+    }
+
+    .contact-card {
+      background: linear-gradient(135deg, #E8A598 0%, #C97B6B 100%);
+      color: #fff; border-radius: var(--radius); padding: 28px;
+      text-align: center; margin-top: 20px;
+    }
+
+    .contact-card h2 { font-size: 1.1rem; font-weight: 700; margin-bottom: 10px; color: #fff; }
+    .contact-card a {
+      color: #fff; font-weight: 600; font-size: 1.05rem; text-decoration: none;
+      border-bottom: 2px solid rgba(255,255,255,0.5); padding-bottom: 2px;
+    }
+    .contact-card a:hover { border-color: #fff; }
+
+    footer {
+      text-align: center; padding: 24px; font-size: 0.85rem;
+      color: var(--text-muted); border-top: 1px solid var(--border);
+    }
+
+    [data-lang] { display: none; }
+    .lang-ja [data-lang="ja"] { display: block; }
+    .lang-en [data-lang="en"] { display: block; }
+    .lang-ja .contact-card[data-lang="ja"], .lang-en .contact-card[data-lang="en"] { display: block; }
+
+    @media (max-width: 600px) {
+      header h1 { font-size: 1.4rem; }
+      section { padding: 20px 18px; }
+      main { padding: 28px 16px 60px; }
+    }
+  </style>
+</head>
+<body class="lang-ja">
+
+<header>
+  <div class="app-icon">🌿</div>
+  <h1>SkinSage</h1>
+  <p id="header-sub">プライバシーポリシー</p>
+  <div class="lang-toggle">
+    <button id="btn-ja" class="active" onclick="setLang('ja')">日本語</button>
+    <button id="btn-en" onclick="setLang('en')">English</button>
+  </div>
+</header>
+
+<main>
+
+  <!-- ===== JAPANESE ===== -->
+  <p class="updated" data-lang="ja">最終更新日：2026年3月17日</p>
+
+  <section data-lang="ja">
+    <h2><span class="num">1</span>収集する情報</h2>
+    <p>SkinSage（以下「本アプリ」）は、AIスキンケア分析サービスを提供するためにアカウント登録が必要です。以下の情報を収集します。</p>
+    <ul>
+      <li><strong>メールアドレス：</strong>アカウント作成およびログインのために使用します</li>
+      <li><strong>肌タイプ・肌悩み：</strong>パーソナライズされたルーティン生成のために使用します</li>
+      <li><strong>肌分析写真：</strong>AI肌分析のために一時的に処理されます（サーバーに永続保存されません）</li>
+      <li><strong>分析履歴：</strong>進捗トラッキングのためにサーバーに保存されます</li>
+    </ul>
+    <div class="highlight-box">
+      お客様のデータを第三者に販売することは一切ありません。
+    </div>
+  </section>
+
+  <section data-lang="ja">
+    <h2><span class="num">1a</span>顔・肌データの取り扱い</h2>
+    <p>本アプリでは、AI肌分析のためにカメラで撮影した顔・肌の画像（以下「顔データ」）を使用します。顔データの取り扱いについて、以下のとおり明示します。</p>
+    <ul>
+      <li><strong>保持しない：</strong>顔データは分析処理のためにサーバーへ一時的に送信されますが、分析完了後ただちに削除されます。画像ファイルそのものをサーバーに永続保存することはありません。</li>
+      <li><strong>保持期間：</strong>分析処理の実行中のみ（通常数秒以内）。分析完了後は即時削除します。</li>
+      <li><strong>第三者への提供：</strong>顔データを第三者に提供・販売・共有することは一切ありません。</li>
+      <li><strong>AI分析処理：</strong>分析はAIモデルによって行われます。このモデルは顔データを学習目的で使用せず、分析結果のみを返します。</li>
+    </ul>
+    <div class="highlight-box">
+      顔・肌の画像データは分析のためにのみ使用され、第三者と共有されることなく、分析完了後に即時削除されます。
+    </div>
+  </section>
+
+  <section data-lang="ja">
+    <h2><span class="num">2</span>情報の利用目的</h2>
+    <p>収集した情報は以下の目的のみに使用します。</p>
+    <ul>
+      <li>アカウント管理・認証</li>
+      <li>AI肌分析の実行</li>
+      <li>パーソナライズされたスキンケアルーティンの生成</li>
+      <li>進捗記録の管理</li>
+      <li>アプリの改善・不具合修正（Sentryによるクラッシュレポート）</li>
+    </ul>
+  </section>
+
+  <section data-lang="ja">
+    <h2><span class="num">3</span>第三者サービス</h2>
+    <p>本アプリは以下の第三者サービスを利用しています。</p>
+    <ul>
+      <li><strong>Sentry：</strong>クラッシュレポートおよびエラー監視のために使用されます</li>
+    </ul>
+    <div class="highlight-box">
+      本アプリは広告を表示せず、広告用のデータ収集は行いません。
+    </div>
+  </section>
+
+  <section data-lang="ja">
+    <h2><span class="num">4</span>データ保管と削除</h2>
+    <p>アカウントデータはサービス提供のためサーバーに保存されます。アカウントの削除を希望する場合は、アプリ内設定またはメールにてご連絡ください。すべての個人データを削除いたします。</p>
+  </section>
+
+  <section data-lang="ja">
+    <h2><span class="num">5</span>子どものプライバシー</h2>
+    <p>本アプリは13歳未満の方を対象としておらず、意図的に13歳未満の個人情報を収集しません。</p>
+  </section>
+
+  <section data-lang="ja">
+    <h2><span class="num">6</span>ポリシーの変更</h2>
+    <p>本ポリシーは必要に応じて更新されることがあります。重要な変更が生じた場合は、このページを通じてお知らせします。</p>
+  </section>
+
+  <div class="contact-card" data-lang="ja">
+    <h2>お問い合わせ</h2>
+    <p style="margin-bottom:12px; opacity:0.9;">プライバシーに関するご質問・ご要望は下記までご連絡ください。</p>
+    <a href="mailto:app.develop.sk@gmail.com">app.develop.sk@gmail.com</a>
+  </div>
+
+  <!-- ===== ENGLISH ===== -->
+  <p class="updated" data-lang="en">Last updated: March 17, 2026</p>
+
+  <section data-lang="en">
+    <h2><span class="num">1</span>Information We Collect</h2>
+    <p>SkinSage ("the App") requires account registration to provide AI skincare analysis. We collect the following information.</p>
+    <ul>
+      <li><strong>Email address:</strong> Used for account creation and login</li>
+      <li><strong>Skin type and concerns:</strong> Used to generate personalized skincare routines</li>
+      <li><strong>Skin analysis photos:</strong> Temporarily processed for AI analysis (not permanently stored on servers)</li>
+      <li><strong>Analysis history:</strong> Stored on servers for progress tracking</li>
+    </ul>
+    <div class="highlight-box">
+      We never sell your data to third parties.
+    </div>
+  </section>
+
+  <section data-lang="en">
+    <h2><span class="num">1a</span>Face and Skin Data Practices</h2>
+    <p>The App uses facial and skin images captured by the camera ("face data") for AI skin analysis. We are transparent about how we handle this data.</p>
+    <ul>
+      <li><strong>Not retained:</strong> Face data is temporarily transmitted to our server for analysis processing, then immediately deleted upon completion. The image file itself is never permanently stored on our servers.</li>
+      <li><strong>Storage duration:</strong> Only during the analysis process (typically within a few seconds). Deleted immediately after analysis is complete.</li>
+      <li><strong>No third-party sharing:</strong> We do not provide, sell, or share face data with any third parties under any circumstances.</li>
+      <li><strong>AI analysis processing:</strong> Analysis is performed by our AI model. This model does not use face data for training purposes and returns only the analysis result.</li>
+    </ul>
+    <div class="highlight-box">
+      Face and skin image data is used solely for analysis, is never shared with third parties, and is deleted immediately after the analysis is complete.
+    </div>
+  </section>
+
+  <section data-lang="en">
+    <h2><span class="num">2</span>How We Use Your Information</h2>
+    <p>We use collected information solely for the following purposes.</p>
+    <ul>
+      <li>Account management and authentication</li>
+      <li>Performing AI skin analysis</li>
+      <li>Generating personalized skincare routines</li>
+      <li>Managing progress records</li>
+      <li>App improvement and bug fixing (via Sentry crash reports)</li>
+    </ul>
+  </section>
+
+  <section data-lang="en">
+    <h2><span class="num">3</span>Third-Party Services</h2>
+    <p>The App uses the following third-party services.</p>
+    <ul>
+      <li><strong>Sentry:</strong> Used for crash reporting and error monitoring</li>
+    </ul>
+    <div class="highlight-box">
+      This App does not display ads and does not collect data for advertising purposes.
+    </div>
+  </section>
+
+  <section data-lang="en">
+    <h2><span class="num">4</span>Data Retention and Deletion</h2>
+    <p>Account data is stored on our servers to provide our services. To delete your account and all associated data, please contact us via the in-app settings or by email.</p>
+  </section>
+
+  <section data-lang="en">
+    <h2><span class="num">5</span>Children's Privacy</h2>
+    <p>The App is not directed to children under the age of 13, and we do not knowingly collect personal information from anyone under 13.</p>
+  </section>
+
+  <section data-lang="en">
+    <h2><span class="num">6</span>Changes to This Policy</h2>
+    <p>We may update this Privacy Policy from time to time. If significant changes are made, we will notify you by updating this page.</p>
+  </section>
+
+  <div class="contact-card" data-lang="en">
+    <h2>Contact Us</h2>
+    <p style="margin-bottom:12px; opacity:0.9;">For any privacy-related questions or requests, please reach out to us.</p>
+    <a href="mailto:app.develop.sk@gmail.com">app.develop.sk@gmail.com</a>
+  </div>
+
+</main>
+
+<footer>
+  &copy; 2026 App Develop SK — SkinSage
+</footer>
+
+<script>
+  function setLang(lang) {
+    document.body.className = 'lang-' + lang;
+    document.getElementById('header-sub').textContent =
+      lang === 'ja' ? 'プライバシーポリシー' : 'Privacy Policy';
+    document.getElementById('btn-ja').classList.toggle('active', lang === 'ja');
+    document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+    document.title = lang === 'ja'
+      ? 'プライバシーポリシー — SkinSage'
+      : 'Privacy Policy — SkinSage';
+    const url = new URL(window.location);
+    url.searchParams.set('lang', lang);
+    history.replaceState({}, '', url);
+  }
+
+  (function () {
+    const params = new URLSearchParams(window.location.search);
+    const lang = params.get('lang');
+    if (lang === 'en') setLang('en');
+    else setLang('ja');
+  })();
+</script>
+
+</body>
+</html>

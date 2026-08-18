@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>プライバシーポリシー — Nearo</title>
+<link rel="canonical" href="https://appdevelopsk.com/privacy-policy/nearo/">
+  <style>
+    :root {
+      --accent: #4CAF82;
+      --accent2: #2196A8;
+      --accent-light: #E8F5EE;
+      --bg: #FFFFFF;
+      --surface: #F7FBF9;
+      --text: #1A1A2E;
+      --text-muted: #6B7280;
+      --border: #E5E7EB;
+      --radius: 12px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Hiragino Kaku Gothic ProN",
+        "Yu Gothic", "Meiryo", "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.8;
+      font-size: 16px;
+    }
+
+    header {
+      background: linear-gradient(135deg, #4CAF82 0%, #2196A8 100%);
+      color: #fff;
+      padding: 48px 24px 40px;
+      text-align: center;
+    }
+
+    header .app-icon {
+      width: 72px; height: 72px;
+      background: rgba(255,255,255,0.25);
+      border-radius: 18px;
+      margin: 0 auto 16px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 36px;
+    }
+
+    header h1 { font-size: 1.75rem; font-weight: 700; letter-spacing: -0.01em; }
+    header p { margin-top: 6px; font-size: 0.95rem; opacity: 0.85; }
+
+    .lang-toggle {
+      margin-top: 20px;
+      display: flex; justify-content: center; gap: 8px;
+    }
+
+    .lang-toggle button {
+      padding: 6px 20px; border-radius: 999px;
+      border: 2px solid rgba(255,255,255,0.6);
+      background: transparent; color: #fff;
+      font-size: 0.875rem; cursor: pointer;
+      transition: background 0.2s, border-color 0.2s; font-weight: 500;
+    }
+
+    .lang-toggle button.active,
+    .lang-toggle button:hover {
+      background: rgba(255,255,255,0.25); border-color: #fff;
+    }
+
+    main { max-width: 760px; margin: 0 auto; padding: 40px 24px 80px; }
+
+    .updated {
+      text-align: center; font-size: 0.875rem;
+      color: var(--text-muted); margin-bottom: 36px;
+    }
+
+    section {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 28px; margin-bottom: 20px;
+    }
+
+    section h2 {
+      font-size: 1.05rem; font-weight: 700; color: var(--accent);
+      margin-bottom: 12px; display: flex; align-items: center; gap: 10px;
+    }
+
+    section h2 .num {
+      background: var(--accent); color: #fff;
+      font-size: 0.75rem; font-weight: 700;
+      width: 24px; height: 24px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+
+    section p { color: #374151; margin-bottom: 10px; }
+    section p:last-child { margin-bottom: 0; }
+    section ul { padding-left: 1.4em; color: #374151; }
+    section ul li { margin-bottom: 6px; }
+    section ul li:last-child { margin-bottom: 0; }
+
+    .highlight-box {
+      background: var(--accent-light); border-left: 4px solid var(--accent);
+      border-radius: 0 8px 8px 0; padding: 14px 16px; margin-top: 12px;
+      font-size: 0.9rem; color: #374151;
+    }
+
+    .contact-card {
+      background: linear-gradient(135deg, #4CAF82 0%, #2196A8 100%);
+      color: #fff; border-radius: var(--radius); padding: 28px;
+      text-align: center; margin-top: 20px;
+    }
+
+    .contact-card h2 { font-size: 1.1rem; font-weight: 700; margin-bottom: 10px; color: #fff; }
+
+    .contact-card a {
+      color: #fff; font-weight: 600; font-size: 1.05rem;
+      text-decoration: none; border-bottom: 2px solid rgba(255,255,255,0.5); padding-bottom: 2px;
+    }
+
+    .contact-card a:hover { border-color: #fff; }
+
+    footer {
+      text-align: center; padding: 24px; font-size: 0.85rem;
+      color: var(--text-muted); border-top: 1px solid var(--border);
+    }
+
+    [data-lang] { display: none; }
+    .lang-ja [data-lang="ja"] { display: block; }
+    .lang-en [data-lang="en"] { display: block; }
+    .lang-ja .contact-card[data-lang="ja"],
+    .lang-en .contact-card[data-lang="en"] { display: block; }
+
+    @media (max-width: 600px) {
+      header h1 { font-size: 1.4rem; }
+      section { padding: 20px 18px; }
+      main { padding: 28px 16px 60px; }
+    }
+  </style>
+</head>
+<body class="lang-ja">
+
+<header>
+  <div class="app-icon">📍</div>
+  <h1>Nearo</h1>
+  <p id="header-sub">プライバシーポリシー</p>
+  <div class="lang-toggle">
+    <button id="btn-ja" class="active" onclick="setLang('ja')">日本語</button>
+    <button id="btn-en" onclick="setLang('en')">English</button>
+  </div>
+</header>
+
+<main>
+
+  <!-- ===== JAPANESE ===== -->
+  <p class="updated" data-lang="ja">最終更新日：2026年3月20日</p>
+
+  <section data-lang="ja">
+    <h2><span class="num">1</span>収集する情報</h2>
+    <p>Nearo（以下「本アプリ」）は、関係性ごとの位置情報共有サービスを提供するために以下の情報を収集します。</p>
+    <ul>
+      <li><strong>アカウント情報：</strong>表示名、プロフィール画像（任意）</li>
+      <li><strong>位置情報：</strong>GPS座標（精度は関係設定により変動。家族＝精確、友達＝エリア単位）</li>
+      <li><strong>友人関係：</strong>接続した友人・家族のUID、関係タイプ（家族／親友／友達）</li>
+      <li><strong>ステータス情報：</strong>現在のステータス（空き、移動中、忙しいなど）とコメント</li>
+      <li><strong>メッセージ：</strong>「出かける？」などの定型クイックメッセージ</li>
+      <li><strong>デバイス情報：</strong>プッシュ通知トークン</li>
+      <li><strong>利用状況：</strong>Firebase Analyticsによるアプリ利用統計</li>
+    </ul>
+    <div class="highlight-box">
+      位置情報の精度はあなたが設定した関係タイプによって決まります。「非公開」に設定した相手には位置情報は共有されません。第三者への販売は一切行いません。
+    </div>
+  </section>
+
+  <section data-lang="ja">
+    <h2><span class="num">2</span>情報の利用目的</h2>
+    <ul>
+      <li>関係タイプに応じた精度での位置情報共有（精確／近く／エリア単位）</li>
+      <li>ステータス表示と更新通知</li>
+      <li>友人への定型メッセージ送信</li>
+      <li>一時的な位置情報共有リクエストの管理</li>
+      <li>アプリのパフォーマンス改善とバグ修正</li>
+      <li>不正利用の検出と防止</li>
+    </ul>
+  </section>
+
+  <section data-lang="ja">
+    <h2><span class="num">3</span>位置情報の取り扱い</h2>
+    <p>本アプリは位置情報共有機能のために位置情報を使用します。</p>
+    <ul>
+      <li>位置情報はフォアグラウンド使用中に取得されます</li>
+      <li>共有精度は関係タイプごとに設定可能です（精確・近く・エリア・非公開）</li>
+      <li>「非公開」設定の相手には位置情報は一切送信されません</li>
+      <li>ナイトモード設定中は位置情報の共有が制限されます</li>
+    </ul>
+    <div class="highlight-box">
+      位置情報の取得はiOS設定から「使用中のみ許可」で制御できます。位置情報機能には許可が必要です。
+    </div>
+  </section>
+
+  <section data-lang="ja">
+    <h2><span class="num">4</span>第三者サービス</h2>
+    <p>本アプリは以下の第三者サービスを利用しています。</p>
+    <ul>
+      <li><strong>Firebase（Google LLC）：</strong>認証、データ保存（Firestore）、アプリ分析（Firebase Analytics）、クラッシュレポート（Crashlytics）</li>
+      <li><strong>Sentry：</strong>エラー監視・パフォーマンス計測</li>
+      <li><strong>Apple Push Notification Service（APNs）：</strong>プッシュ通知の配信</li>
+    </ul>
+    <div class="highlight-box">
+      各サービスには独自のプライバシーポリシーが適用されます。
+    </div>
+  </section>
+
+  <section data-lang="ja">
+    <h2><span class="num">5</span>データの保管と削除</h2>
+    <p>ユーザーデータはFirebase（Google Cloud）のセキュアなサーバーに保管されます。アカウントを削除すると、プロフィール情報・位置情報・メッセージ・友人関係を含むすべてのデータが削除されます。</p>
+    <p>データの削除を希望される場合は、メールにてお問い合わせください。</p>
+  </section>
+
+  <section data-lang="ja">
+    <h2><span class="num">6</span>セキュリティ</h2>
+    <p>通信はHTTPS（TLS）で暗号化されています。Firebase App Checkによりデバイスの正当性を確認しています。Firestoreのセキュリティルールにより、自分と許可した友人のみがデータにアクセスできます。</p>
+  </section>
+
+  <section data-lang="ja">
+    <h2><span class="num">7</span>ポリシーの変更</h2>
+    <p>本ポリシーは必要に応じて更新されることがあります。重要な変更が生じた場合は、このページを通じてお知らせします。</p>
+  </section>
+
+  <div class="contact-card" data-lang="ja">
+    <h2>お問い合わせ</h2>
+    <p style="margin-bottom:12px; opacity:0.9;">プライバシーに関するご質問・データ削除のご要望は下記までご連絡ください。</p>
+    <a href="mailto:app.develop.sk@gmail.com">app.develop.sk@gmail.com</a>
+  </div>
+
+  <!-- ===== ENGLISH ===== -->
+  <p class="updated" data-lang="en">Last updated: March 20, 2026</p>
+
+  <section data-lang="en">
+    <h2><span class="num">1</span>Information We Collect</h2>
+    <p>Nearo ("the App") collects the following information to provide its relationship-based location sharing service.</p>
+    <ul>
+      <li><strong>Account information:</strong> Display name, profile photo (optional)</li>
+      <li><strong>Location data:</strong> GPS coordinates (precision varies by relationship — Family = precise, Friends = area-level)</li>
+      <li><strong>Relationships:</strong> Connected friends/family UIDs and relationship types (Family / Close Friends / Friends)</li>
+      <li><strong>Status information:</strong> Current status (Free, Moving, Busy, etc.) and comment</li>
+      <li><strong>Messages:</strong> Canned quick messages (e.g., "Wanna hang out?")</li>
+      <li><strong>Device information:</strong> Push notification tokens</li>
+      <li><strong>Usage data:</strong> App usage statistics via Firebase Analytics</li>
+    </ul>
+    <div class="highlight-box">
+      Location precision is determined by the relationship type you set. Setting a contact to "Hidden" prevents any location sharing with them. We never sell your data to third parties.
+    </div>
+  </section>
+
+  <section data-lang="en">
+    <h2><span class="num">2</span>How We Use Information</h2>
+    <ul>
+      <li>Sharing your location at the appropriate precision based on relationship type (Precise / Nearby / Area)</li>
+      <li>Displaying and updating status information</li>
+      <li>Sending quick messages to friends</li>
+      <li>Managing temporary precise location share requests</li>
+      <li>Improving app performance and fixing bugs</li>
+      <li>Detecting and preventing abuse</li>
+    </ul>
+  </section>
+
+  <section data-lang="en">
+    <h2><span class="num">3</span>Location Data</h2>
+    <p>The App uses location data to power its location sharing features.</p>
+    <ul>
+      <li>Location is accessed while the app is in use (foreground)</li>
+      <li>Sharing precision is configurable per relationship (Precise / Nearby / Area / Hidden)</li>
+      <li>Contacts set to "Hidden" receive no location data whatsoever</li>
+      <li>Night mode limits location sharing during nighttime hours</li>
+    </ul>
+    <div class="highlight-box">
+      You can control location access via iOS Settings ("While Using the App"). Location permission is required to use the sharing features.
+    </div>
+  </section>
+
+  <section data-lang="en">
+    <h2><span class="num">4</span>Third-Party Services</h2>
+    <p>The App uses the following third-party services.</p>
+    <ul>
+      <li><strong>Firebase (Google LLC):</strong> Authentication, data storage (Firestore), analytics (Firebase Analytics), crash reporting (Crashlytics)</li>
+      <li><strong>Sentry:</strong> Error monitoring and performance tracking</li>
+      <li><strong>Apple Push Notification Service (APNs):</strong> Push notification delivery</li>
+    </ul>
+    <div class="highlight-box">
+      Each service is governed by its own privacy policy.
+    </div>
+  </section>
+
+  <section data-lang="en">
+    <h2><span class="num">5</span>Data Retention and Deletion</h2>
+    <p>User data is stored on Firebase (Google Cloud) secure servers. Deleting your account removes all associated data including profile information, location data, messages, and friend relationships.</p>
+    <p>To request data deletion, contact us by email.</p>
+  </section>
+
+  <section data-lang="en">
+    <h2><span class="num">6</span>Security</h2>
+    <p>All communications are encrypted via HTTPS (TLS). Device integrity is verified using Firebase App Check. Firestore security rules ensure only you and your authorized friends can access your data.</p>
+  </section>
+
+  <section data-lang="en">
+    <h2><span class="num">7</span>Changes to This Policy</h2>
+    <p>We may update this Privacy Policy from time to time. If significant changes are made, we will notify you via this page.</p>
+  </section>
+
+  <div class="contact-card" data-lang="en">
+    <h2>Contact Us</h2>
+    <p style="margin-bottom:12px; opacity:0.9;">For privacy questions or data deletion requests, please contact us.</p>
+    <a href="mailto:app.develop.sk@gmail.com">app.develop.sk@gmail.com</a>
+  </div>
+
+</main>
+
+<footer>
+  &copy; 2026 App Develop SK — Nearo
+</footer>
+
+<script>
+  function setLang(lang) {
+    document.body.className = 'lang-' + lang;
+    document.getElementById('header-sub').textContent =
+      lang === 'ja' ? 'プライバシーポリシー' : 'Privacy Policy';
+    document.getElementById('btn-ja').classList.toggle('active', lang === 'ja');
+    document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+    document.title = lang === 'ja'
+      ? 'プライバシーポリシー — Nearo'
+      : 'Privacy Policy — Nearo';
+    const url = new URL(window.location);
+    url.searchParams.set('lang', lang);
+    history.replaceState({}, '', url);
+  }
+
+  (function () {
+    const params = new URLSearchParams(window.location.search);
+    const lang = params.get('lang');
+    if (lang === 'en') setLang('en');
+    else setLang('ja');
+  })();
+</script>
+
+</body>
+</html>
