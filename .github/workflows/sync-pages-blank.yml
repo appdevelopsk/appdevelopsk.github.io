@@ -1,0 +1,60 @@
+# GitHub Pages の配信元 (pages-blank) を main から自動で組み立てる。
+#
+# 2026-08-22: 配信元を pages-blank に切り替えた際 privacy-policy/ を持ち込まなかった
+# ため、Play Console に申告済みの全 URL が 404 になり、ポリシー違反通知が届いた。
+# ファイルは main に残っていたので「存在する＝配信されている」と取り違えられた。
+# 人手で2ブランチを揃える運用は同じ事故を必ず繰り返すので、機械で揃える。
+name: sync pages-blank
+
+on:
+  push:
+    branches: [main]
+    paths: ['privacy-policy/**', 'support/**', '.github/workflows/sync-pages-blank.yml']
+  schedule:
+    - cron: '17 3 * * *'   # 毎日、配信状態そのものを見張る
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: { ref: main, fetch-depth: 0 }
+
+      - name: pages-blank を組み立て直す
+        run: |
+          set -euo pipefail
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          # 集約先は appdevelopsk.com のままにしたいので、ルートは転送スタブ、
+          # 法務ページは canonical(.com) + noindex で配信する。
+          tmp=$(mktemp -d); cp -R privacy-policy support "$tmp/"
+          git checkout pages-blank
+          rm -rf privacy-policy support
+          cp -R "$tmp/privacy-policy" "$tmp/support" .
+          python3 - <<'PY'
+          import pathlib
+          for p in list(pathlib.Path('.').glob('privacy-policy/*/index.html')) + \
+                   list(pathlib.Path('.').glob('support/*/index.html')):
+              s = p.read_text()
+              if 'name="robots"' not in s:
+                  p.write_text(s.replace('<head>', '<head>\n<meta name="robots" content="noindex, follow">', 1))
+          PY
+          git add privacy-policy support
+          git diff --cached --quiet || git commit -m "pages: main の privacy/support を配信元へ同期"
+          git push origin pages-blank
+
+      - name: 申告先 URL が実際に 200 か確かめる
+        run: |
+          set -euo pipefail
+          sleep 60   # Pages のビルド待ち
+          fail=0
+          for d in privacy-policy/*/ support/*/; do
+            c=$(curl -s -o /dev/null -w '%{http_code}' "https://appdevelopsk.github.io/$d")
+            [ "$c" = 200 ] || { echo "NG $c $d"; fail=$((fail+1)); }
+          done
+          echo "404: $fail 件"
+          [ "$fail" -eq 0 ]
