@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta name="robots" content="noindex, follow">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>プライバシーポリシー / Privacy Policy — Now Snap</title>
+<link rel="canonical" href="https://appdevelopsk.com/privacy-policy/nowsnap/">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --accent: #FF9800;
+      --accent-dark: #E65100;
+      --accent-light: #FFF3E0;
+      --text: #212121;
+      --text-secondary: #616161;
+      --bg: #FAFAFA;
+      --card-bg: #FFFFFF;
+      --border: #E0E0E0;
+      --radius: 12px;
+      --shadow: 0 2px 12px rgba(0,0,0,0.08);
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Hiragino Sans', 'Hiragino Kaku Gothic ProN',
+                   'Yu Gothic', 'Meiryo', 'Segoe UI', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.8;
+      font-size: 16px;
+    }
+
+    header {
+      background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
+      color: #fff;
+      padding: 48px 24px 40px;
+      text-align: center;
+      position: relative;
+    }
+
+    .app-icon {
+      width: 80px;
+      height: 80px;
+      background: #fff;
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 16px;
+      font-size: 40px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    }
+
+    header h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      margin-bottom: 8px;
+    }
+
+    header p.subtitle {
+      font-size: 1rem;
+      opacity: 0.9;
+    }
+
+    .lang-toggle {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      display: flex;
+      gap: 8px;
+    }
+
+    .lang-btn {
+      background: rgba(255,255,255,0.2);
+      border: 2px solid rgba(255,255,255,0.5);
+      color: #fff;
+      padding: 6px 14px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+
+    .lang-btn:hover, .lang-btn.active {
+      background: rgba(255,255,255,0.35);
+      border-color: #fff;
+    }
+
+    .updated-badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.25);
+      border-radius: 20px;
+      padding: 4px 14px;
+      font-size: 0.82rem;
+      margin-top: 12px;
+    }
+
+    main {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 40px 20px 60px;
+    }
+
+    .intro-card {
+      background: var(--accent-light);
+      border-left: 4px solid var(--accent);
+      border-radius: var(--radius);
+      padding: 20px 24px;
+      margin-bottom: 36px;
+      font-size: 0.95rem;
+      color: #5D4037;
+    }
+
+    section {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 28px 28px 24px;
+      margin-bottom: 24px;
+    }
+
+    section h2 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--accent-dark);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    section h2 .num {
+      background: var(--accent);
+      color: #fff;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    section h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text);
+      margin: 18px 0 8px;
+    }
+
+    section p {
+      color: var(--text);
+      margin-bottom: 12px;
+      font-size: 0.95rem;
+    }
+
+    section p:last-child { margin-bottom: 0; }
+
+    ul {
+      padding-left: 0;
+      list-style: none;
+      margin-bottom: 12px;
+    }
+
+    ul li {
+      position: relative;
+      padding-left: 20px;
+      font-size: 0.95rem;
+      margin-bottom: 6px;
+      color: var(--text);
+    }
+
+    ul li::before {
+      content: '▸';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-size: 0.85rem;
+      top: 2px;
+    }
+
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 14px;
+      margin-top: 4px;
+    }
+
+    .service-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 16px;
+    }
+
+    .service-card h4 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--accent-dark);
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .service-card p {
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+      margin-bottom: 0;
+    }
+
+    .service-card a {
+      font-size: 0.8rem;
+      color: var(--accent);
+      text-decoration: none;
+      display: inline-block;
+      margin-top: 6px;
+    }
+
+    .service-card a:hover { text-decoration: underline; }
+
+    .highlight-box {
+      background: var(--accent-light);
+      border-radius: 8px;
+      padding: 14px 18px;
+      margin-top: 10px;
+      font-size: 0.9rem;
+      color: #5D4037;
+    }
+
+    .contact-card {
+      background: linear-gradient(135deg, var(--accent-light), #FFF8E1);
+      border-radius: var(--radius);
+      padding: 24px 28px;
+      text-align: center;
+      margin-top: 8px;
+    }
+
+    .contact-card a {
+      color: var(--accent-dark);
+      font-weight: 700;
+      font-size: 1.05rem;
+      text-decoration: none;
+    }
+
+    .contact-card a:hover { text-decoration: underline; }
+
+    footer {
+      text-align: center;
+      padding: 24px 20px 40px;
+      color: var(--text-secondary);
+      font-size: 0.85rem;
+    }
+
+    @media (max-width: 600px) {
+      header h1 { font-size: 1.5rem; }
+      section { padding: 20px 18px; }
+      .service-grid { grid-template-columns: 1fr; }
+      .lang-toggle { top: 12px; right: 12px; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="lang-toggle">
+    <a href="?lang=ja" class="lang-btn" id="btn-ja">日本語</a>
+    <a href="?lang=en" class="lang-btn" id="btn-en">English</a>
+  </div>
+  <div class="app-icon">📸</div>
+  <h1 id="header-title">プライバシーポリシー</h1>
+  <p class="subtitle" id="header-subtitle">Now Snap（ナウスナップ） — com.nowsnap.nowSnap</p>
+  <div class="updated-badge" id="updated-label">最終更新日：2026年2月24日</div>
+</header>
+
+<main>
+  <div class="intro-card" id="intro-text">
+    Now Snap（以下「本アプリ」）をご利用いただきありがとうございます。
+    本プライバシーポリシーは、本アプリがどのような情報を収集し、どのように利用・保護するかを説明するものです。
+    本アプリをご利用になることで、本ポリシーに同意されたものとみなします。
+  </div>
+
+  <!-- Section 1 -->
+  <section id="sec1">
+    <h2><span class="num">1</span><span id="sec1-title">収集する情報</span></h2>
+    <h3 id="sec1-account">アカウント情報</h3>
+    <ul>
+      <li id="sec1-email">メールアドレス（Google / Apple ログイン経由）</li>
+      <li id="sec1-username">ユーザー名</li>
+      <li id="sec1-pic">プロフィール画像（任意）</li>
+    </ul>
+    <h3 id="sec1-content">投稿コンテンツ</h3>
+    <ul>
+      <li id="sec1-photos">毎日のチャレンジで投稿された写真（AWS S3 に保存）</li>
+      <li id="sec1-scores">リーダーボードスコアおよび評価データ</li>
+    </ul>
+    <h3 id="sec1-usage-title">利用状況データ</h3>
+    <ul>
+      <li id="sec1-analytics">アプリの利用統計（Firebase Analytics）</li>
+      <li id="sec1-crash">クラッシュレポート（Crashlytics）</li>
+      <li id="sec1-device">デバイス情報・OS バージョン</li>
+      <li id="sec1-notif">プッシュ通知トークン（デイリーチャレンジリマインダー）</li>
+    </ul>
+  </section>
+
+  <!-- Section 2 -->
+  <section id="sec2">
+    <h2><span class="num">2</span><span id="sec2-title">利用目的</span></h2>
+    <ul>
+      <li id="sec2-1">デイリーフォトチャレンジの提供・運営</li>
+      <li id="sec2-2">リーダーボードの表示およびユーザー間の評価機能</li>
+      <li id="sec2-3">プッシュ通知によるデイリーチャレンジのお知らせ</li>
+      <li id="sec2-4">AI（Claude AI）による投稿写真の分析・品質評価</li>
+      <li id="sec2-5">アプリの改善・不具合修正のための分析</li>
+      <li id="sec2-6">不正行為の防止およびコミュニティの安全確保</li>
+      <li id="sec2-7">広告の表示（Google AdMob）</li>
+    </ul>
+  </section>
+
+  <!-- Section 3 -->
+  <section id="sec3">
+    <h2><span class="num">3</span><span id="sec3-title">第三者サービス</span></h2>
+    <p id="sec3-intro">本アプリは以下の第三者サービスを利用しています。各サービスの詳細はリンク先のプライバシーポリシーをご参照ください。</p>
+    <div class="service-grid">
+      <div class="service-card">
+        <h4>🔥 Firebase（Google LLC）</h4>
+        <p id="svc-firebase">認証・アナリティクス・クラッシュレポート・プッシュ通知に使用します。</p>
+        <a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener">プライバシーポリシー →</a>
+      </div>
+      <div class="service-card">
+        <h4>📢 Google AdMob</h4>
+        <p id="svc-admob">広告の表示に使用します。興味・関心に基づく広告が表示される場合があります。</p>
+        <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">プライバシーポリシー →</a>
+      </div>
+      <div class="service-card">
+        <h4>☁️ AWS S3（Amazon Web Services）</h4>
+        <p id="svc-s3">投稿された写真の保存・配信に使用します。データはセキュアなストレージに保管されます。</p>
+        <a href="https://aws.amazon.com/privacy/" target="_blank" rel="noopener">プライバシーポリシー →</a>
+      </div>
+      <div class="service-card">
+        <h4>🤖 Anthropic Claude AI</h4>
+        <p id="svc-claude">投稿写真のAI分析・品質評価に使用します。写真データはAnthropicのAPIに送信されます。</p>
+        <a href="https://www.anthropic.com/privacy" target="_blank" rel="noopener">プライバシーポリシー →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 4 -->
+  <section id="sec4">
+    <h2><span class="num">4</span><span id="sec4-title">データ保管・削除</span></h2>
+    <p id="sec4-p1">収集したデータはアカウントが有効な期間中保持されます。アカウントを削除した場合、関連する個人データは合理的な期間内に削除されます。</p>
+    <p id="sec4-p2">投稿写真はAWS S3に保存されます。アカウント削除時に写真データも削除されます。ただし、バックアップや法的要件により一部データが一定期間保持される場合があります。</p>
+    <div class="highlight-box" id="sec4-delete">
+      データの削除をご希望の場合は、アプリ内のアカウント設定からアカウント削除を行うか、下記お問い合わせ先までご連絡ください。
+    </div>
+  </section>
+
+  <!-- Section 5 -->
+  <section id="sec5">
+    <h2><span class="num">5</span><span id="sec5-title">カメラ・フォトライブラリのアクセス</span></h2>
+    <p id="sec5-p1">本アプリはデイリーチャレンジへの写真投稿のため、以下のアクセス許可を求めます。</p>
+    <ul>
+      <li id="sec5-camera">カメラ：その場で写真を撮影して投稿するため</li>
+      <li id="sec5-library">フォトライブラリ：既存の写真を選択して投稿するため</li>
+    </ul>
+    <p id="sec5-p2">これらの権限はデイリーチャレンジへの写真投稿目的のみに使用されます。許可しない場合、写真投稿機能は利用できませんが、閲覧機能は引き続きご利用いただけます。</p>
+  </section>
+
+  <!-- Section 6 -->
+  <section id="sec6">
+    <h2><span class="num">6</span><span id="sec6-title">AI処理について（Claude AI）</span></h2>
+    <p id="sec6-p1">本アプリでは、Anthropic社のClaude AIを使用して投稿写真を分析します。AI分析はチャレンジのテーマとの関連性や写真の品質評価に使用されます。</p>
+    <ul>
+      <li id="sec6-1">投稿写真はAnthropicのAPIサーバーに送信され、AI処理が行われます</li>
+      <li id="sec6-2">AI分析結果はリーダーボードのスコアリングに使用されます</li>
+      <li id="sec6-3">Anthropicはデータをモデルのトレーニングに使用しない場合があります（Anthropicのプライバシーポリシーをご参照ください）</li>
+      <li id="sec6-4">センシティブな個人情報を含む写真の投稿はお控えください</li>
+    </ul>
+    <div class="highlight-box" id="sec6-note">
+      写真を投稿することで、AI処理のためにAnthropicのサーバーにデータが送信されることに同意いただいたものとみなします。
+    </div>
+  </section>
+
+  <!-- Section 7 -->
+  <section id="sec7">
+    <h2><span class="num">7</span><span id="sec7-title">子どものプライバシー</span></h2>
+    <p id="sec7-p1">本アプリは13歳未満のお子様を対象としておりません。13歳未満の方から意図せず個人情報を収集した場合、速やかに削除します。</p>
+    <p id="sec7-p2">お子様が個人情報を提供したとお気づきの保護者の方は、下記お問い合わせ先までご連絡ください。</p>
+  </section>
+
+  <!-- Section 8 -->
+  <section id="sec8">
+    <h2><span class="num">8</span><span id="sec8-title">ポリシー変更</span></h2>
+    <p id="sec8-p1">本プライバシーポリシーは予告なく変更する場合があります。重要な変更がある場合は、アプリ内通知またはメールにてお知らせします。</p>
+    <p id="sec8-p2">変更後も継続してアプリをご利用いただいた場合、変更後のポリシーに同意されたものとみなします。最新のポリシーは常に本ページにてご確認いただけます。</p>
+  </section>
+
+  <!-- Section 9 -->
+  <section id="sec9">
+    <h2><span class="num">9</span><span id="sec9-title">お問い合わせ</span></h2>
+    <p id="sec9-p1">プライバシーポリシーに関するご質問・ご要望は、以下のメールアドレスまでお気軽にお問い合わせください。</p>
+    <div class="contact-card">
+      <p id="sec9-email-label" style="font-size:0.9rem;color:#666;margin-bottom:8px;">Email</p>
+      <a href="mailto:app.develop.sk@gmail.com">app.develop.sk@gmail.com</a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <p id="footer-text">© 2026 Now Snap. All rights reserved.</p>
+  <p id="footer-app" style="margin-top:6px;color:#9E9E9E;font-size:0.8rem;">Bundle ID: com.nowsnap.nowSnap</p>
+</footer>
+
+<script>
+  // -----------------------------------------------------------------------
+  // Bilingual content map
+  // -----------------------------------------------------------------------
+  const content = {
+    ja: {
+      docTitle: 'プライバシーポリシー — Now Snap',
+      htmlLang: 'ja',
+      headerTitle: 'プライバシーポリシー',
+      headerSubtitle: 'Now Snap（ナウスナップ） — com.nowsnap.nowSnap',
+      updatedLabel: '最終更新日：2026年2月24日',
+      introText: 'Now Snap（以下「本アプリ」）をご利用いただきありがとうございます。本プライバシーポリシーは、本アプリがどのような情報を収集し、どのように利用・保護するかを説明するものです。本アプリをご利用になることで、本ポリシーに同意されたものとみなします。',
+
+      sec1Title: '収集する情報',
+      sec1Account: 'アカウント情報',
+      sec1Email: 'メールアドレス（Google / Apple ログイン経由）',
+      sec1Username: 'ユーザー名',
+      sec1Pic: 'プロフィール画像（任意）',
+      sec1Content: '投稿コンテンツ',
+      sec1Photos: '毎日のチャレンジで投稿された写真（AWS S3 に保存）',
+      sec1Scores: 'リーダーボードスコアおよび評価データ',
+      sec1UsageTitle: '利用状況データ',
+      sec1Analytics: 'アプリの利用統計（Firebase Analytics）',
+      sec1Crash: 'クラッシュレポート（Crashlytics）',
+      sec1Device: 'デバイス情報・OS バージョン',
+      sec1Notif: 'プッシュ通知トークン（デイリーチャレンジリマインダー）',
+
+      sec2Title: '利用目的',
+      sec2_1: 'デイリーフォトチャレンジの提供・運営',
+      sec2_2: 'リーダーボードの表示およびユーザー間の評価機能',
+      sec2_3: 'プッシュ通知によるデイリーチャレンジのお知らせ',
+      sec2_4: 'AI（Claude AI）による投稿写真の分析・品質評価',
+      sec2_5: 'アプリの改善・不具合修正のための分析',
+      sec2_6: '不正行為の防止およびコミュニティの安全確保',
+      sec2_7: '広告の表示（Google AdMob）',
+
+      sec3Title: '第三者サービス',
+      sec3Intro: '本アプリは以下の第三者サービスを利用しています。各サービスの詳細はリンク先のプライバシーポリシーをご参照ください。',
+      svcFirebase: '認証・アナリティクス・クラッシュレポート・プッシュ通知に使用します。',
+      svcAdmob: '広告の表示に使用します。興味・関心に基づく広告が表示される場合があります。',
+      svcS3: '投稿された写真の保存・配信に使用します。データはセキュアなストレージに保管されます。',
+      svcClaude: '投稿写真のAI分析・品質評価に使用します。写真データはAnthropicのAPIに送信されます。',
+
+      sec4Title: 'データ保管・削除',
+      sec4P1: '収集したデータはアカウントが有効な期間中保持されます。アカウントを削除した場合、関連する個人データは合理的な期間内に削除されます。',
+      sec4P2: '投稿写真はAWS S3に保存されます。アカウント削除時に写真データも削除されます。ただし、バックアップや法的要件により一部データが一定期間保持される場合があります。',
+      sec4Delete: 'データの削除をご希望の場合は、アプリ内のアカウント設定からアカウント削除を行うか、下記お問い合わせ先までご連絡ください。',
+
+      sec5Title: 'カメラ・フォトライブラリのアクセス',
+      sec5P1: '本アプリはデイリーチャレンジへの写真投稿のため、以下のアクセス許可を求めます。',
+      sec5Camera: 'カメラ：その場で写真を撮影して投稿するため',
+      sec5Library: 'フォトライブラリ：既存の写真を選択して投稿するため',
+      sec5P2: 'これらの権限はデイリーチャレンジへの写真投稿目的のみに使用されます。許可しない場合、写真投稿機能は利用できませんが、閲覧機能は引き続きご利用いただけます。',
+
+      sec6Title: 'AI処理について（Claude AI）',
+      sec6P1: '本アプリでは、Anthropic社のClaude AIを使用して投稿写真を分析します。AI分析はチャレンジのテーマとの関連性や写真の品質評価に使用されます。',
+      sec6_1: '投稿写真はAnthropicのAPIサーバーに送信され、AI処理が行われます',
+      sec6_2: 'AI分析結果はリーダーボードのスコアリングに使用されます',
+      sec6_3: 'Anthropicはデータをモデルのトレーニングに使用しない場合があります（Anthropicのプライバシーポリシーをご参照ください）',
+      sec6_4: 'センシティブな個人情報を含む写真の投稿はお控えください',
+      sec6Note: '写真を投稿することで、AI処理のためにAnthropicのサーバーにデータが送信されることに同意いただいたものとみなします。',
+
+      sec7Title: '子どものプライバシー',
+      sec7P1: '本アプリは13歳未満のお子様を対象としておりません。13歳未満の方から意図せず個人情報を収集した場合、速やかに削除します。',
+      sec7P2: 'お子様が個人情報を提供したとお気づきの保護者の方は、下記お問い合わせ先までご連絡ください。',
+
+      sec8Title: 'ポリシー変更',
+      sec8P1: '本プライバシーポリシーは予告なく変更する場合があります。重要な変更がある場合は、アプリ内通知またはメールにてお知らせします。',
+      sec8P2: '変更後も継続してアプリをご利用いただいた場合、変更後のポリシーに同意されたものとみなします。最新のポリシーは常に本ページにてご確認いただけます。',
+
+      sec9Title: 'お問い合わせ',
+      sec9P1: 'プライバシーポリシーに関するご質問・ご要望は、以下のメールアドレスまでお気軽にお問い合わせください。',
+      sec9EmailLabel: 'Email',
+      footerText: '© 2026 Now Snap. All rights reserved.',
+    },
+
+    en: {
+      docTitle: 'Privacy Policy — Now Snap',
+      htmlLang: 'en',
+      headerTitle: 'Privacy Policy',
+      headerSubtitle: 'Now Snap — com.nowsnap.nowSnap',
+      updatedLabel: 'Last updated: February 24, 2026',
+      introText: 'Thank you for using Now Snap. This Privacy Policy explains what information we collect, how we use it, and how we protect it. By using Now Snap, you agree to the practices described in this policy.',
+
+      sec1Title: 'Information We Collect',
+      sec1Account: 'Account Information',
+      sec1Email: 'Email address (via Google / Apple Sign-In)',
+      sec1Username: 'Username',
+      sec1Pic: 'Profile picture (optional)',
+      sec1Content: 'User-Submitted Content',
+      sec1Photos: 'Photos submitted for daily challenges (stored on AWS S3)',
+      sec1Scores: 'Leaderboard scores and rating data',
+      sec1UsageTitle: 'Usage Data',
+      sec1Analytics: 'App usage statistics (Firebase Analytics)',
+      sec1Crash: 'Crash reports (Crashlytics)',
+      sec1Device: 'Device information and OS version',
+      sec1Notif: 'Push notification tokens (daily challenge reminders)',
+
+      sec2Title: 'How We Use Your Information',
+      sec2_1: 'Providing and operating the daily photo challenge',
+      sec2_2: 'Displaying the leaderboard and enabling peer ratings',
+      sec2_3: 'Sending push notifications for daily challenges',
+      sec2_4: 'AI analysis and quality evaluation of submitted photos (Claude AI)',
+      sec2_5: 'App improvement and bug fixing through analytics',
+      sec2_6: 'Preventing fraud and maintaining community safety',
+      sec2_7: 'Displaying advertisements (Google AdMob)',
+
+      sec3Title: 'Third-Party Services',
+      sec3Intro: 'Now Snap uses the following third-party services. Please refer to each service\'s privacy policy for more details.',
+      svcFirebase: 'Used for authentication, analytics, crash reporting, and push notifications.',
+      svcAdmob: 'Used to display advertisements. Interest-based ads may be shown.',
+      svcS3: 'Used to store and deliver user-submitted photos in secure storage.',
+      svcClaude: 'Used for AI analysis and quality evaluation of submitted photos. Photo data is sent to Anthropic\'s API.',
+
+      sec4Title: 'Data Retention & Deletion',
+      sec4P1: 'We retain collected data for as long as your account is active. When you delete your account, associated personal data will be deleted within a reasonable timeframe.',
+      sec4P2: 'Submitted photos are stored on AWS S3 and will be deleted upon account deletion. Some data may be retained for a limited period due to backup systems or legal requirements.',
+      sec4Delete: 'To request data deletion, use the account deletion feature in the app settings, or contact us at the email address below.',
+
+      sec5Title: 'Camera & Photo Library Access',
+      sec5P1: 'Now Snap requests the following permissions to enable photo submission for daily challenges:',
+      sec5Camera: 'Camera: to take a photo on the spot and submit it',
+      sec5Library: 'Photo Library: to select an existing photo and submit it',
+      sec5P2: 'These permissions are used solely for submitting photos to daily challenges. If you deny these permissions, photo submission will not be available, but you can still browse the app.',
+
+      sec6Title: 'AI Processing (Claude AI)',
+      sec6P1: 'Now Snap uses Anthropic\'s Claude AI to analyze submitted photos. AI analysis is used to evaluate the relevance of a photo to the challenge theme and to assess photo quality.',
+      sec6_1: 'Submitted photos are sent to Anthropic\'s API servers for AI processing',
+      sec6_2: 'AI analysis results are used for leaderboard scoring',
+      sec6_3: 'Anthropic may not use your data for model training (please refer to Anthropic\'s Privacy Policy)',
+      sec6_4: 'Please avoid submitting photos containing sensitive personal information',
+      sec6Note: 'By submitting a photo, you consent to your photo data being sent to Anthropic\'s servers for AI processing.',
+
+      sec7Title: 'Children\'s Privacy',
+      sec7P1: 'Now Snap is not intended for children under 13 years of age. If we become aware that we have inadvertently collected personal information from a child under 13, we will delete it promptly.',
+      sec7P2: 'If you are a parent or guardian and believe your child has provided personal information, please contact us at the address below.',
+
+      sec8Title: 'Changes to This Policy',
+      sec8P1: 'We may update this Privacy Policy from time to time. We will notify you of significant changes via in-app notification or email.',
+      sec8P2: 'Continued use of the app after changes constitutes acceptance of the updated policy. The latest version is always available on this page.',
+
+      sec9Title: 'Contact Us',
+      sec9P1: 'If you have any questions or requests regarding this Privacy Policy, please feel free to contact us.',
+      sec9EmailLabel: 'Email',
+      footerText: '© 2026 Now Snap. All rights reserved.',
+    }
+  };
+
+  // -----------------------------------------------------------------------
+  // Apply language
+  // -----------------------------------------------------------------------
+  function applyLang(lang) {
+    const t = content[lang] || content['ja'];
+    document.documentElement.lang = t.htmlLang;
+    document.title = t.docTitle;
+
+    const set = (id, text) => {
+      const el = document.getElementById(id);
+      if (el) el.textContent = text;
+    };
+
+    set('header-title', t.headerTitle);
+    set('header-subtitle', t.headerSubtitle);
+    set('updated-label', t.updatedLabel);
+    set('intro-text', t.introText);
+
+    set('sec1-title', t.sec1Title);
+    set('sec1-account', t.sec1Account);
+    set('sec1-email', t.sec1Email);
+    set('sec1-username', t.sec1Username);
+    set('sec1-pic', t.sec1Pic);
+    set('sec1-content', t.sec1Content);
+    set('sec1-photos', t.sec1Photos);
+    set('sec1-scores', t.sec1Scores);
+    set('sec1-usage-title', t.sec1UsageTitle);
+    set('sec1-analytics', t.sec1Analytics);
+    set('sec1-crash', t.sec1Crash);
+    set('sec1-device', t.sec1Device);
+    set('sec1-notif', t.sec1Notif);
+
+    set('sec2-title', t.sec2Title);
+    set('sec2-1', t.sec2_1);
+    set('sec2-2', t.sec2_2);
+    set('sec2-3', t.sec2_3);
+    set('sec2-4', t.sec2_4);
+    set('sec2-5', t.sec2_5);
+    set('sec2-6', t.sec2_6);
+    set('sec2-7', t.sec2_7);
+
+    set('sec3-title', t.sec3Title);
+    set('sec3-intro', t.sec3Intro);
+    set('svc-firebase', t.svcFirebase);
+    set('svc-admob', t.svcAdmob);
+    set('svc-s3', t.svcS3);
+    set('svc-claude', t.svcClaude);
+
+    set('sec4-title', t.sec4Title);
+    set('sec4-p1', t.sec4P1);
+    set('sec4-p2', t.sec4P2);
+    set('sec4-delete', t.sec4Delete);
+
+    set('sec5-title', t.sec5Title);
+    set('sec5-p1', t.sec5P1);
+    set('sec5-camera', t.sec5Camera);
+    set('sec5-library', t.sec5Library);
+    set('sec5-p2', t.sec5P2);
+
+    set('sec6-title', t.sec6Title);
+    set('sec6-p1', t.sec6P1);
+    set('sec6-1', t.sec6_1);
+    set('sec6-2', t.sec6_2);
+    set('sec6-3', t.sec6_3);
+    set('sec6-4', t.sec6_4);
+    set('sec6-note', t.sec6Note);
+
+    set('sec7-title', t.sec7Title);
+    set('sec7-p1', t.sec7P1);
+    set('sec7-p2', t.sec7P2);
+
+    set('sec8-title', t.sec8Title);
+    set('sec8-p1', t.sec8P1);
+    set('sec8-p2', t.sec8P2);
+
+    set('sec9-title', t.sec9Title);
+    set('sec9-p1', t.sec9P1);
+    set('sec9-email-label', t.sec9EmailLabel);
+    set('footer-text', t.footerText);
+
+    // highlight active lang button
+    document.getElementById('btn-ja').classList.toggle('active', lang === 'ja');
+    document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+  }
+
+  // -----------------------------------------------------------------------
+  // Boot
+  // -----------------------------------------------------------------------
+  (function() {
+    const params = new URLSearchParams(window.location.search);
+    const lang = params.get('lang') === 'en' ? 'en' : 'ja';
+    applyLang(lang);
+  })();
+</script>
+</body>
+</html>

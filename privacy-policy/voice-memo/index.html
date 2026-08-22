@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta name="robots" content="noindex, follow">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy — Speakly</title>
+<link rel="canonical" href="https://appdevelopsk.com/privacy-policy/voice-memo/">
+  <style>
+    :root {
+      --accent: #7C9EDB;
+      --accent-light: #EEF3FB;
+      --bg: #FFFFFF;
+      --surface: #F8F9FE;
+      --text: #1A1A2E;
+      --text-muted: #6B7280;
+      --border: #E5E7EB;
+      --radius: 12px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Hiragino Kaku Gothic ProN",
+        "Yu Gothic", "Meiryo", "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.8;
+      font-size: 16px;
+    }
+
+    header {
+      background: linear-gradient(135deg, #0F1923 0%, #1E3050 100%);
+      color: #fff;
+      padding: 48px 24px 40px;
+      text-align: center;
+    }
+
+    header .app-icon {
+      width: 72px; height: 72px;
+      background: rgba(124,158,219,0.25);
+      border-radius: 18px;
+      margin: 0 auto 16px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 36px;
+    }
+
+    header h1 { font-size: 1.75rem; font-weight: 700; letter-spacing: -0.01em; }
+    header p { margin-top: 6px; font-size: 0.95rem; opacity: 0.85; }
+
+    .lang-toggle { margin-top: 20px; display: flex; justify-content: center; gap: 8px; }
+    .lang-toggle button {
+      padding: 6px 20px; border-radius: 999px;
+      border: 2px solid rgba(255,255,255,0.6);
+      background: transparent; color: #fff; font-size: 0.875rem;
+      cursor: pointer; transition: background 0.2s, border-color 0.2s; font-weight: 500;
+    }
+    .lang-toggle button.active, .lang-toggle button:hover {
+      background: rgba(255,255,255,0.2); border-color: #fff;
+    }
+
+    main { max-width: 760px; margin: 0 auto; padding: 40px 24px 80px; }
+
+    .updated { text-align: center; font-size: 0.875rem; color: var(--text-muted); margin-bottom: 36px; }
+
+    section {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 28px; margin-bottom: 20px;
+    }
+
+    section h2 {
+      font-size: 1.05rem; font-weight: 700; color: var(--accent);
+      margin-bottom: 12px; display: flex; align-items: center; gap: 10px;
+    }
+
+    section h2 .num {
+      background: var(--accent); color: #fff; font-size: 0.75rem; font-weight: 700;
+      width: 24px; height: 24px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+
+    section p { color: #374151; margin-bottom: 10px; }
+    section p:last-child { margin-bottom: 0; }
+    section ul { padding-left: 1.4em; color: #374151; }
+    section ul li { margin-bottom: 6px; }
+    section ul li:last-child { margin-bottom: 0; }
+
+    .highlight-box {
+      background: var(--accent-light); border-left: 4px solid var(--accent);
+      border-radius: 0 8px 8px 0; padding: 14px 16px;
+      margin-top: 12px; font-size: 0.9rem; color: #374151;
+    }
+
+    .contact-card {
+      background: linear-gradient(135deg, #0F1923 0%, #1E3050 100%);
+      color: #fff; border-radius: var(--radius); padding: 28px;
+      text-align: center; margin-top: 20px;
+    }
+
+    .contact-card h2 { font-size: 1.1rem; font-weight: 700; margin-bottom: 10px; color: #fff; }
+    .contact-card a {
+      color: #7C9EDB; font-weight: 600; font-size: 1.05rem; text-decoration: none;
+      border-bottom: 2px solid rgba(124,158,219,0.5); padding-bottom: 2px;
+    }
+    .contact-card a:hover { border-color: #7C9EDB; }
+
+    footer {
+      text-align: center; padding: 24px; font-size: 0.85rem;
+      color: var(--text-muted); border-top: 1px solid var(--border);
+    }
+
+    [data-lang] { display: none; }
+    .lang-ja [data-lang="ja"] { display: block; }
+    .lang-en [data-lang="en"] { display: block; }
+    .lang-ja .contact-card[data-lang="ja"], .lang-en .contact-card[data-lang="en"] { display: block; }
+
+    @media (max-width: 600px) {
+      header h1 { font-size: 1.4rem; }
+      section { padding: 20px 18px; }
+      main { padding: 28px 16px 60px; }
+    }
+  </style>
+</head>
+<body class="lang-ja">
+
+<header>
+  <div class="app-icon">🎙️</div>
+  <h1>Speakly</h1>
+  <p id="header-sub">プライバシーポリシー</p>
+  <div class="lang-toggle">
+    <button id="btn-ja" class="active" onclick="setLang('ja')">日本語</button>
+    <button id="btn-en" onclick="setLang('en')">English</button>
+  </div>
+</header>
+
+<main>
+
+  <!-- ===== JAPANESE ===== -->
+  <p class="updated" data-lang="ja">最終更新日：2026年3月22日</p>
+
+  <section data-lang="ja">
+    <h2><span class="num">1</span>収集する情報</h2>
+    <p>Speakly（以下「本アプリ」）は、AI音声日記アプリです。匿名のデバイスIDを使用してアカウントを自動作成します。メールアドレスや氏名などの個人情報は不要です。以下の情報を収集します。</p>
+    <ul>
+      <li><strong>デバイスID：</strong>匿名識別子として自動生成されます（認証用途のみ）</li>
+      <li><strong>音声録音：</strong>端末内でローカル処理され、サーバーには送信されません</li>
+      <li><strong>文字起こしテキスト：</strong>音声から変換されたテキストをAI分析のためサーバーに送信します</li>
+      <li><strong>感情分析データ：</strong>テキストから解析された感情・気分データを保存します</li>
+    </ul>
+    <div class="highlight-box">
+      音声データはお客様の端末内でのみ処理され、サーバーに送信・保存されることはありません。お客様のデータを広告目的で第三者に販売・提供することも一切ありません。
+    </div>
+  </section>
+
+  <section data-lang="ja">
+    <h2><span class="num">2</span>情報の利用目的</h2>
+    <p>収集した情報は以下の目的のみに使用します。</p>
+    <ul>
+      <li>音声日記の文字起こしとAI分析の提供</li>
+      <li>感情トラッキングと履歴の管理</li>
+      <li>アプリの利用状況分析と改善（Firebase Analytics）</li>
+      <li>アプリの不具合修正（Sentryによるクラッシュレポート）</li>
+      <li>広告の表示（Google AdMob）</li>
+    </ul>
+  </section>
+
+  <section data-lang="ja">
+    <h2><span class="num">3</span>第三者サービス</h2>
+    <p>本アプリは以下の第三者サービスを利用しています。</p>
+    <ul>
+      <li><strong>Firebase Analytics：</strong>アプリの利用状況を匿名で分析するために使用されます</li>
+      <li><strong>Google AdMob：</strong>広告の表示に使用されます</li>
+      <li><strong>Sentry：</strong>クラッシュレポートおよびエラー監視のために使用されます</li>
+      <li><strong>Anthropic Claude API：</strong>文字起こしテキストのAI分析に使用されます（音声データは送信されません）</li>
+    </ul>
+    <div class="highlight-box">
+      Anthropic Claude APIにはテキストデータのみが送信されます。音声データが外部サービスに送信されることはありません。
+    </div>
+  </section>
+
+  <section data-lang="ja">
+    <h2><span class="num">4</span>データ保管と削除</h2>
+    <p>文字起こしテキストと感情分析データはサービス提供のためサーバーに保存されます。アプリ内からアカウントとすべてのデータをいつでも完全に削除できます。また、メールでの削除依頼にも対応します。</p>
+  </section>
+
+  <section data-lang="ja">
+    <h2><span class="num">5</span>子どものプライバシー</h2>
+    <p>本アプリは13歳未満の方を対象としておらず、意図的に13歳未満の個人情報を収集しません。</p>
+  </section>
+
+  <section data-lang="ja">
+    <h2><span class="num">6</span>ポリシーの変更</h2>
+    <p>本ポリシーは必要に応じて更新されることがあります。重要な変更が生じた場合は、このページを通じてお知らせします。</p>
+  </section>
+
+  <div class="contact-card" data-lang="ja">
+    <h2>お問い合わせ</h2>
+    <p style="margin-bottom:12px; opacity:0.9;">プライバシーに関するご質問・データ削除のご依頼は下記までご連絡ください。</p>
+    <a href="mailto:knskmt421@yahoo.co.jp">knskmt421@yahoo.co.jp</a>
+  </div>
+
+  <!-- ===== ENGLISH ===== -->
+  <p class="updated" data-lang="en">Last updated: March 22, 2026</p>
+
+  <section data-lang="en">
+    <h2><span class="num">1</span>Information We Collect</h2>
+    <p>Speakly ("the App") is an AI Voice Diary app. It automatically creates an account using an anonymous device ID. No personal information such as name or email address is required. We collect the following information.</p>
+    <ul>
+      <li><strong>Device ID:</strong> Automatically generated anonymous identifier (used for authentication only)</li>
+      <li><strong>Voice recordings:</strong> Processed locally on your device and never sent to our servers</li>
+      <li><strong>Transcribed text:</strong> Text converted from voice is sent to our server for AI analysis</li>
+      <li><strong>Emotion analysis data:</strong> Emotional and mood data analyzed from your text</li>
+    </ul>
+    <div class="highlight-box">
+      Your voice data is processed entirely on your device and is never sent to or stored on our servers. We never sell or share your data with third parties for advertising purposes.
+    </div>
+  </section>
+
+  <section data-lang="en">
+    <h2><span class="num">2</span>How We Use Your Information</h2>
+    <p>We use collected information solely for the following purposes.</p>
+    <ul>
+      <li>Providing voice diary transcription and AI analysis</li>
+      <li>Emotion tracking and history management</li>
+      <li>App usage analysis and improvement (Firebase Analytics)</li>
+      <li>App bug fixing (via Sentry crash reports)</li>
+      <li>Displaying advertisements (Google AdMob)</li>
+    </ul>
+  </section>
+
+  <section data-lang="en">
+    <h2><span class="num">3</span>Third-Party Services</h2>
+    <p>The App uses the following third-party services.</p>
+    <ul>
+      <li><strong>Firebase Analytics:</strong> Used for anonymous app usage analytics</li>
+      <li><strong>Google AdMob:</strong> Used for displaying advertisements</li>
+      <li><strong>Sentry:</strong> Used for crash reporting and error monitoring</li>
+      <li><strong>Anthropic Claude API:</strong> Used for AI analysis of transcribed text only (no voice data is sent)</li>
+    </ul>
+    <div class="highlight-box">
+      Only text data is sent to the Anthropic Claude API. Voice data is never transmitted to any external service.
+    </div>
+  </section>
+
+  <section data-lang="en">
+    <h2><span class="num">4</span>Data Retention and Deletion</h2>
+    <p>Transcribed text and emotion analysis data are stored on our servers to provide our services. You can permanently delete your account and all associated data at any time from within the App. You may also request deletion by email.</p>
+  </section>
+
+  <section data-lang="en">
+    <h2><span class="num">5</span>Children's Privacy</h2>
+    <p>The App is not directed to children under the age of 13, and we do not knowingly collect personal information from anyone under 13.</p>
+  </section>
+
+  <section data-lang="en">
+    <h2><span class="num">6</span>Changes to This Policy</h2>
+    <p>We may update this Privacy Policy from time to time. If significant changes are made, we will notify you by updating this page.</p>
+  </section>
+
+  <div class="contact-card" data-lang="en">
+    <h2>Contact Us</h2>
+    <p style="margin-bottom:12px; opacity:0.9;">For privacy questions or data deletion requests, please contact us.</p>
+    <a href="mailto:knskmt421@yahoo.co.jp">knskmt421@yahoo.co.jp</a>
+  </div>
+
+</main>
+
+<footer>
+  &copy; 2026 AppDevelopSK — Speakly
+</footer>
+
+<script>
+  function setLang(lang) {
+    document.body.className = 'lang-' + lang;
+    document.getElementById('header-sub').textContent =
+      lang === 'ja' ? 'プライバシーポリシー' : 'Privacy Policy';
+    document.getElementById('btn-ja').classList.toggle('active', lang === 'ja');
+    document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+    document.title = lang === 'ja'
+      ? 'プライバシーポリシー — Speakly'
+      : 'Privacy Policy — Speakly';
+    const url = new URL(window.location);
+    url.searchParams.set('lang', lang);
+    history.replaceState({}, '', url);
+  }
+
+  (function () {
+    const params = new URLSearchParams(window.location.search);
+    const lang = params.get('lang');
+    if (lang === 'en') setLang('en');
+    else setLang('ja');
+  })();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta name="robots" content="noindex, follow">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>プライバシーポリシー | Eye Break</title>
+<link rel="canonical" href="https://appdevelopsk.com/privacy-policy/eyebreak/">
+  <style>
+    :root {
+      --accent: #2196F3;
+      --accent-dark: #1565C0;
+      --accent-light: #E3F2FD;
+      --green: #4CAF50;
+      --text: #212121;
+      --text-secondary: #555;
+      --bg: #FAFAFA;
+      --card-bg: #FFFFFF;
+      --border: #E0E0E0;
+      --radius: 10px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Hiragino Sans", "Noto Sans JP", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.8;
+      font-size: 15px;
+    }
+
+    header {
+      background: linear-gradient(135deg, var(--accent) 0%, var(--green) 100%);
+      color: #fff;
+      padding: 48px 24px 40px;
+      text-align: center;
+    }
+
+    .header-icon {
+      font-size: 52px;
+      margin-bottom: 12px;
+      display: block;
+    }
+
+    header h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+
+    header p.subtitle {
+      margin-top: 8px;
+      font-size: 0.95rem;
+      opacity: 0.9;
+    }
+
+    .lang-toggle {
+      margin-top: 20px;
+    }
+
+    .lang-btn {
+      display: inline-block;
+      padding: 7px 20px;
+      border-radius: 20px;
+      border: 2px solid rgba(255,255,255,0.7);
+      color: #fff;
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 600;
+      transition: background 0.2s, border-color 0.2s;
+      cursor: pointer;
+      background: transparent;
+    }
+
+    .lang-btn:hover,
+    .lang-btn.active {
+      background: rgba(255,255,255,0.25);
+      border-color: #fff;
+    }
+
+    main {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 32px 20px 60px;
+    }
+
+    .last-updated {
+      text-align: center;
+      color: var(--text-secondary);
+      font-size: 0.85rem;
+      margin-bottom: 28px;
+    }
+
+    .notice-card {
+      background: var(--accent-light);
+      border-left: 4px solid var(--accent);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 16px 20px;
+      margin-bottom: 32px;
+      font-size: 0.93rem;
+      color: var(--accent-dark);
+    }
+
+    section {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px 28px;
+      margin-bottom: 20px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+    }
+
+    section h2 {
+      font-size: 1.08rem;
+      font-weight: 700;
+      color: var(--accent-dark);
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    section h2 .num {
+      background: var(--accent);
+      color: #fff;
+      font-size: 0.8rem;
+      font-weight: 700;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    section p {
+      color: var(--text-secondary);
+      margin-bottom: 10px;
+    }
+
+    section p:last-child {
+      margin-bottom: 0;
+    }
+
+    ul {
+      padding-left: 20px;
+      color: var(--text-secondary);
+      margin-bottom: 10px;
+    }
+
+    ul li {
+      margin-bottom: 6px;
+    }
+
+    .tag {
+      display: inline-block;
+      background: #E8F5E9;
+      color: #2E7D32;
+      border: 1px solid #A5D6A7;
+      border-radius: 4px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      padding: 2px 8px;
+      margin-right: 6px;
+    }
+
+    .tag.no {
+      background: #FFF3E0;
+      color: #E65100;
+      border-color: #FFCC80;
+    }
+
+    .tag.firebase {
+      background: #FFF8E1;
+      color: #F57F17;
+      border-color: #FFE082;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    footer {
+      text-align: center;
+      padding: 28px 20px;
+      font-size: 0.82rem;
+      color: #999;
+      border-top: 1px solid var(--border);
+    }
+
+    @media (max-width: 480px) {
+      header h1 { font-size: 1.5rem; }
+      section { padding: 18px 16px; }
+      main { padding: 24px 12px 48px; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <span class="header-icon">👁️</span>
+  <h1 id="header-title">プライバシーポリシー</h1>
+  <p class="subtitle" id="header-subtitle">Eye Break / アイブレイク</p>
+  <div class="lang-toggle">
+    <button class="lang-btn" id="btn-ja" onclick="setLang('ja')">日本語</button>
+    &nbsp;
+    <button class="lang-btn" id="btn-en" onclick="setLang('en')">English</button>
+  </div>
+</header>
+
+<main>
+  <p class="last-updated" id="last-updated">最終更新日 / Last Updated: 2026-02-24</p>
+
+  <div class="notice-card" id="notice-card">
+    <strong>重要なお知らせ：</strong>
+    Eye Break はアカウント登録や個人情報の入力を一切必要としません。収集される情報はすべて匿名の使用統計のみです。
+  </div>
+
+  <!-- Section 1 -->
+  <section id="sec1">
+    <h2><span class="num">1</span> <span id="s1-title">収集する情報</span></h2>
+    <p id="s1-body1">Eye Break が収集する情報は以下の通りです：</p>
+    <ul id="s1-list">
+      <li><span class="tag">ローカル</span> ブレーク記録・タイマー完了履歴（端末内のみ保存）</li>
+      <li><span class="tag firebase">Firebase</span> 匿名の利用統計（画面表示回数、機能の使用頻度）</li>
+      <li><span class="tag firebase">Crashlytics</span> クラッシュレポート・エラーログ（匿名）</li>
+      <li><span class="tag">通知</span> ローカル通知の許可状態（端末内のみ）</li>
+      <li><span class="tag">端末情報</span> OSバージョン・機種（クラッシュ解析用、匿名）</li>
+    </ul>
+    <p id="s1-body2"><strong>収集しない情報：</strong></p>
+    <ul id="s1-list2">
+      <li><span class="tag no">収集しない</span> 氏名・メールアドレス等の個人識別情報</li>
+      <li><span class="tag no">収集しない</span> カメラ・マイクへのアクセス</li>
+      <li><span class="tag no">収集しない</span> 位置情報</li>
+      <li><span class="tag no">収集しない</span> アカウント・ログイン情報</li>
+      <li><span class="tag no">収集しない</span> 広告ID（AdMobは使用していません）</li>
+    </ul>
+  </section>
+
+  <!-- Section 2 -->
+  <section id="sec2">
+    <h2><span class="num">2</span> <span id="s2-title">利用目的</span></h2>
+    <p id="s2-body1">収集した情報は以下の目的にのみ使用します：</p>
+    <ul id="s2-list">
+      <li>アプリのクラッシュ調査・品質向上</li>
+      <li>機能の利用状況の把握（UX改善）</li>
+      <li>ローカル通知のスケジュール管理（20-20-20ルール）</li>
+    </ul>
+    <p id="s2-body2">収集したデータはマーケティング・広告・第三者への販売には一切使用しません。</p>
+  </section>
+
+  <!-- Section 3 -->
+  <section id="sec3">
+    <h2><span class="num">3</span> <span id="s3-title">第三者サービス</span></h2>
+    <p id="s3-body1">本アプリは以下の第三者サービスを使用しています。各サービスのプライバシーポリシーも合わせてご確認ください：</p>
+    <ul id="s3-list">
+      <li>
+        <strong>Firebase Analytics（Google LLC）</strong><br>
+        匿名の使用統計収集。個人を特定できるデータは含まれません。<br>
+        <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google プライバシーポリシー →</a>
+      </li>
+      <li style="margin-top:10px;">
+        <strong>Firebase Crashlytics（Google LLC）</strong><br>
+        クラッシュ・エラー情報の匿名収集。アプリ品質向上に使用します。<br>
+        <a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener">Firebase プライバシー →</a>
+      </li>
+    </ul>
+    <p id="s3-body2" style="margin-top:10px;">広告ネットワーク（AdMob等）は使用していません。</p>
+  </section>
+
+  <!-- Section 4 -->
+  <section id="sec4">
+    <h2><span class="num">4</span> <span id="s4-title">データ保管</span></h2>
+    <p id="s4-body1">ブレーク履歴・設定データはすべてお使いの端末内にローカル保存されます。サーバーへのアップロードは行いません。</p>
+    <p id="s4-body2">Firebase が収集する匿名の統計データは、Google のサーバー（米国を含む）に保存されます。これらのデータはお客様個人を識別するものではありません。</p>
+    <p id="s4-body3">アプリをアンインストールすることで、端末内のすべてのローカルデータが削除されます。</p>
+  </section>
+
+  <!-- Section 5 -->
+  <section id="sec5">
+    <h2><span class="num">5</span> <span id="s5-title">子どものプライバシー</span></h2>
+    <p id="s5-body1">本アプリは13歳未満の子どもから意図的に個人情報を収集することはありません。アカウント登録が不要であるため、年齢確認の仕組みはありませんが、個人を特定できる情報は一切収集していません。</p>
+    <p id="s5-body2">お子さんのデータに関してご不安がある場合は、下記のお問い合わせ先までご連絡ください。</p>
+  </section>
+
+  <!-- Section 6 -->
+  <section id="sec6">
+    <h2><span class="num">6</span> <span id="s6-title">ポリシーの変更</span></h2>
+    <p id="s6-body1">本プライバシーポリシーは予告なく変更される場合があります。重要な変更がある場合は、アプリのアップデートノートでお知らせします。</p>
+    <p id="s6-body2">このページの「最終更新日」を定期的にご確認ください。変更後も引き続きアプリをご使用の場合は、新しいポリシーに同意したものとみなします。</p>
+  </section>
+
+  <!-- Section 7 -->
+  <section id="sec7">
+    <h2><span class="num">7</span> <span id="s7-title">お問い合わせ</span></h2>
+    <p id="s7-body1">プライバシーポリシーに関するご質問・ご要望は以下までお問い合わせください：</p>
+    <p style="margin-top:12px;">
+      <strong>Email:</strong>
+      <a href="mailto:app.develop.sk@gmail.com">app.develop.sk@gmail.com</a>
+    </p>
+    <p id="s7-body2" style="margin-top:8px;">通常、お問い合わせから7営業日以内にご返答いたします。</p>
+  </section>
+</main>
+
+<footer>
+  <p>&copy; 2026 Eye Break / アイブレイク. All rights reserved.</p>
+  <p style="margin-top:6px;">Bundle ID: com.example.eyeBreak</p>
+</footer>
+
+<script>
+  const content = {
+    ja: {
+      htmlLang: 'ja',
+      headerTitle: 'プライバシーポリシー',
+      headerSubtitle: 'Eye Break / アイブレイク',
+      lastUpdated: '最終更新日: 2026年2月24日',
+      notice: '<strong>重要なお知らせ：</strong> Eye Break はアカウント登録や個人情報の入力を一切必要としません。収集される情報はすべて匿名の使用統計のみです。',
+      s1Title: '収集する情報',
+      s1Body1: 'Eye Break が収集する情報は以下の通りです：',
+      s1List: [
+        '<span class="tag">ローカル</span> ブレーク記録・タイマー完了履歴（端末内のみ保存）',
+        '<span class="tag firebase">Firebase</span> 匿名の利用統計（画面表示回数、機能の使用頻度）',
+        '<span class="tag firebase">Crashlytics</span> クラッシュレポート・エラーログ（匿名）',
+        '<span class="tag">通知</span> ローカル通知の許可状態（端末内のみ）',
+        '<span class="tag">端末情報</span> OSバージョン・機種（クラッシュ解析用、匿名）'
+      ],
+      s1Body2: '<strong>収集しない情報：</strong>',
+      s1List2: [
+        '<span class="tag no">収集しない</span> 氏名・メールアドレス等の個人識別情報',
+        '<span class="tag no">収集しない</span> カメラ・マイクへのアクセス',
+        '<span class="tag no">収集しない</span> 位置情報',
+        '<span class="tag no">収集しない</span> アカウント・ログイン情報',
+        '<span class="tag no">収集しない</span> 広告ID（AdMobは使用していません）'
+      ],
+      s2Title: '利用目的',
+      s2Body1: '収集した情報は以下の目的にのみ使用します：',
+      s2List: [
+        'アプリのクラッシュ調査・品質向上',
+        '機能の利用状況の把握（UX改善）',
+        'ローカル通知のスケジュール管理（20-20-20ルール）'
+      ],
+      s2Body2: '収集したデータはマーケティング・広告・第三者への販売には一切使用しません。',
+      s3Title: '第三者サービス',
+      s3Body1: '本アプリは以下の第三者サービスを使用しています。各サービスのプライバシーポリシーも合わせてご確認ください：',
+      s3List: [
+        '<strong>Firebase Analytics（Google LLC）</strong><br>匿名の使用統計収集。個人を特定できるデータは含まれません。<br><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google プライバシーポリシー →</a>',
+        '<strong>Firebase Crashlytics（Google LLC）</strong><br>クラッシュ・エラー情報の匿名収集。アプリ品質向上に使用します。<br><a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener">Firebase プライバシー →</a>'
+      ],
+      s3Body2: '広告ネットワーク（AdMob等）は使用していません。',
+      s4Title: 'データ保管',
+      s4Body1: 'ブレーク履歴・設定データはすべてお使いの端末内にローカル保存されます。サーバーへのアップロードは行いません。',
+      s4Body2: 'Firebase が収集する匿名の統計データは、Google のサーバー（米国を含む）に保存されます。これらのデータはお客様個人を識別するものではありません。',
+      s4Body3: 'アプリをアンインストールすることで、端末内のすべてのローカルデータが削除されます。',
+      s5Title: '子どものプライバシー',
+      s5Body1: '本アプリは13歳未満の子どもから意図的に個人情報を収集することはありません。アカウント登録が不要であるため、年齢確認の仕組みはありませんが、個人を特定できる情報は一切収集していません。',
+      s5Body2: 'お子さんのデータに関してご不安がある場合は、下記のお問い合わせ先までご連絡ください。',
+      s6Title: 'ポリシーの変更',
+      s6Body1: '本プライバシーポリシーは予告なく変更される場合があります。重要な変更がある場合は、アプリのアップデートノートでお知らせします。',
+      s6Body2: 'このページの「最終更新日」を定期的にご確認ください。変更後も引き続きアプリをご使用の場合は、新しいポリシーに同意したものとみなします。',
+      s7Title: 'お問い合わせ',
+      s7Body1: 'プライバシーポリシーに関するご質問・ご要望は以下までお問い合わせください：',
+      s7Body2: '通常、お問い合わせから7営業日以内にご返答いたします。',
+      pageTitle: 'プライバシーポリシー | Eye Break'
+    },
+    en: {
+      htmlLang: 'en',
+      headerTitle: 'Privacy Policy',
+      headerSubtitle: 'Eye Break / アイブレイク',
+      lastUpdated: 'Last Updated: February 24, 2026',
+      notice: '<strong>Important Notice:</strong> Eye Break does not require account registration or the entry of any personal information. All data collected is anonymous usage statistics only.',
+      s1Title: 'Information We Collect',
+      s1Body1: 'Eye Break collects the following information:',
+      s1List: [
+        '<span class="tag">Local</span> Break records and timer completion history (stored on device only)',
+        '<span class="tag firebase">Firebase</span> Anonymous usage statistics (screen views, feature usage frequency)',
+        '<span class="tag firebase">Crashlytics</span> Crash reports and error logs (anonymous)',
+        '<span class="tag">Notifications</span> Local notification permission status (device only)',
+        '<span class="tag">Device Info</span> OS version and device model (for crash analysis, anonymous)'
+      ],
+      s1Body2: '<strong>Information We Do NOT Collect:</strong>',
+      s1List2: [
+        '<span class="tag no">Not Collected</span> Personal identifiers (name, email address, etc.)',
+        '<span class="tag no">Not Collected</span> Camera or microphone access',
+        '<span class="tag no">Not Collected</span> Location data',
+        '<span class="tag no">Not Collected</span> Account or login credentials',
+        '<span class="tag no">Not Collected</span> Advertising IDs (AdMob is not used)'
+      ],
+      s2Title: 'How We Use Information',
+      s2Body1: 'Collected information is used solely for the following purposes:',
+      s2List: [
+        'Investigating crashes and improving app quality',
+        'Understanding feature usage patterns (UX improvement)',
+        'Managing local notification schedules (20-20-20 rule)'
+      ],
+      s2Body2: 'We do not use collected data for marketing, advertising, or sale to third parties.',
+      s3Title: 'Third-Party Services',
+      s3Body1: 'This app uses the following third-party services. Please review their privacy policies as well:',
+      s3List: [
+        '<strong>Firebase Analytics (Google LLC)</strong><br>Collects anonymous usage statistics. No personally identifiable data is included.<br><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google Privacy Policy →</a>',
+        '<strong>Firebase Crashlytics (Google LLC)</strong><br>Anonymously collects crash and error information to improve app quality.<br><a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener">Firebase Privacy →</a>'
+      ],
+      s3Body2: 'No advertising networks (such as AdMob) are used.',
+      s4Title: 'Data Storage',
+      s4Body1: 'All break history and settings data are stored locally on your device. No data is uploaded to our servers.',
+      s4Body2: 'Anonymous statistical data collected by Firebase is stored on Google\'s servers (including in the United States). This data does not identify you personally.',
+      s4Body3: 'Uninstalling the app removes all local data stored on your device.',
+      s5Title: 'Children\'s Privacy',
+      s5Body1: 'This app does not intentionally collect personal information from children under the age of 13. Since no account registration is required, there is no age verification mechanism, but no personally identifiable information is collected.',
+      s5Body2: 'If you have concerns about your child\'s data, please contact us using the information below.',
+      s6Title: 'Changes to This Policy',
+      s6Body1: 'This privacy policy may be updated without prior notice. If there are significant changes, we will announce them in the app\'s update notes.',
+      s6Body2: 'Please check this page periodically for the "Last Updated" date. Continued use of the app after changes indicates acceptance of the new policy.',
+      s7Title: 'Contact Us',
+      s7Body1: 'For questions or requests regarding this privacy policy, please contact us:',
+      s7Body2: 'We typically respond within 7 business days.',
+      pageTitle: 'Privacy Policy | Eye Break'
+    }
+  };
+
+  function setLang(lang) {
+    const c = content[lang];
+    document.documentElement.lang = c.htmlLang;
+    document.title = c.pageTitle;
+    document.getElementById('header-title').textContent = c.headerTitle;
+    document.getElementById('header-subtitle').textContent = c.headerSubtitle;
+    document.getElementById('last-updated').textContent = c.lastUpdated;
+    document.getElementById('notice-card').innerHTML = c.notice;
+
+    document.getElementById('s1-title').textContent = c.s1Title;
+    document.getElementById('s1-body1').textContent = c.s1Body1;
+    setList('s1-list', c.s1List);
+    document.getElementById('s1-body2').innerHTML = c.s1Body2;
+    setList('s1-list2', c.s1List2);
+
+    document.getElementById('s2-title').textContent = c.s2Title;
+    document.getElementById('s2-body1').textContent = c.s2Body1;
+    setList('s2-list', c.s2List);
+    document.getElementById('s2-body2').textContent = c.s2Body2;
+
+    document.getElementById('s3-title').textContent = c.s3Title;
+    document.getElementById('s3-body1').textContent = c.s3Body1;
+    setListHtml('s3-list', c.s3List);
+    document.getElementById('s3-body2').textContent = c.s3Body2;
+
+    document.getElementById('s4-title').textContent = c.s4Title;
+    document.getElementById('s4-body1').textContent = c.s4Body1;
+    document.getElementById('s4-body2').textContent = c.s4Body2;
+    document.getElementById('s4-body3').textContent = c.s4Body3;
+
+    document.getElementById('s5-title').textContent = c.s5Title;
+    document.getElementById('s5-body1').textContent = c.s5Body1;
+    document.getElementById('s5-body2').textContent = c.s5Body2;
+
+    document.getElementById('s6-title').textContent = c.s6Title;
+    document.getElementById('s6-body1').textContent = c.s6Body1;
+    document.getElementById('s6-body2').textContent = c.s6Body2;
+
+    document.getElementById('s7-title').textContent = c.s7Title;
+    document.getElementById('s7-body1').textContent = c.s7Body1;
+    document.getElementById('s7-body2').textContent = c.s7Body2;
+
+    document.getElementById('btn-ja').classList.toggle('active', lang === 'ja');
+    document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+
+    const url = new URL(window.location.href);
+    if (lang === 'en') {
+      url.searchParams.set('lang', 'en');
+    } else {
+      url.searchParams.delete('lang');
+    }
+    history.replaceState(null, '', url.toString());
+  }
+
+  function setList(id, items) {
+    const ul = document.getElementById(id);
+    ul.innerHTML = items.map(i => `<li>${i}</li>`).join('');
+  }
+
+  function setListHtml(id, items) {
+    const ul = document.getElementById(id);
+    ul.innerHTML = items.map((i, idx) =>
+      `<li${idx > 0 ? ' style="margin-top:10px;"' : ''}>${i}</li>`
+    ).join('');
+  }
+
+  // Init based on URL param
+  const params = new URLSearchParams(window.location.search);
+  const initLang = params.get('lang') === 'en' ? 'en' : 'ja';
+  setLang(initLang);
+</script>
+</body>
+</html>

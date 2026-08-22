@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta name="robots" content="noindex, follow">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy — Hushwave</title>
+<link rel="canonical" href="https://appdevelopsk.com/privacy-policy/hushwave/">
+  <style>
+    :root {
+      --accent: #6C63FF;
+      --accent-light: #EEF0FF;
+      --bg: #FFFFFF;
+      --surface: #F8F8FE;
+      --text: #1A1A2E;
+      --text-muted: #6B7280;
+      --border: #E5E7EB;
+      --radius: 12px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Hiragino Kaku Gothic ProN",
+        "Yu Gothic", "Meiryo", "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.8;
+      font-size: 16px;
+    }
+
+    header {
+      background: linear-gradient(135deg, var(--accent) 0%, #9B59B6 100%);
+      color: #fff;
+      padding: 48px 24px 40px;
+      text-align: center;
+    }
+
+    header .app-icon {
+      width: 72px;
+      height: 72px;
+      background: rgba(255,255,255,0.25);
+      border-radius: 18px;
+      margin: 0 auto 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 36px;
+    }
+
+    header h1 {
+      font-size: 1.75rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+
+    header p {
+      margin-top: 6px;
+      font-size: 0.95rem;
+      opacity: 0.85;
+    }
+
+    .lang-toggle {
+      margin-top: 20px;
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .lang-toggle button {
+      padding: 6px 20px;
+      border-radius: 999px;
+      border: 2px solid rgba(255,255,255,0.6);
+      background: transparent;
+      color: #fff;
+      font-size: 0.875rem;
+      cursor: pointer;
+      transition: background 0.2s, border-color 0.2s;
+      font-weight: 500;
+    }
+
+    .lang-toggle button.active,
+    .lang-toggle button:hover {
+      background: rgba(255,255,255,0.25);
+      border-color: #fff;
+    }
+
+    main {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 40px 24px 80px;
+    }
+
+    .updated {
+      text-align: center;
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 36px;
+    }
+
+    section {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px 28px;
+      margin-bottom: 20px;
+    }
+
+    section h2 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    section h2 .num {
+      background: var(--accent);
+      color: #fff;
+      font-size: 0.75rem;
+      font-weight: 700;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    section p {
+      color: #374151;
+      margin-bottom: 10px;
+    }
+
+    section p:last-child {
+      margin-bottom: 0;
+    }
+
+    section ul {
+      padding-left: 1.4em;
+      color: #374151;
+    }
+
+    section ul li {
+      margin-bottom: 6px;
+    }
+
+    section ul li:last-child {
+      margin-bottom: 0;
+    }
+
+    .highlight-box {
+      background: var(--accent-light);
+      border-left: 4px solid var(--accent);
+      border-radius: 0 8px 8px 0;
+      padding: 14px 16px;
+      margin-top: 12px;
+      font-size: 0.9rem;
+      color: #374151;
+    }
+
+    .contact-card {
+      background: linear-gradient(135deg, var(--accent) 0%, #9B59B6 100%);
+      color: #fff;
+      border-radius: var(--radius);
+      padding: 28px;
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .contact-card h2 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+      color: #fff;
+    }
+
+    .contact-card a {
+      color: #fff;
+      font-weight: 600;
+      font-size: 1.05rem;
+      text-decoration: none;
+      border-bottom: 2px solid rgba(255,255,255,0.5);
+      padding-bottom: 2px;
+    }
+
+    .contact-card a:hover {
+      border-color: #fff;
+    }
+
+    footer {
+      text-align: center;
+      padding: 24px;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      border-top: 1px solid var(--border);
+    }
+
+    /* Language visibility */
+    [data-lang] { display: none; }
+    .lang-ja [data-lang="ja"] { display: block; }
+    .lang-en [data-lang="en"] { display: block; }
+    .lang-ja .contact-card[data-lang="ja"],
+    .lang-en .contact-card[data-lang="en"] {
+      display: block;
+    }
+
+    @media (max-width: 600px) {
+      header h1 { font-size: 1.4rem; }
+      section { padding: 20px 18px; }
+      main { padding: 28px 16px 60px; }
+    }
+  </style>
+</head>
+<body class="lang-ja">
+
+<header>
+  <div class="app-icon">🌊</div>
+  <h1>Hushwave</h1>
+  <p id="header-sub">Privacy Policy</p>
+  <div class="lang-toggle">
+    <button id="btn-ja" class="active" onclick="setLang('ja')">日本語</button>
+    <button id="btn-en" onclick="setLang('en')">English</button>
+  </div>
+</header>
+
+<main>
+
+  <!-- ===== JAPANESE ===== -->
+  <p class="updated" data-lang="ja">最終更新日：2026年3月6日</p>
+
+  <section data-lang="ja">
+    <h2><span class="num">1</span>収集する情報</h2>
+    <p>Hushwave（以下「本アプリ」）は、個人情報を収集しません。</p>
+    <p>本アプリはアカウント登録やログインを必要としません。サウンドミックスやタイマー設定などのユーザー設定は、お使いのデバイスにのみ保存され、外部サーバーに送信されることはありません。</p>
+    <div class="highlight-box">
+      本アプリは個人データの収集・保存・送信を一切行いません。
+    </div>
+  </section>
+
+  <section data-lang="ja">
+    <h2><span class="num">2</span>第三者サービス</h2>
+    <p>本アプリは以下の第三者サービスを利用しています。各サービスには独自のプライバシーポリシーが適用されます。</p>
+    <ul>
+      <li><strong>Google AdMob（Google LLC）：</strong>広告配信のために使用されます。AdMob は端末の広告 ID を使用することがあります。詳細は <a href="https://policies.google.com/privacy" style="color: var(--accent);">Google のプライバシーポリシー</a>をご覧ください。</li>
+    </ul>
+    <div class="highlight-box">
+      ご自身のデータを第三者に販売することは一切ありません。
+    </div>
+  </section>
+
+  <section data-lang="ja">
+    <h2><span class="num">3</span>データ保管</h2>
+    <p>本アプリはサーバーにデータを保存しません。すべてのユーザー設定はお使いのデバイスのローカルストレージにのみ保存されます。アプリを削除すると、すべてのデータが自動的に削除されます。</p>
+  </section>
+
+  <section data-lang="ja">
+    <h2><span class="num">4</span>子どものプライバシー</h2>
+    <p>本アプリは13歳未満の方を対象としておらず、意図的に13歳未満の個人情報を収集しません。</p>
+  </section>
+
+  <section data-lang="ja">
+    <h2><span class="num">5</span>ポリシーの変更</h2>
+    <p>本ポリシーは必要に応じて更新されることがあります。重要な変更が生じた場合は、このページを通じてお知らせします。定期的にご確認いただくことをお勧めします。</p>
+  </section>
+
+  <div class="contact-card" data-lang="ja">
+    <h2>お問い合わせ</h2>
+    <p style="margin-bottom:12px; opacity:0.9;">プライバシーに関するご質問・ご要望は下記までご連絡ください。</p>
+    <a href="mailto:app.develop.sk@gmail.com">app.develop.sk@gmail.com</a>
+  </div>
+
+  <!-- ===== ENGLISH ===== -->
+  <p class="updated" data-lang="en">Last updated: March 6, 2026</p>
+
+  <section data-lang="en">
+    <h2><span class="num">1</span>Information We Collect</h2>
+    <p>Hushwave ("the App") does not collect any personal information.</p>
+    <p>The App does not require account registration or login. User preferences such as sound mixes and timer settings are stored locally on your device only and are never transmitted to any external server.</p>
+    <div class="highlight-box">
+      This App does not collect, store, or transmit any personal data.
+    </div>
+  </section>
+
+  <section data-lang="en">
+    <h2><span class="num">2</span>Third-Party Services</h2>
+    <p>The App uses the following third-party services, each governed by their own privacy policy.</p>
+    <ul>
+      <li><strong>Google AdMob (Google LLC):</strong> Used for serving advertisements. AdMob may use your device's advertising ID. For more details, see <a href="https://policies.google.com/privacy" style="color: var(--accent);">Google's Privacy Policy</a>.</li>
+    </ul>
+    <div class="highlight-box">
+      We never sell your personal data to third parties.
+    </div>
+  </section>
+
+  <section data-lang="en">
+    <h2><span class="num">3</span>Data Retention</h2>
+    <p>The App does not store any data on servers. All user preferences are stored solely in your device's local storage. Uninstalling the App automatically removes all data.</p>
+  </section>
+
+  <section data-lang="en">
+    <h2><span class="num">4</span>Children's Privacy</h2>
+    <p>The App is not directed to children under the age of 13, and we do not knowingly collect personal information from anyone under 13.</p>
+  </section>
+
+  <section data-lang="en">
+    <h2><span class="num">5</span>Changes to This Policy</h2>
+    <p>We may update this Privacy Policy from time to time. If significant changes are made, we will notify you by updating this page. We encourage you to review this page periodically.</p>
+  </section>
+
+  <div class="contact-card" data-lang="en">
+    <h2>Contact Us</h2>
+    <p style="margin-bottom:12px; opacity:0.9;">For any privacy-related questions or requests, please reach out to us.</p>
+    <a href="mailto:app.develop.sk@gmail.com">app.develop.sk@gmail.com</a>
+  </div>
+
+</main>
+
+<footer>
+  &copy; 2026 App Develop SK — Hushwave
+</footer>
+
+<script>
+  function setLang(lang) {
+    document.body.className = 'lang-' + lang;
+    document.getElementById('header-sub').textContent =
+      lang === 'ja' ? 'プライバシーポリシー' : 'Privacy Policy';
+    document.getElementById('btn-ja').classList.toggle('active', lang === 'ja');
+    document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+    document.title = lang === 'ja'
+      ? 'プライバシーポリシー — Hushwave'
+      : 'Privacy Policy — Hushwave';
+    const url = new URL(window.location);
+    url.searchParams.set('lang', lang);
+    history.replaceState({}, '', url);
+  }
+
+  // On load: read ?lang= param
+  (function () {
+    const params = new URLSearchParams(window.location.search);
+    const lang = params.get('lang');
+    if (lang === 'en') setLang('en');
+    else setLang('ja');
+  })();
+</script>
+
+</body>
+</html>

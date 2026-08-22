@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta name="robots" content="noindex, follow">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>プライバシーポリシー — Thirty Sec Challenge</title>
+<link rel="canonical" href="https://appdevelopsk.com/privacy-policy/thirtysec/">
+  <style>
+    :root {
+      --accent: #6C63FF;
+      --accent-light: #EEF0FF;
+      --bg: #FFFFFF;
+      --surface: #F8F8FE;
+      --text: #1A1A2E;
+      --text-muted: #6B7280;
+      --border: #E5E7EB;
+      --radius: 12px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Hiragino Kaku Gothic ProN",
+        "Yu Gothic", "Meiryo", "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.8;
+      font-size: 16px;
+    }
+
+    header {
+      background: linear-gradient(135deg, var(--accent) 0%, #9B59B6 100%);
+      color: #fff;
+      padding: 48px 24px 40px;
+      text-align: center;
+    }
+
+    header .app-icon {
+      width: 72px;
+      height: 72px;
+      background: rgba(255,255,255,0.25);
+      border-radius: 18px;
+      margin: 0 auto 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 36px;
+    }
+
+    header h1 {
+      font-size: 1.75rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+
+    header p {
+      margin-top: 6px;
+      font-size: 0.95rem;
+      opacity: 0.85;
+    }
+
+    .lang-toggle {
+      margin-top: 20px;
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .lang-toggle button {
+      padding: 6px 20px;
+      border-radius: 999px;
+      border: 2px solid rgba(255,255,255,0.6);
+      background: transparent;
+      color: #fff;
+      font-size: 0.875rem;
+      cursor: pointer;
+      transition: background 0.2s, border-color 0.2s;
+      font-weight: 500;
+    }
+
+    .lang-toggle button.active,
+    .lang-toggle button:hover {
+      background: rgba(255,255,255,0.25);
+      border-color: #fff;
+    }
+
+    main {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 40px 24px 80px;
+    }
+
+    .updated {
+      text-align: center;
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 36px;
+    }
+
+    section {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px 28px;
+      margin-bottom: 20px;
+    }
+
+    section h2 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    section h2 .num {
+      background: var(--accent);
+      color: #fff;
+      font-size: 0.75rem;
+      font-weight: 700;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    section p {
+      color: #374151;
+      margin-bottom: 10px;
+    }
+
+    section p:last-child {
+      margin-bottom: 0;
+    }
+
+    section ul {
+      padding-left: 1.4em;
+      color: #374151;
+    }
+
+    section ul li {
+      margin-bottom: 6px;
+    }
+
+    section ul li:last-child {
+      margin-bottom: 0;
+    }
+
+    .highlight-box {
+      background: var(--accent-light);
+      border-left: 4px solid var(--accent);
+      border-radius: 0 8px 8px 0;
+      padding: 14px 16px;
+      margin-top: 12px;
+      font-size: 0.9rem;
+      color: #374151;
+    }
+
+    .contact-card {
+      background: linear-gradient(135deg, var(--accent) 0%, #9B59B6 100%);
+      color: #fff;
+      border-radius: var(--radius);
+      padding: 28px;
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .contact-card h2 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+      color: #fff;
+    }
+
+    .contact-card a {
+      color: #fff;
+      font-weight: 600;
+      font-size: 1.05rem;
+      text-decoration: none;
+      border-bottom: 2px solid rgba(255,255,255,0.5);
+      padding-bottom: 2px;
+    }
+
+    .contact-card a:hover {
+      border-color: #fff;
+    }
+
+    footer {
+      text-align: center;
+      padding: 24px;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      border-top: 1px solid var(--border);
+    }
+
+    /* Language visibility */
+    [data-lang] { display: none; }
+    .lang-ja [data-lang="ja"] { display: block; }
+    .lang-en [data-lang="en"] { display: block; }
+    .lang-ja .contact-card[data-lang="ja"],
+    .lang-en .contact-card[data-lang="en"] {
+      display: block;
+    }
+
+    @media (max-width: 600px) {
+      header h1 { font-size: 1.4rem; }
+      section { padding: 20px 18px; }
+      main { padding: 28px 16px 60px; }
+    }
+  </style>
+</head>
+<body class="lang-ja">
+
+<header>
+  <div class="app-icon">🎬</div>
+  <h1>Thirty Sec Challenge</h1>
+  <p id="header-sub">プライバシーポリシー</p>
+  <div class="lang-toggle">
+    <button id="btn-ja" class="active" onclick="setLang('ja')">日本語</button>
+    <button id="btn-en" onclick="setLang('en')">English</button>
+  </div>
+</header>
+
+<main>
+
+  <!-- ===== JAPANESE ===== -->
+  <p class="updated" data-lang="ja">最終更新日：2026年2月24日</p>
+
+  <section data-lang="ja">
+    <h2><span class="num">1</span>収集する情報</h2>
+    <p>Thirty Sec Challenge（以下「本アプリ」）は、サービス提供のために以下の情報を収集します。</p>
+    <ul>
+      <li><strong>アカウント情報：</strong>メールアドレス、ユーザー名、プロフィール写真（Google / Apple ログイン経由）</li>
+      <li><strong>動画コンテンツ：</strong>ユーザーが撮影・アップロードした30秒動画（AWS S3 に保存）</li>
+      <li><strong>ゲームデータ：</strong>AIスコア、リーダーボードのスコア、チャレンジ履歴</li>
+      <li><strong>利用状況：</strong>Firebase Analytics によるアプリ内操作ログ</li>
+      <li><strong>クラッシュレポート：</strong>Firebase Crashlytics による障害情報</li>
+      <li><strong>プッシュ通知トークン：</strong>通知配信のため</li>
+      <li><strong>デバイス情報：</strong>OS バージョン、端末モデル（Analytics・障害対応用）</li>
+    </ul>
+  </section>
+
+  <section data-lang="ja">
+    <h2><span class="num">2</span>利用目的</h2>
+    <ul>
+      <li>アカウント作成・認証・プロフィール管理</li>
+      <li>動画のアップロード・表示・AI スコアリング</li>
+      <li>リーダーボード・ランキング機能の提供</li>
+      <li>アプリの改善・バグ修正・新機能開発</li>
+      <li>プッシュ通知の送信（結果通知・ランキング更新等）</li>
+      <li>広告の表示（Google AdMob）</li>
+      <li>不正利用・スパム行為への対策</li>
+    </ul>
+  </section>
+
+  <section data-lang="ja">
+    <h2><span class="num">3</span>第三者サービス</h2>
+    <p>本アプリは以下のサービスを利用しており、各サービスの独自のプライバシーポリシーが適用されます。</p>
+    <ul>
+      <li><strong>Google Sign-In / Firebase（Google LLC）：</strong>認証・Analytics・Crashlytics・プッシュ通知</li>
+      <li><strong>Sign in with Apple（Apple Inc.）：</strong>認証</li>
+      <li><strong>AWS S3（Amazon Web Services）：</strong>動画ファイルの保存</li>
+      <li><strong>Google AdMob（Google LLC）：</strong>広告配信。AdMob は端末の広告 ID を使用することがあります</li>
+    </ul>
+    <div class="highlight-box">
+      ご自身のデータを第三者に販売することは一切ありません。
+    </div>
+  </section>
+
+  <section data-lang="ja">
+    <h2><span class="num">4</span>データ保管・削除</h2>
+    <p>収集したデータはサービス提供に必要な期間のみ保管します。アカウントを削除すると、プロフィール情報・動画・スコアを含むすべての個人データが削除されます。</p>
+    <p>アカウント削除はアプリ内の設定画面から行えます。また、下記のお問い合わせ先にメールでもご依頼いただけます。</p>
+  </section>
+
+  <section data-lang="ja">
+    <h2><span class="num">5</span>カメラ・フォトライブラリへのアクセス</h2>
+    <p>本アプリは30秒動画の撮影・投稿のためにカメラおよびフォトライブラリへのアクセスを必要とします。</p>
+    <ul>
+      <li><strong>カメラ：</strong>30秒チャレンジ動画のリアルタイム撮影</li>
+      <li><strong>フォトライブラリ：</strong>撮影済み動画のアップロード</li>
+    </ul>
+    <p>これらのアクセス権限は、動画機能の利用時のみ使用されます。端末の設定からいつでも取り消すことができます。</p>
+  </section>
+
+  <section data-lang="ja">
+    <h2><span class="num">6</span>子どものプライバシー</h2>
+    <p>本アプリは13歳未満の方を対象としておらず、意図的に13歳未満の個人情報を収集しません。13歳未満のお子さまが本アプリを利用されていることが判明した場合は、速やかに当該情報を削除します。</p>
+  </section>
+
+  <section data-lang="ja">
+    <h2><span class="num">7</span>ポリシーの変更</h2>
+    <p>本ポリシーは必要に応じて更新されることがあります。重要な変更が生じた場合は、アプリ内の通知またはこのページを通じてお知らせします。定期的にご確認いただくことをお勧めします。</p>
+  </section>
+
+  <div class="contact-card" data-lang="ja">
+    <h2>📩 お問い合わせ</h2>
+    <p style="margin-bottom:12px; opacity:0.9;">プライバシーに関するご質問・ご要望は下記までご連絡ください。</p>
+    <a href="mailto:app.develop.sk@gmail.com">app.develop.sk@gmail.com</a>
+  </div>
+
+  <!-- ===== ENGLISH ===== -->
+  <p class="updated" data-lang="en">Last updated: February 24, 2026</p>
+
+  <section data-lang="en">
+    <h2><span class="num">1</span>Information We Collect</h2>
+    <p>Thirty Sec Challenge ("the App") collects the following information to provide its services.</p>
+    <ul>
+      <li><strong>Account Information:</strong> Email address, username, and profile picture (via Google / Apple Sign-In)</li>
+      <li><strong>Video Content:</strong> 30-second videos recorded and uploaded by users (stored on AWS S3)</li>
+      <li><strong>Game Data:</strong> AI scores, leaderboard rankings, and challenge history</li>
+      <li><strong>Usage Analytics:</strong> In-app interaction logs via Firebase Analytics</li>
+      <li><strong>Crash Reports:</strong> Error and crash data via Firebase Crashlytics</li>
+      <li><strong>Push Notification Tokens:</strong> For delivering notifications</li>
+      <li><strong>Device Information:</strong> OS version, device model (for analytics and crash diagnostics)</li>
+    </ul>
+  </section>
+
+  <section data-lang="en">
+    <h2><span class="num">2</span>How We Use Your Information</h2>
+    <ul>
+      <li>Account creation, authentication, and profile management</li>
+      <li>Video upload, display, and AI-based scoring</li>
+      <li>Leaderboard and ranking features</li>
+      <li>App improvement, bug fixes, and new feature development</li>
+      <li>Sending push notifications (results, ranking updates, etc.)</li>
+      <li>Displaying advertisements (Google AdMob)</li>
+      <li>Detecting and preventing abuse or spam</li>
+    </ul>
+  </section>
+
+  <section data-lang="en">
+    <h2><span class="num">3</span>Third-Party Services</h2>
+    <p>The App uses the following third-party services, each governed by their own privacy policy.</p>
+    <ul>
+      <li><strong>Google Sign-In / Firebase (Google LLC):</strong> Authentication, Analytics, Crashlytics, and push notifications</li>
+      <li><strong>Sign in with Apple (Apple Inc.):</strong> Authentication</li>
+      <li><strong>AWS S3 (Amazon Web Services):</strong> Video file storage</li>
+      <li><strong>Google AdMob (Google LLC):</strong> Ad delivery. AdMob may use your device's advertising ID</li>
+    </ul>
+    <div class="highlight-box">
+      We never sell your personal data to third parties.
+    </div>
+  </section>
+
+  <section data-lang="en">
+    <h2><span class="num">4</span>Data Retention &amp; Deletion</h2>
+    <p>We retain collected data only for as long as necessary to provide the service. When you delete your account, all personal data — including your profile, videos, and scores — is permanently deleted.</p>
+    <p>You can delete your account from the Settings screen in the App, or by contacting us at the email address below.</p>
+  </section>
+
+  <section data-lang="en">
+    <h2><span class="num">5</span>Camera &amp; Photo Library Access</h2>
+    <p>The App requires access to your camera and photo library to record and upload 30-second challenge videos.</p>
+    <ul>
+      <li><strong>Camera:</strong> For recording 30-second challenge videos in real time</li>
+      <li><strong>Photo Library:</strong> For uploading previously recorded videos</li>
+    </ul>
+    <p>These permissions are used solely for video functionality. You may revoke them at any time in your device Settings.</p>
+  </section>
+
+  <section data-lang="en">
+    <h2><span class="num">6</span>Children's Privacy</h2>
+    <p>The App is not directed to children under the age of 13, and we do not knowingly collect personal information from anyone under 13. If we become aware that a child under 13 has used the App, we will promptly delete their information.</p>
+  </section>
+
+  <section data-lang="en">
+    <h2><span class="num">7</span>Changes to This Policy</h2>
+    <p>We may update this Privacy Policy from time to time. If significant changes are made, we will notify you through an in-app notification or by updating this page. We encourage you to review this page periodically.</p>
+  </section>
+
+  <div class="contact-card" data-lang="en">
+    <h2>Contact Us</h2>
+    <p style="margin-bottom:12px; opacity:0.9;">For any privacy-related questions or requests, please reach out to us.</p>
+    <a href="mailto:app.develop.sk@gmail.com">app.develop.sk@gmail.com</a>
+  </div>
+
+</main>
+
+<footer>
+  &copy; 2026 Thirty Sec Challenge. Bundle ID: com.thirtysecchallenge.thirtySecChallenge
+</footer>
+
+<script>
+  function setLang(lang) {
+    document.body.className = 'lang-' + lang;
+    document.getElementById('header-sub').textContent =
+      lang === 'ja' ? 'プライバシーポリシー' : 'Privacy Policy';
+    document.getElementById('btn-ja').classList.toggle('active', lang === 'ja');
+    document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+    document.title = lang === 'ja'
+      ? 'プライバシーポリシー — Thirty Sec Challenge'
+      : 'Privacy Policy — Thirty Sec Challenge';
+    const url = new URL(window.location);
+    url.searchParams.set('lang', lang);
+    history.replaceState({}, '', url);
+  }
+
+  // On load: read ?lang= param
+  (function () {
+    const params = new URLSearchParams(window.location.search);
+    const lang = params.get('lang');
+    if (lang === 'en') setLang('en');
+    else setLang('ja');
+  })();
+</script>
+
+</body>
+</html>

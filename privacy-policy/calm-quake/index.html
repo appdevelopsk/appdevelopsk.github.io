@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta name="robots" content="noindex, follow">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy — CalmQuake</title>
+<link rel="canonical" href="https://appdevelopsk.com/privacy-policy/calm-quake/">
+  <style>
+    :root {
+      --accent: #2B7FE0;
+      --accent-light: #EBF4FF;
+      --bg: #FFFFFF;
+      --surface: #F7FAFF;
+      --text: #1A1A2E;
+      --text-muted: #6B7280;
+      --border: #E5E7EB;
+      --radius: 12px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Hiragino Kaku Gothic ProN",
+        "Yu Gothic", "Meiryo", "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.8;
+      font-size: 16px;
+    }
+
+    header {
+      background: linear-gradient(135deg, #1A5CB0 0%, #2B7FE0 60%, #5BA3F5 100%);
+      color: #fff;
+      padding: 48px 24px 40px;
+      text-align: center;
+    }
+
+    header .app-icon {
+      width: 72px;
+      height: 72px;
+      background: rgba(255,255,255,0.25);
+      border-radius: 18px;
+      margin: 0 auto 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 36px;
+    }
+
+    header h1 {
+      font-size: 1.75rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+
+    header p {
+      margin-top: 6px;
+      font-size: 0.95rem;
+      opacity: 0.85;
+    }
+
+    .lang-toggle {
+      margin-top: 20px;
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .lang-toggle button {
+      padding: 6px 20px;
+      border-radius: 999px;
+      border: 2px solid rgba(255,255,255,0.6);
+      background: transparent;
+      color: #fff;
+      font-size: 0.875rem;
+      cursor: pointer;
+      transition: background 0.2s, border-color 0.2s;
+      font-weight: 500;
+    }
+
+    .lang-toggle button.active,
+    .lang-toggle button:hover {
+      background: rgba(255,255,255,0.25);
+      border-color: #fff;
+    }
+
+    main {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 40px 24px 80px;
+    }
+
+    .updated {
+      text-align: center;
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 36px;
+    }
+
+    section {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px 28px;
+      margin-bottom: 20px;
+    }
+
+    section h2 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    section h2 .num {
+      background: var(--accent);
+      color: #fff;
+      font-size: 0.75rem;
+      font-weight: 700;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    section p {
+      color: #374151;
+      margin-bottom: 10px;
+    }
+
+    section p:last-child {
+      margin-bottom: 0;
+    }
+
+    section ul {
+      padding-left: 1.4em;
+      color: #374151;
+    }
+
+    section ul li {
+      margin-bottom: 6px;
+    }
+
+    section ul li:last-child {
+      margin-bottom: 0;
+    }
+
+    .highlight-box {
+      background: var(--accent-light);
+      border-left: 4px solid var(--accent);
+      border-radius: 0 8px 8px 0;
+      padding: 14px 16px;
+      margin-top: 12px;
+      font-size: 0.9rem;
+      color: #374151;
+    }
+
+    .contact-card {
+      background: linear-gradient(135deg, #1A5CB0 0%, #2B7FE0 100%);
+      color: #fff;
+      border-radius: var(--radius);
+      padding: 28px;
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .contact-card h2 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+      color: #fff;
+    }
+
+    .contact-card a {
+      color: #fff;
+      font-weight: 600;
+      font-size: 1.05rem;
+      text-decoration: none;
+      border-bottom: 2px solid rgba(255,255,255,0.5);
+      padding-bottom: 2px;
+    }
+
+    .contact-card a:hover {
+      border-color: #fff;
+    }
+
+    footer {
+      text-align: center;
+      padding: 24px;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      border-top: 1px solid var(--border);
+    }
+
+    /* Language visibility */
+    [data-lang] { display: none; }
+    .lang-ja [data-lang="ja"] { display: block; }
+    .lang-en [data-lang="en"] { display: block; }
+    .lang-ja .contact-card[data-lang="ja"],
+    .lang-en .contact-card[data-lang="en"] {
+      display: block;
+    }
+
+    @media (max-width: 600px) {
+      header h1 { font-size: 1.4rem; }
+      section { padding: 20px 18px; }
+      main { padding: 28px 16px 60px; }
+    }
+  </style>
+</head>
+<body class="lang-ja">
+
+<header>
+  <div class="app-icon">💙</div>
+  <h1>CalmQuake</h1>
+  <p id="header-sub">プライバシーポリシー</p>
+  <div class="lang-toggle">
+    <button id="btn-ja" class="active" onclick="setLang('ja')">日本語</button>
+    <button id="btn-en" onclick="setLang('en')">English</button>
+  </div>
+</header>
+
+<main>
+
+  <!-- ===== JAPANESE ===== -->
+  <p class="updated" data-lang="ja">最終更新日：2026年3月11日</p>
+
+  <section data-lang="ja">
+    <h2><span class="num">1</span>収集する情報</h2>
+    <p>CalmQuake（以下「本アプリ」）は、Apple Watchを通じて以下のデータを利用します。</p>
+    <ul>
+      <li><strong>心拍数：</strong>HKWorkoutSession を利用して監視セッション中のリアルタイム心拍数を読み取ります。HealthKit データはサーバーに送信されず、端末内およびiCloudにのみ保存されます。</li>
+      <li><strong>加速度センサーデータ：</strong>手首の動きの落ち着きのなさスコアを算出するためにデバイス上でのみ処理されます。</li>
+    </ul>
+    <div class="highlight-box">
+      健康データは外部サーバーに送信されません。すべての処理はお使いの端末上で行われます。
+    </div>
+  </section>
+
+  <section data-lang="ja">
+    <h2><span class="num">2</span>HealthKit の利用目的</h2>
+    <p>取得した心拍数データは、感情的なストレスの予兆スコアをリアルタイムで算出するためにのみ使用されます。本アプリは医療機器ではなく、診断・治療を目的とするものではありません。</p>
+    <p>HealthKit データは広告・マーケティング目的で使用することはありません。</p>
+  </section>
+
+  <section data-lang="ja">
+    <h2><span class="num">3</span>データの保存と共有</h2>
+    <p>すべてのセッション記録とアラート履歴は、お使いのiPhoneとApple Watch上にローカルで保存されます（Apple Watch → iPhone 間の同期はWatchConnectivityを使用）。</p>
+    <p>本アプリは個人データを第三者に販売・提供しません。</p>
+    <div class="highlight-box">
+      個人情報を第三者に販売することは一切ありません。
+    </div>
+  </section>
+
+  <section data-lang="ja">
+    <h2><span class="num">4</span>第三者サービス</h2>
+    <p>本アプリは以下の第三者サービスを利用しています。</p>
+    <ul>
+      <li><strong>Sentry（Functional Software, Inc.）：</strong>クラッシュレポートとエラー監視のために使用されます。クラッシュ時のデバイス情報（モデル、OSバージョン等）が送信される場合があります。個人を特定する情報は含まれません。</li>
+      <li><strong>Apple StoreKit 2：</strong>月額・年額サブスクリプション（CalmQuake Pro）の購入処理に使用されます。支払い情報はAppleが管理し、当社は収集しません。</li>
+    </ul>
+  </section>
+
+  <section data-lang="ja">
+    <h2><span class="num">5</span>子どものプライバシー</h2>
+    <p>本アプリは13歳未満の方を対象としておらず、意図的に13歳未満の個人情報を収集しません。</p>
+  </section>
+
+  <section data-lang="ja">
+    <h2><span class="num">6</span>ポリシーの変更</h2>
+    <p>本ポリシーは必要に応じて更新されることがあります。重要な変更が生じた場合は、このページを通じてお知らせします。定期的にご確認いただくことをお勧めします。</p>
+  </section>
+
+  <div class="contact-card" data-lang="ja">
+    <h2>お問い合わせ</h2>
+    <p style="margin-bottom:12px; opacity:0.9;">プライバシーに関するご質問・ご要望は下記までご連絡ください。</p>
+    <a href="mailto:app.develop.sk@gmail.com">app.develop.sk@gmail.com</a>
+  </div>
+
+  <!-- ===== ENGLISH ===== -->
+  <p class="updated" data-lang="en">Last updated: March 11, 2026</p>
+
+  <section data-lang="en">
+    <h2><span class="num">1</span>Information We Access</h2>
+    <p>CalmQuake ("the App") accesses the following data through Apple Watch:</p>
+    <ul>
+      <li><strong>Heart Rate:</strong> Read in real time during an active monitoring session via HKWorkoutSession. HealthKit data is never transmitted to external servers — it remains on-device and in iCloud only.</li>
+      <li><strong>Accelerometer Data:</strong> Processed entirely on-device to compute a wrist restlessness score. Raw motion data is never stored or transmitted.</li>
+    </ul>
+    <div class="highlight-box">
+      Health data is never sent to external servers. All processing happens on your device.
+    </div>
+  </section>
+
+  <section data-lang="en">
+    <h2><span class="num">2</span>Purpose of HealthKit Usage</h2>
+    <p>Heart rate data is used solely to compute a real-time emotional stress precursor score. This App is not a medical device and is not intended for diagnosis or treatment.</p>
+    <p>HealthKit data is never used for advertising or marketing purposes.</p>
+  </section>
+
+  <section data-lang="en">
+    <h2><span class="num">3</span>Data Storage and Sharing</h2>
+    <p>All session records and alert history are stored locally on your iPhone and Apple Watch (synced between devices via WatchConnectivity). No personal data is shared with or sold to third parties.</p>
+    <div class="highlight-box">
+      We never sell your personal data to third parties.
+    </div>
+  </section>
+
+  <section data-lang="en">
+    <h2><span class="num">4</span>Third-Party Services</h2>
+    <p>The App uses the following third-party services:</p>
+    <ul>
+      <li><strong>Sentry (Functional Software, Inc.):</strong> Used for crash reporting and error monitoring. Device information (model, OS version, etc.) may be sent in the event of a crash. No personally identifiable information is included.</li>
+      <li><strong>Apple StoreKit 2:</strong> Used to process subscription purchases (CalmQuake Pro monthly/yearly). Payment information is managed by Apple; we do not collect it.</li>
+    </ul>
+  </section>
+
+  <section data-lang="en">
+    <h2><span class="num">5</span>Children's Privacy</h2>
+    <p>The App is not directed to children under the age of 13, and we do not knowingly collect personal information from anyone under 13.</p>
+  </section>
+
+  <section data-lang="en">
+    <h2><span class="num">6</span>Changes to This Policy</h2>
+    <p>We may update this Privacy Policy from time to time. If significant changes are made, we will notify you by updating this page. We encourage you to review this page periodically.</p>
+  </section>
+
+  <div class="contact-card" data-lang="en">
+    <h2>Contact Us</h2>
+    <p style="margin-bottom:12px; opacity:0.9;">For any privacy-related questions or requests, please reach out to us.</p>
+    <a href="mailto:app.develop.sk@gmail.com">app.develop.sk@gmail.com</a>
+  </div>
+
+</main>
+
+<footer>
+  &copy; 2026 App Develop SK — CalmQuake
+</footer>
+
+<script>
+  function setLang(lang) {
+    document.body.className = 'lang-' + lang;
+    document.getElementById('header-sub').textContent =
+      lang === 'ja' ? 'プライバシーポリシー' : 'Privacy Policy';
+    document.getElementById('btn-ja').classList.toggle('active', lang === 'ja');
+    document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+    document.title = lang === 'ja'
+      ? 'プライバシーポリシー — CalmQuake'
+      : 'Privacy Policy — CalmQuake';
+    const url = new URL(window.location);
+    url.searchParams.set('lang', lang);
+    history.replaceState({}, '', url);
+  }
+
+  (function () {
+    const params = new URLSearchParams(window.location.search);
+    const lang = params.get('lang');
+    if (lang === 'en') setLang('en');
+    else setLang('ja');
+  })();
+</script>
+
+</body>
+</html>
