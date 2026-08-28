@@ -53,7 +53,14 @@ jobs:
           sleep 60   # Pages のビルド待ち
           fail=0
           for d in privacy-policy/*/ support/*/; do
-            c=$(curl -s -o /dev/null -w '%{http_code}' "https://appdevelopsk.github.io/$d")
+            c=0
+            # Pages のビルド反映や CDN 側の一時的な 503 で誤検知しないよう、
+            # 200 が返るか上限に達するまで間隔を空けて再確認する。
+            for i in 1 2 3 4 5; do
+              c=$(curl -s -o /dev/null -w '%{http_code}' "https://appdevelopsk.github.io/$d")
+              [ "$c" = 200 ] && break
+              sleep 15
+            done
             [ "$c" = 200 ] || { echo "NG $c $d"; fail=$((fail+1)); }
           done
           echo "404: $fail 件"
