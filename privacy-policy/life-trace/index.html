@@ -126,7 +126,7 @@
 
     <header>
       <h1>Privacy Policy</h1>
-      <p><strong>LifeTrace – AI Life Recorder</strong> &nbsp;|&nbsp; Effective date: March 2026</p>
+      <p><strong>LifeTrace – AI Life Recorder</strong> &nbsp;|&nbsp; Effective date: March 2026 &nbsp;|&nbsp; Last updated: September 25, 2026</p>
     </header>
 
     <div class="highlight-box">
@@ -177,13 +177,82 @@
     <p>
       Health data is read from <strong>Apple Health (HealthKit)</strong> only after you grant
       explicit permission. You can revoke this permission at any time in iOS Settings &rarr;
-      Privacy &amp; Security &rarr; Health.
+      Privacy &amp; Security &rarr; Health. On Android, health data comes from Health Connect instead (see section 1a).
     </p>
 
+    <!-- 1a. Google Health Connect (Android) -->
+    <h2 id="health-connect">1a. Google Health Connect (Android)</h2>
+
     <p>
-      Location data is collected only when you grant location access in iOS Settings. We request
+      On Android, LifeTrace can read activity and sleep data from <strong>Health Connect</strong>
+      (by Google), but only after you grant permission in the Health Connect permission screen.
+      Connecting Health Connect is optional; the app works without it.
+    </p>
+
+    <p><strong>Data types we read (read-only):</strong></p>
+    <ul>
+      <li><strong>Steps</strong> (READ_STEPS)</li>
+      <li><strong>Distance</strong> (READ_DISTANCE)</li>
+      <li><strong>Active calories burned</strong> (READ_ACTIVE_CALORIES_BURNED)</li>
+      <li><strong>Sleep sessions</strong> (READ_SLEEP) &mdash; used only as the total sleep duration for the day</li>
+    </ul>
+
+    <p>
+      <strong>We never write, modify or delete any data in Health Connect.</strong> LifeTrace requests
+      read permissions only.
+    </p>
+
+    <p><strong>How this data is used:</strong></p>
+    <ul>
+      <li>
+        The app reads today's totals (steps, distance, active calories, sleep duration) and shows them
+        on your device in your daily journal.
+      </li>
+      <li>
+        When you tap &ldquo;Generate My Day&rdquo;, the recorded values of all four data types (steps,
+        distance, active calories and sleep duration) are sent over an encrypted connection (TLS) to our
+        server, which includes them in the prompt sent to <strong>Claude AI (Anthropic)</strong> to write
+        your AI daily summary. Values that were not recorded are not sent. Your name and email address
+        are not sent to Anthropic, and this data is not used to train AI models.
+      </li>
+      <li>
+        Our server stores the day's step count and distance with your daily log so that your history and
+        weekly insights can be shown. Sleep duration and active calories are used only to generate the
+        summary and are not stored as separate values on our server (the generated summary text,
+        which is stored, may mention them).
+      </li>
+    </ul>
+
+    <p><strong>What we do not do with Health Connect data:</strong></p>
+    <ul>
+      <li>We do not use it for advertising, and we do not share it with advertising networks (including Unity LevelPlay) or data brokers.</li>
+      <li>We do not sell it.</li>
+      <li>We do not use it to determine credit-worthiness or for lending purposes.</li>
+      <li>We do not transfer it to anyone except the service providers needed to provide the features above (our server and Anthropic), and it is not read by humans except where required for security, legal compliance, or with your explicit consent.</li>
+    </ul>
+
+    <p>
+      The use of information received from Health Connect adheres to the
+      <a href="https://support.google.com/googleplay/android-developer/answer/12991134" target="_blank" rel="noopener">Health Connect Permissions policy</a>,
+      including the Limited Use requirements.
+    </p>
+
+    <p><strong>Disconnecting Health Connect:</strong></p>
+    <ul>
+      <li>Open the Health Connect app (or Android Settings &rarr; Security &amp; privacy &rarr; Privacy &rarr; Health Connect) &rarr; App permissions &rarr; LifeTrace, and turn off access. LifeTrace stops reading the data immediately.</li>
+    </ul>
+
+    <p><strong>Deleting your data:</strong></p>
+    <ul>
+      <li>In LifeTrace, go to Settings &rarr; Delete account. This permanently deletes your account and all associated data on our server, including daily logs with step and distance values.</li>
+      <li>You can also request deletion by emailing us at the address in &ldquo;Contact Us&rdquo;; we process requests within 30 days.</li>
+      <li>Data stored in Health Connect itself is managed by Health Connect and is not affected; you can delete it from the Health Connect app.</li>
+    </ul>
+
+    <p>
+      Location data is collected only when you grant location access. On iOS we request
       "Always" access so that your daily journey can be captured automatically; however, the app
-      works in reduced capacity with "While Using" access.
+      works in reduced capacity with "While Using" access. On Android, location is accessed only while you use the app.
     </p>
 
     <!-- 2. How We Use Your Data -->
@@ -256,8 +325,10 @@
     </table>
 
     <p>
-      We do not share your data with advertising networks, data brokers, or any other third parties
-      beyond those listed above.
+      We do not share your health, location or diary data with advertising networks or data brokers.
+      The free version shows ads through Unity LevelPlay, which collects device information as described in
+      &ldquo;Advertising (Unity LevelPlay)&rdquo; below; no health, location or diary data is shared with it.
+      We do not share your data with any other third parties beyond those listed above.
     </p>
 
     <!-- 4b. AI Data Processing Consent -->
@@ -293,11 +364,11 @@
     <ul>
       <li><strong>Access:</strong> You can view your stored data within the app at any time.</li>
       <li><strong>Correction:</strong> You can edit manually added information through the app settings.</li>
-      <li><strong>Deletion:</strong> You can request deletion of all your data by contacting us at the email below. We will process your request within 30 days.</li>
-      <li><strong>Health data revocation:</strong> Go to iOS Settings &rarr; Privacy &amp; Security &rarr; Health &rarr; LifeTrace and disable access.</li>
-      <li><strong>Location revocation:</strong> Go to iOS Settings &rarr; Privacy &amp; Security &rarr; Location Services &rarr; LifeTrace.</li>
-      <li><strong>Notifications:</strong> Disable push notifications in iOS Settings &rarr; Notifications &rarr; LifeTrace at any time.</li>
-      <li><strong>Analytics opt-out:</strong> Firebase Analytics respects the iOS "Limit Ad Tracking" system setting.</li>
+      <li><strong>Deletion:</strong> You can delete your account and all associated data in the app (Settings &rarr; Delete account), or request deletion by contacting us at the email below. We will process your request within 30 days.</li>
+      <li><strong>Health data revocation:</strong> On iOS, go to Settings &rarr; Privacy &amp; Security &rarr; Health &rarr; LifeTrace and disable access. On Android, open the Health Connect app &rarr; App permissions &rarr; LifeTrace and turn access off.</li>
+      <li><strong>Location revocation:</strong> On iOS, go to Settings &rarr; Privacy &amp; Security &rarr; Location Services &rarr; LifeTrace. On Android, go to Settings &rarr; Apps &rarr; LifeTrace &rarr; Permissions &rarr; Location.</li>
+      <li><strong>Notifications:</strong> Disable push notifications at any time in iOS Settings &rarr; Notifications &rarr; LifeTrace, or in Android Settings &rarr; Apps &rarr; LifeTrace &rarr; Notifications.</li>
+      <li><strong>Analytics and ads:</strong> Firebase Analytics respects the iOS "Limit Ad Tracking" system setting. On Android, you can reset your advertising ID or opt out of personalized ads in Settings &rarr; Google &rarr; Ads.</li>
     </ul>
 
     <!-- 6. Children's Privacy -->
