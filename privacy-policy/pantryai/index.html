@@ -210,8 +210,8 @@
 <div class="container">
 
   <div class="meta-bar">
-    <span data-lang="ja">📅 最終更新日：2026年2月24日</span>
-    <span data-lang="en">📅 Last updated: February 24, 2026</span>
+    <span data-lang="ja">📅 最終更新日：2026年9月26日</span>
+    <span data-lang="en">📅 Last updated: September 26, 2026</span>
     <span>Bundle ID: com.pantryai.pantryAi</span>
   </div>
 
@@ -263,12 +263,12 @@
     <h3 data-lang="ja">アカウント情報</h3>
     <h3 data-lang="en">Account Information</h3>
     <ul data-lang="ja">
-      <li>メールアドレス（Googleログイン / Appleログイン経由）</li>
+      <li>メールアドレス（メールアドレスとパスワードでの登録、またはGoogleログイン / Appleログイン経由）</li>
       <li>ユーザー名・表示名</li>
       <li>プロフィール画像（任意）</li>
     </ul>
     <ul data-lang="en">
-      <li>Email address (via Google Sign-In / Apple Sign-In)</li>
+      <li>Email address (when you register with email and password, or via Google Sign-In / Apple Sign-In)</li>
       <li>Username and display name</li>
       <li>Profile photo (optional)</li>
     </ul>
@@ -296,13 +296,13 @@
     <h3 data-lang="en">Technical Information</h3>
     <ul data-lang="ja">
       <li>利用統計・行動ログ（Firebase Analytics）</li>
-      <li>クラッシュレポート（Firebase Crashlytics）</li>
+      <li>クラッシュ・エラーレポート（Sentry）</li>
       <li>デバイス情報（OS、端末モデル、アプリバージョン）</li>
       <li>IPアドレス（サーバー処理時）</li>
     </ul>
     <ul data-lang="en">
       <li>Usage statistics and behavior logs (Firebase Analytics)</li>
-      <li>Crash reports (Firebase Crashlytics)</li>
+      <li>Crash and error reports (Sentry)</li>
       <li>Device information (OS, device model, app version)</li>
       <li>IP address (during server-side processing)</li>
     </ul>
@@ -341,8 +341,8 @@
 
     <div class="third-party-card">
       <h4>🔥 Firebase (Google LLC)</h4>
-      <p data-lang="ja">認証（Google ログイン）、アプリ解析（Analytics）、クラッシュレポート（Crashlytics）、クラウドストレージ（食品画像の保存）に使用します。</p>
-      <p data-lang="en">Used for authentication (Google Sign-In), app analytics, crash reporting (Crashlytics), and cloud storage (food image storage).</p>
+      <p data-lang="ja">アプリ解析（Analytics・Performance Monitoring）、設定配信（Remote Config）、アプリ内メッセージ、プッシュ通知（Cloud Messaging）に使用します。</p>
+      <p data-lang="en">Used for app analytics (Analytics and Performance Monitoring), remote configuration, in-app messaging, and push notifications (Cloud Messaging).</p>
       <p><a href="https://firebase.google.com/support/privacy" target="_blank">Firebase Privacy Policy →</a></p>
     </div>
 
@@ -351,6 +351,12 @@
       <p data-lang="ja">無料プランのユーザー向けに広告を表示するために使用します。AdMobはデバイス識別子・利用データを収集し、パーソナライズ広告の配信に使用する場合があります。</p>
       <p data-lang="en">Used to display advertisements for free-tier users. AdMob may collect device identifiers and usage data to serve personalized ads.</p>
       <p><a href="https://policies.google.com/privacy" target="_blank">Google Privacy Policy →</a></p>
+    </div>
+    <div class="third-party-card">
+      <h4>📺 Unity LevelPlay (Unity Technologies)</h4>
+      <p data-lang="ja">広告の配信（メディエーション）に使用します。Unity LevelPlay SDK と連携する広告ネットワークは、広告の配信・効果測定・不正防止のため、広告ID・IPアドレス・端末モデル・OSバージョン・言語設定・広告への操作などを収集する場合があります。</p>
+      <p data-lang="en">Used for ad mediation. The Unity LevelPlay SDK and the ad networks it works with may collect the advertising ID, IP address, device model, OS version, language setting and ad interactions to deliver and measure ads and to prevent fraud.</p>
+      <p><a href="https://unity.com/legal/game-player-and-app-user-privacy-policy" target="_blank">Unity Privacy Policy →</a></p>
     </div>
 
     <div class="third-party-card" style="background:#f3e5f5; border-color:#ce93d8;">
@@ -375,22 +381,22 @@
 
     <h3 data-lang="ja">保管場所・期間</h3>
     <h3 data-lang="en">Storage Location &amp; Retention</h3>
-    <p data-lang="ja">収集したデータはFirebaseのクラウドサービス（日本およびグローバルデータセンター）に保管されます。アカウントをお持ちの間はデータを保持し、アカウント削除後は90日以内にすべてのデータを消去します。</p>
-    <p data-lang="en">Collected data is stored in Firebase cloud services (Japan and global data centers). Data is retained while your account is active and deleted within 90 days after account deletion.</p>
+    <p data-lang="ja">アカウント情報と食品・在庫データは、当社が運用する日本国内のサーバーに保管されます。アカウントをお持ちの間はデータを保持します。アカウントを削除すると、下記「アカウントの削除」に記載のとおり個人を特定できる情報を直ちに消去し、アカウントを無効化します。</p>
+    <p data-lang="en">Account information and food/inventory data are stored on servers we operate in Japan. Data is retained while your account is active. When you delete your account, the personally identifiable information described under "How to Delete Your Account" below is erased immediately and the account is deactivated.</p>
 
     <h3 data-lang="ja">データ削除の権利</h3>
     <h3 data-lang="en">Right to Delete</h3>
     <div class="highlight-box">
       <strong data-lang="ja">アカウント削除方法</strong>
       <strong data-lang="en">How to Delete Your Account</strong>
-      <span data-lang="ja">アプリ内の「設定 → アカウント → アカウントを削除」からいつでもアカウントと関連するすべてのデータを削除できます。または <a href="mailto:app.develop.sk@gmail.com">app.develop.sk@gmail.com</a> までご連絡ください。</span>
-      <span data-lang="en">You can delete your account and all associated data at any time via "Settings → Account → Delete Account" in the app, or by contacting <a href="mailto:app.develop.sk@gmail.com">app.develop.sk@gmail.com</a>.</span>
+      <span data-lang="ja">アプリ内の「プロフィール → アカウントを削除」からいつでもアカウントを削除できます。アプリをお持ちでない場合は <a href="mailto:appdevelopsk@gmail.com">appdevelopsk@gmail.com</a> までご連絡ください（30日以内に対応します）。削除すると、メールアドレス・ユーザー名・表示名・プロフィール画像を消去し、Google / Apple ログインの連携を解除してアカウントを無効化します。食品・献立などの記録は、個人と結び付かない匿名の状態で統計のために保持される場合があります。詳しくは<a href="https://appdevelopsk.com/privacy-policy/pantry-ai/#delete-account">アカウント削除のページ</a>をご覧ください。</span>
+      <span data-lang="en">You can delete your account at any time via "Profile → Delete Account" in the app. If you no longer have the app, contact <a href="mailto:appdevelopsk@gmail.com">appdevelopsk@gmail.com</a> and we will complete the deletion within 30 days. Deletion erases your email address, username, display name and profile picture, removes your Google / Apple sign-in links, and deactivates the account. Food, meal and usage records may be retained in anonymised form, no longer linked to any identifiable person, for service statistics. See the <a href="https://appdevelopsk.com/privacy-policy/pantry-ai/#delete-account">account deletion page</a> for details.</span>
     </div>
 
     <h3 data-lang="ja">食品画像</h3>
     <h3 data-lang="en">Food Images</h3>
-    <p data-lang="ja">アップロードした食品画像はFirebase Storageに保存され、アカウント削除時に一緒に削除されます。個別の画像もアプリ内から削除可能です。</p>
-    <p data-lang="en">Uploaded food images are stored in Firebase Storage and deleted together when your account is deleted. Individual images can also be deleted within the app.</p>
+    <p data-lang="ja">食品やレシートの写真は、認識処理のためにサーバーへ送信されますが、処理後にサーバーに保存されることはありません。</p>
+    <p data-lang="en">Food and receipt photos are sent to our server for recognition, and are not stored on the server after processing.</p>
   </section>
 
   <!-- Section 5 -->
@@ -463,8 +469,8 @@
 
     <h3 data-lang="ja">サーバーサイド画像処理</h3>
     <h3 data-lang="en">Server-Side Image Processing</h3>
-    <p data-lang="ja">食品画像はサーバーにてsharpライブラリを使用して最適化（リサイズ・圧縮）処理されます。処理後の画像はFirebase Storageに保存されます。</p>
-    <p data-lang="en">Food images are optimized (resized and compressed) on the server using the sharp library. Processed images are stored in Firebase Storage.</p>
+    <p data-lang="ja">食品画像はサーバーのメモリ上で最適化（リサイズ・圧縮）してからClaude AIへ送信され、処理後の画像は保存しません。</p>
+    <p data-lang="en">Food images are optimized (resized and compressed) in server memory before being sent to Claude AI; the processed images are not saved.</p>
   </section>
 
   <!-- Section 7 -->
@@ -481,13 +487,13 @@
       <ul data-lang="ja" style="margin-top:8px;">
         <li>食品在庫データを第三者への販売・マーケティング目的に使用することはありません</li>
         <li>食品データは本人のサービス提供のみに使用されます</li>
-        <li>アカウント削除後、食品データはすべて消去されます</li>
+        <li>アカウント削除後、食品データは個人と結び付かない匿名の状態になります</li>
         <li>データは暗号化（転送中・保存時）されます</li>
       </ul>
       <ul data-lang="en" style="margin-top:8px;">
         <li>Food inventory data will never be sold or used for third-party marketing</li>
         <li>Food data is used solely to provide services to you</li>
-        <li>All food data is erased upon account deletion</li>
+        <li>After account deletion, food data is no longer linked to any identifiable person</li>
         <li>Data is encrypted both in transit and at rest</li>
       </ul>
     </div>
@@ -507,8 +513,8 @@
   <section id="s8">
     <h2 data-lang="ja">8. 子どものプライバシー</h2>
     <h2 data-lang="en">8. Children's Privacy</h2>
-    <p data-lang="ja">本アプリは13歳未満の子どもを対象としておらず、意図的に13歳未満の個人情報を収集することはありません。13歳未満のお子様が本アプリを使用していることが判明した場合、当該データを速やかに削除します。お子様が登録している可能性がある場合は、<a href="mailto:app.develop.sk@gmail.com">app.develop.sk@gmail.com</a> までお知らせください。</p>
-    <p data-lang="en">This app is not directed at children under the age of 13, and we do not knowingly collect personal information from children under 13. If we become aware that a child under 13 has used this app, we will promptly delete their data. If you believe a child may have registered, please contact <a href="mailto:app.develop.sk@gmail.com">app.develop.sk@gmail.com</a>.</p>
+    <p data-lang="ja">本アプリは13歳未満の子どもを対象としておらず、意図的に13歳未満の個人情報を収集することはありません。13歳未満のお子様が本アプリを使用していることが判明した場合、当該データを速やかに削除します。お子様が登録している可能性がある場合は、<a href="mailto:appdevelopsk@gmail.com">appdevelopsk@gmail.com</a> までお知らせください。</p>
+    <p data-lang="en">This app is not directed at children under the age of 13, and we do not knowingly collect personal information from children under 13. If we become aware that a child under 13 has used this app, we will promptly delete their data. If you believe a child may have registered, please contact <a href="mailto:appdevelopsk@gmail.com">appdevelopsk@gmail.com</a>.</p>
   </section>
 
   <!-- Section 9 -->
@@ -527,7 +533,7 @@
     <p data-lang="en">For privacy-related questions, deletion requests, or other inquiries, please contact us at:</p>
     <div class="highlight-box">
       <strong>PantryAI / パントリーAI</strong>
-      📧 <a href="mailto:app.develop.sk@gmail.com">app.develop.sk@gmail.com</a>
+      📧 <a href="mailto:appdevelopsk@gmail.com">appdevelopsk@gmail.com</a>
     </div>
     <p data-lang="ja">お問い合わせいただいた場合、5営業日以内に返答するよう努めます。</p>
     <p data-lang="en">We aim to respond to all inquiries within 5 business days.</p>
@@ -538,7 +544,7 @@
 <footer>
   <p>© 2026 PantryAI. All rights reserved.</p>
   <p style="margin-top:6px;">
-    <a href="mailto:app.develop.sk@gmail.com">app.develop.sk@gmail.com</a>
+    <a href="mailto:appdevelopsk@gmail.com">appdevelopsk@gmail.com</a>
     &nbsp;|&nbsp; Bundle ID: com.pantryai.pantryAi
   </p>
 </footer>
