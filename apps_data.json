@@ -2,8 +2,8 @@
  {
   "app": "face-symmetry",
   "pkg": "jp.appdevelopsk.facesymmetry",
-  "title": "Face Symmetry - Mirror Check",
-  "desc": "Face symmetry test — take a selfie & get your AI symmetry score 0 to 100",
+  "title": "HangTrue - Level Checker",
+  "desc": "Check if a frame or shelf is level from a photo, with the fix in millimetres",
   "installs": 35
  },
  {
@@ -249,7 +249,8 @@
   "pkg": "jp.appdevelopsk.candid",
   "title": "Candid",
   "desc": "Anonymous chat board: post topics, vent and get live replies, no account needed",
-  "installs": 14
+  "installs": 14,
+  "hidden": "2026-08-18 Play の公開ページが US/JP とも 404 だったためカードを外した(03e1075)"
  },
  {
   "app": "gratitude-log",
@@ -263,14 +264,16 @@
   "pkg": "com.appdevelopsk.bird_encyclopedia",
   "title": "FeatherTrace",
   "desc": "Bird guide and song identifier: explore species, calls, and birding facts",
-  "installs": 14
+  "installs": 14,
+  "hidden": "2026-08-18 Play の公開ページが US/JP とも 404 だったためカードを外した(03e1075)"
  },
  {
   "app": "mushroom-encyclopedia",
   "pkg": "com.appdevelopsk.mushroom_encyclopedia",
   "title": "ForestTrace",
   "desc": "Mushroom identification guide with 100 species, edibility & toxicity info",
-  "installs": 14
+  "installs": 14,
+  "hidden": "2026-08-18 Play の公開ページが US/JP とも 404 だったためカードを外した(03e1075)"
  },
  {
   "app": "future-me",
@@ -298,7 +301,8 @@
   "pkg": "com.appdevelopsk.marine_life_encyclopedia",
   "title": "MarineTrace",
   "desc": "Marine life encyclopedia: explore ocean species, daily facts & sea quizzes",
-  "installs": 14
+  "installs": 14,
+  "hidden": "2026-08-18 Play の公開ページが US/JP とも 404 だったためカードを外した(03e1075)"
  },
  {
   "app": "match-rate",
@@ -312,7 +316,8 @@
   "pkg": "com.meltapp.flutter_app",
   "title": "Melt - Dating & Match",
   "desc": "Dating app with mood-based matching, shared missions and real conversations",
-  "installs": 14
+  "installs": 14,
+  "hidden": "2026-08-18 Play の公開ページが US/JP とも 404 だったためカードを外した(03e1075)"
  },
  {
   "app": "nearo",
@@ -338,8 +343,8 @@
  {
   "app": "smile-score",
   "pkg": "jp.appdevelopsk.smilescore",
-  "title": "Smile Score - Daily Mood Check",
-  "desc": "Track your daily mood with a smile selfie score and see your happiness trend",
+  "title": "FrameGrade - Photo Analysis",
+  "desc": "Why that photo looks off",
   "installs": 14
  },
  {
@@ -534,8 +539,8 @@
  {
   "app": "rank-my-day",
   "pkg": "jp.appdevelopsk.rank_my_day",
-  "title": "Rank My Day",
-  "desc": "Rate your day 1-10, track mood patterns and build a reflection habit",
+  "title": "ShiftCast - Shift Rotation",
+  "desc": "Know your next day off",
   "installs": 13
  },
  {
@@ -583,8 +588,8 @@
  {
   "app": "true-me",
   "pkg": "com.trueme.true_me",
-  "title": "TrueMe - True Face Mirror",
-  "desc": "Face symmetry test & true mirror — see your real face and symmetry score",
+  "title": "Daylapse: Daily Timelapse",
+  "desc": "Take one photo a day, keep your streak and watch it become a timelapse",
   "installs": 13
  },
  {
@@ -627,7 +632,8 @@
   "pkg": "com.appdevelopsk.world_heritage_encyclopedia",
   "title": "HeritageTrace",
   "desc": "UNESCO World Heritage guide: 100 sites with photos, history and travel info",
-  "installs": 12
+  "installs": 12,
+  "hidden": "2026-08-18 Play の公開ページが US/JP とも 404 だったためカードを外した(03e1075)"
  },
  {
   "app": "warranty-keeper",
@@ -639,9 +645,10 @@
  {
   "app": "spot-diff",
   "pkg": "jp.appdevelopsk.spot_diff",
-  "title": "Spot the Diff!",
-  "desc": "Find the difference game with daily puzzles to train focus and sharp eyes",
-  "installs": 12
+  "title": "PixelSpot - Image Compare",
+  "desc": "Image compare tool: spot the difference between two photos or screenshots",
+  "installs": 12,
+  "hidden": "2026-08-18 Play の公開ページが US/JP とも 404 だったためカードを外した(03e1075)"
  },
  {
   "app": "sub-tracker",
@@ -684,5 +691,12 @@
   "title": "QuickCrew - Find Your Crew",
   "desc": "Hire local help: post a task and get matched with skilled workers nearby",
   "installs": 8
+ },
+ {
+  "app": "chaos",
+  "pkg": "com.chaosapp.chaos_app",
+  "title": "Chaos - Stranger Missions",
+  "desc": "Daily missions from strangers to break your routine and rediscover the world",
+  "installs": null
  }
 ]

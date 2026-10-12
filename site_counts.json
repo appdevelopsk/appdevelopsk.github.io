@@ -1,0 +1,6 @@
+{
+ "_note": "本数の正本。android_live は apps_data.json の hidden 無し件数(build_catalog.py が数え直す)。built_total は Google Play Console に登録したアプリ数(本番未公開・審査前を含む・play_production_refresh 台帳 summary.total)。as_of は基準日。",
+ "built_total": 117,
+ "as_of": "2026-10-12",
+ "android_live": 92
+}
