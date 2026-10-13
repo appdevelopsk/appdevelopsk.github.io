@@ -9,8 +9,8 @@
  {
   "app": "excel-formula",
   "pkg": "jp.appdevelopsk.excelformula",
-  "title": "Excel Formula",
-  "desc": "Excel formulas made easy — build, validate & learn with 200+ templates",
+  "title": "SheetDecode: Excel Formula Fix",
+  "desc": "Excel formula explainer: paste a formula to see what it does and fix errors",
   "installs": 29
  },
  {
@@ -23,21 +23,21 @@
  {
   "app": "roast-me",
   "pkg": "jp.appdevelopsk.roast_me_app",
-  "title": "RoastMe - Roast & Rate",
+  "title": "RoastMe - Photo Roast & Rate",
   "desc": "Post a photo and get roasted and rated by an anonymous global community",
   "installs": 25
  },
  {
   "app": "real-feel-weather",
   "pkg": "com.realfeelweather.real_feel_weather",
-  "title": "RealFeel Weather",
-  "desc": "Real feel temperature, comfort score and what to wear before you go out",
+  "title": "Feels Like Weather & Comfort",
+  "desc": "Feels-like temperature, comfort score and what to wear before you go out",
   "installs": 22
  },
  {
   "app": "twotaku",
   "pkg": "com.dotchi.dotchi_app",
-  "title": "Twotaku - Anime Debates",
+  "title": "Dotchi: Anime Debates & Polls",
   "desc": "Anime debates and versus battles — vote on the best anime and see who wins",
   "installs": 22
  },
@@ -72,8 +72,8 @@
  {
   "app": "color-sense",
   "pkg": "jp.appdevelopsk.color_sense",
-  "title": "Color Sense",
-  "desc": "Color blind test and color vision training games to sharpen your eye for color",
+  "title": "ContrastKit: WCAG Color Check",
+  "desc": "WCAG contrast checker: test color contrast ratio and find an accessible color",
   "installs": 16
  },
  {
@@ -100,8 +100,8 @@
  {
   "app": "trend",
   "pkg": "jp.appdevelopsk.trend",
-  "title": "Trend - What's Trending",
-  "desc": "What to watch tonight? Instant movie & game picks based on your mood",
+  "title": "Trend - Anime & Game Picker",
+  "desc": "Can't pick? One perfect anime, game or manga choice for your mood in 3 taps",
   "installs": 16
  },
  {
@@ -121,7 +121,7 @@
  {
   "app": "date-roulette",
   "pkg": "com.appdevelopsk.date_roulette",
-  "title": "Date Roulette: Couple Ideas",
+  "title": "DateSpark: Date Night Ideas",
   "desc": "Date night idea generator: spin the wheel for fun date plans for couples",
   "installs": 15
  },
@@ -240,7 +240,7 @@
  {
   "app": "30sec-challenge",
   "pkg": "com.thirtysecchallenge.thirtySecChallenge",
-  "title": "30sec Challenge - Video Game",
+  "title": "30sec Challenge: Video Battles",
   "desc": "Record 30-second video challenges and climb the daily global leaderboard",
   "installs": 14
  },
@@ -385,7 +385,7 @@
  {
   "app": "daily-duel",
   "pkg": "com.dailyduel.daily_duel",
-  "title": "Daily Duel: Brain Challenge",
+  "title": "Flinch: Daily Reflex Challenge",
   "desc": "Daily brain training puzzles and 1v1 quiz battles for logic, math and memory",
   "installs": 13
  },
@@ -462,7 +462,7 @@
  {
   "app": "global-safety-map",
   "pkg": "com.appdevelopsk.global_safety_map",
-  "title": "Global Safety Map",
+  "title": "Travel Safety Map & Scam Alert",
   "desc": "Travel safety map: check destination safety scores & scam alerts before you go",
   "installs": 13
  },
@@ -497,7 +497,7 @@
  {
   "app": "life-trace",
   "pkg": "com.lifetrace.life_trace",
-  "title": "LifeTrace - AI Life Recorder",
+  "title": "LifeTrace: AI Daily Journal",
   "desc": "AI life journal: save memories by voice, photo & text in a timeline diary",
   "installs": 13
  },
@@ -638,7 +638,7 @@
  {
   "app": "warranty-keeper",
   "pkg": "jp.appdevelopsk.warranty_keeper",
-  "title": "My Warranty Log",
+  "title": "RenewCast: Appliance Warranty",
   "desc": "Track product warranties and receipts with expiry reminders in one place",
   "installs": 12
  },
