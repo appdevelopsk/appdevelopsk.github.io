@@ -5,8 +5,8 @@
     <link rel="canonical" href="https://appdevelopsk.com/support/daily-duel/">
 <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-  <title>Daily Duel – Support | SK APPS</title>
-  <meta name="description" content="Daily Duel - Challenge your brain daily with competitive puzzles. Compare your scores with players worldwide."/>
+  <title>Flinch: Daily Reflex Challenge – Support | SK APPS</title>
+  <meta name="description" content="Flinch: Daily Reflex Challenge - One reflex game a day. Twelve seconds to see how fast you really are."/>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
@@ -87,7 +87,7 @@
 <div class="hero">
   <div class="hero-emoji">⚔️</div>
   <div class="hero-cat">Game</div>
-  <h1>Daily Duel</h1>
+  <h1>Flinch: Daily Reflex Challenge</h1>
   <p id="heroDesc">Challenge your brain daily with competitive puzzles. Compare your scores with players worldwide.</p>
 </div>
 
@@ -165,7 +165,7 @@ const dd=document.getElementById('langDropdown');Object.entries(LANGS).forEach((
 document.getElementById('langBtn').addEventListener('click',e=>{e.stopPropagation();document.getElementById('langSelector').classList.toggle('open')});
 document.addEventListener('click',()=>document.getElementById('langSelector').classList.remove('open'));
 applyLang(detectLang());
-const APP_T={en:"Train your brain in just 2 minutes a day.",ja:"Daily Duelは毎日新鮮な問題で脳をトレーニングするゲームです。論理・数学・記憶・語彙と、毎日違うジャンルで頭を鍛えよう。",zh:"每天午夜，全新挑战来袭。每天只有一次机会，向全球玩家发起挑战！",zh_TW:"每天，一個挑戰。一次機會。你在全球的排名如何？",ko:"매일 자정, 새로운 챌린지가 시작됩니다. 하루 단 한 번의 기회로 전 세계 랭킹에 도전하세요!",es:"Cada día, un desafío. Una oportunidad. ¿Cómo te ubicas frente al mundo?",pt:"Todo dia, um desafio. Uma chance. Como você se posiciona no mundo?",fr:"Chaque jour, un défi. Une chance. Comment vous situez-vous face au monde ?",de:"Jeden Tag eine Challenge. Eine Chance. Wie schneidest du im weltweiten Vergleich ab?",it:"Ogni giorno, una sfida. Una possibilità. Come ti posizioni nel mondo?",ru:"DailyDuel ежедневно в полночь запускает новое мини-игровое испытание.",ar:"كل يوم، تحدٍّ واحد. فرصة واحدة. كيف تقف أمام بقية العالم؟",th:"ทุกวัน หนึ่งความท้าทาย หนึ่งโอกาส คุณสู้กับโลกได้ไหม?",id:"Setiap hari, satu tantangan. Satu kesempatan. Bagaimana peringkatmu di dunia?",tr:"Her gün bir meydan okuma. Bir şans. Dünyaya karşı nasıl sıralanıyorsunuz?",nl:"Elke dag één uitdaging. Één kans. Hoe doe jij het ten opzichte van de rest van de wereld?",vi:"Mỗi ngày, một thử thách. Một cơ hội. Bạn xếp hạng như thế nào so với thế giới?"};
+const APP_T={en:"One reflex game a day. Twelve seconds to see how fast you really are.",ja:"Flinchは毎日新鮮な問題で脳をトレーニングするゲームです。論理・数学・記憶・語彙と、毎日違うジャンルで頭を鍛えよう。",zh:"每天午夜，全新挑战来袭。每天只有一次机会，向全球玩家发起挑战！",zh_TW:"每天，一個挑戰。一次機會。你在全球的排名如何？",ko:"매일 자정, 새로운 챌린지가 시작됩니다. 하루 단 한 번의 기회로 전 세계 랭킹에 도전하세요!",es:"Cada día, un desafío. Una oportunidad. ¿Cómo te ubicas frente al mundo?",pt:"Todo dia, um desafio. Uma chance. Como você se posiciona no mundo?",fr:"Chaque jour, un défi. Une chance. Comment vous situez-vous face au monde ?",de:"Jeden Tag eine Challenge. Eine Chance. Wie schneidest du im weltweiten Vergleich ab?",it:"Ogni giorno, una sfida. Una possibilità. Come ti posizioni nel mondo?",ru:"DailyDuel ежедневно в полночь запускает новое мини-игровое испытание.",ar:"كل يوم، تحدٍّ واحد. فرصة واحدة. كيف تقف أمام بقية العالم؟",th:"ทุกวัน หนึ่งความท้าทาย หนึ่งโอกาส คุณสู้กับโลกได้ไหม?",id:"Setiap hari, satu tantangan. Satu kesempatan. Bagaimana peringkatmu di dunia?",tr:"Her gün bir meydan okuma. Bir şans. Dünyaya karşı nasıl sıralanıyorsunuz?",nl:"Elke dag één uitdaging. Één kans. Hoe doe jij het ten opzichte van de rest van de wereld?",vi:"Mỗi ngày, một thử thách. Một cơ hội. Bạn xếp hạng như thế nào so với thế giới?"};
 const _oA=applyLang;applyLang=function(l){_oA(l);const t=APP_T[l]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;};
 (function(){const l=localStorage.getItem('sk_lang');const lang=l||detectLang();const t=APP_T[lang]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;})();
 
