@@ -386,7 +386,7 @@
   "app": "daily-duel",
   "pkg": "com.dailyduel.daily_duel",
   "title": "Flinch: Daily Reflex Challenge",
-  "desc": "Daily brain training puzzles and 1v1 quiz battles for logic, math and memory",
+  "desc": "One reflex game a day — twelve seconds to see how fast you really are",
   "installs": 13
  },
  {
@@ -639,7 +639,7 @@
   "app": "warranty-keeper",
   "pkg": "jp.appdevelopsk.warranty_keeper",
   "title": "RenewCast: Appliance Warranty",
-  "desc": "Track product warranties and receipts with expiry reminders in one place",
+  "desc": "See when each home appliance is due for replacement and what to set aside",
   "installs": 12
  },
  {
