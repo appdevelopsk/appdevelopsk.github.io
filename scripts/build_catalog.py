@@ -38,7 +38,10 @@ REPO = os.path.dirname(HERE)
 LEDGER = os.path.expanduser(
     "~/Library/Application Support/play_refresh/google_play_production_status.json")
 
-CARD = """      <a class="app-card" href="https://play.google.com/store/apps/details?id={pkg}&amp;utm_source=appdevelopsk&amp;utm_medium=web&amp;utm_campaign=apps_catalog" target="_blank" rel="noopener">
+# Play の install referrer は referrer= の値しか GA4(firstUserSource)へ渡らない。
+# utm_* だけでは appdevelopsk 経由を数えられないので、support ページと同じ書式で
+# URL エンコードした referrer= を付ける(2026-10-14)。
+CARD = """      <a class="app-card" href="https://play.google.com/store/apps/details?id={pkg}&amp;utm_source=appdevelopsk&amp;utm_medium=web&amp;utm_campaign=apps_catalog&amp;referrer=utm_source%3Dappdevelopsk%26utm_medium%3Dweb%26utm_campaign%3Dapps_catalog" target="_blank" rel="noopener">
         <img src="icons/apps/{app}.png" alt="{title} icon" loading="lazy" width="64" height="64">
         <div class="app-card-body">
           <h3>{title}</h3>
