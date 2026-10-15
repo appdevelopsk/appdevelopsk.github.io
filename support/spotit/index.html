@@ -4,8 +4,8 @@
     <link rel="canonical" href="https://appdevelopsk.com/support/spotit/">
 <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-  <title>Spot the Diff! – Spot the Difference Game | SK APPS</title>
-  <meta name="description" content="Spot the Diff! - Find the differences between two images as quickly as possible. Test your observation skills!"/>
+  <title>PixelSpot – Spot the Difference Between Two Images | SK APPS</title>
+  <meta name="description" content="PixelSpot – Image compare tool: spot the difference between two photos or screenshots. Free Android app on Google Play — FAQ and support."/>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
@@ -101,15 +101,15 @@
 
 <div class="hero">
   <div class="hero-emoji">🔎</div>
-  <div class="hero-cat">Game</div>
-  <h1>Spot the Diff!</h1>
-  <p>Find the differences between two images as quickly as possible. Test your observation skills!</p>
+  <div class="hero-cat">Utility</div>
+  <h1>PixelSpot</h1>
+  <p>Image compare tool: spot the difference between two photos or screenshots, down to a two-pixel nudge.</p>
 </div>
 
 <div class="container">
   <div class="card">
     <h2 data-i18n="features">Key Features</h2>
-    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span data-feat="0">Hundreds of image pairs</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="1">Timed challenges</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="2">Difficulty levels</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="3">Hint system</span></div></div>
+    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span data-feat="0">Compare two photos or screenshots</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="1">Every change boxed with a pixel count</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="2">Adjustable sensitivity to ignore camera grain</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="3">Runs entirely on your device</span></div></div>
   </div>
 
   <div class="card">
@@ -180,7 +180,7 @@ document.getElementById('langBtn').addEventListener('click',e=>{e.stopPropagatio
 document.addEventListener('click',()=>document.getElementById('langSelector').classList.remove('open'));
 applyLang(detectLang());
 
-const FEAT_T={en:{0:"Hundreds of image pairs",1:"Timed challenges",2:"Difficulty levels",3:"Hint system"},ja:{0:"数百の画像ペア",1:"タイムチャレンジ",2:"難易度レベル",3:"ヒントシステム"}};
+const FEAT_T={en:{0:"Compare two photos or screenshots",1:"Every change boxed with a pixel count",2:"Adjustable sensitivity to ignore camera grain",3:"Runs entirely on your device"},ja:{0:"2枚の写真やスクリーンショットを比較",1:"変更箇所ごとに枠とピクセル数を表示",2:"感度調整でカメラのノイズを無視",3:"すべて端末内で処理"}};
 const __oF=applyLang;applyLang=function(l){__oF(l);const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});};
 (function(){const l=localStorage.getItem('sk_lang')||detectLang();const ft=FEAT_T[l]||FEAT_T.en;if(ft)document.querySelectorAll('[data-feat]').forEach(el=>{const k=el.getAttribute('data-feat');if(ft[k])el.textContent=ft[k];});})();
 </script>
