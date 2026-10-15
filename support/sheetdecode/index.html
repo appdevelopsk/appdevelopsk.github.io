@@ -17,6 +17,22 @@
   .faq h3 { color: #0E2A33; font-size: 1rem; margin-bottom: 4px; }
   .card { border: 1px solid #e0f0f0; border-radius: 14px; padding: 18px 20px; margin-top: 20px; }
 </style>
+  <!-- GA4 (same property as home: G-5Z588FVC81) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-5Z588FVC81"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-5Z588FVC81');
+    document.addEventListener('click', function (e) {
+      var a = e.target.closest && e.target.closest('a[href]');
+      if (!a) return;
+      var href = a.getAttribute('href') || '';
+      if (/play\.google\.com/.test(href)) {
+        gtag('event', 'download_click', { store: 'google_play', location: 'support', link_url: href });
+      }
+    }, true);
+  </script>
 </head>
 <body>
 <header>

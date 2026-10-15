@@ -4,7 +4,7 @@
     <link rel="canonical" href="https://appdevelopsk.com/support/face-vibe/">
 <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-  <title>Face Vibe – Support | SK APPS</title>
+  <title>Face Vibe – Face Reading Mood &amp; Personality Test | SK APPS</title>
   <meta name="description" content="Face Vibe - Discover the mood and energy your face radiates."/>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -28,6 +28,22 @@
     a.email{color:var(--accent);text-decoration:none}
     footer{text-align:center;padding:32px 20px;color:var(--t2);font-size:.85rem;border-top:1px solid rgba(255,255,255,.06)}
   </style>
+  <!-- GA4 (same property as home: G-5Z588FVC81) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-5Z588FVC81"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-5Z588FVC81');
+    document.addEventListener('click', function (e) {
+      var a = e.target.closest && e.target.closest('a[href]');
+      if (!a) return;
+      var href = a.getAttribute('href') || '';
+      if (/play\.google\.com/.test(href)) {
+        gtag('event', 'download_click', { store: 'google_play', location: 'support', link_url: href });
+      }
+    }, true);
+  </script>
 </head>
 <body>
 <nav>

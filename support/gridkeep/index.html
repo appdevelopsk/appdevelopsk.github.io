@@ -11,6 +11,22 @@
   h1 { color: #2140A6; } h2 { color: #444; margin-top: 32px; }
   a { color: #4F7CFF; }
 </style>
+  <!-- GA4 (same property as home: G-5Z588FVC81) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-5Z588FVC81"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-5Z588FVC81');
+    document.addEventListener('click', function (e) {
+      var a = e.target.closest && e.target.closest('a[href]');
+      if (!a) return;
+      var href = a.getAttribute('href') || '';
+      if (/play\.google\.com/.test(href)) {
+        gtag('event', 'download_click', { store: 'google_play', location: 'support', link_url: href });
+      }
+    }, true);
+  </script>
 </head>
 <body>
 <h1>Gridkeep Support</h1>
