@@ -4,7 +4,7 @@
 <meta name="robots" content="noindex, follow">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Billendar – Support | SK APPS</title>
+  <title>Billendar – Bill Calendar &amp; Spending Forecast | SK APPS</title>
   <meta name="description" content="Billendar - See every recurring bill on a calendar and forecast your spending 6 months ahead.">
   <link rel="canonical" href="https://appdevelopsk.com/support/billendar/">
   <style>
@@ -14,6 +14,22 @@
     p, li { font-size: 1em; color: #c8cad8; }
     a { color: #6c7bff; }
   </style>
+  <!-- GA4 (same property as home: G-5Z588FVC81) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-5Z588FVC81"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-5Z588FVC81');
+    document.addEventListener('click', function (e) {
+      var a = e.target.closest && e.target.closest('a[href]');
+      if (!a) return;
+      var href = a.getAttribute('href') || '';
+      if (/play\.google\.com/.test(href)) {
+        gtag('event', 'download_click', { store: 'google_play', location: 'support', link_url: href });
+      }
+    }, true);
+  </script>
 </head>
 <body>
 <h1>Billendar – Support</h1>

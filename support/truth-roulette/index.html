@@ -5,8 +5,8 @@
     <link rel="canonical" href="https://appdevelopsk.com/support/truth-roulette/">
 <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-  <title>Truth Roulette – Support | SK APPS</title>
-  <meta name="description" content="Truth Roulette - Spin the wheel and answer truth questions! Perfect for parties and getting to know friends."/>
+  <title>Truth Roulette – Party Questions &amp; Talk Topics | SK APPS</title>
+  <meta name="description" content="Truth Roulette – Conversation starters &amp; party game — fun questions for friends and dates. Free Android app on Google Play — FAQ and support."/>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
@@ -63,6 +63,22 @@
     .footer-links{display:flex;gap:20px;justify-content:center;margin-bottom:16px;flex-wrap:wrap}
     .footer-copy{color:var(--t2);font-size:.75rem;opacity:.5}
   </style>
+  <!-- GA4 (same property as home: G-5Z588FVC81) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-5Z588FVC81"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-5Z588FVC81');
+    document.addEventListener('click', function (e) {
+      var a = e.target.closest && e.target.closest('a[href]');
+      if (!a) return;
+      var href = a.getAttribute('href') || '';
+      if (/play\.google\.com/.test(href)) {
+        gtag('event', 'download_click', { store: 'google_play', location: 'support', link_url: href });
+      }
+    }, true);
+  </script>
 </head>
 <body>
 <nav>
