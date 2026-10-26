@@ -1,5 +1,7 @@
 # Idea Market share landing — VPS release
 
+> **2026-10-26 UPDATE — working production fallback:** GitHub Pages `https://appdevelopsk.github.io/share/idea-market/?id=qa123` was published through PR #3, `pages-blank` and public HTTP 200 HTML/JS checks (run `40343220425` succeeded). The branded `appdevelopsk.com` VPS path still returned HTTP 404. The Flutter PR #4 has been changed to the verified github.io origin, so the VPS rsync below is **optional** for branding and is no longer a Flutter release blocker.
+
 **Source status:** merged into this repository's `main` via PR #1.
 **Production status:** separate. `appdevelopsk.com` is served by VPS nginx (`/var/www/html`), **not** automatically from this GitHub repository.
 
