@@ -1,0 +1,59 @@
+name: Publish Idea Market Share Landing to GitHub Pages
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - share/idea-market/**
+      - .github/workflows/publish-idea-share-pages.yml
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 7
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: true
+      - name: Sync only this public landing to the actual Pages branch
+        shell: bash
+        run: |
+          set -euo pipefail
+          tmp=$(mktemp -d)
+          cp -R share/idea-market "$tmp/idea-market"
+          git checkout pages-blank
+          mkdir -p share/idea-market
+          cp -R "$tmp/idea-market/." share/idea-market/
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add share/idea-market
+          if git diff --cached --quiet; then
+            echo 'Pages branch already has the current landing.'
+          else
+            git commit -m 'pages: publish Idea Market per-idea referral landing'
+            git push origin HEAD:pages-blank
+          fi
+      - name: Check the actual public GitHub Pages URL
+        shell: bash
+        run: |
+          set -euo pipefail
+          base='https://appdevelopsk.github.io/share/idea-market/'
+          for i in 1 2 3 4 5 6; do
+            code=$(curl -sS -L --max-time 12 -o /tmp/landing.html -w '%{http_code}' "${base}?id=qa123" || true)
+            js=$(curl -sS -L --max-time 12 -o /tmp/referral.js -w '%{http_code}' "${base}referral.js" || true)
+            if [ "$code" = 200 ] && [ "$js" = 200 ] &&
+               grep -q 'A friend shared an idea' /tmp/landing.html &&
+               grep -q 'ideamarket://open/ideas/' /tmp/referral.js; then
+              echo 'Idea Market share page: live and current' >> "$GITHUB_STEP_SUMMARY"
+              exit 0
+            fi
+            echo "Pages deployment not visible: attempt $i; HTML=$code JS=$js"
+            sleep 15
+          done
+          echo '::error::GitHub Pages public share URL is not verified; do not release the Flutter URL.'
+          exit 1
