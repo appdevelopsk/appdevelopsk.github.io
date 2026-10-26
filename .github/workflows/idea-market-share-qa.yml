@@ -1,0 +1,30 @@
+name: Idea Market Share Landing QA
+on:
+  pull_request:
+    paths:
+      - share/idea-market/**
+      - tests/idea-market-share.test.mjs
+      - .github/workflows/idea-market-share-qa.yml
+  push:
+    branches: [main]
+    paths:
+      - share/idea-market/**
+      - tests/idea-market-share.test.mjs
+      - .github/workflows/idea-market-share-qa.yml
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            share/idea-market
+            tests/idea-market-share.test.mjs
+          sparse-checkout-cone-mode: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node --test tests/idea-market-share.test.mjs
