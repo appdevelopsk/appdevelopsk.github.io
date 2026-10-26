@@ -11,22 +11,22 @@ on:
 permissions:
   contents: read
 jobs:
-  verify-vps:
+  verify-public-pages:
     runs-on: ubuntu-latest
     timeout-minutes: 4
     steps:
-      - name: Confirm the actual appdevelopsk.com VPS serves the share page
+      - name: Confirm the verified public GitHub Pages sharing route still works
         shell: bash
         run: |
           set -euo pipefail
-          base='https://appdevelopsk.com/share/idea-market/'
+          base='https://appdevelopsk.github.io/share/idea-market/'
           code=$(curl -sS -L --max-time 12 --retry 2 --retry-delay 3 -o /tmp/share.html -w '%{http_code}' "${base}?id=qa123")
           if [ "$code" != 200 ]; then
-            echo "::error::VPS share page is not deployed (HTTP $code): $base"
+            echo "::error::Share page is unavailable (HTTP $code): $base"
             exit 1
           fi
-          grep -q 'A friend shared an idea' /tmp/share.html || { echo '::error::Wrong/stale HTML on VPS'; exit 1; }
+          grep -q 'A friend shared an idea' /tmp/share.html || { echo '::error::Wrong/stale HTML on Pages'; exit 1; }
           grep -q 'referral.js' /tmp/share.html || { echo '::error::Missing JS reference on VPS'; exit 1; }
           jscode=$(curl -sS -L --max-time 12 --retry 2 --retry-delay 3 -o /tmp/referral.js -w '%{http_code}' "${base}referral.js")
-          [ "$jscode" = 200 ] && grep -q 'ideamarket://open/ideas/' /tmp/referral.js || { echo '::error::Live deep-link script missing or stale'; exit 1; }
+          [ "$jscode" = 200 ] && grep -q 'ideamarket://open/ideas/' /tmp/referral.js || { echo '::error::Published deep-link script missing or stale'; exit 1; }
           echo 'Public HTTPS referral page is live (HTTP 200) with the deep-link script.' >> "$GITHUB_STEP_SUMMARY"
