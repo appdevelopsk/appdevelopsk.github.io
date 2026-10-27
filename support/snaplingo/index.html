@@ -5,8 +5,16 @@
     <link rel="canonical" href="https://appdevelopsk.com/support/snaplingo/">
 <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-  <title>SnapLingo – Learn Vocabulary from Photos | SK APPS</title>
-  <meta name="description" content="SnapLingo: learn vocabulary in another language by snapping a photo of anything around you. Get it on Google Play, plus FAQ and support."/>
+  <title>SnapLingo: Learn Vocabulary With Photos | Android</title>
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="SnapLingo: Learn Vocabulary With Photos | Android">
+  <meta property="og:description" content="Discover SnapLingo, the Android vocabulary app that helps you learn words from photos. See its features and get it on Google Play.">
+  <meta property="og:url" content="https://appdevelopsk.com/support/snaplingo/">
+  <meta property="og:image" content="https://appdevelopsk.com/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:description" content="Discover SnapLingo, the Android vocabulary app that helps you learn words from photos. See its features and get it on Google Play.">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"SnapLingo: Learn from Photos","applicationCategory":"EducationalApplication","operatingSystem":"Android","url":"https://play.google.com/store/apps/details?id=com.appdevelopsk.snaplingo","publisher":{"@type":"Organization","name":"SK Apps","url":"https://appdevelopsk.com/"}}</script>
+  <meta name="description" content="Discover SnapLingo, the Android vocabulary app that helps you learn words from photos. See its features and get it on Google Play."/>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
@@ -75,7 +83,7 @@
       if (!a) return;
       var href = a.getAttribute('href') || '';
       if (/play\.google\.com/.test(href)) {
-        gtag('event', 'download_click', { store: 'google_play', location: 'support', link_url: href });
+        gtag('event', 'download_click', { store: 'google_play', location: 'support', placement: a.getAttribute('data-position') || 'details', app: 'snaplingo', link_url: href });
       }
     }, true);
   </script>
@@ -105,6 +113,9 @@
   <div class="hero-cat">AI / Education</div>
   <h1>SnapLingo</h1>
   <p id="heroDesc">Point your camera at anything and learn vocabulary in 17 languages with AI-powered recognition.</p>
+  <div class="download-btns" style="justify-content:center">
+    <a href="https://play.google.com/store/apps/details?id=com.appdevelopsk.snaplingo&amp;utm_source=appdevelopsk&amp;utm_medium=web&amp;utm_campaign=support_snaplingo&amp;referrer=utm_source%3Dappdevelopsk%26utm_medium%3Dweb%26utm_campaign%3Dsupport_snaplingo" class="dl-btn dl-btn-play" data-position="hero" target="_blank" rel="noopener noreferrer">Get it on Google Play</a>
+  </div>
 </div>
 
 <div class="container">
@@ -117,7 +128,7 @@
     <h2 data-i18n="download">Download</h2>
     <p data-i18n="download_desc">Available on Android. Download for free from Google Play and start using today.</p>
     <div class="download-btns">
-      <a href="https://play.google.com/store/apps/details?id=com.appdevelopsk.snaplingo&amp;utm_source=appdevelopsk&amp;utm_medium=web&amp;utm_campaign=support_snaplingo&amp;referrer=utm_source%3Dappdevelopsk%26utm_medium%3Dweb%26utm_campaign%3Dsupport_snaplingo" class="dl-btn dl-btn-play" rel="noopener" target="_blank">Google Play</a>
+      <a href="https://play.google.com/store/apps/details?id=com.appdevelopsk.snaplingo&amp;utm_source=appdevelopsk&amp;utm_medium=web&amp;utm_campaign=support_snaplingo&amp;referrer=utm_source%3Dappdevelopsk%26utm_medium%3Dweb%26utm_campaign%3Dsupport_snaplingo" class="dl-btn dl-btn-play" data-position="details" rel="noopener" target="_blank">Google Play</a>
 </div>
   </div>
 
@@ -184,7 +195,7 @@ const APP_T={en:"Point your camera at anything — and learn the word in any lan
 const _oA=applyLang;applyLang=function(l){_oA(l);const t=APP_T[l]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;};
 (function(){const l=localStorage.getItem('sk_lang');const lang=l||detectLang();const t=APP_T[lang]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;})();
 
-const FEAT_T={en:{0:"Point your camera at anything",1:"Whether you are a beginner or"},ja:{0:"SnapLingoは、写真を撮るだけで毎日新しい単語を学べるアプリです",1:"初心者から上級者まで対応し、ストリークと進捗トラッキングでモチベーションを維持",2:"公式サイト: https://appdevelopsk.com",3:"全アプリ一覧: https://appdevelopsk.com/#apps"},zh:{0:"SnapLingo帮助您通过拍照每天学习新单词",1:"适合初学者到高级学习者，通过连续学习记录和进度追踪保持学习动力",2:"官方网站: https://appdevelopsk.com",3:"所有应用: https://appdevelopsk.com/#apps"},zh_TW:{0:"SnapLingo幫助您透過拍照每天學習新單詞",1:"適合初學者到高級學習者，透過連續學習紀錄和進度追蹤保持學習動力",2:"官方網站: https://appdevelopsk.com",3:"所有應用: https://appdevelopsk.com/#apps"},ko:{0:"SnapLingo는 사진 한 장으로 매일 새로운",1:"초보자부터 고급 학습자까지, 연속 학습 기록과",2:"공식 사이트: https://appdevelopsk.com",3:"전체 앱: https://appdevelopsk.com/#apps"},es:{0:"SnapLingo te ayuda a aprender nuevas",1:"Desde principiantes hasta avanzados, SnapLingo se",2:"Sitio web: https://appdevelopsk.com"},pt:{0:"SnapLingo ajuda você a aprender novas",1:"De iniciantes a avançados, SnapLingo se",2:"Site oficial: https://appdevelopsk.com",3:"Todos os apps: https://appdevelopsk.com/#apps"},fr:{0:"SnapLingo vous aide à apprendre de",1:"Des débutants aux avancés, SnapLingo s'adapte"},de:{0:"SnapLingo hilft dir, jeden Tag neue",1:"Für Anfänger bis Fortgeschrittene",2:"Webseite: https://appdevelopsk.com",3:"Alle Apps: https://appdevelopsk.com/#apps"},it:{0:"SnapLingo ti aiuta a imparare nuove",1:"Per principianti e avanzati, SnapLingo si",2:"Sito web: https://appdevelopsk.com",3:"Tutte le app: https://appdevelopsk.com/#apps"},ru:{0:"SnapLingo помогает вам учить новые слова",1:"От начинающих до продвинутых",2:"Сайт: https://appdevelopsk.com",3:"Все приложения: https://appdevelopsk.com/#apps"},ar:{0:"يساعدك SnapLingo على تعلم كلمات جديدة",1:"من المبتدئين إلى المتقدمين، يتكيف SnapLingo",2:"الموقع: https://appdevelopsk.com",3:"جميع التطبيقات: https://appdevelopsk.com/#apps"},th:{0:"เว็บไซต์: https://appdevelopsk.com",1:"แอปทั้งหมด: https://appdevelopsk.com/#apps"},id:{0:"SnapLingo membantu Anda mempelajari kata-kata baru",1:"Cocok untuk pemula hingga mahir, SnapLingo",2:"Situs web: https://appdevelopsk.com",3:"Semua aplikasi: https://appdevelopsk.com/#apps"},tr:{0:"SnapLingo, her gün sadece bir fotoğraf",1:"Başlangıç seviyesinden ileri seviyeye kadar herkes",2:"Web sitesi: https://appdevelopsk.com",3:"Tüm uygulamalar: https://appdevelopsk.com/#apps"},nl:{0:"SnapLingo helpt je elke dag nieuwe",1:"Geschikt voor beginners tot gevorderden",2:"Website: https://appdevelopsk.com",3:"Alle apps: https://appdevelopsk.com/#apps"},vi:{0:"SnapLingo giúp bạn học từ mới",1:"Phù hợp cho người mới bắt",2:"Trang web: https://appdevelopsk.com",3:"Tất cả ứng dụng: https://appdevelopsk.com/#apps"}};
+const FEAT_T={en:{0:"Learn words by taking photos",1:"Camera-assisted vocabulary learning",2:"Practice across supported languages",3:"Learn at your own pace"},ja:{0:"SnapLingoは、写真を撮るだけで毎日新しい単語を学べるアプリです",1:"初心者から上級者まで対応し、ストリークと進捗トラッキングでモチベーションを維持",2:"公式サイト: https://appdevelopsk.com",3:"全アプリ一覧: https://appdevelopsk.com/#apps"},zh:{0:"SnapLingo帮助您通过拍照每天学习新单词",1:"适合初学者到高级学习者，通过连续学习记录和进度追踪保持学习动力",2:"官方网站: https://appdevelopsk.com",3:"所有应用: https://appdevelopsk.com/#apps"},zh_TW:{0:"SnapLingo幫助您透過拍照每天學習新單詞",1:"適合初學者到高級學習者，透過連續學習紀錄和進度追蹤保持學習動力",2:"官方網站: https://appdevelopsk.com",3:"所有應用: https://appdevelopsk.com/#apps"},ko:{0:"SnapLingo는 사진 한 장으로 매일 새로운",1:"초보자부터 고급 학습자까지, 연속 학습 기록과",2:"공식 사이트: https://appdevelopsk.com",3:"전체 앱: https://appdevelopsk.com/#apps"},es:{0:"SnapLingo te ayuda a aprender nuevas",1:"Desde principiantes hasta avanzados, SnapLingo se",2:"Sitio web: https://appdevelopsk.com"},pt:{0:"SnapLingo ajuda você a aprender novas",1:"De iniciantes a avançados, SnapLingo se",2:"Site oficial: https://appdevelopsk.com",3:"Todos os apps: https://appdevelopsk.com/#apps"},fr:{0:"SnapLingo vous aide à apprendre de",1:"Des débutants aux avancés, SnapLingo s'adapte"},de:{0:"SnapLingo hilft dir, jeden Tag neue",1:"Für Anfänger bis Fortgeschrittene",2:"Webseite: https://appdevelopsk.com",3:"Alle Apps: https://appdevelopsk.com/#apps"},it:{0:"SnapLingo ti aiuta a imparare nuove",1:"Per principianti e avanzati, SnapLingo si",2:"Sito web: https://appdevelopsk.com",3:"Tutte le app: https://appdevelopsk.com/#apps"},ru:{0:"SnapLingo помогает вам учить новые слова",1:"От начинающих до продвинутых",2:"Сайт: https://appdevelopsk.com",3:"Все приложения: https://appdevelopsk.com/#apps"},ar:{0:"يساعدك SnapLingo على تعلم كلمات جديدة",1:"من المبتدئين إلى المتقدمين، يتكيف SnapLingo",2:"الموقع: https://appdevelopsk.com",3:"جميع التطبيقات: https://appdevelopsk.com/#apps"},th:{0:"เว็บไซต์: https://appdevelopsk.com",1:"แอปทั้งหมด: https://appdevelopsk.com/#apps"},id:{0:"SnapLingo membantu Anda mempelajari kata-kata baru",1:"Cocok untuk pemula hingga mahir, SnapLingo",2:"Situs web: https://appdevelopsk.com",3:"Semua aplikasi: https://appdevelopsk.com/#apps"},tr:{0:"SnapLingo, her gün sadece bir fotoğraf",1:"Başlangıç seviyesinden ileri seviyeye kadar herkes",2:"Web sitesi: https://appdevelopsk.com",3:"Tüm uygulamalar: https://appdevelopsk.com/#apps"},nl:{0:"SnapLingo helpt je elke dag nieuwe",1:"Geschikt voor beginners tot gevorderden",2:"Website: https://appdevelopsk.com",3:"Alle apps: https://appdevelopsk.com/#apps"},vi:{0:"SnapLingo giúp bạn học từ mới",1:"Phù hợp cho người mới bắt",2:"Trang web: https://appdevelopsk.com",3:"Tất cả ứng dụng: https://appdevelopsk.com/#apps"}};
 const __oF=applyLang;applyLang=function(l){__oF(l);var ft=FEAT_T[l]||FEAT_T.en;var g=document.querySelector('.features-grid');if(ft&&g){g.innerHTML='';Object.keys(ft).sort(function(a,b){return a-b;}).forEach(function(k){if(ft[k]){var d=document.createElement('div');d.className='feature';d.innerHTML='<div class="feature-dot"></div><span>'+ft[k]+'</span>';g.appendChild(d);}});}};
 (function(){var l=localStorage.getItem('sk_lang')||detectLang();var ft=FEAT_T[l]||FEAT_T.en;var g=document.querySelector('.features-grid');if(ft&&g){g.innerHTML='';Object.keys(ft).sort(function(a,b){return a-b;}).forEach(function(k){if(ft[k]){var d=document.createElement('div');d.className='feature';d.innerHTML='<div class="feature-dot"></div><span>'+ft[k]+'</span>';g.appendChild(d);}});}})();
 </script>
