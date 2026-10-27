@@ -72,3 +72,9 @@ After shipping the updated **eleven** files from a fresh main checkout, run `bas
 - The catalog filter previously included stale app identifiers `flinch` (the published app is `daily-duel`) and `pickwhirl` (published app is `chore-roulette`). Removed stale names and used real catalog identifiers.
 - A CI regression now checks every filter slug against the published catalog, including renamed apps, to prevent silent zero-result filters after future renames or delistings. The total listed app count is taken from `site_counts.json`, not a stale hardcoded 92.
 - This does **not** create new Google Play installs on its own; the VPS must be updated and the customer conversion funnel measured.
+
+## Read-only production monitoring
+
+The workflow `.github/workflows/live-acquisition-smoke.yml` checks actual HTTPS output every day around **09:40 JST** (GitHub Actions scheduling can be delayed). It reuses `scripts/check_app_discovery_live.sh` and **fails intentionally** if the VPS still serves a stale catalog, stale Play CTA, missing guide or stale sitemap. It only reads the public URLs; it does not deploy, mutate Store metadata, write marketing content or buy ads.
+
+Its failure step explains how to run the existing manual, non-deleting VPS deployment and verify success. GitHub email notifications depend on repo/account settings; a failed workflow alone does not guarantee push or email alerts. Workflow is also manually dispatchable for an operator who wants to verify a completed release.

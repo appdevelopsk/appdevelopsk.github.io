@@ -19,6 +19,7 @@ on:
       - scripts/publish_app_discovery.sh
       - scripts/check_app_discovery_live.sh
       - .github/workflows/app-discovery-qa.yml
+      - .github/workflows/live-acquisition-smoke.yml
   push:
     branches: [main]
     paths:
@@ -38,6 +39,7 @@ on:
       - scripts/publish_app_discovery.sh
       - scripts/check_app_discovery_live.sh
       - .github/workflows/app-discovery-qa.yml
+      - .github/workflows/live-acquisition-smoke.yml
 permissions:
   contents: read
 jobs:
