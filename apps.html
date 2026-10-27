@@ -80,6 +80,8 @@
       <nav class="finder-guides" aria-label="Guides to choosing an app">
         <a href="/guides/quick-games/">Find a quick game</a>
         <a href="/guides/daily-habits/">Build a daily habit</a>
+        <a href="/guides/decision-helpers/">Decide what to do</a>
+        <a href="/guides/ai-tools/">Explore AI apps</a>
       </nav>
     </section>
     <p id="finder-empty" class="finder-meta" hidden>No matches. Try another word or choose All apps.</p>
@@ -833,9 +835,9 @@
     const count = document.getElementById('finder-count');
     const empty = document.getElementById('finder-empty');
     const groups = {
-      'quick-games': ['blur','instant-judge','nodo','brain-burst','snap-judge','daily-duel','percent-pulse','two-truths','key-clash','flinch','tier-rank-me'],
+      'quick-games': ['blur','instant-judge','nodo','brain-burst','snap-judge','daily-duel','percent-pulse','two-truths','key-clash','tier-rank-me'],
       habits: ['true-me','future-me','water-reminder','gratitude-log','gratitude-challenge','mood-log','sleep-prep','eye-break','stretch-reminder','win-log'],
-      decisions: ['food-roulette','movie-roulette','date-roulette','dinner-home-roulette','trip-roulette','study-roulette','what-to-do','pickwhirl','truth-roulette','quick-local-food'],
+      decisions: ['food-roulette','movie-roulette','date-roulette','dinner-home-roulette','trip-roulette','study-roulette','what-to-do','chore-roulette','truth-roulette','quick-local-food'],
       ai: ['debate-me','voice-memo','future-me','date-pilot','global-news','pantry-ai','name-maker','idea-market','life-trace']
     };
     const clean = value => value.normalize('NFKC').toLocaleLowerCase().trim();
