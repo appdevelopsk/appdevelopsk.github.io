@@ -58,7 +58,7 @@ test('public catalog icons are crawlable and explicit VPS release is non-destruc
  assert.match(pub,/support\/snaplingo\/index\.html/);
  assert.match(pub,/support\/face-reaction-battle\/index\.html/);
  assert.match(pub,/robots\.txt/);
- assert.doesNotMatch(pub,/--delete/);
+ assert.match(pub,/rsync -avR --itemize-changes/);
  const live=read('scripts/check_app_discovery_live.sh');
  assert.match(live,/data-position="hero"/);
  assert.match(live,/Allow: \/icons\/apps\//);
