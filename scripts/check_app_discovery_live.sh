@@ -28,4 +28,15 @@ fetch '/sitemap.xml' 'sitemap.xml'
 for slug in quick-games daily-habits; do
   grep -Fq "https://appdevelopsk.com/guides/$slug/" "$tmp/sitemap.xml" || { echo "FAIL sitemap missing $slug" >&2; exit 1; }
 done
-echo 'PASS: VPS catalog, two guides, click-tracking markers and sitemap all current (HTTP 200)'
+for slug in brain-burst snaplingo; do
+  fetch "/support/$slug/" "$slug.html"
+  grep -Fq 'data-position="hero"' "$tmp/$slug.html" || { echo "FAIL $slug first-screen Play CTA not yet live" >&2; exit 1; }
+  grep -Fq 'application/ld+json' "$tmp/$slug.html" || { echo "FAIL $slug SEO metadata missing" >&2; exit 1; }
+  grep -Fq 'placement:' "$tmp/$slug.html" || { echo "FAIL $slug placement attribution missing" >&2; exit 1; }
+done
+fetch '/support/face-reaction-battle/' 'face-battle.html'
+grep -Fq 'data-alternative="instant-judge"' "$tmp/face-battle.html" || { echo 'FAIL unavailable game alternative CTA missing' >&2; exit 1; }
+grep -Fq 'data-alternative="blur"' "$tmp/face-battle.html" || { echo 'FAIL second unavailable game alternative CTA missing' >&2; exit 1; }
+fetch '/robots.txt' 'robots.txt'
+grep -Fq 'Allow: /icons/apps/' "$tmp/robots.txt" || { echo 'FAIL Google image crawl allow not live' >&2; exit 1; }
+echo 'PASS: catalog, guides, priority search landings, store CTAs, icon crawl policy and sitemap current (HTTP 200)'
