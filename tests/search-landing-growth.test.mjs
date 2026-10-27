@@ -63,3 +63,13 @@ test('public catalog icons are crawlable and explicit VPS release is non-destruc
  assert.match(live,/data-position="hero"/);
  assert.match(live,/Allow: \/icons\/apps\//);
 });
+
+test('daily live acquisition check is read-only, scheduled and fails visibly on stale VPS',()=>{
+ const workflow=read('.github/workflows/live-acquisition-smoke.yml');
+ assert.match(workflow,/cron: '40 0 \* \* \*'/);
+ assert.match(workflow,/workflow_dispatch:/);
+ assert.match(workflow,/contents: read/);
+ assert.match(workflow,/bash scripts\/check_app_discovery_live\.sh/);
+ assert.doesNotMatch(workflow,/publish_app_discovery\.sh --apply\s*\n\s*(?:git|rsync|bash)/);
+ assert.match(workflow,/if: failure\(\)/);
+});
