@@ -13,12 +13,12 @@ From a **fresh main** checkout of this site repository, after checking working t
 ```bash
 git pull --ff-only
 bash scripts/publish_app_discovery.sh --dry-run
-# Review the eleven specified destination paths. Never pass --delete.
+# Review the twelve specified destination paths. Never pass --delete.
 bash scripts/publish_app_discovery.sh --apply
 bash scripts/check_app_discovery_live.sh
 ```
 
-Only these files transfer: `index.html`, `apps.html`, `sitemap.xml`, `robots.txt`, `guides/quick-games/index.html`, `guides/daily-habits/index.html`, `guides/decision-helpers/index.html`, `guides/ai-tools/index.html`, `support/brain-burst/index.html`, `support/snaplingo/index.html`, `support/face-reaction-battle/index.html`. The homepage links are tracked with `discovery_nav_click` and let visitors reach the search or guides without scrolling 92 cards. Every other VPS file, including privacy, support, policy, payment and ads assets, stays untouched. To override environment use `APP_SITE_DEPLOY_HOST` and `APP_SITE_DEPLOY_ROOT` with a known-safe absolute path. The script refuses unknown flags/invalid targets.
+Only these files transfer: `index.html`, `apps.html`, `sitemap.xml`, `robots.txt`, `guides/quick-games/index.html`, `guides/daily-habits/index.html`, `guides/decision-helpers/index.html`, `guides/ai-tools/index.html`, `support/brain-burst/index.html`, `support/snaplingo/index.html`, `support/face-reaction-battle/index.html`, `support/twotaku/index.html`. The homepage links are tracked with `discovery_nav_click` and let visitors reach the search or guides without scrolling 92 cards. Every other VPS file, including privacy, support, policy, payment and ads assets, stays untouched. To override environment use `APP_SITE_DEPLOY_HOST` and `APP_SITE_DEPLOY_ROOT` with a known-safe absolute path. The script refuses unknown flags/invalid targets.
 
 **Publish gate:** a dry-run is not publication. Only mark live once `check_app_discovery_live.sh` reports HTTP 200 and matches the homepage `discovery-links`, `id="find-app"`, both guide canonical URLs, guide click event and sitemap entries. After manual publication consider Google Search Console URL inspection and sitemap submission if the `appdevelopsk.com` property is available.
 
@@ -63,7 +63,7 @@ A **restricted 3-day finalized GSC window (Oct 22–24)** was available, so do n
 - Preserve Google Play Install Referrer on each CTA. `download_click` adds `app` and `placement` so support hero CTA and page-details CTA can be compared; avoid raw visitor search content.
 - New `tests/search-landing-growth.test.mjs` and GitHub CI prevent catalog/product mismatches, fabricated ratings, missing store links, and missing live-check assertions.
 
-After shipping the updated **eleven** files from a fresh main checkout, run `bash scripts/check_app_discovery_live.sh`. Record the deploy timestamp, then compare **landing impressions/CTR**, **support CTA clicks by placement**, **Play visitors/install**, and **first completed app action** after enough data accumulates. The early data is directional only.
+After shipping the updated **twelve** files from a fresh main checkout, run `bash scripts/check_app_discovery_live.sh`. Record the deploy timestamp, then compare **landing impressions/CTR**, **support CTA clicks by placement**, **Play visitors/install**, and **first completed app action** after enough data accumulates. The early data is directional only.
 
 ## Additional organic discovery paths — 2026-10-27
 
@@ -78,3 +78,9 @@ After shipping the updated **eleven** files from a fresh main checkout, run `bas
 The workflow `.github/workflows/live-acquisition-smoke.yml` checks actual HTTPS output every day around **09:40 JST** (GitHub Actions scheduling can be delayed). It reuses `scripts/check_app_discovery_live.sh` and **fails intentionally** if the VPS still serves a stale catalog, stale Play CTA, missing guide or stale sitemap. It only reads the public URLs; it does not deploy, mutate Store metadata, write marketing content or buy ads.
 
 Its failure step explains how to run the existing manual, non-deleting VPS deployment and verify success. GitHub email notifications depend on repo/account settings; a failed workflow alone does not guarantee push or email alerts. Workflow is also manually dispatchable for an operator who wants to verify a completed release.
+
+## Dotchi 17-language support-page promise repair (2026-10-27)
+
+Dotchi's current **main** backend seed data contains two-choice polls about food, travel, lifestyle, sports and technology. The site's old `/support/twotaku/` still had an anime-only SEO title, watch/read lists and anime/manga database claims, which do not match this app. Correct the default HTML, OG metadata and each of the 17 translated `APP_T` and `FEAT_T` entries **from the current localized Fastlane copy**, preserving the established language switcher. Include an above-the-fold Google Play CTA with the existing install-referrer campaign and GA4 `download_click` placement field. No invented vote counts, popularity, features or screenshots.
+
+A new `tests/dotchi-support-growth.test.mjs` checks the 17-locale dictionaries and two correct store CTAs. The release and production checker now include `support/twotaku/index.html` (twelve files total); **the live VPS still needs the operator's deployment**. In parallel, app-infra PR #97 prepares updated English and Japanese short Play copy, which also needs **separate Play Console publishing**. Do not equate this source alignment with a real conversion-rate increase.

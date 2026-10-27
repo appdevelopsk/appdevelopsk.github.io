@@ -37,6 +37,10 @@ done
 fetch '/support/face-reaction-battle/' 'face-battle.html'
 grep -Fq 'data-alternative="instant-judge"' "$tmp/face-battle.html" || { echo 'FAIL unavailable game alternative CTA missing' >&2; exit 1; }
 grep -Fq 'data-alternative="blur"' "$tmp/face-battle.html" || { echo 'FAIL second unavailable game alternative CTA missing' >&2; exit 1; }
+fetch '/support/twotaku/' 'dotchi.html'
+grep -Fq '<h1>Dotchi: This or That Polls</h1>' "$tmp/dotchi.html" || { echo 'FAIL Dotchi anime-only support content still live' >&2; exit 1; }
+grep -Fq 'data-position="hero"' "$tmp/dotchi.html" || { echo 'FAIL Dotchi store call-to-action absent' >&2; exit 1; }
+grep -Fq 'const FEAT_T={en:{0:"Choose A or B on a question."' "$tmp/dotchi.html" || { echo 'FAIL Dotchi translated feature claims still stale' >&2; exit 1; }
 fetch '/robots.txt' 'robots.txt'
 grep -Fq 'Allow: /icons/apps/' "$tmp/robots.txt" || { echo 'FAIL Google image crawl allow not live' >&2; exit 1; }
 echo 'PASS: catalog, guides, priority search landings, store CTAs, icon crawl policy and sitemap current (HTTP 200)'

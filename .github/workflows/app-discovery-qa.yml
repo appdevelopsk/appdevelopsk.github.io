@@ -7,6 +7,8 @@ on:
       - index.html
       - support/brain-burst/index.html
       - support/snaplingo/index.html
+      - support/twotaku/index.html
+      - tests/dotchi-support-growth.test.mjs
       - support/face-reaction-battle/index.html
       - robots.txt
       - apps_data.json
@@ -27,6 +29,8 @@ on:
       - index.html
       - support/brain-burst/index.html
       - support/snaplingo/index.html
+      - support/twotaku/index.html
+      - tests/dotchi-support-growth.test.mjs
       - support/face-reaction-battle/index.html
       - robots.txt
       - apps_data.json
@@ -59,4 +63,4 @@ jobs:
       - name: Verify non-destructive release scripts have valid shell syntax
         run: bash -n scripts/publish_app_discovery.sh scripts/check_app_discovery_live.sh
       - name: Verify search, referral links and guide listings
-        run: node --test tests/catalog-growth.test.mjs tests/search-landing-growth.test.mjs
+        run: node --test tests/catalog-growth.test.mjs tests/search-landing-growth.test.mjs tests/dotchi-support-growth.test.mjs
