@@ -825,5 +825,62 @@
   <footer>
     &copy; 2026 SK APPS &middot; <a href="/privacy-policy">Privacy</a> &middot; <a href="/terms">Terms</a>
   </footer>
+  <script>
+  (() => {
+    const input = document.getElementById('find-app');
+    const cards = Array.from(document.querySelectorAll('.grid .app-card'));
+    const buttons = Array.from(document.querySelectorAll('.finder-filters button'));
+    const count = document.getElementById('finder-count');
+    const empty = document.getElementById('finder-empty');
+    const groups = {
+      'quick-games': ['blur','instant-judge','nodo','brain-burst','snap-judge','daily-duel','percent-pulse','two-truths','key-clash','flinch','tier-rank-me'],
+      habits: ['true-me','future-me','water-reminder','gratitude-log','gratitude-challenge','mood-log','sleep-prep','eye-break','stretch-reminder','win-log'],
+      decisions: ['food-roulette','movie-roulette','date-roulette','dinner-home-roulette','trip-roulette','study-roulette','what-to-do','pickwhirl','truth-roulette','quick-local-food'],
+      ai: ['debate-me','voice-memo','future-me','date-pilot','global-news','pantry-ai','name-maker','idea-market','life-trace']
+    };
+    const clean = value => value.normalize('NFKC').toLocaleLowerCase().trim();
+    let goal = 'all', loggedSearch = false;
+    const slug = card => {
+      const src = card.querySelector('img')?.getAttribute('src') || '';
+      return src.split('/').pop()?.replace(/\.png$/, '') || '';
+    };
+    const fire = (event, data) => {
+      if (typeof window.gtag === 'function') window.gtag('event', event, data);
+    };
+    function render() {
+      const text = clean(input.value);
+      const terms = text.split(/\s+/).filter(Boolean);
+      let shown = 0;
+      cards.forEach(card => {
+        const app = slug(card), content = clean(card.textContent || '');
+        const inGoal = goal === 'all' || (groups[goal] || []).includes(app);
+        const visible = inGoal && terms.every(term => content.includes(term));
+        card.hidden = !visible;
+        if (visible) shown++;
+      });
+      count.textContent = shown + ' apps shown';
+      empty.hidden = shown !== 0;
+      return shown;
+    }
+    input.addEventListener('input', () => {
+      const shown = render();
+      // Search strings might include personal details. Never transmit them.
+      if (input.value.trim() && !loggedSearch) {
+        fire('catalog_search_used', {results: shown, search_length_band: input.value.length < 5 ? 'short' : 'long'});
+        loggedSearch = true;
+      }
+      if (!input.value.trim()) loggedSearch = false;
+    });
+    buttons.forEach(button => button.addEventListener('click', () => {
+      goal = button.dataset.goal;
+      buttons.forEach(b => b.setAttribute('aria-pressed', String(b === button)));
+      fire('catalog_filter_used', {goal, results: render()});
+    }));
+    cards.forEach(card => card.addEventListener('click', () => {
+      fire('catalog_store_click', {app: slug(card), goal, source: 'apps_catalog'});
+    }));
+    render();
+  })();
+  </script>
 </body>
 </html>
