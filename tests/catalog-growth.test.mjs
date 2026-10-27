@@ -93,3 +93,18 @@ test('purpose filters refer only to visible current catalog slugs, not renamed a
   assert.ok(groups.decisions.includes('chore-roulette'));
   assert.ok(groups['quick-games'].includes('daily-duel'));
 });
+
+test('public Dotchi catalog aligns with its real two-choice voting product', () => {
+  const app = data.find(x => x.app === 'twotaku');
+  assert.ok(app && !app.hidden);
+  assert.equal(app.pkg, 'com.dotchi.dotchi_app');
+  assert.match(app.title, /Dotchi: This or That Polls/);
+  assert.match(app.desc, /Pick A or B on everyday questions/);
+  assert.doesNotMatch(app.title + app.desc, /anime|manga|Naruto|Goku/i);
+  const card = catalog.match(/<a class="app-card" href="[^"]+id=com\.dotchi\.dotchi_app[\s\S]+?<\/a>/)?.[0];
+  assert.ok(card, 'missing indexed Dotchi catalog card');
+  assert.match(card, /Dotchi: This or That Polls/);
+  assert.match(card, /Vote, see results and compare opinions with friends/);
+  assert.doesNotMatch(card, /anime|manga/i);
+  assert.match(card, /referrer=utm_source%3Dappdevelopsk/);
+});
