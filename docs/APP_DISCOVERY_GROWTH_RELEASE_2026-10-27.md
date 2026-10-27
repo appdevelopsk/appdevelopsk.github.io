@@ -18,9 +18,9 @@ bash scripts/publish_app_discovery.sh --apply
 bash scripts/check_app_discovery_live.sh
 ```
 
-Only these files transfer: `apps.html`, `sitemap.xml`, `guides/quick-games/index.html`, `guides/daily-habits/index.html`. Every other VPS file, including privacy, support, policy, payment and ads assets, stays untouched. To override environment use `APP_SITE_DEPLOY_HOST` and `APP_SITE_DEPLOY_ROOT` with a known-safe absolute path. The script refuses unknown flags/invalid targets.
+Only these files transfer: `index.html`, `apps.html`, `sitemap.xml`, `guides/quick-games/index.html`, `guides/daily-habits/index.html`. The homepage links are tracked with `discovery_nav_click` and let visitors reach the search or guides without scrolling 92 cards. Every other VPS file, including privacy, support, policy, payment and ads assets, stays untouched. To override environment use `APP_SITE_DEPLOY_HOST` and `APP_SITE_DEPLOY_ROOT` with a known-safe absolute path. The script refuses unknown flags/invalid targets.
 
-**Publish gate:** a dry-run is not publication. Only mark live once `check_app_discovery_live.sh` reports HTTP 200 and matches `id="find-app"`, both guide canonical URLs, guide click event and sitemap entries. After manual publication consider Google Search Console URL inspection and sitemap submission if the `appdevelopsk.com` property is available.
+**Publish gate:** a dry-run is not publication. Only mark live once `check_app_discovery_live.sh` reports HTTP 200 and matches the homepage `discovery-links`, `id="find-app"`, both guide canonical URLs, guide click event and sitemap entries. After manual publication consider Google Search Console URL inspection and sitemap submission if the `appdevelopsk.com` property is available.
 
 ## Growth experiment — acquisition, not vanity pageviews
 
