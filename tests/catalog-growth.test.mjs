@@ -6,7 +6,7 @@ const read = p => readFileSync(new URL('../'+p, import.meta.url),'utf8');
 const data = JSON.parse(read('apps_data.json'));
 const catalog = read('apps.html');
 const sitemap = read('sitemap.xml');
-const guides = ['quick-games','daily-habits'];
+const guides = ['quick-games','daily-habits','decision-helpers','ai-tools'];
 
 test('catalog search retains 92 real indexed store cards and passes install referrer',()=>{
   const visible=data.filter(x=>!x.hidden);
