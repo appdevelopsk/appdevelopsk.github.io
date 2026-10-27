@@ -27,6 +27,18 @@
     .store-badge { display:inline-block; margin-top:.4rem; font-size:.78rem; font-weight:600; color:var(--accent); }
     footer { text-align:center; color:var(--sub); font-size:.85rem; padding:2rem; }
     footer a { color:var(--accent); }
+    /* Browse purpose or search without hiding cards from non-JS crawlers. */
+    .finder{margin:0 0 1.5rem;padding:1.1rem;background:var(--card);border:1px solid var(--line);border-radius:14px}
+    .finder label{display:block;font-weight:700;margin-bottom:.5rem}
+    .finder input{width:100%;font:inherit;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:.8rem .9rem}
+    .finder input:focus-visible,.finder button:focus-visible,.finder a:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+    .finder-filters{display:flex;flex-wrap:wrap;gap:.5rem;margin:1rem 0 .6rem}
+    .finder-filters button{cursor:pointer;font:inherit;font-size:.85rem;border:1px solid var(--line);border-radius:999px;padding:.4rem .8rem;background:var(--bg);color:var(--ink)}
+    .finder-filters button[aria-pressed="true"]{background:var(--accent);color:white;border-color:var(--accent)}
+    .finder-meta{color:var(--sub);font-size:.82rem;margin:.4rem 0}
+    .finder-guides{margin-top:.6rem;display:flex;flex-wrap:wrap;gap:1rem;font-size:.9rem}
+    .finder-guides a{color:var(--accent);font-weight:600}
+    [hidden]{display:none !important}
   </style>
   <meta property="og:title" content="All Apps – SK APPS">
   <meta property="og:description" content="Browse all 92 mobile apps by SK APPS — productivity, education, health, entertainment and more. Free on Google Play.">
@@ -39,6 +51,13 @@
   <meta name="twitter:title" content="All Apps – SK APPS">
   <meta name="twitter:description" content="Browse all 92 mobile apps by SK APPS — productivity, education, health, entertainment and more. Free on Google Play.">
   <meta name="twitter:image" content="https://appdevelopsk.com/og-image.png">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-5Z588FVC81"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function(){ window.dataLayer.push(arguments); };
+    gtag('js', new Date());
+    gtag('config', 'G-5Z588FVC81');
+  </script>
 </head>
 <body>
   <header>
@@ -47,6 +66,23 @@
     <p>92 free apps on Google Play — productivity, education, health, games and more.</p>
   </header>
   <main>
+    <section class="finder" aria-labelledby="finder-title">
+      <label id="finder-title" for="find-app">Find an app for what you want to do</label>
+      <input id="find-app" type="search" placeholder="Try: photo quiz, sleep, journal, debate, food" autocomplete="off">
+      <div class="finder-filters" role="group" aria-label="Browse by purpose">
+        <button type="button" data-goal="all" aria-pressed="true">All apps</button>
+        <button type="button" data-goal="quick-games" aria-pressed="false">Quick games</button>
+        <button type="button" data-goal="habits" aria-pressed="false">Daily habits</button>
+        <button type="button" data-goal="decisions" aria-pressed="false">Decision helpers</button>
+        <button type="button" data-goal="ai" aria-pressed="false">AI tools</button>
+      </div>
+      <p id="finder-count" class="finder-meta" role="status" aria-live="polite">Showing all apps</p>
+      <nav class="finder-guides" aria-label="Guides to choosing an app">
+        <a href="/guides/quick-games/">Find a quick game</a>
+        <a href="/guides/daily-habits/">Build a daily habit</a>
+      </nav>
+    </section>
+    <p id="finder-empty" class="finder-meta" hidden>No matches. Try another word or choose All apps.</p>
     <div class="grid">
       <a class="app-card" href="https://play.google.com/store/apps/details?id=jp.appdevelopsk.facesymmetry&amp;utm_source=appdevelopsk&amp;utm_medium=web&amp;utm_campaign=apps_catalog&amp;referrer=utm_source%3Dappdevelopsk%26utm_medium%3Dweb%26utm_campaign%3Dapps_catalog" target="_blank" rel="noopener">
         <img src="icons/apps/face-symmetry.png" alt="HangTrue - Level Checker icon" loading="lazy" width="64" height="64">
@@ -789,5 +825,62 @@
   <footer>
     &copy; 2026 SK APPS &middot; <a href="/privacy-policy">Privacy</a> &middot; <a href="/terms">Terms</a>
   </footer>
+  <script>
+  (() => {
+    const input = document.getElementById('find-app');
+    const cards = Array.from(document.querySelectorAll('.grid .app-card'));
+    const buttons = Array.from(document.querySelectorAll('.finder-filters button'));
+    const count = document.getElementById('finder-count');
+    const empty = document.getElementById('finder-empty');
+    const groups = {
+      'quick-games': ['blur','instant-judge','nodo','brain-burst','snap-judge','daily-duel','percent-pulse','two-truths','key-clash','flinch','tier-rank-me'],
+      habits: ['true-me','future-me','water-reminder','gratitude-log','gratitude-challenge','mood-log','sleep-prep','eye-break','stretch-reminder','win-log'],
+      decisions: ['food-roulette','movie-roulette','date-roulette','dinner-home-roulette','trip-roulette','study-roulette','what-to-do','pickwhirl','truth-roulette','quick-local-food'],
+      ai: ['debate-me','voice-memo','future-me','date-pilot','global-news','pantry-ai','name-maker','idea-market','life-trace']
+    };
+    const clean = value => value.normalize('NFKC').toLocaleLowerCase().trim();
+    let goal = 'all', loggedSearch = false;
+    const slug = card => {
+      const src = card.querySelector('img')?.getAttribute('src') || '';
+      return src.split('/').pop()?.replace(/\.png$/, '') || '';
+    };
+    const fire = (event, data) => {
+      if (typeof window.gtag === 'function') window.gtag('event', event, data);
+    };
+    function render() {
+      const text = clean(input.value);
+      const terms = text.split(/\s+/).filter(Boolean);
+      let shown = 0;
+      cards.forEach(card => {
+        const app = slug(card), content = clean(card.textContent || '');
+        const inGoal = goal === 'all' || (groups[goal] || []).includes(app);
+        const visible = inGoal && terms.every(term => content.includes(term));
+        card.hidden = !visible;
+        if (visible) shown++;
+      });
+      count.textContent = shown + ' apps shown';
+      empty.hidden = shown !== 0;
+      return shown;
+    }
+    input.addEventListener('input', () => {
+      const shown = render();
+      // Search strings might include personal details. Never transmit them.
+      if (input.value.trim() && !loggedSearch) {
+        fire('catalog_search_used', {results: shown, search_length_band: input.value.length < 5 ? 'short' : 'long'});
+        loggedSearch = true;
+      }
+      if (!input.value.trim()) loggedSearch = false;
+    });
+    buttons.forEach(button => button.addEventListener('click', () => {
+      goal = button.dataset.goal;
+      buttons.forEach(b => b.setAttribute('aria-pressed', String(b === button)));
+      fire('catalog_filter_used', {goal, results: render()});
+    }));
+    cards.forEach(card => card.addEventListener('click', () => {
+      fire('catalog_store_click', {app: slug(card), goal, source: 'apps_catalog'});
+    }));
+    render();
+  })();
+  </script>
 </body>
 </html>

@@ -1,0 +1,42 @@
+name: Public App Discovery and SEO QA
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - apps.html
+      - apps_data.json
+      - guides/**
+      - sitemap.xml
+      - scripts/build_catalog.py
+      - site_counts.json
+      - tests/catalog-growth.test.mjs
+      - .github/workflows/app-discovery-qa.yml
+  push:
+    branches: [main]
+    paths:
+      - apps.html
+      - apps_data.json
+      - guides/**
+      - sitemap.xml
+      - scripts/build_catalog.py
+      - site_counts.json
+      - tests/catalog-growth.test.mjs
+      - .github/workflows/app-discovery-qa.yml
+permissions:
+  contents: read
+jobs:
+  discovery-quality:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Confirm catalog generator remains idempotent
+        run: python3 scripts/build_catalog.py --check
+      - name: Verify search, referral links and guide listings
+        run: node --test tests/catalog-growth.test.mjs
