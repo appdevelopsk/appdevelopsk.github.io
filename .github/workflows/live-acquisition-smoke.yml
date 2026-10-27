@@ -1,0 +1,45 @@
+name: Live App Acquisition Pages Smoke
+
+on:
+  workflow_dispatch:
+  schedule:
+    # 09:40 JST daily. Scheduled GitHub jobs may run later than cron.
+    - cron: '40 0 * * *'
+
+permissions:
+  contents: read
+
+jobs:
+  verify-live-acquisition:
+    runs-on: ubuntu-latest
+    timeout-minutes: 9
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Check actual VPS HTTP pages, Play CTAs, campaign pages, and sitemap
+        id: verify
+        shell: bash
+        run: |
+          set -euo pipefail
+          echo 'Checking public appdevelopsk.com, NOT source on GitHub main.'
+          bash scripts/check_app_discovery_live.sh
+      - name: Summarize release blockers and recovery
+        if: failure()
+        run: |
+          {
+            echo '## Production acquisition pages are missing or stale'
+            echo ''
+            echo 'Source changes alone do not publish to the VPS. See the failed smoke-test step for the exact route.'
+            echo ''
+            echo 'From a current site main checkout with your configured pickly-vps SSH alias:'
+            echo ''
+            echo '```bash'
+            echo 'git pull --ff-only'
+            echo 'bash scripts/publish_app_discovery.sh --dry-run'
+            echo 'bash scripts/publish_app_discovery.sh --apply'
+            echo 'bash scripts/check_app_discovery_live.sh'
+            echo '```'
+            echo ''
+            echo 'No CI step writes to the VPS, updates Google Play, or records fictitious installs.'
+          } >> "$GITHUB_STEP_SUMMARY"
