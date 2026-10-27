@@ -13,6 +13,9 @@ fetch() {
     -o "$tmp/$filename" -w '%{http_code}' "$base$route")
   [[ "$code" == 200 ]] || { echo "FAIL HTTP $code $base$route" >&2; exit 1; }
 }
+fetch '/' 'index.html'
+grep -Fq 'class="discovery-links"' "$tmp/index.html" || { echo 'FAIL homepage discovery links are stale' >&2; exit 1; }
+grep -Fq 'discovery_nav_click' "$tmp/index.html" || { echo 'FAIL homepage discovery tracking is stale' >&2; exit 1; }
 fetch '/apps' 'apps.html'
 grep -Fq 'id="find-app"' "$tmp/apps.html" || { echo 'FAIL catalog search is stale' >&2; exit 1; }
 grep -Fq 'catalog_store_click' "$tmp/apps.html" || { echo 'FAIL store-click attribution is stale' >&2; exit 1; }
