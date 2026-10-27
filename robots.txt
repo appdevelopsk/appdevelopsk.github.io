@@ -1,6 +1,8 @@
 # SK APPS — apex robots.txt
 User-agent: *
 Allow: /
+# Published catalog app icons must be crawlable for image discovery.
+Allow: /icons/apps/
 Disallow: /icons/
 
 # Explicit allow for ad crawlers
