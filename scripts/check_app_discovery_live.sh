@@ -19,6 +19,7 @@ grep -Fq 'discovery_nav_click' "$tmp/index.html" || { echo 'FAIL homepage discov
 fetch '/apps' 'apps.html'
 grep -Fq 'id="find-app"' "$tmp/apps.html" || { echo 'FAIL catalog search is stale' >&2; exit 1; }
 grep -Fq 'catalog_store_click' "$tmp/apps.html" || { echo 'FAIL store-click attribution is stale' >&2; exit 1; }
+grep -Fq 'Dotchi: This or That Polls' "$tmp/apps.html" || { echo 'FAIL Dotchi catalog still presents an anime-only app' >&2; exit 1; }
 for slug in quick-games daily-habits decision-helpers ai-tools; do
   fetch "/guides/$slug/" "$slug.html"
   grep -Fq "https://appdevelopsk.com/guides/$slug/" "$tmp/$slug.html" || { echo "FAIL guide $slug content/canonical mismatch" >&2; exit 1; }

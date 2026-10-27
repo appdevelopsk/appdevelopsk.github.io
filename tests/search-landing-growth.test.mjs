@@ -73,3 +73,10 @@ test('daily live acquisition check is read-only, scheduled and fails visibly on 
  assert.doesNotMatch(workflow,/publish_app_discovery\.sh --apply\s*\n\s*(?:git|rsync|bash)/);
  assert.match(workflow,/if: failure\(\)/);
 });
+
+test('production smoke refuses the stale anime-only Dotchi catalog card',()=>{
+ const live=read('scripts/check_app_discovery_live.sh');
+ assert.match(live,/Dotchi: This or That Polls/);
+ assert.match(live,/FAIL Dotchi catalog still presents an anime-only app/);
+ assert.match(live,/fetch '\/apps' 'apps\.html'/);
+});
