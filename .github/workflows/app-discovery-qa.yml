@@ -5,6 +5,10 @@ on:
     paths:
       - apps.html
       - index.html
+      - support/brain-burst/index.html
+      - support/snaplingo/index.html
+      - support/face-reaction-battle/index.html
+      - robots.txt
       - apps_data.json
       - guides/**
       - sitemap.xml
@@ -19,6 +23,10 @@ on:
     paths:
       - apps.html
       - index.html
+      - support/brain-burst/index.html
+      - support/snaplingo/index.html
+      - support/face-reaction-battle/index.html
+      - robots.txt
       - apps_data.json
       - guides/**
       - sitemap.xml
