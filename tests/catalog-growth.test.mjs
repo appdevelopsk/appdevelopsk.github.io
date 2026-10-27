@@ -6,12 +6,12 @@ const read = p => readFileSync(new URL('../'+p, import.meta.url),'utf8');
 const data = JSON.parse(read('apps_data.json'));
 const catalog = read('apps.html');
 const sitemap = read('sitemap.xml');
-const guides = ['quick-games','daily-habits'];
+const guides = ['quick-games','daily-habits','decision-helpers','ai-tools'];
 
 test('catalog search retains 92 real indexed store cards and passes install referrer',()=>{
   const visible=data.filter(x=>!x.hidden);
   const tags=[...catalog.matchAll(/<a class="app-card" href="([^"]+)"/g)];
-  assert.equal(visible.length,92);
+  assert.equal(visible.length,JSON.parse(read('site_counts.json')).android_live);
   assert.equal(tags.length,visible.length);
   for (const entry of visible) {
     assert.ok(tags.some(t=>t[1].includes('id='+entry.pkg)),entry.app);
@@ -76,4 +76,20 @@ test('homepage sends visitors to catalog and both indexable guides without a sea
   assert.match(home,/href="\/apps"/);
   for (const slug of guides) assert.match(home,new RegExp('href="/guides/'+slug+'/"'));
   assert.match(home,/discovery_nav_click/);
+});
+
+test('purpose filters refer only to visible current catalog slugs, not renamed app titles',()=>{
+  const match=catalog.match(/const groups = (\{[\s\S]*?\});\s*const clean/);
+  assert.ok(match,'missing purpose filter definitions');
+  const groups=runInNewContext('('+match[1]+')');
+  const visible=new Set(data.filter(a=>!a.hidden).map(a=>a.app));
+  for(const [goal,slugs] of Object.entries(groups)){
+    assert.ok(slugs.length>=4,'too few choices for '+goal);
+    assert.equal(new Set(slugs).size,slugs.length,'duplicate catalog slug in '+goal);
+    for(const slug of slugs){
+      assert.ok(visible.has(slug),'invalid or delisted catalog slug '+slug+' in '+goal);
+    }
+  }
+  assert.ok(groups.decisions.includes('chore-roulette'));
+  assert.ok(groups['quick-games'].includes('daily-duel'));
 });
