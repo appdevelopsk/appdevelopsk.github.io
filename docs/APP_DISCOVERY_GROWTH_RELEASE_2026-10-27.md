@@ -13,12 +13,12 @@ From a **fresh main** checkout of this site repository, after checking working t
 ```bash
 git pull --ff-only
 bash scripts/publish_app_discovery.sh --dry-run
-# Review the four changed destination paths. Never pass --delete.
+# Review the eleven specified destination paths. Never pass --delete.
 bash scripts/publish_app_discovery.sh --apply
 bash scripts/check_app_discovery_live.sh
 ```
 
-Only these files transfer: `index.html`, `apps.html`, `sitemap.xml`, `robots.txt`, `guides/quick-games/index.html`, `guides/daily-habits/index.html`, `support/brain-burst/index.html`, `support/snaplingo/index.html`, `support/face-reaction-battle/index.html`. The homepage links are tracked with `discovery_nav_click` and let visitors reach the search or guides without scrolling 92 cards. Every other VPS file, including privacy, support, policy, payment and ads assets, stays untouched. To override environment use `APP_SITE_DEPLOY_HOST` and `APP_SITE_DEPLOY_ROOT` with a known-safe absolute path. The script refuses unknown flags/invalid targets.
+Only these files transfer: `index.html`, `apps.html`, `sitemap.xml`, `robots.txt`, `guides/quick-games/index.html`, `guides/daily-habits/index.html`, `guides/decision-helpers/index.html`, `guides/ai-tools/index.html`, `support/brain-burst/index.html`, `support/snaplingo/index.html`, `support/face-reaction-battle/index.html`. The homepage links are tracked with `discovery_nav_click` and let visitors reach the search or guides without scrolling 92 cards. Every other VPS file, including privacy, support, policy, payment and ads assets, stays untouched. To override environment use `APP_SITE_DEPLOY_HOST` and `APP_SITE_DEPLOY_ROOT` with a known-safe absolute path. The script refuses unknown flags/invalid targets.
 
 **Publish gate:** a dry-run is not publication. Only mark live once `check_app_discovery_live.sh` reports HTTP 200 and matches the homepage `discovery-links`, `id="find-app"`, both guide canonical URLs, guide click event and sitemap entries. After manual publication consider Google Search Console URL inspection and sitemap submission if the `appdevelopsk.com` property is available.
 
@@ -63,4 +63,12 @@ A **restricted 3-day finalized GSC window (Oct 22–24)** was available, so do n
 - Preserve Google Play Install Referrer on each CTA. `download_click` adds `app` and `placement` so support hero CTA and page-details CTA can be compared; avoid raw visitor search content.
 - New `tests/search-landing-growth.test.mjs` and GitHub CI prevent catalog/product mismatches, fabricated ratings, missing store links, and missing live-check assertions.
 
-After shipping the updated **nine** files from a fresh main checkout, run `bash scripts/check_app_discovery_live.sh`. Record the deploy timestamp, then compare **landing impressions/CTR**, **support CTA clicks by placement**, **Play visitors/install**, and **first completed app action** after enough data accumulates. The early data is directional only.
+After shipping the updated **eleven** files from a fresh main checkout, run `bash scripts/check_app_discovery_live.sh`. Record the deploy timestamp, then compare **landing impressions/CTR**, **support CTA clicks by placement**, **Play visitors/install**, and **first completed app action** after enough data accumulates. The early data is directional only.
+
+## Additional organic discovery paths — 2026-10-27
+
+- Two additional editorial choice guides: `/guides/decision-helpers/` and `/guides/ai-tools/`. Each includes four **non-hidden** apps from the local catalog, canonical metadata, truthful first-party publisher attribution, and per-app Play campaign links.
+- Add both to homepage and searchable catalog discovery navigation, plus sitemap and VPS deployment/production checks.
+- The catalog filter previously included stale app identifiers `flinch` (the published app is `daily-duel`) and `pickwhirl` (published app is `chore-roulette`). Removed stale names and used real catalog identifiers.
+- A CI regression now checks every filter slug against the published catalog, including renamed apps, to prevent silent zero-result filters after future renames or delistings. The total listed app count is taken from `site_counts.json`, not a stale hardcoded 92.
+- This does **not** create new Google Play installs on its own; the VPS must be updated and the customer conversion funnel measured.
