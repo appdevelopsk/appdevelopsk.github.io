@@ -18,7 +18,7 @@ bash scripts/publish_app_discovery.sh --apply
 bash scripts/check_app_discovery_live.sh
 ```
 
-Only these files transfer: `index.html`, `apps.html`, `sitemap.xml`, `guides/quick-games/index.html`, `guides/daily-habits/index.html`. The homepage links are tracked with `discovery_nav_click` and let visitors reach the search or guides without scrolling 92 cards. Every other VPS file, including privacy, support, policy, payment and ads assets, stays untouched. To override environment use `APP_SITE_DEPLOY_HOST` and `APP_SITE_DEPLOY_ROOT` with a known-safe absolute path. The script refuses unknown flags/invalid targets.
+Only these files transfer: `index.html`, `apps.html`, `sitemap.xml`, `robots.txt`, `guides/quick-games/index.html`, `guides/daily-habits/index.html`, `support/brain-burst/index.html`, `support/snaplingo/index.html`, `support/face-reaction-battle/index.html`. The homepage links are tracked with `discovery_nav_click` and let visitors reach the search or guides without scrolling 92 cards. Every other VPS file, including privacy, support, policy, payment and ads assets, stays untouched. To override environment use `APP_SITE_DEPLOY_HOST` and `APP_SITE_DEPLOY_ROOT` with a known-safe absolute path. The script refuses unknown flags/invalid targets.
 
 **Publish gate:** a dry-run is not publication. Only mark live once `check_app_discovery_live.sh` reports HTTP 200 and matches the homepage `discovery-links`, `id="find-app"`, both guide canonical URLs, guide click event and sitemap entries. After manual publication consider Google Search Console URL inspection and sitemap submission if the `appdevelopsk.com` property is available.
 
@@ -51,3 +51,16 @@ Do not sum the 117 apps' 7-day active-user counts as unique people. Do not inter
 - [ ] Sitemap submitted/indexing checked in Search Console
 - [ ] GA4 DebugView events observed without search query payload
 - [ ] Google Play listing traffic / acquisition comparison recorded after meaningful sample
+
+## GSC-backed snippet and conversion repair (2026-10-27)
+
+A **restricted 3-day finalized GSC window (Oct 22–24)** was available, so do not treat the following as significant performance trends: BrainBurst support 14 impressions / 0 clicks / average position ~9.1; SnapLingo support 10 impressions / 0 clicks / position ~7.4; `face battle` query on Face Reaction Battle page 13 impressions / 1 click / position ~5.9. No prior-period comparison available.
+
+- BrainBurst: correct the stale generic memory/math training synopsis to the Play-aligned daily AI trivia / 1v1 quiz proposition, improve search/snippet and open-graph fields; show Google Play CTA above the fold.
+- SnapLingo: concrete photo vocabulary search snippet and high-visibility store handoff, with app structured data but **no manufactured review stars/rating scores**.
+- Face Reaction Battle is **not downloadable**, so retain unavailability notice. Offer only clearly **different**, verifiably published Instant Judge and Blur games; do not imply they provide face-expression recognition.
+- `robots.txt` now explicitly allows public `/icons/apps/` while continuing to disallow remaining icons. Note indexing is a search engine decision, not guaranteed.
+- Preserve Google Play Install Referrer on each CTA. `download_click` adds `app` and `placement` so support hero CTA and page-details CTA can be compared; avoid raw visitor search content.
+- New `tests/search-landing-growth.test.mjs` and GitHub CI prevent catalog/product mismatches, fabricated ratings, missing store links, and missing live-check assertions.
+
+After shipping the updated **nine** files from a fresh main checkout, run `bash scripts/check_app_discovery_live.sh`. Record the deploy timestamp, then compare **landing impressions/CTR**, **support CTA clicks by placement**, **Play visitors/install**, and **first completed app action** after enough data accumulates. The early data is directional only.

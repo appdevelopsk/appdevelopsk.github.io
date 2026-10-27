@@ -61,7 +61,7 @@
       if (!a) return;
       var href = a.getAttribute('href') || '';
       if (/play\.google\.com/.test(href)) {
-        gtag('event', 'download_click', { store: 'google_play', location: 'support', link_url: href });
+        gtag('event', 'download_click', { store: 'google_play', location: 'support', app: a.getAttribute('data-alternative') || 'face-reaction-battle', placement: a.hasAttribute('data-alternative') ? 'alternative' : 'details', link_url: href });
       }
     }, true);
   </script>
@@ -102,6 +102,14 @@
   <div class="card">
     <h2>Download</h2>
     <p>Not currently available for download. This page provides support for existing users.</p>
+    <div style="margin-top:22px;padding:18px;border:1px solid rgba(255,255,255,.14);border-radius:12px">
+      <h3 style="margin-bottom:9px">Other games to explore</h3>
+      <p>These are different games by SK Apps, not replacements for a face-expression game. Check their Google Play pages to see whether they fit what you want.</p>
+      <ul style="margin-top:12px">
+        <li style="margin:12px 0"><a href="https://play.google.com/store/apps/details?id=com.instantjudge.instant_judge&amp;utm_source=appdevelopsk&amp;utm_medium=support_alternative&amp;utm_campaign=support_face_reaction_alternatives&amp;referrer=utm_source%3Dappdevelopsk%26utm_medium%3Dsupport_alternative%26utm_campaign%3Dsupport_face_reaction_alternatives%26utm_content%3Dinstant-judge" data-alternative="instant-judge" target="_blank" rel="noopener noreferrer" style="color:var(--c1);font-weight:700">Instant Judge on Google Play</a> — Vote on photos and scenarios to compare opinions.</li>
+        <li style="margin:12px 0"><a href="https://play.google.com/store/apps/details?id=com.blurapp.blur_app&amp;utm_source=appdevelopsk&amp;utm_medium=support_alternative&amp;utm_campaign=support_face_reaction_alternatives&amp;referrer=utm_source%3Dappdevelopsk%26utm_medium%3Dsupport_alternative%26utm_campaign%3Dsupport_face_reaction_alternatives%26utm_content%3Dblur" data-alternative="blur" target="_blank" rel="noopener noreferrer" style="color:var(--c1);font-weight:700">Blur: Guess the Image on Google Play</a> — Guess an image as the picture becomes clearer.</li>
+      </ul>
+    </div>
     <div class="download-btns">
     </div>
   </div>

@@ -5,12 +5,17 @@ on:
     paths:
       - apps.html
       - index.html
+      - support/brain-burst/index.html
+      - support/snaplingo/index.html
+      - support/face-reaction-battle/index.html
+      - robots.txt
       - apps_data.json
       - guides/**
       - sitemap.xml
       - scripts/build_catalog.py
       - site_counts.json
       - tests/catalog-growth.test.mjs
+      - tests/search-landing-growth.test.mjs
       - scripts/publish_app_discovery.sh
       - scripts/check_app_discovery_live.sh
       - .github/workflows/app-discovery-qa.yml
@@ -19,12 +24,17 @@ on:
     paths:
       - apps.html
       - index.html
+      - support/brain-burst/index.html
+      - support/snaplingo/index.html
+      - support/face-reaction-battle/index.html
+      - robots.txt
       - apps_data.json
       - guides/**
       - sitemap.xml
       - scripts/build_catalog.py
       - site_counts.json
       - tests/catalog-growth.test.mjs
+      - tests/search-landing-growth.test.mjs
       - scripts/publish_app_discovery.sh
       - scripts/check_app_discovery_live.sh
       - .github/workflows/app-discovery-qa.yml
@@ -47,4 +57,4 @@ jobs:
       - name: Verify non-destructive release scripts have valid shell syntax
         run: bash -n scripts/publish_app_discovery.sh scripts/check_app_discovery_live.sh
       - name: Verify search, referral links and guide listings
-        run: node --test tests/catalog-growth.test.mjs
+        run: node --test tests/catalog-growth.test.mjs tests/search-landing-growth.test.mjs
