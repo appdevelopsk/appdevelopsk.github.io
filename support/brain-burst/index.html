@@ -4,8 +4,16 @@
     <link rel="canonical" href="https://appdevelopsk.com/support/brain-burst/">
 <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-  <title>BrainBurst – Daily Trivia Quiz App for Android | SK APPS</title>
-  <meta name="description" content="BrainBurst (Brain Burst) is a daily trivia quiz game with 1v1 battles and fresh AI questions. Get it on Google Play, plus FAQ and support."/>
+  <title>BrainBurst: Daily Trivia Quiz & 1v1 Battles | Android</title>
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="BrainBurst: Daily Trivia Quiz & 1v1 Battles | Android">
+  <meta property="og:description" content="Play BrainBurst: answer fresh daily AI trivia questions and challenge others in 1v1 quiz battles. See the Android app on Google Play.">
+  <meta property="og:url" content="https://appdevelopsk.com/support/brain-burst/">
+  <meta property="og:image" content="https://appdevelopsk.com/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:description" content="Play BrainBurst: answer fresh daily AI trivia questions and challenge others in 1v1 quiz battles. See the Android app on Google Play.">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"BrainBurst - Daily Trivia Quiz","applicationCategory":"GameApplication","operatingSystem":"Android","url":"https://play.google.com/store/apps/details?id=com.brainburst.brain_burst","publisher":{"@type":"Organization","name":"SK Apps","url":"https://appdevelopsk.com/"}}</script>
+  <meta name="description" content="Play BrainBurst: answer fresh daily AI trivia questions and challenge others in 1v1 quiz battles. See the Android app on Google Play."/>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
@@ -74,7 +82,7 @@
       if (!a) return;
       var href = a.getAttribute('href') || '';
       if (/play\.google\.com/.test(href)) {
-        gtag('event', 'download_click', { store: 'google_play', location: 'support', link_url: href });
+        gtag('event', 'download_click', { store: 'google_play', location: 'support', placement: a.getAttribute('data-position') || 'details', app: 'brain-burst', link_url: href });
       }
     }, true);
   </script>
@@ -103,7 +111,10 @@
   <div class="hero-emoji">🧠</div>
   <div class="hero-cat">Game</div>
   <h1>Brain Burst!</h1>
-  <p id="heroDesc">Train your brain with quick cognitive challenges across memory, math, logic, and reaction time.</p>
+  <p id="heroDesc">A daily trivia quiz with fresh AI questions and head-to-head challenges.</p>
+  <div class="download-btns" style="justify-content:center">
+    <a href="https://play.google.com/store/apps/details?id=com.brainburst.brain_burst&amp;utm_source=appdevelopsk&amp;utm_medium=web&amp;utm_campaign=support_brain-burst&amp;referrer=utm_source%3Dappdevelopsk%26utm_medium%3Dweb%26utm_campaign%3Dsupport_brain-burst" class="dl-btn dl-btn-play" data-position="hero" target="_blank" rel="noopener noreferrer">Get it on Google Play</a>
+  </div>
 </div>
 
 <div class="container">
@@ -116,10 +127,14 @@
     <h2 data-i18n="download">Download</h2>
     <p data-i18n="download_desc">Available on Android. Download for free from Google Play and start using today.</p>
     <div class="download-btns">
-      <a href="https://play.google.com/store/apps/details?id=com.brainburst.brain_burst&amp;utm_source=appdevelopsk&amp;utm_medium=web&amp;utm_campaign=support_brain-burst&amp;referrer=utm_source%3Dappdevelopsk%26utm_medium%3Dweb%26utm_campaign%3Dsupport_brain-burst" class="dl-btn dl-btn-play" rel="noopener" target="_blank">Google Play</a>
+      <a href="https://play.google.com/store/apps/details?id=com.brainburst.brain_burst&amp;utm_source=appdevelopsk&amp;utm_medium=web&amp;utm_campaign=support_brain-burst&amp;referrer=utm_source%3Dappdevelopsk%26utm_medium%3Dweb%26utm_campaign%3Dsupport_brain-burst" class="dl-btn dl-btn-play" data-position="details" rel="noopener" target="_blank">Google Play</a>
 </div>
   </div>
 
+  <div class="card">
+    <h2>Find another quick game</h2>
+    <p>Want to compare trivia with other short games? Explore the <a href="/guides/quick-games/" style="color:var(--c1)">quick mobile games guide</a>.</p>
+  </div>
   <div class="card">
     <h2 data-i18n="faq">Frequently Asked Questions</h2>
     <ul>
