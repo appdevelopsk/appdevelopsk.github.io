@@ -69,3 +69,11 @@ test('guide landing pages link only to listed published applications and are dis
     assert.doesNotMatch(page,/aggregateRating|ratingValue|100% free|guaranteed/i);
   }
 });
+
+test('homepage sends visitors to catalog and both indexable guides without a search gate',()=>{
+  const home=read('index.html');
+  assert.match(home,/class="discovery-links"/);
+  assert.match(home,/href="\/apps"/);
+  for (const slug of guides) assert.match(home,new RegExp('href="/guides/'+slug+'/"'));
+  assert.match(home,/discovery_nav_click/);
+});

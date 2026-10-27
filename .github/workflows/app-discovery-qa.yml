@@ -4,6 +4,7 @@ on:
     branches: [main]
     paths:
       - apps.html
+      - index.html
       - apps_data.json
       - guides/**
       - sitemap.xml
@@ -17,6 +18,7 @@ on:
     branches: [main]
     paths:
       - apps.html
+      - index.html
       - apps_data.json
       - guides/**
       - sitemap.xml
