@@ -31,7 +31,7 @@ test('BrainBurst and SnapLingo metadata reflects the existing public Play catalo
 test('BrainBurst default text describes published daily trivia, not an unrelated memory game',()=>{
  const html=read('support/brain-burst/index.html');
  assert.match(html,/<p id="heroDesc">A daily trivia quiz/);
- assert.match(html,/Fresh daily AI trivia questions/);
+ assert.match(html,/Daily AI-generated quiz questions/);
  assert.doesNotMatch(html,/<span data-feat="0">Multiple brain training categories<\/span>/);
  assert.match(html,/href="\/guides\/quick-games\/"/);
 });
