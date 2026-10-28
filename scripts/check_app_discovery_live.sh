@@ -85,6 +85,14 @@ grep -Fq 'support_roast_me_hero' "$tmp/roastme.html" || { echo 'FAIL RoastMe cam
 if grep -Eiq 'AI-generated roasts|Get roasted by AI and friends|100% anonymous' "$tmp/roastme.html"; then
   echo 'FAIL RoastMe promises unverified AI roasts or absolute anonymity' >&2; exit 1
 fi
+# FutureMe landing must not promise unrelated letter/time-capsule features or fixed premium prices.
+fetch '/support/future-me/' 'futureme.html'
+grep -Fq 'Explore AI-generated future scenarios for fun' "$tmp/futureme.html" || { echo 'FAIL FutureMe first-view copy stale' >&2; exit 1; }
+grep -Fq 'data-position="hero"' "$tmp/futureme.html" || { echo 'FAIL FutureMe first-screen Play CTA missing' >&2; exit 1; }
+grep -Fq 'support_future_me_hero' "$tmp/futureme.html" || { echo 'FAIL FutureMe Play campaign missing' >&2; exit 1; }
+if grep -Eiq 'Letters to future self|Time capsule feature|FutureMe Premium.*[0-9]+/(month|year)|FutureMe Premium 提供月度|NT\\$150/月' "$tmp/futureme.html"; then
+  echo 'FAIL FutureMe support page contains outdated feature or pricing claims' >&2; exit 1
+fi
 fetch '/robots.txt' 'robots.txt'
 grep -Fq 'Allow: /icons/apps/' "$tmp/robots.txt" || { echo 'FAIL Google image crawl allow not live' >&2; exit 1; }
 echo 'PASS: catalog, guides, priority search landings, store CTAs, icon crawl policy and sitemap current (HTTP 200)'
