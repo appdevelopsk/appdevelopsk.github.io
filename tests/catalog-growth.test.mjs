@@ -57,6 +57,28 @@ test('filters work client-side without tracking raw search text',()=>{
   assert.ok(events.some(e=>e[1]==='catalog_store_click'&&e[2].app==='blur'));
 });
 
+test('dual-store cards log distinct app-store and Play clicks, not a whole-card click',()=>{
+  const source=[...catalog.matchAll(/<script[^>]*>([\s\S]*?)<\/script>/g)].map(m=>m[1]).find(x=>x.includes('catalog_store_click'));
+  assert.ok(source);
+  function el(extra={}){return {events:{},hidden:false,...extra,addEventListener(name,fn){this.events[name]=fn;},setAttribute(key,val){this[key]=val;}}}
+  const apple=el({dataset:{store:'app_store'}}), play=el({dataset:{store:'google_play'}});
+  const dual=el({
+    textContent:'Debate Me - AI Debate Practice',
+    querySelector:()=>({getAttribute:()=> 'icons/apps/debate-me.png'}),
+    querySelectorAll:()=>[play,apple],
+  });
+  const input=el({value:''}),count=el({textContent:''}),empty=el();
+  const buttons=['all','quick-games','habits','decisions','ai'].map(goal=>el({dataset:{goal}}));
+  const events=[];
+  runInNewContext(source,{document:{getElementById(id){return {'find-app':input,'finder-count':count,'finder-empty':empty}[id];},querySelectorAll(q){return q==='.grid .app-card'?[dual]:buttons;}},window:{gtag(...args){events.push(args);}}});
+  assert.equal(dual.events.click,undefined,'card body must not masquerade as a store click');
+  apple.events.click();
+  play.events.click();
+  const tracked=events.filter(e=>e[1]==='catalog_store_click');
+  assert.deepEqual(tracked.map(e=>e[2].store),['app_store','google_play']);
+  assert.ok(tracked.every(e=>e[2].app==='debate-me'&&e[2].source==='apps_catalog'));
+});
+
 test('guide landing pages link only to listed published applications and are discoverable',()=>{
   for(const slug of guides){
     const page=read('guides/'+slug+'/index.html');
