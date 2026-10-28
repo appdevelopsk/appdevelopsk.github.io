@@ -41,3 +41,18 @@ test('production smoke must verify these five catalog descriptions, not only sou
   for(const desc of Object.values(highPriority)) assert.ok(live.includes(desc.slice(0,Math.min(35,desc.length))),'live smoke misses '+desc);
   assert.match(live,/FAIL catalog description not deployed/);
 });
+
+test('privacy-policy recovery is constrained to 17 observed stale public routes',()=>{
+  const script=read('scripts/publish_stale_policy_pages.sh');
+  for(const slug of ["battery-charging-map","dinnerhomeroulette","drift","ear-train","gratitude-log","heritageatlas","heritagetrace","mood-log","name-maker","nowsnap","posture-reminder","rental-inspector","smile-score","solace","tappitsu-battle","wait-time","water-reminder"]) {
+    assert.ok(script.includes('  '+slug+'\n'), 'missing verified stale policy: '+slug);
+    assert.match(read('privacy-policy/'+slug+'/index.html'),/<html/i);
+  }
+  assert.match(script,/--dry-run/);
+  assert.match(script,/--check-live/);
+  assert.match(script,/--apply/);
+  assert.match(script,/rsync -avR --itemize-changes/);
+  assert.match(script,/python3 - "\$file" "\$tmp"/);
+  assert.doesNotMatch(script,/rsync[^\n]*--delete/);
+  assert.doesNotMatch(script,/rsync[^\n]*-e\s+sh/);
+});
