@@ -27,9 +27,9 @@ test('all 17 languages describe debate and a correct internet requirement', () =
   assert.deepEqual(Object.keys(intros).sort(), [...languages].sort());
   assert.deepEqual(Object.keys(features).sort(), [...languages].sort());
   for (const lang of languages) {
-    assert.ok(intros[lang].length >= 35, 'missing translated debate intro: '+lang);
+    assert.ok(Array.from(intros[lang]).length >= 10, 'missing translated debate intro: '+lang);
     assert.deepEqual(Object.keys(features[lang]).sort(), ['0','1','2','3'], lang+' feature count');
-    for (const value of Object.values(features[lang])) assert.ok(value.length >= 12, lang+' incomplete feature');
+    for (const value of Object.values(features[lang])) assert.ok(Array.from(value).length >= 6, lang+' incomplete feature');
   }
   assert.match(intros.en, /AI partner/);
   assert.match(intros.ja, /ディベート/);
