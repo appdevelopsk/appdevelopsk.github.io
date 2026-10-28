@@ -80,6 +80,8 @@ fetch '/support/instant-judge/' 'instant-judge.html'
 grep -Fq 'Vote on everyday dilemmas, create your own post' "$tmp/instant-judge.html" || { echo 'FAIL Instant Judge hero is stale' >&2; exit 1; }
 grep -Fq 'data-position="hero"' "$tmp/instant-judge.html" || { echo 'FAIL Instant Judge first-screen Play CTA missing' >&2; exit 1; }
 grep -Fq 'support_instant_judge_hero' "$tmp/instant-judge.html" || { echo 'FAIL Instant Judge campaign tagging missing' >&2; exit 1; }
+grep -Fq 'apps.apple.com/app/id6759920352?ct=support_instant_judge_hero' "$tmp/instant-judge.html" || { echo 'FAIL Instant Judge hero App Store CTA missing' >&2; exit 1; }
+grep -Fq 'apps.apple.com/app/id6759920352?ct=support_instant_judge_details' "$tmp/instant-judge.html" || { echo 'FAIL Instant Judge details App Store CTA missing' >&2; exit 1; }
 grep -Fq 'Results appear at their reveal time' "$tmp/instant-judge.html" || { echo 'FAIL Instant Judge reveal copy missing' >&2; exit 1; }
 if grep -Eiq 'Thousands of scenarios|Real-time results|Many features work offline' "$tmp/instant-judge.html"; then
   echo 'FAIL Instant Judge advertises unsupported immediate results or scale' >&2; exit 1
