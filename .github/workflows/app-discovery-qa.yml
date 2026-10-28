@@ -10,6 +10,8 @@ on:
       - support/twotaku/index.html
       - support/debate-me/index.html
       - support/idea-market/index.html
+      - support/blur/index.html
+      - tests/blur-support-growth.test.mjs
       - tests/idea-market-support-growth.test.mjs
       - tests/debate-me-support-growth.test.mjs
       - tests/dotchi-support-growth.test.mjs
@@ -36,6 +38,8 @@ on:
       - support/twotaku/index.html
       - support/debate-me/index.html
       - support/idea-market/index.html
+      - support/blur/index.html
+      - tests/blur-support-growth.test.mjs
       - tests/idea-market-support-growth.test.mjs
       - tests/debate-me-support-growth.test.mjs
       - tests/dotchi-support-growth.test.mjs
@@ -71,4 +75,4 @@ jobs:
       - name: Verify non-destructive release scripts have valid shell syntax
         run: bash -n scripts/publish_app_discovery.sh scripts/check_app_discovery_live.sh
       - name: Verify search, referral links and guide listings
-        run: node --test tests/catalog-growth.test.mjs tests/search-landing-growth.test.mjs tests/dotchi-support-growth.test.mjs tests/debate-me-support-growth.test.mjs tests/idea-market-support-growth.test.mjs
+        run: node --test tests/catalog-growth.test.mjs tests/search-landing-growth.test.mjs tests/dotchi-support-growth.test.mjs tests/debate-me-support-growth.test.mjs tests/idea-market-support-growth.test.mjs tests/blur-support-growth.test.mjs
