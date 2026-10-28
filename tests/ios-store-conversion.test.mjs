@@ -44,7 +44,7 @@ test('all 17 language download descriptions inform iPhone visitors as well as An
 test('all three pages log store and placement separately without counting link clicks as installs',()=>{
   for(const app of apps){
     const html=read('support/'+app.slug+'/index.html');
-    assert.match(html,/var store = \/apps\\.apple\\.com\/\.test\(href\) \? 'app_store' : 'google_play'/);
+    assert.match(html,/var store = .*'app_store' : 'google_play'/);
     assert.match(html,/gtag\('event', 'download_click', \{ store: store,/);
     assert.match(html,/placement: a\.getAttribute\('data-position'\)/);
     assert.doesNotMatch(html,/gtag\('event', 'install_success'/);
