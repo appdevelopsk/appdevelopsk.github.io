@@ -18,7 +18,8 @@
   "pkg": "jp.appdevelopsk.debate_me",
   "title": "Debate Me - AI Debate Practice",
   "desc": "Practice debating with an AI opponent, get feedback and share your results",
-  "installs": 28
+  "installs": 28,
+  "ios_app_id": 6760968208
  },
  {
   "app": "roast-me",
@@ -39,7 +40,8 @@
   "pkg": "com.dotchi.dotchi_app",
   "title": "Dotchi: This or That Polls",
   "desc": "Pick A or B on everyday questions. Vote, see results and compare opinions with friends.",
-  "installs": 22
+  "installs": 22,
+  "ios_app_id": 6760481027
  },
  {
   "app": "fileforce",
@@ -109,7 +111,8 @@
   "pkg": "com.blurapp.blur_app",
   "title": "Blur: Guess the Image",
   "desc": "Guess the photo as it slowly unblurs — a fun image guessing brain game",
-  "installs": 15
+  "installs": 15,
+  "ios_app_id": 6759920723
  },
  {
   "app": "brain-burst",
@@ -471,7 +474,8 @@
   "pkg": "com.instantjudge.instant_judge",
   "title": "Instant Judge: Vote in 3s",
   "desc": "Vote on community dilemmas, post your own and see results when revealed",
-  "installs": 13
+  "installs": 13,
+  "ios_app_id": 6759920352
  },
  {
   "app": "key-clash",
