@@ -45,6 +45,23 @@ test('two distinct Play positions and safe attribution (not a verified installat
   assert.match(links.find(x=>x[2]==='hero')[1],/utm_campaign=support_instant_judge_hero/);
   assert.match(html,/placement: a\.getAttribute\('data-position'\)/);
 });
+test('iOS and Android acquisition links are visible in both hero and details with privacy-safe campaign tags',()=>{
+  const apple=[...html.matchAll(/<a href="(https:\/\/apps\.apple\.com\/app\/id6759920352\?ct=([^"]+))" class="dl-btn dl-btn-apple" data-position="(hero|details)"/g)];
+  assert.deepEqual(apple.map(x=>x[3]).sort(),['details','hero']);
+  assert.equal(apple.find(x=>x[3]==='hero')?.[2], 'support_instant_judge_hero');
+  assert.equal(apple.find(x=>x[3]==='details')?.[2], 'support_instant_judge_details');
+  for(const link of apple) {
+    assert.doesNotMatch(link[1],/user_id|device_id|post_id|invite_token|email/);
+  }
+  const descriptions=[...html.matchAll(/download_desc:"([^"]+)"/g)].map(x=>x[1]);
+  assert.equal(descriptions.length,17);
+  for(const desc of descriptions){
+    assert.ok(desc.includes('App Store') && desc.includes('Google Play'),desc);
+  }
+  assert.match(html,/name="description" content="[^"]*iPhone and Android/);
+  assert.match(html,/store = \/apps\\.apple\\.com\/\.test\(href\) \? 'app_store' : 'google_play'/);
+  assert.match(html,/gtag\('event', 'download_click', \{ store: store,/);
+});
 test('site publication explicitly includes Instant Judge, and stale live copy fails',()=>{
   const publish=read('scripts/publish_app_discovery.sh');
   const smoke=read('scripts/check_app_discovery_live.sh');
