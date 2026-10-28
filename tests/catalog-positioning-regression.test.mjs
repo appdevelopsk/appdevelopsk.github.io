@@ -11,7 +11,7 @@ const highPriority = {
   'future-me': 'Explore playful AI future scenarios, revisit predictions and plan tomorrow',
   'idea-market': 'Explore startup ideas, read public previews and post your own business concept',
 };
-const encode = value => value.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+const encode = value => value.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#x27;');
 
 test('catalog cards reproduce the canonical visible app titles and descriptions', () => {
   const visible = apps.filter(a=>!a.hidden);
