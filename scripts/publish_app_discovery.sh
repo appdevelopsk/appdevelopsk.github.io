@@ -22,7 +22,12 @@ done
 echo "Source checkout: $(git rev-parse --short HEAD 2>/dev/null || echo unknown)"
 echo "Target: $host:$root; mode: $mode"
 # --relative recreates only the listed nested file paths. No --delete.
-rsync -avR --itemize-changes ${flags[@]+"${flags[@]}"} -- "${files[@]}" "$host:$root/"
+# On the self-hosted runner (APP_SITE_DEPLOY_HOST=local) copy straight into the web root.
+dest="$host:$root/"; [[ "$host" == local ]] && dest="$root/"
+# Runner is a non-root user: it cannot chown/utime, so the workflow overrides the flags.
+rsync_flags="${APP_SITE_RSYNC_FLAGS:--avR --itemize-changes}"
+# shellcheck disable=SC2086
+rsync $rsync_flags ${flags[@]+"${flags[@]}"} -- "${files[@]}" "$dest"
 if [[ "$mode" == '--apply' ]]; then
   echo 'Files transferred. Check CDN/VPS output (the publish command does not prove it is live):'
   echo '  bash scripts/check_app_discovery_live.sh'
