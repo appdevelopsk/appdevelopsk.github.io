@@ -48,11 +48,15 @@ grep -Fq 'data-alternative="blur"' "$tmp/face-battle.html" || { echo 'FAIL secon
 fetch '/support/twotaku/' 'dotchi.html'
 grep -Fq '<h1>Dotchi: This or That Polls</h1>' "$tmp/dotchi.html" || { echo 'FAIL Dotchi anime-only support content still live' >&2; exit 1; }
 grep -Fq 'data-position="hero"' "$tmp/dotchi.html" || { echo 'FAIL Dotchi store call-to-action absent' >&2; exit 1; }
+grep -Fq 'apps.apple.com/app/id6760481027?ct=support_twotaku_hero' "$tmp/dotchi.html" || { echo 'FAIL twotaku hero App Store CTA missing' >&2; exit 1; }
+grep -Fq 'apps.apple.com/app/id6760481027?ct=support_twotaku_details' "$tmp/dotchi.html" || { echo 'FAIL twotaku details App Store CTA missing' >&2; exit 1; }
 grep -Fq 'const FEAT_T={en:{0:"Choose A or B on a question."' "$tmp/dotchi.html" || { echo 'FAIL Dotchi translated feature claims still stale' >&2; exit 1; }
 # Read-only release gate for the recently corrected Debate Me SEO landing.
 fetch '/support/debate-me/' 'debate-me.html'
 grep -Fq 'AI Debate Practice &amp; Argument Skills' "$tmp/debate-me.html" || grep -Fq 'AI Debate Practice & Argument Skills' "$tmp/debate-me.html" || { echo 'FAIL Debate Me product title is not live' >&2; exit 1; }
 grep -Fq 'data-position="hero"' "$tmp/debate-me.html" || { echo 'FAIL Debate Me first-screen Play CTA not live' >&2; exit 1; }
+grep -Fq 'apps.apple.com/app/id6760968208?ct=support_debate_me_hero' "$tmp/debate-me.html" || { echo 'FAIL debate_me hero App Store CTA missing' >&2; exit 1; }
+grep -Fq 'apps.apple.com/app/id6760968208?ct=support_debate_me_details' "$tmp/debate-me.html" || { echo 'FAIL debate_me details App Store CTA missing' >&2; exit 1; }
 grep -Fq 'data-position="details"' "$tmp/debate-me.html" || { echo 'FAIL Debate Me details Play CTA missing' >&2; exit 1; }
 grep -Fq 'support_debate_me_hero' "$tmp/debate-me.html" || { echo 'FAIL Debate Me Play attribution missing' >&2; exit 1; }
 if grep -Eq 'Hundreds of meal ideas|Filter by ingredients|Can.t decide what to cook tonight' "$tmp/debate-me.html"; then
@@ -71,6 +75,8 @@ fi
 fetch '/support/blur/' 'blur.html'
 grep -Fq '<h1>Blur: Guess the Image</h1>' "$tmp/blur.html" || { echo 'FAIL Blur support landing missing' >&2; exit 1; }
 grep -Fq 'data-position="hero"' "$tmp/blur.html" || { echo 'FAIL Blur first-screen Play CTA not live' >&2; exit 1; }
+grep -Fq 'apps.apple.com/app/id6759920723?ct=support_blur_hero' "$tmp/blur.html" || { echo 'FAIL blur hero App Store CTA missing' >&2; exit 1; }
+grep -Fq 'apps.apple.com/app/id6759920723?ct=support_blur_details' "$tmp/blur.html" || { echo 'FAIL blur details App Store CTA missing' >&2; exit 1; }
 grep -Fq 'support_blur_hero' "$tmp/blur.html" || { echo 'FAIL Blur Play campaign missing' >&2; exit 1; }
 if grep -Eq 'Multiplayer mode|Multiple difficulty levels|Timed challenges' "$tmp/blur.html"; then
   echo 'FAIL Blur advertises unverified game modes' >&2; exit 1
