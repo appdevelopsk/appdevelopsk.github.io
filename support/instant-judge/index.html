@@ -4,7 +4,7 @@
     <link rel="canonical" href="https://appdevelopsk.com/support/instant-judge/">
 <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-  <title>Instant Judge – Vote on Photos in 3 Seconds | SK APPS</title>
+  <title>Instant Judge – Vote on Dilemmas &amp; Community Results | SK APPS</title>
   <meta name="description" content="Instant Judge – Vote on photos &amp; scenarios in 3 seconds and see what the community thinks. Free Android app on Google Play — FAQ and support."/>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -74,7 +74,7 @@
       if (!a) return;
       var href = a.getAttribute('href') || '';
       if (/play\.google\.com/.test(href)) {
-        gtag('event', 'download_click', { store: 'google_play', location: 'support', link_url: href });
+        gtag('event', 'download_click', { store: 'google_play', location: 'support', placement: a.getAttribute('data-position') || 'other', link_url: href });
       }
     }, true);
   </script>
@@ -103,20 +103,21 @@
   <div class="hero-emoji">⚡</div>
   <div class="hero-cat">Social</div>
   <h1>Instant Judge</h1>
-  <p id="heroDesc">Cast your vote in 3 seconds! Quick polls and snap judgments on trending topics.</p>
+  <p id="heroDesc">Vote on everyday dilemmas, create your own post, and see how the community judges each question.</p>
+  <div class="download-btns" style="justify-content:center"><a href="https://play.google.com/store/apps/details?id=com.instantjudge.instant_judge&amp;utm_source=appdevelopsk&amp;utm_medium=web&amp;utm_campaign=support_instant_judge_hero&amp;referrer=utm_source%3Dappdevelopsk%26utm_medium%3Dweb%26utm_campaign%3Dsupport_instant_judge_hero" class="dl-btn dl-btn-play" data-position="hero" rel="noopener" target="_blank">Google Play</a></div>
 </div>
 
 <div class="container">
   <div class="card">
     <h2 data-i18n="features">Key Features</h2>
-    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span data-feat="0">Lightning-fast voting</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="1">Trending polls</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="2">Create your own polls</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="3">Real-time results</span></div></div>
+    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span data-feat="0">Vote on questions from the community</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="1">Post your own everyday dilemma</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="2">Results appear at their reveal time</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="3">Share your vote after results are revealed</span></div></div>
   </div>
 
   <div class="card">
     <h2 data-i18n="download">Download</h2>
     <p data-i18n="download_desc">Available on Android. Download for free from Google Play and start using today.</p>
     <div class="download-btns">
-      <a href="https://play.google.com/store/apps/details?id=com.instantjudge.instant_judge&amp;utm_source=appdevelopsk&amp;utm_medium=web&amp;utm_campaign=support_instant-judge&amp;referrer=utm_source%3Dappdevelopsk%26utm_medium%3Dweb%26utm_campaign%3Dsupport_instant-judge" class="dl-btn dl-btn-play" rel="noopener" target="_blank">Google Play</a>
+      <a href="https://play.google.com/store/apps/details?id=com.instantjudge.instant_judge&amp;utm_source=appdevelopsk&amp;utm_medium=web&amp;utm_campaign=support_instant-judge&amp;referrer=utm_source%3Dappdevelopsk%26utm_medium%3Dweb%26utm_campaign%3Dsupport_instant-judge" class="dl-btn dl-btn-play" data-position="details" rel="noopener" target="_blank">Google Play</a>
     </div>
   </div>
 
@@ -179,7 +180,7 @@ const dd=document.getElementById('langDropdown');Object.entries(LANGS).forEach((
 document.getElementById('langBtn').addEventListener('click',e=>{e.stopPropagation();document.getElementById('langSelector').classList.toggle('open')});
 document.addEventListener('click',()=>document.getElementById('langSelector').classList.remove('open'));
 applyLang(detectLang());
-const APP_T={en:"Instant Judge shows you photos, questions, and scenarios. Swipe to judge instantly and see if the community agrees with you.",ja:"Instant Judgeは写真・質問・シナリオを3秒以内に判断するゲームです。みんなの答えと比べてみよう。",ko:"내가 정말 잘못한 걸까요? 커뮤니티가 결정하게 하세요!",es:"¿De verdad me equivoqué? ¡Que la comunidad decida!",pt:"Eu realmente errei? Deixa a comunidade decidir!",fr:"Ai-je vraiment eu tort ? Laisse la communauté décider !",de:"Hatte ich wirklich Unrecht? Lass die Community entscheiden!",it:"Ho davvero torto? Lascia decidere alla community!",ru:"Я действительно был неправ? Пусть сообщество решит!",ar:"هل أخطأت فعلاً؟ دع المجتمع يقرر!",th:"ฉันผิดจริงๆ หรือเปล่า? ให้ชุมชนตัดสิน!",id:"Apa aku benar-benar salah? Biarkan komunitas yang memutuskan!",tr:"Gerçekten hatalı mıydım? Topluluk karar versin!",nl:"Had ik echt ongelijk? Laat de community beslissen!",vi:"Tôi có thực sự sai không? Để cộng đồng quyết định!"};
+const APP_T={en:"Judge everyday dilemmas, vote on community posts, and compare answers when the results are revealed.",ja:"Instant Judgeは写真・質問・シナリオを3秒以内に判断するゲームです。みんなの答えと比べてみよう。",ko:"내가 정말 잘못한 걸까요? 커뮤니티가 결정하게 하세요!",es:"¿De verdad me equivoqué? ¡Que la comunidad decida!",pt:"Eu realmente errei? Deixa a comunidade decidir!",fr:"Ai-je vraiment eu tort ? Laisse la communauté décider !",de:"Hatte ich wirklich Unrecht? Lass die Community entscheiden!",it:"Ho davvero torto? Lascia decidere alla community!",ru:"Я действительно был неправ? Пусть сообщество решит!",ar:"هل أخطأت فعلاً؟ دع المجتمع يقرر!",th:"ฉันผิดจริงๆ หรือเปล่า? ให้ชุมชนตัดสิน!",id:"Apa aku benar-benar salah? Biarkan komunitas yang memutuskan!",tr:"Gerçekten hatalı mıydım? Topluluk karar versin!",nl:"Had ik echt ongelijk? Laat de community beslissen!",vi:"Tôi có thực sự sai không? Để cộng đồng quyết định!"};
 const _oA=applyLang;applyLang=function(l){_oA(l);const t=APP_T[l]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;};
 (function(){const l=localStorage.getItem('sk_lang');const lang=l||detectLang();const t=APP_T[lang]||APP_T.en;const h=document.getElementById('heroDesc');if(h&&t)h.textContent=t;})();
 
