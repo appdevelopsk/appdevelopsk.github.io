@@ -1,0 +1,44 @@
+# appdevelopsk.com (VPS nginx /var/www/html) へ手動で公開する。
+# 既定は dry-run。apply は ken が許可した時だけ(ChatGPT/Codex が勝手に apply しない)。
+# 実行は VPS 上のセルフホストランナー(専用の低権限ユーザー)で、鍵は GitHub に置かない。
+name: publish to VPS
+
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: 'dry-run = 転送対象の確認のみ / apply = 本番へ反映'
+        type: choice
+        options: [dry-run, apply]
+        default: dry-run
+
+permissions:
+  contents: read
+
+concurrency:
+  group: publish-vps
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    # main 以外の ref からは動かさない(fork や作業ブランチのコードを VPS で走らせない)
+    if: github.ref == 'refs/heads/main'
+    runs-on: [self-hosted, appsite-deploy]
+    timeout-minutes: 15
+    env:
+      APP_SITE_DEPLOY_HOST: local
+      APP_SITE_DEPLOY_ROOT: /var/www/html
+      APP_SITE_RSYNC_FLAGS: -rlcvR --itemize-changes
+    steps:
+      - uses: actions/checkout@v4
+        with: { ref: main }
+      - name: アプリ紹介ページ
+        run: bash scripts/publish_app_discovery.sh --${{ inputs.mode }}
+      - name: ポリシーページ
+        run: bash scripts/publish_stale_policy_pages.sh --${{ inputs.mode }}
+      - name: 本番の検証(apply 時のみ)
+        if: inputs.mode == 'apply'
+        run: |
+          sleep 5
+          bash scripts/check_app_discovery_live.sh
+          bash scripts/publish_stale_policy_pages.sh --check-live

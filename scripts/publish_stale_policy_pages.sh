@@ -87,7 +87,12 @@ flags=(--dry-run)
 echo "Policy recovery: ${#files[@]} already public paths, target $host:$root; mode $mode"
 echo "Source checkout: $(git rev-parse --short HEAD 2>/dev/null || echo unknown)"
 # Non-destructive. Never use --delete, and never publish unpublished paths.
-rsync -avR --itemize-changes ${flags[@]+"${flags[@]}"} -- "${files[@]}" "$host:$root/"
+# On the self-hosted runner (APP_SITE_DEPLOY_HOST=local) copy straight into the web root.
+dest="$host:$root/"; [[ "$host" == local ]] && dest="$root/"
+# Runner is a non-root user: it cannot chown/utime, so the workflow overrides the flags.
+rsync_flags="${APP_SITE_RSYNC_FLAGS:--avR --itemize-changes}"
+# shellcheck disable=SC2086
+rsync $rsync_flags ${flags[@]+"${flags[@]}"} -- "${files[@]}" "$dest"
 if [[ "$mode" == '--apply' ]]; then
   echo 'Upload attempted. Confirm live pages with:'
   echo '  bash scripts/publish_stale_policy_pages.sh --check-live'
