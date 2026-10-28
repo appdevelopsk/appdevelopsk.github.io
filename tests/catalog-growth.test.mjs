@@ -107,7 +107,6 @@ test('public Dotchi catalog aligns with its real two-choice voting product', () 
   assert.match(app.title, /Dotchi: This or That Polls/);
   assert.match(app.desc, /Pick A or B on everyday questions/);
   assert.doesNotMatch(app.title + app.desc, /anime|manga|Naruto|Goku/i);
-  const start = catalog.indexOf('<div class="app-card app-card-dual">',catalog.indexOf('src="icons/apps/debate-me.png"'));
   const img = catalog.indexOf('src="icons/apps/twotaku.png"');
   const card = img >= 0 ? catalog.slice(catalog.lastIndexOf('      <div class="app-card app-card-dual">',img),img+800) : '';
 
