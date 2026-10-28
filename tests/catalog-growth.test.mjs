@@ -12,9 +12,15 @@ test('catalog search retains 92 real indexed store cards and passes install refe
   const visible=data.filter(x=>!x.hidden);
   const tags=[...catalog.matchAll(/<a class="app-card" href="([^"]+)"/g)];
   assert.equal(visible.length,JSON.parse(read('site_counts.json')).android_live);
-  assert.equal(tags.length,visible.length);
+  const dual=[...catalog.matchAll(/<div class="app-card app-card-dual">/g)];
+  assert.equal(tags.length+dual.length,visible.length);
   for (const entry of visible) {
-    assert.ok(tags.some(t=>t[1].includes('id='+entry.pkg)),entry.app);
+    if (entry.ios_app_id) {
+      assert.ok(catalog.includes('id='+entry.pkg),entry.app+' Play destination missing');
+      assert.ok(catalog.includes('apps.apple.com/app/id'+entry.ios_app_id+'?ct=apps_catalog_'+entry.app),entry.app+' App Store destination missing');
+    } else {
+      assert.ok(tags.some(t=>t[1].includes('id='+entry.pkg)),entry.app);
+    }
   }
   assert.ok(tags.every(t=>t[1].includes('referrer=utm_source%3Dappdevelopsk')));
   assert.match(catalog,/id="find-app"/);
@@ -101,7 +107,10 @@ test('public Dotchi catalog aligns with its real two-choice voting product', () 
   assert.match(app.title, /Dotchi: This or That Polls/);
   assert.match(app.desc, /Pick A or B on everyday questions/);
   assert.doesNotMatch(app.title + app.desc, /anime|manga|Naruto|Goku/i);
-  const card = catalog.match(/<a class="app-card" href="[^"]+id=com\.dotchi\.dotchi_app[\s\S]+?<\/a>/)?.[0];
+  const start = catalog.indexOf('<div class="app-card app-card-dual">',catalog.indexOf('src="icons/apps/debate-me.png"'));
+  const img = catalog.indexOf('src="icons/apps/twotaku.png"');
+  const card = img >= 0 ? catalog.slice(catalog.lastIndexOf('      <div class="app-card app-card-dual">',img),img+800) : '';
+
   assert.ok(card, 'missing indexed Dotchi catalog card');
   assert.match(card, /Dotchi: This or That Polls/);
   assert.match(card, /Vote, see results and compare opinions with friends/);
