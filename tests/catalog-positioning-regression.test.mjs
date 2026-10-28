@@ -22,9 +22,10 @@ test('catalog cards reproduce canonical titles with one or two valid store desti
     const idx=page.indexOf(image);
     assert.ok(idx>=0,a.app+' missing catalog icon/card');
     assert.equal(page.split(image).length-1,1,a.app+' duplicate catalog card');
+    const start=page.lastIndexOf(a.ios_app_id ? '<div class="app-card app-card-dual">' : '<a class="app-card" href=',idx);
     const end=page.indexOf(a.ios_app_id ? '\n      </div>' : '\n      </a>',idx);
-    assert.ok(end>idx,a.app+' card boundary missing');
-    const card=page.slice(idx,end);
+    assert.ok(start>=0&&end>idx,a.app+' card boundary missing');
+    const card=page.slice(start,end);
     assert.ok(card.includes('<h3>'+encode(a.title)+'</h3>'),a.app+' title drift');
     assert.ok(card.includes('<p>'+encode(a.desc)+'</p>'),a.app+' description drift');
     assert.ok(card.includes('id='+a.pkg),a.app+' Play package drift');
