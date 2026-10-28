@@ -68,6 +68,15 @@ grep -Fq 'support_blur_hero' "$tmp/blur.html" || { echo 'FAIL Blur Play campaign
 if grep -Eq 'Multiplayer mode|Multiple difficulty levels|Timed challenges' "$tmp/blur.html"; then
   echo 'FAIL Blur advertises unverified game modes' >&2; exit 1
 fi
+# Instant Judge must accurately describe voting and time-gated result reveal.
+fetch '/support/instant-judge/' 'instant-judge.html'
+grep -Fq 'Vote on everyday dilemmas, create your own post' "$tmp/instant-judge.html" || { echo 'FAIL Instant Judge hero is stale' >&2; exit 1; }
+grep -Fq 'data-position="hero"' "$tmp/instant-judge.html" || { echo 'FAIL Instant Judge first-screen Play CTA missing' >&2; exit 1; }
+grep -Fq 'support_instant_judge_hero' "$tmp/instant-judge.html" || { echo 'FAIL Instant Judge campaign tagging missing' >&2; exit 1; }
+grep -Fq 'Results appear at their reveal time' "$tmp/instant-judge.html" || { echo 'FAIL Instant Judge reveal copy missing' >&2; exit 1; }
+if grep -Eiq 'Thousands of scenarios|Real-time results|Many features work offline' "$tmp/instant-judge.html"; then
+  echo 'FAIL Instant Judge advertises unsupported immediate results or scale' >&2; exit 1
+fi
 fetch '/robots.txt' 'robots.txt'
 grep -Fq 'Allow: /icons/apps/' "$tmp/robots.txt" || { echo 'FAIL Google image crawl allow not live' >&2; exit 1; }
 echo 'PASS: catalog, guides, priority search landings, store CTAs, icon crawl policy and sitemap current (HTTP 200)'

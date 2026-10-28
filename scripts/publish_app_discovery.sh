@@ -15,7 +15,7 @@ root="${APP_SITE_DEPLOY_ROOT:-/var/www/html}"
 if [[ ! "$host" =~ ^[a-zA-Z0-9_.@-]+$ || ! "$root" =~ ^/var/www/[a-zA-Z0-9_./-]+$ ]]; then
   echo 'Invalid APP_SITE_DEPLOY_HOST or APP_SITE_DEPLOY_ROOT' >&2; exit 2
 fi
-files=(index.html apps.html sitemap.xml robots.txt guides/quick-games/index.html guides/daily-habits/index.html guides/decision-helpers/index.html guides/ai-tools/index.html support/brain-burst/index.html support/snaplingo/index.html support/face-reaction-battle/index.html support/twotaku/index.html support/debate-me/index.html support/idea-market/index.html support/blur/index.html)
+files=(index.html apps.html sitemap.xml robots.txt guides/quick-games/index.html guides/daily-habits/index.html guides/decision-helpers/index.html guides/ai-tools/index.html support/brain-burst/index.html support/snaplingo/index.html support/face-reaction-battle/index.html support/twotaku/index.html support/debate-me/index.html support/idea-market/index.html support/blur/index.html support/instant-judge/index.html)
 for file in "${files[@]}"; do
   [[ -s "$file" ]] || { echo "Missing source file: $file" >&2; exit 2; }
 done
