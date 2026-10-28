@@ -68,6 +68,9 @@ test('daily live acquisition check is read-only, scheduled and fails visibly on 
  const workflow=read('.github/workflows/live-acquisition-smoke.yml');
  assert.match(workflow,/cron: '40 0 \* \* \*'/);
  assert.match(workflow,/workflow_dispatch:/);
+ assert.match(workflow,/push:\s*\n\s*branches: \[main\]/);
+ assert.match(workflow,/support\/\*\*/);
+ assert.match(workflow,/apps_data\.json/);
  assert.match(workflow,/contents: read/);
  assert.match(workflow,/bash scripts\/check_app_discovery_live\.sh/);
  assert.doesNotMatch(workflow,/publish_app_discovery\.sh --apply\s*\n\s*(?:git|rsync|bash)/);

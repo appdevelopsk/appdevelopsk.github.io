@@ -17,14 +17,14 @@
   "app": "debate-me",
   "pkg": "jp.appdevelopsk.debate_me",
   "title": "Debate Me - AI Debate Practice",
-  "desc": "AI debate practice to sharpen your arguments and win any discussion",
+  "desc": "Practice debating with an AI opponent, get feedback and share your results",
   "installs": 28
  },
  {
   "app": "roast-me",
   "pkg": "jp.appdevelopsk.roast_me_app",
-  "title": "RoastMe - Photo Roast & Rate",
-  "desc": "Post a photo and get roasted and rated by an anonymous global community",
+  "title": "RoastMe - Community Roasts",
+  "desc": "Post a topic, get community feedback and write a kind or blunt roast",
   "installs": 25
  },
  {
@@ -94,7 +94,7 @@
   "app": "idea-market",
   "pkg": "jp.appdevelopsk.ideamarket",
   "title": "Idea Market",
-  "desc": "Business idea marketplace: buy & sell startup ideas or find your next venture",
+  "desc": "Explore startup ideas, read public previews and post your own business concept",
   "installs": 16
  },
  {
@@ -279,7 +279,7 @@
   "app": "future-me",
   "pkg": "com.futureme.future_me",
   "title": "FutureMe - AI Prediction",
-  "desc": "AI future predictions: write letters to your future self about love & career",
+  "desc": "Explore playful AI future scenarios, revisit predictions and plan tomorrow",
   "installs": 14
  },
  {
@@ -470,7 +470,7 @@
   "app": "instant-judge",
   "pkg": "com.instantjudge.instant_judge",
   "title": "Instant Judge: Vote in 3s",
-  "desc": "Vote on photos & scenarios in 3 seconds and see what the community thinks",
+  "desc": "Vote on community dilemmas, post your own and see results when revealed",
   "installs": 13
  },
  {

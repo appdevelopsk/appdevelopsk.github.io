@@ -20,6 +20,13 @@ fetch '/apps' 'apps.html'
 grep -Fq 'id="find-app"' "$tmp/apps.html" || { echo 'FAIL catalog search is stale' >&2; exit 1; }
 grep -Fq 'catalog_store_click' "$tmp/apps.html" || { echo 'FAIL store-click attribution is stale' >&2; exit 1; }
 grep -Fq 'Dotchi: This or That Polls' "$tmp/apps.html" || { echo 'FAIL Dotchi catalog still presents an anime-only app' >&2; exit 1; }
+# Source metadata is not proof that the public catalog was updated.
+# Check the actual live HTML for each corrected high-priority app description.
+grep -Fq 'Practice debating with an AI opponent, get feedback and share your results' "$tmp/apps.html" || { echo 'FAIL catalog description not deployed: Practice debating with a' >&2; exit 1; }
+grep -Fq 'Post a topic, get community feedback and write a kind or blunt roast' "$tmp/apps.html" || { echo 'FAIL catalog description not deployed: Post a topic, get commun' >&2; exit 1; }
+grep -Fq 'Vote on community dilemmas, post your own and see results when revealed' "$tmp/apps.html" || { echo 'FAIL catalog description not deployed: Vote on community dilemm' >&2; exit 1; }
+grep -Fq 'Explore playful AI future scenarios, revisit predictions and plan tomorrow' "$tmp/apps.html" || { echo 'FAIL catalog description not deployed: Explore playful AI futur' >&2; exit 1; }
+grep -Fq 'Explore startup ideas, read public previews and post your own business concept' "$tmp/apps.html" || { echo 'FAIL catalog description not deployed: Explore startup ideas, r' >&2; exit 1; }
 for slug in quick-games daily-habits decision-helpers ai-tools; do
   fetch "/guides/$slug/" "$slug.html"
   grep -Fq "https://appdevelopsk.com/guides/$slug/" "$tmp/$slug.html" || { echo "FAIL guide $slug content/canonical mismatch" >&2; exit 1; }

@@ -2,6 +2,18 @@ name: Live App Acquisition Pages Smoke
 
 on:
   workflow_dispatch:
+  # Alert immediately when source/main changes, not only at the daily 09:40 JST cron.
+  # This is deliberately read-only; a failed run means the VPS is stale.
+  push:
+    branches: [main]
+    paths:
+      - apps.html
+      - apps_data.json
+      - support/**
+      - guides/**
+      - scripts/check_app_discovery_live.sh
+      - scripts/publish_app_discovery.sh
+      - .github/workflows/live-acquisition-smoke.yml
   schedule:
     # 09:40 JST daily. Scheduled GitHub jobs may run later than cron.
     - cron: '40 0 * * *'
