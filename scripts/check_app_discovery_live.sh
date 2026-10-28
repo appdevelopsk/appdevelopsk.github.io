@@ -60,6 +60,14 @@ grep -Fq 'support_idea_market_hero' "$tmp/idea-market.html" || { echo 'FAIL Idea
 if grep -Eq 'voice into a personal diary|Voice-to-text transcription|AI Transcription' "$tmp/idea-market.html"; then
   echo 'FAIL Idea Market page still describes a voice diary' >&2; exit 1
 fi
+# Blur listing must show a real single-player image-reveal experience.
+fetch '/support/blur/' 'blur.html'
+grep -Fq '<h1>Blur: Guess the Image</h1>' "$tmp/blur.html" || { echo 'FAIL Blur support landing missing' >&2; exit 1; }
+grep -Fq 'data-position="hero"' "$tmp/blur.html" || { echo 'FAIL Blur first-screen Play CTA not live' >&2; exit 1; }
+grep -Fq 'support_blur_hero' "$tmp/blur.html" || { echo 'FAIL Blur Play campaign missing' >&2; exit 1; }
+if grep -Eq 'Multiplayer mode|Multiple difficulty levels|Timed challenges' "$tmp/blur.html"; then
+  echo 'FAIL Blur advertises unverified game modes' >&2; exit 1
+fi
 fetch '/robots.txt' 'robots.txt'
 grep -Fq 'Allow: /icons/apps/' "$tmp/robots.txt" || { echo 'FAIL Google image crawl allow not live' >&2; exit 1; }
 echo 'PASS: catalog, guides, priority search landings, store CTAs, icon crawl policy and sitemap current (HTTP 200)'
