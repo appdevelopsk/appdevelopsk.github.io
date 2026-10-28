@@ -51,21 +51,6 @@ CARD = """      <a class="app-card" href="https://play.google.com/store/apps/det
       </a>
 """
 
-# Two independent links only for apps with a verified owner-maintained App Store ID.
-# Do not put an anchor inside another anchor; keep crawlers and keyboard users safe.
-CARD_DUAL = """      <div class="app-card app-card-dual">
-        <img src="icons/apps/{app}.png" alt="{title} icon" loading="lazy" width="64" height="64">
-        <div class="app-card-body">
-          <h3>{title}</h3>
-          <p>{desc}</p>
-          <div class="store-links">
-            <a class="store-link" href="https://play.google.com/store/apps/details?id={pkg}&amp;utm_source=appdevelopsk&amp;utm_medium=web&amp;utm_campaign=apps_catalog&amp;referrer=utm_source%3Dappdevelopsk%26utm_medium%3Dweb%26utm_campaign%3Dapps_catalog" data-store="google_play" target="_blank" rel="noopener">Google Play &rarr;</a>
-            <a class="store-link" href="https://apps.apple.com/app/id{ios_app_id}?ct=apps_catalog_{app}" data-store="app_store" target="_blank" rel="noopener">App Store &rarr;</a>
-          </div>
-        </div>
-      </div>
-"""
-
 LANGS = ["en", "ja", "zh", "zh_TW", "ko", "es", "pt", "fr", "de", "it", "ru", "ar",
          "th", "id", "tr", "nl", "vi"]
 
@@ -160,9 +145,8 @@ def load_counts(apps, refresh_total):
 
 
 def build_apps_html(t, apps, n):
-    cards = "".join((CARD_DUAL if a.get("ios_app_id") else CARD).format(
-                        pkg=a["pkg"], app=a["app"], title=html.escape(a["title"]),
-                        desc=html.escape(a["desc"]), ios_app_id=a.get("ios_app_id", ""))
+    cards = "".join(CARD.format(pkg=a["pkg"], app=a["app"], title=html.escape(a["title"]),
+                                desc=html.escape(a["desc"]))
                     for a in apps if not a.get("hidden"))
     t = sub1(r'(<div class="grid">\n).*?(    </div>\n  </main>)',
              lambda m: m.group(1) + cards + m.group(2), t, "apps.html の grid", re.S)
