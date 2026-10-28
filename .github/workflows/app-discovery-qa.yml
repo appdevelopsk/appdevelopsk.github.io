@@ -14,6 +14,8 @@ on:
       - tests/blur-support-growth.test.mjs
       - support/instant-judge/index.html
       - tests/instant-judge-support-growth.test.mjs
+      - support/roast-me/index.html
+      - tests/roastme-support-growth.test.mjs
       - tests/idea-market-support-growth.test.mjs
       - tests/debate-me-support-growth.test.mjs
       - tests/dotchi-support-growth.test.mjs
@@ -44,6 +46,8 @@ on:
       - tests/blur-support-growth.test.mjs
       - support/instant-judge/index.html
       - tests/instant-judge-support-growth.test.mjs
+      - support/roast-me/index.html
+      - tests/roastme-support-growth.test.mjs
       - tests/idea-market-support-growth.test.mjs
       - tests/debate-me-support-growth.test.mjs
       - tests/dotchi-support-growth.test.mjs
@@ -79,4 +83,4 @@ jobs:
       - name: Verify non-destructive release scripts have valid shell syntax
         run: bash -n scripts/publish_app_discovery.sh scripts/check_app_discovery_live.sh
       - name: Verify search, referral links and guide listings
-        run: node --test tests/catalog-growth.test.mjs tests/search-landing-growth.test.mjs tests/dotchi-support-growth.test.mjs tests/debate-me-support-growth.test.mjs tests/idea-market-support-growth.test.mjs tests/blur-support-growth.test.mjs tests/instant-judge-support-growth.test.mjs
+        run: node --test tests/catalog-growth.test.mjs tests/search-landing-growth.test.mjs tests/dotchi-support-growth.test.mjs tests/debate-me-support-growth.test.mjs tests/idea-market-support-growth.test.mjs tests/blur-support-growth.test.mjs tests/instant-judge-support-growth.test.mjs tests/roastme-support-growth.test.mjs
