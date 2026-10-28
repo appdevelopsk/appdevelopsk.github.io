@@ -13,16 +13,27 @@ const highPriority = {
 };
 const encode = value => value.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#x27;');
 
-test('catalog cards reproduce the canonical visible app titles and descriptions', () => {
+test('catalog cards reproduce canonical titles with one or two valid store destinations', () => {
   const visible = apps.filter(a=>!a.hidden);
-  const cards = [...page.matchAll(/<a class="app-card" href="([^"]+)"[\s\S]*?<h3>([^<]+)<\/h3>\s*<p>([^<]*)<\/p>[\s\S]*?<\/a>/g)];
-  assert.equal(cards.length,visible.length);
+  assert.equal((page.match(/class="app-card"/g)||[]).length+
+               (page.match(/class="app-card app-card-dual"/g)||[]).length,visible.length);
   for (const a of visible) {
-    const match=cards.filter(m=>m[1].includes('id='+a.pkg));
-    assert.equal(match.length,1,a.app+' missing or duplicate');
-    assert.equal(match[0][2],encode(a.title),a.app+' title drift');
-    assert.equal(match[0][3],encode(a.desc),a.app+' description drift');
-    assert.match(match[0][1],/referrer=utm_source%3Dappdevelopsk/);
+    const image='src="icons/apps/'+a.app+'.png"';
+    const idx=page.indexOf(image);
+    assert.ok(idx>=0,a.app+' missing catalog icon/card');
+    assert.equal(page.split(image).length-1,1,a.app+' duplicate catalog card');
+    const start=page.lastIndexOf(a.ios_app_id ? '<div class="app-card app-card-dual">' : '<a class="app-card" href=',idx);
+    const end=page.indexOf(a.ios_app_id ? '\n      </div>' : '\n      </a>',idx);
+    assert.ok(start>=0&&end>idx,a.app+' card boundary missing');
+    const card=page.slice(start,end);
+    assert.ok(card.includes('<h3>'+encode(a.title)+'</h3>'),a.app+' title drift');
+    assert.ok(card.includes('<p>'+encode(a.desc)+'</p>'),a.app+' description drift');
+    assert.ok(card.includes('id='+a.pkg),a.app+' Play package drift');
+    assert.match(card,/referrer=utm_source%3Dappdevelopsk/);
+    if (a.ios_app_id){
+      assert.ok(card.includes('apps.apple.com/app/id'+a.ios_app_id+'?ct=apps_catalog_'+a.app),a.app+' iOS CTA missing');
+      assert.ok(card.includes('data-store="app_store"'),a.app+' iOS store label missing');
+    }
   }
 });
 test('five high-traffic-intent entries describe genuinely implemented core value',()=>{
