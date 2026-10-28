@@ -77,6 +77,14 @@ grep -Fq 'Results appear at their reveal time' "$tmp/instant-judge.html" || { ec
 if grep -Eiq 'Thousands of scenarios|Real-time results|Many features work offline' "$tmp/instant-judge.html"; then
   echo 'FAIL Instant Judge advertises unsupported immediate results or scale' >&2; exit 1
 fi
+# RoastMe offers community-written roasts, not a guaranteed AI roast service.
+fetch '/support/roast-me/' 'roastme.html'
+grep -Fq 'Post a topic, invite community feedback' "$tmp/roastme.html" || { echo 'FAIL RoastMe public hero copy is stale' >&2; exit 1; }
+grep -Fq 'data-position="hero"' "$tmp/roastme.html" || { echo 'FAIL RoastMe first-screen Play CTA missing' >&2; exit 1; }
+grep -Fq 'support_roast_me_hero' "$tmp/roastme.html" || { echo 'FAIL RoastMe campaign tagging missing' >&2; exit 1; }
+if grep -Eiq 'AI-generated roasts|Get roasted by AI and friends|100% anonymous' "$tmp/roastme.html"; then
+  echo 'FAIL RoastMe promises unverified AI roasts or absolute anonymity' >&2; exit 1
+fi
 fetch '/robots.txt' 'robots.txt'
 grep -Fq 'Allow: /icons/apps/' "$tmp/robots.txt" || { echo 'FAIL Google image crawl allow not live' >&2; exit 1; }
 echo 'PASS: catalog, guides, priority search landings, store CTAs, icon crawl policy and sitemap current (HTTP 200)'
