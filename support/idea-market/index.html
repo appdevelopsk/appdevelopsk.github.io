@@ -74,7 +74,7 @@
       if (!a) return;
       var href = a.getAttribute('href') || '';
       if (/play\.google\.com/.test(href)) {
-        gtag('event', 'download_click', { store: 'google_play', location: 'support', link_url: href });
+        gtag('event', 'download_click', { store: 'google_play', location: 'support', placement: a.getAttribute('data-position') || 'other', link_url: href });
       }
     }, true);
   </script>
@@ -100,23 +100,24 @@
 </nav>
 
 <div class="hero">
-  <div class="hero-emoji">🎙️</div>
-  <div class="hero-cat">AI / Utility</div>
+  <div class="hero-emoji">💡</div>
+  <div class="hero-cat">Business Ideas</div>
   <h1>Idea Market</h1>
-  <p id="heroDesc">Record voice memos and let AI transcribe, summarize, and organize your thoughts automatically.</p>
+  <p id="heroDesc">Browse startup ideas, explore public previews, and post your own business concepts.</p>
+  <div class="download-btns" style="justify-content:center"><a href="https://play.google.com/store/apps/details?id=jp.appdevelopsk.ideamarket&amp;utm_source=appdevelopsk&amp;utm_medium=web&amp;utm_campaign=support_idea_market_hero&amp;referrer=utm_source%3Dappdevelopsk%26utm_medium%3Dweb%26utm_campaign%3Dsupport_idea_market_hero" class="dl-btn dl-btn-play" data-position="hero" rel="noopener" target="_blank">Google Play</a></div>
 </div>
 
 <div class="container">
   <div class="card">
     <h2 data-i18n="features">Key Features</h2>
-    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span data-feat="0">Voice-to-text transcription</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="1">AI summaries</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="2">Tag organization</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="3">Search across entries</span></div></div>
+    <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span data-feat="0">Browse ideas across business categories</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="1">Explore public idea previews</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="2">Post your own business concept</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="3">Manage your listings in a dashboard</span></div></div>
   </div>
 
   <div class="card">
     <h2 data-i18n="download">Download</h2>
     <p data-i18n="download_desc">Available on Android. Download for free from Google Play and start using today.</p>
     <div class="download-btns">
-      <a href="https://play.google.com/store/apps/details?id=jp.appdevelopsk.ideamarket&amp;utm_source=appdevelopsk&amp;utm_medium=web&amp;utm_campaign=support_idea-market&amp;referrer=utm_source%3Dappdevelopsk%26utm_medium%3Dweb%26utm_campaign%3Dsupport_idea-market" class="dl-btn dl-btn-play" rel="noopener" target="_blank">Google Play</a>
+      <a href="https://play.google.com/store/apps/details?id=jp.appdevelopsk.ideamarket&amp;utm_source=appdevelopsk&amp;utm_medium=web&amp;utm_campaign=support_idea-market&amp;referrer=utm_source%3Dappdevelopsk%26utm_medium%3Dweb%26utm_campaign%3Dsupport_idea-market" class="dl-btn dl-btn-play" data-position="details" rel="noopener" target="_blank">Google Play</a>
     </div>
   </div>
 
