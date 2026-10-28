@@ -51,6 +51,15 @@ grep -Fq 'support_debate_me_hero' "$tmp/debate-me.html" || { echo 'FAIL Debate M
 if grep -Eq 'Hundreds of meal ideas|Filter by ingredients|Can.t decide what to cook tonight' "$tmp/debate-me.html"; then
   echo 'FAIL Debate Me page still describes cooking instead of AI debates' >&2; exit 1
 fi
+# Market listing must describe idea discovery, not a voice diary or an unsupported checkout.
+fetch '/support/idea-market/' 'idea-market.html'
+grep -Fq '<h1>Idea Market</h1>' "$tmp/idea-market.html" || { echo 'FAIL Idea Market support page missing' >&2; exit 1; }
+grep -Fq 'Browse startup ideas, explore public previews' "$tmp/idea-market.html" || { echo 'FAIL Idea Market hero copy still stale' >&2; exit 1; }
+grep -Fq 'data-position="hero"' "$tmp/idea-market.html" || { echo 'FAIL Idea Market first-screen Play CTA missing' >&2; exit 1; }
+grep -Fq 'support_idea_market_hero' "$tmp/idea-market.html" || { echo 'FAIL Idea Market Play campaign missing' >&2; exit 1; }
+if grep -Eq 'voice into a personal diary|Voice-to-text transcription|AI Transcription' "$tmp/idea-market.html"; then
+  echo 'FAIL Idea Market page still describes a voice diary' >&2; exit 1
+fi
 fetch '/robots.txt' 'robots.txt'
 grep -Fq 'Allow: /icons/apps/' "$tmp/robots.txt" || { echo 'FAIL Google image crawl allow not live' >&2; exit 1; }
 echo 'PASS: catalog, guides, priority search landings, store CTAs, icon crawl policy and sitemap current (HTTP 200)'
