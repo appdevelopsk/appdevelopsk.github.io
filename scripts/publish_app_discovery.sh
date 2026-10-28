@@ -22,7 +22,7 @@ done
 echo "Source checkout: $(git rev-parse --short HEAD 2>/dev/null || echo unknown)"
 echo "Target: $host:$root; mode: $mode"
 # --relative recreates only the listed nested file paths. No --delete.
-rsync -avR --itemize-changes "${flags[@]}" -- "${files[@]}" "$host:$root/"
+rsync -avR --itemize-changes ${flags[@]+"${flags[@]}"} -- "${files[@]}" "$host:$root/"
 if [[ "$mode" == '--apply' ]]; then
   echo 'Files transferred. Check CDN/VPS output (the publish command does not prove it is live):'
   echo '  bash scripts/check_app_discovery_live.sh'

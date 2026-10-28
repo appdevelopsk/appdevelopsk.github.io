@@ -87,7 +87,7 @@ flags=(--dry-run)
 echo "Policy recovery: ${#files[@]} already public paths, target $host:$root; mode $mode"
 echo "Source checkout: $(git rev-parse --short HEAD 2>/dev/null || echo unknown)"
 # Non-destructive. Never use --delete, and never publish unpublished paths.
-rsync -avR --itemize-changes "${flags[@]}" -- "${files[@]}" "$host:$root/"
+rsync -avR --itemize-changes ${flags[@]+"${flags[@]}"} -- "${files[@]}" "$host:$root/"
 if [[ "$mode" == '--apply' ]]; then
   echo 'Upload attempted. Confirm live pages with:'
   echo '  bash scripts/publish_stale_policy_pages.sh --check-live'
