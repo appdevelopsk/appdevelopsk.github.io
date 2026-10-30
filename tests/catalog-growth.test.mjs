@@ -60,7 +60,7 @@ test('guide landing pages link only to listed published applications and are dis
     assert.match(page,/<script type="application\/ld\+json">/);
     assert.match(page,/gtag\('event','guide_store_click'/);
     const apps=[...page.matchAll(/data-app="([a-z0-9-]+)"/g)].map(m=>m[1]);
-    assert.equal(apps.length,4);
+    assert.equal(apps.length,slug==='quick-games'?5:4);
     for(const a of apps){
       const record=data.find(x=>x.app===a);
       assert.ok(record&&!record.hidden,slug+' invalid app '+a);
@@ -90,6 +90,7 @@ test('purpose filters refer only to visible current catalog slugs, not renamed a
       assert.ok(visible.has(slug),'invalid or delisted catalog slug '+slug+' in '+goal);
     }
   }
+  assert.ok(groups['quick-games'].includes('twotaku'));
   assert.ok(groups.decisions.includes('chore-roulette'));
   assert.ok(groups['quick-games'].includes('daily-duel'));
 });
@@ -107,4 +108,30 @@ test('public Dotchi catalog aligns with its real two-choice voting product', () 
   assert.match(card, /Vote, see results and compare opinions with friends/);
   assert.doesNotMatch(card, /anime|manga/i);
   assert.match(card, /referrer=utm_source%3Dappdevelopsk/);
+});
+
+
+test('Dotchi receives a truthful, measurable quick-games guide placement', () => {
+  const page=read('guides/quick-games/index.html');
+  const source=data.find(x=>x.app==='twotaku'&&!x.hidden);
+  assert.ok(source,'Dotchi must be publicly available in the catalog');
+  assert.equal(source.pkg,'com.dotchi.dotchi_app');
+  assert.match(source.desc,/Pick A or B on everyday questions/);
+  const actual=[...page.matchAll(/<a class="store" data-app="twotaku" href="([^"]+)"/g)];
+  assert.equal(actual.length,1,'One and only one Dotchi CTA in the guide');
+  const url=actual[0][1];
+  assert.match(url,/id=com\.dotchi\.dotchi_app/);
+  assert.match(url,/utm_campaign=quick_games/);
+  assert.match(url,/referrer=utm_source%3Dappdevelopsk%26utm_medium%3Dguide%26utm_campaign%3Dquick_games/);
+  assert.doesNotMatch(url,/user_?id|device_?id|email|answer/i);
+  assert.match(page,/For A-or-B polls with friends/);
+  assert.match(page,/Pick A or B on everyday questions/);
+  assert.match(page,/guide_store_click/);
+  const schemaText=page.match(/<script type="application\/ld\+json">([^<]+)<\/script>/)?.[1];
+  assert.ok(schemaText,'missing JSON-LD');
+  const schema=JSON.parse(schemaText);
+  assert.equal(schema['@type'],'ItemList');
+  assert.equal(schema.itemListElement.length,5);
+  assert.deepEqual(schema.itemListElement.map(item=>item.position),[1,2,3,4,5]);
+  assert.equal(schema.itemListElement[2].url,'https://play.google.com/store/apps/details?id=com.dotchi.dotchi_app');
 });
