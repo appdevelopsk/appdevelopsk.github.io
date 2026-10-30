@@ -58,11 +58,11 @@ test('public catalog icons are crawlable and explicit VPS release is non-destruc
  assert.match(pub,/support\/snaplingo\/index\.html/);
  assert.match(pub,/support\/face-reaction-battle\/index\.html/);
  assert.match(pub,/robots\.txt/);
- assert.match(pub,/rsync_flags="\\$\\{APP_SITE_RSYNC_FLAGS:--avR --itemize-changes\\}"/);
- assert.match(pub,/rsync \\$rsync_flags \\$\\{flags\\[@\\]/);
- assert.match(pub,/--dry-run\\) flags=\\(--dry-run\\)/);
- assert.match(pub,/--apply\\) flags=\\(\\)/);
- assert.doesNotMatch(pub,/^rsync[^\\n]*--delete/m);
+ assert.ok(pub.includes('rsync_flags="${APP_SITE_RSYNC_FLAGS:--avR --itemize-changes}"'));
+ assert.ok(pub.includes('rsync $rsync_flags '));
+ assert.ok(pub.includes('--dry-run) flags=(--dry-run)'));
+ assert.ok(pub.includes('--apply) flags=()'));
+ assert.doesNotMatch(pub,/^rsync[^\n]*--delete/m);
  const live=read('scripts/check_app_discovery_live.sh');
  assert.match(live,/data-position="hero"/);
  assert.match(live,/Allow: \/icons\/apps\//);
