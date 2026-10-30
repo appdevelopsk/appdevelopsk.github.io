@@ -32,6 +32,10 @@ for slug in quick-games daily-habits decision-helpers ai-tools; do
   grep -Fq "https://appdevelopsk.com/guides/$slug/" "$tmp/$slug.html" || { echo "FAIL guide $slug content/canonical mismatch" >&2; exit 1; }
   grep -Fq 'guide_store_click' "$tmp/$slug.html" || { echo "FAIL $slug click measurement missing" >&2; exit 1; }
 done
+# Dotchi must be reachable from the live quick-games guide AND from the public catalog filter.
+grep -Fq 'data-app="twotaku"' "$tmp/quick-games.html" || { echo 'FAIL quick-games guide missing Dotchi CTA' >&2; exit 1; }
+grep -Fq 'id=com.dotchi.dotchi_app' "$tmp/quick-games.html" || { echo 'FAIL quick-games Dotchi listing URL missing' >&2; exit 1; }
+grep -Fq "'quick-games': ['blur','instant-judge','twotaku'" "$tmp/apps.html" || { echo 'FAIL public catalog quick-games filter excludes Dotchi' >&2; exit 1; }
 fetch '/sitemap.xml' 'sitemap.xml'
 for slug in quick-games daily-habits decision-helpers ai-tools; do
   grep -Fq "https://appdevelopsk.com/guides/$slug/" "$tmp/sitemap.xml" || { echo "FAIL sitemap missing $slug" >&2; exit 1; }
