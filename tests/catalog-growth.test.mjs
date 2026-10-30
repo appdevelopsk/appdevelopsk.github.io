@@ -135,3 +135,25 @@ test('Dotchi receives a truthful, measurable quick-games guide placement', () =>
   assert.deepEqual(schema.itemListElement.map(item=>item.position),[1,2,3,4,5]);
   assert.equal(schema.itemListElement[2].url,'https://play.google.com/store/apps/details?id=com.dotchi.dotchi_app');
 });
+
+
+
+test('home features public Dotchi instead of an unavailable app, with 17 language captions', () => {
+  const home=read('index.html');
+  const featured=home.match(/<!-- Featured Apps -->([\s\S]*?)<\/section>/)?.[1];
+  assert.ok(featured,'missing featured section');
+  assert.match(featured,/href="support\/twotaku\/"/);
+  assert.match(featured,/src="icons\/twotaku\.png"/);
+  assert.match(featured,/data-app-desc="twotaku"/);
+  assert.doesNotMatch(featured,/href="support\/face-reaction-battle\/"/,
+    'unavailable Face Reaction Battle must not be featured as downloadable');
+  assert.ok(data.some(app=>app.app==='twotaku'&&!app.hidden),'Dotchi is not in the published catalog');
+  const match=home.match(/const APP_DESC=(\{[\s\S]*?\});\s*const origApplyLang=/);
+  assert.ok(match,'missing localized featured app captions');
+  const translations=runInNewContext('('+match[1]+')');
+  for(const lang of ['en','ja','zh','zh_TW','ko','es','pt','fr','de','it','ru','ar','th','id','tr','nl','vi']){
+    assert.equal(typeof translations[lang].twotaku,'string',lang+' must localize Dotchi caption');
+    assert.ok(translations[lang].twotaku.length>=12,lang+' missing meaningful caption');
+  }
+  assert.match(home,/gtag\('event', 'app_view'/,'homepage app-card clicks remain measurable');
+});

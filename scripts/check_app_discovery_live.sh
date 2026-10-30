@@ -16,6 +16,12 @@ fetch() {
 fetch '/' 'index.html'
 grep -Fq 'class="discovery-links"' "$tmp/index.html" || { echo 'FAIL homepage discovery links are stale' >&2; exit 1; }
 grep -Fq 'discovery_nav_click' "$tmp/index.html" || { echo 'FAIL homepage discovery tracking is stale' >&2; exit 1; }
+# The homepage should lead to currently published Android applications.
+grep -Fq 'href="support/twotaku/"' "$tmp/index.html" || { echo 'FAIL homepage missing published Dotchi feature' >&2; exit 1; }
+grep -Fq 'data-app-desc="twotaku"' "$tmp/index.html" || { echo 'FAIL homepage Dotchi localized caption missing' >&2; exit 1; }
+if grep -Fq 'href="support/face-reaction-battle/"' "$tmp/index.html"; then
+  echo 'FAIL homepage still features unavailable Face Reaction Battle' >&2; exit 1
+fi
 fetch '/apps' 'apps.html'
 grep -Fq 'id="find-app"' "$tmp/apps.html" || { echo 'FAIL catalog search is stale' >&2; exit 1; }
 grep -Fq 'catalog_store_click' "$tmp/apps.html" || { echo 'FAIL store-click attribution is stale' >&2; exit 1; }
