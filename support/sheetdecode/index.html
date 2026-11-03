@@ -51,20 +51,50 @@
 <h2>What is SheetDecode?</h2>
 <p>Paste a spreadsheet formula and SheetDecode breaks it into the order it runs in, names what each argument is for, warns about the mistakes that formula shape is prone to, and diagnoses the red error values.</p>
 
+<h2>What it does</h2>
+<ul>
+  <li><strong>Read any formula</strong> — SheetDecode explains which range is being searched, which is being added, and which value is the fallback. Nested functions become an indented outline instead of a wall of brackets.</li>
+  <li><strong>Catch the traps</strong> — some mistakes never show an error and just return the wrong number: a lookup left on approximate match, criteria missing its quotation marks, or the two ranges of SUMIF in the wrong order. SheetDecode flags the traps a formula's shape is prone to.</li>
+  <li><strong>Fix the red errors</strong> — #REF!, #VALUE!, #N/A, #DIV/0!, #NAME?, #NUM!, #NULL! and #SPILL! are each explained in plain language, with the causes worth checking first and the fix for every cause. When a formula is loaded, the errors it tends to produce are shown first.</li>
+  <li><strong>Function reference</strong> — nearly fifty functions, described for someone reading a formula rather than writing one: what it does, what each argument means, and the one thing people get wrong about it.</li>
+</ul>
+
+<h2>How to use it</h2>
+<ol>
+  <li>Copy the formula from the cell you want to understand.</li>
+  <li>Paste it into SheetDecode.</li>
+  <li>Read the step-by-step breakdown, check any trap warnings, and open the error guide if the cell shows a red error value.</li>
+</ol>
+
+<h2>Frequently asked questions</h2>
 <div class="faq">
   <h3>Does it work offline?</h3>
   <p>Yes. Formulas are parsed on your device; nothing is uploaded.</p>
+  <h3>Do you save the formulas I paste?</h3>
+  <p>No. Formulas you decode stay in memory on your device for the length of your session. We do not save them, sync them, or send them anywhere, and there is no account or sign-in.</p>
   <h3>Which functions does it know?</h3>
   <p>Around fifty of the most common ones. A formula containing a function outside that set still gets its structure explained, and the unknown name is flagged — which is usually the cause of #NAME?.</p>
+  <h3>Which error values can it explain?</h3>
+  <p>#REF!, #VALUE!, #N/A, #DIV/0!, #NAME?, #NUM!, #NULL! and #SPILL!.</p>
   <h3>Why does it flag a formula that works?</h3>
   <p>Some warnings are about mistakes that produce a wrong answer rather than an error — an approximate-match lookup, for instance. They are worth reading even when the sheet looks fine.</p>
   <h3>What does Premium include?</h3>
   <p>A single one-time purchase removes the ads. Every decoding, error and reference feature is free. No subscription.</p>
+  <h3>What data does the app collect?</h3>
+  <p>Firebase Analytics records anonymized usage data (such as which screens are opened), and Sentry / Firebase Crashlytics collect crash reports. Neither receives the content of the formulas you decode. Ads are shown via Google AdMob. See the <a href="/privacy-policy/sheetdecode/">Privacy Policy</a>.</p>
+  <h3>Which languages are supported?</h3>
+  <p>SheetDecode is available in 17 languages.</p>
+</div>
+
+<div class="card">
+  <h2>Download</h2>
+  <p>SheetDecode is available for Android on <a href="https://play.google.com/store/apps/details?id=jp.appdevelopsk.excelformula&amp;utm_source=appdevelopsk&amp;utm_medium=web&amp;utm_campaign=support_sheetdecode&amp;referrer=utm_source%3Dappdevelopsk%26utm_medium%3Dweb%26utm_campaign%3Dsupport_sheetdecode" rel="noopener" target="_blank">Google Play</a> as "SheetDecode: Excel Formula Fix".</p>
 </div>
 
 <div class="card">
   <h2>Contact</h2>
   <p>Questions or a formula it read wrong: <a href="mailto:app.develop.sk@gmail.com">app.develop.sk@gmail.com</a></p>
+  <p><a href="/privacy-policy/sheetdecode/">Privacy Policy</a></p>
 </div>
 </body>
 </html>
