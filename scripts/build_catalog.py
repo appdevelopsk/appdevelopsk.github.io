@@ -157,7 +157,8 @@ def build_apps_html(t, apps, n):
 
 
 def build_index_html(t, n, built, as_of):
-    t = re.sub(r"\b\d+ Android [Aa]pps\b", lambda m: re.sub(r"^\d+", str(n), m.group(0)), t)
+    # "92 Free Android Apps"(title/og/twitter)と "92 free Android apps"(description)も数え直す
+    t = re.sub(r"\b\d+ (?:[Ff]ree )?Android [Aa]pps\b", lambda m: re.sub(r"^\d+", str(n), m.group(0)), t)
     t = re.sub(r"Games, tools, AI-powered apps and more\. \d+ apps crafted",
                f"Games, tools, AI-powered apps and more. {n} apps crafted", t)
     # 初期表示(JS 前)の英語
