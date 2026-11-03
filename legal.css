@@ -1,0 +1,26 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root { --bg-primary: #0a0a1a; --bg-secondary: #111128; --bg-card: #1a1a35; --text-primary: #e8eaf0; --text-secondary: #9498b0; --accent: #6c7bff; --gradient-1: linear-gradient(135deg, #6c7bff, #a855f7); --radius: 16px; }
+body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; background: var(--bg-primary); color: var(--text-primary); line-height: 1.7; }
+nav { position: sticky; top: 0; z-index: 100; background: rgba(10,10,26,0.85); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(108,123,255,0.1); padding: 16px 24px; }
+.nav-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+.nav-logo { font-weight: 800; font-size: 1.1rem; }
+.nav-logo a { color: var(--text-primary); text-decoration: none; }
+.nav-links { display: flex; gap: 24px; list-style: none; }
+.nav-links a { color: var(--text-secondary); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.2s; }
+.nav-links a:hover { color: var(--text-primary); }
+.container { max-width: 800px; margin: 0 auto; padding: 60px 24px 80px; }
+h1 { font-size: clamp(2rem, 5vw, 3rem); font-weight: 800; margin-bottom: 12px; letter-spacing: -1px; }
+.subtitle { color: var(--text-secondary); font-size: 1rem; margin-bottom: 40px; }
+h2 { font-size: 1.5rem; font-weight: 700; margin: 36px 0 14px; letter-spacing: -0.3px; }
+h3 { font-size: 1.1rem; font-weight: 600; margin: 24px 0 8px; color: var(--text-primary); }
+p { margin-bottom: 14px; color: var(--text-secondary); }
+ul, ol { margin: 12px 0 14px 24px; color: var(--text-secondary); }
+li { margin-bottom: 6px; }
+a { color: var(--accent); }
+strong { color: var(--text-primary); font-weight: 600; }
+.gradient { background: var(--gradient-1); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.card { background: var(--bg-card); border: 1px solid rgba(255,255,255,0.05); border-radius: var(--radius); padding: 28px; margin: 20px 0; }
+footer { border-top: 1px solid rgba(255,255,255,0.05); padding: 40px 24px; text-align: center; color: var(--text-secondary); font-size: 0.9rem; }
+footer a { color: var(--text-secondary); text-decoration: none; margin: 0 12px; }
+footer a:hover { color: var(--text-primary); }
+@media (max-width: 600px) { .nav-links { display: none; } }
