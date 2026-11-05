@@ -55,24 +55,25 @@ LANGS = ["en", "ja", "zh", "zh_TW", "ko", "es", "pt", "fr", "de", "it", "ru", "a
          "th", "id", "tr", "nl", "vi"]
 
 # {n} = 公開中 Android 数
+# 公開本数は出さない(本数は apps.html の ItemList だけに載せる・11/5 #39/#45 の方針)
 HERO_BADGE = {
-    "en": "{n} Apps on Google Play",
-    "ja": "Google Playで{n}アプリ配信中",
-    "zh": "Google Play 上 {n} 款应用",
-    "zh_TW": "Google Play 上 {n} 款應用",
-    "ko": "Google Play에서 앱 {n}개 제공",
-    "es": "{n} apps en Google Play",
-    "pt": "{n} apps no Google Play",
-    "fr": "{n} applis sur Google Play",
-    "de": "{n} Apps bei Google Play",
-    "it": "{n} app su Google Play",
-    "ru": "Приложений в Google Play: {n}",
-    "ar": "{n} تطبيقاً على Google Play",
-    "th": "{n} แอปบน Google Play",
-    "id": "{n} Aplikasi di Google Play",
-    "tr": "Google Play'de {n} Uygulama",
-    "nl": "{n} apps op Google Play",
-    "vi": "{n} ứng dụng trên Google Play",
+    "en": "Discover apps on Google Play",
+    "ja": "Google Playのアプリを探す",
+    "zh": "探索 Google Play 应用",
+    "zh_TW": "探索 Google Play 應用",
+    "ko": "Google Play 앱 살펴보기",
+    "es": "Descubre apps en Google Play",
+    "pt": "Descubra apps no Google Play",
+    "fr": "Découvrez nos applis sur Google Play",
+    "de": "Apps auf Google Play entdecken",
+    "it": "Scopri le app su Google Play",
+    "ru": "Откройте приложения в Google Play",
+    "ar": "اكتشف التطبيقات على Google Play",
+    "th": "สำรวจแอปบน Google Play",
+    "id": "Jelajahi aplikasi di Google Play",
+    "tr": "Google Play'deki uygulamaları keşfedin",
+    "nl": "Ontdek apps op Google Play",
+    "vi": "Khám phá ứng dụng trên Google Play",
 }
 
 # 統計欄の「制作総数」の見出し
@@ -107,14 +108,14 @@ STATS_ASOF = {
 
 # 通知欄の hint は本数を書いている言語だけ差し込む(他言語は本数を書いていない)
 NOTIFY_HINT = {
-    "en": "🚀 {n} apps on Google Play — get notified about new releases",
-    "es": "🚀 {n} apps en Google Play — te avisamos de novedades",
-    "de": "🚀 {n} Apps bei Google Play — wir informieren über Neues",
-    "ru": "🚀 Приложений в Google Play: {n} — сообщим о новинках",
-    "id": "🚀 {n} aplikasi di Google Play — kabari soal rilis baru",
-    "tr": "🚀 Google Play'de {n} uygulama — yeni çıkanları bildiririz",
-    "nl": "🚀 {n} apps op Google Play — we melden nieuwe releases",
-    "vi": "🚀 {n} ứng dụng trên Google Play — báo bạn app mới",
+    "en": "🚀 New apps released regularly — get notified about new releases",
+    "es": "🚀 Nuevas apps con frecuencia — te avisamos de novedades",
+    "de": "🚀 Regelmäßig neue Apps — wir informieren über Neues",
+    "ru": "🚀 Новые приложения выходят регулярно — сообщим о новинках",
+    "id": "🚀 Aplikasi baru rutin dirilis — kabari soal rilis baru",
+    "tr": "🚀 Düzenli olarak yeni uygulamalar — yeni çıkanları bildiririz",
+    "nl": "🚀 Regelmatig nieuwe apps — we melden nieuwe releases",
+    "vi": "🚀 Ứng dụng mới ra mắt thường xuyên — báo bạn app mới",
 }
 
 
@@ -151,7 +152,7 @@ def build_apps_html(t, apps, n):
     t = sub1(r'(<div class="grid">\n).*?(    </div>\n  </main>)',
              lambda m: m.group(1) + cards + m.group(2), t, "apps.html の grid", re.S)
     t = re.sub(r"Browse all \d+ mobile apps", f"Browse all {n} mobile apps", t)
-    t = sub1(r"<p>\d+ free apps on Google Play", f"<p>{n} free apps on Google Play", t,
+    t = sub1(r"<p>(?:\d+ free apps on Google Play|Explore our mobile app catalog)", "<p>Explore our mobile app catalog", t,
              "apps.html の見出し文")
     return t
 
