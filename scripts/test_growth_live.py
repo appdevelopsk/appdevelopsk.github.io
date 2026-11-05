@@ -26,7 +26,7 @@ def valid_pages():
     pages["/apps"] = (
         '<script type="application/ld+json">' + json.dumps(listing) + '</script>' +
         cards + " catalog_store_click download_click catalog_app_detail_click " +
-        " ".join(f'data-detail-app="{slug}"' for slug in SLUGS)
+        " ".join(f'<a href="/support/{slug}/" data-detail-app="{slug}">' for slug in SLUGS)
     )
     related = {"debate-me": ("future-me", "tappitsu-battle"),
                "tappitsu-battle": ("debate-me", "future-me"),
@@ -38,7 +38,7 @@ def valid_pages():
         pages[f"/support/{slug}/"] = (
             "related_app_click download_click " +
             'data-position="hero" data-position="details" ' +
-            " ".join(f'data-related-app="{x}"' for x in other))
+            " ".join(f'<a href="/support/{x}/" data-related-app="{x}">' for x in other))
     pages["/robots.txt"] = "User-agent: *\\nAllow: /icons/\\n"
     pages["/sitemap.xml"] = "".join(
         f"<loc>https://appdevelopsk.com{p}</loc>"
@@ -67,6 +67,18 @@ class GrowthSmokeTests(unittest.TestCase):
     def test_missing_instant_judge_page_fails(self):
         data = valid_pages()
         del data["/support/instant-judge/"]
+        self.assertFalse(inspect(data)["passed"])
+
+    def test_related_app_wrong_href_fails(self):
+        data = valid_pages()
+        data["/support/twotaku/"] = data["/support/twotaku/"].replace(
+            'href="/support/instant-judge/"', 'href="/support/missing-app/"')
+        self.assertFalse(inspect(data)["passed"])
+
+    def test_catalog_detail_wrong_href_fails(self):
+        data = valid_pages()
+        data["/apps"] = data["/apps"].replace(
+            'href="/support/twotaku/"', 'href="/support/missing-app/"', 1)
         self.assertFalse(inspect(data)["passed"])
 
     def test_disallowed_icons_fail(self):
