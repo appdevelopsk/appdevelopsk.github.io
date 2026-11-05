@@ -1,9 +1,9 @@
 # SK APPS — apex robots.txt
 User-agent: *
 Allow: /
-# Published catalog app icons must be crawlable for image discovery.
-Allow: /icons/apps/
-Disallow: /icons/
+# Public app icons are used on homepage cards and individual app pages.
+# Allow both /icons/<app>.png and /icons/apps/<app>.png for image discovery.
+Allow: /icons/
 
 # Explicit allow for ad crawlers
 User-agent: Mediapartners-Google
