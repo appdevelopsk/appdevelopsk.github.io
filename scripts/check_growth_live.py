@@ -8,7 +8,8 @@ from urllib.error import HTTPError, URLError
 from urllib.parse import urljoin
 from urllib.request import Request, urlopen
 
-SLUGS = ("debate-me", "tappitsu-battle", "future-me")
+SLUGS = ("debate-me", "tappitsu-battle", "future-me", "twotaku", "instant-judge")
+FEATURED_SLUGS = ("debate-me", "tappitsu-battle", "future-me", "twotaku")
 PATHS = ("/", "/apps", "/robots.txt", "/sitemap.xml") + tuple(
     f"/support/{slug}/" for slug in SLUGS
 )
@@ -27,7 +28,7 @@ def inspect(pages):
     check("/", "current_meta", "SK Apps | Mobile Apps, Games & Everyday Tools" in home)
     check("/", "no_stale_store_count", "92 Apps on Google Play" not in home)
     check("/", "analytics", "G-5Z588FVC81" in home)
-    for slug in SLUGS:
+    for slug in FEATURED_SLUGS:
         check("/", f"featured_{slug}", f'href="support/{slug}/"' in home)
 
     catalog = pages.get("/apps", "")
