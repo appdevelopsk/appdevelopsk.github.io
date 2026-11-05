@@ -1449,7 +1449,14 @@
       fire('catalog_filter_used', {goal, results: render()});
     }));
     cards.forEach(card => card.addEventListener('click', () => {
-      fire('catalog_store_click', {app: slug(card), goal, source: 'apps_catalog'});
+      const app = slug(card);
+      // Preserve legacy catalog analytics while unifying all site-to-store clicks.
+      // Outbound clicks are NOT verified installs.
+      fire('catalog_store_click', {app, goal, source: 'apps_catalog'});
+      fire('download_click', {
+        store: 'google_play', location: 'catalog', placement: 'catalog_card',
+        app_slug: app, source: 'apps_catalog'
+      });
     }));
     render();
   })();
