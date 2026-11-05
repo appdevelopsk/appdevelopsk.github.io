@@ -2,13 +2,13 @@
 import json
 import unittest
 
-from check_growth_live import PATHS, SLUGS, inspect
+from check_growth_live import FEATURED_SLUGS, PATHS, SLUGS, inspect
 
 
 def valid_pages():
     pages = {path: "" for path in PATHS}
     pages["/"] = "SK Apps | Mobile Apps, Games & Everyday Tools G-5Z588FVC81 " + " ".join(
-        f'href="support/{slug}/"' for slug in SLUGS)
+        f'href="support/{slug}/"' for slug in FEATURED_SLUGS)
     packages = [f"jp.appdevelopsk.testapp{i}" for i in range(92)]
     cards = " ".join(
         f'<a class="app-card" href="https://play.google.com/store/apps/details?id={pkg}&amp;utm_source=test">'
@@ -28,8 +28,13 @@ def valid_pages():
         cards + " catalog_store_click download_click catalog_app_detail_click " +
         " ".join(f'data-detail-app="{slug}"' for slug in SLUGS)
     )
+    related = {"debate-me": ("future-me", "tappitsu-battle"),
+               "tappitsu-battle": ("debate-me", "future-me"),
+               "future-me": ("debate-me", "tappitsu-battle"),
+               "twotaku": ("debate-me", "instant-judge"),
+               "instant-judge": ("twotaku", "debate-me")}
     for slug in SLUGS:
-        other = [x for x in SLUGS if x != slug]
+        other = related[slug]
         pages[f"/support/{slug}/"] = (
             "related_app_click download_click " +
             'data-position="hero" data-position="details" ' +
@@ -51,6 +56,17 @@ class GrowthSmokeTests(unittest.TestCase):
         data = valid_pages()
         data["/support/future-me/"] = data["/support/future-me/"].replace(
             'data-related-app="debate-me"', "")
+        self.assertFalse(inspect(data)["passed"])
+
+    def test_twotaku_missing_related_link_fails(self):
+        data = valid_pages()
+        data["/support/twotaku/"] = data["/support/twotaku/"].replace(
+            'data-related-app="instant-judge"', "")
+        self.assertFalse(inspect(data)["passed"])
+
+    def test_missing_instant_judge_page_fails(self):
+        data = valid_pages()
+        del data["/support/instant-judge/"]
         self.assertFalse(inspect(data)["passed"])
 
     def test_disallowed_icons_fail(self):
