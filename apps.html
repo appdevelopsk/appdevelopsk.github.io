@@ -654,6 +654,15 @@
         <a href="/guides/ai-tools/">Explore AI apps</a>
       </nav>
     </section>
+    <section class="finder" aria-labelledby="app-spotlight-title">
+      <h2 id="app-spotlight-title" style="font-size:1.1rem;margin-bottom:.4rem">Explore app details before installing</h2>
+      <p style="color:var(--sub);font-size:.9rem;margin-bottom:.6rem">See features, FAQs and privacy information before opening Google Play.</p>
+      <nav class="finder-guides" aria-label="App details">
+        <a href="/support/debate-me/" data-detail-app="debate-me">Debate Me · AI debate practice</a>
+        <a href="/support/tappitsu-battle/" data-detail-app="tappitsu-battle">Tappitsu Battle · Calligraphy practice</a>
+        <a href="/support/future-me/" data-detail-app="future-me">FutureMe · Reflection</a>
+      </nav>
+    </section>
     <p id="finder-empty" class="finder-meta" hidden>No matches. Try another word or choose All apps.</p>
     <div class="grid">
       <a class="app-card" href="https://play.google.com/store/apps/details?id=jp.appdevelopsk.facesymmetry&amp;utm_source=appdevelopsk&amp;utm_medium=web&amp;utm_campaign=apps_catalog&amp;referrer=utm_source%3Dappdevelopsk%26utm_medium%3Dweb%26utm_campaign%3Dapps_catalog" target="_blank" rel="noopener">
@@ -1448,6 +1457,11 @@
       buttons.forEach(b => b.setAttribute('aria-pressed', String(b === button)));
       fire('catalog_filter_used', {goal, results: render()});
     }));
+    document.querySelectorAll('[data-detail-app]').forEach(link => {
+      link.addEventListener('click', () => {
+        fire('catalog_app_detail_click', {app_slug: link.getAttribute('data-detail-app'), placement: 'catalog_spotlight'});
+      });
+    });
     cards.forEach(card => card.addEventListener('click', () => {
       const app = slug(card);
       // Preserve legacy catalog analytics while unifying all site-to-store clicks.
