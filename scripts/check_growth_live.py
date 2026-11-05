@@ -9,6 +9,8 @@ from urllib.parse import urljoin
 from urllib.request import Request, urlopen
 
 SLUGS = ("debate-me", "tappitsu-battle", "future-me", "twotaku", "instant-judge")
+# Prevent accidental removal of existing listings, but allow genuine new releases.
+CATALOG_MIN_ITEMS = 92
 FEATURED_SLUGS = ("debate-me", "tappitsu-battle", "future-me", "twotaku")
 PATHS = ("/", "/apps", "/robots.txt", "/sitemap.xml") + tuple(
     f"/support/{slug}/" for slug in SLUGS
@@ -32,7 +34,8 @@ def inspect(pages):
         check("/", f"featured_{slug}", f'href="support/{slug}/"' in home)
 
     catalog = pages.get("/apps", "")
-    check("/apps", "catalog_cards_92", len(re.findall(r'class="app-card"', catalog)) == 92)
+    check("/apps", "catalog_at_least_baseline",
+          len(re.findall(r'class="app-card"', catalog)) >= CATALOG_MIN_ITEMS)
 
     # Ensure listed Android packages match the actual schema and are not duplicated.
     package_ids = re.findall(
@@ -53,7 +56,7 @@ def inspect(pages):
     except (AttributeError, IndexError, KeyError, TypeError, ValueError):
         declared_count, schema_items, schema_ids = None, [], []
     check("/apps", "unique_play_packages",
-          len(package_ids) == 92 and len(set(package_ids)) == 92)
+          len(package_ids) >= CATALOG_MIN_ITEMS and len(set(package_ids)) == len(package_ids))
     check("/apps", "catalog_schema_matches_links",
           declared_count == len(package_ids) == len(schema_items) and
           package_ids == schema_ids)
