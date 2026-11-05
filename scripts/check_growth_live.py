@@ -61,7 +61,7 @@ def inspect(pages):
     check("/apps", "store_click_tracking", "catalog_store_click" in catalog and "download_click" in catalog)
     check("/apps", "detail_click_tracking", "catalog_app_detail_click" in catalog)
     details = re.findall(
-        r'<a\\b[^>]*\\bhref="([^"]+)"[^>]*\\bdata-detail-app="([^"]+)"', catalog
+        r'<a\b[^>]*\bhref="([^"]+)"[^>]*\bdata-detail-app="([^"]+)"', catalog
     )
     for slug in SLUGS:
         check("/apps", f"detail_{slug}",
@@ -72,7 +72,7 @@ def inspect(pages):
         path = f"/support/{slug}/"
         html = pages.get(path, "")
         links = re.findall(
-            r'<a\\b[^>]*\\bhref="([^"]+)"[^>]*\\bdata-related-app="([^"]+)"', html
+            r'<a\b[^>]*\bhref="([^"]+)"[^>]*\bdata-related-app="([^"]+)"', html
         )
         check(path, "two_other_apps",
               len(links) == 2 and
