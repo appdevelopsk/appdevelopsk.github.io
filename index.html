@@ -685,7 +685,7 @@
   <div class="about-content">
     <div class="about-card">
       <h3>What is SK Apps?</h3>
-      <p>SK Apps (appdevelopsk) is an independent app developer with 92 Android apps on Google Play — brain games, AI-powered tools, encyclopedias, and everyday utilities. This site lists every app, with a support page and privacy policy for each one.</p>
+      <p>SK Apps (appdevelopsk) develops mobile apps, including Android releases on Google Play — brain games, AI-powered tools, encyclopedias, and everyday utilities. This site lists every app, with a support page and privacy policy for each one.</p>
     </div>
     <div class="about-card">
       <h3 data-i18n="about_approach">Our Approach</h3>
@@ -1427,23 +1427,23 @@ applyLang=function(l){origApplyLang(l);const d=APP_DESC[l]||APP_DESC.en;document
 
 // === App-launch notify: email capture → unified leads (source=skapps) ===
 const NOTIFY={
-en:{btn:"Notify me",hint:"🚀 92 apps on Google Play — get notified about new releases",ok:"✓ Thanks! We'll email you about new app releases.",err:"Something went wrong — please try again.",invalid:"Please enter a valid email address."},
+en:{btn:"Notify me",hint:"🚀 Discover our apps — get notified about new releases",ok:"✓ Thanks! We'll email you about new app releases.",err:"Something went wrong — please try again.",invalid:"Please enter a valid email address."},
 ja:{btn:"通知を受け取る",hint:"🚀 新作アプリを続々公開中 — 新着をメールでお知らせ",ok:"✓ ご登録ありがとうございます！新作公開時にメールします。",err:"エラーが発生しました。もう一度お試しください。",invalid:"有効なメールアドレスを入力してください。"},
 zh:{btn:"通知我",hint:"🚀 新应用持续上线 — 有新品时通知你",ok:"✓ 感谢订阅！有新应用时我们会发邮件通知你。",err:"出错了，请重试。",invalid:"请输入有效的邮箱地址。"},
 zh_TW:{btn:"通知我",hint:"🚀 新應用持續上線 — 有新品時通知你",ok:"✓ 感謝訂閱！有新應用時我們會寄信通知你。",err:"發生錯誤，請重試。",invalid:"請輸入有效的電子郵件。"},
 ko:{btn:"알림 받기",hint:"🚀 새 앱이 계속 출시돼요 — 신작 소식을 알려드릴게요",ok:"✓ 감사합니다! 새 앱 출시 소식을 이메일로 알려드립니다.",err:"오류가 발생했습니다. 다시 시도해 주세요.",invalid:"유효한 이메일을 입력해 주세요."},
-es:{btn:"Avísame",hint:"🚀 92 apps en Google Play — te avisamos de novedades",ok:"✓ ¡Gracias! Te avisaremos por correo de nuevas apps.",err:"Algo salió mal, inténtalo de nuevo.",invalid:"Introduce un correo válido."},
+es:{btn:"Avísame",hint:"🚀 Descubre nuestras apps — te avisamos de novedades",ok:"✓ ¡Gracias! Te avisaremos por correo de nuevas apps.",err:"Algo salió mal, inténtalo de nuevo.",invalid:"Introduce un correo válido."},
 pt:{btn:"Avise-me",hint:"🚀 Novos apps sempre — avisamos sobre lançamentos",ok:"✓ Obrigado! Avisaremos por e-mail sobre novos apps.",err:"Algo deu errado, tente novamente.",invalid:"Insira um e-mail válido."},
 fr:{btn:"Me prévenir",hint:"🚀 De nouvelles applis régulièrement — soyez prévenu des nouveautés",ok:"✓ Merci ! Nous vous préviendrons par e-mail des nouvelles applis.",err:"Une erreur s'est produite, réessayez.",invalid:"Entrez une adresse e-mail valide."},
-de:{btn:"Benachrichtigen",hint:"🚀 92 Apps bei Google Play — wir informieren über Neues",ok:"✓ Danke! Wir mailen dir zu neuen Apps.",err:"Etwas ist schiefgelaufen. Bitte erneut versuchen.",invalid:"Bitte gültige E-Mail eingeben."},
+de:{btn:"Benachrichtigen",hint:"🚀 Entdecke unsere Apps — wir informieren über Neues",ok:"✓ Danke! Wir mailen dir zu neuen Apps.",err:"Etwas ist schiefgelaufen. Bitte erneut versuchen.",invalid:"Bitte gültige E-Mail eingeben."},
 it:{btn:"Avvisami",hint:"🚀 Nuove app di continuo — ti avvisiamo sulle novità",ok:"✓ Grazie! Ti avviseremo via email sulle nuove app.",err:"Qualcosa è andato storto, riprova.",invalid:"Inserisci un'email valida."},
-ru:{btn:"Сообщить мне",hint:"🚀 Приложений в Google Play: 92 — сообщим о новинках",ok:"✓ Спасибо! Мы напишем вам о новых приложениях.",err:"Что-то пошло не так, попробуйте снова.",invalid:"Введите корректный email."},
+ru:{btn:"Сообщить мне",hint:"🚀 Откройте наши приложения — сообщим о новинках",ok:"✓ Спасибо! Мы напишем вам о новых приложениях.",err:"Что-то пошло не так, попробуйте снова.",invalid:"Введите корректный email."},
 ar:{btn:"أبلغني",hint:"🚀 تطبيقات جديدة باستمرار — سنبلغك بالإصدارات الجديدة",ok:"✓ شكراً! سنراسلك عن التطبيقات الجديدة.",err:"حدث خطأ، يرجى المحاولة مرة أخرى.",invalid:"يرجى إدخال بريد إلكتروني صالح."},
 th:{btn:"แจ้งเตือนฉัน",hint:"🚀 มีแอปใหม่ตลอด — เราจะแจ้งแอปใหม่ให้คุณ",ok:"✓ ขอบคุณ! เราจะอีเมลแจ้งแอปใหม่ให้คุณ",err:"เกิดข้อผิดพลาด โปรดลองอีกครั้ง",invalid:"กรุณากรอกอีเมลที่ถูกต้อง"},
-id:{btn:"Beri tahu saya",hint:"🚀 92 aplikasi di Google Play — kabari soal rilis baru",ok:"✓ Terima kasih! Kami akan email soal aplikasi baru.",err:"Terjadi kesalahan, coba lagi.",invalid:"Masukkan email yang valid."},
-tr:{btn:"Beni bilgilendir",hint:"🚀 Google Play'de 92 uygulama — yeni çıkanları bildiririz",ok:"✓ Teşekkürler! Yeni uygulamaları e-postayla bildiririz.",err:"Bir şeyler ters gitti, tekrar deneyin.",invalid:"Geçerli bir e-posta girin."},
-nl:{btn:"Houd me op de hoogte",hint:"🚀 92 apps op Google Play — we melden nieuwe releases",ok:"✓ Bedankt! We mailen je over nieuwe apps.",err:"Er ging iets mis, probeer opnieuw.",invalid:"Voer een geldig e-mailadres in."},
-vi:{btn:"Thông báo cho tôi",hint:"🚀 92 ứng dụng trên Google Play — báo bạn app mới",ok:"✓ Cảm ơn! Chúng tôi sẽ email về ứng dụng mới.",err:"Đã xảy ra lỗi, vui lòng thử lại.",invalid:"Vui lòng nhập email hợp lệ."}
+id:{btn:"Beri tahu saya",hint:"🚀 Jelajahi aplikasi kami — kabari soal rilis baru",ok:"✓ Terima kasih! Kami akan email soal aplikasi baru.",err:"Terjadi kesalahan, coba lagi.",invalid:"Masukkan email yang valid."},
+tr:{btn:"Beni bilgilendir",hint:"🚀 Uygulamalarımızı keşfedin — yeni çıkanları bildiririz",ok:"✓ Teşekkürler! Yeni uygulamaları e-postayla bildiririz.",err:"Bir şeyler ters gitti, tekrar deneyin.",invalid:"Geçerli bir e-posta girin."},
+nl:{btn:"Houd me op de hoogte",hint:"🚀 Ontdek onze apps — we melden nieuwe releases",ok:"✓ Bedankt! We mailen je over nieuwe apps.",err:"Er ging iets mis, probeer opnieuw.",invalid:"Voer een geldig e-mailadres in."},
+vi:{btn:"Thông báo cho tôi",hint:"🚀 Khám phá ứng dụng của chúng tôi — báo bạn app mới",ok:"✓ Cảm ơn! Chúng tôi sẽ email về ứng dụng mới.",err:"Đã xảy ra lỗi, vui lòng thử lại.",invalid:"Vui lòng nhập email hợp lệ."}
 };
 function skNotify(l){return NOTIFY[l]||NOTIFY.en;}
 function applyNotify(l){const n=skNotify(l);const b=document.getElementById('notifyBtn');if(b)b.textContent=n.btn;const m=document.getElementById('notifyMsg');if(m&&!m.dataset.done)m.textContent=n.hint;}
