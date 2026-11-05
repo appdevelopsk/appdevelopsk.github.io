@@ -113,6 +113,27 @@ class GrowthSmokeTests(unittest.TestCase):
         data["/apps"] += "92 free apps on Google Play"
         self.assertFalse(inspect(data)["passed"])
 
+    def test_new_catalog_release_with_consistent_schema_passes(self):
+        data = valid_pages()
+        head, rest = data["/apps"].split("</script>", 1)
+        schema = json.loads(head.split(">", 1)[1])
+        pkg = "jp.appdevelopsk.testapp92"
+        schema["mainEntity"]["numberOfItems"] = 93
+        schema["mainEntity"]["itemListElement"].append(
+            {"url": f"https://play.google.com/store/apps/details?id={pkg}"}
+        )
+        card = (f'<a class="app-card" '
+                f'href="https://play.google.com/store/apps/details?id={pkg}&amp;utm_source=test">')
+        data["/apps"] = ('<script type="application/ld+json">' +
+                          json.dumps(schema) + '</script>' + rest + card)
+        self.assertTrue(inspect(data)["passed"])
+
+    def test_new_catalog_release_without_schema_update_fails(self):
+        data = valid_pages()
+        data["/apps"] += ('<a class="app-card" '
+                          'href="https://play.google.com/store/apps/details?id=jp.appdevelopsk.testapp92&amp;utm_source=test">')
+        self.assertFalse(inspect(data)["passed"])
+
     def test_fails_when_catalog_count_changes(self):
         data = valid_pages()
         data["/apps"] = data["/apps"].replace('class="app-card" ', "", 1)
