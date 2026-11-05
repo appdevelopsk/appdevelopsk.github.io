@@ -32,6 +32,30 @@ def inspect(pages):
 
     catalog = pages.get("/apps", "")
     check("/apps", "catalog_cards_92", len(re.findall(r'class="app-card"', catalog)) == 92)
+
+    # Ensure listed Android packages match the actual schema and are not duplicated.
+    package_ids = re.findall(
+        r'<a class="app-card" href="https://play\.google\.com/store/apps/details\?id=([^&"]+)',
+        catalog,
+    )
+    schema_match = re.search(
+        r'<script type="application/ld\+json">\s*([\s\S]*?)</script>', catalog
+    )
+    try:
+        listing = json.loads(schema_match.group(1))["mainEntity"]
+        declared_count = listing["numberOfItems"]
+        schema_items = listing["itemListElement"]
+        schema_ids = [
+            re.search(r"[?&]id=([^&]+)", item["url"]).group(1)
+            for item in schema_items
+        ]
+    except (AttributeError, IndexError, KeyError, TypeError, ValueError):
+        declared_count, schema_items, schema_ids = None, [], []
+    check("/apps", "unique_play_packages",
+          len(package_ids) == 92 and len(set(package_ids)) == 92)
+    check("/apps", "catalog_schema_matches_links",
+          declared_count == len(package_ids) == len(schema_items) and
+          package_ids == schema_ids)
     check("/apps", "no_stale_live_store_claim", "92 free apps on Google Play" not in catalog)
     check("/apps", "store_click_tracking", "catalog_store_click" in catalog and "download_click" in catalog)
     check("/apps", "detail_click_tracking", "catalog_app_detail_click" in catalog)
