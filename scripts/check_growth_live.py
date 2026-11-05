@@ -32,6 +32,7 @@ def inspect(pages):
 
     catalog = pages.get("/apps", "")
     check("/apps", "catalog_cards_92", len(re.findall(r'class="app-card"', catalog)) == 92)
+    check("/apps", "no_stale_live_store_claim", "92 free apps on Google Play" not in catalog)
     check("/apps", "store_click_tracking", "catalog_store_click" in catalog and "download_click" in catalog)
     check("/apps", "detail_click_tracking", "catalog_app_detail_click" in catalog)
     for slug in SLUGS:
