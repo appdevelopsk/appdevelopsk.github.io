@@ -60,16 +60,25 @@ def inspect(pages):
     check("/apps", "no_stale_live_store_claim", "92 free apps on Google Play" not in catalog)
     check("/apps", "store_click_tracking", "catalog_store_click" in catalog and "download_click" in catalog)
     check("/apps", "detail_click_tracking", "catalog_app_detail_click" in catalog)
+    details = re.findall(
+        r'<a\\b[^>]*\\bhref="([^"]+)"[^>]*\\bdata-detail-app="([^"]+)"', catalog
+    )
     for slug in SLUGS:
-        check("/apps", f"detail_{slug}", f'data-detail-app="{slug}"' in catalog)
+        check("/apps", f"detail_{slug}",
+              sum(link == f"/support/{slug}/" and key == slug for link, key in details) == 1)
+    check("/apps", "five_distinct_detail_links", len(details) == len(SLUGS))
 
     for slug in SLUGS:
         path = f"/support/{slug}/"
         html = pages.get(path, "")
-        links = re.findall(r'data-related-app="([^"]+)"', html)
-        check(path, "two_other_apps", len(links) == 2 and
-              len(set(links)) == 2 and slug not in links and
-              all(other in SLUGS for other in links))
+        links = re.findall(
+            r'<a\\b[^>]*\\bhref="([^"]+)"[^>]*\\bdata-related-app="([^"]+)"', html
+        )
+        check(path, "two_other_apps",
+              len(links) == 2 and
+              len({key for _, key in links}) == 2 and
+              all(key in SLUGS and key != slug and
+                  href == f"/support/{key}/" for href, key in links))
         check(path, "analytics", "related_app_click" in html and "download_click" in html)
         check(path, "play_cta", 'data-position="hero"' in html and 'data-position="details"' in html)
 
