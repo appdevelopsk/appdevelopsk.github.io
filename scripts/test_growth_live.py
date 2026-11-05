@@ -51,6 +51,11 @@ class GrowthSmokeTests(unittest.TestCase):
         data["/"] += "92 Apps on Google Play"
         self.assertFalse(inspect(data)["passed"])
 
+    def test_stale_catalog_claim_fails(self):
+        data = valid_pages()
+        data["/apps"] += "92 free apps on Google Play"
+        self.assertFalse(inspect(data)["passed"])
+
     def test_fails_when_catalog_count_changes(self):
         data = valid_pages()
         data["/apps"] = data["/apps"].replace('class="app-card" ', "", 1)
