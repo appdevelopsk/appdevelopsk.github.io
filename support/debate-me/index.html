@@ -93,7 +93,7 @@
       if (!a) return;
       var href = a.getAttribute('href') || '';
       if (/play\.google\.com/.test(href)) {
-        gtag('event', 'download_click', { store: 'google_play', location: 'support', placement: a.getAttribute('data-position') || 'other', link_url: href });
+        gtag('event', 'download_click', { store: 'google_play', location: 'support', app_slug: 'debate-me', placement: a.getAttribute('data-position') || 'other', link_url: href });
       }
     }, true);
   </script>
