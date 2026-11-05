@@ -35,11 +35,11 @@ def inspect(pages):
 
     # Ensure listed Android packages match the actual schema and are not duplicated.
     package_ids = re.findall(
-        r'<a class="app-card" href="https://play\\.google\\.com/store/apps/details\\?id=([^&"]+)',
+        r'<a class="app-card" href="https://play\.google\.com/store/apps/details\?id=([^&"]+)',
         catalog,
     )
     schema_match = re.search(
-        r'<script type="application/ld\\+json">\\s*([\\s\\S]*?)</script>', catalog
+        r'<script type="application/ld\+json">\s*([\s\S]*?)</script>', catalog
     )
     try:
         listing = json.loads(schema_match.group(1))["mainEntity"]
