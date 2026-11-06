@@ -82,6 +82,26 @@ def inspect(pages):
               len({key for _, key in links}) == 2 and
               all(key in SLUGS and key != slug and
                   href == f"/support/{key}/" for href, key in links))
+        canonical = re.findall(r'<link\s+rel="canonical"\s+href="([^"]+)"', html)
+        check(path, "correct_canonical",
+              canonical == [f"https://appdevelopsk.com{path}"])
+        check(path, "indexable",
+              not re.search(r'<meta\b[^>]*name="robots"[^>]*noindex', html, re.I))
+        scripts = re.findall(
+            r'<script\s+type="application/ld\+json">([\s\S]*?)</script>', html
+        )
+        try:
+            parsed = [json.loads(raw) for raw in scripts]
+            nodes = []
+            for item in parsed:
+                nodes.extend(item.get("@graph", [item]))
+            types = {node.get("@type") for node in nodes if isinstance(node, dict)}
+            structured = bool({"WebPage", "SoftwareApplication", "MobileApplication"} & types)
+            structured = structured and any(
+                "Android" in json.dumps(node) for node in nodes)
+        except (TypeError, ValueError, AttributeError):
+            structured = False
+        check(path, "valid_app_jsonld", structured)
         check(path, "analytics", "related_app_click" in html and "download_click" in html)
         check(path, "play_cta", 'data-position="hero"' in html and 'data-position="details"' in html)
 
