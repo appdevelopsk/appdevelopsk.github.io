@@ -4,6 +4,11 @@ import re
 import unittest
 
 ROOT = Path(__file__).resolve().parent.parent
+MIN_CATALOG_CARDS = 92
+
+
+def catalog_card_count_ok(html):
+    return len(re.findall(r'class="app-card"', html)) >= MIN_CATALOG_CARDS
 GUIDES = {
     "quick-games": "quick-games",
     "daily-habits": "habits",
@@ -42,9 +47,17 @@ class GuideCatalogDeepLinkTests(unittest.TestCase):
         self.assertIn("goal, results: initialResults, source: 'editorial_guide'", catalog)
         self.assertNotIn("query: input.value", catalog)
 
+    def test_new_app_does_not_break_catalog_test(self):
+        cards = '<a class="app-card"></a>' * (MIN_CATALOG_CARDS + 1)
+        self.assertTrue(catalog_card_count_ok(cards))
+
+    def test_missing_baseline_app_is_rejected(self):
+        cards = '<a class="app-card"></a>' * (MIN_CATALOG_CARDS - 1)
+        self.assertFalse(catalog_card_count_ok(cards))
+
     def test_catalog_cards_and_details_preserved(self):
         catalog = (ROOT / "apps.html").read_text(encoding="utf-8")
-        self.assertEqual(len(re.findall(r'class="app-card"', catalog)), 92)
+        self.assertTrue(catalog_card_count_ok(catalog), "app catalog fell below the 92-card baseline")
         self.assertEqual(len(re.findall(r'data-detail-app="', catalog)), 5)
 
 
