@@ -13,8 +13,11 @@ From a clean checkout of the intended production commit:
 ```bash
 python3 -m unittest discover -s scripts -p 'test_*.py' -v
 python3 scripts/diagnose_growth_deploy.py --root . --output growth-deploy-diagnosis.json
+python3 scripts/diagnose_growth_routes.py --output growth-route-diagnosis.json
 python3 scripts/check_growth_live.py > growth-live-smoke.json
 ```
+
+The route diagnosis additionally compares /apps and /apps.html, recording final URLs, public cache headers, canonical tags and hashes to uncover split cache/rewrite behavior. Inspect both results before editing redirects; the command makes no hosting or DNS changes.
 
 The deploy diagnosis checks HTTP 200 and compares the raw HTML bytes of the
 homepage, app catalog and five priority app support pages to the checked-out
