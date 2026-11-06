@@ -2,7 +2,7 @@
 import json
 import unittest
 
-from check_growth_live import FEATURED_SLUGS, PATHS, SLUGS, inspect
+from check_growth_live import FEATURED_SLUGS, GROWTH_RELEASE_ID, PATHS, SLUGS, inspect
 
 
 def valid_pages():
@@ -53,6 +53,9 @@ def valid_pages():
     pages["/sitemap.xml"] = "".join(
         f"<loc>https://appdevelopsk.com{p}</loc>"
         for p in ("/", "/apps") + tuple(f"/support/{s}/" for s in SLUGS))
+    for path in ("/", "/apps") + tuple(f"/support/{slug}/" for slug in SLUGS):
+        pages[path] = (f'<meta name="sk-growth-release" '
+                       f'content="{GROWTH_RELEASE_ID}">' + pages[path])
     return pages
 
 
@@ -112,6 +115,18 @@ class GrowthSmokeTests(unittest.TestCase):
     def test_disallowed_icons_fail(self):
         data = valid_pages()
         data["/robots.txt"] += "Disallow: /icons/\\n"
+        self.assertFalse(inspect(data)["passed"])
+
+    def test_missing_release_fingerprint_fails(self):
+        data = valid_pages()
+        data["/apps"] = data["/apps"].replace('name="sk-growth-release"',
+                                             'name="some-other-tag"')
+        self.assertFalse(inspect(data)["passed"])
+
+    def test_stale_release_fingerprint_fails(self):
+        data = valid_pages()
+        data["/support/twotaku/"] = data["/support/twotaku/"].replace(
+            GROWTH_RELEASE_ID, "growth-previous")
         self.assertFalse(inspect(data)["passed"])
 
     def test_missing_live_page_fails(self):
