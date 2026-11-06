@@ -63,7 +63,7 @@
       } else if (a.classList.contains('discovery-link')) {
         gtag('event', 'discovery_nav_click', { guide: a.getAttribute('data-guide') || 'catalog', origin: 'homepage' });
       } else if (a.classList.contains('app-card')) {
-        gtag('event', 'app_view', { app: href.replace(/^support\//, '').replace(/\/$/, '') });
+        gtag('event', 'app_detail_click', { app_slug: href.replace(/^support\//, '').replace(/\/$/, ''), placement: 'homepage_card' });
       } else if (/pickly\.blog|toolify365\.com|fxea365\.com/.test(href)) {
         gtag('event', 'crosspromo_click', { link_url: href });
       }

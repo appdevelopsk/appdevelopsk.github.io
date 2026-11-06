@@ -30,6 +30,9 @@ def inspect(pages):
     check("/", "current_meta", "SK Apps | Mobile Apps, Games & Everyday Tools" in home)
     check("/", "no_stale_store_count", "92 Apps on Google Play" not in home)
     check("/", "analytics", "G-5Z588FVC81" in home)
+    check("/", "homepage_card_click_semantics",
+          "gtag('event', 'app_detail_click'" in home and
+          "gtag('event', 'app_view'" not in home)
     for slug in FEATURED_SLUGS:
         check("/", f"featured_{slug}", f'href="support/{slug}/"' in home)
 
