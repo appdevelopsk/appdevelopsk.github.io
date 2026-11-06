@@ -74,6 +74,13 @@ def inspect(pages):
     check("/apps", "no_stale_live_store_claim", "92 free apps on Google Play" not in catalog)
     check("/apps", "store_click_tracking", "catalog_store_click" in catalog and "download_click" in catalog)
     check("/apps", "detail_click_tracking", "catalog_app_detail_click" in catalog)
+    check("/apps", "finalized_search_analytics",
+          "input.addEventListener('input', render)" in catalog and
+          "input.addEventListener('blur', reportSearch)" in catalog and
+          "if (event.key === 'Enter') reportSearch()" in catalog and
+          "query === lastReportedSearch" in catalog and
+          "lastReportedSearch = query" in catalog and
+          "loggedSearch" not in catalog)
     check("/apps", "search_includes_app_slug",
           "const app = slug(card), content = clean((card.textContent || '') + ' ' + app" in catalog
           and "app.replace(/-/g, ' ')" in catalog)
