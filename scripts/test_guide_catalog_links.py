@@ -55,6 +55,23 @@ class GuideCatalogDeepLinkTests(unittest.TestCase):
         cards = '<a class="app-card"></a>' * (MIN_CATALOG_CARDS - 1)
         self.assertFalse(catalog_card_count_ok(cards))
 
+    def test_manual_filter_syncs_shareable_goal_url(self):
+        catalog = (ROOT / "apps.html").read_text(encoding="utf-8")
+        self.assertIn("const syncGoalUrl = () =>", catalog)
+        self.assertIn("url.searchParams.set('goal', goal)", catalog)
+        self.assertIn("url.searchParams.delete('goal')", catalog)
+        self.assertIn("window.history.replaceState(", catalog)
+        self.assertIn("url.pathname + url.search + url.hash", catalog)
+        self.assertEqual(catalog.count("      syncGoalUrl();"), 2)
+
+    def test_filter_url_does_not_capture_private_search_text(self):
+        catalog = (ROOT / "apps.html").read_text(encoding="utf-8")
+        start = catalog.index("const syncGoalUrl = () =>")
+        end = catalog.index("    const fire =", start)
+        sync_code = catalog[start:end]
+        self.assertNotIn("input.value", sync_code)
+        self.assertNotIn("find-app", sync_code)
+
     def test_catalog_cards_and_details_preserved(self):
         catalog = (ROOT / "apps.html").read_text(encoding="utf-8")
         self.assertTrue(catalog_card_count_ok(catalog), "app catalog fell below the 92-card baseline")
