@@ -35,7 +35,17 @@ def valid_pages():
                "instant-judge": ("twotaku", "debate-me")}
     for slug in SLUGS:
         other = related[slug]
+        canonical = f"https://appdevelopsk.com/support/{slug}/"
+        schema = json.dumps({
+            "@context": "https://schema.org",
+            "@type": "SoftwareApplication",
+            "name": slug,
+            "operatingSystem": "Android",
+            "url": canonical,
+        })
         pages[f"/support/{slug}/"] = (
+            f'<link rel="canonical" href="{canonical}">' +
+            '<script type="application/ld+json">' + schema + '</script>' +
             "related_app_click download_click " +
             'data-position="hero" data-position="details" ' +
             " ".join(f'<a href="/support/{x}/" data-related-app="{x}">' for x in other))
@@ -62,6 +72,24 @@ class GrowthSmokeTests(unittest.TestCase):
         data = valid_pages()
         data["/support/twotaku/"] = data["/support/twotaku/"].replace(
             'data-related-app="instant-judge"', "")
+        self.assertFalse(inspect(data)["passed"])
+
+    def test_wrong_canonical_fails(self):
+        data = valid_pages()
+        data["/support/twotaku/"] = data["/support/twotaku/"].replace(
+            'rel="canonical" href="https://appdevelopsk.com/support/twotaku/"',
+            'rel="canonical" href="https://appdevelopsk.com/support/other/"')
+        self.assertFalse(inspect(data)["passed"])
+
+    def test_noindex_fails(self):
+        data = valid_pages()
+        data["/support/debate-me/"] += '<meta name="robots" content="noindex">'
+        self.assertFalse(inspect(data)["passed"])
+
+    def test_invalid_app_jsonld_fails(self):
+        data = valid_pages()
+        data["/support/instant-judge/"] = data["/support/instant-judge/"].replace(
+            '"SoftwareApplication"', '"SomethingOther"', 1)
         self.assertFalse(inspect(data)["passed"])
 
     def test_missing_instant_judge_page_fails(self):
