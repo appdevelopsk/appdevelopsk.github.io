@@ -12,6 +12,7 @@ SLUGS = ("debate-me", "tappitsu-battle", "future-me", "twotaku", "instant-judge"
 # Prevent accidental removal of existing listings, but allow genuine new releases.
 CATALOG_MIN_ITEMS = 92
 FEATURED_SLUGS = ("debate-me", "tappitsu-battle", "future-me", "twotaku")
+GROWTH_RELEASE_ID = "growth-20261106-wave2"
 PATHS = ("/", "/apps", "/robots.txt", "/sitemap.xml") + tuple(
     f"/support/{slug}/" for slug in SLUGS
 )
@@ -26,6 +27,13 @@ def inspect(pages):
 
     for path in PATHS:
         check(path, "retrieved", path in pages)
+    for path in ("/", "/apps") + tuple(f"/support/{slug}/" for slug in SLUGS):
+        html = pages.get(path, "")
+        markers = re.findall(
+            r'<meta\s+name="sk-growth-release"\s+content="([^"]+)"', html)
+        check(path, "release_fingerprint",
+              markers == [GROWTH_RELEASE_ID])
+
     home = pages.get("/", "")
     check("/", "current_meta", "SK Apps | Mobile Apps, Games & Everyday Tools" in home)
     check("/", "no_stale_store_count", "92 Apps on Google Play" not in home)
