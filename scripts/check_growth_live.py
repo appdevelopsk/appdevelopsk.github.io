@@ -74,6 +74,9 @@ def inspect(pages):
     check("/apps", "no_stale_live_store_claim", "92 free apps on Google Play" not in catalog)
     check("/apps", "store_click_tracking", "catalog_store_click" in catalog and "download_click" in catalog)
     check("/apps", "detail_click_tracking", "catalog_app_detail_click" in catalog)
+    check("/apps", "search_includes_app_slug",
+          "const app = slug(card), content = clean((card.textContent || '') + ' ' + app" in catalog
+          and "app.replace(/-/g, ' ')" in catalog)
     check("/apps", "empty_search_reset",
           'id="finder-reset"' in catalog and
           "reset.addEventListener('click'" in catalog and
