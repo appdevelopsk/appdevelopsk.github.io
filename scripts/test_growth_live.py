@@ -26,6 +26,7 @@ def valid_pages():
     pages["/apps"] = (
         '<script type="application/ld+json">' + json.dumps(listing) + '</script>' +
         cards + " catalog_store_click download_click catalog_app_detail_click " +
+        'id="finder-reset" reset.addEventListener(\'click\' input.value = \'\' goal = \'all\' render(); catalog_search_reset ' +
         " ".join(f'<a href="/support/{slug}/" data-detail-app="{slug}">' for slug in SLUGS)
     )
     related = {"debate-me": ("future-me", "tappitsu-battle"),
@@ -183,6 +184,16 @@ class GrowthSmokeTests(unittest.TestCase):
         data = valid_pages()
         data["/apps"] = data["/apps"].replace(
             "id=jp.appdevelopsk.testapp1", "id=jp.appdevelopsk.unlisted", 1)
+        self.assertFalse(inspect(data)["passed"])
+
+    def test_missing_empty_search_reset_fails(self):
+        data = valid_pages()
+        data["/apps"] = data["/apps"].replace('id="finder-reset"', 'id="missing-reset"')
+        self.assertFalse(inspect(data)["passed"])
+
+    def test_broken_empty_search_reset_handler_fails(self):
+        data = valid_pages()
+        data["/apps"] = data["/apps"].replace("goal = 'all'", "goal = 'habits'")
         self.assertFalse(inspect(data)["passed"])
 
     def test_stale_catalog_claim_fails(self):
