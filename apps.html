@@ -1500,7 +1500,14 @@
         app_slug: app, source: 'apps_catalog'
       });
     }));
-    render();
+    const initialResults = render();
+    // Track editorial-guide arrivals separately from manual category choices.
+    // Only the allowlisted category and count are sent; no search terms.
+    if (goal !== 'all') {
+      fire('catalog_filter_landing', {
+        goal, results: initialResults, source: 'editorial_guide'
+      });
+    }
   })();
   </script>
 </body>

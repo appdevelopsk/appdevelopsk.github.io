@@ -34,6 +34,14 @@ class GuideCatalogDeepLinkTests(unittest.TestCase):
             with self.subTest(goal=goal):
                 self.assertIn(f'data-goal="{goal}"', catalog)
 
+    def test_guide_landing_has_separate_privacy_safe_event(self):
+        catalog = (ROOT / "apps.html").read_text(encoding="utf-8")
+        self.assertIn("const initialResults = render();", catalog)
+        self.assertIn("if (goal !== 'all')", catalog)
+        self.assertIn("fire('catalog_filter_landing'", catalog)
+        self.assertIn("goal, results: initialResults, source: 'editorial_guide'", catalog)
+        self.assertNotIn("query: input.value", catalog)
+
     def test_catalog_cards_and_details_preserved(self):
         catalog = (ROOT / "apps.html").read_text(encoding="utf-8")
         self.assertEqual(len(re.findall(r'class="app-card"', catalog)), 92)
