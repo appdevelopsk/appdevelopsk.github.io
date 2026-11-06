@@ -169,7 +169,7 @@ class GrowthSmokeTests(unittest.TestCase):
     def test_new_catalog_release_with_consistent_schema_passes(self):
         data = valid_pages()
         head, rest = data["/apps"].split("</script>", 1)
-        schema = json.loads(head.split(">", 1)[1])
+        schema = json.loads(head.split('<script type="application/ld+json">', 1)[1])
         pkg = "jp.appdevelopsk.testapp92"
         schema["mainEntity"]["numberOfItems"] = 93
         schema["mainEntity"]["itemListElement"].append(
