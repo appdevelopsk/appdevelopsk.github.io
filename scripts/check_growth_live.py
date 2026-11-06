@@ -113,6 +113,19 @@ def inspect(pages):
         except (TypeError, ValueError, AttributeError):
             structured = False
         check(path, "valid_app_jsonld", structured)
+        # A mismatched package sends visitors to the wrong store listing.
+        # Require identical Android Play IDs in both visible CTAs and JSON-LD.
+        store_ids = re.findall(
+            r'<a\b[^>]*href="https://play\.google\.com/store/apps/details\?id=([A-Za-z0-9_.]+)',
+            html,
+        )
+        schema_ids = re.findall(
+            r'[?&]id=([A-Za-z0-9_.]+)', json.dumps(nodes)
+        ) if structured else []
+        check(path, "store_package_consistency",
+              len(store_ids) == 2 and len(set(store_ids)) == 1 and
+              len(schema_ids) == 1 and store_ids[0] == schema_ids[0])
+
         check(path, "analytics", "related_app_click" in html and "download_click" in html)
         check(path, "play_cta", 'data-position="hero"' in html and 'data-position="details"' in html)
 
