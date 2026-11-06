@@ -74,6 +74,13 @@ def inspect(pages):
     check("/apps", "no_stale_live_store_claim", "92 free apps on Google Play" not in catalog)
     check("/apps", "store_click_tracking", "catalog_store_click" in catalog and "download_click" in catalog)
     check("/apps", "detail_click_tracking", "catalog_app_detail_click" in catalog)
+    check("/apps", "empty_search_reset",
+          'id="finder-reset"' in catalog and
+          "reset.addEventListener('click'" in catalog and
+          "input.value = ''" in catalog and
+          "goal = 'all'" in catalog and
+          "render();" in catalog and
+          "catalog_search_reset" in catalog)
     details = re.findall(
         r'<a\b[^>]*\bhref="([^"]+)"[^>]*\bdata-detail-app="([^"]+)"', catalog
     )
