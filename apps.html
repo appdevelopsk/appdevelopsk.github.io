@@ -1424,7 +1424,7 @@
       ai: ['debate-me','voice-memo','future-me','date-pilot','global-news','pantry-ai','name-maker','idea-market','life-trace']
     };
     const clean = value => value.normalize('NFKC').toLocaleLowerCase().trim();
-    let goal = 'all', loggedSearch = false;
+    let goal = 'all', lastReportedSearch = '';
     const slug = card => {
       const src = card.querySelector('img')?.getAttribute('src') || '';
       return src.split('/').pop()?.replace(/\.png$/, '') || '';
@@ -1448,19 +1448,25 @@
       empty.hidden = shown !== 0;
       return shown;
     }
-    input.addEventListener('input', () => {
-      const shown = render();
-      // Search strings might include personal details. Never transmit them.
-      if (input.value.trim() && !loggedSearch) {
-        fire('catalog_search_used', {results: shown, search_length_band: input.value.length < 5 ? 'short' : 'long'});
-        loggedSearch = true;
-      }
-      if (!input.value.trim()) loggedSearch = false;
+    // Do not report the unfinished first keystroke as a completed search.
+    // Keep query text local; GA4 receives only a coarse length bucket and result count.
+    const reportSearch = () => {
+      const query = clean(input.value);
+      if (!query || query === lastReportedSearch) return;
+      fire('catalog_search_used', {
+        results: render(), search_length_band: query.length < 5 ? 'short' : 'long'
+      });
+      lastReportedSearch = query;
+    };
+    input.addEventListener('input', render);
+    input.addEventListener('blur', reportSearch);
+    input.addEventListener('keydown', event => {
+      if (event.key === 'Enter') reportSearch();
     });
     reset.addEventListener('click', () => {
       input.value = '';
       goal = 'all';
-      loggedSearch = false;
+      lastReportedSearch = '';
       buttons.forEach(button => button.setAttribute('aria-pressed', String(button.dataset.goal === 'all')));
       render();
       input.focus();

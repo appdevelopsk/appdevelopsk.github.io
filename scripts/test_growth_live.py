@@ -26,6 +26,9 @@ def valid_pages():
     pages["/apps"] = (
         '<script type="application/ld+json">' + json.dumps(listing) + '</script>' +
         cards + " catalog_store_click download_click catalog_app_detail_click " +
+        "input.addEventListener('input', render) input.addEventListener('blur', reportSearch) " +
+        "if (event.key === 'Enter') reportSearch() query === lastReportedSearch " +
+        "lastReportedSearch = query " +
         "const app = slug(card), content = clean((card.textContent || '') + ' ' + app; app.replace(/-/g, ' ')" +
         'id="finder-reset" reset.addEventListener(\'click\' input.value = \'\' goal = \'all\' render(); catalog_search_reset ' +
         " ".join(f'<a href="/support/{slug}/" data-detail-app="{slug}">' for slug in SLUGS)
@@ -185,6 +188,24 @@ class GrowthSmokeTests(unittest.TestCase):
         data = valid_pages()
         data["/apps"] = data["/apps"].replace(
             "id=jp.appdevelopsk.testapp1", "id=jp.appdevelopsk.unlisted", 1)
+        self.assertFalse(inspect(data)["passed"])
+
+    def test_first_keystroke_analytics_rejected(self):
+        data = valid_pages()
+        data["/apps"] = data["/apps"].replace(
+            "input.addEventListener('input', render)",
+            "input.addEventListener('input', reportSearch)")
+        self.assertFalse(inspect(data)["passed"])
+
+    def test_missing_blur_search_reporting_rejected(self):
+        data = valid_pages()
+        data["/apps"] = data["/apps"].replace(
+            "input.addEventListener('blur', reportSearch)", "")
+        self.assertFalse(inspect(data)["passed"])
+
+    def test_repeated_search_reporting_rejected(self):
+        data = valid_pages()
+        data["/apps"] = data["/apps"].replace("query === lastReportedSearch", "")
         self.assertFalse(inspect(data)["passed"])
 
     def test_missing_slug_search_fails(self):
