@@ -1424,7 +1424,15 @@
       ai: ['debate-me','voice-memo','future-me','date-pilot','global-news','pantry-ai','name-maker','idea-market','life-trace']
     };
     const clean = value => value.normalize('NFKC').toLocaleLowerCase().trim();
-    let goal = 'all', lastReportedSearch = '';
+    // Shareable, allowlisted category links from the four editorial guides.
+    // Never read or transmit arbitrary query text.
+    const requestedGoal = new URLSearchParams(window.location.search).get('goal');
+    let goal = ['quick-games', 'habits', 'decisions', 'ai'].includes(requestedGoal)
+      ? requestedGoal : 'all';
+    let lastReportedSearch = '';
+    buttons.forEach(button => {
+      button.setAttribute('aria-pressed', String(button.dataset.goal === goal));
+    });
     const slug = card => {
       const src = card.querySelector('img')?.getAttribute('src') || '';
       return src.split('/').pop()?.replace(/\.png$/, '') || '';
