@@ -36,18 +36,22 @@ def valid_pages():
     for slug in SLUGS:
         other = related[slug]
         canonical = f"https://appdevelopsk.com/support/{slug}/"
+        package = f"jp.appdevelopsk.example_{slug.replace('-', '_')}"
+        play = f"https://play.google.com/store/apps/details?id={package}"
         schema = json.dumps({
             "@context": "https://schema.org",
             "@type": "SoftwareApplication",
             "name": slug,
             "operatingSystem": "Android",
             "url": canonical,
+            "downloadUrl": play,
         })
         pages[f"/support/{slug}/"] = (
             f'<link rel="canonical" href="{canonical}">' +
             '<script type="application/ld+json">' + schema + '</script>' +
             "related_app_click download_click " +
-            'data-position="hero" data-position="details" ' +
+            f'<a href="{play}&amp;utm_source=test" data-position="hero">' +
+            f'<a href="{play}&amp;utm_source=test" data-position="details">' +
             " ".join(f'<a href="/support/{x}/" data-related-app="{x}">' for x in other))
     pages["/robots.txt"] = "User-agent: *\\nAllow: /icons/\\n"
     pages["/sitemap.xml"] = "".join(
@@ -87,6 +91,26 @@ class GrowthSmokeTests(unittest.TestCase):
     def test_noindex_fails(self):
         data = valid_pages()
         data["/support/debate-me/"] += '<meta name="robots" content="noindex">'
+        self.assertFalse(inspect(data)["passed"])
+
+    def test_support_hero_wrong_play_package_fails(self):
+        data = valid_pages()
+        data["/support/twotaku/"] = data["/support/twotaku/"].replace(
+            "id=jp.appdevelopsk.example_twotaku&amp;",
+            "id=jp.appdevelopsk.wrongapp&amp;", 1)
+        self.assertFalse(inspect(data)["passed"])
+
+    def test_support_schema_wrong_play_package_fails(self):
+        data = valid_pages()
+        data["/support/debate-me/"] = data["/support/debate-me/"].replace(
+            "id=jp.appdevelopsk.example_debate_me",
+            "id=jp.appdevelopsk.other_app", 1)
+        self.assertFalse(inspect(data)["passed"])
+
+    def test_support_missing_details_play_button_fails(self):
+        data = valid_pages()
+        data["/support/future-me/"] = data["/support/future-me/"].replace(
+            'data-position="details"', 'data-position="other"')
         self.assertFalse(inspect(data)["passed"])
 
     def test_invalid_app_jsonld_fails(self):
