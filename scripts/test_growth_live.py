@@ -169,7 +169,8 @@ class GrowthSmokeTests(unittest.TestCase):
     def test_new_catalog_release_with_consistent_schema_passes(self):
         data = valid_pages()
         head, rest = data["/apps"].split("</script>", 1)
-        schema = json.loads(head.split('<script type="application/ld+json">', 1)[1])
+        prefix, jsonld_source = head.split('<script type="application/ld+json">', 1)
+        schema = json.loads(jsonld_source)
         pkg = "jp.appdevelopsk.testapp92"
         schema["mainEntity"]["numberOfItems"] = 93
         schema["mainEntity"]["itemListElement"].append(
@@ -177,7 +178,7 @@ class GrowthSmokeTests(unittest.TestCase):
         )
         card = (f'<a class="app-card" '
                 f'href="https://play.google.com/store/apps/details?id={pkg}&amp;utm_source=test">')
-        data["/apps"] = ('<script type="application/ld+json">' +
+        data["/apps"] = (prefix + '<script type="application/ld+json">' +
                           json.dumps(schema) + '</script>' + rest + card)
         self.assertTrue(inspect(data)["passed"])
 
