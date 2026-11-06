@@ -1437,6 +1437,13 @@
       const src = card.querySelector('img')?.getAttribute('src') || '';
       return src.split('/').pop()?.replace(/\.png$/, '') || '';
     };
+    // Keep the selected purpose shareable across reloads without exposing search text.
+    const syncGoalUrl = () => {
+      const url = new URL(window.location.href);
+      if (goal === 'all') url.searchParams.delete('goal');
+      else url.searchParams.set('goal', goal);
+      window.history.replaceState(window.history.state, '', url.pathname + url.search + url.hash);
+    };
     const fire = (event, data) => {
       if (typeof window.gtag === 'function') window.gtag('event', event, data);
     };
@@ -1476,6 +1483,7 @@
       goal = 'all';
       lastReportedSearch = '';
       buttons.forEach(button => button.setAttribute('aria-pressed', String(button.dataset.goal === 'all')));
+      syncGoalUrl();
       render();
       input.focus();
       fire('catalog_search_reset', {source: 'empty_state'});
@@ -1483,6 +1491,7 @@
     buttons.forEach(button => button.addEventListener('click', () => {
       goal = button.dataset.goal;
       buttons.forEach(b => b.setAttribute('aria-pressed', String(b === button)));
+      syncGoalUrl();
       fire('catalog_filter_used', {goal, results: render()});
     }));
     document.querySelectorAll('[data-detail-app]').forEach(link => {
