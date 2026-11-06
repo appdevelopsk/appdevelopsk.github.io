@@ -1437,7 +1437,8 @@
       const terms = text.split(/\s+/).filter(Boolean);
       let shown = 0;
       cards.forEach(card => {
-        const app = slug(card), content = clean(card.textContent || '');
+        // Include the stable catalog slug so former/internal app names stay findable.
+        const app = slug(card), content = clean((card.textContent || '') + ' ' + app + ' ' + app.replace(/-/g, ' '));
         const inGoal = goal === 'all' || (groups[goal] || []).includes(app);
         const visible = inGoal && terms.every(term => content.includes(term));
         card.hidden = !visible;
