@@ -7,7 +7,7 @@ from check_growth_live import FEATURED_SLUGS, PATHS, SLUGS, inspect
 
 def valid_pages():
     pages = {path: "" for path in PATHS}
-    pages["/"] = "SK Apps | Mobile Apps, Games & Everyday Tools G-5Z588FVC81 " + " ".join(
+    pages["/"] = "SK Apps | Mobile Apps, Games & Everyday Tools G-5Z588FVC81 gtag(\'event\', \'app_detail_click\' " + " ".join(
         f'href="support/{slug}/"' for slug in FEATURED_SLUGS)
     packages = [f"jp.appdevelopsk.testapp{i}" for i in range(92)]
     cards = " ".join(
@@ -117,6 +117,16 @@ class GrowthSmokeTests(unittest.TestCase):
     def test_missing_live_page_fails(self):
         data = valid_pages()
         del data["/apps"]
+        self.assertFalse(inspect(data)["passed"])
+
+    def test_homepage_click_mislabeled_view_fails(self):
+        data = valid_pages()
+        data["/"] = data["/"].replace("app_detail_click", "app_view")
+        self.assertFalse(inspect(data)["passed"])
+
+    def test_homepage_missing_card_click_event_fails(self):
+        data = valid_pages()
+        data["/"] = data["/"].replace("app_detail_click", "something_else")
         self.assertFalse(inspect(data)["passed"])
 
     def test_stale_homepage_metadata_fails(self):
