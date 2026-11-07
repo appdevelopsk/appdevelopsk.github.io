@@ -11,7 +11,7 @@ function dictionary(name, after) {
   return runInNewContext('('+match[1]+')');
 }
 test('first paint shows real AI debate and never a food spinner', () => {
-  assert.match(html, /<title>Debate Me: AI Debate Practice for Android/);
+  assert.match(html, /<title>Debate Me – AI Debate Practice &(amp;)? Feedback/);
   assert.match(html, /<h1>Debate Me<\/h1>/);
   assert.match(html, /<div class="hero-emoji">🗣️<\/div>/);
   assert.match(html, /<div class="hero-cat">Education<\/div>/);
