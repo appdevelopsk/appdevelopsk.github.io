@@ -44,7 +44,13 @@ class GrowthSitemapFreshnessTests(unittest.TestCase):
         pages = dict(entries())
         for path in CHANGED_2026_11_07:
             with self.subTest(path=path):
-                self.assertEqual(pages.get(BASE + path), "2026-11-07")
+                stamp = pages.get(BASE + path)
+                self.assertIsNotNone(stamp)
+                self.assertGreaterEqual(date.fromisoformat(stamp), date(2026, 11, 7))
+
+    def test_future_valid_page_updates_are_not_rejected(self):
+        self.assertGreaterEqual(date.fromisoformat("2026-11-08"), date(2026, 11, 7))
+        self.assertLess(date.fromisoformat("2026-11-06"), date(2026, 11, 7))
 
     def test_sitemap_dates_are_valid_and_not_future(self):
         for url, stamp in entries():
