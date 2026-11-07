@@ -169,7 +169,7 @@ def inspect(pages):
         path = f"/guides/{guide}/"
         html = pages.get(path, "")
         check(path, "guide_canonical",
-              f'href="https://appdevelopsk.com{path}"' in html)
+              f'<link rel="canonical" href="https://appdevelopsk.com{path}">' in html)
         check(path, "guide_event_contract",
               all(event in html for event in (
                   "guide_store_click", "download_click", "app_detail_click"
