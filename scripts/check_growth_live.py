@@ -13,6 +13,14 @@ SLUGS = ("debate-me", "tappitsu-battle", "future-me", "twotaku", "instant-judge"
 CATALOG_MIN_ITEMS = 92
 FEATURED_SLUGS = ("debate-me", "tappitsu-battle", "future-me", "twotaku")
 GROWTH_RELEASE_ID = "growth-20261106-wave2"
+GROWTH_LASTMOD_BASELINE = "2026-11-07"
+GROWTH_UPDATED_PATHS = (
+    "/", "/apps",
+    "/support/taletime/", "/support/debate-me/",
+    "/support/dog-breeds-encyclopedia/", "/support/face-reaction-battle/",
+    "/guides/quick-games/", "/guides/daily-habits/",
+    "/guides/decision-helpers/", "/guides/ai-tools/",
+)
 PATHS = ("/", "/apps", "/robots.txt", "/sitemap.xml") + tuple(
     f"/support/{slug}/" for slug in SLUGS
 )
@@ -153,6 +161,18 @@ def inspect(pages):
     for path in ("/", "/apps") + tuple(f"/support/{s}/" for s in SLUGS):
         loc = "https://appdevelopsk.com" + path
         check("/sitemap.xml", f"listed_{path}", f"<loc>{loc}</loc>" in sitemap)
+
+    # Recent content changes must be discoverable through a current sitemap.
+    # Dates later than the baseline are valid when the page changes again.
+    for path in GROWTH_UPDATED_PATHS:
+        canonical = "https://appdevelopsk.com" + path
+        match = re.search(
+            r"<loc>" + re.escape(canonical) +
+            r"</loc>\s*<lastmod>(\d{4}-\d{2}-\d{2})</lastmod>",
+            sitemap,
+        )
+        check("/sitemap.xml", f"fresh_lastmod_{path}",
+              bool(match and match.group(1) >= GROWTH_LASTMOD_BASELINE))
 
     return {"passed": all(item["passed"] for item in findings),
             "passedChecks": sum(item["passed"] for item in findings),

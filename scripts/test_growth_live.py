@@ -2,7 +2,7 @@
 import json
 import unittest
 
-from check_growth_live import FEATURED_SLUGS, GROWTH_RELEASE_ID, PATHS, SLUGS, inspect
+from check_growth_live import FEATURED_SLUGS, GROWTH_RELEASE_ID, GROWTH_UPDATED_PATHS, PATHS, SLUGS, inspect
 
 
 def valid_pages():
@@ -59,9 +59,17 @@ def valid_pages():
             f'<a href="{play}&amp;utm_source=test" data-position="details">' +
             " ".join(f'<a href="/support/{x}/" data-related-app="{x}">' for x in other))
     pages["/robots.txt"] = "User-agent: *\\nAllow: /icons/\\n"
-    pages["/sitemap.xml"] = "".join(
-        f"<loc>https://appdevelopsk.com{p}</loc>"
-        for p in ("/", "/apps") + tuple(f"/support/{s}/" for s in SLUGS))
+    pages["/sitemap.xml"] = (
+        "".join(
+            f"<loc>https://appdevelopsk.com{p}</loc><lastmod>2026-11-07</lastmod>"
+            for p in GROWTH_UPDATED_PATHS
+        ) +
+        "".join(
+            f"<loc>https://appdevelopsk.com/support/{slug}/</loc>"
+            for slug in SLUGS
+            if f"/support/{slug}/" not in GROWTH_UPDATED_PATHS
+        )
+    )
     for path in ("/", "/apps") + tuple(f"/support/{slug}/" for slug in SLUGS):
         pages[path] = (f'<meta name="sk-growth-release" '
                        f'content="{GROWTH_RELEASE_ID}">' + pages[path])
@@ -73,6 +81,22 @@ class GrowthSmokeTests(unittest.TestCase):
         report = inspect(valid_pages())
         self.assertTrue(report["passed"])
         self.assertEqual(report["passedChecks"], report["totalChecks"])
+
+    def test_recent_sitemap_timestamp_regression_fails(self):
+        data = valid_pages()
+        data["/sitemap.xml"] = data["/sitemap.xml"].replace(
+            "<loc>https://appdevelopsk.com/apps</loc><lastmod>2026-11-07</lastmod>",
+            "<loc>https://appdevelopsk.com/apps</loc><lastmod>2026-11-06</lastmod>",
+        )
+        self.assertFalse(inspect(data)["passed"])
+
+    def test_missing_recent_sitemap_page_fails(self):
+        data = valid_pages()
+        data["/sitemap.xml"] = data["/sitemap.xml"].replace(
+            "<loc>https://appdevelopsk.com/guides/ai-tools/</loc><lastmod>2026-11-07</lastmod>",
+            "",
+        )
+        self.assertFalse(inspect(data)["passed"])
 
     def test_missing_related_link_fails(self):
         data = valid_pages()
