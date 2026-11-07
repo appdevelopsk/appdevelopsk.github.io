@@ -12,6 +12,7 @@ From a clean checkout of the intended production commit:
 
 ```bash
 python3 -m unittest discover -s scripts -p 'test_*.py' -v
+node --test scripts/test_catalog_search_events.cjs
 python3 scripts/diagnose_growth_deploy.py --root . --output growth-deploy-diagnosis.json
 python3 scripts/diagnose_growth_routes.py --output growth-route-diagnosis.json
 python3 scripts/check_growth_live.py > growth-live-smoke.json
