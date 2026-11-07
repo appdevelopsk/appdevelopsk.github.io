@@ -18,6 +18,7 @@ test('has one canonical and accurate FAQ structured data',()=>{
   assert.match(html,/https:\/\/appdevelopsk\.com\/support\/one-tap-routine\//);
   assert.match(html,/"@type":"FAQPage"/);
   assert.match(html,/One Tap Routine is a habit tracker, not a phone-locking application/);
+  assert.doesNotMatch(html,/FocusLock/i);
   assert.match(html,/https:\/\/appdevelopsk\.com\/privacy-policy\/one-tap-routine\//);
   assert.doesNotMatch(html,/play\.google\.com\/store\/apps\/details\?id=/);
 });
