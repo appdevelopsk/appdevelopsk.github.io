@@ -1473,7 +1473,11 @@
       });
       lastReportedSearch = query;
     };
-    input.addEventListener('input', render);
+    input.addEventListener('input', () => {
+      // The browser search clear (×) must allow an identical query next time.
+      if (!clean(input.value)) lastReportedSearch = '';
+      render();
+    });
     input.addEventListener('blur', reportSearch);
     input.addEventListener('keydown', event => {
       if (event.key === 'Enter') reportSearch();
