@@ -168,7 +168,7 @@ def inspect(pages):
         canonical = "https://appdevelopsk.com" + path
         match = re.search(
             r"<loc>" + re.escape(canonical) +
-            r"</loc>\\s*<lastmod>(\\d{4}-\\d{2}-\\d{2})</lastmod>",
+            r"</loc>\s*<lastmod>(\d{4}-\d{2}-\d{2})</lastmod>",
             sitemap,
         )
         check("/sitemap.xml", f"fresh_lastmod_{path}",
