@@ -21,3 +21,10 @@ test('the visitor-facing landing page supports all 17 app locales',()=>{
   for(const loc of locales)assert.match(js,new RegExp('"'+loc+'":'));
   for(const field of ['intro','android','ios','availability','privacy','otherApps'])assert.match(js,new RegExp('"'+field+'":'));
 });
+
+test('indexable universal landing is listed once in the sitemap',()=>{
+  const sitemap=read('sitemap.xml');
+  const entry='https://appdevelopsk.com/share/debate-me/';
+  assert.equal(sitemap.split(entry).length-1,1);
+  assert.match(html,/meta name="robots" content="index,follow"/);
+});
