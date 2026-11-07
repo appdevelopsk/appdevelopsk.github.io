@@ -2,7 +2,7 @@
 import json
 import unittest
 
-from check_growth_live import FEATURED_SLUGS, GROWTH_RELEASE_ID, GROWTH_UPDATED_PATHS, PATHS, SLUGS, inspect
+from check_growth_live import FEATURED_SLUGS, GUIDE_APPS, GROWTH_RELEASE_ID, GROWTH_UPDATED_PATHS, PATHS, SLUGS, inspect
 
 
 def valid_pages():
@@ -59,6 +59,24 @@ def valid_pages():
             f'<a href="{play}&amp;utm_source=test" data-position="hero">' +
             f'<a href="{play}&amp;utm_source=test" data-position="details">' +
             " ".join(f'<a href="/support/{x}/" data-related-app="{x}">' for x in other))
+    for guide, slugs in GUIDE_APPS.items():
+        klass = "store" if guide in ("quick-games", "daily-habits") else "play"
+        articles = "".join(
+            '<article class="app">'
+            f'<h3>{slug}</h3>'
+            f'<a class="{klass}" data-app="{slug}" '
+            f'href="https://play.google.com/store/apps/details?id=com.test.{slug}">'
+            'See on Google Play</a>'
+            f'<a class="app-detail" href="/support/{slug}/" '
+            f'data-guide-detail="{slug}" aria-label="Features and FAQs for {slug}">'
+            'Features &amp; FAQs</a></article>'
+            for slug in slugs
+        )
+        pages[f"/guides/{guide}/"] = (
+            f'<link rel="canonical" href="https://appdevelopsk.com/guides/{guide}/">'
+            + " guide_store_click download_click app_detail_click "
+            + articles
+        )
     pages["/robots.txt"] = "User-agent: *\\nAllow: /icons/\\n"
     pages["/sitemap.xml"] = (
         "".join(
@@ -98,6 +116,41 @@ class GrowthSmokeTests(unittest.TestCase):
             "",
         )
         self.assertFalse(inspect(data)["passed"])
+
+    def test_missing_guide_support_link_fails(self):
+        pages = valid_pages()
+        path = "/guides/quick-games/"
+        pages[path] = pages[path].replace('data-guide-detail="instant-judge"', "")
+        checks = inspect(pages)["checks"]
+        self.assertIn(
+            {"path": path, "check": "linked_instant-judge", "passed": False},
+            checks,
+        )
+
+    def test_missing_guide_unified_store_event_fails(self):
+        pages = valid_pages()
+        path = "/guides/ai-tools/"
+        pages[path] = pages[path].replace("download_click", "")
+        checks = inspect(pages)["checks"]
+        self.assertIn(
+            {"path": path, "check": "guide_event_contract", "passed": False},
+            checks,
+        )
+
+    def test_unlinked_new_guide_card_fails(self):
+        pages = valid_pages()
+        path = "/guides/daily-habits/"
+        pages[path] += (
+            '<article class="app"><h3>New app</h3>'
+            '<a class="store" data-app="new-app" '
+            'href="https://play.google.com/store/apps/details?id=com.test.new-app">'
+            'See on Google Play</a></article>'
+        )
+        checks = inspect(pages)["checks"]
+        self.assertIn(
+            {"path": path, "check": "all_guide_cards_linked", "passed": False},
+            checks,
+        )
 
     def test_missing_related_link_fails(self):
         data = valid_pages()
