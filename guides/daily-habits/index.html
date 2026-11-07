@@ -43,7 +43,17 @@ a.app-detail:focus-visible{outline:2px solid currentColor;outline-offset:3px}
 <p>Already know what you want? <a href="/apps?goal=habits">Search all published apps</a> or explore <a href="/guides/quick-games/">quick games</a>.</p>
 </main>
 <footer>These are apps by SK Apps. The links open Google Play; availability and features depend on your region and installed version. No ranking or performance claim is implied.</footer>
-<script>document.querySelectorAll('a.store').forEach(a=>a.addEventListener('click',()=>{if(typeof gtag==='function')gtag('event','guide_store_click',{guide:'daily-habits',app:a.dataset.app})}));</script>
+<script>
+document.querySelectorAll('a.store').forEach(link => link.addEventListener('click', () => {
+  if (typeof window.gtag !== 'function') return;
+  // Preserve historical event while adding the unified outbound-store funnel.
+  window.gtag('event', 'guide_store_click', { guide: 'daily-habits', app: link.dataset.app });
+  window.gtag('event', 'download_click', {
+    store: 'google_play', location: 'guide', placement: 'guide_card',
+    app_slug: link.dataset.app, guide: 'daily-habits'
+  });
+}));
+</script>
 
 <script>
 // Reuse the site's app-detail funnel; never send search text or personal data.

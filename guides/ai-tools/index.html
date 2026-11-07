@@ -81,8 +81,14 @@ a.app-detail:focus-visible{outline:2px solid currentColor;outline-offset:3px}
 </main>
 <footer>Links open Google Play. Features, pricing and availability may change by region and app version. The page does not claim any download or ranking performance.</footer>
 <script>
-document.querySelectorAll('a.play').forEach(a=>a.addEventListener('click',()=>{
- if(typeof window.gtag==='function')window.gtag('event','guide_store_click',{guide:'ai-tools',app:a.dataset.app});
+document.querySelectorAll('a.play').forEach(link => link.addEventListener('click', () => {
+  if (typeof window.gtag !== 'function') return;
+  // Preserve historical event while adding the unified outbound-store funnel.
+  window.gtag('event', 'guide_store_click', { guide: 'ai-tools', app: link.dataset.app });
+  window.gtag('event', 'download_click', {
+    store: 'google_play', location: 'guide', placement: 'guide_card',
+    app_slug: link.dataset.app, guide: 'ai-tools'
+  });
 }));
 </script>
 
