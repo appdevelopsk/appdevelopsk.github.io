@@ -38,6 +38,12 @@ class GuideDetailLinksTests(unittest.TestCase):
                     self.assertEqual(len(stores), 1, "every card needs one store CTA")
                     self.assertEqual(len(details), 1, "every card needs one detail CTA")
                     app = stores[0]
+                    title_match = re.search(r"<h3>([^<]+)</h3>", article)
+                    self.assertIsNotNone(title_match)
+                    self.assertIn(
+                        f'aria-label="Features and FAQs for {title_match.group(1)}"',
+                        article,
+                    )
                     detail_path, detail_slug = details[0]
                     self.assertEqual((detail_path, detail_slug), (app, app))
                     self.assertNotIn(app, seen, "duplicate app card")
