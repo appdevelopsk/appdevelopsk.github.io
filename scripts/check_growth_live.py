@@ -12,6 +12,12 @@ SLUGS = ("debate-me", "tappitsu-battle", "future-me", "twotaku", "instant-judge"
 # Prevent accidental removal of existing listings, but allow genuine new releases.
 CATALOG_MIN_ITEMS = 92
 FEATURED_SLUGS = ("debate-me", "tappitsu-battle", "future-me", "twotaku")
+GUIDE_APPS = {
+    "quick-games": ("blur", "instant-judge", "twotaku", "nodo", "brain-burst"),
+    "daily-habits": ("true-me", "future-me", "water-reminder", "gratitude-log"),
+    "decision-helpers": ("food-roulette", "movie-roulette", "what-to-do", "chore-roulette"),
+    "ai-tools": ("debate-me", "voice-memo", "pantry-ai", "name-maker"),
+}
 GROWTH_RELEASE_ID = "growth-20261106-wave2"
 GROWTH_LASTMOD_BASELINE = "2026-11-07"
 GROWTH_UPDATED_PATHS = (
@@ -23,7 +29,7 @@ GROWTH_UPDATED_PATHS = (
 )
 PATHS = ("/", "/apps", "/robots.txt", "/sitemap.xml") + tuple(
     f"/support/{slug}/" for slug in SLUGS
-)
+) + tuple(f"/guides/{guide}/" for guide in GUIDE_APPS)
 
 
 def inspect(pages):
@@ -156,6 +162,42 @@ def inspect(pages):
 
         check(path, "analytics", "related_app_click" in html and "download_click" in html)
         check(path, "play_cta", 'data-position="hero"' in html and 'data-position="details"' in html)
+
+    # Editorial guides need a complete discover->details->store funnel.
+    # This is a static HTTP smoke, not proof of browser GA4 delivery.
+    for guide, expected in GUIDE_APPS.items():
+        path = f"/guides/{guide}/"
+        html = pages.get(path, "")
+        check(path, "guide_canonical",
+              f'<link rel="canonical" href="https://appdevelopsk.com{path}">' in html)
+        check(path, "guide_event_contract",
+              all(event in html for event in (
+                  "guide_store_click", "download_click", "app_detail_click"
+              )))
+        article_blocks = re.findall(r'<article class="app">([\s\S]*?)</article>', html)
+        records = {}
+        valid_articles = True
+        for article in article_blocks:
+            stores = re.findall(r'<a class="(?:store|play)" data-app="([^"]+)"', article)
+            details = re.findall(
+                r'<a class="app-detail" href="/support/([^/"]+)/" '
+                r'data-guide-detail="([^"]+)" aria-label="Features and FAQs for ([^"]+)"',
+                article,
+            )
+            headings = re.findall(r'<h3>([^<]+)</h3>', article)
+            good = (len(stores) == len(details) == len(headings) == 1 and
+                    details[0][0] == details[0][1] == stores[0] and
+                    headings[0] == details[0][2] and
+                    "play.google.com/store/apps/details?id=" in article)
+            if not good or stores[0] in records:
+                valid_articles = False
+            if stores:
+                records[stores[0]] = good
+        check(path, "all_guide_cards_linked",
+              valid_articles and len(article_blocks) >= len(expected) and
+              len(article_blocks) == len(records))
+        for slug in expected:
+            check(path, f"linked_{slug}", records.get(slug, False))
 
     robots = pages.get("/robots.txt", "")
     check("/robots.txt", "public_icons_crawlable",
