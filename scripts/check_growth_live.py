@@ -174,7 +174,7 @@ def inspect(pages):
               all(event in html for event in (
                   "guide_store_click", "download_click", "app_detail_click"
               )))
-        article_blocks = re.findall(r'<article class="app">([\\s\\S]*?)</article>', html)
+        article_blocks = re.findall(r'<article class="app">([\s\S]*?)</article>', html)
         records = {}
         valid_articles = True
         for article in article_blocks:
