@@ -15,7 +15,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'unsafe-inline'; img-src 'self'; base-uri 'none'; form-action 'none'; connect-src 'none';">
   <title>Debate Me – AI Debate Practice | SK APPS</title>
-  <meta name="description" content="Try Debate Me: choose a topic, debate an AI opponent and get feedback. Find the official iOS and Android store listings.">
+  <meta name="description" content="Try Debate Me: choose a topic, debate an AI opponent and get feedback. Find the verified Google Play listing and check iOS availability.">
   <style>
     :root{color-scheme:light dark;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
     *{box-sizing:border-box}
@@ -25,10 +25,10 @@
     p{line-height:1.6;color:#4b5875}
     .actions{display:grid;gap:12px;margin:24px 0 10px}
     a.action{padding:14px 20px;border-radius:12px;color:white;background:#3656d6;text-decoration:none;font-weight:700}
-    a.action.secondary{background:#202b52}
+    .ios-status{font-size:.94rem;margin:0;padding:10px;border-radius:10px;background:#f2f4fa;color:#52627e}
     a.text{color:#3656d6;text-decoration:underline}
     small{color:#697493;line-height:1.5}
-    @media(prefers-color-scheme:dark){body{background:#10182b;color:#eff2ff}main{background:#202b45;border-color:#384969}p,small{color:#c0cbe4}a.text{color:#aac0ff}}
+    @media(prefers-color-scheme:dark){body{background:#10182b;color:#eff2ff}main{background:#202b45;border-color:#384969}p,small{color:#c0cbe4}.ios-status{background:#293650;color:#c0cbe4}a.text{color:#aac0ff}}
   </style>
   <script src="landing.js" defer></script>
 </head>
@@ -38,7 +38,7 @@
     <p data-copy="intro">Practice a three-round debate with an AI opponent, then get feedback on your arguments.</p>
     <div class="actions">
       <a id="android" class="action" href="https://play.google.com/store/apps/details?id=jp.appdevelopsk.debate_me" rel="noopener noreferrer" data-copy="android">Get it on Google Play</a>
-      <a id="ios" class="action secondary" href="https://apps.apple.com/app/id6760968208" rel="noopener noreferrer" data-copy="ios">Open in the App Store</a>
+      <p id="ios" class="ios-status" role="status" data-copy="ios">iOS App Store availability is unverified.</p>
     </div>
     <small data-copy="availability">Store availability may vary by region.</small>
     <p><a class="text" href="https://appdevelopsk.com/privacy-policy/debate-me/" data-copy="privacy">Privacy policy</a></p>
