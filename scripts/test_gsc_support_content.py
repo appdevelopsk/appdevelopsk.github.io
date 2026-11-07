@@ -72,6 +72,22 @@ class SupportContentTests(unittest.TestCase):
         self.assertEqual(self.face.count('data-alternative="'), 2)
         self.assertNotIn("com.appdevelopsk.face_reaction_battle", self.face)
 
+    def test_face_alternative_outbound_uses_standard_app_slug(self):
+        self.assertIn(
+            "app_slug: a.getAttribute('data-alternative') || 'face-reaction-battle'",
+            self.face,
+        )
+        self.assertIn("source_app: 'face-reaction-battle'", self.face)
+        self.assertIn(
+            "placement: a.hasAttribute('data-alternative') ? 'alternative' : 'details'",
+            self.face,
+        )
+        # Keep the historical parameter temporarily for downstream consumers.
+        self.assertIn(
+            "app: a.getAttribute('data-alternative') || 'face-reaction-battle'",
+            self.face,
+        )
+
     def test_canonicals_unchanged(self):
         for slug, html in (("dog-breeds-encyclopedia", self.paw),
                            ("face-reaction-battle", self.face)):

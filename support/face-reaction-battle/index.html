@@ -68,7 +68,7 @@
       if (!a) return;
       var href = a.getAttribute('href') || '';
       if (/play\.google\.com/.test(href)) {
-        gtag('event', 'download_click', { store: 'google_play', location: 'support', app: a.getAttribute('data-alternative') || 'face-reaction-battle', placement: a.hasAttribute('data-alternative') ? 'alternative' : 'details', link_url: href });
+        gtag('event', 'download_click', { store: 'google_play', location: 'support', app: a.getAttribute('data-alternative') || 'face-reaction-battle', app_slug: a.getAttribute('data-alternative') || 'face-reaction-battle', source_app: 'face-reaction-battle', placement: a.hasAttribute('data-alternative') ? 'alternative' : 'details', link_url: href });
       }
     }, true);
   </script>
