@@ -44,7 +44,11 @@ class GuideCatalogDeepLinkTests(unittest.TestCase):
         self.assertIn("const initialResults = render();", catalog)
         self.assertIn("if (goal !== 'all')", catalog)
         self.assertIn("fire('catalog_filter_landing'", catalog)
-        self.assertIn("goal, results: initialResults, source: 'editorial_guide'", catalog)
+        self.assertIn("goal, results: initialResults, source: landingSource", catalog)
+        self.assertIn("let landingSource = 'direct_or_shared'", catalog)
+        self.assertIn("landingSource = 'editorial_guide'", catalog)
+        self.assertIn("referrer.origin === window.location.origin", catalog)
+        self.assertIn("guideGoals[referrer.pathname] === goal", catalog)
         self.assertNotIn("query: input.value", catalog)
 
     def test_new_app_does_not_break_catalog_test(self):
@@ -54,6 +58,16 @@ class GuideCatalogDeepLinkTests(unittest.TestCase):
     def test_missing_baseline_app_is_rejected(self):
         cards = '<a class="app-card"></a>' * (MIN_CATALOG_CARDS - 1)
         self.assertFalse(catalog_card_count_ok(cards))
+
+    def test_attribution_uses_matching_editorial_guide_only(self):
+        catalog = (ROOT / "apps.html").read_text(encoding="utf-8")
+        for path, goal in GUIDES.items():
+            with self.subTest(guide=path):
+                self.assertIn(f"'/guides/{path}/': '{goal}'", catalog)
+        self.assertIn("const referrer = new URL(document.referrer)", catalog)
+        self.assertIn("landingSource = 'direct_or_shared'", catalog)
+        self.assertIn("landingSource = 'editorial_guide'", catalog)
+        self.assertNotIn("referrer: document.referrer", catalog)
 
     def test_manual_filter_syncs_shareable_goal_url(self):
         catalog = (ROOT / "apps.html").read_text(encoding="utf-8")

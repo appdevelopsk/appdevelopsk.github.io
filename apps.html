@@ -1510,11 +1510,28 @@
       });
     }));
     const initialResults = render();
-    // Track editorial-guide arrivals separately from manual category choices.
-    // Only the allowlisted category and count are sent; no search terms.
+    // An allowlisted goal alone does not prove an editorial guide referral:
+    // direct/bookmarked/shared filtered URLs are a separate acquisition source.
+    // Read referrer locally; never send its URL or any search text to analytics.
     if (goal !== 'all') {
+      const guideGoals = {
+        '/guides/quick-games/': 'quick-games',
+        '/guides/daily-habits/': 'habits',
+        '/guides/decision-helpers/': 'decisions',
+        '/guides/ai-tools/': 'ai'
+      };
+      let landingSource = 'direct_or_shared';
+      try {
+        const referrer = new URL(document.referrer);
+        if (referrer.origin === window.location.origin &&
+            guideGoals[referrer.pathname] === goal) {
+          landingSource = 'editorial_guide';
+        }
+      } catch (_) {
+        // A missing or malformed referrer is not evidence of a guide visit.
+      }
       fire('catalog_filter_landing', {
-        goal, results: initialResults, source: 'editorial_guide'
+        goal, results: initialResults, source: landingSource
       });
     }
   })();
