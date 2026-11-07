@@ -26,7 +26,7 @@ test('filters work client-side without tracking raw search text',()=>{
   const source=scripts.find(s=>s.includes('catalog_store_click'));
   assert.ok(source); new Script(source);
   function el(extra={}) {return {events:{},hidden:false,...extra,addEventListener(name,fn){this.events[name]=fn;},setAttribute(key,value){this[key]=value;}}}
-  const input=el({value:''}),count=el({textContent:''}),empty=el();
+  const input=el({value:''}),count=el({textContent:''}),empty=el(),reset=el({focus(){}});
   const buttons=['all','quick-games','habits','decisions','ai'].map(goal=>el({dataset:{goal}}));
   const cards=[
     el({textContent:'Blur: Guess the Image Guess the photo',querySelector:()=>({getAttribute:()=> 'icons/apps/blur.png'})}),
@@ -34,7 +34,7 @@ test('filters work client-side without tracking raw search text',()=>{
     el({textContent:'Food Roulette pick a restaurant',querySelector:()=>({getAttribute:()=> 'icons/apps/food-roulette.png'})}),
   ];
   const events=[];
-  runInNewContext(source,{document:{getElementById(id){return {'find-app':input,'finder-count':count,'finder-empty':empty}[id];},querySelectorAll(q){return q==='.grid .app-card'?cards:buttons;}},window:{gtag(...args){events.push(args);}}});
+  runInNewContext(source,{document:{referrer:'',getElementById(id){return {'find-app':input,'finder-count':count,'finder-empty':empty,'finder-reset':reset}[id];},querySelectorAll(q){return q==='.grid .app-card'?cards:q==='[data-detail-app]'?[]:buttons;}},URLSearchParams,URL,window:{location:{search:'',href:'https://appdevelopsk.com/apps',origin:'https://appdevelopsk.com'},history:{state:null,replaceState(){}},gtag(...args){events.push(args);}}});
   assert.equal(count.textContent,'3 apps shown');
   buttons[1].events.click();
   assert.equal(count.textContent,'1 apps shown');
@@ -155,5 +155,5 @@ test('home features public Dotchi instead of an unavailable app, with 17 languag
     assert.equal(typeof translations[lang].twotaku,'string',lang+' must localize Dotchi caption');
     assert.ok(translations[lang].twotaku.length>=12,lang+' missing meaningful caption');
   }
-  assert.match(home,/gtag\('event', 'app_view'/,'homepage app-card clicks remain measurable');
+  assert.match(home,/gtag\('event', 'app_detail_click', \{[^}]*placement: 'homepage_card'/,'homepage app-card clicks remain measurable');
 });

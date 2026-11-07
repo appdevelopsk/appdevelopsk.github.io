@@ -49,5 +49,6 @@ test('Dotchi support publication is part of the non-destructive VPS release gate
  assert.match(release,/support\/twotaku\/index\.html/);
  assert.match(live,/support\/twotaku/);
  assert.match(live,/FAIL Dotchi anime-only support content still live/);
- assert.match(sitemap,/https:\/\/appdevelopsk\.com\/support\/twotaku\/<\/loc><lastmod>2026-10-27/);
+ const dotchiLastmod=sitemap.match(/https:\/\/appdevelopsk\.com\/support\/twotaku\/<\/loc><lastmod>(\d{4}-\d{2}-\d{2})/)?.[1];
+ assert.ok(dotchiLastmod&&dotchiLastmod>='2026-10-27','Dotchi sitemap lastmod must not regress before 2026-10-27');
 });

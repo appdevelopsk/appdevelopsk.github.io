@@ -83,7 +83,10 @@ def inspect(pages):
     check("/apps", "store_click_tracking", "catalog_store_click" in catalog and "download_click" in catalog)
     check("/apps", "detail_click_tracking", "catalog_app_detail_click" in catalog)
     check("/apps", "finalized_search_analytics",
-          "input.addEventListener('input', render)" in catalog and
+          # #77: the input handler re-renders and clears the dedupe key, but never reports per keystroke.
+          "input.addEventListener('input', () => {" in catalog and
+          "if (!clean(input.value)) lastReportedSearch = '';" in catalog and
+          "input.addEventListener('input', reportSearch)" not in catalog and
           "input.addEventListener('blur', reportSearch)" in catalog and
           "if (event.key === 'Enter') reportSearch()" in catalog and
           "query === lastReportedSearch" in catalog and

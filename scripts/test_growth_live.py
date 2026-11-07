@@ -26,7 +26,8 @@ def valid_pages():
     pages["/apps"] = (
         '<script type="application/ld+json">' + json.dumps(listing) + '</script>' +
         cards + " catalog_store_click download_click catalog_app_detail_click " +
-        "input.addEventListener('input', render) input.addEventListener('blur', reportSearch) " +
+        "input.addEventListener('input', () => { if (!clean(input.value)) lastReportedSearch = ''; render(); }); " +
+        "input.addEventListener('blur', reportSearch) " +
         "if (event.key === 'Enter') reportSearch() query === lastReportedSearch " +
         "lastReportedSearch = query " +
         "const app = slug(card), content = clean((card.textContent || '') + ' ' + app; app.replace(/-/g, ' ')" +
@@ -217,7 +218,7 @@ class GrowthSmokeTests(unittest.TestCase):
     def test_first_keystroke_analytics_rejected(self):
         data = valid_pages()
         data["/apps"] = data["/apps"].replace(
-            "input.addEventListener('input', render)",
+            "input.addEventListener('input', () => { if (!clean(input.value)) lastReportedSearch = ''; render(); }); ",
             "input.addEventListener('input', reportSearch)")
         self.assertFalse(inspect(data)["passed"])
 

@@ -61,7 +61,8 @@ grep -Fq 'data-position="hero"' "$tmp/dotchi.html" || { echo 'FAIL Dotchi store 
 grep -Fq 'const FEAT_T={en:{0:"Choose A or B on a question."' "$tmp/dotchi.html" || { echo 'FAIL Dotchi translated feature claims still stale' >&2; exit 1; }
 # Read-only release gate for the recently corrected Debate Me SEO landing.
 fetch '/support/debate-me/' 'debate-me.html'
-grep -Fq 'AI Debate Practice &amp; Argument Skills' "$tmp/debate-me.html" || grep -Fq 'AI Debate Practice & Argument Skills' "$tmp/debate-me.html" || { echo 'FAIL Debate Me product title is not live' >&2; exit 1; }
+# #78 retitled the page from GSC evidence: "AI Debate Practice & Feedback".
+grep -Fq 'AI Debate Practice &amp; Feedback' "$tmp/debate-me.html" || grep -Fq 'AI Debate Practice & Feedback' "$tmp/debate-me.html" || { echo 'FAIL Debate Me product title is not live' >&2; exit 1; }
 grep -Fq 'data-position="hero"' "$tmp/debate-me.html" || { echo 'FAIL Debate Me first-screen Play CTA not live' >&2; exit 1; }
 grep -Fq 'data-position="details"' "$tmp/debate-me.html" || { echo 'FAIL Debate Me details Play CTA missing' >&2; exit 1; }
 grep -Fq 'support_debate_me_hero' "$tmp/debate-me.html" || { echo 'FAIL Debate Me Play attribution missing' >&2; exit 1; }
@@ -111,5 +112,6 @@ if grep -Eiq 'Letters to future self|Time capsule feature|FutureMe Premium.*[0-9
   echo 'FAIL FutureMe support page contains outdated feature or pricing claims' >&2; exit 1
 fi
 fetch '/robots.txt' 'robots.txt'
-grep -Fq 'Allow: /icons/apps/' "$tmp/robots.txt" || { echo 'FAIL Google image crawl allow not live' >&2; exit 1; }
+# #53 broadened the allow to /icons/ (covers /icons/apps/).
+grep -Eq '^Allow: /icons/(apps/)?$' "$tmp/robots.txt" || { echo 'FAIL Google image crawl allow not live' >&2; exit 1; }
 echo 'PASS: catalog, guides, priority search landings, store CTAs, icon crawl policy and sitemap current (HTTP 200)'

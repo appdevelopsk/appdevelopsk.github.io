@@ -51,7 +51,7 @@ test('unavailable Face Reaction Battle stays unavailable and offers distinct pub
 
 test('public catalog icons are crawlable and explicit VPS release is non-destructive',()=>{
  const robots=read('robots.txt');
- assert.match(robots,/Allow: \/icons\/apps\//);
+ assert.match(robots,/Allow: \/icons\/(apps\/)?$/m);
  const pub=read('scripts/publish_app_discovery.sh');
  assert.match(pub,/--dry-run/);
  assert.match(pub,/support\/brain-burst\/index\.html/);
@@ -65,7 +65,7 @@ test('public catalog icons are crawlable and explicit VPS release is non-destruc
  assert.doesNotMatch(pub,/^rsync[^\n]*--delete/m);
  const live=read('scripts/check_app_discovery_live.sh');
  assert.match(live,/data-position="hero"/);
- assert.match(live,/Allow: \/icons\/apps\//);
+ assert.ok(live.includes("Allow: /icons/(apps/)?"));
 });
 
 test('daily live acquisition check is read-only, scheduled and fails visibly on stale VPS',()=>{
