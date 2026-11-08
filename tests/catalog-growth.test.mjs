@@ -58,7 +58,7 @@ test('guide landing pages link only to listed published applications and are dis
     assert.match(catalog,new RegExp('href="/guides/'+slug+'/"'));
     assert.match(page,/<link rel="canonical"/);
     assert.match(page,/<script type="application\/ld\+json">/);
-    assert.match(page,/gtag\('event','guide_store_click'/);
+    assert.match(page,/gtag\(\s*'event',\s*'guide_store_click'/);
     const apps=[...page.matchAll(/data-app="([a-z0-9-]+)"/g)].map(m=>m[1]);
     assert.equal(apps.length,slug==='quick-games'?5:4);
     for(const a of apps){
