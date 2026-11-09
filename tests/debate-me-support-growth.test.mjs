@@ -62,3 +62,15 @@ test('manual VPS publishing includes the landing and its read-only live validati
   assert.match(live,/FAIL Debate Me page still describes cooking/);
   assert.match(live,/FAIL Debate Me first-screen Play CTA not live/);
 });
+
+test('search snippets match the visible Debate Me product and schema', () => {
+  const description = html.match(/<meta name="description" content="([^"]+)"/)?.[1];
+  const og = html.match(/<meta property="og:description" content="([^"]+)"/)?.[1];
+  const schema = html.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/)?.[1];
+  assert.ok(description);
+  assert.equal(description, og);
+  assert.ok(description.length <= 160);
+  assert.match(description, /Debate Me.*Android AI debate/);
+  assert.match(description, /feedback on your reasoning/);
+  assert.equal(JSON.parse(schema).description, description);
+});
