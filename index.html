@@ -232,7 +232,7 @@
 
     /* Categories */
     .categories {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
       gap: 24px; max-width: 1200px; margin: 0 auto;
     }
     .category {
@@ -248,7 +248,7 @@
 
     /* Featured Apps */
     .apps-grid {
-      display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
       gap: 20px; max-width: 1200px; margin: 0 auto;
     }
     .app-card {
@@ -257,6 +257,7 @@
       background: var(--bg-card); border: 1px solid rgba(255,255,255,0.05);
       transition: all 0.3s; text-decoration: none; color: inherit;
     }
+    .app-card > :not(.app-icon):not(.app-icon-placeholder) { min-width: 0; overflow-wrap: anywhere; }
     .app-card:hover { transform: translateY(-2px); border-color: rgba(108, 123, 255, 0.2); }
     .app-icon-placeholder {
       width: 56px; height: 56px; border-radius: 14px; flex-shrink: 0;
