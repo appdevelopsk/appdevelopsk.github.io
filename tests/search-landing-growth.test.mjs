@@ -103,3 +103,17 @@ test('SnapLingo search snippet matches visible features and structured data', ()
  assert.match(html,/data-feat="1">17 languages supported/);
  assert.match(html,/data-feat="2">Vocabulary flashcards/);
 });
+
+test('AI app guide SERP snippet matches the real editorial choices', () => {
+ const html=read('guides/ai-tools/index.html');
+ const meta=html.match(/<meta name="description" content="([^"]+)"/)?.[1];
+ const og=html.match(/<meta property="og:description" content="([^"]+)"/)?.[1];
+ assert.ok(meta);
+ assert.ok(meta.length<=160);
+ assert.equal(meta,og);
+ for(const name of ['Debate Me','Speakly','Pantry AI','NameCraft']){
+  assert.ok(meta.includes(name), 'missing app name: '+name);
+ }
+ assert.match(html,/<link rel="canonical" href="https:\/\/appdevelopsk\.com\/guides\/ai-tools\/"/);
+ assert.match(html,/<h1>AI apps for debate practice, voice notes and ideas<\/h1>/);
+});
