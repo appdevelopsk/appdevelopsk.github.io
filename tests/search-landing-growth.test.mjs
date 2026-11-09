@@ -87,3 +87,19 @@ test('production smoke refuses the stale anime-only Dotchi catalog card',()=>{
  assert.match(live,/FAIL Dotchi catalog still presents an anime-only app/);
  assert.match(live,/fetch '\/apps' 'apps\.html'/);
 });
+
+test('SnapLingo search snippet matches visible features and structured data', () => {
+ const html=read('support/snaplingo/index.html');
+ const desc=html.match(/<meta name="description" content="([^"]+)"/)?.[1];
+ const og=html.match(/<meta property="og:description" content="([^"]+)"/)?.[1];
+ const twitter=html.match(/<meta name="twitter:description" content="([^"]+)"/)?.[1];
+ const schema=html.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/)?.[1];
+ assert.ok(desc && desc.length<=160);
+ assert.equal(desc,og);
+ assert.equal(desc,twitter);
+ assert.match(desc,/SnapLingo.*camera.*17 languages.*flashcards/);
+ assert.equal(JSON.parse(schema).description,desc);
+ assert.match(html,/data-feat="0">Camera-based word learning/);
+ assert.match(html,/data-feat="1">17 languages supported/);
+ assert.match(html,/data-feat="2">Vocabulary flashcards/);
+});
