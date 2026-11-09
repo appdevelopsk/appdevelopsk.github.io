@@ -12,3 +12,8 @@ test("app catalog grid fits viewports narrower than the original 300px column", 
 test("mobile page retains its responsive viewport setting", () => {
   assert.match(source, /<meta name="viewport" content="width=device-width, initial-scale=1\.0">/);
 });
+
+test("app card text can shrink and wrap instead of widening the grid", () => {
+  assert.match(source, /\.app-card-body\s*\{\s*min-width:0;\s*flex:1;/);
+  assert.match(source, /\.app-card h3\s*\{[^}]*overflow-wrap:anywhere;/);
+});
