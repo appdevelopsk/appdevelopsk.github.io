@@ -27,6 +27,8 @@ on:
       - guides/**
       - sitemap.xml
       - scripts/build_catalog.py
+      - scripts/test_sitemap_route_integrity.py
+      - scripts/test_sitemap_growth_freshness.py
       - site_counts.json
       - tests/catalog-growth.test.mjs
       - tests/catalog-positioning-regression.test.mjs
@@ -63,6 +65,8 @@ on:
       - guides/**
       - sitemap.xml
       - scripts/build_catalog.py
+      - scripts/test_sitemap_route_integrity.py
+      - scripts/test_sitemap_growth_freshness.py
       - site_counts.json
       - tests/catalog-growth.test.mjs
       - tests/catalog-positioning-regression.test.mjs
@@ -88,6 +92,8 @@ jobs:
           python-version: '3.12'
       - name: Confirm catalog generator remains idempotent
         run: python3 scripts/build_catalog.py --check
+      - name: Verify sitemap URLs, source HTML and canonical integrity
+        run: python3 -m unittest scripts.test_sitemap_route_integrity scripts.test_sitemap_growth_freshness -v
       - name: Verify non-destructive release scripts have valid shell syntax
         run: bash -n scripts/publish_app_discovery.sh scripts/check_app_discovery_live.sh scripts/publish_stale_policy_pages.sh
       - name: Verify search, referral links and guide listings
