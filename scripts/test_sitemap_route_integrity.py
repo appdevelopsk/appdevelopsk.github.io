@@ -41,7 +41,7 @@ def resolve_source(url):
     if f"{parsed.scheme}://{parsed.netloc}" != ORIGIN or parsed.query or parsed.fragment:
         raise ValueError(f"Unexpected sitemap URL: {url}")
     path = unquote(parsed.path)
-    if ".." in Path(path).parts or "\\\\" in path:
+    if ".." in Path(path).parts or "\\" in path:
         raise ValueError(f"Unsafe sitemap path: {url}")
     if path == "/":
         return ROOT / "index.html"
@@ -59,13 +59,9 @@ class SitemapRouteIntegrityTests(unittest.TestCase):
             with self.subTest(url=url):
                 self.assertTrue(resolve_source(url).is_file(), f"missing HTML for {url}")
 
-    def test_key_conversion_pages_have_exact_self_canonical(self):
-        for path in ("/", "/apps", "/support/blur/",
-                     "/support/dog-breeds-encyclopedia/",
-                     "/guides/quick-games/"):
-            url = ORIGIN + path
+    def test_all_sitemap_pages_have_exact_self_canonical(self):
+        for url in listed_urls():
             with self.subTest(url=url):
-                self.assertIn(url, listed_urls())
                 parser = CanonicalParser()
                 parser.feed(resolve_source(url).read_text(encoding="utf-8"))
                 self.assertEqual(parser.values, [url],
