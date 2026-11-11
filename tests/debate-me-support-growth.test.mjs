@@ -11,7 +11,8 @@ function dictionary(name, after) {
   return runInNewContext('('+match[1]+')');
 }
 test('first paint shows real AI debate and never a food spinner', () => {
-  assert.match(html, /<title>Debate Me – AI Debate Practice &(amp;)? Feedback/);
+  assert.match(html, /<title>Debate Me – Free AI Debate App for Android \| SK APPS<\/title>/);
+  assert.match(html, /<meta property="og:title" content="Debate Me – Free AI Debate App for Android">/);
   assert.match(html, /<h1>Debate Me<\/h1>/);
   assert.match(html, /<div class="hero-emoji">🗣️<\/div>/);
   assert.match(html, /<div class="hero-cat">Education<\/div>/);
@@ -70,7 +71,9 @@ test('search snippets match the visible Debate Me product and schema', () => {
   assert.ok(description);
   assert.equal(description, og);
   assert.ok(description.length <= 160);
-  assert.match(description, /Debate Me.*Android AI debate/);
-  assert.match(description, /feedback on your reasoning/);
+  assert.match(description, /Debate Me/);
+  assert.match(description, /AI opponent/);
+  assert.match(description, /feedback on your arguments/);
+  assert.match(description, /Google Play for Android/);
   assert.equal(JSON.parse(schema).description, description);
 });
