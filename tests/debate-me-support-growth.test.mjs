@@ -62,6 +62,10 @@ test('manual VPS publishing includes the landing and its read-only live validati
   assert.match(live,/fetch '\/support\/debate-me\/' 'debate-me.html'/);
   assert.match(live,/FAIL Debate Me page still describes cooking/);
   assert.match(live,/FAIL Debate Me first-screen Play CTA not live/);
+  assert.match(live, /Debate Me – Free AI Debate App for Android/);
+  assert.match(live, /FAIL Debate Me new SEO title not live/);
+  assert.match(live, /FAIL Debate Me new search description not live/);
+  assert.doesNotMatch(live, /grep -Fq 'AI Debate Practice &amp; Feedback'/);
 });
 
 test('search snippets match the visible Debate Me product and schema', () => {
