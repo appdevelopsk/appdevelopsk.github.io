@@ -46,6 +46,15 @@ fetch '/sitemap.xml' 'sitemap.xml'
 for slug in quick-games daily-habits decision-helpers ai-tools; do
   grep -Fq "https://appdevelopsk.com/guides/$slug/" "$tmp/sitemap.xml" || { echo "FAIL sitemap missing $slug" >&2; exit 1; }
 done
+# Verify that the Japanese acquisition guide is really deployed, not merely committed.
+fetch '/guides/quick-games/ja/' 'quick-games-ja.html'
+grep -Fq '<html lang="ja">' "$tmp/quick-games-ja.html" || { echo 'FAIL Japanese guide language mismatch' >&2; exit 1; }
+grep -Fq 'https://appdevelopsk.com/guides/quick-games/ja/' "$tmp/quick-games-ja.html" || { echo 'FAIL Japanese guide canonical missing' >&2; exit 1; }
+grep -Fq 'hreflang="ja" href="https://appdevelopsk.com/guides/quick-games/ja/"' "$tmp/quick-games.html" || { echo 'FAIL English guide missing Japanese hreflang' >&2; exit 1; }
+grep -Fq 'utm_campaign=quick_games_ja' "$tmp/quick-games-ja.html" || { echo 'FAIL Japanese store attribution missing' >&2; exit 1; }
+grep -Fq 'guide_store_click' "$tmp/quick-games-ja.html" || { echo 'FAIL Japanese guide store-click event absent' >&2; exit 1; }
+grep -Fq 'https://appdevelopsk.com/guides/quick-games/ja/' "$tmp/sitemap.xml" || { echo 'FAIL Japanese guide omitted from live sitemap' >&2; exit 1; }
+
 for slug in brain-burst snaplingo; do
   fetch "/support/$slug/" "$slug.html"
   grep -Fq 'data-position="hero"' "$tmp/$slug.html" || { echo "FAIL $slug first-screen Play CTA not yet live" >&2; exit 1; }
