@@ -72,8 +72,11 @@ grep -Fq 'data-position="hero"' "$tmp/dotchi.html" || { echo 'FAIL Dotchi store 
 grep -Fq 'const FEAT_T={en:{0:"Choose A or B on a question."' "$tmp/dotchi.html" || { echo 'FAIL Dotchi translated feature claims still stale' >&2; exit 1; }
 # Read-only release gate for the recently corrected Debate Me SEO landing.
 fetch '/support/debate-me/' 'debate-me.html'
-# #78 retitled the page from GSC evidence: "AI Debate Practice & Feedback".
-grep -Fq 'AI Debate Practice &amp; Feedback' "$tmp/debate-me.html" || grep -Fq 'AI Debate Practice & Feedback' "$tmp/debate-me.html" || { echo 'FAIL Debate Me product title is not live' >&2; exit 1; }
+# The post-GSC 2026-11-11 snippet must be live; rejecting the old SEO
+# title prevents a GitHub merge from being mistaken for a published change.
+grep -Fq '<title>Debate Me – Free AI Debate App for Android | SK APPS</title>' "$tmp/debate-me.html" || { echo 'FAIL Debate Me new SEO title not live' >&2; exit 1; }
+grep -Fq 'content="Practice debates against an AI opponent in six topic categories' "$tmp/debate-me.html" || { echo 'FAIL Debate Me new search description not live' >&2; exit 1; }
+grep -Fq '<meta property="og:title" content="Debate Me – Free AI Debate App for Android">' "$tmp/debate-me.html" || { echo 'FAIL Debate Me OG title not live' >&2; exit 1; }
 grep -Fq 'data-position="hero"' "$tmp/debate-me.html" || { echo 'FAIL Debate Me first-screen Play CTA not live' >&2; exit 1; }
 grep -Fq 'data-position="details"' "$tmp/debate-me.html" || { echo 'FAIL Debate Me details Play CTA missing' >&2; exit 1; }
 grep -Fq 'support_debate_me_hero' "$tmp/debate-me.html" || { echo 'FAIL Debate Me Play attribution missing' >&2; exit 1; }
