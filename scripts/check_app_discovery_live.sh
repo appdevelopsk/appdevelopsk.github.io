@@ -16,6 +16,7 @@ fetch() {
 fetch '/' 'index.html'
 grep -Fq 'class="discovery-links"' "$tmp/index.html" || { echo 'FAIL homepage discovery links are stale' >&2; exit 1; }
 grep -Fq 'discovery_nav_click' "$tmp/index.html" || { echo 'FAIL homepage discovery tracking is stale' >&2; exit 1; }
+grep -Fq 'data-guide="quick-games-ja"' "$tmp/index.html" || { echo 'FAIL Japanese guide missing from live homepage navigation' >&2; exit 1; }
 # The homepage should lead to currently published Android applications.
 grep -Fq 'href="support/twotaku/"' "$tmp/index.html" || { echo 'FAIL homepage missing published Dotchi feature' >&2; exit 1; }
 grep -Fq 'data-app-desc="twotaku"' "$tmp/index.html" || { echo 'FAIL homepage Dotchi localized caption missing' >&2; exit 1; }
@@ -25,6 +26,7 @@ fi
 fetch '/apps' 'apps.html'
 grep -Fq 'id="find-app"' "$tmp/apps.html" || { echo 'FAIL catalog search is stale' >&2; exit 1; }
 grep -Fq 'catalog_store_click' "$tmp/apps.html" || { echo 'FAIL store-click attribution is stale' >&2; exit 1; }
+grep -Fq '日本語でゲームを探す' "$tmp/apps.html" || { echo 'FAIL Japanese guide missing from live app catalog' >&2; exit 1; }
 grep -Fq 'Dotchi: This or That Polls' "$tmp/apps.html" || { echo 'FAIL Dotchi catalog still presents an anime-only app' >&2; exit 1; }
 # Source metadata is not proof that the public catalog was updated.
 # Check the actual live HTML for each corrected high-priority app description.
