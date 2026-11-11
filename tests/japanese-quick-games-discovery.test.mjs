@@ -67,3 +67,14 @@ test('non-destructive deployment includes the new guide and smoke checks actual 
  assert.match(live,/FAIL Japanese guide omitted from live sitemap/);
  assert.match(live,/FAIL Japanese store attribution missing/);
 });
+
+test('Japanese guide is discoverable from both homepage and the catalog',()=>{
+ const homepage=read('index.html'),catalog=read('apps.html');
+ assert.match(homepage,/<a class="discovery-link" data-guide="quick-games-ja" href="\/guides\/quick-games\/ja\/" lang="ja" hreflang="ja">/);
+ assert.match(catalog,/<a href="\/guides\/quick-games\/ja\/" lang="ja" hreflang="ja">/);
+ assert.equal((homepage.match(/data-guide="quick-games-ja"/g)||[]).length,1);
+ assert.equal((catalog.match(/href="\/guides\/quick-games\/ja\/"/g)||[]).length,1);
+ const smoke=read('scripts/check_app_discovery_live.sh');
+ assert.ok(smoke.includes('data-guide="quick-games-ja"'));
+ assert.ok(smoke.includes('日本語でゲームを探す'));
+});
