@@ -55,3 +55,15 @@ test('JSON-LD names map directly to the four app listings without invented ratin
  assert.deepEqual(data.itemListElement.map(x=>x.position),[1,2,3,4]);
  assert.ok(data.itemListElement.every(x=>apps.some(a=>!a.hidden&&x.url.endsWith('id='+a.pkg))));
 });
+
+test('non-destructive deployment includes the new guide and smoke checks actual live output',()=>{
+ const publish=read('scripts/publish_app_discovery.sh');
+ const live=read('scripts/check_app_discovery_live.sh');
+ assert.match(publish,/guides\/quick-games\/ja\/index\.html/);
+ assert.match(publish,/--dry-run/);
+ assert.match(publish,/--apply/);
+ assert.doesNotMatch(publish,/rsync[^\n]*--delete/);
+ assert.match(live,/fetch '\/guides\/quick-games\/ja\/' 'quick-games-ja\.html'/);
+ assert.match(live,/FAIL Japanese guide omitted from live sitemap/);
+ assert.match(live,/FAIL Japanese store attribution missing/);
+});
