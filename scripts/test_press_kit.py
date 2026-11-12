@@ -49,6 +49,9 @@ class PressKitTests(unittest.TestCase):
                     self.assertTrue(any(f"/support/{slug}/" in h for h in anchors), slug)
                     self.assertIn(f"https://play.google.com/store/apps/details?id={package}", anchors)
                 self.assertIn("/apps", anchors)
+                self.assertNotIn("utm_source=presskit", html, "Internal UTMs would reset acquisition attribution")
+                self.assertIn("press_app_click", html)
+                self.assertEqual(sum(x.get("data-cta")=="store" for tag,x in doc.attrs if tag=="a"), 5)
 
     def test_homepage_and_sitemap_discoverable(self):
         homepage = (ROOT / "index.html").read_text(encoding="utf-8")
