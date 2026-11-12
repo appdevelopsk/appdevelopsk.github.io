@@ -63,6 +63,19 @@ for slug in brain-burst snaplingo; do
   grep -Fq 'application/ld+json' "$tmp/$slug.html" || { echo "FAIL $slug SEO metadata missing" >&2; exit 1; }
   grep -Fq 'placement:' "$tmp/$slug.html" || { echo "FAIL $slug placement attribution missing" >&2; exit 1; }
 done
+# Source merged app SEO and product-truth changes must be on the *public* origin.
+grep -Fq '<title>BrainBurst: Daily Trivia & 1v1 Quiz Battles | Android</title>' "$tmp/brain-burst.html" || { echo 'FAIL BrainBurst current SEO title not live' >&2; exit 1; }
+if grep -Eq 'How do I restore my purchase\?|How do I cancel a subscription\?|Many features work offline\.' "$tmp/brain-burst.html"; then
+  echo 'FAIL BrainBurst advertises unsupported billing or offline features' >&2; exit 1
+fi
+# Every localized press page must exist on the VPS, with correct canonical and event wiring.
+for entry in 'en:press/:en' 'es:press/es/:es' 'pt-br:press/pt-br/:pt-BR' 'ja:press/ja/:ja' 'id:press/id/:id'; do
+  IFS=: read -r code route language <<< "$entry"
+  fetch "/$route" "press-$code.html"
+  grep -Fq "<html lang=\"$language\">" "$tmp/press-$code.html" || { echo "FAIL press $code language not live" >&2; exit 1; }
+  grep -Fq "https://appdevelopsk.com/$route" "$tmp/press-$code.html" || { echo "FAIL press $code canonical not live" >&2; exit 1; }
+  grep -Fq 'press_app_click' "$tmp/press-$code.html" || { echo "FAIL press $code app attribution missing" >&2; exit 1; }
+done
 fetch '/support/face-reaction-battle/' 'face-battle.html'
 grep -Fq 'data-alternative="instant-judge"' "$tmp/face-battle.html" || { echo 'FAIL unavailable game alternative CTA missing' >&2; exit 1; }
 grep -Fq 'data-alternative="blur"' "$tmp/face-battle.html" || { echo 'FAIL second unavailable game alternative CTA missing' >&2; exit 1; }
@@ -74,9 +87,9 @@ grep -Fq 'const FEAT_T={en:{0:"Choose A or B on a question."' "$tmp/dotchi.html"
 fetch '/support/debate-me/' 'debate-me.html'
 # The post-GSC 2026-11-11 snippet must be live; rejecting the old SEO
 # title prevents a GitHub merge from being mistaken for a published change.
-grep -Fq '<title>Debate Me – Free AI Debate App for Android | SK APPS</title>' "$tmp/debate-me.html" || { echo 'FAIL Debate Me new SEO title not live' >&2; exit 1; }
-grep -Fq 'content="Practice debates against an AI opponent in six topic categories' "$tmp/debate-me.html" || { echo 'FAIL Debate Me new search description not live' >&2; exit 1; }
-grep -Fq '<meta property="og:title" content="Debate Me – Free AI Debate App for Android">' "$tmp/debate-me.html" || { echo 'FAIL Debate Me OG title not live' >&2; exit 1; }
+grep -Fq '<title>Debate Me: AI Debate Practice App for Android | SK APPS</title>' "$tmp/debate-me.html" || { echo 'FAIL Debate Me new SEO title not live' >&2; exit 1; }
+grep -Fq 'content="Practice debates against an AI opponent in Debate Me for Android' "$tmp/debate-me.html" || { echo 'FAIL Debate Me new search description not live' >&2; exit 1; }
+grep -Fq '<meta property="og:title" content="Debate Me: AI Debate Practice App for Android | SK APPS">' "$tmp/debate-me.html" || { echo 'FAIL Debate Me OG title not live' >&2; exit 1; }
 grep -Fq 'data-position="hero"' "$tmp/debate-me.html" || { echo 'FAIL Debate Me first-screen Play CTA not live' >&2; exit 1; }
 grep -Fq 'data-position="details"' "$tmp/debate-me.html" || { echo 'FAIL Debate Me details Play CTA missing' >&2; exit 1; }
 grep -Fq 'support_debate_me_hero' "$tmp/debate-me.html" || { echo 'FAIL Debate Me Play attribution missing' >&2; exit 1; }
