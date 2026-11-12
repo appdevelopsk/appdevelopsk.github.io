@@ -68,6 +68,10 @@ grep -Fq '<title>BrainBurst: Daily Trivia & 1v1 Quiz Battles | Android</title>' 
 if grep -Eq 'How do I restore my purchase\?|How do I cancel a subscription\?|Many features work offline\.' "$tmp/brain-burst.html"; then
   echo 'FAIL BrainBurst advertises unsupported billing or offline features' >&2; exit 1
 fi
+# The family-story support page is a separate SEO landing; do not confuse source merge with a live rollout.
+fetch '/support/taletime/' 'taletime.html'
+grep -Fq '<title>TaleTime: AI Story Maker for Parents & Kids | SK APPS</title>' "$tmp/taletime.html" || { echo 'FAIL TaleTime current SEO title not live' >&2; exit 1; }
+grep -Fq 'Create stories together in TaleTime' "$tmp/taletime.html" || { echo 'FAIL TaleTime meta description not live' >&2; exit 1; }
 # Every localized press page must exist on the VPS, with correct canonical and event wiring.
 for entry in 'en:press/:en' 'es:press/es/:es' 'pt-br:press/pt-br/:pt-BR' 'ja:press/ja/:ja' 'id:press/id/:id'; do
   IFS=: read -r code route language <<< "$entry"
