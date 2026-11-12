@@ -34,3 +34,22 @@ referrals and real GA4 DebugView events, then reconcile actual first-time
 installers in Google Play Console. Keep tracking in
 [the release verification issue](https://github.com/appdevelopsk/appdevelopsk.github.io/issues/51)
 until those checks have evidence.
+
+## App support search snippet deployment gate (2026-11-13)
+
+The Debate Me, BrainBurst, and TaleTime titles and descriptions were updated on
+`main`, but merging source is **not** proof that the public host received it.
+Run this read-only check after an authorized deployment and compare the local
+source against the public HTML (titles, descriptions, Open Graph descriptions,
+canonical URLs, and duplicate tags):
+
+```bash
+node --test scripts/test_support_serp_snippets_20261113.cjs
+python3 -m unittest discover -s scripts -p 'test_support_serp_live.py' -v
+python3 scripts/check_support_serp_live.py > support-serp-live.json
+```
+
+A nonzero exit means the live host is stale, unavailable, or inconsistent with
+source. Inspect `support-serp-live.json` and the hosting provider's deployed
+branch/SHA before changing DNS or announcing the release. The tool does not
+request indexing, change the site, or prove search clicks or app installs.
