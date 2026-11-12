@@ -21,12 +21,12 @@ class DeploymentDiagnosisTests(unittest.TestCase):
     def test_same_pages_pass(self):
         result = inspect(self.root, lambda p: (self.contents[p], 200))
         self.assertTrue(result['all_identical'])
-        self.assertEqual(result['identical_pages'], 7)
+        self.assertEqual(result['identical_pages'], 10)
 
     def test_one_stale_page_fails(self):
         result = inspect(self.root, lambda p: (b'old' if p == '/apps' else self.contents[p], 200))
         self.assertFalse(result['all_identical'])
-        self.assertEqual(result['identical_pages'], 6)
+        self.assertEqual(result['identical_pages'], 9)
         self.assertEqual(result['pages']['/apps']['live_sha256'], compare(b'old', b'old')['live_sha256'])
 
     def test_fetch_failure_is_not_success(self):
