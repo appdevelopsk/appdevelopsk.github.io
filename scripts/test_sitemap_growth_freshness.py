@@ -48,6 +48,15 @@ class GrowthSitemapFreshnessTests(unittest.TestCase):
                 self.assertIsNotNone(stamp)
                 self.assertGreaterEqual(date.fromisoformat(stamp), date(2026, 11, 7))
 
+    def test_nov_13_serp_refinements_have_actual_lastmod(self):
+        pages = dict(entries())
+        for slug in ("debate-me", "brain-burst", "taletime"):
+            with self.subTest(slug=slug):
+                self.assertEqual(
+                    pages.get(BASE + "/support/" + slug + "/"),
+                    "2026-11-13",
+                )
+
     def test_future_valid_page_updates_are_not_rejected(self):
         self.assertGreaterEqual(date.fromisoformat("2026-11-08"), date(2026, 11, 7))
         self.assertLess(date.fromisoformat("2026-11-06"), date(2026, 11, 7))
