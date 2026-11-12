@@ -60,6 +60,24 @@ class PressKitTests(unittest.TestCase):
                 self.assertEqual(sum(x.get("data-cta")=="store" for tag,x in doc.attrs if tag=="a"), 5)
                 self.assertEqual(sum(tag=="a" and attrs.get("lang") in PAGES for tag,attrs in doc.attrs), len(PAGES))
 
+    def test_press_pages_in_manual_vps_publish_manifest(self):
+        script = (ROOT / "scripts" / "publish_app_discovery.sh").read_text(encoding="utf-8")
+        self.assertIn("mode=\"\u0024{1:---dry-run}\"", script)
+        self.assertNotIn(" --delete", script)
+        manifest = script.split("files=(", 1)[1].split(")", 1)[0].split()
+        self.assertEqual(len(manifest), len(set(manifest)))
+        for source, _ in PAGES.values():
+            with self.subTest(source=source):
+                self.assertIn(source, manifest)
+
+    def test_live_smoke_checks_all_press_locales_and_latest_support(self):
+        smoke = (ROOT / "scripts" / "check_app_discovery_live.sh").read_text(encoding="utf-8")
+        for code in ("en", "es", "pt-br", "ja", "id"):
+            self.assertIn("press-" + code + ".html", smoke)
+        self.assertIn("BrainBurst: Daily Trivia & 1v1 Quiz Battles | Android", smoke)
+        self.assertIn("Debate Me: AI Debate Practice App for Android | SK APPS", smoke)
+        self.assertNotIn("Debate Me – Free AI Debate App for Android | SK APPS", smoke)
+
     def test_homepage_and_sitemap_discoverable(self):
         homepage = (ROOT / "index.html").read_text(encoding="utf-8")
         self.assertIn('href="/press/"', homepage)
