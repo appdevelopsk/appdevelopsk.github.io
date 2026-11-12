@@ -48,6 +48,10 @@ class PressKitTests(unittest.TestCase):
                     self.assertTrue((ROOT / "support" / slug / "index.html").is_file(), slug)
                     self.assertTrue(any(f"/support/{slug}/" in h for h in anchors), slug)
                     self.assertIn(f"https://play.google.com/store/apps/details?id={package}", anchors)
+                    tracked = [a for tag,a in doc.attrs if tag=="a" and a.get("data-app-slug")==slug]
+                    self.assertEqual(len(tracked), 2, slug)
+                    self.assertEqual({a.get("data-cta") for a in tracked}, {"details", "store"})
+                    self.assertEqual({a.get("data-app-package") for a in tracked}, {package})
                 self.assertIn("/apps", anchors)
                 self.assertNotIn("utm_source=presskit", html, "Internal UTMs would reset acquisition attribution")
                 self.assertIn("press_app_click", html)
