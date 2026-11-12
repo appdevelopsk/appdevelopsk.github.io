@@ -22,7 +22,7 @@ python3 scripts/check_growth_live.py > growth-live-smoke.json
 The route diagnosis additionally compares /apps and /apps.html, recording final URLs, public cache headers, canonical tags and hashes to uncover split cache/rewrite behavior. Inspect both results before editing redirects; the command makes no hosting or DNS changes.
 
 The deploy diagnosis checks HTTP 200 and compares the raw HTML bytes of the
-homepage, app catalog and five priority app support pages to the checked-out
+homepage, app catalog, five priority app support pages, and five press locales to the checked-out
 commit. It records hashes, release markers and fetch errors, **not page bodies
 or user data**. A byte mismatch is not necessarily failed deployment if the
 host minifies/injects content; consult the semantic growth smoke and inspect
@@ -53,3 +53,17 @@ A nonzero exit means the live host is stale, unavailable, or inconsistent with
 source. Inspect `support-serp-live.json` and the hosting provider's deployed
 branch/SHA before changing DNS or announcing the release. The tool does not
 request indexing, change the site, or prove search clicks or app installs.
+
+## Global press/creator landing pages — 2026-11-13
+
+Source contains five intended localized press routes: `/press/` (English), `/press/es/` (Spanish), `/press/pt-br/` (Brazilian Portuguese), `/press/ja/` (Japanese), and `/press/id/` (Indonesian). This is *source coverage*, not proof of production delivery or indexing. No automated outreach or social publication follows from a merge.
+
+Before promoting these URLs to partners:
+
+```bash
+python3 -m unittest scripts.test_press_kit -v
+python3 -m unittest scripts.test_diagnose_growth_deploy -v
+python3 scripts/diagnose_growth_deploy.py --root . --output growth-deploy-diagnosis.json
+```
+
+The deployment comparison includes all five press pages (12 pages in total). Confirm the hosting provider's actual production source/ref/commit, inspect public HTTP 200, redirects, canonical/hreflang and all five Play links, and verify `press_app_click` in GA4 DebugView. A source merge or static test is **not** a live deployment check. Record results in issue #51. Only promote the published URL after these checks pass; otherwise use verified live app support/store pages.

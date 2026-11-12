@@ -47,3 +47,15 @@ SK APPS
 - The connected Metricool brand reported **no connected social networks** on 2026-11-12; therefore no posts could be scheduled or published through that tool.
 - Production hosting source has not been confirmed for appdevelopsk.com; a GitHub merge does not prove a deployed press page.
 - No signed-store release, actual demo recording, or ASO experiment is created by this writing pack.
+
+## Additional localized short captions — Japanese / Indonesian (ready, not posted)
+
+| App | 日本語 | Bahasa Indonesia |
+| --- | --- | --- |
+| Blur | 写真が少しずつ鮮明に。全部見える前に当てられる？Android向け写真当てゲーム「Blur」。 | Foto perlahan menjadi jelas. Bisa menebaknya sebelum terbuka sepenuhnya? Coba Blur di Android. |
+| Dotchi | AかBか？二択に投票してみんなの結果をチェック。Android向け「Dotchi」。 | A atau B? Pilih dalam jajak pendapat cepat dan lihat hasil komunitas di Dotchi untuk Android. |
+| Instant Judge | 日常の疑問、あなたならどう投票する？コミュニティの結果も楽しめる「Instant Judge」。 | Bagaimana kamu memilih dalam dilema sehari-hari? Lihat keputusan komunitas lewat Instant Judge di Android. |
+| Debate Me | AIとディベートを練習し、自分の主張へのフィードバックを確認。Android向け「Debate Me」。 | Latih argumenmu melawan AI dan baca masukannya di Debate Me untuk Android. |
+| FutureMe | AIの未来シナリオを楽しみ、明日の小さな行動を考える「FutureMe」。 | Jelajahi skenario masa depan buatan AI dan pilih satu langkah kecil untuk besok lewat FutureMe. |
+
+These are original social copy drafts, not claims of actual posts, partnerships, native-language review, or store listing updates. Test the release in each locale before publishing.

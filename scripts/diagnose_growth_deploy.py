@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Read-only compare of ten deployed growth HTML pages against this checkout.
+"""Read-only compare of twelve deployed growth HTML pages against this checkout.
 
 Exit 0 requires HTTP 200 and byte-identical HTML on all seven pages. Hosts
 that rewrite HTML can cause false mismatches; inspect alongside growth smoke.
@@ -17,7 +17,7 @@ from urllib.request import Request, urlopen
 SLUGS = ("debate-me", "tappitsu-battle", "future-me", "twotaku", "instant-judge")
 PAGE_FILES = {"/": "index.html", "/apps": "apps.html"}
 PAGE_FILES.update({f"/support/{s}/": f"support/{s}/index.html" for s in SLUGS})
-PAGE_FILES.update({"/press/": "press/index.html", "/press/es/": "press/es/index.html", "/press/pt-br/": "press/pt-br/index.html"})
+PAGE_FILES.update({"/press/": "press/index.html", "/press/es/": "press/es/index.html", "/press/pt-br/": "press/pt-br/index.html", "/press/ja/": "press/ja/index.html", "/press/id/": "press/id/index.html"})
 STAMP = re.compile(rb'<meta\s+name="sk-growth-release"\s+content="([^"]+)"')
 
 
