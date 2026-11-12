@@ -38,16 +38,16 @@ for (const spec of cases) {
   test(`support/${spec.slug} keeps truthful unique search metadata and analytics`, () => {
     const file = nodePath.resolve(__dirname, "..", "support", spec.slug, "index.html");
     const html = fs.readFileSync(file, "utf8");
-    assert.equal(tagContent(html, /<title>([^<]*)<\\/title>/g), spec.title);
+    assert.equal(tagContent(html, /<title>([^<]*)<\/title>/g), spec.title);
     assert.equal(tagContent(html, /<meta name="description" content="([^"]*)"/g), spec.description);
     assert.equal(tagContent(html, /<meta property="og:description" content="([^"]*)"/g), spec.description);
     assert.equal(tagContent(html, /<link rel="canonical" href="([^"]*)"/g), `https://appdevelopsk.com/support/${spec.slug}/`);
-    assert.equal((html.match(/googletagmanager.com\\/gtag\\/js/g) || []).length, 1);
-    assert.match(html, /gtag\\('event', 'download_click'/);
+    assert.equal((html.match(/googletagmanager.com\/gtag\/js/g) || []).length, 1);
+    assert.match(html, /gtag\('event', 'download_click'/);
     if (spec.hasPlayLink) {
-      assert.match(html, /https:\\/\\/play\\.google\\.com\\/store\\/apps\\/details/);
+      assert.match(html, /https:\/\/play\.google\.com\/store\/apps\/details/);
     } else {
-      assert.doesNotMatch(html, /https:\\/\\/play\\.google\\.com\\/store\\/apps\\/details/);
+      assert.doesNotMatch(html, /https:\/\/play\.google\.com\/store\/apps\/details/);
     }
   });
 }
