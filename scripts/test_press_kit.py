@@ -13,6 +13,8 @@ PAGES = {
     "en": ("press/index.html", "https://appdevelopsk.com/press/"),
     "es": ("press/es/index.html", "https://appdevelopsk.com/press/es/"),
     "pt-BR": ("press/pt-br/index.html", "https://appdevelopsk.com/press/pt-br/"),
+    "ja": ("press/ja/index.html", "https://appdevelopsk.com/press/ja/"),
+    "id": ("press/id/index.html", "https://appdevelopsk.com/press/id/"),
 }
 PACKAGES = {
     "blur": "com.blurapp.blur_app",
@@ -56,6 +58,7 @@ class PressKitTests(unittest.TestCase):
                 self.assertNotIn("utm_source=presskit", html, "Internal UTMs would reset acquisition attribution")
                 self.assertIn("press_app_click", html)
                 self.assertEqual(sum(x.get("data-cta")=="store" for tag,x in doc.attrs if tag=="a"), 5)
+                self.assertEqual(sum(tag=="a" and attrs.get("lang") in PAGES for tag,attrs in doc.attrs), len(PAGES))
 
     def test_homepage_and_sitemap_discoverable(self):
         homepage = (ROOT / "index.html").read_text(encoding="utf-8")
