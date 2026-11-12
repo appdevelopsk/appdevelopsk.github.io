@@ -30,9 +30,10 @@ function boot(url, browserLanguage) {
     .map(name => createNode(name + ' · Original English'));
   const events = [];
   const window = {
-    location: { href: url }, history: {
+    location: { href: url, search: new URL(url).search }, history: {
       state: {}, replaceState(state, title, route) {
         window.location.href = new URL(route, window.location.href).href;
+        window.location.search = new URL(window.location.href).search;
       }
     },
     gtag(...args) { events.push(args); },
