@@ -67,3 +67,29 @@ python3 scripts/diagnose_growth_deploy.py --root . --output growth-deploy-diagno
 ```
 
 The deployment comparison includes all five press pages (12 pages in total). Confirm the hosting provider's actual production source/ref/commit, inspect public HTTP 200, redirects, canonical/hreflang and all five Play links, and verify `press_app_click` in GA4 DebugView. A source merge or static test is **not** a live deployment check. Record results in issue #51. Only promote the published URL after these checks pass; otherwise use verified live app support/store pages.
+
+
+## Five-language catalog discovery UI (2026-11-13)
+
+The /apps page has browser-language-aware interface labels in English, Japanese,
+Spanish, Brazilian Portuguese and Indonesian, plus an explicit language selector.
+Category labels, five featured-app descriptions, finder status, empty state, and
+selected search synonyms are localized. App card names and descriptions remain
+English. No SEO hreflang pages are claimed and canonical stays /apps.
+The allowlisted ?lang=es etc. query is UI preference, not an indexed translation.
+The ?goal=... filter is preserved during manual language changes.
+
+Search text is never sent to analytics; existing coarse search events remain.
+The only new event is catalog_language_selected, carrying the selected locale
+and placement without search text or sensitive identifiers.
+
+Run checks:
+  node --test scripts/test_catalog_search_events.cjs
+  node --test scripts/test_catalog_locale.cjs
+  python3 scripts/check_growth_live.py > growth-live-smoke.json
+
+Before claiming a live release, verify the hosting provider deployed SHA and open
+/apps?goal=quick-games&lang=es and /apps?lang=ja in a real browser. Confirm 92
+cards, filters, language switching, console errors, real store destinations,
+and exactly one catalog_language_selected per manual choice in GA4 DebugView.
+Record source-vs-live evidence in GitHub issue #51. A merge is not deployment.
