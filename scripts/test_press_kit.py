@@ -62,8 +62,10 @@ class PressKitTests(unittest.TestCase):
 
     def test_press_pages_in_manual_vps_publish_manifest(self):
         script = (ROOT / "scripts" / "publish_app_discovery.sh").read_text(encoding="utf-8")
-        self.assertIn("mode=\"\u0024{1:---dry-run}\"", script)
-        self.assertNotIn(" --delete", script)
+        self.assertIn('mode="${1:---dry-run}"', script)
+        rsync_commands = [line.strip() for line in script.splitlines() if line.lstrip().startswith("rsync $rsync_flags")]
+        self.assertEqual(len(rsync_commands), 1)
+        self.assertNotIn("--delete", rsync_commands[0])
         manifest = script.split("files=(", 1)[1].split(")", 1)[0].split()
         self.assertEqual(len(manifest), len(set(manifest)))
         for source, _ in PAGES.values():
