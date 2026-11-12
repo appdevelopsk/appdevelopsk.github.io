@@ -29,6 +29,11 @@
     .store-badge { display:inline-block; margin-top:.4rem; font-size:.78rem; font-weight:600; color:var(--accent); }
     footer { text-align:center; color:var(--sub); font-size:.85rem; padding:2rem; }
     footer a { color:var(--accent); }
+    .catalog-locale{margin:1rem auto 0;display:flex;flex-wrap:wrap;gap:.5rem;align-items:center;justify-content:center}
+    .catalog-locale label{font-weight:700;font-size:.85rem}
+    .catalog-locale select{font:inherit;background:var(--card);color:var(--ink);padding:.5rem;border:1px solid var(--line);border-radius:8px}
+    .catalog-locale select:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+    .catalog-locale p{flex-basis:100%;font-size:.78rem;color:var(--sub);max-width:38rem}
     /* Browse purpose or search without hiding cards from non-JS crawlers. */
     .finder{margin:0 0 1.5rem;padding:1.1rem;background:var(--card);border:1px solid var(--line);border-radius:14px}
     .finder label{display:block;font-weight:700;margin-bottom:.5rem}
@@ -634,8 +639,17 @@
 <body>
   <header>
     <a class="home" href="/">&larr; SK APPS Home</a>
-    <h1>All Apps</h1>
-    <p>Explore our mobile app catalog — productivity, education, health, games and more.</p>
+    <h1 id="catalog-main-title">All Apps</h1>
+    <p id="catalog-intro">Explore our mobile app catalog — productivity, education, health, games and more.</p>
+    <div class="catalog-locale">
+      <label for="catalog-language">Language / 言語</label>
+      <select id="catalog-language" aria-label="Catalog language">
+        <option value="en">English</option><option value="ja">日本語</option>
+        <option value="es">Español</option><option value="pt-BR">Português (Brasil)</option>
+        <option value="id">Bahasa Indonesia</option>
+      </select>
+      <p id="catalog-locale-notice">App names and descriptions remain in English; search also recognizes selected translated keywords.</p>
+    </div>
   </header>
   <main>
     <section class="finder" aria-labelledby="finder-title">
@@ -659,7 +673,7 @@
     </section>
     <section class="finder" aria-labelledby="app-spotlight-title">
       <h2 id="app-spotlight-title" style="font-size:1.1rem;margin-bottom:.4rem">Explore app details before installing</h2>
-      <p style="color:var(--sub);font-size:.9rem;margin-bottom:.6rem">See features, FAQs and privacy information before opening Google Play.</p>
+      <p id="catalog-spotlight-description" style="color:var(--sub);font-size:.9rem;margin-bottom:.6rem">See features, FAQs and privacy information before opening Google Play.</p>
       <nav class="finder-guides" aria-label="App details">
         <a href="/support/debate-me/" data-detail-app="debate-me">Debate Me · AI debate practice</a>
         <a href="/support/tappitsu-battle/" data-detail-app="tappitsu-battle">Tappitsu Battle · Calligraphy practice</a>
@@ -668,7 +682,7 @@
         <a href="/support/instant-judge/" data-detail-app="instant-judge">Instant Judge · Community voting</a>
       </nav>
     </section>
-    <p id="finder-empty" class="finder-meta" hidden>No matches. <button type="button" id="finder-reset" aria-label="Clear search and show all apps" style="cursor:pointer;color:var(--accent);background:none;border:0;text-decoration:underline;font:inherit;font-weight:600">Clear search and filters</button></p>
+    <p id="finder-empty" class="finder-meta" hidden><span id="finder-empty-label">No matches.</span> <button type="button" id="finder-reset" aria-label="Clear search and show all apps" style="cursor:pointer;color:var(--accent);background:none;border:0;text-decoration:underline;font:inherit;font-weight:600">Clear search and filters</button></p>
     <div class="grid">
       <a class="app-card" href="https://play.google.com/store/apps/details?id=jp.appdevelopsk.facesymmetry&amp;utm_source=appdevelopsk&amp;utm_medium=web&amp;utm_campaign=apps_catalog&amp;referrer=utm_source%3Dappdevelopsk%26utm_medium%3Dweb%26utm_campaign%3Dapps_catalog" target="_blank" rel="noopener">
         <img src="icons/apps/face-symmetry.png" alt="HangTrue - Level Checker icon" loading="lazy" width="64" height="64">
@@ -1455,13 +1469,13 @@
       let shown = 0;
       cards.forEach(card => {
         // Include the stable catalog slug so former/internal app names stay findable.
-        const app = slug(card), content = clean((card.textContent || '') + ' ' + app + ' ' + app.replace(/-/g, ' '));
+        const app = slug(card), content = clean((card.textContent || '') + ' ' + app + ' ' + app.replace(/-/g, ' ') + ' ' + ((window.catalogSearchAliases || {})[app] || ''));
         const inGoal = goal === 'all' || (groups[goal] || []).includes(app);
         const visible = inGoal && terms.every(term => content.includes(term));
         card.hidden = !visible;
         if (visible) shown++;
       });
-      count.textContent = shown + ' apps shown';
+      count.textContent = window.catalogLocaleCount ? window.catalogLocaleCount(shown) : shown + ' apps shown';
       empty.hidden = shown !== 0;
       return shown;
     }
@@ -1542,5 +1556,201 @@
     }
   })();
   </script>
+<!-- CATALOG_LOCALE_START: browser-only UI labels, no SEO hreflang claim -->
+<script>
+(() => {
+  'use strict';
+  const translations = {
+  "en": {
+    "title": "All Apps",
+    "intro": "Explore our mobile app catalog — productivity, education, health, games and more.",
+    "label": "Find an app for what you want to do",
+    "placeholder": "Try: photo quiz, sleep, journal, debate, food",
+    "goals": [
+      "All apps",
+      "Quick games",
+      "Daily habits",
+      "Decision helpers",
+      "AI tools"
+    ],
+    "count": "apps shown",
+    "empty": "No matches.",
+    "reset": "Clear search and filters",
+    "spotlight": "Explore app details before installing",
+    "detail": "See features, FAQs and privacy information before opening Google Play.",
+    "notice": "App names and descriptions remain in English; search also recognizes selected translated keywords.",
+    "focus": [
+      "AI debate practice",
+      "Calligraphy practice",
+      "Reflection",
+      "This-or-that polls",
+      "Community voting"
+    ]
+  },
+  "ja": {
+    "title": "アプリ一覧",
+    "intro": "ゲーム・学習・暮らしに役立つアプリを探せます。",
+    "label": "目的に合ったアプリを検索",
+    "placeholder": "例：写真、睡眠、日記、ディベート、食事",
+    "goals": [
+      "すべて",
+      "手軽なゲーム",
+      "毎日の習慣",
+      "決断のサポート",
+      "AIツール"
+    ],
+    "count": "件のアプリを表示",
+    "empty": "該当するアプリはありません。",
+    "reset": "検索と絞り込みを解除",
+    "spotlight": "インストール前にアプリの詳細を見る",
+    "detail": "機能・FAQ・プライバシー情報を確認してからGoogle Playへ進めます。",
+    "notice": "アプリ名と詳細説明は英語です。一部の日本語キーワードでも検索できます。",
+    "focus": [
+      "AIディベート練習",
+      "書道の練習",
+      "未来を振り返る",
+      "二択投票",
+      "みんなの投票"
+    ]
+  },
+  "es": {
+    "title": "Todas las apps",
+    "intro": "Explora apps de productividad, aprendizaje, juegos y herramientas para el día a día.",
+    "label": "Busca una app según lo que quieras hacer",
+    "placeholder": "Prueba: foto, sueño, diario, debate, comida",
+    "goals": [
+      "Todas",
+      "Juegos rápidos",
+      "Hábitos diarios",
+      "Ayuda para decidir",
+      "Herramientas de IA"
+    ],
+    "count": "apps mostradas",
+    "empty": "No hay resultados.",
+    "reset": "Borrar búsqueda y filtros",
+    "spotlight": "Conoce las apps antes de instalarlas",
+    "detail": "Consulta funciones, preguntas frecuentes y privacidad antes de abrir Google Play.",
+    "notice": "Los nombres y las descripciones de las apps siguen en inglés; puedes buscar algunas palabras en español.",
+    "focus": [
+      "Debate con IA",
+      "Práctica de caligrafía",
+      "Reflexión",
+      "Encuestas A o B",
+      "Votación comunitaria"
+    ]
+  },
+  "pt-BR": {
+    "title": "Todos os apps",
+    "intro": "Explore apps de produtividade, aprendizado, jogos e ferramentas para o dia a dia.",
+    "label": "Encontre um app para o que você precisa",
+    "placeholder": "Tente: foto, sono, diário, debate, comida",
+    "goals": [
+      "Todos",
+      "Jogos rápidos",
+      "Hábitos diários",
+      "Ajuda para decidir",
+      "Ferramentas de IA"
+    ],
+    "count": "apps exibidos",
+    "empty": "Nenhum resultado.",
+    "reset": "Limpar pesquisa e filtros",
+    "spotlight": "Conheça os apps antes de instalar",
+    "detail": "Veja recursos, dúvidas frequentes e privacidade antes de abrir o Google Play.",
+    "notice": "Os nomes e as descrições continuam em inglês; algumas palavras em português também funcionam na busca.",
+    "focus": [
+      "Debate com IA",
+      "Prática de caligrafia",
+      "Reflexão",
+      "Enquetes A ou B",
+      "Votação da comunidade"
+    ]
+  },
+  "id": {
+    "title": "Semua aplikasi",
+    "intro": "Jelajahi aplikasi produktivitas, pembelajaran, permainan, dan alat sehari-hari.",
+    "label": "Cari aplikasi sesuai kebutuhanmu",
+    "placeholder": "Coba: foto, tidur, jurnal, debat, makanan",
+    "goals": [
+      "Semua",
+      "Game cepat",
+      "Kebiasaan harian",
+      "Bantu memilih",
+      "Alat AI"
+    ],
+    "count": "aplikasi ditampilkan",
+    "empty": "Tidak ada hasil.",
+    "reset": "Hapus pencarian dan filter",
+    "spotlight": "Lihat detail sebelum memasang",
+    "detail": "Periksa fitur, FAQ, dan privasi sebelum membuka Google Play.",
+    "notice": "Nama dan deskripsi aplikasi masih berbahasa Inggris; beberapa kata dalam bahasa Indonesia juga bisa dicari.",
+    "focus": [
+      "Latihan debat AI",
+      "Latihan kaligrafi",
+      "Refleksi",
+      "Polling A atau B",
+      "Voting komunitas"
+    ]
+  }
+};
+  const languageSelect = document.getElementById('catalog-language');
+  if (!languageSelect) return;
+  const locales = Object.keys(translations);
+  const fromBrowser = String((navigator.languages && navigator.languages[0]) || navigator.language || 'en').toLowerCase();
+  const query = new URLSearchParams(window.location.search).get('lang');
+  const browserLocale = fromBrowser.startsWith('pt') ? 'pt-BR' : fromBrowser.slice(0, 2);
+  const initial = locales.includes(query) ? query : (locales.includes(browserLocale) ? browserLocale : 'en');
+  const ids = {
+    title: 'catalog-main-title', intro: 'catalog-intro', label: 'finder-title',
+    empty: 'finder-empty-label', reset: 'finder-reset',
+    spotlight: 'app-spotlight-title', detail: 'catalog-spotlight-description',
+    notice: 'catalog-locale-notice'
+  };
+  const aliases = {
+    blur: 'foto borrosa imagen borrosa foto desfocada adivinhar imagem 写真 ぼかし 写真当て tebak gambar buram',
+    twotaku: 'encuesta dos opciones voto enquete votação escolha 二択 投票 pilihan polling',
+    'instant-judge': 'dilemas votación comunidade 判定 投票 dilema komunitas',
+    'debate-me': 'argumentos argumentação 討論 ディベート debat argumen',
+    'future-me': 'futuro futuro reflexões 未来 将来 masa depan prediksi'
+  };
+  const renderLocale = (locale, userSelected) => {
+    const key = locales.includes(locale) ? locale : 'en';
+    const t = translations[key];
+    document.documentElement.lang = key;
+    languageSelect.value = key;
+    Object.entries(ids).forEach(([field, id]) => {
+      const element = document.getElementById(id);
+      if (element) element.textContent = t[field];
+    });
+    const search = document.getElementById('find-app');
+    if (search) search.setAttribute('placeholder', t.placeholder);
+    const filters = document.querySelectorAll('.finder-filters button');
+    filters.forEach((button, index) => {
+      if (t.goals[index]) button.textContent = t.goals[index];
+    });
+    const detailLinks = document.querySelectorAll('[data-detail-app]');
+    detailLinks.forEach((link, index) => {
+      if (t.focus[index]) {
+        const appName = link.textContent.split(' · ')[0];
+        link.textContent = appName + ' · ' + t.focus[index];
+      }
+    });
+    window.catalogLocaleCount = count => String(count) + ' ' + t.count;
+    window.catalogSearchAliases = aliases;
+    if (search) search.dispatchEvent(new Event('input'));
+    if (userSelected) {
+      const url = new URL(window.location.href);
+      if (key === 'en') url.searchParams.delete('lang');
+      else url.searchParams.set('lang', key);
+      window.history.replaceState(window.history.state, '', url.pathname + url.search + url.hash);
+      if (typeof window.gtag === 'function') {
+        window.gtag('event', 'catalog_language_selected', {locale:key, placement:'catalog_selector'});
+      }
+    }
+  };
+  languageSelect.addEventListener('change', () => renderLocale(languageSelect.value, true));
+  renderLocale(initial, false);
+})();
+</script>
+<!-- CATALOG_LOCALE_END -->
 </body>
 </html>
