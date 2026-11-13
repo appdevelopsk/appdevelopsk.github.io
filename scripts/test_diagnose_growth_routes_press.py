@@ -93,6 +93,26 @@ class PressReleaseRouteTests(unittest.TestCase):
         self.assertTrue(out['press_routes_ready']['/press/'])
         self.assertFalse(out['press_routes_ready']['/press/ja/'])
 
+    def test_sitemap_prefix_and_comment_cannot_fake_publication(self):
+        def fetch(url):
+            if url.endswith('/sitemap.xml'):
+                body = ('<urlset><!-- https://appdevelopsk.com/press/id/ -->'
+                        '<loc>https://appdevelopsk.com/press/ja/extra/</loc></urlset>')
+                return 200, url, body.encode(), {}
+            return good_fetch(url)
+        out = diagnose(ORIGIN, fetch)
+        self.assertFalse(out['press_routes_ready']['/press/ja/'])
+        self.assertFalse(out['press_routes_ready']['/press/id/'])
+
+    def test_invalid_xml_fails_closed_without_crashing(self):
+        def fetch(url):
+            if url.endswith('/sitemap.xml'):
+                return 200, url, b'<invalid sitemap', {}
+            return good_fetch(url)
+        out = diagnose(ORIGIN, fetch)
+        self.assertTrue(out['press_needs_review'])
+        self.assertFalse(any(out['press_routes_ready'].values()))
+
     def test_stale_catalog_locale_is_independently_reported(self):
         def fetch(url):
             if url.endswith('/apps'):
