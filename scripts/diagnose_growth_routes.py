@@ -20,8 +20,8 @@ PRESS_PAGES = {
     "/press/id/": "id",
 }
 PATHS = ("/apps", "/apps.html", "/support/twotaku/", "/robots.txt", "/sitemap.xml") + tuple(PRESS_PAGES)
-LANG = re.compile(r'<html\\b[^>]*\\blang="([^"]+)"', re.I)
-ALT = re.compile(r'<link\\b[^>]*\\bhreflang="([^"]+)"\\s+href="([^"]+)"', re.I)
+LANG = re.compile(r'<html\b[^>]*\blang="([^"]+)"', re.I)
+ALT = re.compile(r'<link\b[^>]*\bhreflang="([^"]+)"\s+href="([^"]+)"', re.I)
 HEADERS = ("cache-control", "age", "cf-cache-status", "x-cache", "etag", "last-modified", "server")
 CANONICAL = re.compile(r'<link\s+rel="canonical"\s+href="([^"]+)"', re.I)
 RELEASE = re.compile(r'<meta\s+name="sk-growth-release"\s+content="([^"]+)"', re.I)
