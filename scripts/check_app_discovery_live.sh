@@ -25,6 +25,17 @@ if grep -Fq 'href="support/face-reaction-battle/"' "$tmp/index.html"; then
 fi
 fetch '/apps' 'apps.html'
 grep -Fq 'id="find-app"' "$tmp/apps.html" || { echo 'FAIL catalog search is stale' >&2; exit 1; }
+
+# The new UI is browser-side only; these assertions confirm deployed source,
+# NOT that user interactions/GA4 events have been executed in a real browser.
+grep -Fq 'id="catalog-language"' "$tmp/apps.html" || { echo 'FAIL five-language catalog selector not deployed' >&2; exit 1; }
+grep -Fq 'CATALOG_LOCALE_START' "$tmp/apps.html" || { echo 'FAIL catalog locale controller missing' >&2; exit 1; }
+grep -Fq 'catalog_language_selected' "$tmp/apps.html" || { echo 'FAIL catalog language analytics contract missing' >&2; exit 1; }
+for language in en ja es pt-BR id; do
+  grep -Fq "option value=\"$language\"" "$tmp/apps.html" || { echo "FAIL $language catalog option not deployed" >&2; exit 1; }
+done
+grep -Fq 'catalogSearchAliases' "$tmp/apps.html" || { echo 'FAIL localized pilot discovery aliases missing' >&2; exit 1; }
+
 grep -Fq 'catalog_store_click' "$tmp/apps.html" || { echo 'FAIL store-click attribution is stale' >&2; exit 1; }
 grep -Fq '日本語でゲームを探す' "$tmp/apps.html" || { echo 'FAIL Japanese guide missing from live app catalog' >&2; exit 1; }
 grep -Fq 'Dotchi: This or That Polls' "$tmp/apps.html" || { echo 'FAIL Dotchi catalog still presents an anime-only app' >&2; exit 1; }

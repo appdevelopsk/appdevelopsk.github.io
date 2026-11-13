@@ -93,3 +93,28 @@ Before claiming a live release, verify the hosting provider deployed SHA and ope
 cards, filters, language switching, console errors, real store destinations,
 and exactly one catalog_language_selected per manual choice in GA4 DebugView.
 Record source-vs-live evidence in GitHub issue #51. A merge is not deployment.
+
+
+## VPS production publish gate for the five-language app catalog
+
+Source-only PRs are not production deployments. The repository now contains
+scripts/publish_app_discovery.sh (dry-run by default) and
+scripts/check_app_discovery_live.sh (read-only production smoke). The catalog
+locale selector is part of apps.html and is in the publish file allowlist.
+
+On the **authorized deployment machine** with the correct SSH alias,
+verified domain mapping and a clean checkout of the intended main commit:
+
+  bash scripts/publish_app_discovery.sh --dry-run
+
+Review every destination/changed file and the current public host configuration.
+Only after approving that exact deploy, invoke:
+
+  bash scripts/publish_app_discovery.sh --apply
+  bash scripts/check_app_discovery_live.sh
+
+The live smoke now requires the five catalog languages and their browser-side
+event contract, plus previously released growth pages. Check mobile browser
+behavior, GA4 DebugView and Play acquisition data separately. This workflow
+cannot be run against the owner's VPS from a disconnected ChatGPT container;
+no source merge or local test proves that /apps is updated on the public host.
