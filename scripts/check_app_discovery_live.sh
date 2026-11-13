@@ -105,7 +105,7 @@ fetch '/support/debate-me/' 'debate-me.html'
 # title prevents a GitHub merge from being mistaken for a published change.
 grep -Fq '<title>Debate Me: AI Debate Practice App for Android | SK APPS</title>' "$tmp/debate-me.html" || { echo 'FAIL Debate Me new SEO title not live' >&2; exit 1; }
 grep -Fq 'content="Practice debates against an AI opponent in Debate Me for Android' "$tmp/debate-me.html" || { echo 'FAIL Debate Me new search description not live' >&2; exit 1; }
-grep -Fq '<meta property="og:title" content="Debate Me: Practice Arguments with AI | Android App">' "$tmp/debate-me.html" || { echo 'FAIL Debate Me OG title not live' >&2; exit 1; }
+grep -Fq '<meta property="og:title" content="Debate Me: AI Debate Practice App for Android | SK APPS">' "$tmp/debate-me.html" || { echo 'FAIL Debate Me OG title not live' >&2; exit 1; }
 grep -Fq 'data-position="hero"' "$tmp/debate-me.html" || { echo 'FAIL Debate Me first-screen Play CTA not live' >&2; exit 1; }
 grep -Fq 'data-position="details"' "$tmp/debate-me.html" || { echo 'FAIL Debate Me details Play CTA missing' >&2; exit 1; }
 grep -Fq 'support_debate_me_hero' "$tmp/debate-me.html" || { echo 'FAIL Debate Me Play attribution missing' >&2; exit 1; }
