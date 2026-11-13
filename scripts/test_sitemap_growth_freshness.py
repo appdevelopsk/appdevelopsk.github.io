@@ -2,7 +2,7 @@
 
 Run with: python3 -m unittest discover -s scripts -p 'test_sitemap_growth_freshness.py' -v
 """
-from datetime import date
+from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 import unittest
 import xml.etree.ElementTree as ET
@@ -10,6 +10,16 @@ import xml.etree.ElementTree as ET
 ROOT = Path(__file__).resolve().parent.parent
 NS = "{http://www.sitemaps.org/schemas/sitemap/0.9}"
 BASE = "https://appdevelopsk.com"
+# Sitemap lastmod dates are authored in Japan Standard Time (UTC+09:00).
+# GitHub-hosted runners use UTC, so date.today() wrongly rejects JST updates
+# during 00:00–08:59 in Japan.
+JST = timezone(timedelta(hours=9))
+
+
+def publication_today(now=None):
+    current = now if now is not None else datetime.now(timezone.utc)
+    return current.astimezone(JST).date()
+
 CHANGED_2026_11_07 = (
     "/", "/apps",
     "/support/taletime/", "/support/debate-me/",
@@ -65,7 +75,14 @@ class GrowthSitemapFreshnessTests(unittest.TestCase):
         for url, stamp in entries():
             with self.subTest(url=url):
                 parsed = date.fromisoformat(stamp)
-                self.assertLessEqual(parsed, date.today())
+                self.assertLessEqual(parsed, publication_today())
+
+    def test_jst_publication_date_is_not_utc_runner_date(self):
+        # At 15:30 UTC on Nov 12 it is already Nov 13 in Japan.
+        before_jst_midnight = datetime(2026, 11, 12, 14, 59, tzinfo=timezone.utc)
+        after_jst_midnight = datetime(2026, 11, 12, 15, 30, tzinfo=timezone.utc)
+        self.assertEqual(publication_today(before_jst_midnight), date(2026, 11, 12))
+        self.assertEqual(publication_today(after_jst_midnight), date(2026, 11, 13))
 
     def test_filtered_catalog_urls_are_not_indexed_separately(self):
         urls = [url for url, _ in entries()]
