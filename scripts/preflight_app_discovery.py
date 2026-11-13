@@ -33,6 +33,7 @@ def play_package(href):
     parts = urlsplit(href)
     ids = parse_qs(parts.query).get("id", [])
     if (parts.scheme != "https" or parts.hostname != "play.google.com"
+            or parts.username or parts.password
             or parts.path != "/store/apps/details" or len(ids) != 1
             or not re.fullmatch(r"[A-Za-z0-9_.]+", ids[0])):
         return None
