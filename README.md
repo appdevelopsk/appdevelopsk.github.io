@@ -147,3 +147,27 @@ the JSON file and hosting/VPS release logs before changing redirects or DNS.
 An HTTP failure reported in this tool is an observation from the machine
 running it, not definitive proof the origin is offline to every user.
 This script makes no publishing, cache-purge, tracking or DNS changes.
+
+
+## Press-to-store GA4 event unification (2026-11-13)
+
+All five press locales retain the original `press_app_click` event for both
+app detail links and Play outbound links. A *real Play click* now additionally
+fires the website-wide `download_click` event with allowlisted event data:
+store=google_play, location=press, placement=press_kit_card, source=press_kit,
+app_slug, app_package, locale. A detail-page click does **not** emit
+`download_click`. These represent outbound links **not installs**. No
+raw search terms, URLs, private user data or unique identifiers are sent.
+
+Run source tests:
+
+```bash
+node --test scripts/test_press_store_events.cjs
+python3 -m unittest scripts.test_press_kit -v
+```
+
+Following an authorized VPS publish, the existing live smoke now requires
+unified press click source on each of the five routes. Use GA4 DebugView to
+verify one `press_app_click` per real press link click and one
+`download_click` per *Play* click, without counting app detail clicks
+as installs. Store acquired users must be verified separately in Play Console.
