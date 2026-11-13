@@ -76,10 +76,24 @@ class PressKitTests(unittest.TestCase):
 
     def test_live_smoke_checks_all_press_locales_and_latest_support(self):
         smoke = (ROOT / "scripts" / "check_app_discovery_live.sh").read_text(encoding="utf-8")
-        for code in ("en", "es", "pt-br", "ja", "id"):
-            self.assertIn("press-" + code + ".html", smoke)
+        # Live shell code expands $code from the loop; the literal per-locale
+        # filenames do not appear in source. Check each tuple and that the
+        # dynamic fetch actually uses the tuple's route and output name.
+        for code, route, lang in (
+            ("en", "press/", "en"),
+            ("es", "press/es/", "es"),
+            ("pt-br", "press/pt-br/", "pt-BR"),
+            ("ja", "press/ja/", "ja"),
+            ("id", "press/id/", "id"),
+        ):
+            self.assertIn(f"'{code}:{route}:{lang}'", smoke)
+        self.assertIn('fetch "/$route" "press-$code.html"', smoke)
+        self.assertIn("'press_app_click'", smoke)
+        self.assertIn("'download_click'", smoke)
         self.assertIn("BrainBurst: Daily Trivia & 1v1 Quiz Battles | Android", smoke)
         self.assertIn("Debate Me: AI Debate Practice App for Android | SK APPS", smoke)
+        self.assertIn('<meta property="og:title" content="Debate Me: AI Debate Practice App for Android | SK APPS">', smoke)
+        self.assertNotIn("Debate Me: Practice Arguments with AI | Android App", smoke)
         self.assertNotIn("Debate Me – Free AI Debate App for Android | SK APPS", smoke)
 
     def test_homepage_and_sitemap_discoverable(self):
