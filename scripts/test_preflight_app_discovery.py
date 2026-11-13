@@ -91,7 +91,7 @@ class PreflightTests(unittest.TestCase):
         self.assertIsNone(checker.play_package("https://play.google.com/store/apps/details?id=com.a&id=com.b"))
         self.assertEqual(checker.play_package(
             "https://play.google.com/store/apps/details?id=com.blurapp.blur_app&amp;hl=en"
-        ), None)  # HTML entity must be decoded by HTMLParser first
+        ), "com.blurapp.blur_app")  # Extra escaped query params do not corrupt the package ID
         self.assertEqual(checker.play_package(
             "https://play.google.com/store/apps/details?id=com.blurapp.blur_app&hl=en"
         ), "com.blurapp.blur_app")
