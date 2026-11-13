@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Read-only compare of twelve deployed growth HTML pages against this checkout.
 
-Exit 0 requires HTTP 200 and byte-identical HTML on all seven pages. Hosts
+Exit 0 requires HTTP 200 and byte-identical HTML on all configured pages. Hosts
 that rewrite HTML can cause false mismatches; inspect alongside growth smoke.
 """
 import argparse
@@ -76,7 +76,7 @@ def inspect(root, fetch):
 
 def fetcher(base_url, timeout):
     parsed = urlparse(base_url)
-    if parsed.scheme not in ("http", "https") or not parsed.netloc or parsed.username or parsed.password:
+    if (parsed.scheme not in ("http", "https") or not parsed.netloc or parsed.username or parsed.password or parsed.path not in ("", "/") or parsed.query or parsed.fragment):
         raise ValueError("--base-url must be an http(s) site origin without userinfo")
     base = parsed.scheme + "://" + parsed.netloc + "/"
 
