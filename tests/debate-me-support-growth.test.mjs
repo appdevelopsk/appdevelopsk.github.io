@@ -11,8 +11,8 @@ function dictionary(name, after) {
   return runInNewContext('('+match[1]+')');
 }
 test('first paint shows real AI debate and never a food spinner', () => {
-  assert.match(html, /<title>Debate Me – Free AI Debate App for Android \| SK APPS<\/title>/);
-  assert.match(html, /<meta property="og:title" content="Debate Me – Free AI Debate App for Android">/);
+  assert.match(html, /<title>Debate Me: AI Debate Practice App for Android \| SK APPS<\/title>/);
+  assert.match(html, /<meta property="og:title" content="Debate Me: AI Debate Practice App for Android \| SK APPS">/);
   assert.match(html, /<h1>Debate Me<\/h1>/);
   assert.match(html, /<div class="hero-emoji">🗣️<\/div>/);
   assert.match(html, /<div class="hero-cat">Education<\/div>/);
@@ -62,7 +62,7 @@ test('manual VPS publishing includes the landing and its read-only live validati
   assert.match(live,/fetch '\/support\/debate-me\/' 'debate-me.html'/);
   assert.match(live,/FAIL Debate Me page still describes cooking/);
   assert.match(live,/FAIL Debate Me first-screen Play CTA not live/);
-  assert.match(live, /Debate Me – Free AI Debate App for Android/);
+  assert.match(live, /Debate Me: AI Debate Practice App for Android/);
   assert.match(live, /FAIL Debate Me new SEO title not live/);
   assert.match(live, /FAIL Debate Me new search description not live/);
   assert.doesNotMatch(live, /grep -Fq 'AI Debate Practice &amp; Feedback'/);
@@ -77,7 +77,7 @@ test('search snippets match the visible Debate Me product and schema', () => {
   assert.ok(description.length <= 160);
   assert.match(description, /Debate Me/);
   assert.match(description, /AI opponent/);
-  assert.match(description, /feedback on your arguments/);
-  assert.match(description, /Google Play for Android/);
+  assert.match(description, /review feedback/);
+  assert.match(description, /on Google Play/);
   assert.equal(JSON.parse(schema).description, description);
 });
