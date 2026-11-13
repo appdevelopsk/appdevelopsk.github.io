@@ -36,6 +36,59 @@ jobs:
           set -euo pipefail
           echo 'Checking public appdevelopsk.com, NOT source on GitHub main.'
           bash scripts/check_app_discovery_live.sh
+      - name: Inventory all stale public routes (read-only, after failed smoke)
+        if: failure()
+        shell: bash
+        run: |
+          set -uo pipefail
+          # Diagnostic GETs are explicitly labeled bots. They never fire GA4
+          # browser events and do not add campaign UTMs or mutate the VPS.
+          python3 scripts/diagnose_growth_routes.py --timeout 7 --output growth-route-diagnosis.json || true
+          python3 scripts/diagnose_growth_deploy.py --timeout 7 --output growth-deploy-diagnosis.json || true
+          python3 - <<'PY'
+          import json
+          import os
+          from pathlib import Path
+          routes = Path('growth-route-diagnosis.json')
+          deploy = Path('growth-deploy-diagnosis.json')
+          lines = ['## Independent public route inventory', '']
+          if routes.exists():
+              data = json.loads(routes.read_text(encoding='utf-8'))
+              lines += [
+                  f"Catalog locale deployed: {not data.get('catalog_locale_needs_review', True)}",
+                  f"Catalog /apps and /apps.html aliases agree: {not data.get('apps_alias_needs_review', True)}",
+                  'Press page readiness (HTTP, canonical, lang, tracking & sitemap):',
+              ]
+              for path, ready in data.get('press_routes_ready', {}).items():
+                  lines.append(f"- {path}: {'PASS' if ready else 'STALE or unverified'}")
+          else:
+              lines.append('Route diagnostic could not create a report.')
+          if deploy.exists():
+              data = json.loads(deploy.read_text(encoding='utf-8'))
+              lines += [
+                  '',
+                  'Source/live HTML SHA-256 comparison (not exact release-SHA proof):',
+                  f"{data.get('identical_pages', 0)}/{data.get('checked_pages', 0)} byte-identical routes",
+              ]
+              for path, result in data.get('pages', {}).items():
+                  if not result.get('bytes_equal'):
+                      lines.append(f"- {path}: HTTP {result.get('http_status')}, mismatch or error")
+          else:
+              lines.append('Source/live diagnostic could not create a report.')
+          lines += ['', 'This diagnostic never deploys, requests indexing, posts to SNS or verifies GA4/store installs.']
+          with open(os.environ['GITHUB_STEP_SUMMARY'], 'a', encoding='utf-8') as f:
+              f.write('\n'.join(lines) + '\n')
+          PY
+      - name: Attach machine-readable public route diagnostics
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: appsite-live-route-inventory-${{ github.run_id }}
+          path: |
+            growth-route-diagnosis.json
+            growth-deploy-diagnosis.json
+          if-no-files-found: warn
+          retention-days: 7
       - name: Summarize release blockers and recovery
         if: failure()
         run: |
