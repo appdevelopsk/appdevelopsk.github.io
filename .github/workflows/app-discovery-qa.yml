@@ -6,6 +6,7 @@ on:
       - apps.html
       - index.html
       - support/brain-burst/index.html
+      - support/taletime/index.html
       - support/snaplingo/index.html
       - support/twotaku/index.html
       - support/debate-me/index.html
@@ -30,6 +31,7 @@ on:
       - scripts/test_sitemap_route_integrity.py
       - scripts/test_sitemap_growth_freshness.py
       - scripts/test_live_smoke_diagnostics.py
+      - scripts/test_live_smoke_source_parity.py
       - scripts/preflight_app_discovery.py
       - scripts/test_preflight_app_discovery.py
       - scripts/test_press_kit.py
@@ -51,6 +53,7 @@ on:
       - apps.html
       - index.html
       - support/brain-burst/index.html
+      - support/taletime/index.html
       - support/snaplingo/index.html
       - support/twotaku/index.html
       - support/debate-me/index.html
@@ -75,6 +78,7 @@ on:
       - scripts/test_sitemap_route_integrity.py
       - scripts/test_sitemap_growth_freshness.py
       - scripts/test_live_smoke_diagnostics.py
+      - scripts/test_live_smoke_source_parity.py
       - scripts/preflight_app_discovery.py
       - scripts/test_preflight_app_discovery.py
       - scripts/test_press_kit.py
@@ -109,6 +113,8 @@ jobs:
         run: python3 -m unittest scripts.test_sitemap_route_integrity scripts.test_sitemap_growth_freshness -v
       - name: Verify live failure inventory stays read-only and fail-closed
         run: python3 -m unittest scripts.test_live_smoke_diagnostics -v
+      - name: Verify public smoke string assertions match current source
+        run: python3 -m unittest scripts.test_live_smoke_source_parity -v
       - name: Verify multilingual press and real local rsync release staging
         run: python3 -m unittest scripts.test_preflight_app_discovery scripts.test_press_kit scripts.test_publish_app_discovery_staging -v
       - name: Verify non-destructive release scripts have valid shell syntax
