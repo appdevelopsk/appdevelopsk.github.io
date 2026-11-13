@@ -45,6 +45,18 @@ document.addEventListener('click',function(event){
     locale:document.documentElement.lang,
     placement:'press_kit'
   });
+  // Match the site's shared outbound-store event without counting detail clicks as downloads.
+  if(a.getAttribute('data-cta')==='store'){
+    gtag('event','download_click',{
+      store:'google_play',
+      location:'press',
+      placement:'press_kit_card',
+      app_slug:a.getAttribute('data-app-slug')||'',
+      app_package:a.getAttribute('data-app-package')||'',
+      locale:document.documentElement.lang,
+      source:'press_kit'
+    });
+  }
 },true);
 </script>
 </head>
