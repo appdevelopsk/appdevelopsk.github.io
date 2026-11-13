@@ -8,6 +8,7 @@ import hashlib
 import json
 import re
 import sys
+from xml.etree import ElementTree
 from urllib.error import HTTPError, URLError
 from urllib.parse import urlsplit, urlunsplit
 from urllib.request import Request, urlopen
@@ -51,6 +52,19 @@ def summarize_response(status, final_url, body, headers):
     }
 
 
+def sitemap_locations(body):
+    """Return exact <loc> values; ignore comments and prefix lookalikes."""
+    try:
+        root = ElementTree.fromstring(body)
+    except ElementTree.ParseError:
+        return set()
+    return {
+        (node.text or "").strip()
+        for node in root.iter()
+        if node.tag.rsplit("}", 1)[-1] == "loc"
+    }
+
+
 def check_press_page(path, status, body, origin):
     """Safe static content checks for a localized press route; never claim browser functionality."""
     html = body.decode("utf-8", "replace")
@@ -79,8 +93,9 @@ def diagnose(origin, fetch):
             if path in PRESS_PAGES:
                 rows[path]["press_checks"] = check_press_page(path, status, body, origin)
             elif path == "/sitemap.xml":
+                locations = sitemap_locations(body)
                 rows[path]["press_sitemap_entries"] = {
-                    language: (origin + target in body.decode("utf-8", "replace"))
+                    language: (origin + target in locations)
                     for target, language in PRESS_PAGES.items()
                 }
             elif path == "/apps":
