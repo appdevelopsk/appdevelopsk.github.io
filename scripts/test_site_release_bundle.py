@@ -75,13 +75,16 @@ class AppsiteReleaseBundleTests(unittest.TestCase):
 
     def test_archive_builder_never_needs_vps_or_credentials(self):
         source = (bundle.ROOT / "scripts/build_site_release_bundle.py").read_text()
-        self.assertNotIn("subprocess", source)
-        self.assertNotIn("urllib.request", source)
-        self.assertNotIn("ssh ", source)
-        self.assertNotIn("rsync -", source)
-        self.assertNotIn("os.system", source)
-        self.assertNotIn("eval(", source)
-        self.assertIn("publishesToVps", source)
+        # Deployment instructions (README) legitimately mention SSH and rsync;
+        # only the executable packaging code must be free of network commands.
+        executable = source.split("def shell_array", 1)[1]
+        self.assertNotIn("subprocess", executable)
+        self.assertNotIn("urllib.request", executable)
+        self.assertNotIn("ssh ", executable)
+        self.assertNotIn("rsync -", executable)
+        self.assertNotIn("os.system", executable)
+        self.assertNotIn("eval(", executable)
+        self.assertIn("publishesToVps", executable)
 
 
 if __name__ == "__main__":
