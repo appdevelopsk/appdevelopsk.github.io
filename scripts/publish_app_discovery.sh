@@ -19,6 +19,11 @@ files=(index.html apps.html sitemap.xml robots.txt guides/quick-games/index.html
 for file in "${files[@]}"; do
   [[ -s "$file" ]] || { echo "Missing source file: $file" >&2; exit 2; }
 done
+# Fail closed before preview or transfer if 92 app mappings, five localized
+# press pages, canonical/hreflang, source GA4 contracts, or sitemap drift.
+# This check is purely local and prints a source-only JSON report.
+command -v python3 >/dev/null 2>&1 || { echo 'python3 required for safe publish preflight' >&2; exit 2; }
+python3 scripts/preflight_app_discovery.py
 echo "Source checkout: $(git rev-parse --short HEAD 2>/dev/null || echo unknown)"
 echo "Target: $host:$root; mode: $mode"
 # --relative recreates only the listed nested file paths. No --delete.
