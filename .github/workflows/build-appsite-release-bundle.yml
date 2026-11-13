@@ -1,0 +1,112 @@
+# Produces a portable verified release ZIP for the site owner when the
+# labeled self-hosted appsite-deploy runner is unavailable.
+# It NEVER writes to a VPS, changes DNS, or starts publication.
+name: Prepare app site owner-only VPS release ZIP
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'index.html'
+      - 'apps.html'
+      - 'robots.txt'
+      - 'sitemap.xml'
+      - 'press/**'
+      - 'guides/**'
+      - 'support/**'
+      - 'privacy-policy/**'
+      - 'scripts/preflight_app_discovery.py'
+      - 'scripts/publish_app_discovery.sh'
+      - 'scripts/publish_stale_policy_pages.sh'
+      - 'scripts/test_preflight_app_discovery.py'
+      - 'scripts/test_press_kit.py'
+      - 'scripts/test_publish_app_discovery_staging.py'
+      - 'scripts/build_site_release_bundle.py'
+      - 'scripts/test_site_release_bundle.py'
+      - '.github/workflows/build-appsite-release-bundle.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'index.html'
+      - 'apps.html'
+      - 'robots.txt'
+      - 'sitemap.xml'
+      - 'press/**'
+      - 'guides/**'
+      - 'support/**'
+      - 'privacy-policy/**'
+      - 'scripts/preflight_app_discovery.py'
+      - 'scripts/publish_app_discovery.sh'
+      - 'scripts/publish_stale_policy_pages.sh'
+      - 'scripts/test_preflight_app_discovery.py'
+      - 'scripts/test_press_kit.py'
+      - 'scripts/test_publish_app_discovery_staging.py'
+      - 'scripts/build_site_release_bundle.py'
+      - 'scripts/test_site_release_bundle.py'
+      - '.github/workflows/build-appsite-release-bundle.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  bundle:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - name: Check out exact release source
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify publisher source and five localized press pages
+        run: |
+          python3 scripts/preflight_app_discovery.py
+          python3 -m unittest \
+            scripts.test_preflight_app_discovery \
+            scripts.test_press_kit \
+            scripts.test_publish_app_discovery_staging \
+            scripts.test_site_release_bundle -v
+      - name: Create source-only ZIP (no network or VPS access)
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/appsite"
+          python3 scripts/build_site_release_bundle.py \
+            --output "$RUNNER_TEMP/appsite/appsite-vps-source-${GITHUB_SHA:0:12}.zip"
+          python3 - <<'PY'
+          from pathlib import Path
+          from zipfile import ZipFile
+          import os
+          folder = Path(os.environ['RUNNER_TEMP']) / 'appsite'
+          archives = list(folder.glob('appsite-vps-source-*.zip'))
+          assert len(archives) == 1, 'one ZIP per verified source checkout'
+          with ZipFile(archives[0]) as z:
+              names = z.namelist()
+              assert len(names) == 46, f'44 site documents + hash manifest + instructions; got {len(names)}'
+              assert z.testzip() is None
+              assert all(n.startswith('site/') or n in ('SHA256SUMS.txt', 'DEPLOY_README.txt') for n in names)
+          PY
+      - name: Save reviewed release ZIP for the owner (main only)
+        if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+        uses: actions/upload-artifact@v4
+        with:
+          name: appsite-vps-source-${{ github.sha }}
+          path: ${{ runner.temp }}/appsite/*.zip
+          if-no-files-found: error
+          retention-days: 14
+      - name: Clarify publication status
+        if: always()
+        shell: bash
+        run: |
+          {
+            echo '## Source bundle — this is NOT a production deployment'
+            echo ''
+            echo '- Existing VPS release requires explicit owner approval on the separate **publish to VPS** workflow.'
+            echo '- Bundle contains only existing allowlisted public app pages and approved policy HTML.'
+            echo '- Public URLs remain unverified until the owner applies and reruns the live smoke test.'
+            echo '- No SSH, domain transfer, indexing submission, social post, or traffic event is performed.'
+          } >> "$GITHUB_STEP_SUMMARY"
