@@ -152,7 +152,11 @@ def build_apps_html(t, apps, n):
     t = sub1(r'(<div class="grid">\n).*?(    </div>\n  </main>)',
              lambda m: m.group(1) + cards + m.group(2), t, "apps.html の grid", re.S)
     t = re.sub(r"Browse all \d+ mobile apps", f"Browse all {n} mobile apps", t)
-    t = sub1(r"<p>(?:\d+ free apps on Google Play|Explore our mobile app catalog)", "<p>Explore our mobile app catalog", t,
+    # The localized catalog keeps a stable ID on the intro paragraph.
+    # Preserve that ID when normalizing the legacy text, otherwise the
+    # catalog-language controller cannot find the translated introduction.
+    t = sub1(r'(<p(?:\s+id="catalog-intro")?>)(?:\d+ free apps on Google Play|Explore our mobile app catalog)',
+             lambda m: m.group(1) + "Explore our mobile app catalog", t,
              "apps.html の見出し文")
     return t
 
