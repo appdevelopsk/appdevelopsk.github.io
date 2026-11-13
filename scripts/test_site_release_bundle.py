@@ -18,7 +18,7 @@ class AppsiteReleaseBundleTests(unittest.TestCase):
         self.assertTrue(bundle.PRESS.issubset(files))
         self.assertEqual(sum(x.startswith("privacy-policy/") for x in files), 17)
         self.assertNotIn(".env", "\n".join(files))
-        self.assertFalse(any("..", "." in Path(x).parts for x in files))
+        self.assertFalse(any(".." in Path(x).parts or "." in Path(x).parts for x in files))
 
     def test_zip_contains_exact_site_payload_with_matching_checksum_file(self):
         files = bundle.release_manifest()
