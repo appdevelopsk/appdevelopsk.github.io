@@ -171,3 +171,29 @@ unified press click source on each of the five routes. Use GA4 DebugView to
 verify one `press_app_click` per real press link click and one
 `download_click` per *Play* click, without counting app detail clicks
 as installs. Store acquired users must be verified separately in Play Console.
+
+
+## Fail-closed offline preflight before VPS publishing (2026-11-13)
+
+The app-discovery publish command now runs a local Python stdlib-only source
+integrity check **before both --dry-run and --apply**. It fails and sends no
+files if a broken Google Play package link, duplicated/missing catalog card,
+incorrect schema count, missing 5-language catalog interface, incorrect press
+canonical/hreflang/sitemap, missing support destination or incorrect
+press-to-store analytics identity is detected.
+
+Run from the intended production checkout:
+
+```bash
+python3 -m unittest scripts.test_preflight_app_discovery scripts.test_publish_preflight_gate -v
+python3 scripts/preflight_app_discovery.py
+bash scripts/publish_app_discovery.sh --dry-run
+```
+
+The JSON report marks `source_only: true`. A PASS proves only that
+the checked-out source files agree; it does **not** prove that the domain is
+already updated, that the Play listing is available in every country, or
+that first-time app installs increased. After reviewing the dry-run destination
+and file list on the authorized host, use the existing `--apply` flag,
+then the live-smoke scripts. Preserve a rollback copy or backup before applying.
+Do not execute an unintended VPS transfer just because the source preflight passes.
