@@ -57,6 +57,8 @@ class PressKitTests(unittest.TestCase):
                 self.assertIn("/apps", anchors)
                 self.assertNotIn("utm_source=presskit", html, "Internal UTMs would reset acquisition attribution")
                 self.assertIn("press_app_click", html)
+                self.assertIn("'download_click'", html)
+                self.assertIn("source:'press_kit'", html)
                 self.assertEqual(sum(x.get("data-cta")=="store" for tag,x in doc.attrs if tag=="a"), 5)
                 self.assertEqual(sum(tag=="a" and attrs.get("lang") in PAGES for tag,attrs in doc.attrs), len(PAGES))
 
