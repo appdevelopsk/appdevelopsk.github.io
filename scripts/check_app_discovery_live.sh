@@ -90,6 +90,7 @@ for entry in 'en:press/:en' 'es:press/es/:es' 'pt-br:press/pt-br/:pt-BR' 'ja:pre
   grep -Fq "<html lang=\"$language\">" "$tmp/press-$code.html" || { echo "FAIL press $code language not live" >&2; exit 1; }
   grep -Fq "https://appdevelopsk.com/$route" "$tmp/press-$code.html" || { echo "FAIL press $code canonical not live" >&2; exit 1; }
   grep -Fq 'press_app_click' "$tmp/press-$code.html" || { echo "FAIL press $code app attribution missing" >&2; exit 1; }
+  grep -Fq "'download_click'" "$tmp/press-$code.html" || { echo "FAIL press $code unified store click attribution missing" >&2; exit 1; }
 done
 fetch '/support/face-reaction-battle/' 'face-battle.html'
 grep -Fq 'data-alternative="instant-judge"' "$tmp/face-battle.html" || { echo 'FAIL unavailable game alternative CTA missing' >&2; exit 1; }
