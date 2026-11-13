@@ -88,6 +88,7 @@ class PreflightTests(unittest.TestCase):
 
     def test_bad_play_url_is_never_accepted(self):
         self.assertIsNone(checker.play_package("https://evil.example/store/apps/details?id=com.blurapp.blur_app"))
+        self.assertIsNone(checker.play_package("https://fakeuser@play.google.com/store/apps/details?id=com.blurapp.blur_app"))
         self.assertIsNone(checker.play_package("https://play.google.com/store/apps/details?id=com.a&id=com.b"))
         self.assertEqual(checker.play_package(
             "https://play.google.com/store/apps/details?id=com.blurapp.blur_app&amp;hl=en"
