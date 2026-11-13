@@ -55,7 +55,7 @@ class DeploymentDiagnosisTests(unittest.TestCase):
         self.assertIsNone(stamp(b'<meta name="sk-growth-release" content="a"><meta name="sk-growth-release" content="b">'))
 
     def test_base_url_rejects_invalid_origin(self):
-        for url in ('file:///tmp/test', 'https://user:pass@example.com', 'not-a-url'):
+        for url in ('file:///tmp/test', 'https://user:pass@example.com', 'not-a-url', 'https://appdevelopsk.com/apps', 'https://appdevelopsk.com/?lang=ja', 'https://appdevelopsk.com/#press'):
             with self.subTest(url=url), self.assertRaises(ValueError):
                 fetcher(url, 5)
 

@@ -118,3 +118,32 @@ event contract, plus previously released growth pages. Check mobile browser
 behavior, GA4 DebugView and Play acquisition data separately. This workflow
 cannot be run against the owner's VPS from a disconnected ChatGPT container;
 no source merge or local test proves that /apps is updated on the public host.
+
+
+## Press-route and catalog deployment diagnosis (2026-11-13)
+
+The read-only `scripts/diagnose_growth_routes.py` checks the public origin's
+`/apps` vs `/apps.html` behavior **and all five creator locale routes**:
+English, Spanish, Brazilian Portuguese, Japanese and Indonesian.
+
+For each press route, it records HTTP status, final URL, public cache headers
+and a SHA-256 of the body, plus boolean checks for the expected HTML language,
+canonical URL, all reciprocal hreflang entries (including x-default), five
+store CTAs, and the press click analytics contract. It also requires the public
+sitemap to list all five routes. The app catalog must include the five-language
+UI selector and `catalog_language_selected` event source. A HTTP 200 response
+with a stale or incorrect fallback page is not a passing release.
+
+Run on the authorized deployment machine with network access:
+
+```bash
+python3 -m unittest discover -s scripts -p 'test_diagnose_growth_routes*.py' -v
+python3 scripts/diagnose_growth_routes.py --output growth-route-diagnosis.json
+```
+
+An exit code of 1 indicates one or more missing/ambiguous public routes,
+a stale catalog, or an apps alias mismatch. Review the **per-route** checks in
+the JSON file and hosting/VPS release logs before changing redirects or DNS.
+An HTTP failure reported in this tool is an observation from the machine
+running it, not definitive proof the origin is offline to every user.
+This script makes no publishing, cache-purge, tracking or DNS changes.
