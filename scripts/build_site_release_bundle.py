@@ -135,8 +135,8 @@ def main():
     if args.output.suffix.lower() != ".zip":
         parser.error("--output must be a .zip filename")
     output = args.output.resolve()
-    if output.is_relative_to(ROOT) and output.parent == ROOT:
-        parser.error("do not create ZIP at public website root")
+    if output.is_relative_to(ROOT):
+        parser.error("do not create ZIP anywhere inside the public website source tree")
     try:
         files = release_manifest(ROOT)
         digest = zip_bytes(ROOT, files, output)
