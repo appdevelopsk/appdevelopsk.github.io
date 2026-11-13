@@ -30,6 +30,11 @@ on:
       - scripts/test_sitemap_route_integrity.py
       - scripts/test_sitemap_growth_freshness.py
       - scripts/test_live_smoke_diagnostics.py
+      - scripts/preflight_app_discovery.py
+      - scripts/test_preflight_app_discovery.py
+      - scripts/test_press_kit.py
+      - scripts/test_publish_app_discovery_staging.py
+      - press/**
       - site_counts.json
       - tests/catalog-growth.test.mjs
       - tests/japanese-quick-games-discovery.test.mjs
@@ -70,6 +75,11 @@ on:
       - scripts/test_sitemap_route_integrity.py
       - scripts/test_sitemap_growth_freshness.py
       - scripts/test_live_smoke_diagnostics.py
+      - scripts/preflight_app_discovery.py
+      - scripts/test_preflight_app_discovery.py
+      - scripts/test_press_kit.py
+      - scripts/test_publish_app_discovery_staging.py
+      - press/**
       - site_counts.json
       - tests/catalog-growth.test.mjs
       - tests/catalog-positioning-regression.test.mjs
@@ -99,6 +109,8 @@ jobs:
         run: python3 -m unittest scripts.test_sitemap_route_integrity scripts.test_sitemap_growth_freshness -v
       - name: Verify live failure inventory stays read-only and fail-closed
         run: python3 -m unittest scripts.test_live_smoke_diagnostics -v
+      - name: Verify multilingual press and real local rsync release staging
+        run: python3 -m unittest scripts.test_preflight_app_discovery scripts.test_press_kit scripts.test_publish_app_discovery_staging -v
       - name: Verify non-destructive release scripts have valid shell syntax
         run: bash -n scripts/publish_app_discovery.sh scripts/check_app_discovery_live.sh scripts/publish_stale_policy_pages.sh
       - name: Verify search, referral links and guide listings
