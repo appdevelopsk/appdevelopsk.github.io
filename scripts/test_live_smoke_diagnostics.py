@@ -39,7 +39,10 @@ class LiveFailureInventoryTests(unittest.TestCase):
         self.assertIn("cron: '40 0 * * *'", source)
         self.assertIn("permissions:\n  contents: read", source)
         self.assertIn("runs-on: ubuntu-latest", source)
-        self.assertNotIn("bash scripts/publish_app_discovery.sh --apply", source)
+        # The failure summary prints an owner-only deploy command as
+        # instructions; it must not execute inside any CI step.
+        execution = source.split("      - name: Summarize release blockers and recovery", 1)[0]
+        self.assertNotIn("bash scripts/publish_app_discovery.sh --apply", execution)
         self.assertNotIn("curl --request POST", source)
         self.assertNotIn("continue-on-error: true", source)
 
