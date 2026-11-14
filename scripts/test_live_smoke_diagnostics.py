@@ -30,14 +30,14 @@ class LiveFailureInventoryTests(unittest.TestCase):
         )
         for path in expected:
             with self.subTest(path=path):
-                self.assertIn(f"      - {path}\\n", source)
+                self.assertIn(f"      - {path}\n", source)
         self.assertIn("    branches: [main]", source)
 
     def test_public_live_monitor_remains_read_only_and_recurring(self):
         source = self.yaml
         self.assertIn("  workflow_dispatch:", source)
         self.assertIn("cron: '40 0 * * *'", source)
-        self.assertIn("permissions:\\n  contents: read", source)
+        self.assertIn("permissions:\n  contents: read", source)
         self.assertIn("runs-on: ubuntu-latest", source)
         self.assertNotIn("bash scripts/publish_app_discovery.sh --apply", source)
         self.assertNotIn("curl --request POST", source)
