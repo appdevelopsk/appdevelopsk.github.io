@@ -25,6 +25,7 @@ SOURCE_PATHS = {
     "ai-debate-practice-ja.html": "guides/ai-debate-practice/ja/index.html",
     "sitemap.xml": "sitemap.xml",
     "brain-burst.html": "support/brain-burst/index.html",
+    "one-tap-routine.html": "support/one-tap-routine/index.html",
     "taletime.html": "support/taletime/index.html",
     "face-battle.html": "support/face-reaction-battle/index.html",
     "dotchi.html": "support/twotaku/index.html",
@@ -91,6 +92,7 @@ class SmokeSourceParityTests(unittest.TestCase):
         self.assertTrue(set(SOURCE_PATHS).issuperset(report["files"]))
         self.assertIn("debate-me.html", report["files"])
         self.assertIn("brain-burst.html", report["files"])
+        self.assertIn("one-tap-routine.html", report["files"])
         self.assertIn("taletime.html", report["files"])
         self.assertIn("futureme.html", report["files"])
         self.assertIn("sitemap.xml", report["files"])
