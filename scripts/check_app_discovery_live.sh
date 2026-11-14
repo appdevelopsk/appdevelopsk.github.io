@@ -166,6 +166,15 @@ grep -Fq '<html lang="ja">' "$tmp/ai-debate-practice-ja.html" || { echo 'FAIL Ja
 grep -Fq '<title>AIでディベートを練習する方法｜3つのテーマと反論のコツ | SK Apps</title>' "$tmp/ai-debate-practice-ja.html" || { echo 'FAIL Japanese debate guide source not deployed' >&2; exit 1; }
 grep -Fq '<link rel="canonical" href="https://appdevelopsk.com/guides/ai-debate-practice/ja/">' "$tmp/ai-debate-practice-ja.html" || { echo 'FAIL Japanese debate guide canonical missing' >&2; exit 1; }
 grep -Fq 'utm_campaign=ai_debate_practice_ja' "$tmp/ai-debate-practice-ja.html" || { echo 'FAIL Japanese debate guide Android referral CTA missing' >&2; exit 1; }
+# One Tap Routine is a habit tracker, never a phone-lock utility.
+fetch '/support/one-tap-routine/' 'one-tap-routine.html'
+grep -Fq '<title>One Tap Routine – Habit Tracker &amp; Daily Streaks | SK APPS</title>' "$tmp/one-tap-routine.html" || { echo 'FAIL One Tap Routine honest title not deployed' >&2; exit 1; }
+grep -Fq 'One-tap check-ins' "$tmp/one-tap-routine.html" || { echo 'FAIL One Tap Routine tracking guide missing' >&2; exit 1; }
+grep -Fq 'not a phone-locking, device-management or screen-blocking app' "$tmp/one-tap-routine.html" || { echo 'FAIL One Tap Routine false lock claim not corrected' >&2; exit 1; }
+grep -Fq 'privacy-policy/one-tap-routine/' "$tmp/one-tap-routine.html" || { echo 'FAIL One Tap Routine privacy link missing' >&2; exit 1; }
+if grep -Fq 'Phone Lock Focus Timer' "$tmp/one-tap-routine.html"; then
+  echo 'FAIL stale One Tap Routine phone-lock title remains on VPS' >&2; exit 1
+fi
 fetch '/robots.txt' 'robots.txt'
 # #53 broadened the allow to /icons/ (covers /icons/apps/).
 grep -Eq '^Allow: /icons/(apps/)?$' "$tmp/robots.txt" || { echo 'FAIL Google image crawl allow not live' >&2; exit 1; }
