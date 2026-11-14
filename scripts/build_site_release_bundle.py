@@ -55,7 +55,7 @@ ALTERNATIVE WHEN THE SELF-HOSTED RUNNER IS UNAVAILABLE:
      https://appdevelopsk.com and the expected canonical/hreflang, then
      check the public app catalog and support landing metadata.
 
-This includes 27 app-discovery documents and 17 approved policy documents
+This includes 29 app-discovery documents and 17 approved policy documents
 from current source. It is NOT a complete VPS backup, nginx configuration,
 database migration, browser test, app-store release, or SEO indexing proof.
 """
@@ -81,12 +81,13 @@ def release_manifest(root=ROOT):
     scripts = root / "scripts"
     apps = shell_array((scripts / "publish_app_discovery.sh").read_text(encoding="utf-8"), "files")
     policies = shell_array((scripts / "publish_stale_policy_pages.sh").read_text(encoding="utf-8"), "slugs")
-    if len(apps) != 27 or len(policies) != 17:
+    if len(apps) != 29 or len(policies) != 17:
         raise ValueError("publisher manifest count changed; review before bundling")
     if not PRESS.issubset(set(apps)):
         raise ValueError("one or more of the five press routes are not in publisher manifest")
     if not {"index.html", "apps.html", "sitemap.xml", "robots.txt",
-            "support/brain-burst/index.html", "support/debate-me/index.html"}.issubset(apps):
+            "support/brain-burst/index.html", "support/debate-me/index.html",
+            "guides/ai-debate-practice/index.html", "guides/ai-debate-practice/ja/index.html"}.issubset(apps):
         raise ValueError("critical app discovery/SEO pages missing from publisher manifest")
     if any(not re.fullmatch(r"[a-z0-9-]+", slug) for slug in policies):
         raise ValueError("unsafe privacy-policy slug")
@@ -147,7 +148,7 @@ def main():
         "status": "source_bundle_created_not_deployed",
         "output": str(output),
         "sha256": digest,
-        "appDiscoveryFiles": 27,
+        "appDiscoveryFiles": 29,
         "policyFiles": 17,
         "totalFiles": len(files),
         "pressRoutes": sorted(PRESS),
