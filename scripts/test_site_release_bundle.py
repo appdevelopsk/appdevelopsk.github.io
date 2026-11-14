@@ -13,7 +13,7 @@ from scripts import build_site_release_bundle as bundle
 class AppsiteReleaseBundleTests(unittest.TestCase):
     def test_exact_publish_manifest_has_five_press_and_seventeen_policies(self):
         files = bundle.release_manifest()
-        self.assertEqual(len(files), 46)
+        self.assertEqual(len(files), 47)
         self.assertEqual(len(files), len(set(files)))
         self.assertTrue(bundle.PRESS.issubset(files))
         for guide in ("guides/ai-debate-practice/index.html",
