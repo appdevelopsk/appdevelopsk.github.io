@@ -2,7 +2,7 @@
 import tempfile
 import unittest
 from pathlib import Path
-from diagnose_growth_deploy import PAGE_FILES, compare, fetcher, inspect, stamp
+from scripts.diagnose_growth_deploy import PAGE_FILES, compare, fetcher, inspect, stamp
 
 
 class DeploymentDiagnosisTests(unittest.TestCase):
@@ -17,6 +17,16 @@ class DeploymentDiagnosisTests(unittest.TestCase):
             dest = self.root / file
             dest.parent.mkdir(parents=True, exist_ok=True)
             dest.write_bytes(data)
+
+    def test_critical_new_and_stale_app_pages_are_in_release_inventory(self):
+        self.assertEqual(len(PAGE_FILES), 15)
+        for path, source in {
+            "/support/brain-burst/": "support/brain-burst/index.html",
+            "/guides/ai-debate-practice/": "guides/ai-debate-practice/index.html",
+            "/guides/ai-debate-practice/ja/": "guides/ai-debate-practice/ja/index.html",
+        }.items():
+            with self.subTest(path=path):
+                self.assertEqual(PAGE_FILES[path], source)
 
     def test_same_pages_pass(self):
         result = inspect(self.root, lambda p: (self.contents[p], 200))
