@@ -16,6 +16,7 @@ class AppsiteReleaseBundleTests(unittest.TestCase):
         self.assertEqual(len(files), 47)
         self.assertEqual(len(files), len(set(files)))
         self.assertTrue(bundle.PRESS.issubset(files))
+        self.assertIn("support/one-tap-routine/index.html", files)
         for guide in ("guides/ai-debate-practice/index.html",
                       "guides/ai-debate-practice/ja/index.html"):
             self.assertIn(guide, files, "published sitemap entry missing from release ZIP")
