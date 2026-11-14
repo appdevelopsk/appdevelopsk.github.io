@@ -57,6 +57,8 @@ class AppPublishStagingTests(unittest.TestCase):
         self.assertTrue(PRESS.issubset(set(paths)), "Every press locale must deploy")
         self.assertIn("apps.html", paths)
         self.assertIn("support/brain-burst/index.html", paths)
+        self.assertIn("guides/ai-debate-practice/index.html", paths)
+        self.assertIn("guides/ai-debate-practice/ja/index.html", paths)
         with tempfile.TemporaryDirectory() as tmp:
             dest = Path(tmp) / "www"
             dest.mkdir()
