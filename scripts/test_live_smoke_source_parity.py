@@ -21,6 +21,8 @@ SOURCE_PATHS = {
     "apps.html": "apps.html",
     "quick-games.html": "guides/quick-games/index.html",
     "quick-games-ja.html": "guides/quick-games/ja/index.html",
+    "ai-debate-practice.html": "guides/ai-debate-practice/index.html",
+    "ai-debate-practice-ja.html": "guides/ai-debate-practice/ja/index.html",
     "sitemap.xml": "sitemap.xml",
     "brain-burst.html": "support/brain-burst/index.html",
     "taletime.html": "support/taletime/index.html",
@@ -92,6 +94,8 @@ class SmokeSourceParityTests(unittest.TestCase):
         self.assertIn("taletime.html", report["files"])
         self.assertIn("futureme.html", report["files"])
         self.assertIn("sitemap.xml", report["files"])
+        self.assertIn("ai-debate-practice.html", report["files"])
+        self.assertIn("ai-debate-practice-ja.html", report["files"])
 
     def test_missing_required_marker_is_detected(self):
         fake = """grep -Fq 'current title' "$tmp/debate-me.html" || exit 1"""
