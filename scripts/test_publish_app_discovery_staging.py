@@ -12,6 +12,8 @@ import subprocess
 import tempfile
 import unittest
 from pathlib import Path, PurePosixPath
+from urllib.parse import urlsplit
+from xml.etree import ElementTree
 
 ROOT = Path(__file__).resolve().parents[1]
 PUBLISH = ROOT / "scripts" / "publish_app_discovery.sh"
@@ -52,11 +54,30 @@ def rsync_to(directory, paths, dry_run=False):
 
 
 class AppPublishStagingTests(unittest.TestCase):
+    def test_every_sitemapped_growth_guide_is_in_publisher_manifest(self):
+        # A newly written/indexed guide must not be absent from the VPS
+        # release manifest (Nov 14: two AI debate guides were initially omitted).
+        source = ElementTree.parse(ROOT / "sitemap.xml").getroot()
+        expected = set()
+        for node in source.iter():
+            if node.tag.rsplit("}", 1)[-1] != "loc" or not node.text:
+                continue
+            url = urlsplit(node.text.strip())
+            if url.scheme == "https" and url.netloc == "appdevelopsk.com":
+                if url.path.startswith("/guides/"):
+                    self.assertTrue(url.path.endswith("/"), url.path)
+                    expected.add(url.path.lstrip("/") + "index.html")
+        self.assertGreaterEqual(len(expected), 7)
+        missing = expected - set(manifest())
+        self.assertFalse(missing, "Public sitemap advertises guides not in the VPS rsync manifest: " + ", ".join(sorted(missing)))
+
     def test_real_relative_rsync_layout_matches_exact_allowlist(self):
         paths = manifest()
         self.assertTrue(PRESS.issubset(set(paths)), "Every press locale must deploy")
         self.assertIn("apps.html", paths)
         self.assertIn("support/brain-burst/index.html", paths)
+        self.assertIn("guides/ai-debate-practice/index.html", paths)
+        self.assertIn("guides/ai-debate-practice/ja/index.html", paths)
         with tempfile.TemporaryDirectory() as tmp:
             dest = Path(tmp) / "www"
             dest.mkdir()

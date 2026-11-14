@@ -154,6 +154,18 @@ grep -Fq 'support_future_me_hero' "$tmp/futureme.html" || { echo 'FAIL FutureMe 
 if grep -Eiq 'Letters to future self|Time capsule feature|FutureMe Premium.*[0-9]+/(month|year)|FutureMe Premium 提供月度|NT\\$150/月' "$tmp/futureme.html"; then
   echo 'FAIL FutureMe support page contains outdated feature or pricing claims' >&2; exit 1
 fi
+# Newly indexed bilingual AI debate practice articles must be live and
+# point to real Android app destinations, not just appear in sitemap/source.
+fetch '/guides/ai-debate-practice/' 'ai-debate-practice.html'
+grep -Fq '<html lang="en">' "$tmp/ai-debate-practice.html" || { echo 'FAIL English debate guide language is stale' >&2; exit 1; }
+grep -Fq '<title>How to Practice Debating with AI: 3 Exercises | SK Apps</title>' "$tmp/ai-debate-practice.html" || { echo 'FAIL English debate guide source not deployed' >&2; exit 1; }
+grep -Fq '<link rel="canonical" href="https://appdevelopsk.com/guides/ai-debate-practice/">' "$tmp/ai-debate-practice.html" || { echo 'FAIL English debate guide canonical missing' >&2; exit 1; }
+grep -Fq 'utm_campaign=ai_debate_practice' "$tmp/ai-debate-practice.html" || { echo 'FAIL English debate guide Android referral CTA missing' >&2; exit 1; }
+fetch '/guides/ai-debate-practice/ja/' 'ai-debate-practice-ja.html'
+grep -Fq '<html lang="ja">' "$tmp/ai-debate-practice-ja.html" || { echo 'FAIL Japanese debate guide language is stale' >&2; exit 1; }
+grep -Fq '<title>AIでディベートを練習する方法｜3つのテーマと反論のコツ | SK Apps</title>' "$tmp/ai-debate-practice-ja.html" || { echo 'FAIL Japanese debate guide source not deployed' >&2; exit 1; }
+grep -Fq '<link rel="canonical" href="https://appdevelopsk.com/guides/ai-debate-practice/ja/">' "$tmp/ai-debate-practice-ja.html" || { echo 'FAIL Japanese debate guide canonical missing' >&2; exit 1; }
+grep -Fq 'utm_campaign=ai_debate_practice_ja' "$tmp/ai-debate-practice-ja.html" || { echo 'FAIL Japanese debate guide Android referral CTA missing' >&2; exit 1; }
 fetch '/robots.txt' 'robots.txt'
 # #53 broadened the allow to /icons/ (covers /icons/apps/).
 grep -Eq '^Allow: /icons/(apps/)?$' "$tmp/robots.txt" || { echo 'FAIL Google image crawl allow not live' >&2; exit 1; }
