@@ -15,6 +15,37 @@ class LiveFailureInventoryTests(unittest.TestCase):
     def setUpClass(cls):
         cls.yaml = WORKFLOW.read_text(encoding="utf-8")
 
+    def test_every_public_growth_change_rechecks_the_real_vps(self):
+        # Previously press/**, homepage, sitemap and robots changed on main
+        # without running the live smoke, allowing silent 404s/stale SEO.
+        source = self.yaml.split("  push:", 1)[1].split("  schedule:", 1)[0]
+        expected = (
+            "index.html", "apps.html", "apps_data.json", "press/**",
+            "guides/**", "support/**", "sitemap.xml", "robots.txt",
+            "scripts/check_app_discovery_live.sh",
+            "scripts/diagnose_growth_routes.py",
+            "scripts/diagnose_growth_deploy.py",
+            "scripts/publish_app_discovery.sh",
+            ".github/workflows/live-acquisition-smoke.yml",
+        )
+        for path in expected:
+            with self.subTest(path=path):
+                self.assertIn(f"      - {path}\n", source)
+        self.assertIn("    branches: [main]", source)
+
+    def test_public_live_monitor_remains_read_only_and_recurring(self):
+        source = self.yaml
+        self.assertIn("  workflow_dispatch:", source)
+        self.assertIn("cron: '40 0 * * *'", source)
+        self.assertIn("permissions:\n  contents: read", source)
+        self.assertIn("runs-on: ubuntu-latest", source)
+        # The failure summary prints an owner-only deploy command as
+        # instructions; it must not execute inside any CI step.
+        execution = source.split("      - name: Summarize release blockers and recovery", 1)[0]
+        self.assertNotIn("bash scripts/publish_app_discovery.sh --apply", execution)
+        self.assertNotIn("curl --request POST", source)
+        self.assertNotIn("continue-on-error: true", source)
+
     def test_diagnostics_only_after_failed_public_smoke(self):
         source = self.yaml
         smoke = source.index("      - name: Check actual VPS HTTP pages")
