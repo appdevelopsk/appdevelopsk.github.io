@@ -87,6 +87,7 @@ def release_manifest(root=ROOT):
         raise ValueError("one or more of the five press routes are not in publisher manifest")
     if not {"index.html", "apps.html", "sitemap.xml", "robots.txt",
             "support/brain-burst/index.html", "support/debate-me/index.html",
+            "support/one-tap-routine/index.html",
             "guides/ai-debate-practice/index.html", "guides/ai-debate-practice/ja/index.html"}.issubset(apps):
         raise ValueError("critical app discovery/SEO pages missing from publisher manifest")
     if any(not re.fullmatch(r"[a-z0-9-]+", slug) for slug in policies):
