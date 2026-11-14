@@ -31,6 +31,10 @@ on:
       - scripts/test_sitemap_route_integrity.py
       - scripts/test_sitemap_growth_freshness.py
       - scripts/test_live_smoke_diagnostics.py
+      - scripts/diagnose_growth_routes.py
+      - scripts/diagnose_growth_deploy.py
+      - scripts/test_diagnose_growth_routes.py
+      - scripts/test_diagnose_growth_deploy.py
       - scripts/test_live_smoke_source_parity.py
       - scripts/preflight_app_discovery.py
       - scripts/test_preflight_app_discovery.py
@@ -78,6 +82,10 @@ on:
       - scripts/test_sitemap_route_integrity.py
       - scripts/test_sitemap_growth_freshness.py
       - scripts/test_live_smoke_diagnostics.py
+      - scripts/diagnose_growth_routes.py
+      - scripts/diagnose_growth_deploy.py
+      - scripts/test_diagnose_growth_routes.py
+      - scripts/test_diagnose_growth_deploy.py
       - scripts/test_live_smoke_source_parity.py
       - scripts/preflight_app_discovery.py
       - scripts/test_preflight_app_discovery.py
@@ -113,6 +121,8 @@ jobs:
         run: python3 -m unittest scripts.test_sitemap_route_integrity scripts.test_sitemap_growth_freshness -v
       - name: Verify live failure inventory stays read-only and fail-closed
         run: python3 -m unittest scripts.test_live_smoke_diagnostics -v
+      - name: Verify 15 public deployment diagnostic routes and failure handling
+        run: python3 -m unittest scripts.test_diagnose_growth_routes scripts.test_diagnose_growth_deploy -v
       - name: Verify public smoke string assertions match current source
         run: python3 -m unittest scripts.test_live_smoke_source_parity -v
       - name: Verify multilingual press and real local rsync release staging

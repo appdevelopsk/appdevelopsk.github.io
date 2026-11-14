@@ -1,6 +1,6 @@
 import unittest
 from urllib.error import URLError
-from diagnose_growth_routes import diagnose, origin_from_url, summarize_response
+from scripts.diagnose_growth_routes import diagnose, origin_from_url, summarize_response
 
 ORIGIN = "https://appdevelopsk.com"
 BODY = b'<html><head><link rel="canonical" href="https://appdevelopsk.com/apps"><meta name="sk-growth-release" content="growth-20261106-wave2"></head></html>'
