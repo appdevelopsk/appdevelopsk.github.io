@@ -7,11 +7,19 @@ on:
   push:
     branches: [main]
     paths:
+      # Every site file checked by check_app_discovery_live.sh must
+      # trigger the same post-merge public HTTP check, not only app/support.
+      - index.html
       - apps.html
       - apps_data.json
-      - support/**
+      - press/**
       - guides/**
+      - support/**
+      - sitemap.xml
+      - robots.txt
       - scripts/check_app_discovery_live.sh
+      - scripts/diagnose_growth_routes.py
+      - scripts/diagnose_growth_deploy.py
       - scripts/publish_app_discovery.sh
       - .github/workflows/live-acquisition-smoke.yml
   schedule:
