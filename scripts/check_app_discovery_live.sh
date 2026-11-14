@@ -103,15 +103,22 @@ grep -Fq 'const FEAT_T={en:{0:"Choose A or B on a question."' "$tmp/dotchi.html"
 fetch '/support/debate-me/' 'debate-me.html'
 # The post-GSC 2026-11-11 snippet must be live; rejecting the old SEO
 # title prevents a GitHub merge from being mistaken for a published change.
-grep -Fq '<title>Debate Me: AI Debate Practice App for Android | SK APPS</title>' "$tmp/debate-me.html" || { echo 'FAIL Debate Me new SEO title not live' >&2; exit 1; }
-grep -Fq 'content="Practice debates against an AI opponent in Debate Me for Android' "$tmp/debate-me.html" || { echo 'FAIL Debate Me new search description not live' >&2; exit 1; }
-grep -Fq '<meta property="og:title" content="Debate Me: AI Debate Practice App for Android | SK APPS">' "$tmp/debate-me.html" || { echo 'FAIL Debate Me OG title not live' >&2; exit 1; }
+grep -Fq '<title>Debate Me – Practice Debating with AI on Android | SK APPS</title>' "$tmp/debate-me.html" || { echo 'FAIL Debate Me new SEO title not live' >&2; exit 1; }
+grep -Fq 'content="Want to get better at debating? Debate Me lets you challenge an AI opponent' "$tmp/debate-me.html" || { echo 'FAIL Debate Me new search description not live' >&2; exit 1; }
+grep -Fq '<meta property="og:title" content="Debate Me – Practice Debating with AI on Android | SK APPS">' "$tmp/debate-me.html" || { echo 'FAIL Debate Me OG title not live' >&2; exit 1; }
 grep -Fq 'data-position="hero"' "$tmp/debate-me.html" || { echo 'FAIL Debate Me first-screen Play CTA not live' >&2; exit 1; }
 grep -Fq 'data-position="details"' "$tmp/debate-me.html" || { echo 'FAIL Debate Me details Play CTA missing' >&2; exit 1; }
 grep -Fq 'support_debate_me_hero' "$tmp/debate-me.html" || { echo 'FAIL Debate Me Play attribution missing' >&2; exit 1; }
 if grep -Eq 'Hundreds of meal ideas|Filter by ingredients|Can.t decide what to cook tonight' "$tmp/debate-me.html"; then
   echo 'FAIL Debate Me page still describes cooking instead of AI debates' >&2; exit 1
 fi
+# GSC 2026-11-09..11: BrainBurst has impressions but no clicks. Verify the
+# improved title/description on the public site, not only in GitHub.
+fetch '/support/brain-burst/' 'brain-burst.html'
+grep -Fq '<title>BrainBurst – Daily Trivia &amp; 1v1 Quiz Battles on Android</title>' "$tmp/brain-burst.html" || \
+  grep -Fq '<title>BrainBurst – Daily Trivia & 1v1 Quiz Battles on Android</title>' "$tmp/brain-burst.html" || { echo 'FAIL BrainBurst revised title not live' >&2; exit 1; }
+grep -Fq 'content="Play daily trivia and challenge others in 1v1 quiz battles with BrainBurst.' "$tmp/brain-burst.html" || { echo 'FAIL BrainBurst search description not live' >&2; exit 1; }
+grep -Fq 'play.google.com/store/apps/details?id=com.brainburst.brain_burst' "$tmp/brain-burst.html" || { echo 'FAIL BrainBurst Play CTA missing' >&2; exit 1; }
 # Market listing must describe idea discovery, not a voice diary or an unsupported checkout.
 fetch '/support/idea-market/' 'idea-market.html'
 grep -Fq '<h1>Idea Market</h1>' "$tmp/idea-market.html" || { echo 'FAIL Idea Market support page missing' >&2; exit 1; }
