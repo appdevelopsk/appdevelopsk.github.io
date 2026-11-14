@@ -86,7 +86,7 @@ jobs:
           assert len(archives) == 1, 'one ZIP per verified source checkout'
           with ZipFile(archives[0]) as z:
               names = z.namelist()
-              assert len(names) == 48, f'46 site documents + hash manifest + instructions; got {len(names)}'
+              assert len(names) == 49, f'47 site documents + hash manifest + instructions; got {len(names)}'
               assert z.testzip() is None
               assert all(n.startswith('site/') or n in ('SHA256SUMS.txt', 'DEPLOY_README.txt') for n in names)
           PY
