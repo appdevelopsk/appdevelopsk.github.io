@@ -82,7 +82,7 @@
       if (!a) return;
       var href = a.getAttribute('href') || '';
       if (/play\.google\.com/.test(href)) {
-        gtag('event', 'download_click', { store: 'google_play', location: 'support', link_url: href });
+        gtag('event', 'download_click', { store: 'google_play', location: 'support', placement: a.getAttribute('data-position') || 'details', app_slug: 'key-clash', link_url: href });
       }
     }, true);
   </script>
@@ -124,10 +124,14 @@
     <h2 data-i18n="download">Download</h2>
     <p data-i18n="download_desc">Available on Android. Download for free from Google Play and start using today.</p>
     <div class="download-btns">
-      <a href="https://play.google.com/store/apps/details?id=com.keyclash.key_clash&amp;utm_source=appdevelopsk&amp;utm_medium=web&amp;utm_campaign=support_key-clash&amp;referrer=utm_source%3Dappdevelopsk%26utm_medium%3Dweb%26utm_campaign%3Dsupport_key-clash" class="dl-btn dl-btn-play" rel="noopener" target="_blank">Google Play</a>
+      <a href="https://play.google.com/store/apps/details?id=com.keyclash.key_clash&amp;utm_source=appdevelopsk&amp;utm_medium=web&amp;utm_campaign=support_key-clash&amp;referrer=utm_source%3Dappdevelopsk%26utm_medium%3Dweb%26utm_campaign%3Dsupport_key-clash" class="dl-btn dl-btn-play" data-position="details" rel="noopener" target="_blank">Google Play</a>
 </div>
   </div>
 
+  <div class="card" id="related-games">
+    <h2>Try another quick game</h2>
+    <p>If KeyClash is not listed on Google Play in your region, or you prefer trivia, puzzles or image guessing, compare available options in the <a href="/guides/quick-games/" style="color:var(--c1)">short mobile games guide</a> (<a href="/guides/quick-games/ja/" lang="ja" style="color:var(--c1)">日本語</a>).</p>
+  </div>
   <div class="card">
     <h2 data-i18n="faq">Frequently Asked Questions</h2>
     <ul>
