@@ -78,6 +78,6 @@ test('search snippets match the visible Debate Me product and schema', () => {
   assert.match(description, /Debate Me/);
   assert.match(description, /AI opponent/);
   assert.match(description, /review feedback/);
-  assert.match(description, /on Google Play/);
+  assert.match(description, /Explore Google Play/);
   assert.equal(JSON.parse(schema).description, description);
 });
