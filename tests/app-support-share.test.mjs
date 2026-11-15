@@ -64,3 +64,20 @@ test("VPS and offline release bundle both contain the shared asset", () => {
   assert.match(manifest, /files=\(scripts\/app-share\.js index\.html/);
   assert.match(bundle, /len\(apps\) != 31/);
 });
+
+
+test("live smoke rejects missing share assets or mismatched app landing bindings", () => {
+  const smoke = read("scripts/check_app_discovery_live.sh");
+  assert.match(smoke, /fetch '\/scripts\/app-share\.js' 'app-share\.js'/);
+  assert.match(smoke, /grep -Fq 'app_support_share' "\$tmp\/app-share\.js"/);
+  assert.match(smoke, /grep -Fq 'navigator\.share' "\$tmp\/app-share\.js"/);
+  assert.match(smoke, /grep -Fq 'navigator\.clipboard\.writeText' "\$tmp\/app-share\.js"/);
+  assert.match(smoke, /fetch '\/support\/tappitsu-battle\/' 'tappitsu-battle\.html'/);
+  assert.match(smoke, /'debate-me:debate-me' 'futureme:future-me' 'tappitsu-battle:tappitsu-battle'/);
+  assert.match(smoke, /data-app-share-slug=/);
+  assert.match(smoke, /FAIL opt-in sharing for \$slug not deployed/);
+  assert.match(smoke, /browser QA still required/);
+  // Source-only and read-only: do not permit the public smoke to publish
+  // or misstate a share tap as an install or an inbound human visitor.
+  assert.doesNotMatch(smoke, /rsync |ssh |--apply|gh workflow run|install_completed/i);
+});
