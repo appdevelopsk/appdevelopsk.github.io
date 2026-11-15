@@ -98,7 +98,12 @@ class SmokeSourceParityTests(unittest.TestCase):
         self.assertIn("taletime.html", report["files"])
         self.assertIn("futureme.html", report["files"])
         self.assertIn("app-share.js", report["files"])
-        self.assertIn("tappitsu-battle.html", report["files"])
+        # Tappitsu binding is checked inside the shell loop (dynamic $slug),
+        # so the literal-only scanner deliberately does not claim it verified
+        # that loop by expanding variable values.
+        self.assertIn("tappitsu-battle.html", SOURCE_PATHS)
+        self.assertIn("fetch '/support/tappitsu-battle/' 'tappitsu-battle.html'", smoke)
+        self.assertIn("data-app-share-slug=", smoke)
         self.assertIn("sitemap.xml", report["files"])
         self.assertIn("ai-debate-practice.html", report["files"])
         self.assertIn("ai-debate-practice-ja.html", report["files"])
