@@ -103,9 +103,9 @@ grep -Fq 'const FEAT_T={en:{0:"Choose A or B on a question."' "$tmp/dotchi.html"
 fetch '/support/debate-me/' 'debate-me.html'
 # The post-GSC 2026-11-11 snippet must be live; rejecting the old SEO
 # title prevents a GitHub merge from being mistaken for a published change.
-grep -Fq '<title>Debate Me – Practice Debating with AI on Android | SK APPS</title>' "$tmp/debate-me.html" || { echo 'FAIL Debate Me new SEO title not live' >&2; exit 1; }
-grep -Fq 'content="Want to get better at debating? Debate Me lets you challenge an AI opponent' "$tmp/debate-me.html" || { echo 'FAIL Debate Me new search description not live' >&2; exit 1; }
-grep -Fq '<meta property="og:title" content="Debate Me – Practice Debating with AI on Android | SK APPS">' "$tmp/debate-me.html" || { echo 'FAIL Debate Me OG title not live' >&2; exit 1; }
+grep -Fq '<title>Debate Me – AI Debate Practice App for Android | SK APPS</title>' "$tmp/debate-me.html" || { echo 'FAIL Debate Me new SEO title not live' >&2; exit 1; }
+grep -Fq 'content="Debate Me is an Android AI debate practice app. Choose a topic, practise claims and rebuttals with an AI opponent' "$tmp/debate-me.html" || { echo 'FAIL Debate Me new search description not live' >&2; exit 1; }
+grep -Fq '<meta property="og:title" content="Debate Me – AI Debate Practice App for Android | SK APPS">' "$tmp/debate-me.html" || { echo 'FAIL Debate Me OG title not live' >&2; exit 1; }
 grep -Fq 'data-position="hero"' "$tmp/debate-me.html" || { echo 'FAIL Debate Me first-screen Play CTA not live' >&2; exit 1; }
 grep -Fq 'data-position="details"' "$tmp/debate-me.html" || { echo 'FAIL Debate Me details Play CTA missing' >&2; exit 1; }
 grep -Fq 'utm_campaign=support_debate-me' "$tmp/debate-me.html" || { echo 'FAIL Debate Me published Play campaign attribution missing' >&2; exit 1; }
