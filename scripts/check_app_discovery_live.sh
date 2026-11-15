@@ -115,8 +115,7 @@ fi
 # GSC 2026-11-09..11: BrainBurst has impressions but no clicks. Verify the
 # improved title/description on the public site, not only in GitHub.
 fetch '/support/brain-burst/' 'brain-burst.html'
-grep -Fq '<title>BrainBurst – Daily Trivia &amp; 1v1 Quiz Battles on Android</title>' "$tmp/brain-burst.html" || \
-  grep -Fq '<title>BrainBurst – Daily Trivia & 1v1 Quiz Battles on Android</title>' "$tmp/brain-burst.html" || { echo 'FAIL BrainBurst revised title not live' >&2; exit 1; }
+grep -Fq '<title>BrainBurst – Daily Trivia & 1v1 Quiz Battles on Android</title>' "$tmp/brain-burst.html" || { echo 'FAIL BrainBurst revised title not live' >&2; exit 1; }
 grep -Fq 'content="Play daily trivia and challenge others in 1v1 quiz battles with BrainBurst.' "$tmp/brain-burst.html" || { echo 'FAIL BrainBurst search description not live' >&2; exit 1; }
 grep -Fq 'play.google.com/store/apps/details?id=com.brainburst.brain_burst' "$tmp/brain-burst.html" || { echo 'FAIL BrainBurst Play CTA missing' >&2; exit 1; }
 # Market listing must describe idea discovery, not a voice diary or an unsupported checkout.
