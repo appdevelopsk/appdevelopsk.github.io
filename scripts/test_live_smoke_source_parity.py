@@ -35,6 +35,8 @@ SOURCE_PATHS = {
     "instant-judge.html": "support/instant-judge/index.html",
     "roastme.html": "support/roast-me/index.html",
     "futureme.html": "support/future-me/index.html",
+    "app-share.js": "scripts/app-share.js",
+    "tappitsu-battle.html": "support/tappitsu-battle/index.html",
 }
 
 # Check only literal, single-quoted -Fq source assertions. Double-quoted
@@ -95,6 +97,13 @@ class SmokeSourceParityTests(unittest.TestCase):
         self.assertIn("one-tap-routine.html", report["files"])
         self.assertIn("taletime.html", report["files"])
         self.assertIn("futureme.html", report["files"])
+        self.assertIn("app-share.js", report["files"])
+        # Tappitsu binding is checked inside the shell loop (dynamic $slug),
+        # so the literal-only scanner deliberately does not claim it verified
+        # that loop by expanding variable values.
+        self.assertIn("tappitsu-battle.html", SOURCE_PATHS)
+        self.assertIn("fetch '/support/tappitsu-battle/' 'tappitsu-battle.html'", smoke)
+        self.assertIn("data-app-share-slug=", smoke)
         self.assertIn("sitemap.xml", report["files"])
         self.assertIn("ai-debate-practice.html", report["files"])
         self.assertIn("ai-debate-practice-ja.html", report["files"])
