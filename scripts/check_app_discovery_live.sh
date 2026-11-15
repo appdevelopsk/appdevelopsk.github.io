@@ -160,6 +160,22 @@ grep -Fq 'support_future_me_hero' "$tmp/futureme.html" || { echo 'FAIL FutureMe 
 if grep -Eiq 'Letters to future self|Time capsule feature|FutureMe Premium.*[0-9]+/(month|year)|FutureMe Premium 提供月度|NT\\$150/月' "$tmp/futureme.html"; then
   echo 'FAIL FutureMe support page contains outdated feature or pricing claims' >&2; exit 1
 fi
+# App referral feature release proof (PR #133): source merge is not
+# production delivery. A 200 HTML fallback at the .js URL is NOT proof;
+# check the exact asset content and three first-party landing-page script tags.
+# This remains a read-only smoke check, not a real user share or Play install.
+fetch '/scripts/app-share.js' 'app-share.js'
+grep -Fq 'app_support_share' "$tmp/app-share.js" || { echo 'FAIL app share asset is absent or an HTML fallback' >&2; exit 1; }
+grep -Fq 'navigator.share' "$tmp/app-share.js" || { echo 'FAIL native share flow not deployed' >&2; exit 1; }
+grep -Fq 'navigator.clipboard.writeText' "$tmp/app-share.js" || { echo 'FAIL share copy fallback missing' >&2; exit 1; }
+fetch '/support/tappitsu-battle/' 'tappitsu-battle.html'
+for entry in 'debate-me:debate-me' 'futureme:future-me' 'tappitsu-battle:tappitsu-battle'; do
+  IFS=: read -r html_file slug <<< "$entry"
+  grep -Fq "src=\"/scripts/app-share.js\" data-app-share-slug=\"$slug\"" "$tmp/$html_file.html" \
+    || { echo "FAIL opt-in sharing for $slug not deployed to its landing HTML" >&2; exit 1; }
+done
+echo 'PASS: public app sharing script and three localized app landing bindings present (browser QA still required)'
+
 # Newly indexed bilingual AI debate practice articles must be live and
 # point to real Android app destinations, not just appear in sitemap/source.
 fetch '/guides/ai-debate-practice/' 'ai-debate-practice.html'
