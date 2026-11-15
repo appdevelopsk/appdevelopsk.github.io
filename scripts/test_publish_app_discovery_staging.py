@@ -75,6 +75,7 @@ class AppPublishStagingTests(unittest.TestCase):
         paths = manifest()
         self.assertTrue(PRESS.issubset(set(paths)), "Every press locale must deploy")
         self.assertIn("apps.html", paths)
+        self.assertIn("scripts/app-share.js", paths)
         self.assertIn("support/brain-burst/index.html", paths)
         self.assertIn("support/one-tap-routine/index.html", paths)
         self.assertIn("guides/ai-debate-practice/index.html", paths)

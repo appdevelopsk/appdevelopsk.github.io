@@ -13,10 +13,13 @@ from scripts import build_site_release_bundle as bundle
 class AppsiteReleaseBundleTests(unittest.TestCase):
     def test_exact_publish_manifest_has_five_press_and_seventeen_policies(self):
         files = bundle.release_manifest()
-        self.assertEqual(len(files), 47)
+        self.assertEqual(len(files), 48)
+        workflow = (bundle.ROOT / ".github/workflows/build-appsite-release-bundle.yml").read_text()
+        self.assertIn("assert len(names) == 50", workflow)
         self.assertEqual(len(files), len(set(files)))
         self.assertTrue(bundle.PRESS.issubset(files))
         self.assertIn("support/one-tap-routine/index.html", files)
+        self.assertIn("scripts/app-share.js", files)
         for guide in ("guides/ai-debate-practice/index.html",
                       "guides/ai-debate-practice/ja/index.html"):
             self.assertIn(guide, files, "published sitemap entry missing from release ZIP")
