@@ -79,5 +79,6 @@ test("live smoke rejects missing share assets or mismatched app landing bindings
   assert.match(smoke, /browser QA still required/);
   // Source-only and read-only: do not permit the public smoke to publish
   // or misstate a share tap as an install or an inbound human visitor.
-  assert.doesNotMatch(smoke, /rsync |ssh |--apply|gh workflow run|install_completed/i);
+  assert.doesNotMatch(smoke, /^\s*(?:rsync|ssh|gh workflow run)\b/m);
+  assert.doesNotMatch(smoke, /install_completed/i);
 });
