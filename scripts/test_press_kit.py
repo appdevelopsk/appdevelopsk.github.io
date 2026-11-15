@@ -90,11 +90,13 @@ class PressKitTests(unittest.TestCase):
         self.assertIn('fetch "/$route" "press-$code.html"', smoke)
         self.assertIn("'press_app_click'", smoke)
         self.assertIn("'download_click'", smoke)
-        self.assertIn("BrainBurst: Daily Trivia & 1v1 Quiz Battles | Android", smoke)
-        self.assertIn("Debate Me: AI Debate Practice App for Android | SK APPS", smoke)
-        self.assertIn('<meta property="og:title" content="Debate Me: AI Debate Practice App for Android | SK APPS">', smoke)
+        self.assertIn("BrainBurst – Daily Trivia & 1v1 Quiz Battles on Android", smoke)
+        self.assertIn("Debate Me – Practice Debating with AI on Android | SK APPS", smoke)
+        self.assertIn('<meta property="og:title" content="Debate Me – Practice Debating with AI on Android | SK APPS">', smoke)
         self.assertNotIn("Debate Me: Practice Arguments with AI | Android App", smoke)
         self.assertNotIn("Debate Me – Free AI Debate App for Android | SK APPS", smoke)
+        self.assertIn("utm_campaign=support_debate-me", smoke)
+        self.assertNotIn("support_debate_me_hero", smoke)
 
     def test_homepage_and_sitemap_discoverable(self):
         homepage = (ROOT / "index.html").read_text(encoding="utf-8")
