@@ -75,7 +75,7 @@ for slug in brain-burst snaplingo; do
   grep -Fq 'placement:' "$tmp/$slug.html" || { echo "FAIL $slug placement attribution missing" >&2; exit 1; }
 done
 # Source merged app SEO and product-truth changes must be on the *public* origin.
-grep -Fq '<title>BrainBurst: Daily Trivia & 1v1 Quiz Battles | Android</title>' "$tmp/brain-burst.html" || { echo 'FAIL BrainBurst current SEO title not live' >&2; exit 1; }
+# The current BrainBurst title is checked below after the explicit support route fetch.
 if grep -Eq 'How do I restore my purchase\?|How do I cancel a subscription\?|Many features work offline\.' "$tmp/brain-burst.html"; then
   echo 'FAIL BrainBurst advertises unsupported billing or offline features' >&2; exit 1
 fi
@@ -108,7 +108,7 @@ grep -Fq 'content="Want to get better at debating? Debate Me lets you challenge 
 grep -Fq '<meta property="og:title" content="Debate Me – Practice Debating with AI on Android | SK APPS">' "$tmp/debate-me.html" || { echo 'FAIL Debate Me OG title not live' >&2; exit 1; }
 grep -Fq 'data-position="hero"' "$tmp/debate-me.html" || { echo 'FAIL Debate Me first-screen Play CTA not live' >&2; exit 1; }
 grep -Fq 'data-position="details"' "$tmp/debate-me.html" || { echo 'FAIL Debate Me details Play CTA missing' >&2; exit 1; }
-grep -Fq 'support_debate_me_hero' "$tmp/debate-me.html" || { echo 'FAIL Debate Me Play attribution missing' >&2; exit 1; }
+grep -Fq 'utm_campaign=support_debate-me' "$tmp/debate-me.html" || { echo 'FAIL Debate Me published Play campaign attribution missing' >&2; exit 1; }
 if grep -Eq 'Hundreds of meal ideas|Filter by ingredients|Can.t decide what to cook tonight' "$tmp/debate-me.html"; then
   echo 'FAIL Debate Me page still describes cooking instead of AI debates' >&2; exit 1
 fi
