@@ -95,6 +95,8 @@
       var href = a.getAttribute('href') || '';
       if (a.hasAttribute('data-related-app')) {
         gtag('event', 'related_app_click', { source_app: 'debate-me', target_app: a.getAttribute('data-related-app'), placement: 'support_related' });
+      } else if (a.hasAttribute('data-practice-guide')) {
+        gtag('event', 'practice_guide_click', { app_slug: 'debate-me', guide_locale: a.getAttribute('data-practice-guide'), placement: 'support_practice' });
       } else if (/play\.google\.com/.test(href)) {
         gtag('event', 'download_click', { store: 'google_play', location: 'support', app_slug: 'debate-me', placement: a.getAttribute('data-position') || 'other', link_url: href });
       }
@@ -138,6 +140,17 @@
     <div class="features-grid"><div class="feature"><div class="feature-dot"></div><span data-feat="0">Choose from six categories or make a topic</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="1">Defend a position against an AI opponent</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="2">Review reasoning and persuasion feedback</span></div><div class="feature"><div class="feature-dot"></div><span data-feat="3">Track debate practice and share your result</span></div></div>
   </div>
 
+  <section class="card" id="debate-practice-guide" aria-labelledby="debate-practice-guide-heading">
+    <h2 id="debate-practice-guide-heading">Try a three-step AI debate practice exercise</h2>
+    <p lang="en">Sample topic: <strong>Should homework be optional?</strong> Practise a short argument before starting a debate in the app.</p>
+    <ol lang="en" style="padding-left:22px;color:var(--t2);font-size:.93rem;line-height:1.8;margin:12px 0">
+      <li><strong>Claim:</strong> State your position in one sentence.</li>
+      <li><strong>Reason:</strong> Give one supporting fact or example and explain why it matters.</li>
+      <li><strong>Rebuttal:</strong> Anticipate one objection, then answer it respectfully.</li>
+    </ol>
+    <p>For more guided practice, read the <a href="/guides/ai-debate-practice/" data-practice-guide="en" lang="en" style="color:var(--c1);font-weight:600">English practice guide</a> or <a href="/guides/ai-debate-practice/ja/" data-practice-guide="ja" lang="ja" style="color:var(--c1);font-weight:600">日本語ガイド</a>. In Debate Me, use an AI opponent and feedback to continue practising.</p>
+  </section>
+
   <div class="card">
     <h2 data-i18n="download">Download</h2>
     <p data-i18n="download_desc">Available on Android. Download for free from Google Play and start using today.</p>
@@ -168,17 +181,6 @@
     <h2 data-i18n="privacy">Privacy &amp; Data</h2>
     <p><span data-i18n="privacy_desc">We take your privacy seriously. We do not sell personal information to third parties.</span> <a href="https://appdevelopsk.com/privacy-policy/debate-me/" style="color:var(--c1);font-weight:500" data-i18n="privacy_link">Read our Privacy Policy</a></p>
   </div>
-
-  <section class="card" id="debate-practice-guide" aria-labelledby="debate-practice-guide-heading">
-    <h2 id="debate-practice-guide-heading">Try a three-step AI debate practice exercise</h2>
-    <p lang="en">Sample topic: <strong>Should homework be optional?</strong> Practise a short argument before starting a debate in the app.</p>
-    <ol lang="en" style="padding-left:22px;color:var(--t2);font-size:.93rem;line-height:1.8;margin:12px 0">
-      <li><strong>Claim:</strong> State your position in one sentence.</li>
-      <li><strong>Reason:</strong> Give one supporting fact or example and explain why it matters.</li>
-      <li><strong>Rebuttal:</strong> Anticipate one objection, then answer it respectfully.</li>
-    </ol>
-    <p>For more guided practice, read the <a href="/guides/ai-debate-practice/" lang="en" style="color:var(--c1);font-weight:600">English practice guide</a> or <a href="/guides/ai-debate-practice/ja/" lang="ja" style="color:var(--c1);font-weight:600">日本語ガイド</a>. In Debate Me, use an AI opponent and feedback to continue practising.</p>
-  </section>
 
   <section class="card" id="related-apps" aria-labelledby="related-apps-heading">
     <h2 id="related-apps-heading" data-i18n="related_apps">Explore related apps</h2>
